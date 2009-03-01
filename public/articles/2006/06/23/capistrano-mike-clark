@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Capistrano - Mike Clark</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Capistrano - Mike Clark"
+    dc:identifier="http://glu.ttono.us/articles/2006/06/23/capistrano-mike-clark"
+    dc:description="A big thanks to Jamis Buck who wrote Capistrano! Is deploying new releases of your app as effortless as breathing? Or is deployment choking the life out of your software? Capistrano (formerly Switchtower) noun -"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/936" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Capistrano - Mike Clark</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Fri, 23 Jun 2006 16:40:00 GMT">Fri, 23 Jun 2006 16:40:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>A big thanks to Jamis Buck who wrote Capistrano!</p>
+
+<ul>
+<li>Is deploying new releases of your app as effortless as breathing?</li>
+<li>Or is deployment choking the life out of your software?</li>
+<li>Capistrano (formerly Switchtower)
+<ul>
+<li>noun - Software utility and framework that automates the deployment of web applications</li>
+<li>verb - to replace mundane deployment tasks with pure joy:
+&#8220;Stop wasting your time, just cap it already!&#8221;</li>
+<li>Capistrano automates mundane and annoyingly tedious deployment tasks.</li>
+</ul></li>
+<li>It scales!</li>
+<li>Getting your killer app deployed into production on launch day..
+<ul>
+<li>Should be a few minutes of prep</li>
+<li>Fixing your first bug, and redeploying before anyone notices
+<ul>
+<li>A few minutes of panic</li>
+</ul></li>
+<li>Deploying new releases to a cluster of machines, whenever you want, at the push of a button
+<ul>
+<li>Priceless!</li>
+</ul></li>
+</ul></li>
+<li>Before we press on&#8230;
+<ul>
+<li>We&#8217;re assuming you&#8217;ve already made the tough deployment decisions&#8230;</li>
+<li>Demo Assumptions</li>
+</ul></li>
+<li>Lighttpd, OSX, FastCGI, Subversion, One machine, Depot
+<ul>
+<li>How do I install it?</li>
+</ul></li>
+<li><code>gem install capistrano</code></li>
+<li>Capify! <code>cap --apply-to /path/to/my/app MyAppName</code></li>
+<li>Adds rake and recipe files
+<ul>
+<li>Recipe</li>
+</ul></li>
+<li>Application Name
+<ul>
+<li><code>set :application, "depot"</code></li>
+</ul></li>
+<li>Repository
+<ul>
+<li><code>set :repository, "http://svn.yourhost.com/#{application}/trunk"</code></li>
+</ul></li>
+<li>Roles
+<ul>
+<li>Used to define what roles which servers are playing.</li>
+<li><code>rule :app, "app01.example.com", "app02.example.com"</code></li>
+<li><code>rule :web, "www01.example.com", "www02.example.com"</code></li>
+<li><code>rule :db, "db01.example.com", :primary =&gt; true</code></li>
+<li><code>rule :db, "db02.example.com"</code></li>
+<li>web is for the webserver like lightty, :app is for handlers like  fastcgi, db is for sql servers like mysql</li>
+</ul></li>
+<li>Deployment Root
+<ul>
+<li>Where the deployed code goes</li>
+<li><code>set :deploy_to, "/Library/Rails/#{application}"</code></li>
+</ul></li>
+<li>Need a deploy targer? Run once to create the deploy directories
+<ul>
+<li><code>cap setup</code></li>
+<li>Demo</li>
+</ul></li>
+<li>Used <code>cap setup</code> which created a skeleton directory structure.
+<ul>
+<li>Would have worked on a dozen servers identically if specified</li>
+</ul></li>
+<li>Used <code>cap update</code> which checked out a new copy of the app on the server
+<ul>
+<li>Releases directory now has timestamped subdirectory with the release</li>
+<li>current is a symlink to that release directory</li>
+</ul></li>
+<li>Here&#8217;s where it gets fun :)</li>
+<li>We update the code and run <code>cap deploy</code> and it goes off, checks out the new code and reloads the server.</li>
+<li>We regret this. <code>cap rollback</code>, it flips the symlink back to the last version and reloads the server.
+<ul>
+<li>Need some downtime?</li>
+</ul></li>
+<li>Disables web acces: puts up maintenance page
+<ul>
+<li><code>cap disable_web</code>: puts up a maintenance screen and takes down your application</li>
+<li><code>cab enable_web</code> to bring it back up.</li>
+<li>You need this to be truly effortless when there&#8217;s a problem</li>
+</ul></li>
+<li>What&#8217;s the diff? 
+<ul>
+<li>What&#8217;s deployed vs what&#8217;s in repo</li>
+<li><code>cap diff_from_last_deploy</code></li>
+<li>It gets even better&#8230;</li>
+</ul></li>
+<li>Customizing and Extending (you know you want to)</li>
+<li><p>Make a task</p>
+
+<ul>
+<li>Similar to <code>make</code> or <code>rake</code></li>
+<li>Task can define roles to use</li>
+<li>Can use <code>run</code> to run commands on remote server</li>
+<li>Can use variables inside tasks</li>
+<li>Can use multiple roles (app, web, and db)</li>
+<li>Chaining tasks easily:
+<code>task :status do
+ which_ruby
+ current_revision
+ uptime
+end</code></li>
+<li>Channels and Streams
+<ul>
+<li><code>tail</code> the logfile</li>
+<li>Get a channel back which can be watched</li>
+</ul></li>
+<li><p>Code run before or after a task</p>
+
+<ul>
+<li><code>before_deploy</code> &#8230;</li>
+<li><code>after_update_code</code> &#8230;</li>
+</ul></li>
+<li><p>Multiple Configurations</p>
+
+<ul>
+<li>It&#8217;s just ruby!</li>
+<li>Can do all sorts of conditionals</li>
+<li>If we&#8217;re in the production environment&#8230; else setup the dev environment</li>
+</ul></li>
+<li>But wait, there&#8217;s more</li>
+</ul></li>
+<li>Task Libraries
+<ul>
+<li>Can reuse tasks across projects</li>
+<li>capistrano-ext - great example of how to write extension libraries
+<ul>
+<li>Great example of how to write task libraries. Has <code>watch_load</code> task.</li>
+</ul></li>
+<li>But this isn&#8217;t just a Rails or Ruby thing&#8230;</li>
+</ul></li>
+<li>It&#8217;s great at shuttling files along. Great for other systems as well.</li>
+<li>Remote Command and Control</li>
+<li>James Duncan Davidson has used it for numbers of servers in India as well as the US
+<ul>
+<li>Capistrano just assumes&#8230;</li>
+</ul></li>
+<li>Remote servers talk POSIX</li>
+<li>Same deploy directory structure and password on each machine
+<ul>
+<li>Can use public keys (and does by default)</li>
+</ul></li>
+<li>Web app uses FastCGI with Apache or LightTPD
+<ul>
+<li>But can rewrite the restart task if you&#8217;d like for mongrel etc.</li>
+<li>As the number of machines and processes in your environment increases&#8230;</li>
+</ul></li>
+<li>you&#8217;re still typing exactly one command
+<ul>
+<li>Can you deploy and roll back releases this easily and consistently on your project?</li>
+</ul></li>
+</ul>
+
+<h3>Q&amp;A</h3>
+
+<p>Mike took questions from the crowd.</p>
+
+<ul>
+<li>How do you deal with permissions with multiple users?
+<ul>
+<li>We use after hooks to deal with chown etc.</li>
+<li>Configurable option to use <code>sudo</code></li>
+</ul></li>
+<li>In these examples did your app server checkout from subversion?
+<ul>
+<li>It did a checkout on my machine. You can configure it to do an export instead. The servers do need access to version control.</li>
+</ul></li>
+<li>If you&#8217;re always checking out the same code to the different servers.. is there ever a time you&#8217;re just checking out different files to servers with different roles?
+<ul>
+<li>It needs all the code for migrations generally, but you&#8217;d override one of the tasks for a specific role.</li>
+</ul></li>
+<li>Sometimes I like to deploy <em>alot</em> but some are pretty big (30 or 40 megs of media files). Is there some way to <em>not</em> checkout each time?
+<ul>
+<li>I&#8217;ve seen grassroots stuff to checkout once and rsync, but you can override the update task to deal with that.</li>
+<li>We&#8217;ve done that (someone in the crowd) that solves the problem.</li>
+</ul></li>
+<li>Who do I talk to about getting my tasks to capistrano into the mainline?
+<ul>
+<li>You don&#8217;t. Publish task libraries and let the community get in if they&#8217;d like.</li>
+</ul></li>
+<li>Can I make capistrano prompt the user for which tag in subversion they&#8217;d like to use?
+<ul>
+<li>Sure. You can specify the revision number and write ruby to prompt.</li>
+</ul></li>
+<li>How did you feel about Dave Thomas&#8217;s suggestions for changes to capistrano in his keynote?
+<ul>
+<li>This isn&#8217;t the end goal. I think there will be a natural progression and &#8220;Capistrano II will&#8221; come out eventually.</li>
+</ul></li>
+<li>How does capistrano deal with database migrations?
+<ul>
+<li>There is a task called <code>deploy_with_migrations</code> which deals with it. This seems a bit scary, so I&#8217;d probably disable the web first, but the support is certainly there.</li>
+</ul></li>
+<li>If you have a cluser of 10 machines do they go down in sequence?
+<ul>
+<li>It&#8217;s done in parallel talking to each machine as best as possible.</li>
+</ul></li>
+<li>We&#8217;re in a Java shop, how can we use capistrano to tail logs and things like that?
+<ul>
+<li>Capistrano could definitely move files (WAR files often) around for you. If you find yourself doing something manually in that setting, write your own tasks. You can always just write your own specific tasks and don&#8217;t have to use <code>cap deploy</code>.</li>
+</ul></li>
+<li>When will there be a new version of &#8220;Project Automation&#8221;?
+<ul>
+<li>Life gets in the way, so there&#8217;s nothing in the works.</li>
+</ul></li>
+</ul>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>
+</p>
+
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/936/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="936";
+//--></script>
+<!-- mmp mmid:936 mmdate:2006-06-23 12:40:00 mmurl:/articles/2006/06/23/capistrano-mike-clark mmtitle:Capistrano - Mike Clark -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/06/23/capistrano-mike-clark" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Inviting the Devil Inside: Parallels and WinXP</title>
+    <link>http://glu.ttono.us/articles/2006/05/19/inviting-the-devil-parallels-and-winxp</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Inviting the Devil Inside: Parallels and WinXP</title>
+      <description>&lt;p&gt;Today I installed &lt;a href="http://www.parallels.com"&gt;Parallels&lt;/a&gt;, a virtual machine with which you can run a guest operating system inside OS X. Now WinXP is on my Mac Mini for the first time and I feel a bit dirty. Inside my wonderously pristine unix operating system sits a window with a grassy field and a blue sky and it just feels wrong.&lt;/p&gt;
+
+&lt;p&gt;Besides the fact that I have to deal with Windows again, Parallels runs magnificently. It&amp;#8217;s been fast, all of my hardware works fine and it was a snap to get running. If you have to be able to test out your sites on IE, I think this is going to be the way to go.&lt;/p&gt;
+
+&lt;p&gt;My only complication was getting networking to work. My Mini sits on a wireless network using DHCP. If you&amp;#8217;re using your wifi, in the VM config you need to make sure that under networking your wireless connection is selected instead of your wired. Additionally, I had to set my address statically because DHCP wouldn&amp;#8217;t work.&lt;/p&gt;
+
+&lt;p&gt;At the end of the month trial, I expect I&amp;#8217;ll throw down the $40 to not have to install XP on a partition on my Mac or get a PC.&lt;/p&gt;</description>
+      <pubDate>Fri, 19 May 2006 20:04:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:79f2ede1-4685-4012-88c5-261693bfb1c1</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/19/inviting-the-devil-parallels-and-winxp</link>
+      <category>Reviews</category>
+    </item>
+  </channel>
+</rss>

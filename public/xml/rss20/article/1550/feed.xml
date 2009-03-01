@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Holy God, Powerset Launches</title>
+    <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Holy God, Powerset Launches</title>
+      <description>&lt;p&gt;&lt;a href="http://powerset.com"&gt;We&amp;#8217;re out&lt;/a&gt;, searching &lt;a href="http://wikipedia.org"&gt;Wikipedia&lt;/a&gt; and &lt;a href="http://freebase.com"&gt;FreeBase&lt;/a&gt;. Proud doesn&amp;#8217;t begin to describe my feelings about what&amp;#8217;s been created. I think it speaks for itself, and I&amp;#8217;ve been using it instead of Wikipedia for the last few months.&lt;/p&gt;
+
+&lt;p&gt;Some people even seem to &lt;a href="http://searchengineland.com/080512-000100.php"&gt;really get it&lt;/a&gt;. And that&amp;#8217;s an amazing high.&lt;/p&gt;
+
+&lt;p&gt;Huge thanks are not only due to the Powerset team (I love working with these people), but also to all of the open source projects we&amp;#8217;re making use of. &lt;a href="http://hadoop.apache.org/"&gt;Hadoop&lt;/a&gt;. &lt;a href="http://hadoop.apache.org/hbase/"&gt;HBase&lt;/a&gt;. &lt;a href="http://developers.facebook.com/thrift/"&gt;Thrift&lt;/a&gt;. &lt;a href="http://www.ruby-lang.org/en/"&gt;Ruby&lt;/a&gt;. &lt;a href="http://merbivore.com/"&gt;Merb&lt;/a&gt;. &lt;a href="http://www.rubyonrails.org/"&gt;Rails&lt;/a&gt;. &lt;a href="http://god.rubyforge.org"&gt;god&lt;/a&gt;. &lt;a href="http://mongrel.rubyforge.org/"&gt;Mongrel&lt;/a&gt;. &lt;a href="http://mootools.net/"&gt;Mootools&lt;/a&gt;. &lt;a href="http://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt;. The &lt;a href="http://code.google.com/p/activemessaging/"&gt;ActiveMessaging&lt;/a&gt; Project. &lt;a href="http://www.danga.com/memcached/"&gt;Memcache&lt;/a&gt; and &lt;a href="http://memcachedb.org/"&gt;MemcacheDB&lt;/a&gt;. &lt;a href="http://www.erlang.org/"&gt;Erlang&lt;/a&gt;. &lt;a href="http://github.com/KirinDave/fuzed/tree/master"&gt;Fuzed&lt;/a&gt;. &lt;a href="http://yaws.hyber.org/"&gt;YAWS&lt;/a&gt;. Countless others. All those people who take the time to answer our questions, and respond to our bugs, and consider our patches, and write interesting articles, and make our code better. You guys rock, and we couldn&amp;#8217;t do it without you. So much love is heading in your direction right now. Thank you, thank you, thank you.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m exausted, and going to bed. Good night, and good luck. And try the app. I&amp;#8217;m stoked.&lt;/p&gt;</description>
+      <pubDate>Mon, 12 May 2008 02:21:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b357572a-3e76-4e2b-9e1a-e847cbfed8b8</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches</link>
+    </item>
+    <item>
+      <title>"Holy God, Powerset Launches" by Us</title>
+      <description>&lt;p&gt;Nice post!&lt;/p&gt;</description>
+      <pubDate>Sat, 17 May 2008 03:47:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bd151bb5-fa88-47da-a04a-8ec081974585</guid>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches#comment-1555</link>
+    </item>
+    <item>
+      <title>"Holy God, Powerset Launches" by Us</title>
+      <description>&lt;p&gt;Nice post!&lt;/p&gt;</description>
+      <pubDate>Sat, 17 May 2008 03:44:59 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:48db04ce-5f58-4317-bcd0-c0a02fc086e7</guid>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches#comment-1554</link>
+    </item>
+    <item>
+      <title>"Holy God, Powerset Launches" by Chris Petersen</title>
+      <description>&lt;p&gt;Awesome! Nice work to you and the whole team. I can&amp;#8217;t wait for the next time I have a question that requires more than keyword searching!&lt;/p&gt;</description>
+      <pubDate>Mon, 12 May 2008 13:41:36 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9206cf8a-88f2-4991-9c20-1968ccdcdc95</guid>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches#comment-1553</link>
+    </item>
+    <item>
+      <title>"Holy God, Powerset Launches" by little bunny foo foo</title>
+      <description>&lt;p&gt;yes &amp;#8230; it is incredible!!!&lt;/p&gt;</description>
+      <pubDate>Mon, 12 May 2008 04:52:45 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:91f93d4b-972f-4cf7-8725-b3a01873c356</guid>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches#comment-1552</link>
+    </item>
+    <item>
+      <title>"Holy God, Powerset Launches" by Adam Hill</title>
+      <description>&lt;p&gt;Two words: totally awesome.&lt;/p&gt;</description>
+      <pubDate>Mon, 12 May 2008 04:32:45 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8f92e60a-89cd-4594-9c2d-eec59e222d7c</guid>
+      <link>http://glu.ttono.us/articles/2008/05/12/holy-god-powerset-launches#comment-1551</link>
+    </item>
+  </channel>
+</rss>

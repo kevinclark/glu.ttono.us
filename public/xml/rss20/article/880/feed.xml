@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Want to test your RJS?</title>
+    <link>http://glu.ttono.us/articles/2006/05/28/want-to-test-your-rjs</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Want to test your RJS?</title>
+      <description>&lt;p&gt;It&amp;#8217;s coming. Check back tomorrow for the guide and information.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:alert&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;Hi!&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:assign&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:call&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;bar&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;baz&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:draggable&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;draggable_item&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:drop_receiving&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;receiving_item&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:hide&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_1&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_2&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_3&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:insert_html&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:bottom&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;posts&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Here's text from insert_html&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:redirect_to&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:action&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;list&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:remove&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_1&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_2&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_3&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:replace&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:bottom&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;This is something to replace&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:replace_html&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;This is something for replace_html&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:show&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_1&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_2&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_3&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:sortable&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;sortable_item&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:toggle&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_1&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_2&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;post_3&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:visual_effect&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:highlight&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;posts&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="symbol"&gt;:duration&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;1.0&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Sun, 28 May 2006 17:27:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:00b6514e-10c8-4eb8-8390-9c49ebcdc188</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/28/want-to-test-your-rjs</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

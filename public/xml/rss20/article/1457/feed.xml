@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Ruby  Gotcha of the Day: String Ranges</title>
+    <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Ruby  Gotcha of the Day: String Ranges</title>
+      <description>&lt;p&gt;Spot the pattern?&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;10&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, ..... &amp;quot;10&amp;quot;]&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;10&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; []&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;20&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;, ..... &amp;quot;20&amp;quot;]&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;3&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;20&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; []&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;3&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;30&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;6&amp;quot;, ..... &amp;quot;30&amp;quot;]&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;4&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;30&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; []&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;4&lt;/span&gt;&lt;span class="punct"&gt;'..'&lt;/span&gt;&lt;span class="string"&gt;40&lt;/span&gt;&lt;span class="punct"&gt;').&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;6&amp;quot;, &amp;quot;7&amp;quot;, ..... &amp;quot;40&amp;quot;]&lt;/span&gt;
+
+&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="number"&gt;10&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;
+
+&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;'.&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt; &lt;span class="punct"&gt;..&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;10&lt;/span&gt;&lt;span class="punct"&gt;'.&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 15:05:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a46117e4-f452-4417-b543-0fd92de2fc4b</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges</link>
+      <category>Musings</category>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"Ruby  Gotcha of the Day: String Ranges" by Jean-Philippe Bougie</title>
+      <description>&lt;p&gt;oops, those small examples got mangled&lt;/p&gt;
+
+
+	&lt;p&gt;(‘a ’..’b’).include? ‘a ’ =&amp;gt; true&lt;/p&gt;
+
+
+	&lt;p&gt;(‘a ’..’b’).include? ‘b’ =&amp;gt; true&lt;/p&gt;
+
+
+	&lt;p&gt;(‘a ’..’b’).to_a =&amp;gt; [‘a ‘] # where is ‘b’?&lt;/p&gt;
+
+
+	&lt;p&gt;In the end, one has to be careful using string ranges with Range#to_a, as it can give strange results even with alphabetic characters only :&lt;/p&gt;
+
+
+	&lt;p&gt;(&amp;#8216;A&amp;#8217;..&amp;#8217;b&amp;#8217;).include? &amp;#8216;a&amp;#8217; =&amp;gt; true&lt;/p&gt;
+
+
+	&lt;p&gt;(&amp;#8216;A&amp;#8217;..&amp;#8217;b&amp;#8217;).to_a.include? &amp;#8216;a&amp;#8217; =&amp;gt; false&lt;/p&gt;
+
+
+	&lt;p&gt;(&amp;#8216;A&amp;#8217;..&amp;#8217;b&amp;#8217;).to_a =&amp;gt; [&amp;#8216;A&amp;#8217;, &amp;#8216;B&amp;#8217;, &amp;#8216;C&amp;#8217;, ... &amp;#8216;Z&amp;#8217;]&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8216;Z&amp;#8217;.succ gives &amp;#8216;AA&amp;#8217;, which is greater than &amp;#8216;a&amp;#8217;, thus #to_a stops at that point&lt;/p&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 23:54:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:352186e9-554c-4833-ac84-9e09cc3c1200</guid>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comment-1465</link>
+    </item>
+    <item>
+      <title>"Ruby  Gotcha of the Day: String Ranges" by Jean-Philippe Bougie</title>
+      <description>&lt;p&gt;String#succ, which is used by the the range is quite a strange beast, especially since its rules do not conform well to String#&amp;lt;=&amp;gt;. succ has special treatment of carry with characters and numbers, and doesn&amp;#8217;t follow the normal ascii set. For example, &amp;#8216;9&amp;#8217;.succ is &amp;#8216;10&amp;#8217;, &amp;#8216;z&amp;#8217;.succ is &amp;#8216;aa&amp;#8217;, but &amp;#8217; ?&amp;#8217;.succ is &amp;#8217;@&amp;#8217;. On the other hand, &amp;lt;=&amp;gt; goes character by character. So yes, it is definitely a gotcha, but stranger things do happen with ranges :&lt;/p&gt;
+
+
+	&lt;p&gt;(&amp;#8216;a &amp;#8217;..&amp;#8217;b&amp;#8217;).include? &amp;#8216;a &amp;#8217; =&amp;gt; true
+(&amp;#8216;a &amp;#8217;..&amp;#8217;b&amp;#8217;).include? &amp;#8216;b&amp;#8217; =&amp;gt; true
+(&amp;#8216;a &amp;#8217;..&amp;#8217;b&amp;#8217;).to_a =&amp;gt; [&amp;#8216;a &amp;#8216;] # where is &amp;#8216;b&amp;#8217;?&lt;/p&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 23:39:54 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d4194b1e-6310-4d7f-b36c-34bce2c23e92</guid>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comment-1464</link>
+    </item>
+    <item>
+      <title>"Ruby  Gotcha of the Day: String Ranges" by Kevin Clark</title>
+      <description>&lt;p&gt;Ok, whether this is a bug or not is certainly up for interpretation, but it&amp;#8217;s an interesting &lt;strong&gt;gotcha&lt;/strong&gt; either way.&lt;/p&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 21:48:42 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0e6e6406-199c-474a-87c7-9ad195b37dd5</guid>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comment-1462</link>
+    </item>
+    <item>
+      <title>"Ruby  Gotcha of the Day: String Ranges" by Dr J</title>
+      <description>&lt;p&gt;Very good find&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 16:50:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:127e52bc-c6ab-42bf-bd22-4d515b2a28ba</guid>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comment-1460</link>
+    </item>
+    <item>
+      <title>"Ruby  Gotcha of the Day: String Ranges" by Matthew Conway</title>
+      <description>&lt;p&gt;Interesting &amp;#8211; took me a while to figure it out :)&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;spoiler *&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;I wouldn&amp;#8217;t call it a bug though &amp;#8211; &amp;#8216;2&amp;#8217; &lt;em&gt;is&lt;/em&gt; &amp;gt; &amp;#8216;10&amp;#8217; i.e. strings don&amp;#8217;t sort like numbers&lt;/p&gt;</description>
+      <pubDate>Wed, 20 Jun 2007 15:51:34 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c56a1b05-e460-40dc-9592-a6dec1b373ef</guid>
+      <link>http://glu.ttono.us/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comment-1458</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Really Simple Git Deployment with Vlad</title>
+    <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Really Simple Git Deployment with Vlad</title>
+      <description>&lt;p&gt;Just drop this in your Rakefile. This is slightly modified from something I&amp;#8217;m using in production.&lt;/p&gt;
+
+&lt;p&gt;Disect! Enjoy! Explanation (read: spoilers) after the jump.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="comment"&gt;##############################################################################&lt;/span&gt;
+&lt;span class="comment"&gt;# Deploy&lt;/span&gt;
+&lt;span class="comment"&gt;##############################################################################&lt;/span&gt;
+
+&lt;span class="keyword"&gt;begin&lt;/span&gt;
+  &lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;rake_remote_task&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+  &lt;span class="constant"&gt;APP_NAME&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;someapp&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="constant"&gt;DEPLOY_ROOT&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;/usr/local/share/applications/&lt;span class="expr"&gt;#{APP_NAME}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="constant"&gt;ON_DEPLOY_RESTART&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;[&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;someappd&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;]&lt;/span&gt;
+
+  &lt;span class="ident"&gt;role&lt;/span&gt; &lt;span class="symbol"&gt;:app_server&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;myserver.com&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;archive&lt;/span&gt;
+    &lt;span class="ident"&gt;commit&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; `&lt;span class="ident"&gt;git&lt;/span&gt;&lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;rev&lt;/span&gt;&lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;list&lt;/span&gt; &lt;span class="punct"&gt;--&lt;/span&gt;&lt;span class="ident"&gt;max&lt;/span&gt;&lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;count&lt;/span&gt;&lt;span class="punct"&gt;=&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt; &lt;span class="punct"&gt;--&lt;/span&gt;&lt;span class="ident"&gt;abbrev&lt;/span&gt;&lt;span class="punct"&gt;=&lt;/span&gt;&lt;span class="number"&gt;10&lt;/span&gt; &lt;span class="punct"&gt;--&lt;/span&gt;&lt;span class="ident"&gt;abbrev&lt;/span&gt;&lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;commit&lt;/span&gt; &lt;span class="constant"&gt;HEAD`&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;chomp&lt;/span&gt;
+    &lt;span class="ident"&gt;file&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;&lt;span class="expr"&gt;#{APP_NAME}&lt;/span&gt;-&lt;span class="expr"&gt;#{commit}&lt;/span&gt;.tar.gz&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;restart_daemons&lt;/span&gt;
+    &lt;span class="constant"&gt;ON_DEPLOY_RESTART&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;app&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo god restart &lt;span class="expr"&gt;#{app}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="ident"&gt;namespace&lt;/span&gt; &lt;span class="symbol"&gt;:deploy&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+    &lt;span class="ident"&gt;task&lt;/span&gt; &lt;span class="symbol"&gt;:build&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;sh&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;git archive --format=tar HEAD | gzip &amp;gt; &lt;span class="expr"&gt;#{archive}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="ident"&gt;remote_task&lt;/span&gt; &lt;span class="symbol"&gt;:push&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="symbol"&gt;:build&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;rsync&lt;/span&gt; &lt;span class="ident"&gt;archive&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;/tmp&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="ident"&gt;desc&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Install a release from the latest commit&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;remote_task&lt;/span&gt; &lt;span class="symbol"&gt;:install&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="symbol"&gt;:push&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;date_stamp&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;Time&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;now&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;strftime&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;%Y%m%d&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)&lt;/span&gt;
+      &lt;span class="ident"&gt;last_release&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;run&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;ls &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels | sort -r | head -n 1&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;chomp&lt;/span&gt;
+
+      &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;last_release&lt;/span&gt; &lt;span class="punct"&gt;=~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;&lt;span class="expr"&gt;#{date_stamp}&lt;/span&gt;&lt;span class="escape"&gt;\-&lt;/span&gt;(&lt;span class="escape"&gt;\d&lt;/span&gt;+)&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt;
+        &lt;span class="ident"&gt;serial&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="global"&gt;$1&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="number"&gt;1&lt;/span&gt;
+      &lt;span class="keyword"&gt;else&lt;/span&gt;
+        &lt;span class="ident"&gt;serial&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="number"&gt;0&lt;/span&gt; 
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+      &lt;span class="ident"&gt;rel&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;%d-%02d&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="punct"&gt;%&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;date_stamp&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;serial&lt;/span&gt;&lt;span class="punct"&gt;])&lt;/span&gt;
+      &lt;span class="ident"&gt;rel_dir&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;&lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels/&lt;span class="expr"&gt;#{rel}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo mkdir -p &lt;span class="expr"&gt;#{rel_dir}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo tar -xzvf /tmp/&lt;span class="expr"&gt;#{archive}&lt;/span&gt; -C &lt;span class="expr"&gt;#{rel_dir}&lt;/span&gt; &amp;amp;&amp;amp; rm -rf /tmp/&lt;span class="expr"&gt;#{archive}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo ln -s -f -T &lt;span class="expr"&gt;#{rel_dir}&lt;/span&gt; &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/current&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="ident"&gt;restart_daemons&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="ident"&gt;desc&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Rollback to the previous release&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;remote_task&lt;/span&gt; &lt;span class="symbol"&gt;:rollback&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;current_link&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;run&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;ls -alF &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt; | awk '/current -&amp;gt; .*/ { print $NF }'&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;chomp&lt;/span&gt;
+      &lt;span class="ident"&gt;current&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;File&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;basename&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;current_link&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+      &lt;span class="ident"&gt;releases&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;run&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;ls &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels | sort -r&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;&lt;span class="escape"&gt;\n&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)&lt;/span&gt;
+      &lt;span class="ident"&gt;previous&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;releases&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;find&lt;/span&gt; &lt;span class="punct"&gt;{|&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="ident"&gt;current&lt;/span&gt; &lt;span class="punct"&gt;&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;rel&lt;/span&gt;&lt;span class="punct"&gt;}&lt;/span&gt;
+      &lt;span class="keyword"&gt;raise&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;No previous release&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;previous&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;nil?&lt;/span&gt;
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo ln -s -f -T &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels/&lt;span class="expr"&gt;#{previous}&lt;/span&gt; &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/current&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="ident"&gt;restart_daemons&lt;/span&gt;
+      &lt;span class="ident"&gt;puts&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Moved to &lt;span class="expr"&gt;#{previous}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="ident"&gt;desc&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Rollforward to the next release&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="ident"&gt;remote_task&lt;/span&gt; &lt;span class="symbol"&gt;:rollforward&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;current_link&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;run&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;ls -alF &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt; | awk '/current -&amp;gt; .*/ { print $NF }'&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;chomp&lt;/span&gt;
+      &lt;span class="ident"&gt;current&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;File&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;basename&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;current_link&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+      &lt;span class="ident"&gt;releases&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;run&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;ls &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels | sort -r&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;&lt;span class="escape"&gt;\n&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)&lt;/span&gt;
+      &lt;span class="ident"&gt;next_rel&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;releases&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;find&lt;/span&gt; &lt;span class="punct"&gt;{|&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="ident"&gt;current&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&lt;/span&gt; &lt;span class="ident"&gt;rel&lt;/span&gt;&lt;span class="punct"&gt;}&lt;/span&gt;
+      &lt;span class="keyword"&gt;raise&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;No next release&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;next_rel&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;nil?&lt;/span&gt;
+      &lt;span class="ident"&gt;run&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;sudo ln -s -f -T &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/rels/&lt;span class="expr"&gt;#{next_rel}&lt;/span&gt; &lt;span class="expr"&gt;#{DEPLOY_ROOT}&lt;/span&gt;/current&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+      &lt;span class="ident"&gt;restart_daemons&lt;/span&gt;
+      &lt;span class="ident"&gt;puts&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Moved to &lt;span class="expr"&gt;#{next_rel}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;rescue&lt;/span&gt; &lt;span class="constant"&gt;LoadError&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;e&lt;/span&gt;
+  &lt;span class="ident"&gt;puts&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;NOTE: Install vlad to get Kevin's awesome deployment tasks&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Sat, 05 Apr 2008 19:13:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:1c9bdb1a-5d7b-469b-9f50-ac69a4e46217</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad</link>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+    <item>
+      <title>"Really Simple Git Deployment with Vlad" by Kevin Clark</title>
+      <description>&lt;p&gt;Hi Tim,
+The difference is in the magic. Mine doesn&amp;#8217;t &lt;em&gt;have&lt;/em&gt; any. Maybe I&amp;#8217;m just a curmudgeon, but I like understanding what my code is doing. Your code &lt;em&gt;looks&lt;/em&gt; like a rake task, but there&amp;#8217;s actually lots more going on. That&amp;#8217;s great. It&amp;#8217;s really powerful and a good choice for many, but frankly I find it obscure and confusing.&lt;/p&gt;
+
+
+	&lt;p&gt;I think that fact that my tasks are specifically defined as something other than a normal rake task is a feature. I think that the only code that&amp;#8217;s being executed I can&amp;#8217;t see are methods I&amp;#8217;m explicitly calling is a feature. Most importantly, I think the fact that I&amp;#8217;m doing deploy, but just as easily could be doing other remote tasks, clearly, without understanding how a framework works, is a feature. In a technical sense, mine is the less complex code, if not in the number of lines sense.&lt;/p&gt;
+
+
+	&lt;p&gt;Just consider that I&amp;#8217;ve replaced your framework with a couple of helpers and some version logic. After that, I can hide code however I&amp;#8217;d like.&lt;/p&gt;</description>
+      <pubDate>Fri, 18 Apr 2008 14:05:08 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b432c1b8-1a20-4883-9d51-c6411c19b46e</guid>
+      <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad#comment-1536</link>
+    </item>
+    <item>
+      <title>"Really Simple Git Deployment with Vlad" by Tim Dysinger</title>
+      <description>&lt;p&gt;Sorry but how is that simple?  Here&amp;#8217;s the capistrano version:&lt;/p&gt;
+
+
+&lt;pre&gt;
+set :application, "website" 
+set :scm, :git
+set :ssh_options, { :forward_agent =&amp;gt; true }
+set :repository, "&lt;a href="mailto:git@github.com"&gt;git@github.com&lt;/a&gt;:user/#{application}.git" 
+set :repository_cache, "git-cache" 
+set :deploy_via, :remote_cache
+
+role :web, "dev.server.com" 
+role :app, "dev.server.com" 
+role :db,  "dev.server.com", :primary =&amp;gt; true
+
+namespace :deploy do
+  task :start, :roles =&amp;gt; :app do
+    deploy.mongrel.start
+  end
+
+  task :stop, :roles =&amp;gt; :app do
+    deploy.mongrel.stop
+  end
+
+  task :restart, :roles =&amp;gt; :app, :except =&amp;gt; { :no_release =&amp;gt; true } do
+    deploy.mongrel.restart
+  end
+
+  namespace :mongrel do
+    [ :stop, :start, :restart ].each do |t|
+      task t, :roles =&amp;gt; :app do
+        run "umask 02 &amp;#38;&amp;#38; cd #{current_path} &amp;#38;&amp;#38; mongrel_rails cluster::#{t}" 
+      end
+    end
+  end
+end
+&lt;/pre&gt;</description>
+      <pubDate>Thu, 17 Apr 2008 21:50:14 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0721d78e-80b6-4885-8975-190263caab53</guid>
+      <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad#comment-1535</link>
+    </item>
+    <item>
+      <title>"Really Simple Git Deployment with Vlad" by Kevin Clark</title>
+      <description>&lt;p&gt;@Sebastian: I don&amp;#8217;t see why not. You might need to tweak it slightly to restart the right services. If you&amp;#8217;re doing Rails apps Vlad&amp;#8217;s built in recipes may do the job for you as well.&lt;/p&gt;</description>
+      <pubDate>Sun, 06 Apr 2008 17:55:37 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ed72ecb2-f923-4466-a42d-64b899875dcc</guid>
+      <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad#comment-1529</link>
+    </item>
+    <item>
+      <title>"Really Simple Git Deployment with Vlad" by Sebastian</title>
+      <description>&lt;p&gt;can I use it with Ror 1.2 ?&lt;/p&gt;</description>
+      <pubDate>Sun, 06 Apr 2008 14:42:21 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:db40ee92-a623-49cd-b912-360d4ce6b70a</guid>
+      <link>http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad#comment-1527</link>
+    </item>
+  </channel>
+</rss>

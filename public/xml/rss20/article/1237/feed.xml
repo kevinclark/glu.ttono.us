@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ARTS 0.5 Released</title>
+    <link>http://glu.ttono.us/articles/2006/09/15/arts-0-5-released</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ARTS 0.5 Released</title>
+      <description>&lt;p&gt;Today I checked in version 0.5 of ARTS into my plugin repository. This release adds support for &lt;code&gt;page['some_id'].toggle&lt;/code&gt; and friends.&lt;/p&gt;
+
+&lt;p&gt;In general the assertion looks like:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:page&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="constant"&gt;ELEMENT_ID&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;*&lt;/span&gt;&lt;span class="constant"&gt;METHOD_CALLS&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So, to match &lt;code&gt;page['some_id'].toggle&lt;/code&gt; you use:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:page&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;some_id&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="symbol"&gt;:toggle&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can continue to string as many method calls as you&amp;#8217;d like. To match &lt;code&gt;page['some_id'].toggle.up.down.left.right.everywhere&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:page&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;some_id&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="symbol"&gt;:toggle&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:up&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:down&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:left&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:right&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:everywhere&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, for assignment make sure to append an &amp;#8216;=&amp;#8217; to the method name and include the value. For example, to match &lt;code&gt;page['some_id'].style.color = 'red'&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:page&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;some_id&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="symbol"&gt;:style&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:color=&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;red&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Go &lt;a href="http://thar.be/svn/projects/plugins/arts"&gt;check it out&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Fri, 15 Sep 2006 21:54:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:772364fc-0d08-43ee-91a0-edc6dbc346ad</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/15/arts-0-5-released</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+    <item>
+      <title>"ARTS 0.5 Released" by Caleb Buxton</title>
+      <description>&lt;p&gt;Hey man,&lt;/p&gt;
+
+
+	&lt;p&gt;Trés Cool.&lt;/p&gt;
+
+
+	&lt;p&gt;thought i&amp;#8217;d share something that i added to it to support the assert_tag functionality&lt;/p&gt;
+
+
+	&lt;p&gt;its a bit of a hack job&lt;/p&gt;
+
+
+	&lt;p&gt;I modified extract_matchable_content to pass up hashes and and added a when for Hash in the content cases that is&lt;/p&gt;
+
+
+&lt;code&gt;
+          html_doc = HTML::Document.new(@response.body.gsub('\\',''))
+          clean_backtrace do
+            #content = content.size &amp;gt; 1 ? content.last.merge({ :tag =&amp;gt; content.first.to_s }) : content.first
+            tag = html_doc.find(content)
+            assert tag, "expected tag, but no tag found matching #{content.inspect} in:\n#{@response.body.inspect}" 
+          end
+&lt;/code&gt;
+
+	&lt;p&gt;which is a rip off of the assert_tag source&lt;/p&gt;
+
+
+	&lt;p&gt;anyways&amp;#8212;it works for me!&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Oct 2006 03:38:02 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:72bc6511-5b6d-40ae-8f78-d37d956c8558</guid>
+      <link>http://glu.ttono.us/articles/2006/09/15/arts-0-5-released#comment-1257</link>
+    </item>
+    <item>
+      <title>"ARTS 0.5 Released" by jakehow</title>
+      <description>&lt;p&gt;Hey Kevin&amp;#8230;&lt;/p&gt;
+
+
+	&lt;p&gt;I think ARTS is a great project&amp;#8230; but I have moved over from Test::Unit to RSpec&amp;#8230; I just got ARTS up and running in RSpec so I have the best of both worlds now.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://geekonomics.blogspot.com/2006/09/arts-on-rspec-on-rails.html"&gt;http://geekonomics.blogspot.com/2006/09/arts-on-rspec-on-rails.html&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Keep up the good work!&lt;/p&gt;
+
+
+	&lt;p&gt;Jake&lt;/p&gt;</description>
+      <pubDate>Fri, 22 Sep 2006 18:02:43 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e5970f9f-8c20-4ec1-887e-9e8dd029fd52</guid>
+      <link>http://glu.ttono.us/articles/2006/09/15/arts-0-5-released#comment-1256</link>
+    </item>
+    <item>
+      <title>"ARTS 0.5 Released" by Joe</title>
+      <description>&lt;p&gt;Hi Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;I was trying to use Arts with my integration tests&amp;#8230; it looks like this is n&amp;#8217;t support as I get the following error:&lt;/p&gt;
+
+
+	&lt;p&gt;NoMethodError: undefined method `assert_rjs&amp;#8217; for ActionController::Integration::Session&lt;/p&gt;
+
+
+	&lt;p&gt;Is there a way to have Arts work for integration tests?&lt;/p&gt;</description>
+      <pubDate>Fri, 22 Sep 2006 13:22:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a05469da-5c6d-4763-b022-dfe0f8b28313</guid>
+      <link>http://glu.ttono.us/articles/2006/09/15/arts-0-5-released#comment-1255</link>
+    </item>
+  </channel>
+</rss>

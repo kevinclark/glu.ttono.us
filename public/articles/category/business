@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category business</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/05/23/poll-the-audience-accounting-and-freelance">Poll the Audience: Accounting and Freelance</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 23 May 2006 15:06:00 GMT">Tue, 23 May 2006 15:06:00 GMT</span></p>
+<p>Since I&#8217;ve started doing freelance <a href="http://rubyonrails.com">Rails</a> consulting as my day job, I&#8217;ve found the need to track my income and expenses.</p>
+
+<p>I&#8217;ve looked at a few accounting packages, Quickbooks, Quicken, and <a href="http://www.prettygoodsoftware.org/iratchet/index.html">iRatchet</a> namely, but I&#8217;m still sitting on the fence.</p>
+
+<p>For you freelancers out there, do you feel you need an accounting package, and if so, which one? My goal here has always been to help educate people about their choices with Rails or web development in general. What choices are out there that I&#8217;m not considering and how do you feel about them?</p>
+
+<p><strong>Comments are on.</strong></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/business" rel="tag">business</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/23/poll-the-audience-accounting-and-freelance#comments">7 comments</a></p>
+  </div>
+
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

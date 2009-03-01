@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category sightings</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2007/06/21/powerset-to-launch-front-end-on-ruby">Powerset to Launch Front-end on Ruby</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 21 Jun 2007 16:41:00 GMT">Thu, 21 Jun 2007 16:41:00 GMT</span></p>
+<p><strong><a href="http://digg.com/programming/Powerset_to_Launch_Front_end_on_Ruby">Spread the word on digg</a></strong></p>
+
+<p><a href="http://powerset.com" title="Powerset Homepage">Powerset</a> is fairly well-known in the Ruby community, but there&#8217;s a certain amount of confusion as to what we use it for. As a consequence, I&#8217;m regularly asked what the front end is going to be written in, and just as regularly have to leave the question unanswered. But today I&#8217;m happy to announce that <strong>we are, in fact, launching our <em>front-end</em> on Ruby.</strong></p>
+
+<p>Cool, huh? For everyone&#8217;s sanity (and in avoidance of some of the flame wars to ensue), do note that we are going to be using <em>Ruby</em> (the language) but not necessarily <em>Ruby on Rails</em> (the web framework).</p>
+
+<p>In the spirit of Powerset&#8217;s <a href="http://www.blognewcomb.com/blog/2007/06/powerlabs_the_first_screenshot.html" title="Powerlabs' First Screenshot">new</a> <a href="http://blog.powerset.com/2007/6/8/politicians-who-died-in-office" title="Politicians Who Died in Office">found</a> <a href="http://blog.powerset.com/2007/6/16/what-did-steve-jobs-say-about-the-ipod" title="What did Steve Jobs say about the iPod?">openness</a>, I&#8217;d like to take some time to explain why we&#8217;re making this decision where others might not.</p>
+
+<h2>Why Ruby?</h2>
+
+<h3>1. We&#8217;ve already got the brains</h3>
+
+<p>One thing we haven&#8217;t kept secret is that we&#8217;ve hired some of the <a href="http://rubyisawesome.com/" title="Tom Werner">best</a> <a href="http://vandev.com/" title="Chris Van Pelt">Ruby</a> <a href="http://kirindave.tumblr.com/" title="Dave Fayram">developers</a> <a href="http://www.workingwithrails.com/person/851-toby-sterrett" title="Toby Sterrett">around</a>. Our total number of day in day out Ruby developers is somewhere around 10, and I&#8217;m constantly humbled to be working with this team. We&#8217;ve got the people and they have the skills, so it makes sense to apply them.</p>
+
+<p><img src="http://farm2.static.flickr.com/1412/577677982_7f43f5943f.jpg" alt="The part of Powerset Ruby we could round up"/></p>
+
+<h3>2. Ruby is already being used throughout the company</h3>
+
+<p>We&#8217;ve always spoken in general terms about how much Ruby is being used internally, but let&#8217;s get specific: a substantial part of our infrastructure is being written in Ruby or being accessed through Ruby services. Our scientists use Ruby to interact with our core language technology. Our packaging infrastructure is Ruby. A big portion of our system administration work is all done with Ruby. Frankly, we as an organization use Ruby a whole heck of a lot.</p>
+
+<p>Additionally, all of our product demos and prototypes are also in Ruby. We&#8217;ve got an interesting mix of <a href="http://www.rubyonrails.org/" title="Ruby on Rails">Rails</a>, <a href="http://merb.devjavu.com/" title="Merb">Merb</a> and <a href="http://redhanded.hobix.com/bits/campingAMicroframework.html" title="Camping">Camping</a> apps (depending on the scope of the project) connecting to tiny Ruby services which hook into our various back-end systems. Day to day, the majority of the product team is hacking in Ruby in some capacity.</p>
+
+<h3>3. We&#8217;re not worried about scaling</h3>
+
+<p>So, inevitably, whenever we talk about Ruby or Rails scaling these days someone brings up <a href="http://twitter.com">Twitter</a> and its <a href="http://www.slideshare.net/Blaine/scaling-twitter" title="Blaine's Scaling Twitter Slides from SVRC">scaling</a> <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/" title="Alex Payne's Interview">problems</a> in the past. Twitter is right down the block from our offices and I know several of the devs personally, so before we made a final decision I arranged a sit down with Twitter&#8217;s lead developer, Blaine Cook, to talk about the situation. Blaine was kind enough to let me bring along our Search Architect (and former search architect at Yahoo!) Chad Walters , our Head of Product Scott Prevost, and our COO Steve Newcomb, to poke and prod and get their questions answered. <strong>The simple fact is that Ruby wasn&#8217;t the source of Twitter&#8217;s woes.</strong> As it often happens with <a href="http://www.alexa.com/data/details/traffic_details?site0=twitter.com&amp;site1=&amp;site2=&amp;site3=&amp;site4=&amp;y=p&amp;z=0&amp;h=300&amp;w=610&amp;range=6m&amp;size=Medium&amp;url=usopen.com" title="Twitter's Growth on Alexa">rapidly growing sites</a>, they ran into architectural problems. Some design decisions don&#8217;t hurt until they reach a massive scale and at that point you have to rethink your approach. In an email he writes:</p>
+
+<blockquote>
+    <p>For us, it&#8217;s really about scaling horizontally - to that end, Rails and 
+     Ruby haven&#8217;t been stumbling blocks, compared to any other language or 
+     framework. The performance boosts associated with a &#8220;faster&#8221; language would 
+     give us a 10-20% improvement, but thanks to architectural changes that Ruby 
+     and Rails happily accommodated, Twitter is 10000% faster than it was in 
+     January</p>
+</blockquote>
+
+<p>This is great news for Twitter, but even better for us because we don&#8217;t have the bottle necks that they&#8217;ve struggled with &#8211; databases, instant messaging servers, and regularly recycling cache systems &#8211; which makes scaling horizontally much much smoother. At that point, our scaling issue doesn&#8217;t concern Ruby. For a search engine, the front-end is largely just a templating system and the real work happens in the back when we process your query.</p>
+
+<h2>What does this mean for the community?</h2>
+
+<p>When writing this article, at some point I had to sit down and ask myself why anyone should care we&#8217;re adopting Ruby for the front-end. For me, it comes down to the fact that we&#8217;re good for the community as a whole.</p>
+
+<p>First off, the fact that Powerset is deploying on Ruby means you&#8217;ve got one more high traffic site (potentially very high traffic) using Ruby in production. It&#8217;s one more case study, and one more example that Ruby as a whole is ready for the big show. </p>
+
+<p>Personally, I think the more interesting and useful thing to take away from this is that as we do the heavy lifting, building up infrastructure around all the aspects of Ruby development and deployment in the company, we&#8217;re selecting large chunks to be open-sourced. I&#8217;ve got a list of things I&#8217;d love to put out into the wild (which is encouraged, and actually suggested by my manager. Man, I love this place) as soon as I can find the time. Already <a href="http://rubyisawesome.com/" title="Tom Werner">Tom Werner</a> and <a href="http://kirindave.tumblr.com/" title="Dave Fayram">Dave Fayram</a> have pushed out Ruby to Erlang bindings and a sweet little (in-development) web server called <a href="http://code.google.com/p/fuzed/" title="Fuzed Codebase">Fuzed</a>, I&#8217;ve gotten to hack at <a href="http://merb.devjavu.com/" title="Merb">Merb</a>, and a fair about of <a href="http://www.rubyonrails.org/" title="Ruby on Rails">Rails</a> patches have come directly from work in-house. Hopefully the community will be able to benefit from our code as much as we have.</p>
+
+<p>Obviously we don&#8217;t have a search product open to the public yet, but we&#8217;ll be launching <a href="http://labs.powerset.com/" title="Powerlabs">Powerlabs</a> in September.  In Powerlabs, you&#8217;ll be able to play with our products and give us feedback.  If you want to keep track of what Powerset is doing, <a href="http://powerset.com" title="Powerset Homepage">sign up</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comments">4 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/06/updates-speaking-writing">Updates, Speaking, Writing</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 06 Apr 2007 18:36:00 GMT">Fri, 06 Apr 2007 18:36:00 GMT</span></p>
+<p>Hi guys. Gluttonous has been quiet lately, so I wanted to update you a bit on life in general.</p>
+
+<p>First off, I haven&#8217;t yet talked about my work at <a href="http://powerset.com">Powerset</a>. We&#8217;ve been quickly growing and I&#8217;m humbled by the type of people who join up on a daily basis. We&#8217;re about to hit 6 Ruby devs and 50 in the company, and for me it really feels like a dream.</p>
+
+<p>That being said, I talk a bit more about what I&#8217;m actually <em>doing</em> at Powerset in an interview given over at the <a href="http://weblog.workingwithrails.com/2007/4/5/hackfest-winner-interview-kevin-clark">Working With Rails Blog</a> in their series on <a href="http://workingwithrails.com/contests/hackfest2007">Hackfest</a> winners.</p>
+
+<p>Additionally, I give an update on one of the reasons this blog has gone dry for a while at the end of the interview. You <a href="http://weblog.workingwithrails.com/2007/4/5/hackfest-winner-interview-kevin-clark">really shouldn&#8217;t miss this</a>.</p>
+
+<p>As far as speaking goes, I&#8217;ll be giving a talk on improving test coverage with <a href="http://glu.ttono.us/articles/2006/12/19/tormenting-your-tests-with-heckle">Heckle</a> at the <a href="http://www.sdforum.org/SDForum/Templates/CalendarEvent.aspx?CID=2135&amp;mo=4&amp;yr=2007">Silicon Valley Ruby Conference</a> in San Jose on April 21-22. The list of speakers is amazing, and I&#8217;m looking forward to the conf. If you&#8217;re there, come say hi.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/06/updates-speaking-writing#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/26/link-kathy-sierra-receives-death-threats">Link: Kathy Sierra Receives Death Threats</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 26 Mar 2007 23:24:00 GMT">Mon, 26 Mar 2007 23:24:00 GMT</span></p>
+<p><a href="http://headrush.typepad.com/creating_passionate_users/2007/03/as_i_type_this_.html">Death threats against bloggers are NOT “protected speech” (why I cancelled my ETech presentations)</a></p>
+
+<blockquote>
+    <blockquote>
+        <p>I have cancelled all speaking engagements.</p>
+        
+        <p>I am afraid to leave my yard.</p>
+        
+        <p>I will never feel the same. I will never be the same.</p>
+        
+        <p>&#8211; Kathy Sierra</p>
+    </blockquote>
+</blockquote>
+
+<p>So entirely not cool.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/26/link-kathy-sierra-receives-death-threats#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/08/when-config-files-go-bad">When Config Files Go Bad</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 08 Mar 2007 22:40:00 GMT">Thu, 08 Mar 2007 22:40:00 GMT</span></p>
+<blockquote><pre>It is often necessary to check the content of a `configure.ac' file,
+but parsing it yourself is extremely fragile and error-prone.  It is
+suggested that you rely upon `--trace' to scan `configure.ac'.  For
+instance, to find the list of variables that are substituted, use:
+
+<code>
+     $ autoconf -t AC_SUBST
+     configure.ac:2:AC_SUBST:ECHO_C
+     configure.ac:2:AC_SUBST:ECHO_N
+     configure.ac:2:AC_SUBST:ECHO_T
+     More traces deleted
+</code>
+<pre></blockquote>
+
+<p>-- <code>info autoconf</code></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/08/when-config-files-go-bad#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/01/whatwg-webapps-1-0-spec"> WHATWG WebApps 1.0 Spec</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 02 Mar 2007 02:39:00 GMT">Fri, 02 Mar 2007 02:39:00 GMT</span></p>
+<p>Specs with spunk make me optimistic.</p>
+
+<blockquote>
+    <p>1.2.1. How to read this specification</p>
+    
+    <p>This specification should be read like all other specifications. First, it 
+     should be read cover-to-cover, multiple times. Then, it should be read 
+      backwards at least once. Then it should be read by picking random sections 
+      from the contents list and following all the cross-references.</p>
+</blockquote>
+
+<p><a href="http://www.whatwg.org/specs/web-apps/current-work/#how-to">Web Applications 1.0 Working Draft</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/01/whatwg-webapps-1-0-spec#comments">1 comment</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/10/04/rest-talk-at-sd-rb-is-live">REST Talk At SD.rb Is Live</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 04 Oct 2006 23:48:00 GMT">Wed, 04 Oct 2006 23:48:00 GMT</span></p>
+<p>The talk on REST basics I <a href="http://glu.ttono.us/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts">mentioned</a> last month has hit the <a href="http://podcast.sdruby.com">SD.rb podcast</a>. I cover REST concepts and basics and <a href="http://blog.integralimpressions.com/">Chris Abad</a> has one immediately following on using web services (<em>for free</em>).</p>
+
+<p>And if you haven&#8217;t seen <a href="http://chronic.rubyforge.org/">Chronic</a>, the lean, mean, completely awesome natural language date/time parser from sd.rber Tom Werner, do take a look at <a href="http://podcast.sdruby.com/2006/10/3/episode-008-chronic">his presentation</a>. It&#8217;s really a beautiful thing.</p>
+
+<p><strong>Update</strong>: You can grab the slides for my presentation <a href="http://thar.be/restful_presentation.pdf">here</a>. I should have repeated the questions as they came in for the podcast viewers, but since I didn&#8217;t they were roughly:</p>
+
+<blockquote>
+    <ol>
+    <li>If browsers don&#8217;t support the other HTTP verbs, how does Rails pass the other methods like DELETE and PUT?</li>
+    <li>Are there other HTTP verbs besides the CRUDy ones?</li>
+    </ol>
+</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/10/04/rest-talk-at-sd-rb-is-live#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/08/the-rubyconf-express">The RubyConf Express</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 08 Sep 2006 20:20:00 GMT">Fri, 08 Sep 2006 20:20:00 GMT</span></p>
+<p>A few of the <a href="http://sdruby.com">sd.rb</a>ers are planning to take the train to Denver next month. The trip will take about a day and a half. I&#8217;m planning to go. The view should be great and it&#8217;ll give me some time to work on my presentation if needed.</p>
+
+<p>The train <em>does</em> go through LA, so if you&#8217;re in the Southern California area this may be right up your alley.</p>
+
+<p>More information can be found at Patrick Crowley&#8217;s blog. So go check out <a href="http://mokolabs.com/2006/09/08/the-rubyconf-express/">the RubyConf Express!</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/08/the-rubyconf-express#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts">SD.rb Adds 4 New (Video) Podcasts</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 08 Sep 2006 19:52:00 GMT">Fri, 08 Sep 2006 19:52:00 GMT</span></p>
+<p>Today <a href="http://blog.integralimpressions.com/">Chris Abad</a> of the <a href="http://sdruby.com">sd.rb</a> <a href="http://podcast.sdruby.com">podcast</a> uploaded four new episodes:</p>
+
+<p>In <a href="http://podcast.sdruby.com/podcasts/004_numbers.m4v">Episode 004: Numbers</a> Tom Preston-Werner (of [Gravatar], <a href="http://chronic.rubyforge.com">Chronic</a>) gives the first part of a series I hope he&#8217;ll continue called &#8220;Ruby is Awesome&#8221;. This talk focuses on interesting things about how Ruby handled numbers. Though this sounds really basic, he showed things that I had never come across and kept my attention. If you&#8217;re newish to Ruby this is definitely worth your attention. Go <a href="http://podcast.sdruby.com/podcasts/004_numbers.m4v">take a look</a>.</p>
+
+<p><a href="http://podcast.sdruby.com/podcasts/005_arts.m4v">Episode 005: ARTS Plugin</a> is my presentation on using ARTS to build test driven RJS. This is from the second meeting of sd.rb so the first part is full of Rails basics. If you&#8217;re interested in seeing ARTS in action (used to build an ajaxified blog) you probably want to skip to about 1/3 of the way in.</p>
+
+<p><a href="http://podcast.sdruby.com/podcasts/006_dynamic_domains.m4v">Episode 006: Dynamic Domains</a> features <a href="http://blog.integralimpressions.com/">Chris Abad</a> talking about his new application [Outlandish] and how they implemented dynamic domains.</p>
+
+<p>Finally, in <a href="http://podcast.sdruby.com/podcasts/007_authentication.m4v">Episode 007: Rails Authentication</a> I talk very briefly about how to use the <code>acts_as_authenticated</code> and <code>restful_authentication</code> plugins. At some point I begin rambling about how REST works, but that part is best left for when the podcast of last night&#8217;s REST presentations go up. I&#8217;ll point you there when it happens.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/07/jruby-team-picked-up-by-sun">JRuby Team Picked Up By Sun</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 07 Sep 2006 18:31:00 GMT">Thu, 07 Sep 2006 18:31:00 GMT</span></p>
+<p><a href="http://headius.blogspot.com/2006/09/jruby-steps-into-sun.html">Wow</a>. Just wow. Congrats guys.</p>
+
+<p><strong>Update</strong>: <a href="http://www.tbray.org/ongoing/">Tim Bray</a> gives us <a href="http://www.tbray.org/ongoing/When/200x/2006/09/07/JRuby-guys">Sun&#8217;s motiviations</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/07/sd-rb-meeting-tonight">SD.rb Meeting Tonight</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 07 Sep 2006 17:13:00 GMT">Thu, 07 Sep 2006 17:13:00 GMT</span></p>
+<p>If you&#8217;re in San Diego (or even Southern California) we&#8217;d love you to drop by the <a href="http://sdruby.com/sdruby/show/HomePage">sd.rb</a> meeting tonight. <a href="http://blog.integralimpressions.com/">Chris Abad</a> and I will be talking about RESTful stuff in Rails and Tom Preston-Werner will be debuting his new natural time parsing library, <a href="http://chronic.rubyforge.org/">Chronic</a>.</p>
+
+<p>We have our meetings at the UCSD CSE buildng (room 1202). If you want to drop me an email at kevin dot clark at gmail dot com I&#8217;ll give you my cell in case you get lost.</p>
+
+<p>I hear OC Ruby may be making a field trip. See their <a href="http://tech.groups.yahoo.com/group/ocruby/message/523">list</a> if you want to get in on that. </p>
+
+<p>Addtionally, several OC Rubyists and SD Rubyists are planning to meet up at Rock Bottom just off campus around 6:15 for dinner. Come hang out.</p>
+
+<p>If you can&#8217;t make it the <a href="http://podcast.sdruby.com/">sd.rb podcast</a> is always an option and I&#8217;m told you should be getting several updates from the last meeting in the next couple days. Keep a look out.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: 1 <a href="/articles/category/sightings/page/2">2</a> </p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

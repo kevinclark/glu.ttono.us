@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: RailsConf Announced</title>
+    <link>http://glu.ttono.us/articles/2005/11/28/railsconf-announced</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>RailsConf Announced</title>
+      <description>&lt;p&gt;It&amp;#8217;s official, &lt;a href="http://railsconf.org/"&gt;RailsConf&lt;/a&gt; will happen and it will take place in Chicago. DHH and Dave Thomas of the Pragmatic Programmers are already lined up to keynote. At ~$400, the price is a little steep, but I&amp;#8217;ll see you there!&lt;/p&gt;</description>
+      <pubDate>Mon, 28 Nov 2005 13:36:59 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ff32b0a4-e179-4be4-adbd-667dacd156b2</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/11/28/railsconf-announced</link>
+      <category>Web Dev</category>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/97</trackback:ping>
+    </item>
+  </channel>
+</rss>

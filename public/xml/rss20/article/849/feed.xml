@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Rannotate the Rails</title>
+    <link>http://glu.ttono.us/articles/2006/05/18/rannotate-the-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Rannotate the Rails</title>
+      <description>&lt;p&gt;&lt;a href="http://www.conorhunt.com/techblog/"&gt;Connor Hunt&lt;/a&gt; has just released &lt;a href="http://rannotate.rubyforge.org/"&gt;Rannotate&lt;/a&gt;, a rails application and rdoc generator that work together to allow users to add notes to documentation.&lt;/p&gt;
+
+&lt;p&gt;You can find the Rannotated Rails documentation &lt;a href="http://rails.outertrack.com/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As always, if there are &lt;em&gt;problems&lt;/em&gt; with the documentation, please &lt;a href="http://dev.rubyonrails.org/newticket"&gt;file a ticket&lt;/a&gt; with the keyword &amp;#8216;docs&amp;#8217; so it can be remedied.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Ok, &lt;a href="http://rails.outertrack.com/history/RaClass/ActionController%3A%3ABase"&gt;this&lt;/a&gt; is really way cool.&lt;/p&gt;</description>
+      <pubDate>Thu, 18 May 2006 21:20:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c12f15c2-287a-43ce-ab60-e8f42b2d6c61</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/18/rannotate-the-rails</link>
+      <category>documentation</category>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

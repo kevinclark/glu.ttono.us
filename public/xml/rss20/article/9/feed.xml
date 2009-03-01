@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: #ror</title>
+    <link>http://glu.ttono.us/articles/2005/09/02/ror</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>#ror</title>
+      <description>&lt;pre&gt;&lt;code&gt;20:30 &lt; technoweenie&gt; dude, how about a  google ad sense section targeting 
+                      helper in rails?  
+http://www.google.com/support/adsense/bin/answer.py?answer=23168&amp;topic=371
+20:30 &lt; technoweenie&gt; &lt;% google_ad_sense_section do %&gt; .... &lt;% end %&gt;
+20:30 &lt; kevinclark&gt; cool
+20:31 &lt; technoweenie&gt; hm 
+20:31 &lt; technoweenie&gt; the rails helper idea is stupid, dont listne to me
+20:33 &lt; kevinclark&gt; yeah, why wouldn't you just hardcode it?
+20:33 &lt; technoweenie&gt; because
+20:34 &lt; technoweenie&gt; i get off on writing rails helpers
+20:34 &lt; kevinclark&gt; its the same amount of characters even
+20:34 &lt; technoweenie&gt; it's sickening and i'm trying to stop
+20:34 &lt; technoweenie&gt; heh i know!
+20:34 &lt; kevinclark&gt; we should form a support group
+20:34 &lt; technoweenie&gt; isn't that what this room is?
+20:34 &lt; technoweenie&gt; you guys arent doing your jobs&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Fri, 02 Sep 2005 00:36:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f1ed454966917d8cb79f8ff35496ef31</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/09/02/ror</link>
+      <category>Musings</category>
+      <category>Rails</category>
+      <category>Coding</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/9</trackback:ping>
+    </item>
+  </channel>
+</rss>

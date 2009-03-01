@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Why and How: Ruby (and Rails) Unit Testing</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/79"
+    dc:title="Why and How: Ruby (and Rails) Unit Testing"
+    dc:identifier="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing"
+    dc:description="One thing I love about Ruby is the built in unit tests. As someone who is working to use better developing methodologies, having unit testing avaliable with no effort makes it that much easier to try out things like Test Driven Development. Unit testing"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:12-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/79" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Why and How: Ruby (and Rails) Unit Testing</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sun, 30 Oct 2005 05:10:00 GMT">Sun, 30 Oct 2005 05:10:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>One thing I love about Ruby is the built in unit tests. As someone who is working to use better developing methodologies, having unit testing avaliable with no effort makes it that much easier to try out things like Test Driven Development. Unit testing also has an important place in <a href="http://www.rubyonrails.com">Rails</a> development. I enjoyed the format of my article on <a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">migrations</a>, so we&#8217;ll try that again. The why and how of unit testing, coming right up.</p><h3>Why</h3>
+
+<ul>
+<li>It means never having to say &#8220;I created a bug while fixing another one&#8221;</li>
+<li>It means you don&#8217;t have to run your program and play with it (which is slow) in order to find errors. Unit testing is much much faster than testing manually.</li>
+<li>Knowing how to use unit tests opens up the world of test driven development.</li>
+</ul>
+
+<h3>How</h3>
+
+<h4>Summarized summary</h4>
+
+<ul>
+<li>Require &#8216;test/unit&#8217; and set your test class to inherit from <code>Test::Unit::TestCase</code></li>
+<li>Write methods prefixed with test_</li>
+<li>Assert things you decide should be true.</li>
+<li>Run your tests and fix the bugs until everything passes.</li>
+</ul>
+
+<h4>&#8216;In depth&#8217; summary</h4>
+
+<p>Now for the fun. Whenever I find a new feature in ruby it tends to be drastically easier than I expected and it makes me happy. Unit testing is one of those cases. Here&#8217;s a bare bones testing implementation in ruby:</p>
+
+<div class="typocode"><div class="codetitle">my_first_test.rb</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">test/unit</span><span class="punct">'</span>
+
+<span class="keyword">class </span><span class="class">MyFirstTest</span> <span class="punct">&lt;</span> <span class="constant">Test</span><span class="punct">::</span><span class="constant">Unit</span><span class="punct">::</span><span class="constant">TestCase</span>
+  <span class="keyword">def </span><span class="method">test_for_truth</span>
+    <span class="ident">assert</span> <span class="constant">true</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre></div>
+
+<p>Really, all of this is covered in the summarized summary. Your testing class (which is called a test suite) inherits from <code>Test::Unit::TestCase</code> and each of your tests is a method called <code>test_that_thing_I_wanted_to_test</code>. Within those tests, you use assertions to test whether conditions are correct in each situation. You can find the available ruby assertions <a href="http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit/Assertions.html">here</a>, and for rails folks the core team has extended <code>Test::Unit</code> and those docs can be found <a href="http://api.rubyonrails.org/classes/Test/Unit/Assertions.html">in the api</a>.</p>
+
+<p>With that out of the way, lets take a look at examples.</p>
+
+<h4>Simple example: Arithmetic is fun</h4>
+
+<p>Lets say we&#8217;ve written a simple class, MyMath, which implements basic arithmetic. MyMath&#8217;s <code>run</code> method takes an expression and returns a result. We would want several tests to show addition, subtraction, multiplication and division work. The positive unit tests for addition and subtraction (to show things work) might look like this:</p>
+
+<div class="typocode"><div class="codetitle">my_math_test.rb</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">my_math</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">test/unit</span><span class="punct">'</span>
+
+<span class="keyword">class </span><span class="class">MyMathTest</span> <span class="punct">&lt;</span> <span class="constant">Test</span><span class="punct">::</span><span class="constant">Unit</span><span class="punct">::</span><span class="constant">TestCcase</span>
+  <span class="keyword">def </span><span class="method">test_addition</span>
+    <span class="ident">assert_equal</span> <span class="number">4</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">2+2</span><span class="punct">&quot;)</span>
+    <span class="ident">assert_equal</span> <span class="number">4</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">1+3</span><span class="punct">&quot;)</span>
+    <span class="ident">assert_equal</span> <span class="number">5</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">5+0</span><span class="punct">&quot;)</span>
+    <span class="ident">assert_equal</span> <span class="number">0</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">-5 + 5</span><span class="punct">&quot;)</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">test_subtraction</span>
+    <span class="ident">assert_equal</span> <span class="number">0</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">2-2</span><span class="punct">&quot;)</span>
+    <span class="ident">assert_equal</span> <span class="number">1</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">2-1</span><span class="punct">&quot;)</span>
+    <span class="ident">assert_equal</span> <span class="punct">-</span><span class="number">1</span><span class="punct">,</span> <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">2-3</span><span class="punct">&quot;)</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre></div>
+
+<p>To run tests, you simply run your testing files in ruby, eg. <code>ruby my_math_test.rb</code>. The output will be a series of &#8216;.&#8217;s, &#8216;E&#8217;s and &#8216;F&#8217;s. Each indicates an assertion being run, with &#8216;.&#8217;s as passing, &#8216;E&#8217; as a runtime error and &#8216;F&#8217; as a failure. In the end it will give you a summary which looks like this:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">[Dionysus:~/code/mymath] kevincla% ruby test/my_math_test.rb 
+Loaded suite test/my_math_test
+Started
+.......
+Finished in 0.015931 seconds.
+
+7 tests, 13 assertions, 0 failures, 0 errors</code></pre></div>
+
+<p>In addition to positive tests, you will also want to write negative unit tests which try to break your code. This might include testing for exceptions being raised when using input like <code>MyMath.run("a + 2")</code> or <code>MyMath.run("4/0")</code>. Those might look something like this (just the methods this time):</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">  <span class="keyword">def </span><span class="method">test_for_non_numerics</span>
+    <span class="ident">assert_raises</span><span class="punct">(</span><span class="constant">NonNumericError</span><span class="punct">)</span> <span class="keyword">do</span>
+      <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">a + 2</span><span class="punct">&quot;)</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">test_division_by_zero</span>
+    <span class="ident">assert_raises</span><span class="punct">(</span><span class="constant">DivisionByZeroError</span><span class="punct">)</span> <span class="keyword">do</span>
+      <span class="constant">MyMath</span><span class="punct">.</span><span class="ident">run</span><span class="punct">(&quot;</span><span class="string">4/0</span><span class="punct">&quot;)</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span></code></pre></div>
+
+<h3>For the Railers in the audience</h3>
+
+<p>Rails has two types of testing schemes, unit and functional. They follow the same basic principles as other Ruby testing, but are a bit more specific. </p>
+
+<p>In Rails, unit testing is specifically for models. When you write special functions for a model you should test it with unit tests. For example, the Rails login generator creates unit tests for your <code>User</code> model to make sure that authentication works and that bad passwords aren&#8217;t accepted.</p>
+
+<p>Functional tests in Rails are for testing your controllers. In these, you might test that when someone goes to the login screen that they are prompted for a username and password.</p>
+
+<p>For more information on Rails testing, I  recommend <a href="http://manuals.rubyonrails.com/read/chapter/28">A Guide to Testing the Rails</a>.</p>
+
+<h3>Another useful tidbit</h3>
+
+<p>Sometimes you need to have things happen before and after each tests. The <code>setup</code> and <code>teardown</code> methods are your cohorts in this venture. Any code you write in setup will be run before each test and code in teardown will be run afterwards.</p>
+
+<h3>Automating your tests with Rake</h3>
+
+<p>If you&#8217;re writing tests for all your code (as you should be), the number of testing files begins to grow. One thing that will make life easier is automating your tests and Rake is probably the right tool for the job. Using Rake is the subject for a whole different article, but I&#8217;ll leave you with a snippet that makes life easier for me.</p>
+
+<div class="typocode"><div class="codetitle">Rakefile</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">rake</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">rake/testtask</span><span class="punct">'</span>
+
+<span class="ident">task</span> <span class="symbol">:default</span> <span class="punct">=&gt;</span> <span class="punct">[</span><span class="symbol">:test_units</span><span class="punct">]</span>
+
+<span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Run basic tests</span><span class="punct">&quot;</span>
+<span class="constant">Rake</span><span class="punct">::</span><span class="constant">TestTask</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">test_units</span><span class="punct">&quot;)</span> <span class="punct">{</span> <span class="punct">|</span><span class="ident">t</span><span class="punct">|</span>
+  <span class="ident">t</span><span class="punct">.</span><span class="ident">pattern</span> <span class="punct">=</span> <span class="punct">'</span><span class="string">test/*_test.rb</span><span class="punct">'</span>
+  <span class="ident">t</span><span class="punct">.</span><span class="ident">verbose</span> <span class="punct">=</span> <span class="constant">true</span>
+  <span class="ident">t</span><span class="punct">.</span><span class="ident">warning</span> <span class="punct">=</span> <span class="constant">true</span>
+<span class="punct">}</span></code></pre></div>
+
+<p>Basically, a Rakefile defines tasks that rake can perform. In my Rakefile, the default task (the one that happens when you just run rake in a directory with a Rakefile in it) is set to my unit tests task. In my task &#8220;test_units&#8221;, rake is configured to look for files in the test directory that end with <code>_test.rb</code> and run them. This means you can put all your tests in your testing directory and let rake go to work.</p>
+
+<h3>Conclusivelike section</h3>
+
+<p>Testing that things work as expected is good. Make sure to do it whenever possible: It just plain makes your code better. There is a thing as having too many tests, however, so remember that you want to test that things work and that they don&#8217;t break. Don&#8217;t write 700 assertions when 10 will have the same coverage.</p>
+
+<p>Oh, and don&#8217;t forget that a test suite is just a Ruby class. Feel free to write any helper methods inside the class and then use them to run test cases. If you&#8217;re feeling really intense you can even generate input for those tests in helpers, but again, that is for another article and I&#8217;m rather sleepy.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing#comments">7 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing#trackbacks">no trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-80"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_80'); }"  onmouseout="Element.hide('admin_comment_80');" >
+  <div id="admin_comment_80" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/80', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-80&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/80" class="admintools">edit</a></div>
+  <a name="comment-80"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.mongoo.se">Damien Tanner</a></strong> </cite> said about 19 hours later:<br />
+  <p>Thanks mr kc.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="80";
+//--></script>
+<!-- mmc mmid:80 mmdate:2005-10-30 19:07:53 mmauthor:Damien Tanner -->
+</li>
+<li id="comment-111"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_111'); }"  onmouseout="Element.hide('admin_comment_111');" >
+  <div id="admin_comment_111" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/111', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-111&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/111" class="admintools">edit</a></div>
+  <a name="comment-111"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>perica</strong> </cite> said 35 days later:<br />
+  <p>very nice info.</p>
+
+
+	<p>thanks</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="111";
+//--></script>
+<!-- mmc mmid:111 mmdate:2005-12-04 14:36:21 mmauthor:perica -->
+</li>
+<li id="comment-189"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_189'); }"  onmouseout="Element.hide('admin_comment_189');" >
+  <div id="admin_comment_189" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/189', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-189&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/189" class="admintools">edit</a></div>
+  <a name="comment-189"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.axel.plinge.de/dev/">Axel</a></strong> </cite> said 79 days later:<br />
+  <p>hey, finally an working example fur Text::Unit 
+many thanks!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="189";
+//--></script>
+<!-- mmc mmid:189 mmdate:2006-01-17 12:45:06 mmauthor:Axel -->
+</li>
+<li id="comment-201"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_201'); }"  onmouseout="Element.hide('admin_comment_201');" >
+  <div id="admin_comment_201" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/201', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-201&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/201" class="admintools">edit</a></div>
+  <a name="comment-201"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Andre</strong> </cite> said 92 days later:<br />
+  <p>I kept getting an error until I included the my_math.rb file in the test file. The article implies that the code in my_math_test.ruby will automagically find a file containing the class MyMath (maybe look for it based on the class name?)</p>
+
+
+	<p>Is there such a mechanism in ruby and what are the naming conventions? OR, did  the article unintentionally omit this detail?</p>
+
+
+	<p>Thank you.</p>
+
+
+	<p>Here&#8217;s the error I kept getting until I added</p>
+
+
+	<p>require &#8216;my_math.rb&#8217;</p>
+
+
+	<p>at the top of test_my_math.rb file.</p>
+
+
+	<p>&#8212;</p>
+
+
+	<p>&gt;ruby test_my_math.rb
+Loaded suite test_my_math
+Started
+E
+Finished in 0.0 seconds.
+
+	<p>1) Error:</p>
+
+test_addition(MyMathTest):
+NameError: uninitialized constant MyMathTest::MyMath
+    test_my_math.rb:11:in `test_addition&#8217;</p>
+
+
+	<p>1 tests, 0 assertions, 0 failures, 1 errors
+&gt;Exit code: 1</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="201";
+//--></script>
+<!-- mmc mmid:201 mmdate:2006-01-30 18:02:19 mmauthor:Andre -->
+</li>
+<li id="comment-202" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_202'); }"  onmouseout="Element.hide('admin_comment_202');" >
+  <div id="admin_comment_202" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/202', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-202&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/202" class="admintools">edit</a></div>
+  <a name="comment-202"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 92 days later:<br />
+  <p>Andre: The article unintentionally omited the require. I&#8217;m adding it now.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="202";
+//--></script>
+<!-- mmc mmid:202 mmdate:2006-01-30 20:59:05 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-242"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_242'); }"  onmouseout="Element.hide('admin_comment_242');" >
+  <div id="admin_comment_242" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/242', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-242&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/242" class="admintools">edit</a></div>
+  <a name="comment-242"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=631950bd299098576e57053ce703e082&amp;size=60" />
+  <cite><strong><a href="http://nshb.net">Nathaniel Brown</a></strong> </cite> said 121 days later:<br />
+  <p>Great article. Had previously learned how to write tests, but it has been awhile and this was a great refresher.</p>
+
+
+	<p>Many Thanks!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="242";
+//--></script>
+<!-- mmc mmid:242 mmdate:2006-02-28 02:53:53 mmauthor:Nathaniel Brown -->
+</li>
+<li id="comment-393"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_393'); }"  onmouseout="Element.hide('admin_comment_393');" >
+  <div id="admin_comment_393" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/393', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-393&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/79/edit/393" class="admintools">edit</a></div>
+  <a name="comment-393"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>vijay ramanan</strong> </cite> said 150 days later:<br />
+  <p>Thanks for the info and the link to the rails testing manual..I found your articles very helpful..The one on joy of migrations is also very informative..I love this framework already..</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="393";
+//--></script>
+<!-- mmc mmid:393 mmdate:2006-03-30 00:42:42 mmauthor:vijay ramanan -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/79</span>
+    </p>
+  
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/79/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/79" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="79";
+//--></script>
+<!-- mmp mmid:79 mmdate:2005-10-30 01:10:00 mmurl:/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing mmtitle:Why and How: Ruby (and Rails) Unit Testing -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+
+

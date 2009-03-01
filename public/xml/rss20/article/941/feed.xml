@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Homesteading: A Thriver's Guide</title>
+    <link>http://glu.ttono.us/articles/2006/06/24/homesteading-a-thrivers-guide</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Homesteading: A Thriver's Guide</title>
+      <description>&lt;p&gt;Tonight after Mike Clark&amp;#8217;s talk, Nathaniel Talbott gave an excellent follow up to his RubyConf 2005 talk, &amp;#8221;&lt;a href="http://glu.ttono.us/articles/2005/10/16/rails-serving-the-long-tail-in-1883-and-2005"&gt;Serving the Long Tail in 1883 and 2005&lt;/a&gt;&amp;#8221; to the full conference. Read past the jump for more.&lt;/p&gt;</description>
+      <pubDate>Sat, 24 Jun 2006 19:36:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:772f6608-1b81-425b-9862-d6ce7ed59fa1</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/24/homesteading-a-thrivers-guide</link>
+    </item>
+  </channel>
+</rss>

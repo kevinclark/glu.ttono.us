@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: MeasureMap and Typo</title>
+    <link>http://glu.ttono.us/articles/2005/11/08/measuremap-and-typo</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>MeasureMap and Typo</title>
+      <description>&lt;p&gt;So, if you&amp;#8217;re one of the lucky few who have gotten into the &lt;a href="http://measuremap.com/"&gt;MeasureMap&lt;/a&gt; private alpha here&amp;#8217;s how you can easily add support into typo. MeasureMap is really way cool. I&amp;#8217;ve only had it a few hours, so I&amp;#8217;ll be posting some impressions as soon as I have gathered my thoughts.&lt;/p&gt;</description>
+      <pubDate>Tue, 08 Nov 2005 20:41:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4189a291-1838-4bd2-a8a3-4d1eb4d0d742</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/11/08/measuremap-and-typo</link>
+      <category>Web Dev</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/82</trackback:ping>
+    </item>
+    <item>
+      <title>"MeasureMap and Typo" by topfunky</title>
+      <description>&lt;p&gt;Thanks for the useful pointers. Apparently they are also working on a plugin (sidebar?) for Typo that will automate this.&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 02:49:55 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:6aaf94a4-88f8-4fdf-87a4-08f47f24f426</guid>
+      <link>http://glu.ttono.us/articles/2005/11/08/measuremap-and-typo#comment-117</link>
+    </item>
+    <item>
+      <title>"MeasureMap and Typo" by Robby Russell</title>
+      <description>&lt;p&gt;Test&lt;/p&gt;</description>
+      <pubDate>Sun, 13 Nov 2005 19:14:39 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:9caf745f-efcc-46b6-a831-45f8856fbe02</guid>
+      <link>http://glu.ttono.us/articles/2005/11/08/measuremap-and-typo#comment-88</link>
+    </item>
+    <item>
+      <title>"MeasureMap and Typo" by Pete Cashmore</title>
+      <description>&lt;p&gt;MeasureMap &amp;#8211; there&amp;#8217;s something I gotta test drive.  I remember speaking to a guy who worked on this &amp;#8211; sounded pretty cool.&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Nov 2005 01:53:19 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ddee9d63-6228-4b4a-bd39-132728790113</guid>
+      <link>http://glu.ttono.us/articles/2005/11/08/measuremap-and-typo#comment-83</link>
+    </item>
+  </channel>
+</rss>

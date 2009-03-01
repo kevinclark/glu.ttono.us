@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Really Simple Git Deployment with Vlad</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Really Simple Git Deployment with Vlad"
+    dc:identifier="http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad"
+    dc:description="Just drop this in your Rakefile. This is slightly modified from something I&amp;#8217;m using in production. Disect! Enjoy! Explanation (read: spoilers) after the jump. &lt;span class=&quot;commen"
+    dc:creator="kevin"
+    dc:date="2008-04-05T19:52:52-05:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/1525" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Really Simple Git Deployment with Vlad</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sun, 06 Apr 2008 00:13:00 GMT">Sun, 06 Apr 2008 00:13:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Just drop this in your Rakefile. This is slightly modified from something I&#8217;m using in production.</p>
+
+<p>Disect! Enjoy! Explanation (read: spoilers) after the jump.</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="comment">##############################################################################</span>
+<span class="comment"># Deploy</span>
+<span class="comment">##############################################################################</span>
+
+<span class="keyword">begin</span>
+  <span class="ident">require</span> <span class="punct">'</span><span class="string">rake_remote_task</span><span class="punct">'</span>
+
+  <span class="constant">APP_NAME</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">someapp</span><span class="punct">&quot;</span>
+  <span class="constant">DEPLOY_ROOT</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">/usr/local/share/applications/<span class="expr">#{APP_NAME}</span></span><span class="punct">&quot;</span>
+  <span class="constant">ON_DEPLOY_RESTART</span> <span class="punct">=</span> <span class="punct">[&quot;</span><span class="string">someappd</span><span class="punct">&quot;]</span>
+
+  <span class="ident">role</span> <span class="symbol">:app_server</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">myserver.com</span><span class="punct">&quot;</span>
+
+  <span class="keyword">def </span><span class="method">archive</span>
+    <span class="ident">commit</span> <span class="punct">=</span> `<span class="ident">git</span><span class="punct">-</span><span class="ident">rev</span><span class="punct">-</span><span class="ident">list</span> <span class="punct">--</span><span class="ident">max</span><span class="punct">-</span><span class="ident">count</span><span class="punct">=</span><span class="number">1</span> <span class="punct">--</span><span class="ident">abbrev</span><span class="punct">=</span><span class="number">10</span> <span class="punct">--</span><span class="ident">abbrev</span><span class="punct">-</span><span class="ident">commit</span> <span class="constant">HEAD`</span><span class="punct">.</span><span class="ident">chomp</span>
+    <span class="ident">file</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string"><span class="expr">#{APP_NAME}</span>-<span class="expr">#{commit}</span>.tar.gz</span><span class="punct">&quot;</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">restart_daemons</span>
+    <span class="constant">ON_DEPLOY_RESTART</span><span class="punct">.</span><span class="ident">each</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">app</span><span class="punct">|</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo god restart <span class="expr">#{app}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  <span class="ident">namespace</span> <span class="symbol">:deploy</span> <span class="keyword">do</span>
+    <span class="ident">task</span> <span class="symbol">:build</span> <span class="keyword">do</span>
+      <span class="ident">sh</span> <span class="punct">&quot;</span><span class="string">git archive --format=tar HEAD | gzip &gt; <span class="expr">#{archive}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">remote_task</span> <span class="symbol">:push</span> <span class="punct">=&gt;</span> <span class="symbol">:build</span> <span class="keyword">do</span>
+      <span class="ident">rsync</span> <span class="ident">archive</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">/tmp</span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Install a release from the latest commit</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:install</span> <span class="punct">=&gt;</span> <span class="symbol">:push</span> <span class="keyword">do</span>
+      <span class="ident">date_stamp</span> <span class="punct">=</span> <span class="constant">Time</span><span class="punct">.</span><span class="ident">now</span><span class="punct">.</span><span class="ident">strftime</span><span class="punct">(&quot;</span><span class="string">%Y%m%d</span><span class="punct">&quot;)</span>
+      <span class="ident">last_release</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r | head -n 1</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+
+      <span class="keyword">if</span> <span class="ident">last_release</span> <span class="punct">=~</span> <span class="punct">/</span><span class="regex"><span class="expr">#{date_stamp}</span><span class="escape">\-</span>(<span class="escape">\d</span>+)</span><span class="punct">/</span>
+        <span class="ident">serial</span> <span class="punct">=</span> <span class="global">$1</span><span class="punct">.</span><span class="ident">to_i</span> <span class="punct">+</span> <span class="number">1</span>
+      <span class="keyword">else</span>
+        <span class="ident">serial</span> <span class="punct">=</span> <span class="number">0</span> 
+      <span class="keyword">end</span>
+
+      <span class="ident">rel</span> <span class="punct">=</span> <span class="punct">(&quot;</span><span class="string">%d-%02d</span><span class="punct">&quot;</span> <span class="punct">%</span> <span class="punct">[</span><span class="ident">date_stamp</span><span class="punct">,</span> <span class="ident">serial</span><span class="punct">])</span>
+      <span class="ident">rel_dir</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string"><span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{rel}</span></span><span class="punct">&quot;</span>
+
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo mkdir -p <span class="expr">#{rel_dir}</span></span><span class="punct">&quot;</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo tar -xzvf /tmp/<span class="expr">#{archive}</span> -C <span class="expr">#{rel_dir}</span> &amp;&amp; rm -rf /tmp/<span class="expr">#{archive}</span></span><span class="punct">&quot;</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{rel_dir}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Rollback to the previous release</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:rollback</span> <span class="keyword">do</span>
+      <span class="ident">current_link</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls -alF <span class="expr">#{DEPLOY_ROOT}</span> | awk '/current -&gt; .*/ { print $NF }'</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+      <span class="ident">current</span> <span class="punct">=</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">basename</span><span class="punct">(</span><span class="ident">current_link</span><span class="punct">)</span>
+      <span class="ident">releases</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r</span><span class="punct">&quot;).</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string"><span class="escape">\n</span></span><span class="punct">&quot;)</span>
+      <span class="ident">previous</span> <span class="punct">=</span> <span class="ident">releases</span><span class="punct">.</span><span class="ident">find</span> <span class="punct">{|</span><span class="ident">rel</span><span class="punct">|</span> <span class="ident">current</span> <span class="punct">&gt;</span> <span class="ident">rel</span><span class="punct">}</span>
+      <span class="keyword">raise</span> <span class="punct">&quot;</span><span class="string">No previous release</span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="ident">previous</span><span class="punct">.</span><span class="ident">nil?</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{previous}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+      <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Moved to <span class="expr">#{previous}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Rollforward to the next release</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:rollforward</span> <span class="keyword">do</span>
+      <span class="ident">current_link</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls -alF <span class="expr">#{DEPLOY_ROOT}</span> | awk '/current -&gt; .*/ { print $NF }'</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+      <span class="ident">current</span> <span class="punct">=</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">basename</span><span class="punct">(</span><span class="ident">current_link</span><span class="punct">)</span>
+      <span class="ident">releases</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r</span><span class="punct">&quot;).</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string"><span class="escape">\n</span></span><span class="punct">&quot;)</span>
+      <span class="ident">next_rel</span> <span class="punct">=</span> <span class="ident">releases</span><span class="punct">.</span><span class="ident">find</span> <span class="punct">{|</span><span class="ident">rel</span><span class="punct">|</span> <span class="ident">current</span> <span class="punct">&lt;</span> <span class="ident">rel</span><span class="punct">}</span>
+      <span class="keyword">raise</span> <span class="punct">&quot;</span><span class="string">No next release</span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="ident">next_rel</span><span class="punct">.</span><span class="ident">nil?</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{next_rel}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+      <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Moved to <span class="expr">#{next_rel}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">rescue</span> <span class="constant">LoadError</span> <span class="punct">=&gt;</span> <span class="ident">e</span>
+  <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">NOTE: Install vlad to get Kevin's awesome deployment tasks</span><span class="punct">&quot;</span>
+<span class="keyword">end</span></code></pre></div><h2>Wait, what?</h2>
+
+<p>I wanted the simplest deploy/rollforward/rollback functionality possible. No packages. No pulling from version control. No magic.</p>
+
+<p>When you run <code>rake deploy:install</code>: </p>
+
+<ul>
+<li>The <code>install</code> task calls the <code>push</code> task which calls the <code>build</code> task. </li>
+<li>The <code>build</code> task just dumps a tarball (woooo git). </li>
+<li><code>push</code> uses vlad&#8217;s rsync helper which pushes the git tarball to the server.</li>
+<li><code>install</code> assigns an easily understood version to the tarball (year, month, date, serial number), unpacks the archive and adjusts the <code>current</code> symlink. <code>run</code> is a helper provided by vlad to execute on the server during <code>remote_task</code>s.</li>
+</ul>
+
+<p><code>rollforward</code> and <code>rollback</code> use a little shell magic[1] (yes, that *is* <code>awk</code> being run from a shell remotely through <code>rake</code>) to figure out what the version to go to and remaps the symlink. <code>run("ls -alF #{DEPLOY_ROOT} | awk '/current -&gt; .*/ { print $NF }'").chomp</code> roughly translates to: run ls remotely, and return the string of characters that follow &#8216;current ->&#8217;, which is the target of the symlink.</p>
+
+<p>Cap is great, but feels to heavy handed for lots of things. I&#8217;ve found vlad makes an excellent library for remote tasks that may or may not involve actually deploying an app. In this case, I&#8217;m not even using the built in tasks, just creating my own with <code>remote_task</code>.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2008/04/05/really-simple-git-deployment-with-vlad#comments">4 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-1527"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1527'); }"  onmouseout="Element.hide('admin_comment_1527');" >
+  <div id="admin_comment_1527" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1527', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1527&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1525/edit/1527" class="admintools">edit</a></div>
+  <a name="comment-1527"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=a01b7a026b6b9c6985b97e0346c7f7ad&amp;size=60" />
+  <cite><strong><a href="http://www.bobrowski.org.pl">Sebastian</a></strong> </cite> said about 18 hours later:<br />
+  <p>can I use it with Ror 1.2 ?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1527";
+//--></script>
+<!-- mmc mmid:1527 mmdate:2008-04-06 14:42:21 mmauthor:Sebastian -->
+</li>
+<li id="comment-1529" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1529'); }"  onmouseout="Element.hide('admin_comment_1529');" >
+  <div id="admin_comment_1529" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1529', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1529&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1525/edit/1529" class="admintools">edit</a></div>
+  <a name="comment-1529"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 22 hours later:<br />
+  <p>@Sebastian: I don&#8217;t see why not. You might need to tweak it slightly to restart the right services. If you&#8217;re doing Rails apps Vlad&#8217;s built in recipes may do the job for you as well.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1529";
+//--></script>
+<!-- mmc mmid:1529 mmdate:2008-04-06 17:55:37 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1535"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1535'); }"  onmouseout="Element.hide('admin_comment_1535');" >
+  <div id="admin_comment_1535" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1535', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1535&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1525/edit/1535" class="admintools">edit</a></div>
+  <a name="comment-1535"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Tim Dysinger</strong> </cite> said 12 days later:<br />
+  <p>Sorry but how is that simple?  Here&#8217;s the capistrano version:</p>
+
+
+<pre>
+set :application, "website" 
+set :scm, :git
+set :ssh_options, { :forward_agent =&gt; true }
+set :repository, "<a href="mailto:git@github.com">git@github.com</a>:user/#{application}.git" 
+set :repository_cache, "git-cache" 
+set :deploy_via, :remote_cache
+
+role :web, "dev.server.com" 
+role :app, "dev.server.com" 
+role :db,  "dev.server.com", :primary =&gt; true
+
+namespace :deploy do
+  task :start, :roles =&gt; :app do
+    deploy.mongrel.start
+  end
+
+  task :stop, :roles =&gt; :app do
+    deploy.mongrel.stop
+  end
+
+  task :restart, :roles =&gt; :app, :except =&gt; { :no_release =&gt; true } do
+    deploy.mongrel.restart
+  end
+
+  namespace :mongrel do
+    [ :stop, :start, :restart ].each do |t|
+      task t, :roles =&gt; :app do
+        run "umask 02 &#38;&#38; cd #{current_path} &#38;&#38; mongrel_rails cluster::#{t}" 
+      end
+    end
+  end
+end
+</pre>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1535";
+//--></script>
+<!-- mmc mmid:1535 mmdate:2008-04-17 21:50:14 mmauthor:Tim Dysinger -->
+</li>
+<li id="comment-1536"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1536'); }"  onmouseout="Element.hide('admin_comment_1536');" >
+  <div id="admin_comment_1536" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1536', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1536&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1525/edit/1536" class="admintools">edit</a></div>
+  <a name="comment-1536"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 12 days later:<br />
+  <p>Hi Tim,
+The difference is in the magic. Mine doesn&#8217;t <em>have</em> any. Maybe I&#8217;m just a curmudgeon, but I like understanding what my code is doing. Your code <em>looks</em> like a rake task, but there&#8217;s actually lots more going on. That&#8217;s great. It&#8217;s really powerful and a good choice for many, but frankly I find it obscure and confusing.</p>
+
+
+	<p>I think that fact that my tasks are specifically defined as something other than a normal rake task is a feature. I think that the only code that&#8217;s being executed I can&#8217;t see are methods I&#8217;m explicitly calling is a feature. Most importantly, I think the fact that I&#8217;m doing deploy, but just as easily could be doing other remote tasks, clearly, without understanding how a framework works, is a feature. In a technical sense, mine is the less complex code, if not in the number of lines sense.</p>
+
+
+	<p>Just consider that I&#8217;ve replaced your framework with a couple of helpers and some version logic. After that, I can hide code however I&#8217;d like.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1536";
+//--></script>
+<!-- mmc mmid:1536 mmdate:2008-04-18 14:05:08 mmauthor:Kevin Clark -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/1525/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="1525";
+//--></script>
+<!-- mmp mmid:1525 mmdate:2008-04-05 19:33:15 mmurl:/articles/2008/04/05/really-simple-git-deployment-with-vlad mmtitle:Really Simple Git Deployment with Vlad -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2008/04/05/really-simple-git-deployment-with-vlad" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

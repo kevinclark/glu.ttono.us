@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category web-dev</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/05/08/ajax-spy-make-life-easier">Ajax Spy makes life easier</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 08 May 2006 20:05:00 GMT">Mon, 08 May 2006 20:05:00 GMT</span></p>
+<p>Chris Van Pelt of sd.rb has released <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">Ajax Spy</a> a great debugging tool for RJS templates.</p>
+
+<p>It only requires adding two files to your project and a bit of <code>javascript_include_tag</code> lovin in your layout. Go <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">check it out</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/03/21/rails-for-designers">Rails for Designers</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 21 Mar 2006 21:57:00 GMT">Tue, 21 Mar 2006 21:57:00 GMT</span></p>
+<p>Finals are done! In celebration, I&#8217;ve finished my guide to Rails for designers.</p>
+
+<p>This is for designers who are going to be working with Rails and is intended to give them a good starting point to jump into work with a Rails developer. This is all introductory material. As such, I cover some basics (MVC, locations of files) and move from there to a code example and more advanced topics (partials, ActionView helpers).</p>
+
+<p><strong>Update</strong>: If there are other things people think I should cover, feel free to leave comments and I&#8217;ll do a follow up article.</p>
+
+<p><strong>Update #2</strong>: If you liked the article, <a href="http://digg.com/design/Rails_for_Designers">digg it</a>!</p>
+
+<p><strong>Update #Again</strong>: Marcel Molina (Jr) of the core team notes that <code>yield</code> is prefered to <code>@content_for_layout</code> when creating layouts, so I&#8217;ve updated my examples.</p>
+
+  <a href="/articles/2006/03/21/rails-for-designers">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/21/rails-for-designers#comments">22 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 07 Feb 2006 01:32:00 GMT">Tue, 07 Feb 2006 01:32:00 GMT</span></p>
+<p>Last week I accepted a job with <a href="http://mingle.com">Mingle.com</a>. The work is exciting (all Rails) and the team is excellent. </p>
+
+<p>Because Rails is a young framework, I thought it would be helpful to write up what I consider best practices when coding with it both for my new coworkers and the web at large. Here&#8217;s my current draft. Feel free to critique and comment. I&#8217;m very open to suggestions.</p>
+
+  <a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks#comments">17 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks#trackbacks">3 trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/28/railsconf-announced">RailsConf Announced</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 28 Nov 2005 18:36:59 GMT">Mon, 28 Nov 2005 18:36:59 GMT</span></p>
+<p>It&#8217;s official, <a href="http://railsconf.org/">RailsConf</a> will happen and it will take place in Chicago. DHH and Dave Thomas of the Pragmatic Programmers are already lined up to keynote. At ~$400, the price is a little steep, but I&#8217;ll see you there!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/railsconf-announced#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/railsconf-announced#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/08/measuremap-and-typo">MeasureMap and Typo</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 09 Nov 2005 01:41:00 GMT">Wed, 09 Nov 2005 01:41:00 GMT</span></p>
+<p>So, if you&#8217;re one of the lucky few who have gotten into the <a href="http://measuremap.com/">MeasureMap</a> private alpha here&#8217;s how you can easily add support into typo. MeasureMap is really way cool. I&#8217;ve only had it a few hours, so I&#8217;ll be posting some impressions as soon as I have gathered my thoughts.</p>
+
+  <a href="/articles/2005/11/08/measuremap-and-typo">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/08/measuremap-and-typo#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/02/moo-fx-a-new-effects-library">moo.fx, a new effects library</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 03 Nov 2005 03:27:00 GMT">Thu, 03 Nov 2005 03:27:00 GMT</span></p>
+<p>From <a href="http://moofx.mad4milk.net/">the site</a>:</p>
+
+<blockquote>moo.fx is a superlightweight, ultratiny, megasmall javascript effects library, written with prototype.js.</blockquote>
+
+<blockquote>moo.fx is not a replacement for script.aculo.us or other effects libraries. It&#8217;s just a little alternative for people (like me) that do not need more than just simple, basic effects (and want to keep their filesize small).</blockquote>
+
+<p>This thing weighs in at only 3kb. May be worth a look.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/02/moo-fx-a-new-effects-library#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/02/moo-fx-a-new-effects-library#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/16/damagecontrol-developers-youre-doing-a-heck-of-a-job">DamageControl: Developers, you're doing a heck of a job</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 16 Oct 2005 23:03:17 GMT">Sun, 16 Oct 2005 23:03:17 GMT</span></p>
+<p>Aslak Hellesoy - ThoughtWorks</p>
+
+<h3>About Me</h3>
+
+<ul>
+<li>I work for ThoughtWorks</li>
+<li>I have a former Java life
+<ul>
+<li>&#8220;I also have a former life in the Java Community.&#8221;</li>
+<li>PicoContainer</li>
+<li>XDoclet</li>
+</ul></li>
+<li>Ruby OSS
+<ul>
+<li>RSCM</li>
+<li>MetaProject</li>
+<li>RSpec</li>
+</ul></li>
+</ul>
+
+<h3>Agenda</h3>
+
+<ul>
+<li>Background</li>
+<li>Continuous Integration
+<ul>
+<li>Show of hands for people who have used it: about 1/4 of audience</li>
+</ul></li>
+<li>Architecture</li>
+<li>Plans for the future</li>
+</ul>
+
+<h3>Continuous Integration</h3>
+
+<p>You can think of continuous integration as another member of your team.</p>
+
+<ul>
+<li>Will detect when there&#8217;s updated source code in your repository.</li>
+<li>Will check out the changes, rebuild.</li>
+<li>Will report to team whether or not the build was successful (including results of tests).</li>
+</ul>
+
+<h3>RSCM</h3>
+
+<ul>
+<li><p>OK</p>
+
+<ul>
+<li>Subversion</li>
+<li>CVS</li>
+<li>ClearCase</li>
+</ul></li>
+<li><p>KO</p>
+
+<ul>
+<li>Perforce</li>
+<li>Monotone</li>
+<li>StarTeam</li>
+<li>Darcs</li>
+</ul></li>
+</ul>
+
+<h3>Issue Tracking</h3>
+
+<ul>
+<li><p>OK</p>
+
+<ul>
+<li>RubyForge</li>
+<li>JIRA</li>
+<li>SourceForge</li>
+<li>Trac</li>
+</ul></li>
+<li><p>KO</p>
+
+<ul>
+<li>Collaboa</li>
+<li>Scarab</li>
+<li>Bugzilla</li>
+<li>FogBugz</li>
+</ul></li>
+</ul>
+
+<h3>Distribution (No Gem)</h3>
+
+<ul>
+<li>Ruby
+<ul>
+<li>exe</li>
+</ul></li>
+<li>Rails
+<ul>
+<li>exe, zip/tgz, svn</li>
+</ul></li>
+<li>SQLite binaries
+<ul>
+<li>exe,zip/tgz,svn</li>
+</ul></li>
+<li>SQLite db
+<ul>
+<li>exe, zip/tgz</li>
+</ul></li>
+<li>DamageControl
+<ul>
+<li>exe,zip/tgz,svn</li>
+</ul></li>
+</ul>
+
+<h3>Architecture</h3>
+
+<ul>
+<li>Users connect to SCM. </li>
+<li>SCM passes to Builder which connects to DB and slave. </li>
+<li>DB connects to Webapp.</li>
+</ul>
+
+<h3>Database Schema</h3>
+
+<ul>
+<li>projeccts, revisions, revsion<em>files, build</em>executions, builds, artifacts</li>
+</ul>
+
+<h3>Short Term Future</h3>
+
+<ul>
+<li>Move from Codehaus to TextDrive</li>
+<li>Use Collaboa</li>
+<li>Visual identity (website and UI)</li>
+<li>Fix the worst bugs</li>
+</ul>
+
+<h3>Longer term future</h3>
+
+<ul>
+<li>More SCMs(RSCM)</li>
+<li>Distributed builds</li>
+<li>More SCMs</li>
+</ul>
+
+<h3>Source</h3>
+
+<ul>
+<li>http://hieraki.lavalamp.ca/</li>
+<li>http://jira.codehaus.org/browse/DC
+&#8230;</li>
+</ul>
+
+<h3>Gotchas</h3>
+
+<ul>
+<li>SQLite - Database Busy</li>
+<li>Missing dll on windows</li>
+</ul>
+
+<p>Q: Say you have CruiseControl running, whats the switching time?</p>
+
+<p>A: Hopefully very little.</p>
+
+<p>Q: Do you support multiple build configurations? Like building against different versions of ruby. Do you support multiple branches?</p>
+
+<p>A: No, we don&#8217;t support multiple build configs. You can work around with multiple projects. We don&#8217;t support multiple branches in cvs but do in svn.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/16/damagecontrol-developers-youre-doing-a-heck-of-a-job#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/16/damagecontrol-developers-youre-doing-a-heck-of-a-job#trackbacks">3 trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/15/blog-outages-and-named-routes">Blog Outages and Named Routes</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 22:38:16 GMT">Sat, 15 Oct 2005 22:38:16 GMT</span></p>
+<p>Hi guys. You may have noticed that my blog has been down or doing odd things today. This is because I was helping to test a bugfix for a <a href="http://dev.rubyonrails.com/ticket/1554">ticket</a> I turned in a while back. Good news, its fixed and will be part of the Release Candidate later tonight.</p>
+
+<p>What this means: those of us on textdrive or other reverse proxied systems can use named routes without fear of the port number showing up. Huzzah or something similar.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/blog-outages-and-named-routes#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/blog-outages-and-named-routes#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/live-from-rubyconf">Live from Rubyconf</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 14 Oct 2005 20:55:58 GMT">Fri, 14 Oct 2005 20:55:58 GMT</span></p>
+<p>Ok, I&#8217;m sitting in the basement of the RubyConf hotel. I&#8217;ll be giving you play by play as I can. Things should start in a few minutes.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/live-from-rubyconf#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/live-from-rubyconf#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/09/09/svn-support-in-rails-generators-again">SVN Support In Rails Generators (Again)</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 09 Sep 2005 21:37:00 GMT">Fri, 09 Sep 2005 21:37:00 GMT</span></p>
+<p>So remember when I told you about my <a href="http://glu.ttono.us/articles/2005/08/27/using-subversion-with-rails-code-generation">patch</a> to add svn support to the automatic code generators in rails? Well, as of this morning in <a href="http://dev.rubyonrails.com/changeset/2174">changeset 2174</a> its in the trunk. Go forth and use generators with excellent version control!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/09/09/svn-support-in-rails-generators-again#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/09/09/svn-support-in-rails-generators-again#trackbacks">1 trackback</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: 1 <a href="/articles/category/web-dev/page/2">2</a> </p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Dave Thomas Keynote</title>
+    <link>http://glu.ttono.us/articles/2006/06/23/dave-thomas-keynote</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Dave Thomas Keynote</title>
+      <description>&lt;h3&gt;What a year&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;21 million hits on Google&lt;/li&gt;
+&lt;li&gt;Sidebar (how google makes their money) Advertising
+&lt;ul&gt;
+&lt;li&gt;Hosting&lt;/li&gt;
+&lt;li&gt;Training&lt;/li&gt;
+&lt;li&gt;Consulting&lt;/li&gt;
+&lt;li&gt;Custom project work&lt;/li&gt;
+&lt;li&gt;65% of the No Fluf speakers are doing Rails work&lt;/li&gt;
+&lt;li&gt;Commercial IDEs for Rails&lt;/li&gt;
+&lt;li&gt;Most significant, ALTERNATIVES to Ruby on Rails&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rubyforge Downloads
+&lt;ul&gt;
+&lt;li&gt;Rails - 536,835 downloads&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ratings
+&lt;ul&gt;
+&lt;li&gt;Google Trends
+&lt;ul&gt;
+&lt;li&gt;Constantly increasing graph&lt;/li&gt;
+&lt;li&gt;In comparison to Websphere which is declining and evening out&lt;/li&gt;
+&lt;li&gt;Similar situation with jboss&lt;/li&gt;
+&lt;li&gt;We&amp;#8217;ve passed Tapestry&lt;/li&gt;
+&lt;li&gt;We passed the &amp;#8220;spring framework&amp;#8221; a long time ago&lt;/li&gt;
+&lt;li&gt;We&amp;#8217;ve passed zend&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Thanks core!&lt;/li&gt;
+&lt;li&gt;Thanks Matz!&lt;/li&gt;
+&lt;li&gt;Everything is Perfect! BUT
+&lt;ul&gt;
+&lt;li&gt;Some work still needs doing&lt;/li&gt;
+&lt;li&gt;Hilbert, a mathmetician, gave a keynote analyzing the 23 most important unsolved problems in mathematics, setting the stage for the next century&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;23 Unsolved Problems Ran for about 7.5 hours, so&amp;#8230;&lt;/p&gt;
+
+&lt;h3&gt;3 Problems&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PDI - Please Do Investigate
+&lt;ul&gt;
+&lt;li&gt;A bit rude&lt;/li&gt;
+&lt;li&gt;BUT, they&amp;#8217;re right. There&amp;#8217;s only 12 of them.&lt;/li&gt;
+&lt;li&gt;We&amp;#8217;re all programmers. Try to implement it. It&amp;#8217;s open.&lt;/li&gt;
+&lt;li&gt;The responsibility to make Rails the way we want is up to us.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Data Integration&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Better use of schema - use schema constraints
+&lt;ul&gt;
+&lt;li&gt;Validation based on the schema (staying DRY)&lt;/li&gt;
+&lt;li&gt;Work with database foreign keys
+&lt;ul&gt;
+&lt;li&gt;It will help with enterprise integration&lt;/li&gt;
+&lt;li&gt;Make it easy to define in migrations&lt;/li&gt;
+&lt;li&gt;Add belongs_to if FK detected&lt;/li&gt;
+&lt;li&gt;Generally make folks feel we care&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Primary keys
+&lt;ul&gt;
+&lt;li&gt;Better support for non-integer keys
+&lt;ul&gt;
+&lt;li&gt;Particularly in migrations&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Add support for composite primary keys&lt;/li&gt;
+&lt;li&gt;Support distributed transactions&lt;/li&gt;
+&lt;li&gt;Standardized attribute-based finders&lt;/li&gt;
+&lt;li&gt;Non-database models (including JMS/MQ)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Real-world CRUD&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Irony - Scaffolding brings people to Rails BUT it&amp;#8217;s the worst of Web 1.0&lt;/li&gt;
+&lt;li&gt;We need something that really handles the database&lt;/li&gt;
+&lt;li&gt;Support for table relationships&lt;/li&gt;
+&lt;li&gt;Configurability&lt;/li&gt;
+&lt;li&gt;In browser validation&lt;/li&gt;
+&lt;li&gt;AJAX!&lt;/li&gt;
+&lt;li&gt;Cross application skinning&lt;/li&gt;
+&lt;li&gt;What We&amp;#8217;re Doing
+&lt;ul&gt;
+&lt;li&gt;Bring the simplicity of Active Record to Views and Controllers&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Deployment&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What do you do on the server?
+&lt;ul&gt;
+&lt;li&gt;Lightty, Mongrel, Apache, handling zombies?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Capistrano
+&lt;ul&gt;
+&lt;li&gt;Best deployment system there is&lt;/li&gt;
+&lt;li&gt;Lets make it better&lt;/li&gt;
+&lt;li&gt;Push model
+&lt;ul&gt;
+&lt;li&gt;Application contains all of the configuration information&lt;/li&gt;
+&lt;li&gt;What, where, how and when of deployment&lt;/li&gt;
+&lt;li&gt;Great when you own the entire development&lt;/li&gt;
+&lt;li&gt;BUT, in the real world responsibilities are split&lt;/li&gt;
+&lt;li&gt;Developers know what to deploy&lt;/li&gt;
+&lt;li&gt;Server administrators know where when and how&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Capistrano II
+&lt;ul&gt;
+&lt;li&gt;Cooperative development&lt;/li&gt;
+&lt;li&gt;Decouple application requirements and server environments&lt;/li&gt;
+&lt;li&gt;Application Config
+&lt;ul&gt;
+&lt;li&gt;Where to find files&lt;/li&gt;
+&lt;li&gt;Where to put files&lt;/li&gt;
+&lt;li&gt;Pre and post development hooks&lt;/li&gt;
+&lt;li&gt;Library and environment prereqs&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Server Config
+&lt;ul&gt;
+&lt;li&gt;Nominate server roles&lt;/li&gt;
+&lt;li&gt;Where files go on the server&lt;/li&gt;
+&lt;li&gt;User names/permissions/security&lt;/li&gt;
+&lt;li&gt;Including database passwords etc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Deployment
+&lt;ul&gt;
+&lt;li&gt;Set up server once&lt;/li&gt;
+&lt;li&gt;Set up individual applications as needed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cap --deploy-on cap://server.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Sends application config to server
+&lt;ul&gt;
+&lt;li&gt;Server checks dependencies, etc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Stages application to server(s)&lt;/li&gt;
+&lt;li&gt;Installs (or not)&lt;/li&gt;
+&lt;li&gt;Then..&lt;/li&gt;
+&lt;li&gt;ISPs set up standard environment&lt;/li&gt;
+&lt;li&gt;Developers and users deploy:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;svn co http://typosphere.org/typo&lt;/code&gt;
+&lt;code&gt;cd typo&lt;/code&gt;
+&lt;code&gt;cap --deploy-on cap://my.isp.com/dave&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;No more cron jobs for dead processes&lt;/li&gt;
+&lt;li&gt;Packaging&lt;/li&gt;
+&lt;li&gt;One step further&amp;#8230;
+&lt;ul&gt;
+&lt;li&gt;Deploy from GEMS&lt;/li&gt;
+&lt;li&gt;Rails equivalent of WAR files&lt;/li&gt;
+&lt;li&gt;Deploy from GEM using:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gem deploy name --on cap://my.isp.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gem update name --on cap://my.isp.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Why?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We feel sorry for them&lt;/li&gt;
+&lt;li&gt;I couldn&amp;#8217;t do Java development anymore
+&lt;ul&gt;
+&lt;li&gt;Rails and Ruby have corrupted me&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;It&amp;#8217;s really hard to go back after Rails&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;d like the Rails community to embrace these people
+&lt;ul&gt;
+&lt;li&gt;Meet them halfway&lt;/li&gt;
+&lt;li&gt;Support what they need for the transition&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;All developers deserve to be happy&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Fri, 23 Jun 2006 10:37:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ac0c10c2-6ef8-48d7-a541-e1da7ae02de8</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/23/dave-thomas-keynote</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

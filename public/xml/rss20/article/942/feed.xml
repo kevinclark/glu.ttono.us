@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: mkrf 0.1.0 Released</title>
+    <link>http://glu.ttono.us/articles/2006/06/28/mkrf-0-1-0-released</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>mkrf 0.1.0 Released</title>
+      <description>&lt;p&gt;I&amp;#8217;m pleased to announce that tonight marks the first release of mkrf, a library which generates Rakefiles to build C extensions to Ruby and is aimed at a replacement for mkmf. This is a &lt;a href="http://code.google.com/soc/ruby/about.html"&gt;Ruby Summer of Code project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Though the gem doesn&amp;#8217;t seem to have propogated yet, it should be availble through rubygems, and until then you can download the gem directly &lt;a href="http://rubyforge.org/frs/download.php/11283/mkrf-0.1.0.gem"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The code does have RDoc included which I hope explains things well
+enough. Please do send questions and bug reports my way. I&amp;#8217;ll have a
+project setup at advisr.org where you can submit bug reports as soon
+as I tweak its source to properly scope accounts, but until then email
+is fine.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please do try mkrf with your extensions. Please do send feedback.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As for syntax, it can be as simple as:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt; Mkrf::Generator.new('libtrivial_so.bundle')&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;or more complex:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="constant"&gt;Mkrf&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;Generator&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;libxml_so.bundle&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;*.c&lt;/span&gt;&lt;span class="punct"&gt;')&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;g&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+   &lt;span class="ident"&gt;g&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;include_library&lt;/span&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;socket&lt;/span&gt;&lt;span class="punct"&gt;','&lt;/span&gt;&lt;span class="string"&gt;socket&lt;/span&gt;&lt;span class="punct"&gt;')&lt;/span&gt;
+   &lt;span class="ident"&gt;g&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;include_header&lt;/span&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;libxml/xmlversion.h&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt;
+                    &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;/opt/include/libxml2&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt;
+                    &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;/usr/local/include/libxml2&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt;
+                    &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;/usr/include/libxml2&lt;/span&gt;&lt;span class="punct"&gt;')&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Wed, 28 Jun 2006 06:41:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:faf22feb-8fd4-495c-a950-c66c3e31a9ec</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/28/mkrf-0-1-0-released</link>
+      <category>summer of code</category>
+    </item>
+    <item>
+      <title>"mkrf 0.1.0 Released" by shevegen</title>
+      <description>&lt;p&gt;looks indeed promising, hopefully it&amp;#8217;ll take the old mkmf by storm&lt;/p&gt;</description>
+      <pubDate>Mon, 03 Jul 2006 06:14:14 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:878ea020-f72c-4afe-9c00-15be5bdd2f84</guid>
+      <link>http://glu.ttono.us/articles/2006/06/28/mkrf-0-1-0-released#comment-948</link>
+    </item>
+    <item>
+      <title>"mkrf 0.1.0 Released" by Curt HIbbs</title>
+      <description>&lt;p&gt;This is fantastic&amp;#8230; we really needed this!&lt;/p&gt;</description>
+      <pubDate>Fri, 30 Jun 2006 11:32:23 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4d9f12d6-6714-4372-a117-8e1fff9fbc30</guid>
+      <link>http://glu.ttono.us/articles/2006/06/28/mkrf-0-1-0-released#comment-944</link>
+    </item>
+    <item>
+      <title>"mkrf 0.1.0 Released" by topfunky</title>
+      <description>&lt;p&gt;The code is so nice and clean. It makes me want to write a C extension just so I can use it.&lt;/p&gt;</description>
+      <pubDate>Wed, 28 Jun 2006 10:47:50 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fbd21ad7-3c72-4073-adb4-241fbc6a6f34</guid>
+      <link>http://glu.ttono.us/articles/2006/06/28/mkrf-0-1-0-released#comment-943</link>
+    </item>
+  </channel>
+</rss>

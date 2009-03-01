@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ZenSpider's Awesomeness, and my downfall</title>
+    <link>http://glu.ttono.us/articles/2005/10/15/zenspiders-awesomeness-and-my-downfall</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ZenSpider's Awesomeness, and my downfall</title>
+      <description>&lt;p&gt;So Ryan had really awesome stuff, and my computer crashed as I finshed my notes. I&amp;#8217;ll link to him ASAP.&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 21:35:05 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4dbad3c186071b9c26d763106bdc4d70</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/15/zenspiders-awesomeness-and-my-downfall</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/21</trackback:ping>
+    </item>
+  </channel>
+</rss>

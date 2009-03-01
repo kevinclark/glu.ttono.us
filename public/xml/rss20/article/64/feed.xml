@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The Joy of Migrations</title>
+    <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The Joy of Migrations</title>
+      <description>&lt;p&gt;Migrations are one of the more exciting features in &lt;a href="http://www.rubyonrails.com"&gt;Rails&lt;/a&gt; today. I think they&amp;#8217;re wonderful and that they should be used. I&amp;#8217;ll go over how any why you should use these gems.&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 05:42:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:06c83a56-ea44-4074-8555-7899e4ac8a6d</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/64</trackback:ping>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kevin Clark</title>
+      <description>&lt;p&gt;Konstantin:
+See &lt;a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#M000522"&gt;add_index&lt;/a&gt; in the api.&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Mar 2006 20:34:36 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:f6ad9f03-0a5e-48fa-b140-a65ee31bdea0</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-354</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Konstantin Gredeskoul</title>
+      <description>&lt;p&gt;I haven&amp;#8217;t seen any way to create an index on the table in Rails?   I think that any database that grows to respectable size will need indexes on tables..&lt;/p&gt;
+
+
+	&lt;p&gt;Can anyone point in the right direction?&lt;/p&gt;
+
+
+	&lt;p&gt;Thx.&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Mar 2006 19:08:11 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:c76fb68d-cec8-442d-911a-3d56b1e8cb86</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-352</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kevin Clark</title>
+      <description>&lt;p&gt;Scott: Turns out rails will tell you if this happens. I created a testbed app with two migrations with version 2. Here’s the snip.&lt;/p&gt;
+
+
+	&lt;p&gt;[Dionysus:~/web/testbed] kevincla% rake migrate
+(in /Users/kevinclark/web/testbed)
+rake aborted!
+Multiple migrations have the version number 2&lt;/p&gt;</description>
+      <pubDate>Mon, 19 Dec 2005 23:53:13 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:a8c4ea8f-41a9-4b66-9f71-a0393d2f3cca</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-155</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Scott Mitchell</title>
+      <description>&lt;p&gt;Hi Kevin, thanks for the reply. I wrote up my question with a detailed example of the problems that could ensue over on my blog (&lt;a href="http://blog.the-mitchells.org/archives/2005/12/18/rails-migrations-and-multiple-developers/"&gt;http://blog.the-mitchells.org/archives/2005/12/18/rails-migrations-and-multiple-developers/&lt;/a&gt;).
+I also pulled a copy of Rails and did a little playing. It looks like the generator only looks at the existing files in you migrate directory to determine the next sequence number so I definately think there is exposure there. Take a peek at the scenario I lay out and the consequences and let me know what you think.&lt;/p&gt;</description>
+      <pubDate>Mon, 19 Dec 2005 21:13:05 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b90d37ea-4ec4-4c14-8258-84204b82499a</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-154</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kevin Clark</title>
+      <description>&lt;p&gt;Scott: I&amp;#8217;m not sure how creating two migrations with the same version number would work. Whatever it does, unless it raises an error its probably a bug (or unintended feature). The simple answer here is that adding multiple files with the same version number is wrong and rails may be upset with you. This does of course mean that people working on the same project concurrently could have versioning problems, but unless they directly effect each other (ex. one removes the table that the other modifies) it shouldn&amp;#8217;t matter so much and you should be able to just renumber the file.&lt;/p&gt;
+
+
+	&lt;p&gt;Hope it helps. Reply if I didn&amp;#8217;t give you what you were looking for.&lt;/p&gt;</description>
+      <pubDate>Sun, 18 Dec 2005 21:23:12 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:57ac7537-7eba-4f05-8d94-497c67f8ac1c</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-150</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Scott Mitchell</title>
+      <description>&lt;p&gt;Kevin, maybe you can help me figure something out I&amp;#8217;ve been wondering about migrations. How does the version number work in an environment where multiple developers adding migrations concurrently. It seems that this would cause multiple, unrelated changes to get into a single schema version. If you create 2_add_user_table while I create 2_add_date_to_post you will never run my change and I will never run yours because each of our local schemas think they are already at version 2.&lt;/p&gt;
+
+
+	&lt;p&gt;Do you know how, or if, Rails deals with this?&lt;/p&gt;</description>
+      <pubDate>Sun, 18 Dec 2005 09:21:39 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:19e26198-87e4-4e84-b743-ffa0e7a44593</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-149</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Ray</title>
+      <description>&lt;p&gt;Correction and also the solution to Ian&amp;#8217;s problem #4&lt;/p&gt;
+
+
+&lt;code&gt;rake db_schema_dump&lt;/code&gt;
+
+	&lt;p&gt;should be&lt;/p&gt;
+
+
+&lt;code&gt;rake db_structure_dump&lt;/code&gt;
+
+	&lt;p&gt;at least for rake version 0.6.2&lt;/p&gt;</description>
+      <pubDate>Sun, 04 Dec 2005 20:36:49 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:2268cdd7-0bf0-45f6-bb2c-af04339a990e</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-112</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Jorge</title>
+      <description>&lt;p&gt;Yup, but the question was more about table  integrity constraints (foreign keys). I don&amp;#8217;t think these are supported directly. But have to read the docs.&lt;/p&gt;</description>
+      <pubDate>Fri, 28 Oct 2005 21:45:09 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9a5a82f9-3d3f-4327-b03e-53eafb2461b7</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-75</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kev</title>
+      <description>&lt;p&gt;Jorge: Migrations can do integrity constraints. If you look at the &lt;a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#M000546"&gt;column method api&lt;/a&gt;  it gives you options for limit (max length), default values and null/not null constraints. I don&amp;#8217;t believe migrations handles anything more complex than that. Really, more complex things are usually reserved for validations in rails anyway&lt;/p&gt;</description>
+      <pubDate>Fri, 28 Oct 2005 18:35:57 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:418ce913-1740-4134-a1c8-8983695c089f</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-74</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Ryan Platte</title>
+      <description>&lt;p&gt;Note that the migrations can run arbitrary Ruby code, so the sky&amp;#8217;s the limit. You can certainly make migrations do anything you can write SQL for, or for that matter anything else.&lt;/p&gt;
+
+
+	&lt;p&gt;But watch out, when I was using this last, I did occasionally have problems from exceptions didn&amp;#8217;t get handled gracefully. I&amp;#8217;m not at all sure that&amp;#8217;s a problem with migrations, either&amp;#8212;but watch out for migrations that don&amp;#8217;t complete. Definitely practice putting migrations through their paces before writing a bunch of mission-critical ones so you know what can go sour.&lt;/p&gt;
+
+
+	&lt;p&gt;Migrations are one of my favorite Rails features&amp;#8212;is there any other framework out there that actually supports database refactoring right in the framework?!&lt;/p&gt;</description>
+      <pubDate>Fri, 28 Oct 2005 18:31:05 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:793dc49c-94c9-4f71-b286-795fcc738fc6</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-73</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Jorge</title>
+      <description>&lt;p&gt;How about integrity constraints? Can migrations deal with it?&lt;/p&gt;</description>
+      <pubDate>Fri, 28 Oct 2005 11:40:34 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5512c150-00db-46f8-a6c2-6c7e2b6e7c9d</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-72</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kev</title>
+      <description>&lt;p&gt;ian: I&amp;#8217;m not sure about 0.14.1, but both on edge rails and 0.14.2 the task is there if you take a look at rake&amp;#8212;tasks. Emptied your tables in what way?&lt;/p&gt;</description>
+      <pubDate>Fri, 28 Oct 2005 00:22:18 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c880c4ee-a449-41be-a62d-8e86ee28cd42</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-71</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by ian</title>
+      <description>&lt;p&gt;oh, and look how cool i am. i just emptied my tables with rake migrate.&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 23:50:31 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a3c4178d-3d09-4965-97bf-59ef645c7a1f</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-70</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by ian</title>
+      <description>&lt;p&gt;hey kev, any idea why i get this with rails 0.14.1?&lt;/p&gt;
+
+
+	&lt;p&gt;rake aborted!
+Don&amp;#8217;t know how to build task &amp;#8216;db_schema_dump&amp;#8217;&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 23:43:06 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:85c5e0a2-0b67-41a3-a157-54720044bd56</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-69</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Kev</title>
+      <description>&lt;p&gt;David: It can! If you use the schema dumper with &lt;code&gt;rake db_schema_dump&lt;/code&gt;, it will place your entire schema in a migration formatted file into &lt;code&gt;db/schema.rb&lt;/code&gt;. You can then later use &lt;code&gt;rake db_schema_import&lt;/code&gt; to bring the schema into your database.&lt;/p&gt;
+
+
+	&lt;p&gt;This is also good if you are 100 migrations down the line and you don&amp;#8217;t want to go through the entire process which has the posibility of creating and then removing tables.&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 20:08:50 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:100a22bc-1088-4cb4-bd37-c106bafefbea</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-68</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by David</title>
+      <description>&lt;p&gt;So, can this also be used to store the entire schema?  That is, could you use it to set up an entirely new DB with a simple &amp;#8216;rake migrate&amp;#8217;?&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 19:39:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c86f0cb7-424d-44c5-9ce8-4766b55a80db</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-67</link>
+    </item>
+    <item>
+      <title>"The Joy of Migrations" by Nola</title>
+      <description>&lt;p&gt;Wow, thats awesome! :) thanks&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 14:16:43 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7f226731-b061-4134-95bc-6e4ec725df80</guid>
+      <link>http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations#comment-65</link>
+    </item>
+  </channel>
+</rss>

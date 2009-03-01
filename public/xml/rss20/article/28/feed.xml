@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: RubyConf 2005 Wrap-up</title>
+    <link>http://glu.ttono.us/articles/2005/10/17/rubyconf-2005-wrap-up</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>RubyConf 2005 Wrap-up</title>
+      <description>&lt;p&gt;RubyConf 2005 was truly incredible. I got to meet some people who are truly great at what they do, and it was a pleasure.&lt;/p&gt;
+
+&lt;h3&gt;Highlights&lt;/h3&gt;
+
+&lt;p&gt;I&amp;#8217;ve got to say my favorite presentations hands down were done by &lt;a href="http://onestepback.org"&gt;Jim Weirich&lt;/a&gt; on &lt;a href="http://glu.ttono.us/articles/2005/10/15/dsls-in-ruby"&gt;domain specific languages in Ruby&lt;/a&gt; and &lt;a href="http://blog.zenspider.com/"&gt;Ryan Davis&lt;/a&gt; on the incredible array of things they&amp;#8217;re doing up in Seattle. Well done guys, it really made my conference.&lt;/p&gt;
+
+&lt;p&gt;The talks were incredible, but the people were why I came. I got to meet the caboose guys in person and hack it up as well as speak to some of the people who really make the ruby community what it is today.&lt;/p&gt;
+
+&lt;h3&gt;Links to Conference Stuff&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://yhrhosting.com:7000/"&gt;Ezra Zygmuntowicz&lt;/a&gt; has been kind enough to post video of select presentations (including Jim Weirich&amp;#8217;s) on his site. Ezra, if you&amp;#8217;re reading this and need bandwidth or space, drop me an email at kevin [dot] clark [at] gmail [dot] com. I&amp;#8217;m happy to help.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://blog.zenspider.com/"&gt;Ryan Davis&lt;/a&gt; has been collecting slides from presenters, so watch his site for updates. I&amp;#8217;m looking forward to his in particular.&lt;/p&gt;
+
+&lt;p&gt;Jeremy Hubert has &lt;a href="(http://www.flickr.com/photos/jeremyhubert/sets/1160224/"&gt;photos&lt;/a&gt;  up on flickr, and &lt;a href="http://www.flickr.com/groups/58159176@N00/pool/"&gt;there&amp;#8217;s a RubyConf 2005 Group&lt;/a&gt; as well.&lt;/p&gt;
+
+&lt;h3&gt;Final Thoughts&lt;/h3&gt;
+
+&lt;p&gt;It was great. I&amp;#8217;m really looking forward to next years conference, and RailsConf if it gets going. Next year I look forward to being able to join you all at the pub.&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Oct 2005 22:23:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:2adc6b7a24e369371611d29d3a19643f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/17/rubyconf-2005-wrap-up</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/28</trackback:ping>
+    </item>
+  </channel>
+</rss>

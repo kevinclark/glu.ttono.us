@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Documenting Rails</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Documenting Rails"
+    dc:identifier="http://glu.ttono.us/articles/2006/05/10/documenting-rails"
+    dc:description="As many of you know, the documentation for Rails is lacking in several places. Several of us have taken it upon ourselves to clean things up where we can and we&amp;#8217;re trying to make a push for the community to help out. Why write documentati"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/832" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Documenting Rails</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Wed, 10 May 2006 18:52:00 GMT">Wed, 10 May 2006 18:52:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>As many of you know, the documentation for Rails is lacking in several places. Several of us have taken it upon ourselves to clean things up where we can and we&#8217;re trying to make a push for the community to help out.</p>
+
+<h3>Why write documentation?</h3>
+
+<p>There are several reasons why you might like to help with the documentation process even if you&#8217;re not a writer.</p>
+
+<h4>Writing about Rails makes you learn</h4>
+
+<p>Just as they say teaching makes you better at your subject, writing about Rails will force you to learn about what you&#8217;re documenting. Cleaning up documentation for the core codebase means that next time you&#8217;d like to tweak options for associations, or write that web API you&#8217;ve always wanted, or fix that bug that&#8217;s been driving you insane for the last week <strong>you can</strong>.</p>
+
+<h4>It means when you need to look something up, it&#8217;s there</h4>
+
+<p>Writing documentation is good for you! When you forget the options for <code>url_for</code> you&#8217;d like there to be something to refresh your memory (this happens to me too). If everyone chips in a little, we all get a lot out of it. Additionally, when that new Rails developer on your team just doesn&#8217;t remember how ActionMailer works it&#8217;ll be easy to point them to the documentation when you know it exists and is readable.</p>
+
+<h4>It helps the community and just feels good</h4>
+
+<p>If you&#8217;re reading my blog, it probably means you&#8217;ve got some stake in Rails. For me, it&#8217;s my day job. Rails is the reason I really enjoy my work. Writing about it and making it easier for others to have the same experience is really fulfilling for me. It&#8217;s about giving back to the group that helped me when I was starting with Rails.</p>
+
+<h3>Ok, I&#8217;m convinced. How can I help?</h3>
+
+<p>We&#8217;d really love for everyone to help with the documentation, but we need to adhere to some style guidelines first to make sure that the new docs are up to par and won&#8217;t need to be rewritten.</p>
+
+<h4>Write to teach</h4>
+
+<p>Rails documentation is not an academic paper. The point is to describe what a developer needs to know in order to use the section of the API that you&#8217;re writing for. For example, in my rewrite of the ActionMailer documentation (<a href="http://dev.rubyonrails.org/browser/trunk/actionmailer/lib/action_mailer/base.rb?rev=4332">here</a>) I made sure to cover the basic usages of ActionMailer as headings so someone can easily find what they&#8217;re looking for.</p>
+
+<h4>An example is worth 1000 non-example characters</h4>
+
+<p>Examples are key. Do say what the class is used for, but make it easy on people who don&#8217;t want to know about every facet of the <code>render</code> method. Give them an example <em>how</em> to use the method as well and you&#8217;ll have happy coders.</p>
+
+<h4>Don&#8217;t repeat yourself!</h4>
+
+<p>If we&#8217;re working with the <code>ActsAsList</code> module and it has a method that looks like <code>insert_at(position = 1)</code>, you probably don&#8217;t need to say that the method inserts an item in the list at a position, defaulting to 1.</p>
+
+<h3>Writing docs with RDoc</h3>
+
+<p>Rails documentation is generated by RDoc so you&#8217;ll want to become familiar with it. The Pragmatic Programmers have an excellent explanation of how to use RDoc in Programming Ruby 2nd Edition and the <a href="http://rdoc.sourceforge.net/doc/index.html">RDoc Documentation</a> has a section dedicated to an example and markup. The Rails documentation can also be used as a reference on how to write RDoc. Please familiarize yourself with the basics and follow the conventions you see in the Rails source.</p>
+
+<p>The two things I use most often in documentation:</p>
+
+<ul>
+<li><code>&lt;tt&gt;something&lt;tt&gt;</code> or <code>+something+</code> are used to make text typewriter style and should be used for method names</li>
+<li>An indented block will display as code. For example:
+<div class="typocode"><pre><code class="typocode_default "># Examples:
+#
+#  class MyMailer &lt; ActionMailer::Base
+#     # Set up properties
+#     # Properties can also be specified via accessor methods
+#     # (i.e. self.subject = &quot;foo&quot;) and instance variables (@subject = &quot;foo&quot;).
+#     def signup_notification(recipient)
+#       recipients recipient.email<em>address</em>with_name
+#       subject    &quot;New account information&quot;
+#       body       &quot;account&quot; =&gt; recipient
+#       from       &quot;system@example.com&quot;
+#     end
+#  end</code></pre></div></li>
+</ul>
+
+<h4>Generating the RDoc to check your changes</h4>
+
+<p>Generating the RDoc for the project you&#8217;re working in (ActiveRecord,ActionPack,ActionMailer etc) can be done with the command <code>rake rdoc</code> in the project directory. I have added an option to the ActionPack Rakefile so that you can generate RDoc for select files using <code>rake rdoc DOC_FILES=FILE1,FILE2</code> this should probably be added to ActiveRecord, but ActionMailer has so few files as it is that it probably doesn&#8217;t need it.</p>
+
+<p><strong>Please remember to look at the files RDoc will generate before turning in a patch!</strong></p>
+
+<h3>And finally, the quick version of the submission process&#8230;</h3>
+
+<ol>
+<li>Grab the source by following the directions at <a href="http://dev.rubyonrails.org">dev.rubyonrails.org</a>.</li>
+<li>Choose what documentation you want to write or improve.</li>
+<li>Make sure someone else isn&#8217;t already working on it by checking at the <a href="http://dev.rubyonrails.org/report/20">documentation report</a>.</li>
+<li>Create a ticket at the <a href="http://dev.rubyonrails.org">Rails Trac page</a> describing the section that needs cleanup and why. <strong>Make sure to add the &#8216;docs&#8217; keyword to the ticket.</strong></li>
+<li>Make your change and generate the RDoc to proofread</li>
+<li>Create a diff with <code>svn diff &gt; my_diff_file.diff</code></li>
+<li>Attach your diff file to the ticket you created in step 3, and change the ticket title so that [PATCH] is at the front.</li>
+<li>Watch your ticket (if you gave your email, you&#8217;ll be notified upon changes) and make changes if they&#8217;re needed. If things go well then you&#8217;ll have your documentation in the core!</li>
+</ol>
+
+<h3>Go, do it!</h3>
+
+<p>That&#8217;s all I&#8217;ve got. Lets make sure the Rails documentation is getting progressively better. It&#8217;s just The Right Thing.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/10/documenting-rails#comments">11 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-833"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_833'); }"  onmouseout="Element.hide('admin_comment_833');" >
+  <div id="admin_comment_833" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/833', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-833&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/833" class="admintools">edit</a></div>
+  <a name="comment-833"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=dcbf676f860477e44b275cae5d6318a4&amp;size=60" />
+  <cite><strong><a href="http://www.layer22.com">Piotr Usewicz</a></strong> </cite> said about 2 hours later:<br />
+  <p>Great! Make it as good as PHP docs are!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="833";
+//--></script>
+<!-- mmc mmid:833 mmdate:2006-05-10 16:45:40 mmauthor:Piotr Usewicz -->
+</li>
+<li id="comment-834"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_834'); }"  onmouseout="Element.hide('admin_comment_834');" >
+  <div id="admin_comment_834" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/834', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-834&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/834" class="admintools">edit</a></div>
+  <a name="comment-834"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6257c797aea586bc95bba994f2de9490&amp;size=60" />
+  <cite><strong><a href="http://eduardo.cereto.net">.dudus</a></strong> </cite> said about 2 hours later:<br />
+  <p>This looks great. Not a rails expert but I may try to help</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="834";
+//--></script>
+<!-- mmc mmid:834 mmdate:2006-05-10 17:07:59 mmauthor:.dudus -->
+</li>
+<li id="comment-835" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_835'); }"  onmouseout="Element.hide('admin_comment_835');" >
+  <div id="admin_comment_835" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/835', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-835&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/835" class="admintools">edit</a></div>
+  <a name="comment-835"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 2 hours later:<br />
+  <p>dudus: Awesome. You don&#8217;t need to be an expert, just willing to put in the time to get it right.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="835";
+//--></script>
+<!-- mmc mmid:835 mmdate:2006-05-10 17:14:28 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-836"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_836'); }"  onmouseout="Element.hide('admin_comment_836');" >
+  <div id="admin_comment_836" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/836', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-836&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/836" class="admintools">edit</a></div>
+  <a name="comment-836"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Eric A.</strong> </cite> said about 4 hours later:<br />
+  <p>Kevin, awesome write up.  It has inspired me to do some documentation.  I think it would be handy to make a list of the areas that need the most work.  Im gonna get into this more tonight and tomorrow since I dont have class tomorrow, and this would be a good way to get into contributing code as well.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="836";
+//--></script>
+<!-- mmc mmid:836 mmdate:2006-05-10 18:22:32 mmauthor:Eric A. -->
+</li>
+<li id="comment-837"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_837'); }"  onmouseout="Element.hide('admin_comment_837');" >
+  <div id="admin_comment_837" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/837', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-837&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/837" class="admintools">edit</a></div>
+  <a name="comment-837"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kian</strong> </cite> said about 5 hours later:<br />
+  <p>This is a great idea. I saw Josh Susser last night at the SF Ruby Meetup and he really inspired us to go for the doc.</p>
+
+
+	<p>Do you have any ideas about what sections of the API documentation really could use the most help?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="837";
+//--></script>
+<!-- mmc mmid:837 mmdate:2006-05-10 19:54:53 mmauthor:Kian -->
+</li>
+<li id="comment-838"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_838'); }"  onmouseout="Element.hide('admin_comment_838');" >
+  <div id="admin_comment_838" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/838', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-838&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/838" class="admintools">edit</a></div>
+  <a name="comment-838"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>observer</strong> </cite> said about 6 hours later:<br />
+  <p>Well, Django has a documentation system which has a tutorial which is kept in step with the changing codebase.</p>
+
+
+	<p>I think Rails core documentation team should look into something like that. One other thing that I liked about them is that the &#8220;Django book&#8221; would be open-source..</p>
+
+
+	<p>something the rails community should consider. Students and Rails afficionados in poorer financial situation would appreciate it. Not everyone is making 100/hr doing rails programming ya know.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="838";
+//--></script>
+<!-- mmc mmid:838 mmdate:2006-05-10 20:33:38 mmauthor:observer -->
+</li>
+<li id="comment-839"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_839'); }"  onmouseout="Element.hide('admin_comment_839');" >
+  <div id="admin_comment_839" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/839', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-839&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/839" class="admintools">edit</a></div>
+  <a name="comment-839"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Frederick Ros</strong> </cite> said about 17 hours later:<br />
+  <p>Well regarding the ActsAsList example (and you know why ;), I&#8217;ve to say that a lot of peole I work with consider the doc as being incompletes because when looking at the HTML page there&#8217;s nothing written down bellow the insert_at method &#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="839";
+//--></script>
+<!-- mmc mmid:839 mmdate:2006-05-11 07:27:18 mmauthor:Frederick Ros -->
+</li>
+<li id="comment-841"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_841'); }"  onmouseout="Element.hide('admin_comment_841');" >
+  <div id="admin_comment_841" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/841', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-841&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/841" class="admintools">edit</a></div>
+  <a name="comment-841"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>anon</strong> </cite> said about 18 hours later:<br />
+  <p>8 steps is too many for each submission.  get a better way of submitting with some automation and you would have a better chance of getting submissions.  automate more.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="841";
+//--></script>
+<!-- mmc mmid:841 mmdate:2006-05-11 08:57:32 mmauthor:anon -->
+</li>
+<li id="comment-842" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_842'); }"  onmouseout="Element.hide('admin_comment_842');" >
+  <div id="admin_comment_842" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/842', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-842&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/842" class="admintools">edit</a></div>
+  <a name="comment-842"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 1 day later:<br />
+  <p>anon: 1,2 and 8 aren&#8217;t really full steps and 1 only needs to happen once. How would you suggest we automate the rest?</p>
+
+
+	<p>Frederick: I understand (and don&#8217;t fully disagree) but as it has been given to me (who is as reliant on the core as you are), docs like the ActsAsList example won&#8217;t be checked in.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="842";
+//--></script>
+<!-- mmc mmid:842 mmdate:2006-05-11 16:12:02 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-843"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_843'); }"  onmouseout="Element.hide('admin_comment_843');" >
+  <div id="admin_comment_843" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/843', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-843&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/843" class="admintools">edit</a></div>
+  <a name="comment-843"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=0939ac6827606c9bfb8ce6b84b8befd7&amp;size=60" />
+  <cite><strong><a href="http://paulstamatiou.com">Paul Stamatiou</a></strong> </cite> said 1 day later:<br />
+  <p>Awesome site Kevin.  I&#8217;ve just picked up the Agile Web Dev w/ Rails book and am planning on learning a bit over the summer.  I&#8217;ve added your feed to my feedlounge account.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="843";
+//--></script>
+<!-- mmc mmid:843 mmdate:2006-05-12 12:32:40 mmauthor:Paul Stamatiou -->
+</li>
+<li id="comment-844"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_844'); }"  onmouseout="Element.hide('admin_comment_844');" >
+  <div id="admin_comment_844" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/844', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-844&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/832/edit/844" class="admintools">edit</a></div>
+  <a name="comment-844"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Conor</strong> </cite> said 4 days later:<br />
+  <p>Hullo,</p>
+
+
+	<p>You should check out my documentation project for Rails (well actually for any RDoc). I&#8217;ve been working on and off on it for a bit now. User annotations and searching:</p>
+
+
+	<p><a>http://rails.outertrack.com</a></p>
+
+
+	<p>I think this might help a lot with documentation like this. Have Rails users annotate the documentation and then roll some of the comments into the official documentation. I believe this is how the PHP project does it.</p>
+
+
+	<p>Drop me an email at conor . hunt AT gmail . com if you are interested.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="844";
+//--></script>
+<!-- mmc mmid:844 mmdate:2006-05-15 10:37:55 mmauthor:Conor -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/832/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="832";
+//--></script>
+<!-- mmp mmid:832 mmdate:2006-05-10 14:52:00 mmurl:/articles/2006/05/10/documenting-rails mmtitle:Documenting Rails -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/05/10/documenting-rails" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

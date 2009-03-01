@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: A Ruby IDE: Why TextMate Is Close Enough</title>
+    <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>A Ruby IDE: Why TextMate Is Close Enough</title>
+      <description>&lt;p&gt;Recently &lt;a href="http://www.tbray.org/ongoing/"&gt;Tim Bray&lt;/a&gt; posted a &lt;a href="http://www.tbray.org/ongoing/When/200x/2006/09/05/What-Ruby-Needs"&gt;list of things he has found that Ruby needs&lt;/a&gt;. One of these things is an IDE and he provides a list of useful things one would do for us. I&amp;#8217;m not sure if Tim has tried TextMate, but if you&amp;#8217;re aware of the right features it turns out to &lt;em&gt;almost&lt;/em&gt; be exactly what he&amp;#8217;s looking for. The remaining features might be implemented by the right group out in the Lazy Web (do these things and we&amp;#8217;ll all be grateful). Anyway, here&amp;#8217;s interesting things you may have missed about TextMate in the context of Tim&amp;#8217;s wish for an IDE.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 06:04:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:499e80d7-2b05-41e1-aeae-c8d808909571</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough</link>
+      <category>Op-Ed</category>
+      <category>Ruby</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Nathan</title>
+      <description>&lt;p&gt;There is a wonderful unit testing tool for ruby called autotest (short description and screencast &lt;a href="http://nubyonrails.com/articles/2006/04/19/autotest-rails"&gt;here&lt;/a&gt;).  It&amp;#8217;s as simple as typing &amp;#8220;autotest -rails&amp;#8221; at the console from your project&amp;#8217;s top level directory.  It finds all of the tests and runs them, and it monitors the test tree for new tests and changes to existing tests.  Every time something changes, the changed/new test is run.  So, there&amp;#8217;s literally no typing or mousing necessary.  As soon as you change a test, you know if it passes or fails.  It&amp;#8217;s still a young tool, but it works pretty well.  It&amp;#8217;s definitely something to keep an eye on.&lt;/p&gt;</description>
+      <pubDate>Tue, 12 Sep 2006 00:22:10 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a3aeb30f-d0a9-49f0-b646-b6e2798ce53b</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1196</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Pascal</title>
+      <description>&lt;p&gt;Textmate is really cool indeed.  I use cmd-T all the time and wish cmd-shift-T would work across all files.&lt;/p&gt;
+
+
+	&lt;p&gt;I didn&amp;#8217;t know about the ctrl-shitf-v trick and I thank you for that.&lt;/p&gt;
+
+
+	&lt;p&gt;As far as line number go, you can use the textmate_footnotes plugin to get clickable stack traces in the browser (ruby-debug can also open files to texmate via tm[ate]  n #n is the frame number of your stackframe).&lt;/p&gt;</description>
+      <pubDate>Fri, 08 Sep 2006 04:40:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d1ffae1f-8f91-4369-8e0f-847f04b3bc79</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1143</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Gabe</title>
+      <description>&lt;p&gt;I don&amp;#8217;t have a ton of experience with IDEs (a little Eclipse, Xcode, some Borland back in the day), but my sense is that IDEs are custom tailored to integrate with specific platforms very well.  An IDE can be so good that people just swear by it and feel crippled if they go to another platform (MS IDE anybody?)&lt;/p&gt;
+
+
+	&lt;p&gt;TextMate focuses on being extensible, so I put it more in the Emacs camp.  Although, frankly, I find it easier to customize than Emacs (what can I say, I&amp;#8217;m a vi guy).&lt;/p&gt;
+
+
+	&lt;p&gt;So I think initially TextMate falls short of an IDE, but it makes up for it with it&amp;#8217;s easy customizability.  It sort of lets you create a DSL for your personal work patterns.  It ties into the shell so if you&amp;#8217;re a UNIX junky you have an unlimited toolkit at your disposal.  It ties into AppleScript if you&amp;#8217;re into that whole thing (which I know nothing about, but is pretty cool I think).  Once you understand it, you can replicate 95% of what any IDE does.  Of course, it was designed specifically in the presence of Rails and sponsored by DHH  (without whom it might never have seen the light of day), so it&amp;#8217;s pretty good for Rails out of the box.&lt;/p&gt;
+
+
+	&lt;p&gt;If you&amp;#8217;re not using a Mac then obviously it&amp;#8217;s no solution, but a lot of Rails developers do use Macs exclusively, so it can be a complete solution for some.  I&amp;#8217;m always excited to hear about RadRails development even though I don&amp;#8217;t see myself using it anytime soon.&lt;/p&gt;
+
+
+	&lt;p&gt;Some choice TM tidbits:&lt;/p&gt;
+
+
+	&lt;p&gt;Ctrl-H for Rails documentation 
+Shift-Option-Command Down-arrow for navigating between related files&lt;/p&gt;</description>
+      <pubDate>Thu, 07 Sep 2006 22:47:40 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:37c2e1a1-b7bd-492b-b182-d556f691d830</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1142</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Kyle Shank</title>
+      <description>&lt;p&gt;Who cares?&lt;/p&gt;
+
+
+	&lt;p&gt;As RadRails approaches its first anniversary its clear to me that an editing experience really comes down to the individual.  There is no one size fits all.  RadRails won&amp;#8217;t be the solution for everyone but hey at least its &lt;strong&gt;free&lt;/strong&gt; and everyone can try it out.&lt;/p&gt;
+
+
+	&lt;p&gt;Some people like to have the cool overpriced jeans, thats fine.  I develop on a Mac too.  The argument that you should just go get a Mac just to use Textmate is bullshit and ironic in an open source world.&lt;/p&gt;
+
+
+	&lt;p&gt;We have ruby refactoring support coming in RadRails as well as ruby-debug integration.  Look forward to seeing anyone whos gonna be in London next week.&lt;/p&gt;</description>
+      <pubDate>Thu, 07 Sep 2006 04:45:57 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c2bb9f8f-ea53-4c18-9d5e-e0d5e4eb6343</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1134</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Dave Astels</title>
+      <description>&lt;p&gt;I used TextMate when I started playing with Rails last fall.  I asked and that&amp;#8217;s what everyone recomended.  After seeing Kyle&amp;#8217;s CoR talk on RadRails I gave it a try.  I&amp;#8217;ve since switched back to TextMate and &amp;#8220;haven&amp;#8217;t looked back&amp;#8221;.&lt;/p&gt;
+
+
+	&lt;p&gt;masukomi: Apple is, iirc, up to around 20% now.  And OS X seems to be the overwhelming standard platform for Rails work.  As for Mac and the world&amp;#8217;s hackers&amp;#8230; I guess you don&amp;#8217;t read Paul Graham (&lt;a href="http://www.paulgraham.com/mac.html"&gt;http://www.paulgraham.com/mac.html&lt;/a&gt;).&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 16:47:18 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9c699fa7-4b07-4d83-bd30-7bdba3fa693e</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1133</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Joe Ruby</title>
+      <description>&lt;p&gt;LOL, yes vim &lt;strong&gt;should&lt;/strong&gt; be overlooked. As a very long-time user of vim, I can never understand why anybody would recommend it as an IDE.&lt;/p&gt;
+
+
+	&lt;p&gt;As for TextMate, yep, it&amp;#8217;s good enough.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 14:54:45 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:49bfdc65-1d2b-4949-a70b-22cd89491bad</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1132</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Sarah</title>
+      <description>&lt;p&gt;In addition to TextMate, Vim shouldn&amp;#8217;t be overlooked.  Useful links:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://wiki.rubyonrails.org/rails/pages/HowtoUseVimWithRails"&gt;How to use Vim with Rails&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://www.vim.org/htmldoc/usr_24.html#24.7"&gt;Abbreviations&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 14:08:11 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d4586038-6fbd-4775-b63d-a09fc5df976d</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1130</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Todd Huss</title>
+      <description>&lt;p&gt;Don&amp;#8217;t forget RadRails &lt;a href="http://www.radrails.org/"&gt;http://www.radrails.org/&lt;/a&gt; , I switched from Textmate a while back and haven&amp;#8217;t looked back. Coming from the Java / Eclipse world I found it a fairly easy transition. It&amp;#8217;s still a work in progress but I use it for all my Ruby coding now.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 12:14:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4b5bb93b-a073-4666-b121-fc35aac1221d</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1129</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by MikeInAZ</title>
+      <description>&lt;p&gt;@Jeff&lt;/p&gt;
+
+
+	&lt;p&gt;Actually you could spend around $1200 (@amazon) for a nicely equipped Macbook, less if you don&amp;#8217;t need a DVD burner.&lt;/p&gt;
+
+
+	&lt;p&gt;So it&amp;#8217;s only about $1250 for an awesome text editor :)&lt;/p&gt;
+
+
+	&lt;p&gt;Yeah, that&amp;#8217;s still a lot of clams. But you can&amp;#8217;t make clam chowder without breaking some clams or something&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 11:48:15 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:53a62bd3-de8b-406e-8574-af9a0516d97e</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1128</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Kevin Clark</title>
+      <description>&lt;p&gt;Hi Guys,
+Yes, I know TextMate is Mac only ;)&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m not suggesting everything is roses because TextMate can do these things but a significant portion of the Rails community seems to have embraced OSX. For that large chunk TextMate will suffice. For the rest of you&amp;#8230; well, you could try to coerce Alan to write a version for Linux but I&amp;#8217;d be surprised if he&amp;#8217;d touch Windows.&lt;/p&gt;
+
+
+	&lt;p&gt;If you really feel like you need these things a Mac Mini might be in order. I&amp;#8217;ve got a Duo mini with 2 gigs of RAM as my main development box these days and I&amp;#8217;ve never been happier. It cost just about $1k in all so I had enough left over to grab myself a decent monitor.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 11:24:26 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c4d63757-b072-49ce-95fe-2fd980cff253</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1127</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Todd</title>
+      <description>&lt;p&gt;I&amp;#8217;m a big fan of Komodo IDE (&lt;a href="http://www.activestate.com/Products/Komodo/"&gt;http://www.activestate.com/Products/Komodo/&lt;/a&gt;?mp=1).  Sure it costs some money, but there&amp;#8217;s a $30 version for non-commercial use.  Works great with Rails, too.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 09:40:38 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:dfc37e44-3dea-4cb5-9869-5d35d3eb8265</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1126</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by masukomi</title>
+      <description>&lt;p&gt;The only problem with TextMate being that it&amp;#8217;s only on OS X which leaves the vast majority of the world&amp;#8217;s hackers out in the cold. So, while it&amp;#8217;s good I don&amp;#8217;t really count it or any other app that&amp;#8217;s limited to such a small segment of developers as a realistic answer to the need.&lt;/p&gt;
+
+
+	&lt;p&gt;It&amp;#8217;s like saying &amp;#8220;we really need water&amp;#8221; and suggesting that that&amp;#8217;s not an issue because 10% of the population (or whatever Apple&amp;#8217;s market share currently is) has plenty.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 09:27:30 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ef9bbed4-382b-461b-85ad-f1c5dfbddc4f</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1125</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by Jeff</title>
+      <description>&lt;p&gt;I don&amp;#8217;t know if Tim uses a Mac (he probably does), but don&amp;#8217;t forget some of use an operating system that don&amp;#8217;t run TextMate :-)  I personally use Notepad or Scite for most Ruby code, and switch to the RideMe IDE for editing Rails projects on Windows.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m sure TextMate is awesome &amp;#8211; I just don&amp;#8217;t have $2000 for a new text editor right now. :-)&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 09:25:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:75f216cc-f769-4f96-8453-6350e5de5ac3</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1124</link>
+    </item>
+    <item>
+      <title>"A Ruby IDE: Why TextMate Is Close Enough" by James H</title>
+      <description>&lt;p&gt;AFAIK Tim has not tried TextMate.  A while back he made a post about Emacs and I had suggested TextMate to him as a possible alternative.  He didn&amp;#8217;t see why he should want to switch, let alone pay for something that more or less has the same functionality.&lt;/p&gt;
+
+
+A point of interest though: in TextMate, when doing Ruby, if you type &lt;code&gt;'deft'&lt;/code&gt; then press tab, you generate:
+&lt;pre&gt;
+&lt;code&gt;
+def test_case_name
+
+end
+&lt;/code&gt;
+&lt;/pre&gt;
+
+	&lt;p&gt;Also, for those who want to learn a whole lot about TextMate&amp;#8217;s bundling system, &lt;a href="http://peepcode.com/articles/2006/09/02/textmate-basics-for-rails"&gt;PeepCode&lt;/a&gt; has a screencast for sale covering just about everything you could ever want to know.&lt;/p&gt;</description>
+      <pubDate>Wed, 06 Sep 2006 09:16:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:739b7d3f-4048-4ebb-8a53-1f8cf03dfb27</guid>
+      <link>http://glu.ttono.us/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comment-1123</link>
+    </item>
+  </channel>
+</rss>

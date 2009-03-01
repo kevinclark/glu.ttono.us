@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Why Fixtures Suck (And How We Can Fix Them)</title>
+    <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Why Fixtures Suck (And How We Can Fix Them)</title>
+      <description>&lt;p&gt;I hate fixtures in Rails. Sometimes I hate them because they slow down my tests. Most often I hate Rails fixtures because they make my tests brittle. Everyone that uses fixtures has had that moment where they add another bit to their fixture file for that new test and suddenly things are breaking all over the place. It&amp;#8217;s ugly and arguably a broken system.&lt;/p&gt;
+
+&lt;p&gt;I think we can fix it. I&amp;#8217;ve had several long discussions about this and most of what I&amp;#8217;m going to preach here isn&amp;#8217;t original. That being said, I think this might work so pay attention and tell me what you think.&lt;/p&gt;
+
+&lt;p&gt;Fixtures suck because it&amp;#8217;s all or nothing. You can either grab all of your user data or not have any of it. It does cut down on duplication because you&amp;#8217;re not redefining data for every set of tests. However, having all the extra stuff in the scope of your test is unnecessary and leads to brittle tests.&lt;/p&gt;
+
+&lt;p&gt;One option is to compromise. We could modify the current &lt;code&gt;fixtures&lt;/code&gt; method to accept syntax like &lt;code&gt;fixtures :users =&amp;gt; [:alice, :bob], :articles =&amp;gt; :ruby&lt;/code&gt;. This would allow you to get only the data you need. At the same time, the old syntax could be backwards compatible and you could grab &lt;em&gt;all&lt;/em&gt; of the data if you wanted to. I generally find that when I&amp;#8217;m writing tests it&amp;#8217;s only with one or two pieces of data. With Rails, everything else in the database is just hanging out.&lt;/p&gt;
+
+&lt;p&gt;The downside to this new syntax is that the current way of structuring test cases would make this ugly. You don&amp;#8217;t want to define fixtures for every individual test. It&amp;#8217;s much easier defining fixtures by test case. &lt;em&gt;Here&amp;#8217;s where the BDD folks got it right.&lt;/em&gt; Test cases should really be broken up by what context they&amp;#8217;re being run in. We shouldn&amp;#8217;t have one test case for the model. We should have several test cases with tests divided by what data we&amp;#8217;re working with. We get smaller and more granular sets of tests this way. It&amp;#8217;s the testing version of DHH&amp;#8217;s &amp;#8220;everything is REST&amp;#8221;. Every test is about context.&lt;/p&gt;
+
+&lt;p&gt;Do remember that more test files don&amp;#8217;t mean more work. We&amp;#8217;re already generating empty integration tests. What&amp;#8217;s one or two more generators? Really, it&amp;#8217;ll be easy. You&amp;#8217;ll like it.&lt;/p&gt;
+
+&lt;p&gt;The other option is to throw off fixtures completely. I know of people who have already taken this step and they solve the fixture problem by writing helpers to create the data in code and then run them in &lt;code&gt;setup&lt;/code&gt;. This seems like a viable option as well and would require no changes to Rails core.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s time to admit that fixtures, as implemented in Rails, are broken and ugly. We&amp;#8217;ve been taught to demand beauty and elegance. Let&amp;#8217;s make something better.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 14:24:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6e3e8395-fea5-4a09-a327-82004737512e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them</link>
+      <category>Rails</category>
+      <category>Op-Ed</category>
+      <category>testing</category>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Tom</title>
+      <description>&lt;p&gt;Maybe I should illustrate my point in code.&lt;/p&gt;
+
+
+	&lt;p&gt;How it works now:
+fixtures :users&lt;/p&gt;
+
+
+	&lt;p&gt;What you&amp;#8217;re proposing:
+fixtures :users =&amp;gt; [:alice, :bob]&lt;/p&gt;
+
+
+	&lt;p&gt;What I&amp;#8217;m proposing:
+fixtures :users_smallgroup&lt;/p&gt;
+
+
+	&lt;p&gt;The duplication I&amp;#8217;m referring to is the fact that in the user.yml file, you&amp;#8217;re going to have a record for alice, one for bob (and a bunch of others).  In your test you list alice and bob again &amp;#8211; that&amp;#8217;s the duplication.&lt;/p&gt;
+
+
+	&lt;p&gt;I know above you said that test cases are &amp;#8220;supposed to be&amp;#8221; split up by fixtures, and if we did that &amp;#8211; you&amp;#8217;re right, the duplication would be minimal.&lt;/p&gt;
+
+
+	&lt;p&gt;I guess I&amp;#8217;m not completely sold on the fact that test cases should be grouped by fixtures.  I&amp;#8217;d end up testing the same methods in two different places if I wanted to test them with two different data sets.  It sounds like that would make it a pain to find things.  Or, maybe I&amp;#8217;m not understanding what the layout would look like.&lt;/p&gt;
+
+
+	&lt;p&gt;So, that&amp;#8217;s why I was thinking along the lines of allowing a few different fixtures per table, and then you could call upon them when needed without having to restructure your tests around the fixtures you need.&lt;/p&gt;</description>
+      <pubDate>Fri, 11 Aug 2006 17:06:09 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:24c5845d-5a07-4d8b-91a0-71b52f13bbe2</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-977</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Kevin Clark</title>
+      <description>&lt;p&gt;Tom: It doesn&amp;#8217;t involve &lt;em&gt;any&lt;/em&gt; duplication of fixture detail. You do it once in each test case. I&amp;#8217;m suggesting we split of test cases as they&amp;#8217;re supposed to be split, by what fixtures they need.&lt;/p&gt;</description>
+      <pubDate>Fri, 11 Aug 2006 14:35:46 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e23e24db-4b6f-4453-94f8-275305d8c9d4</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-975</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Tom</title>
+      <description>&lt;p&gt;I&amp;#8217;m not sure I like the proposed solution because it means duplicating a bunch of fixture detail (namely, the rows you&amp;#8217;re interested in) in the tests.&lt;/p&gt;
+
+
+	&lt;p&gt;What I&amp;#8217;d really love to see is the relationship between tables and fixtures changed from 1:1 to 1:many.  For example, I think 95% of my fixture issues could be resolved if I was able to create (for example) people_lotsofusers.yml and people_oneuser.yml fixtures, and use one or the other to represent the people table, depending on what test I&amp;#8217;m running.&lt;/p&gt;</description>
+      <pubDate>Thu, 10 Aug 2006 00:32:10 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5e89dbdc-caa8-421b-8733-b3c3aaa8eb02</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-974</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by floyd</title>
+      <description>&lt;p&gt;Yes, I thought you were going to say fixtures suck because THEY&amp;#8217;RE brittle.  One little change to your model and you have to rebuild all your fixtures for that model and possibly other dependent ones.  The best solution for this is a plugin like Geoff&amp;#8217;s:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a&gt;http://nubyonrails.com/articles/2005/12/27/dump-or-slurp-yaml-reference-data&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Aug 2006 12:44:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:beab789b-d98a-4c99-a7e4-4040602c747d</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-972</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by floyd</title>
+      <description>&lt;p&gt;Yes, I thought you were going to say fixtures suck because THEY&amp;#8217;RE brittle.  One little change to your model and you have to rebuild all your fixtures for that model and possibly other dependent ones.  The best solution for this is a plugin like Geoff&amp;#8217;s:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a&gt;http://nubyonrails.com/articles/2005/12/27/dump-or-slurp-yaml-reference-data&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Aug 2006 12:44:26 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8a4a6c47-647d-4819-96ca-ab3e4266f6b2</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-971</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Luke Redpath</title>
+      <description>&lt;p&gt;&amp;#8220;I personally don’t care how long my tests take to run.&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;Tests should always run as fast as they possibly can. If your tests dont run as fast as possible then you aren&amp;#8217;t likely to run them all as often because it becomes a chore.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 17:35:59 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ac562a58-6126-46be-9e07-4ca051b5fdb1</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-970</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by James H</title>
+      <description>&lt;p&gt;I was thinking that perhaps what we really need is a way of setting up mock data based on the validations for our models, and the schema. By basing mock data on the schema and validations, we can create fixtures (or what have you) designed to actually break our apps!  Perhaps it&amp;#8217;d be as simple as running a Rake command to generate said data.  Even then if the skeleton of a fixture entry could be generated by reflecting on the schema, this would save time too.&lt;/p&gt;
+
+
+	&lt;p&gt;The thing I hate about fixtures is that sometimes it&amp;#8217;s a bit of a pain assembling the fixture data when one fixture relies on another.  For instance, perhaps a Post model references an author_id and we want to test this association. It&amp;#8217;s a bit of a pain to set them both up.&lt;/p&gt;
+
+
+	&lt;p&gt;I personally don&amp;#8217;t care how long my tests take to run.  I just want a mechanism by which I can see if my changes have borked some part of my app along the way.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 17:16:48 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d6ea691f-acbf-428e-b63e-02c3395e3cf6</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-968</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Lourens</title>
+      <description>&lt;p&gt;Or you could just load them @ once with &amp;#8216;rake RAILS_ENV=test db:fixtures:load&amp;#8217; and drop the following rake task in lib/tasks:&lt;/p&gt;
+
+
+	&lt;p&gt;module Rake
+ class Task
+   def remove_prerequisite(task_name)
+     name = task_name.to_s
+     @prerequisites.delete(name)
+   end
+ end
+end&lt;/p&gt;
+
+
+	&lt;p&gt;Rake::Task[&amp;#8216;test:units&amp;#8217;].remove_prerequisite(&amp;#8216;db:test:prepare&amp;#8217;)
+Rake::Task[&amp;#8216;test:functionals&amp;#8217;].remove_prerequisite(&amp;#8216;db:test:prepare&amp;#8217;)&lt;/p&gt;
+
+
+	&lt;p&gt;Relieves headache of fixtures order, which ones to load etc., but we&amp;#8217;re using this for a subdomain_as_account app for which an Account model has 30 odd model dependencies.Still no silver bullet though as fixture changes requires a full reload prior to testing.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 17:01:02 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:997044a3-05f9-415e-b081-88ca47a04f47</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-967</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by topfunky</title>
+      <description>&lt;p&gt;My problem has been that unloaded fixtures cause problems or pass without testing every line of code that they should.&lt;/p&gt;
+
+
+	&lt;p&gt;If you have a template that iterates around an array of objects and that fixture hasn&amp;#8217;t been loaded, then the contents of the loop will never be executed. It&amp;#8217;s sometimes hard to remember what fixtures are used by a specific test.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ve solved this by just loading all fixtures once at the beginning of the test cycle, but it does slow things down.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 16:51:21 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9290c0e1-a0d4-46e8-8579-6d02f993e557</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-966</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by matt lyon</title>
+      <description>&lt;p&gt;here&amp;#8217;s an idea:&lt;/p&gt;
+
+
+	&lt;pre&gt;&lt;code&gt;with_fixtures =&amp;gt; [:posts =&amp;gt; [:today_first, :today_second], :authors =&amp;gt; :all do 
+  def test_todays_posts
+    # this test would have only the above referenced fixtures...
+  end 
+end&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 15:36:14 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fcc6e625-3292-4204-ba6c-6420146730c1</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-965</link>
+    </item>
+    <item>
+      <title>"Why Fixtures Suck (And How We Can Fix Them)" by Luke Redpath</title>
+      <description>&lt;p&gt;Good post. Of course my preference is throwing out fixtures all together and writing my own helper methods with Ruby. I&amp;#8217;ve seen massive speed increases since throwing out fixtures.&lt;/p&gt;
+
+
+	&lt;p&gt;For unit tests, they generally aren&amp;#8217;t needed &amp;#8211; simple helper methods suffice for creating related objects (ideally we&amp;#8217;d use mocks but activerecord barfs on mock objects).&lt;/p&gt;
+
+
+	&lt;p&gt;For controller unit tests (sorry &lt;strong&gt;functional tests&lt;/strong&gt;..whatever ;) ) they are slightly more useful but nothing that can&amp;#8217;t be fixed by promoting the use of mocks &amp;#8211; I highly recommend Stubba:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a&gt;http://mocha.rubyforge.org/&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;For those of you not using rSpec yet (and why not???) then I highly recommend FlexMock, though there is also Mocha (see above) which is like Stubba&amp;#8217;s older cousin.&lt;/p&gt;</description>
+      <pubDate>Mon, 07 Aug 2006 14:56:16 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:3639068e-f9b3-4d01-84ab-fa493474eff7</guid>
+      <link>http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comment-964</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: MetaRuby</title>
+    <link>http://glu.ttono.us/articles/2005/10/14/metaruby</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>MetaRuby</title>
+      <description>&lt;h3&gt;Eric Hodel&lt;/h3&gt;
+
+&lt;h4&gt;Once upon a time&amp;#8230;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Eric and Ryan were hacking some Ruby related C&lt;/li&gt;
+&lt;li&gt;And it sucked&lt;/li&gt;
+* 
+&lt;/ul&gt;
+
+&lt;h4&gt;MetaRuby&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Will implement Ruby in Ruby
+&lt;ul&gt;
+&lt;li&gt;Core libarireis, parser, interpeter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;MetaRuby Architecture&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Parser&lt;/li&gt;
+&lt;li&gt;Interpeter&lt;/li&gt;
+&lt;li&gt;GC&lt;/li&gt;
+&lt;li&gt;&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Why?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Writing Ruby internals in C requries mental context switch every time you change bwetween RUby and C&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example of C code vs Ruby code.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;More Familiar&lt;/li&gt;
+&lt;li&gt;More approachable&lt;/li&gt;
+&lt;li&gt;Less to do
+&lt;ul&gt;
+&lt;li&gt;No NULL termination&lt;/li&gt;
+&lt;li&gt;No tainting or freezing&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Inspirationsal Projects&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sqeak Smalltalk&lt;/li&gt;
+&lt;li&gt;Self&lt;/li&gt;
+&lt;li&gt;Pascal, Modula-2, Oberon by Wirth&lt;/li&gt;
+&lt;li&gt;All of these are written in themselves&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Related Projects&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Matju&amp;#8217;s MetaRuby&lt;/li&gt;
+&lt;li&gt;YARV&lt;/li&gt;
+&lt;li&gt;JRuby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Matju&amp;#8217;s MetaRuby&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Different goal much more complex&lt;/li&gt;
+&lt;li&gt;Abstracted core classes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;YARV&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby interpreter replacement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Rubidium&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby interpreter replacement&lt;/li&gt;
+&lt;li&gt;Rubidium is an optimizing Ruby interpreter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Rubytests&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unit tests for Ruby&lt;/li&gt;
+&lt;li&gt;Not comprehensive enough for our goals&lt;/li&gt;
+&lt;li&gt;Not much work making it more complex&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;JRuby&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A 1.8.2 compatible Ruby interpreter&lt;/li&gt;
+&lt;li&gt;Most builtin Ruby classes provided&lt;/li&gt;
+&lt;li&gt;Support for interfacing and defining Java classes in Ruby&lt;/li&gt;
+&lt;li&gt;Uses Rubytests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Current Work&lt;/h4&gt;
+
+&lt;h4&gt;Methodology&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Generate a stubbed class to overlay&lt;/li&gt;
+&lt;li&gt;Drive unit tests to failure
+&lt;ul&gt;
+&lt;li&gt;Identify core methods (primitives) that have to exist&lt;/li&gt;
+&lt;li&gt;Fix bad tests that pass despite no implementation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Drive all tests to green
+&lt;ul&gt;
+&lt;li&gt;Hack, hack, hack&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Passing Tests&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TrueClass, FalseClass and NilClass&lt;/li&gt;
+&lt;li&gt;Time&lt;/li&gt;
+&lt;li&gt;Range&lt;/li&gt;
+&lt;li&gt;NilClass&lt;/li&gt;
+&lt;li&gt;Array&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Overlaid Classes&lt;/h4&gt;
+
+&lt;p&gt;These classes overlay their core classes using Ruby&amp;#8217;s C allocation and initialization methods replacing as many methods as possible&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TrueClass&lt;/li&gt;
+&lt;li&gt;NilClass&lt;/li&gt;
+&lt;li&gt;Array&lt;/li&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Replaced Classes&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Time&lt;/li&gt;
+&lt;li&gt;Range&lt;/li&gt;
+&lt;li&gt;Hash&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Rubytests&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stale
+&lt;ul&gt;
+&lt;li&gt;Mostly tests Ruby 1.6 language features&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Low test coverage&lt;/li&gt;
+&lt;li&gt;Not fully converted to Test::Unit
+&lt;ul&gt;
+&lt;li&gt;Way too much code from pre-testunit&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Test::Unit&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Needs lots of methods to work&lt;/li&gt;
+&lt;li&gt;Too complicated to refactor&lt;/li&gt;
+&lt;li&gt;Working on core classes is hard&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Future Work&lt;/h4&gt;
+
+&lt;h4&gt;Primitives&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Will be automatically translated to C&lt;/li&gt;
+&lt;li&gt;What is a primitive?
+&lt;ul&gt;
+&lt;li&gt;Implement as much as possible in Ruby&lt;/li&gt;
+&lt;li&gt;Whatever is left becomes a primitive
+** Unless we can break it down&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Choosing primitives is a discovery process&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Ruby2c Translation&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ryan will cover this a lot more&lt;/li&gt;
+&lt;li&gt;Only necessary for primitives&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Memory Allocation (Objects)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Currently Array and String sit on top of C Ruby&lt;/li&gt;
+&lt;li&gt;Write object allocation in pure Ruby using current memory system for all objects&lt;/li&gt;
+&lt;li&gt;Then we will replace the memory system with a pure Ruby system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Replace core ruby library&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Works!&lt;/li&gt;
+&lt;li&gt;Well.. kind of..&lt;/li&gt;
+&lt;li&gt;Compiles&lt;/li&gt;
+&lt;li&gt;Links!&lt;/li&gt;
+&lt;li&gt;Segfaults!&lt;/li&gt;
+&lt;li&gt;Needs alot of ping pong&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Far Future Work&lt;/h4&gt;
+
+&lt;p&gt;h5. The Groveling Commences&lt;/p&gt;
+
+&lt;h4&gt;Parser&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ripper is our best target&lt;/li&gt;
+&lt;li&gt;Almost entirely Ruby already&lt;/li&gt;
+&lt;li&gt;Just one file is in C, which we can rewrite&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Object System &amp;amp; Garbage Collector&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Steal ideas from Sqeuak Smalltalk, Self, current Ruby&lt;/li&gt;
+&lt;li&gt;In theory it should be easy to do&lt;/li&gt;
+&lt;li&gt;In reality it will be hard to do well&lt;/li&gt;
+&lt;li&gt;We&amp;#8217;d love someone to work on this&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Interpreter&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;YARV or eval.c (Ruby 1.8)?&lt;/li&gt;
+&lt;li&gt;Rubidium?&lt;/li&gt;
+&lt;li&gt;Needs to we written in Ruby&lt;/li&gt;
+&lt;li&gt;We&amp;#8217;d love someone to work on this&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;C Extensions &amp;amp; C Standard Library&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Why are you writing pure C anyways?
+&lt;ul&gt;
+&lt;li&gt;Use RubyInline or DL&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Probably need Ruby/C compatability stubs
+&lt;ul&gt;
+&lt;li&gt;Easy to generate&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Will need to follow current Ruby/C naming conventions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Array#fill&lt;/h4&gt;
+
+&lt;p&gt;Eight ways to call&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;array.fill(obj)&lt;/li&gt;
+&lt;li&gt;array.fill(obj, start[, length])&lt;/li&gt;
+&lt;li&gt;array.fill(obj.range)&lt;/li&gt;
+&lt;li&gt;array.fill {|index| block }&lt;/li&gt;
+&lt;li&gt;array.fill(start&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&amp;#8220;foo&amp;#8221;.sub(/f(o)o/) { $1 }&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$1 is a &amp;#8220;magick&amp;#8221; read only global&lt;/li&gt;
+&lt;li&gt;$1 can&amp;#8217;t be set from pure Ruby&lt;/li&gt;
+&lt;li&gt;So the interpreter needs to help us out&lt;/li&gt;
+&lt;li&gt;Applies to all match variables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;String#split&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Easy&lt;/li&gt;
+&lt;li&gt;&amp;#8220;a b&amp;#8221;.split # =&gt; [&amp;#8216;a&amp;#8217;, &amp;#8216;b&amp;#8217;]&lt;/li&gt;
+&lt;li&gt;&amp;#8220;a|b&amp;#8221;.split # =&gt; [&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;#8220;a1b&amp;#8221;.split(/*\d)/) # =&gt; [&amp;#8216;a&amp;#8217;,&amp;#8217;1&amp;#8217;,&amp;#8217;c&amp;#8217;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hard&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Time.rb Needs Metal&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Easy
+&lt;ul&gt;
+&lt;li&gt;the_time.month&lt;/li&gt;
+&lt;li&gt;the&lt;em&gt;time.to&lt;/em&gt;f&lt;/li&gt;
+&lt;li&gt;etc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Hard
+&lt;ul&gt;
+&lt;li&gt;Time.now requries calling libc&amp;#8217;s gettime method&lt;/li&gt;
+&lt;li&gt;Currently we have libcwrap.rb that uses RubyInline to call into C funcitons&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 22:54:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bc85cdd581a9c906bc529a0c1943dad5</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/14/metaruby</link>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/17</trackback:ping>
+    </item>
+    <item>
+      <title>"MetaRuby" by Ulysses</title>
+      <description>&lt;p&gt;OH MY GOD THAT IS RADICAL!!!&lt;/p&gt;
+
+
+	&lt;p&gt;DID YOU KNOW YOU CAN ASSIGN TO $~ WHICH SETS $1&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 00:44:40 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:474d1ab7727d75fc89f2c4aed3b805ee</guid>
+      <link>http://glu.ttono.us/articles/2005/10/14/metaruby#comment-52</link>
+    </item>
+    <item>
+      <title>"MetaRuby" by Jordan</title>
+      <description>&lt;p&gt;Good stuff Kev.&lt;/p&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 23:19:54 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6394c3d73fd65d63b22972e97c7241c1</guid>
+      <link>http://glu.ttono.us/articles/2005/10/14/metaruby#comment-51</link>
+    </item>
+  </channel>
+</rss>

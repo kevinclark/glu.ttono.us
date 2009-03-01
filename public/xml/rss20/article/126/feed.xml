@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Kong</title>
+    <link>http://glu.ttono.us/articles/2005/12/14/kong</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Kong</title>
+      <description>&lt;p&gt;&amp;#8220;I liked the part where he swung the plane around&amp;#8221; &amp;#8211; Jordan, my roommate, commenting on King Kong&lt;/p&gt;
+
+&lt;p&gt;Simply incredible. Several parts actually took my breath away, and the insects were actually frightening.&lt;/p&gt;</description>
+      <pubDate>Wed, 14 Dec 2005 05:33:33 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:8c670184-f426-4a5c-8f82-a376f20b7cb0</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/12/14/kong</link>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/126</trackback:ping>
+    </item>
+  </channel>
+</rss>

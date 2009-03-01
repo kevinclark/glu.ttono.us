@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Guide: Things You Shouldn't Be Doing In Rails</title>
+    <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Guide: Things You Shouldn't Be Doing In Rails</title>
+      <description>&lt;p&gt;Koz recently checked code into core that kicks and screams all the way home if you&amp;#8217;re using deprecated methods or instance variables. In honor of this I&amp;#8217;ve decided to give you a list of things I still see over and over in Rails code that you really shouldn&amp;#8217;t be doing anymore. Really. Trust me on this.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; There&amp;#8217;s been enough controversy over this article that I&amp;#8217;ve &lt;a href="http://glu.ttono.us/articles/2006/08/30/on-the-days-events"&gt;responded&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 01:32:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:61838059-6c52-4a62-94f6-64c82f982727</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails</link>
+      <category>Rails</category>
+      <category>guides</category>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by robert</title>
+      <description>&lt;p&gt;what&amp;#8217;s the problem with find_all and find_first? this is a nice shortcut. are dynamic finders ex. find_all_by_name/ find_first_by_name deprecated? bin verwirrt&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Mon, 11 Sep 2006 11:31:50 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:61b89a70-c320-49a9-b928-839a7d23ce72</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1188</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Olli</title>
+      <description>&lt;p&gt;hey this article is great.
+thx&lt;/p&gt;</description>
+      <pubDate>Sat, 02 Sep 2006 10:10:11 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6b9af31a-0b65-46e1-8e9a-d550d46ff5dc</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1101</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by S</title>
+      <description>&lt;p&gt;You&amp;#8217;re smoking crack if you think components or pagination is broken.&lt;/p&gt;
+
+
+	&lt;p&gt;This is why you should lock your apps to a specific rails version people&amp;#8230;don&amp;#8217;t risk your app breaking by using whatever is installed on your server.&lt;/p&gt;</description>
+      <pubDate>Sat, 02 Sep 2006 00:38:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:662d8fa2-533f-4f81-a35a-426d9e428212</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1098</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Kevin Clark</title>
+      <description>&lt;p&gt;Components people,
+Enjoy them if you&amp;#8217;d like. I still expect them to come out. Most of the core team describes it as a half written solution.&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 13:31:41 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9bc15ffe-3bfc-4671-86b6-e1d4609677a3</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1094</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Kevin Clark</title>
+      <description>&lt;p&gt;Ryan,
+I don&amp;#8217;t have a problem with namespaces. If you look at my Ruby projects I use namespaces all the time. I however don&amp;#8217;t use them with my models and controllers in Rails because it tends to cause problems and I find I can keep everything organized anyway.&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 13:30:18 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ad87fe18-5de8-4d4d-b643-291f52d781d7</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1093</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Todd Huss</title>
+      <description>&lt;p&gt;Great article, it helps to have it summarized in one place!&lt;/p&gt;
+
+
+	&lt;p&gt;However, I agree with the aforementioned comments that components are extremely useful. They make developing portal like functionality where you want an area of dynamic content repeated on different pages very simple and DRY.&lt;/p&gt;
+
+
+	&lt;p&gt;I have been unable to find a similar approach to combining business logic and view in a reusable component in an equally DRY manner without using components. It would be helpful if someone could provide an example of how to effectively rewrite a reusable component (such as a web poll) without using components.&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 08:27:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d44df69a-d144-410f-9ddc-b61c0cac9936</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1092</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Ryan Allen</title>
+      <description>&lt;p&gt;I don&amp;#8217;t know why you&amp;#8217;re saying namespacing is bad. I think it&amp;#8217;s a bit of BS.&lt;/p&gt;
+
+
+	&lt;p&gt;Yeah it can lead you into hairy situations but if you actually understand how namespacing works (and don&amp;#8217;t mind to apply some common sence when you come into problems) then they&amp;#8217;re fine.&lt;/p&gt;
+
+
+	&lt;p&gt;Namespaces is one of the awesome things that people from PHP get to look foreward to :)&lt;/p&gt;
+
+
+	&lt;p&gt;Has anyone got some real proper criticism of namespaces besides &amp;#8216;they&amp;#8217;re bad&amp;#8217;?&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 01:04:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6071ed55-da5f-4b7d-bea7-5457f50ffc21</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1090</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by murphy</title>
+      <description>&lt;p&gt;Oh thank you for pointing out that namespaces are evil.&lt;/p&gt;
+
+
+	&lt;p&gt;I started using them, and suddenly all my url_for and link_to screw up. I eventually had to rewrite all references to controllers with a preceeding &amp;#8221;/&amp;#8221; (like &amp;#8221;/main&amp;#8221;) to fix it.&lt;/p&gt;
+
+
+	&lt;p&gt;The idea of just using routing (and naming the controllers &amp;#8220;AdminLogin&amp;#8221; instead of &amp;#8220;Admin::Login&amp;#8221; instead?) is very good. I&amp;#8217;ll try to rewrite my project this way.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks!&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 00:49:46 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a97f7e55-8db6-42eb-a9d4-44c66e568882</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1089</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Chris</title>
+      <description>&lt;p&gt;For Apple users out there, I created a growl notifier plugin whenever a deprecated function gets logged. &lt;a href="http://blog.steelpixel.com/articles/2006/08/31/growl-deprecated-rails-plugin"&gt;Check it out.&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 16:12:11 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c3aa4700-53f4-4fd1-a939-8154de30a4dc</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1085</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Deprecated Question</title>
+      <description>&lt;p&gt;Btw Kevin, why does core team deprecate things? If thing are so bad as you say, why not remove them right away? That way things get fixed immediately, instead of lagging and nagging forever. If bad practice is not there, then those without know cannot use it!&lt;/p&gt;
+
+
+	&lt;p&gt;Or is there some specific date set when all deprecated things are erased from Rails? If not, you should set one. Otherwise &amp;#8220;deprecating&amp;#8221; things is itself a bad practice (not best practice) and should be deprecated.&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 14:00:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e06fa7cb-0e96-4c5c-95f5-cba33c750d49</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1082</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Kevin Clark</title>
+      <description>&lt;p&gt;Eric,
+The dynamic finders (find_by_xxx) are just fine. Feel free to use them. Only find_all and find_first are deprecated.&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 12:45:13 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6525d76b-cc1e-4a27-9e0e-47815bd4e184</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1077</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by TheWordNerd</title>
+      <description>&lt;p&gt;Perhaps this is a &amp;#8220;duh&amp;#8221; question, but it truly does baffle me. With the adoption of REST/standardized resource routing, what exactly is the issue with scaffolding, provided someone looks at the generated code and modifies it to work with their application? I recently used scaffolding for an application I&amp;#8217;m moving to production, and it worked rather nicely. I looked at my generated code, added before_filters to protect the administrative actions, changed list pagination to work more correctly with my application, removed the index method and renamed list&amp;#8230; No, the generated code wasn&amp;#8217;t exactly what I needed, but I felt like I saved time tweaking the various filters to mesh with whatever that particular bit of the application needed than I&amp;#8217;d have spent writing much of the same code again and again.&lt;/p&gt;
+
+
+	&lt;p&gt;I think it&amp;#8217;s a crutch if you don&amp;#8217;t understand what is happening, but I think it&amp;#8217;s quicker if you&amp;#8217;re trying to write a CRUDdy, RESTful app and only need to modify small bits of what was generated. I also think that it was a crutch when DRYing up actions was encouraged (I.e. the Rails Recipes section on making one edit action for new/create/edit/update) but if Rails is encouraging resources, then why not modify scaffolding to be more in line with that, and why not use it if you understand it?&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 11:54:07 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b219f329-1e76-483f-a4d5-d362662695d5</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1074</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Yehuda Katz</title>
+      <description>&lt;p&gt;Good stuff for the most part. Newbie Rails developers definitely need a kick in the pants sometimes to get them on the road to good practice.&lt;/p&gt;
+
+
+	&lt;p&gt;And reminding people about deprecated (and perhaps poorly thought out in the first place) features is a good thing.&lt;/p&gt;
+
+
+	&lt;p&gt;I posted a response re: Engines based on my personal experience with using engines for my autoDB plugin. If it&amp;#8217;s a bit harsh, I didn&amp;#8217;t intend it as such.&lt;/p&gt;
+
+
+	&lt;p&gt;Check it out at &lt;a href="http://www.yehudakatz.com"&gt;http://www.yehudakatz.com&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 10:38:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c7a7c16a-9601-4068-9516-0a673adf49f8</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1073</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by John</title>
+      <description>&lt;p&gt;Re: pagination.
+So where&amp;#8217;s the knee of the curve?  I don&amp;#8217;t have millions, but I do have tables with ~1500 elements.  Is that a performance-killer or not?
+What should we be doing instead of the built-in paginator?  Is there an Edge Rails implementation of pagination that&amp;#8217;s better?
+Thanks for the great summary.&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 09:40:53 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6990fd9d-b546-4ea0-b9c9-e00e69022af4</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1071</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Eric Lacey</title>
+      <description>&lt;p&gt;As a new-to-Ruby and a conscientious developer, I want to avoid doing things in Ruby/Rails that are no longer considered best practice&amp;#8230;  This article mentions that we should stop using the find_all() and find_first() convenience methods.  Does that apply to the find_all_by_XXXX() method as well?&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 09:17:10 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:21abf33e-22f8-4246-85ed-f468f026bfee</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1070</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by topfunky</title>
+      <description>&lt;p&gt;I&amp;#8217;ve put together a plugin that tries to find these problems in code and warns you about it.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ll update it as other parts of Rails are deprecated in the future.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://nubyonrails.com/articles/2006/08/31/deprecated-plugin-find-old-rails-code"&gt;Deprecated Verification Plugin&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 04:32:54 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f9551fa9-b2df-45d6-8f5d-33b58d81e50e</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1066</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Jesper Rønn-Jensen (justaddwater.d)</title>
+      <description>&lt;p&gt;&amp;gt; find_all and find_first have been deprecated over a year now. 
+&amp;gt; Stop using them.
+I find it ironic that &amp;#8220;find_all&amp;#8221; is actually still used in the standard Rails README file generated with every new project.&lt;/p&gt;
+
+
+	&lt;p&gt;Your very good article here is putting focus on the right things. I hope it spreads to EVERYWHERE in the Rails source &amp;mdash; not just the fun code part.&lt;/p&gt;</description>
+      <pubDate>Thu, 31 Aug 2006 02:41:13 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4588b500-c86d-4166-b108-072471f9fd8b</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1064</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Urbanus</title>
+      <description>&lt;p&gt;Components != partials&lt;/p&gt;
+
+
+	&lt;p&gt;Partials are view-related: they render information within the context of the current controller.&lt;/p&gt;
+
+
+	&lt;p&gt;Components are controllers + views that you can put into a view that belong to some other controller (or controllers).  They are different from partials in that they are designed to gather and present their own data separately from the controller that&amp;#8217;s actually preparing the current page.&lt;/p&gt;
+
+
+	&lt;p&gt;Partials don&amp;#8217;t replace components.  Partials are not a &amp;#8220;better&amp;#8221; sort of component.&lt;/p&gt;
+
+
+	&lt;p&gt;If components ever get deprecated, the DRY implications for applications that genuinely need them will be disastrous.  All that controller + view code will have to be copied across multiple different controllers.&lt;/p&gt;
+
+
+	&lt;p&gt;With respect kev, if you don&amp;#8217;t see the importance of components then you just haven&amp;#8217;t personally found a legitimate use for them yet.  But that doesn&amp;#8217;t mean they&amp;#8217;re not a powerful and important part of Rails.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 22:41:23 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:de776b79-e87a-4118-8b7a-3780c9442ed2</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1060</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Bob Silva</title>
+      <description>&lt;p&gt;For everyone saying to update the documentation, it is updated&amp;#8230;in the trunk. If you are using a version before the decision was made to &amp;#8220;change&amp;#8221; best practices or deprecate functionality, then when you download new releases, you will have correct documentation. Work is in progress to improve documentation outside of the source and cover multiple versions, be patient it&amp;#8217;s coming.&lt;/p&gt;
+
+
+	&lt;p&gt;Also, put the RubyOnRails Weblog in your feed reader, core is usually pretty good about putting current and upcoming deprecations in there.&lt;/p&gt;
+
+
+	&lt;p&gt;Keep in mind that the statements Kevin made were his opinion based on experience (and of his friends) and following changes in core development.&lt;/p&gt;
+
+
+	&lt;p&gt;One last point, the AWDR is not the definitive guide to programming in Rails, Rails has changed dramatically since the book was released, ditto with version 2 I&amp;#8217;m sure. It&amp;#8217;s a great book, but just because it showed how to do something at the time it was written, doesn&amp;#8217;t mean thats how to do it today.&lt;/p&gt;
+
+
+	&lt;p&gt;assert !core_team.include?(&amp;#8216;Dave Thomas&amp;#8217;)&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 21:48:43 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f44eafec-90fb-45ad-bf16-e98d2b653300</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1057</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Kevin Clark</title>
+      <description>&lt;p&gt;I&amp;#8217;ve responded to some of your comments here:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://glu.ttono.us/articles/2006/08/30/on-the-days-events"&gt;http://glu.ttono.us/articles/2006/08/30/on-the-days-events&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Feel free to air your grievances there.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 21:45:22 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:865f31c2-5124-48d6-b660-94b453488113</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1056</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Joel Hayhurst</title>
+      <description>&lt;p&gt;If I were you, I&amp;#8217;d remove your Pagination bit so you don&amp;#8217;t mislead impressionable people into not using perfectly good tools.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 20:15:42 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fee98abe-e5b2-4bc0-8b4b-7f03086e16f5</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1054</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Alex Bunardzic</title>
+      <description>&lt;p&gt;I feel alarmed:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://jooto.com/blog/index.php/2006/08/31/trouble-in-paradise/"&gt;http://jooto.com/blog/index.php/2006/08/31/trouble-in-paradise/&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 19:56:30 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:42b7f05b-e43a-4b1c-b49d-59450ed06745</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1052</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Phillip Kast</title>
+      <description>&lt;p&gt;Re: respond_to &amp;#38;&amp;#38; v1.1&lt;/p&gt;
+
+
+	&lt;p&gt;Yep, it&amp;#8217;s in there, in 1.1.6 at least.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 19:40:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c1db4038-0030-4770-a0df-12a75754aa29</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1051</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by bread</title>
+      <description>&lt;p&gt;Still waiting for a reply.. any reply.. to the oft-repeated question, &amp;#8220;What do you mean by not using pagination?&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;Are you saying, always show everything on one list?  Or custom write pagination?  Or don&amp;#8217;t use the pagination helper?&lt;/p&gt;
+
+
+	&lt;p&gt;How is it broken?  Why is it broken?  If people need pagination, what should they do?&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 18:54:49 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f7994532-82a0-4e4c-9ef8-b792543c9f96</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1050</link>
+    </item>
+    <item>
+      <title>"Guide: Things You Shouldn't Be Doing In Rails" by Kevin Clark</title>
+      <description>&lt;p&gt;Jason,
+What prompted the article was changes in edge that cause warnings (lots and lots and lots of warnings) which tell you you&amp;#8217;re using something that&amp;#8217;s deprecated and may break soon. A rake task would probably be nifty in the mean time. Poke me if you write one and I&amp;#8217;ll link it.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 18:19:05 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:df00470e-581a-48cb-b413-8d7140acd1bb</guid>
+      <link>http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comment-1049</link>
+    </item>
+  </channel>
+</rss>

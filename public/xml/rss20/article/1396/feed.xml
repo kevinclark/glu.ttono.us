@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: On Twitter, Rails, and Community</title>
+    <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>On Twitter, Rails, and Community</title>
+      <description>&lt;p&gt;An &lt;a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/"&gt;interview&lt;/a&gt; by a &lt;a href="http://twitter.com/"&gt;twitter&lt;/a&gt; developer has gotten a good deal of &lt;a href="http://technorati.com/search/twitter+rails"&gt;press lately&lt;/a&gt;. For many, it has reawakened the giant that is the &amp;#8220;does Rails scale&amp;#8221; debate, and &lt;a href="http://www.loudthinking.com/"&gt;others&lt;/a&gt; feel compelled to defend the framework.&lt;/p&gt;
+
+&lt;p&gt;The problem with Rails isn&amp;#8217;t that Ruby is slow. It&amp;#8217;s also not that Rails is slow, or big, or bloated, or doesn&amp;#8217;t scale. The problem isn&amp;#8217;t that Rails doesn&amp;#8217;t support multiple databases or composite keys out of the box. The problem is that &lt;a href="http://farm1.static.flickr.com/47/127984254_ddd4363d6a.jpg"&gt;this&lt;/a&gt; is how the vocal minority in the community tends to respond to criticism.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#8217;s all slow down and take a look at how we got here and what we can do to avoid it. That&amp;#8217;s of course assuming we want to. Inflammatory posts certainly get lots of traffic, but I think Rails is in the spotlight enough we can actually talk like reasonable people and still get things done.&lt;/p&gt;
+
+&lt;p&gt;More after the jump.&lt;/p&gt;</description>
+      <pubDate>Sun, 15 Apr 2007 16:13:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4f954473-6cb0-4058-853f-2eb202da9d96</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community</link>
+      <category>Rails</category>
+      <category>Op-Ed</category>
+      <category>Musings</category>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Gabe da Silveira</title>
+      <description>&lt;p&gt;First of all, great post.  This is exactly what I&amp;#8217;ve been thinking about the whole matter.&lt;/p&gt;
+
+
+	&lt;p&gt;@izidor &amp;#8211; when people talk about fanboyism this is it.  Don&amp;#8217;t try bury legitimate criticism.  If your clients/boss don&amp;#8217;t trust you then you need to find better people or work on your credibility.&lt;/p&gt;
+
+
+	&lt;p&gt;@itchy &amp;#8211; I totally agree.  DHH is human and flawed just like everyone else.  He has every right to post whatever he wants.  However he could stand for a little introspection about his defensiveness.  I mean he&amp;#8217;s one of the most influential programmers of the decade and he&amp;#8217;s not even 30 yet.  Rails is a smashing success and used by thousands and thousands of very smart people.  I can see how the interview rubbed him the wrong way, but it&amp;#8217;s not as if there were any actual lies in there that needed rectifying.  For his own sake I wish he could let this stuff roll off his back.&lt;/p&gt;</description>
+      <pubDate>Fri, 04 May 2007 18:43:38 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:247bbbb9-8de0-481a-a8ca-1658e7fab7f2</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1442</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Jim Greer</title>
+      <description>&lt;p&gt;Needed saying, and well said.&lt;/p&gt;</description>
+      <pubDate>Sat, 28 Apr 2007 13:17:33 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e1527602-3118-4a5a-ae9d-fd1462933562</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1434</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by AkitaOnRails</title>
+      <description>&lt;p&gt;Just to give you an example: this discussion landed even down here in Brazil. I&amp;#8217;ve been following the flow of events and I am as overwhelmed as the next guy. I did understand the whole point since the first statement from Alex, and the minute I read the DHH post I was blown away: &amp;#8220;What is he doing!?&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;Fortunately it didn&amp;#8217;t go as far as it could. I will not judge DHH on this because I made similar mistakes in the past as well. It&amp;#8217;s an inherent human quality to defend itself. Sometimes the instincts go over our rationale.&lt;/p&gt;
+
+
+	&lt;p&gt;As far as a community is made of human being, mistakes like this are prone to happen. The only thing we can do is learn from them and avoid future repetitions.&lt;/p&gt;</description>
+      <pubDate>Sun, 22 Apr 2007 14:21:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f09fa3d5-9da4-47e9-b056-24c38334285a</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1430</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Alex Payne</title>
+      <description>&lt;p&gt;Thanks much for contributing some sanity :)&lt;/p&gt;</description>
+      <pubDate>Wed, 18 Apr 2007 19:12:26 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a9236a21-83f9-458d-b26a-a17475726c0e</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1427</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Jakob S</title>
+      <description>&lt;p&gt;Right on, the first sensible blog post I&amp;#8217;ve seen about this debacle.&lt;/p&gt;
+
+
+	&lt;p&gt;If there&amp;#8217;s something technical to take away from this, I&amp;#8217;d say it&amp;#8217;s the fact that Rails indeed is able to scale and handle the 11.000+ requests per second Twitter is serving. Cheers to Twitter for getting up there and proving this.&lt;/p&gt;</description>
+      <pubDate>Wed, 18 Apr 2007 04:35:57 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5f07cf10-b79e-4403-b1ca-dcfff74babc5</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1424</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Ryan Davis</title>
+      <description>&lt;p&gt;itchy: the difference is, DHH hit the send/submit button on that blog post of his.&lt;/p&gt;
+
+
+	&lt;p&gt;Bad day: maybe.
+Bad action/decision: definitely.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 14:38:12 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:2d7ceeb6-0f33-48e9-8f2b-655662bd0a72</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1423</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by chuck</title>
+      <description>&lt;p&gt;I think maybe DHH, and a lot of the Rails community, are just stuck in defensive mode from trying to fend off all the flames from Java-land.  But those are staring to die down.  So relax.  Don&amp;#8217;t treat everything like an attack.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 12:20:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4a5b081e-73ea-4719-890b-1f458560855c</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1421</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Amy</title>
+      <description>&lt;p&gt;Well put.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;d like to further add that this seems like a classic case of text communication problems.&lt;/p&gt;
+
+
+	&lt;p&gt;We all have to remember to read carefully and try not to add coloring and undertones that aren&amp;#8217;t really there. When you don&amp;#8217;t know a person, it&amp;#8217;s especially easy to do.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ve met both of the major parties here and watched them interact with others&lt;a href="#fn1"&gt;1&lt;/a&gt; and I&amp;#8217;m pretty positive that they could have had a friendly, productive discussion about this face-to-face.&lt;/p&gt;
+
+
+	&lt;p&gt;But through the power of the Internet, everything has been blown out of proportion. :)&lt;/p&gt;
+
+
+	&lt;p&gt;I say, when in doubt, write things friendlier than you have to. Things that sound perfectly reasonable in your head can easily be misinterpreted in the absence of body language, intonation, smiles, etc. Frankness and friendliness don&amp;#8217;t have to be at odds when it comes to writing.&lt;/p&gt;
+
+
+	&lt;p&gt;[1] I am not a creepy stalker.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 11:54:41 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:3d01c3a7-edfd-4b7a-a4d0-1d6588dfa8bf</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1420</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Dave Hoover</title>
+      <description>&lt;p&gt;Well said Kevin.  Keep up the great work.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 10:58:01 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c7d8fd34-83ef-43fe-838d-403b511075df</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1419</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by itchy</title>
+      <description>&lt;p&gt;At this point, DHH has become like Alan Greenspan. Everything he says gets amplified.&lt;/p&gt;
+
+
+	&lt;p&gt;Since all credit and blame for every aspect of what Rails does and should do gets funneled to him, I&amp;#8217;m betting this was the 10th &amp;#8220;Rails can&amp;#8217;t do X&amp;#8221; he had heard that day.&lt;/p&gt;
+
+
+	&lt;p&gt;I cut him a lot of slack. Yes, he&amp;#8217;s &amp;#8216;opinionated,&amp;#8217; as he&amp;#8217;s often said himself. I&amp;#8217;ve never met him, but he seems pleasant enough in general. Nevertheless, I&amp;#8217;m sure he has bad days.&lt;/p&gt;
+
+
+	&lt;p&gt;When someone says &amp;#8220;Rails can&amp;#8217;t do X,&amp;#8221; no, they&amp;#8217;re not necessarily blaming Rails, but sometimes they are. &amp;#8220;Rails can&amp;#8217;t do X&amp;#8221; is frequently an abbreviation of: &amp;#8220;Rails can&amp;#8217;t do X, so Rails is useless.&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;So I can see where DHH got defensive: Here&amp;#8217;s a company doing bleeding-edge stuff, choosing to use a framework for it, then saying the framework doesn&amp;#8217;t have the stuff out-of-the-box to handle the requests.&lt;/p&gt;
+
+
+	&lt;p&gt;I agree, it looks like the Twitter guys didn&amp;#8217;t mean it as a criticism, but I can see easily where DHH would see it as such.&lt;/p&gt;
+
+
+	&lt;p&gt;Maybe he should be more measured with his responses, but, hey, so should many people.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 09:45:41 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:05c8a2e0-0d6a-46b6-a18c-2403c7d55050</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1418</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by izidor</title>
+      <description>&lt;p&gt;Oh, and since there is no direct link to &lt;a href="http://www.oreillynet.com/ruby/blog/2006/01/bambi_meets_godzilla.html"&gt;Steve Yegge&amp;#8217;s fabulous addendum&lt;/a&gt;, which you need to read also, I had to add another comment entry.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 04:39:49 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:71f6fe4f-36ab-4672-8960-f4d5631bfcda</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1416</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by izidor</title>
+      <description>&lt;p&gt;First, we are here because DHH created Rails. A bit of perspective and humility would be in order before dispensing advices left and right.&lt;/p&gt;
+
+
+	&lt;p&gt;Second, the lesson is: be positive or be quiet.&lt;/p&gt;
+
+
+	&lt;p&gt;You whining people already cost me a project which will be done in Java because of &amp;#8220;Ruby can&amp;#8217;t scale&amp;#8221; (app for 10 users :-)&lt;/p&gt;
+
+
+	&lt;p&gt;Remember that decision makers are just skimming and the interview message is &amp;#8220;Twitter says Rails can&amp;#8217;t scale and Ruby is slow&amp;#8221;, so &amp;#8220;Rails bad, Java good&amp;#8221;. Don&amp;#8217;t put out such stuff until even stupid people accept Ruby (and Rails) as alternative which is worthy of evaluation. Whenever we reach evaluation stage, we win on technical merits, but we need to get there! See exquisite article on O&amp;#8217;Reilly by &lt;a href="http://www.oreillynet.com/ruby/blog/2006/01/a_little_antiantihype.html"&gt;Steve Yegge&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Any whining is completely unnecessary (and brings only bad results), because this is open-source and you can do anything you want. It&amp;#8217;s not as DHH is holding you back or something. The only result is bad publicity &amp;#8211; is that what you want? There are mailing lists for technical discussions, no need to shout on the web about &amp;#8220;Ruby is slow&amp;#8221;.&lt;/p&gt;
+
+
+	&lt;p&gt;And how sad that the irony is lost on you people &amp;#8211; the guy who single-handedly created the stuff is proclaimed to be &amp;#8220;vocal minority&amp;#8221;. Just get rid of this vocal minority and all will be right in Rails community, I guess&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 04:33:27 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:021a2b93-13de-4400-bf63-de79c18a9a2e</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1415</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Aaron</title>
+      <description>&lt;p&gt;Good post.&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Apr 2007 00:28:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5a7473da-38dc-428e-88a6-ce483101844b</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1414</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by AEM</title>
+      <description>&lt;p&gt;Man, thanks for putting in words what I was feeling. Like many others I was following links today and could not believe DHH reaction. Sad, really. But it is great that there is people that actually read the full article and keep an open mind.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks again,&lt;/p&gt;
+
+
+	&lt;p&gt;AEM&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 21:58:17 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a3b869e7-6098-46b2-b96a-23cd72df2023</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1413</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Koz</title>
+      <description>&lt;p&gt;Nice piece kevin.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 18:29:09 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6fa5033a-e067-4de3-9e32-ec5519f977b4</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1412</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Bob Aman</title>
+      <description>&lt;p&gt;I really couldn&amp;#8217;t have said it better myself.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 17:17:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f34601e9-6086-4dd4-9167-8fb1cf62a795</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1411</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Kevin Clark</title>
+      <description>&lt;p&gt;carlos: No one says they&amp;#8217;re surprised, but it does need to stop happening. I&amp;#8217;m happy to have people involved in the discussion, but let&amp;#8217;s work on productive discourse instead of bashing. I&amp;#8217;m annoyed at him too, but I think things can change.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 16:52:41 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f3ef2fc5-7531-4c45-892d-71a7af709647</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1410</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by carlos</title>
+      <description>&lt;p&gt;DHH often says stupid things.  Are you guys really suprised?  DHH even thinks he invented ruby mixins: &lt;a href="http://weblog.jamisbuck.org/2007/1/17/concerns-in-activerecord"&gt;http://weblog.jamisbuck.org/2007/1/17/concerns-in-activerecord&lt;/a&gt; comment #28.  Just ignore him, end of story.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 15:58:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:20a6ee44-88bc-437c-bf20-69e10292416c</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1409</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Joe Grossberg</title>
+      <description>&lt;p&gt;Bravo. People need to stop being so damn defensive.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 13:21:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0c33a2d9-44c5-4d0b-824a-3a2fbfdc80fb</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1407</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by nil</title>
+      <description>&lt;p&gt;well put.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 13:19:12 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b0327015-1453-4643-a681-7b661d82ea2c</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1406</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by josh</title>
+      <description>&lt;p&gt;Thanks for being the voice of reason. We don&amp;#8217;t need anymore gasoline thrown on fires for a while.&lt;/p&gt;
+
+
+	&lt;p&gt;For me, the bottom line is this: if you don&amp;#8217;t treat people with respect, they&amp;#8217;ll stop listening to you. Acting like an asshole is the second fastest way to marginalize yourself. (Lying is the first.)&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 13:15:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9113f3a6-e326-4059-a72e-ea787a92c2e8</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1405</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Jerrett</title>
+      <description>&lt;p&gt;Great post, thanks for saying what needs to be said&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 13:12:56 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ebb1ae0c-09ef-45a4-9ec4-8a4d986f0075</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1404</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by harper</title>
+      <description>&lt;p&gt;I agree 100%. I hope that people see your post and see that rails people are not all like DHH and his mass of fanbois.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 12:41:52 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:646532bc-96fa-4e2f-9611-8fe38f6c535b</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1403</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by ThatAnonymousGuy</title>
+      <description>&lt;p&gt;I wish I could write like you! well said.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 10:14:09 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:dac88152-04f7-436a-8063-3c49f445088d</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1402</link>
+    </item>
+    <item>
+      <title>"On Twitter, Rails, and Community" by Pius</title>
+      <description>&lt;p&gt;Kudos.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 10:06:47 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4bd8b0cb-6bf9-4929-8ae4-a6db230de6a3</guid>
+      <link>http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community#comment-1401</link>
+    </item>
+  </channel>
+</rss>

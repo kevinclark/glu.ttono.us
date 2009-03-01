@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Problems with SQLite3 and Migrations</title>
+    <link>http://glu.ttono.us/articles/2005/10/20/problems-with-sqlite3-and-migrations</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Problems with SQLite3 and Migrations</title>
+      <description>&lt;p&gt;I love migrations. I really do. Its an elegant way to describe your database and be able to deploy on several types of systems. Unfortunately, I can&amp;#8217;t seem to get these little gems to work quite right with SQLite3.&lt;/p&gt;
+
+&lt;p&gt;Adding and removing tables and columns seems to work, but renaming columns does not. Can anyone verify these results? I&amp;#8217;m going to dig a little deeper and see if I can come up with a fix.&lt;/p&gt;
+
+&lt;p&gt;Update:
+Note that I have tested this on 0.13.1 and 0.14.1.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s the migration:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;RenameVisibilityToVisible&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&lt;/span&gt; &lt;span class="constant"&gt;ActiveRecord&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;Migration&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.up&lt;/span&gt;
+    &lt;span class="ident"&gt;rename_column&lt;/span&gt; &lt;span class="symbol"&gt;:categories&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:visibility&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:visible&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.down&lt;/span&gt;
+    &lt;span class="ident"&gt;rename_column&lt;/span&gt; &lt;span class="symbol"&gt;:categories&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:visible&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:visibility&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and the logs from the migration:&lt;/p&gt;
+
+&lt;pre&gt;
+Migrating to RenameVisibilityToVisible (6)
+  SQL (0.001381)   PRAGMA table_info(categories)
+  SQL (0.001412)   PRAGMA table_info(categories)
+  SQL (0.001140)   CREATE TEMPORARY TABLE altered_categories
+(id INTEGER PRIMARY KEY NOT NULL, parent_id integer,
+name varchar(255), visibility boolean DEFAULT 't', group_id integer) 
+  SQL (0.000172)   PRAGMA index_list(categories)
+  SQL (0.001005)   DROP TABLE categories
+  SQL (0.001425)   PRAGMA table_info(altered_categories)
+  SQL (0.001418)   PRAGMA table_info(altered_categories)
+  SQL (0.000563)   CREATE TABLE categories 
+(id INTEGER PRIMARY KEY NOT NULL, parent_id integer,
+name varchar(255), visibility boolean DEFAULT 't', group_id integer) 
+  SQL (0.000179)   PRAGMA index_list(altered_categories)
+  SQL (0.000251)   DROP TABLE altered_categories
+  SQL (0.004423)   UPDATE schema_info SET version = 6
+Reached target version: 6
+&lt;/pre&gt;</description>
+      <pubDate>Thu, 20 Oct 2005 09:41:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8220c09d6566137e38b36d09abd8cad5</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/20/problems-with-sqlite3-and-migrations</link>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/30</trackback:ping>
+    </item>
+  </channel>
+</rss>

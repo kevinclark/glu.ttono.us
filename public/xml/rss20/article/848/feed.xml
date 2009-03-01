@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: A Guide a Week: Lets go interactive</title>
+    <link>http://glu.ttono.us/articles/2006/05/17/a-guide-a-week-lets-go-interactive</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>A Guide a Week: Lets go interactive</title>
+      <description>&lt;p&gt;I&amp;#8217;ve decided I&amp;#8217;d like to pay more attention to my blog. I&amp;#8217;ve really enjoyed writing guides to different facets of Rails and want to continue to do so. I also want to keep the (mostly) silent masses entertained and learning, so lets make this a bit more interactive.&lt;/p&gt;
+
+&lt;p&gt;Here, the deal: you write in on what you&amp;#8217;d like to learn for the week. Rails, testing, the core codebase, it&amp;#8217;s all in the air. I&amp;#8217;ll pick the subject that seems best and release (hopefully) an article on Monday. For ideas to be up for consideration they will need to be in by the previous monday.&lt;/p&gt;
+
+&lt;p&gt;Submissions should go to kevin dot clark at gmail dot com, and do me a favor and start the subject line with [idea] so I can filter them nicely.&lt;/p&gt;
+
+&lt;p&gt;This starts now, so get your submissions in by Monday (5/22) for the first entry on the 29th.&lt;/p&gt;</description>
+      <pubDate>Wed, 17 May 2006 17:06:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:46181c03-4fb7-48ae-8a3b-e872228cf146</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/17/a-guide-a-week-lets-go-interactive</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

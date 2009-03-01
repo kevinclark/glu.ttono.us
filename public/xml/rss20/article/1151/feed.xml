@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The RubyConf Express</title>
+    <link>http://glu.ttono.us/articles/2006/09/08/the-rubyconf-express</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The RubyConf Express</title>
+      <description>&lt;p&gt;A few of the &lt;a href="http://sdruby.com"&gt;sd.rb&lt;/a&gt;ers are planning to take the train to Denver next month. The trip will take about a day and a half. I&amp;#8217;m planning to go. The view should be great and it&amp;#8217;ll give me some time to work on my presentation if needed.&lt;/p&gt;
+
+&lt;p&gt;The train &lt;em&gt;does&lt;/em&gt; go through LA, so if you&amp;#8217;re in the Southern California area this may be right up your alley.&lt;/p&gt;
+
+&lt;p&gt;More information can be found at Patrick Crowley&amp;#8217;s blog. So go check out &lt;a href="http://mokolabs.com/2006/09/08/the-rubyconf-express/"&gt;the RubyConf Express!&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Fri, 08 Sep 2006 16:20:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:32865783-9d5d-4ac8-885c-28786c03cff9</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/08/the-rubyconf-express</link>
+      <category>Ruby</category>
+      <category>sd.rb</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"The RubyConf Express" by Patrick Crowley</title>
+      <description>&lt;p&gt;Have we been slacking off or something, Chris? ;)&lt;/p&gt;</description>
+      <pubDate>Fri, 08 Sep 2006 18:29:10 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6303b074-d57e-4a02-9d9f-dbb04c901ad0</guid>
+      <link>http://glu.ttono.us/articles/2006/09/08/the-rubyconf-express#comment-1154</link>
+    </item>
+    <item>
+      <title>"The RubyConf Express" by Chris</title>
+      <description>&lt;p&gt;Oh awesome I&amp;#8217;ve been waiting for more from SD.rb.  Finally!&lt;/p&gt;</description>
+      <pubDate>Fri, 08 Sep 2006 17:46:31 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7e25e8ef-a2b5-4db5-91f3-5e7eef29d9b8</guid>
+      <link>http://glu.ttono.us/articles/2006/09/08/the-rubyconf-express#comment-1153</link>
+    </item>
+  </channel>
+</rss>

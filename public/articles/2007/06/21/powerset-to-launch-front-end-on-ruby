@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Powerset to Launch Front-end on Ruby</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Powerset to Launch Front-end on Ruby"
+    dc:identifier="http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby"
+    dc:description="Spread the word on digg Powerset is fairly well-known in the Ruby community, but there&amp;#8"
+    dc:creator="kevin"
+    dc:date="2007-06-21T16:01:27-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/1463" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Powerset to Launch Front-end on Ruby</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Thu, 21 Jun 2007 16:41:00 GMT">Thu, 21 Jun 2007 16:41:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p><strong><a href="http://digg.com/programming/Powerset_to_Launch_Front_end_on_Ruby">Spread the word on digg</a></strong></p>
+
+<p><a href="http://powerset.com" title="Powerset Homepage">Powerset</a> is fairly well-known in the Ruby community, but there&#8217;s a certain amount of confusion as to what we use it for. As a consequence, I&#8217;m regularly asked what the front end is going to be written in, and just as regularly have to leave the question unanswered. But today I&#8217;m happy to announce that <strong>we are, in fact, launching our <em>front-end</em> on Ruby.</strong></p>
+
+<p>Cool, huh? For everyone&#8217;s sanity (and in avoidance of some of the flame wars to ensue), do note that we are going to be using <em>Ruby</em> (the language) but not necessarily <em>Ruby on Rails</em> (the web framework).</p>
+
+<p>In the spirit of Powerset&#8217;s <a href="http://www.blognewcomb.com/blog/2007/06/powerlabs_the_first_screenshot.html" title="Powerlabs' First Screenshot">new</a> <a href="http://blog.powerset.com/2007/6/8/politicians-who-died-in-office" title="Politicians Who Died in Office">found</a> <a href="http://blog.powerset.com/2007/6/16/what-did-steve-jobs-say-about-the-ipod" title="What did Steve Jobs say about the iPod?">openness</a>, I&#8217;d like to take some time to explain why we&#8217;re making this decision where others might not.</p>
+
+<h2>Why Ruby?</h2>
+
+<h3>1. We&#8217;ve already got the brains</h3>
+
+<p>One thing we haven&#8217;t kept secret is that we&#8217;ve hired some of the <a href="http://rubyisawesome.com/" title="Tom Werner">best</a> <a href="http://vandev.com/" title="Chris Van Pelt">Ruby</a> <a href="http://kirindave.tumblr.com/" title="Dave Fayram">developers</a> <a href="http://www.workingwithrails.com/person/851-toby-sterrett" title="Toby Sterrett">around</a>. Our total number of day in day out Ruby developers is somewhere around 10, and I&#8217;m constantly humbled to be working with this team. We&#8217;ve got the people and they have the skills, so it makes sense to apply them.</p>
+
+<p><img src="http://farm2.static.flickr.com/1412/577677982_7f43f5943f.jpg" alt="The part of Powerset Ruby we could round up"/></p>
+
+<h3>2. Ruby is already being used throughout the company</h3>
+
+<p>We&#8217;ve always spoken in general terms about how much Ruby is being used internally, but let&#8217;s get specific: a substantial part of our infrastructure is being written in Ruby or being accessed through Ruby services. Our scientists use Ruby to interact with our core language technology. Our packaging infrastructure is Ruby. A big portion of our system administration work is all done with Ruby. Frankly, we as an organization use Ruby a whole heck of a lot.</p>
+
+<p>Additionally, all of our product demos and prototypes are also in Ruby. We&#8217;ve got an interesting mix of <a href="http://www.rubyonrails.org/" title="Ruby on Rails">Rails</a>, <a href="http://merb.devjavu.com/" title="Merb">Merb</a> and <a href="http://redhanded.hobix.com/bits/campingAMicroframework.html" title="Camping">Camping</a> apps (depending on the scope of the project) connecting to tiny Ruby services which hook into our various back-end systems. Day to day, the majority of the product team is hacking in Ruby in some capacity.</p>
+
+<h3>3. We&#8217;re not worried about scaling</h3>
+
+<p>So, inevitably, whenever we talk about Ruby or Rails scaling these days someone brings up <a href="http://twitter.com">Twitter</a> and its <a href="http://www.slideshare.net/Blaine/scaling-twitter" title="Blaine's Scaling Twitter Slides from SVRC">scaling</a> <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/" title="Alex Payne's Interview">problems</a> in the past. Twitter is right down the block from our offices and I know several of the devs personally, so before we made a final decision I arranged a sit down with Twitter&#8217;s lead developer, Blaine Cook, to talk about the situation. Blaine was kind enough to let me bring along our Search Architect (and former search architect at Yahoo!) Chad Walters , our Head of Product Scott Prevost, and our COO Steve Newcomb, to poke and prod and get their questions answered. <strong>The simple fact is that Ruby wasn&#8217;t the source of Twitter&#8217;s woes.</strong> As it often happens with <a href="http://www.alexa.com/data/details/traffic_details?site0=twitter.com&amp;site1=&amp;site2=&amp;site3=&amp;site4=&amp;y=p&amp;z=0&amp;h=300&amp;w=610&amp;range=6m&amp;size=Medium&amp;url=usopen.com" title="Twitter's Growth on Alexa">rapidly growing sites</a>, they ran into architectural problems. Some design decisions don&#8217;t hurt until they reach a massive scale and at that point you have to rethink your approach. In an email he writes:</p>
+
+<blockquote>
+    <p>For us, it&#8217;s really about scaling horizontally - to that end, Rails and 
+     Ruby haven&#8217;t been stumbling blocks, compared to any other language or 
+     framework. The performance boosts associated with a &#8220;faster&#8221; language would 
+     give us a 10-20% improvement, but thanks to architectural changes that Ruby 
+     and Rails happily accommodated, Twitter is 10000% faster than it was in 
+     January</p>
+</blockquote>
+
+<p>This is great news for Twitter, but even better for us because we don&#8217;t have the bottle necks that they&#8217;ve struggled with &#8211; databases, instant messaging servers, and regularly recycling cache systems &#8211; which makes scaling horizontally much much smoother. At that point, our scaling issue doesn&#8217;t concern Ruby. For a search engine, the front-end is largely just a templating system and the real work happens in the back when we process your query.</p>
+
+<h2>What does this mean for the community?</h2>
+
+<p>When writing this article, at some point I had to sit down and ask myself why anyone should care we&#8217;re adopting Ruby for the front-end. For me, it comes down to the fact that we&#8217;re good for the community as a whole.</p>
+
+<p>First off, the fact that Powerset is deploying on Ruby means you&#8217;ve got one more high traffic site (potentially very high traffic) using Ruby in production. It&#8217;s one more case study, and one more example that Ruby as a whole is ready for the big show. </p>
+
+<p>Personally, I think the more interesting and useful thing to take away from this is that as we do the heavy lifting, building up infrastructure around all the aspects of Ruby development and deployment in the company, we&#8217;re selecting large chunks to be open-sourced. I&#8217;ve got a list of things I&#8217;d love to put out into the wild (which is encouraged, and actually suggested by my manager. Man, I love this place) as soon as I can find the time. Already <a href="http://rubyisawesome.com/" title="Tom Werner">Tom Werner</a> and <a href="http://kirindave.tumblr.com/" title="Dave Fayram">Dave Fayram</a> have pushed out Ruby to Erlang bindings and a sweet little (in-development) web server called <a href="http://code.google.com/p/fuzed/" title="Fuzed Codebase">Fuzed</a>, I&#8217;ve gotten to hack at <a href="http://merb.devjavu.com/" title="Merb">Merb</a>, and a fair about of <a href="http://www.rubyonrails.org/" title="Ruby on Rails">Rails</a> patches have come directly from work in-house. Hopefully the community will be able to benefit from our code as much as we have.</p>
+
+<p>Obviously we don&#8217;t have a search product open to the public yet, but we&#8217;ll be launching <a href="http://labs.powerset.com/" title="Powerlabs">Powerlabs</a> in September.  In Powerlabs, you&#8217;ll be able to play with our products and give us feedback.  If you want to keep track of what Powerset is doing, <a href="http://powerset.com" title="Powerset Homepage">sign up</a>.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comments">4 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-1466"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1466'); }"  onmouseout="Element.hide('admin_comment_1466');" >
+  <div id="admin_comment_1466" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1466', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1466&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1463/edit/1466" class="admintools">edit</a></div>
+  <a name="comment-1466"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=bc7e893b6d4605000478c871b7ce8862&amp;size=60" />
+  <cite><strong><a href="http://darwinweb.net/">Gabe da Silveira</a></strong> </cite> said 23 minutes later:<br />
+  <p>Yeah, the whole scaling debate is getting so tired.  I can see how it was a legitimate question (among many) when Rails first got hot, but these days it keeps popping up as some kind of defense-mechanism from entrenched J2EE guys.</p>
+
+
+	<p>The bottom line is architectures scale, not languages.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1466";
+//--></script>
+<!-- mmc mmid:1466 mmdate:2007-06-21 13:03:50 mmauthor:Gabe da Silveira -->
+</li>
+<li id="comment-1467"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1467'); }"  onmouseout="Element.hide('admin_comment_1467');" >
+  <div id="admin_comment_1467" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1467', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1467&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1463/edit/1467" class="admintools">edit</a></div>
+  <a name="comment-1467"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://talklikeaduck.denhaven2.com/">Rick DeNatale</a></strong> </cite> said 1 day later:<br />
+  <p>Absolutely.  I&#8217;ve seen this same story before.</p>
+
+
+	<p><a href="http://talklikeaduck.denhaven2.com/articles/2007/06/22/good-news">http://talklikeaduck.denhaven2.com/articles/2007/06/22/good-news</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1467";
+//--></script>
+<!-- mmc mmid:1467 mmdate:2007-06-22 18:05:22 mmauthor:Rick DeNatale -->
+</li>
+<li id="comment-1468"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1468'); }"  onmouseout="Element.hide('admin_comment_1468');" >
+  <div id="admin_comment_1468" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1468', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1468&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1463/edit/1468" class="admintools">edit</a></div>
+  <a name="comment-1468"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>John Benjamin</strong> </cite> said 3 days later:<br />
+  <p>Why create fuzed?  Does it do something mongrel doesn&#8217;t?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1468";
+//--></script>
+<!-- mmc mmid:1468 mmdate:2007-06-24 15:50:08 mmauthor:John Benjamin -->
+</li>
+<li id="comment-1469"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1469'); }"  onmouseout="Element.hide('admin_comment_1469');" >
+  <div id="admin_comment_1469" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1469', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1469&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1463/edit/1469" class="admintools">edit</a></div>
+  <a name="comment-1469"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 4 days later:<br />
+  <p>John: Short answer: yes. Long answer: you&#8217;ll have to talk to Dave and Tom about it. I&#8217;m always excited about it when they explain it to me, and I&#8217;ve always forgotten exactly what was so exciting the next week.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1469";
+//--></script>
+<!-- mmc mmid:1469 mmdate:2007-06-25 23:22:01 mmauthor:Kevin Clark -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/1463/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="1463";
+//--></script>
+<!-- mmp mmid:1463 mmdate:2007-06-20 21:52:15 mmurl:/articles/2007/06/21/powerset-to-launch-front-end-on-ruby mmtitle:Powerset to Launch Front-end on Ruby -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

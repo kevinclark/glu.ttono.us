@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Snippet: Multi-Search and Replace</title>
+    <link>http://glu.ttono.us/articles/2007/04/16/snippet-multi-search-and-replace</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Snippet: Multi-Search and Replace</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;template&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class="constant"&gt;EOT&lt;/span&gt;&lt;span class="string"&gt;
+%HEAD%
+%SUBHEAD%
+
+%BODY%
+
+%FOOT%
+&lt;/span&gt;&lt;span class="constant"&gt;EOT&lt;/span&gt;
+
+&lt;span class="ident"&gt;replacements&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;{/&lt;/span&gt;&lt;span class="regex"&gt;%HEAD%&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;A title&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;%SUBHEAD%&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;A subhead&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt;
+                &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;%BODY%&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Something about ruby perhaps&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; 
+                &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;%FOOT%&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Creative Commons: BY-NC-SA&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;}&lt;/span&gt;
+
+&lt;span class="ident"&gt;replacements&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;search&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;replace&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+  &lt;span class="ident"&gt;template&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;gsub!&lt;/span&gt; &lt;span class="ident"&gt;search&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;replace&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="ident"&gt;puts&lt;/span&gt; &lt;span class="ident"&gt;template&lt;/span&gt; 
+&lt;span class="comment"&gt;# =&amp;gt;&lt;/span&gt;
+&lt;span class="comment"&gt;# A title&lt;/span&gt;
+&lt;span class="comment"&gt;# A subhead&lt;/span&gt;
+&lt;span class="comment"&gt;# &lt;/span&gt;
+&lt;span class="comment"&gt;# Something about ruby perhaps&lt;/span&gt;
+&lt;span class="comment"&gt;# &lt;/span&gt;
+&lt;span class="comment"&gt;# Creative Commons: BY-NC-SA&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Mon, 16 Apr 2007 15:52:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6ca8a05c-a2cf-4316-b7d1-5fa663bc4037</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/04/16/snippet-multi-search-and-replace</link>
+      <category>Ruby</category>
+    </item>
+  </channel>
+</rss>

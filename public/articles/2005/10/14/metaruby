@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : MetaRuby</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/17"
+    dc:title="MetaRuby"
+    dc:identifier="http://glu.ttono.us/articles/2005/10/14/metaruby"
+    dc:description="Eric Hodel Once upon a time&amp;#8230; Eric and Ryan were hacking some Ruby related C And it sucked * MetaRuby Will implement Ruby in Ruby Core libarireis, parser, interpeter &lt;"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:12-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/17" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>MetaRuby</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sat, 15 Oct 2005 02:54:00 GMT">Sat, 15 Oct 2005 02:54:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <h3>Eric Hodel</h3>
+
+<h4>Once upon a time&#8230;</h4>
+
+<ul>
+<li>Eric and Ryan were hacking some Ruby related C</li>
+<li>And it sucked</li>
+* 
+</ul>
+
+<h4>MetaRuby</h4>
+
+<ul>
+<li>Will implement Ruby in Ruby
+<ul>
+<li>Core libarireis, parser, interpeter</li>
+</ul></li>
+</ul>
+
+<h4>MetaRuby Architecture</h4>
+
+<ul>
+<li>Parser</li>
+<li>Interpeter</li>
+<li>GC</li>
+<li>&#8230;</li>
+</ul>
+
+<h4>Why?</h4>
+
+<ul>
+<li>Writing Ruby internals in C requries mental context switch every time you change bwetween RUby and C</li>
+</ul>
+
+<p>Example of C code vs Ruby code.</p>
+
+<ul>
+<li>More Familiar</li>
+<li>More approachable</li>
+<li>Less to do
+<ul>
+<li>No NULL termination</li>
+<li>No tainting or freezing</li>
+</ul></li>
+</ul>
+
+<h4>Inspirationsal Projects</h4>
+
+<ul>
+<li>Sqeak Smalltalk</li>
+<li>Self</li>
+<li>Pascal, Modula-2, Oberon by Wirth</li>
+<li>All of these are written in themselves</li>
+</ul>
+
+<h4>Related Projects</h4>
+
+<ul>
+<li>Matju&#8217;s MetaRuby</li>
+<li>YARV</li>
+<li>JRuby</li>
+</ul>
+
+<h4>Matju&#8217;s MetaRuby</h4>
+
+<ul>
+<li>Different goal much more complex</li>
+<li>Abstracted core classes</li>
+</ul>
+
+<h4>YARV</h4>
+
+<ul>
+<li>Ruby interpreter replacement</li>
+</ul>
+
+<h4>Rubidium</h4>
+
+<ul>
+<li>Ruby interpreter replacement</li>
+<li>Rubidium is an optimizing Ruby interpreter</li>
+</ul>
+
+<h4>Rubytests</h4>
+
+<ul>
+<li>Unit tests for Ruby</li>
+<li>Not comprehensive enough for our goals</li>
+<li>Not much work making it more complex</li>
+</ul>
+
+<h4>JRuby</h4>
+
+<ul>
+<li>A 1.8.2 compatible Ruby interpreter</li>
+<li>Most builtin Ruby classes provided</li>
+<li>Support for interfacing and defining Java classes in Ruby</li>
+<li>Uses Rubytests</li>
+</ul>
+
+<h4>Current Work</h4>
+
+<h4>Methodology</h4>
+
+<ul>
+<li>Generate a stubbed class to overlay</li>
+<li>Drive unit tests to failure
+<ul>
+<li>Identify core methods (primitives) that have to exist</li>
+<li>Fix bad tests that pass despite no implementation</li>
+</ul></li>
+<li>Drive all tests to green
+<ul>
+<li>Hack, hack, hack</li>
+</ul></li>
+</ul>
+
+<h4>Passing Tests</h4>
+
+<ul>
+<li>TrueClass, FalseClass and NilClass</li>
+<li>Time</li>
+<li>Range</li>
+<li>NilClass</li>
+<li>Array</li>
+<li>String</li>
+</ul>
+
+<h4>Overlaid Classes</h4>
+
+<p>These classes overlay their core classes using Ruby&#8217;s C allocation and initialization methods replacing as many methods as possible</p>
+
+<ul>
+<li>TrueClass</li>
+<li>NilClass</li>
+<li>Array</li>
+<li>String</li>
+</ul>
+
+<h4>Replaced Classes</h4>
+
+<ul>
+<li>Time</li>
+<li>Range</li>
+<li>Hash</li>
+</ul>
+
+<h4>Rubytests</h4>
+
+<ul>
+<li>Stale
+<ul>
+<li>Mostly tests Ruby 1.6 language features</li>
+</ul></li>
+<li>Low test coverage</li>
+<li>Not fully converted to Test::Unit
+<ul>
+<li>Way too much code from pre-testunit</li>
+</ul></li>
+</ul>
+
+<h4>Test::Unit</h4>
+
+<ul>
+<li>Needs lots of methods to work</li>
+<li>Too complicated to refactor</li>
+<li>Working on core classes is hard</li>
+</ul>
+
+<h4>Future Work</h4>
+
+<h4>Primitives</h4>
+
+<ul>
+<li>Will be automatically translated to C</li>
+<li>What is a primitive?
+<ul>
+<li>Implement as much as possible in Ruby</li>
+<li>Whatever is left becomes a primitive
+** Unless we can break it down</li>
+</ul></li>
+<li>Choosing primitives is a discovery process</li>
+</ul>
+
+<h4>Ruby2c Translation</h4>
+
+<ul>
+<li>Ryan will cover this a lot more</li>
+<li>Only necessary for primitives</li>
+</ul>
+
+<h4>Memory Allocation (Objects)</h4>
+
+<ul>
+<li>Currently Array and String sit on top of C Ruby</li>
+<li>Write object allocation in pure Ruby using current memory system for all objects</li>
+<li>Then we will replace the memory system with a pure Ruby system</li>
+</ul>
+
+<h4>Replace core ruby library</h4>
+
+<ul>
+<li>Works!</li>
+<li>Well.. kind of..</li>
+<li>Compiles</li>
+<li>Links!</li>
+<li>Segfaults!</li>
+<li>Needs alot of ping pong</li>
+</ul>
+
+<h4>Far Future Work</h4>
+
+<p>h5. The Groveling Commences</p>
+
+<h4>Parser</h4>
+
+<ul>
+<li>Ripper is our best target</li>
+<li>Almost entirely Ruby already</li>
+<li>Just one file is in C, which we can rewrite</li>
+</ul>
+
+<h4>Object System &amp; Garbage Collector</h4>
+
+<ul>
+<li>Steal ideas from Sqeuak Smalltalk, Self, current Ruby</li>
+<li>In theory it should be easy to do</li>
+<li>In reality it will be hard to do well</li>
+<li>We&#8217;d love someone to work on this</li>
+</ul>
+
+<h4>Interpreter</h4>
+
+<ul>
+<li>YARV or eval.c (Ruby 1.8)?</li>
+<li>Rubidium?</li>
+<li>Needs to we written in Ruby</li>
+<li>We&#8217;d love someone to work on this</li>
+</ul>
+
+<h4>C Extensions &amp; C Standard Library</h4>
+
+<ul>
+<li>Why are you writing pure C anyways?
+<ul>
+<li>Use RubyInline or DL</li>
+</ul></li>
+<li>Probably need Ruby/C compatability stubs
+<ul>
+<li>Easy to generate</li>
+</ul></li>
+<li>Will need to follow current Ruby/C naming conventions</li>
+</ul>
+
+<h4>Array#fill</h4>
+
+<p>Eight ways to call</p>
+
+<ul>
+<li>array.fill(obj)</li>
+<li>array.fill(obj, start[, length])</li>
+<li>array.fill(obj.range)</li>
+<li>array.fill {|index| block }</li>
+<li>array.fill(start&#8230;</li>
+</ul>
+
+<h4>&#8220;foo&#8221;.sub(/f(o)o/) { $1 }</h4>
+
+<ul>
+<li>$1 is a &#8220;magick&#8221; read only global</li>
+<li>$1 can&#8217;t be set from pure Ruby</li>
+<li>So the interpreter needs to help us out</li>
+<li>Applies to all match variables</li>
+</ul>
+
+<h4>String#split</h4>
+
+<ul>
+<li>Easy</li>
+<li>&#8220;a b&#8221;.split # => [&#8216;a&#8217;, &#8216;b&#8217;]</li>
+<li>&#8220;a|b&#8221;.split # => [</li>
+<li><p>&#8220;a1b&#8221;.split(/*\d)/) # => [&#8216;a&#8217;,&#8217;1&#8217;,&#8217;c&#8217;]</p></li>
+<li><p>Hard</p></li>
+</ul>
+
+<h4>Time.rb Needs Metal</h4>
+
+<ul>
+<li>Easy
+<ul>
+<li>the_time.month</li>
+<li>the<em>time.to</em>f</li>
+<li>etc</li>
+</ul></li>
+<li>Hard
+<ul>
+<li>Time.now requries calling libc&#8217;s gettime method</li>
+<li>Currently we have libcwrap.rb that uses RubyInline to call into C funcitons</li>
+</ul></li>
+</ul>
+</div>
+<p class="meta">
+  <a href="/articles/2005/10/14/metaruby#comments">2 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/metaruby#trackbacks">2 trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-51"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_51'); }"  onmouseout="Element.hide('admin_comment_51');" >
+  <div id="admin_comment_51" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/51', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-51&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/17/edit/51" class="admintools">edit</a></div>
+  <a name="comment-51"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Jordan</strong> </cite> said 26 minutes later:<br />
+  <p>Good stuff Kev.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="51";
+//--></script>
+<!-- mmc mmid:51 mmdate:2005-10-14 23:19:54 mmauthor:Jordan -->
+</li>
+<li id="comment-52"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_52'); }"  onmouseout="Element.hide('admin_comment_52');" >
+  <div id="admin_comment_52" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/52', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-52&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/17/edit/52" class="admintools">edit</a></div>
+  <a name="comment-52"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Ulysses</strong> </cite> said about 2 hours later:<br />
+  <p>OH MY GOD THAT IS RADICAL!!!</p>
+
+
+	<p>DID YOU KNOW YOU CAN ASSIGN TO $~ WHICH SETS $1</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="52";
+//--></script>
+<!-- mmc mmid:52 mmdate:2005-10-15 00:44:40 mmauthor:Ulysses -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/17</span>
+    </p>
+  <ol class="trackback-list" id="trackbackList"><li id="trackback-436" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_436'); }"  onmouseout="Element.hide('admin_trackback_436');" >
+  <div id="admin_trackback_436" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/436', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-436&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/17/edit/436" class="admintools">edit</a></div>
+  <a name="trackback-436"></a>
+  From <strong>solar hydrogen fuel cell</strong><br />
+  <a href="http://telecom.klimaatwijken.be/Solarcell/solar-hydrogen-fuel-cell.php" rel="nofollow">solar hydrogen fuel cell</a><br/>
+  solar hydrogen fuel cell
+</li>
+<li id="trackback-610" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_610'); }"  onmouseout="Element.hide('admin_trackback_610');" >
+  <div id="admin_trackback_610" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/610', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-610&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/17/edit/610" class="admintools">edit</a></div>
+  <a name="trackback-610"></a>
+  From <strong>arcelor</strong><br />
+  <a href="http://banking.newsbites.be/arcelor/arcelor.php" rel="nofollow">arcelor</a><br/>
+  arcelor
+</li>
+</ol>
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/17/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/17" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="17";
+//--></script>
+<!-- mmp mmid:17 mmdate:2005-10-14 22:54:00 mmurl:/articles/2005/10/14/metaruby mmtitle:MetaRuby -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2005/10/14/metaruby" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

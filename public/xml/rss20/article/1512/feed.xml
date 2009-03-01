@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Rubinius Runs Mongrel</title>
+    <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Rubinius Runs Mongrel</title>
+      <description>&lt;p&gt;Reposted from my message to rubinius-dev. Congrats to the whole Rubinius team. This was entirely a group effort, and one hell of an achievement.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;pre&gt;Here's the first Mongrel handler running on Rubinius:
+
+http://pastie.caboo.se/paste/asset/126441/Picture_4.png
+
+From this code:
+
+$:.unshift "/Users/kev/code/mongrel/mongrel-1.1.1/lib"
+
+puts "Requiring mongrel"
+require 'mongrel'
+
+class HelloHandler &lt; Mongrel::HttpHandler
+ def process(request, response)
+   response.start(200) do |head, out|
+     head["Content-Type"] = "text/html"
+     out.write "Hello World! I'm running on Rubinius!"
+   end
+ end
+end
+
+server = Mongrel::HttpServer.new("0.0.0.0", 3000)
+puts "Started Server"
+server.register("/hello", HelloHandler.new)
+puts "Registered handler"
+t = server.run
+t.join
+
+***THE CATCH (as this may be viewed by many people)***
+
+This isn't completely complete. rb_global_variable was #define'd out
+to do nothing (so no garbage collection on the global vars), and there
+was a slight modification from the trunk to make global aliasing
+ignore the fact that the globals just weren't there. Mongrel's
+http11.c was also _slightly (very very slightly)_ modified to use the
+rb_str_get_char_* methods we've decided to move to from RSTRING()-&gt;ptr
+and RSTRING()-&gt;len, and I haven't gotten around to defining ALLOC_N
+yet, so it was changed to a simple malloc. That's it though.
+
+And it seems to run. And I feel like I need to run around the block.
+
+It's in 9976301ba.
+
+WOOOOOOOOOOOOOOOOOOOOO!&lt;/pre&gt;&lt;/blockquote&gt;</description>
+      <pubDate>Mon, 10 Dec 2007 04:40:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:a60e8ee4-0637-4a0c-baa4-63ce75278354</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel</link>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"Rubinius Runs Mongrel" by Tom Mornini</title>
+      <description>&lt;p&gt;Terrific work, Kevin.&lt;/p&gt;
+
+
+	&lt;p&gt;Thank you so much for your work on Rubinius!&lt;/p&gt;</description>
+      <pubDate>Tue, 11 Dec 2007 02:52:35 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:93535062-7b2b-419c-8313-39c12467a90f</guid>
+      <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel#comment-1516</link>
+    </item>
+    <item>
+      <title>"Rubinius Runs Mongrel" by Dr Nic</title>
+      <description>&lt;p&gt;Champion work. Now we just need the Turtles &amp;lt; Rubinius &amp;lt; Space Shuttle results and Evan&amp;#8217;s RailsConf Europe slides will be validated.&lt;/p&gt;</description>
+      <pubDate>Mon, 10 Dec 2007 16:43:52 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:0857eb50-b03c-408c-a0da-9d01a0a44b53</guid>
+      <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel#comment-1515</link>
+    </item>
+    <item>
+      <title>"Rubinius Runs Mongrel" by Ezra</title>
+      <description>&lt;p&gt;You so rock Kevin.&lt;/p&gt;</description>
+      <pubDate>Mon, 10 Dec 2007 14:13:43 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d352ed03-17c0-4c9b-b640-7aa7d051eff3</guid>
+      <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel#comment-1514</link>
+    </item>
+    <item>
+      <title>"Rubinius Runs Mongrel" by Tim Lucas</title>
+      <description>&lt;p&gt;Sweet work. All this Rubinius work is like a little chrissy pressie for us all!&lt;/p&gt;</description>
+      <pubDate>Mon, 10 Dec 2007 08:22:19 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:39e3ee93-1b61-4e8a-99e8-93e70d9e9d02</guid>
+      <link>http://glu.ttono.us/articles/2007/12/10/rubinius-runs-mongrel#comment-1513</link>
+    </item>
+  </channel>
+</rss>

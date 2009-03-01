@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Many to Many Fixture Breakage</title>
+    <link>http://glu.ttono.us/articles/2006/08/09/many-to-many-fixture-breakage</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Many to Many Fixture Breakage</title>
+      <description>&lt;p&gt;So, I spent about 3 hours tracking down a very strange bug in fixtures last night. It turns out that if you have a class defined that is the constantized version of your fixtures it will try to load columns in that class whether it is an AR::Base class or not.&lt;/p&gt;
+
+&lt;p&gt;So, I&amp;#8217;ve got an Assertion model, Helper model, and Assertions controller (I&amp;#8217;m doing the REST thing on this one). Bundled with the Assertions controller is the AsssertionsHelper. I also have a simple (very very simple) many to many relationship between Assertion and Helper. This means that the join table is called &lt;code&gt;assertions_helpers&lt;/code&gt; and it&amp;#8217;s constantized form is (that&amp;#8217;s right!) AssertionsHelper. This is where things go bad.&lt;/p&gt;
+
+&lt;p&gt;The error looks something like this:&lt;/p&gt;
+
+&lt;pre&gt;NoMethodError: undefined method `columns_hash' for AssertionsHelper:Module&lt;/pre&gt;
+
+&lt;p&gt;I&amp;#8217;m going to add a patch to trac. In the meantime, don&amp;#8217;t get caught with this very specific bug.&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Aug 2006 14:13:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bc6b3f45-a3bd-4a3b-b763-fa254355475f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/09/many-to-many-fixture-breakage</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Matz's keynotes</title>
+    <link>http://glu.ttono.us/articles/2005/10/16/matzs-keynotes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Matz's keynotes</title>
+      <description>&lt;h2&gt;Keynote Address - &lt;span style="text-decoration: line-through"&gt;Why Arrows are Bad&lt;/span&gt; Visions for the future&lt;/h2&gt;
+
+&lt;h2&gt;Yukihiro &amp;#8220;Matz&amp;#8221; Matsumoto&lt;/h2&gt;
+
+&lt;p&gt;Thank you, people, for attending here. I&amp;#8217;d like to talk about the vision for the future. Two years ago, I gave the same kind of title(?).&lt;/p&gt;
+
+&lt;h3&gt;Programming Languages are Now Commodities&lt;/h3&gt;
+
+&lt;p&gt;Like Cars; They are All Good Enough&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Basically Same Structure&lt;/li&gt;
+&lt;li&gt;Difference in Design&lt;/li&gt;
+&lt;li&gt;and Small Functionality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We choose our own brand of language, based on the small differences that we like, personally.&lt;/p&gt;
+
+&lt;h3&gt;Japanese are Good at Making Commodities&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Toyota&lt;/li&gt;
+&lt;li&gt;Honda&lt;/li&gt;
+&lt;li&gt;Sony&lt;/li&gt;
+&lt;li&gt;Panasonic&lt;/li&gt;
+&lt;li&gt;&amp;#8230; and Ruby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Developing Commodities&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Need to be Cheap&lt;/li&gt;
+&lt;li&gt;Design Matter&lt;/li&gt;
+&lt;li&gt;Small Things Matter&lt;/li&gt;
+&lt;li&gt;Need to Keep Moving&lt;/li&gt;
+&lt;li&gt;&amp;#8230;with wild and crazy ideas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The key to developing commodities - they need to be cheap. Ruby is cheap, because it&amp;#8217;s free.&lt;/p&gt;
+
+&lt;p&gt;Toyota develops a new car every six months or so.&lt;/p&gt;
+
+&lt;h3&gt;Since Ruby is Good Enough&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Its OK to try Crazy Ideas&lt;/li&gt;
+&lt;li&gt;If they don&amp;#8217;t work out, just try another&lt;/li&gt;
+&lt;li&gt;Just not to stop moving
+&lt;ul&gt;
+&lt;li&gt;activate community&lt;/li&gt;
+&lt;li&gt;to have FUN!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The real theme of tonight&amp;#8217;s address is&amp;#8230;&lt;/p&gt;
+
+&lt;h2&gt;Wild and Weird Ideas&lt;/h2&gt;
+
+&lt;h3&gt;The New Path&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Yet Another Ruby VM (YARV)&lt;/li&gt;
+&lt;li&gt;1.9 New Feature Testbed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;YARV&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Faster&lt;/li&gt;
+&lt;li&gt;Simpler&lt;/li&gt;
+&lt;li&gt;Native Thread Aware&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ask ko1 There&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll focus on the crazy ideas.&lt;/p&gt;
+
+&lt;h3&gt;1.9 Possible New Features&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;keyword arguments&lt;/li&gt;
+&lt;li&gt;constants&lt;/li&gt;
+&lt;li&gt;multiple assignment&lt;/li&gt;
+&lt;li&gt;eval&lt;/li&gt;
+&lt;li&gt;lambda&lt;/li&gt;
+&lt;li&gt;annotations&lt;/li&gt;
+&lt;li&gt;traits&lt;/li&gt;
+&lt;li&gt;namespace&lt;/li&gt;
+&lt;li&gt;method combination&lt;/li&gt;
+&lt;li&gt;multilingualization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Keyword Arguments&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make method calls more descriptive&lt;/li&gt;
+&lt;li&gt;Order Free Arguments
+&lt;ul&gt;
+&lt;li&gt;Help you save Brain Power&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Keyword Arguments&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;=&lt;/span&gt;&lt;span class="number"&gt;0&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;4&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+   &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=0,c=4&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2,c=4&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=0,c=2&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;3&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2,c=3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Keyword Arguments (2)&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;bar&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;0&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+   &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;alias&lt;/span&gt; &lt;span class="symbol"&gt;:foo&lt;/span&gt; &lt;span class="symbol"&gt;:bar&lt;/span&gt;
+
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt; &lt;span class="comment"&gt;# error! is a mandatory&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# error! no positional argument&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1, b=0&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# error! a is mandatory&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# error! c is not defined&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;All positional arguments go before any named arguments.&lt;/p&gt;
+
+&lt;p&gt;Can have optional default values for positional arguments.&lt;/p&gt;
+
+&lt;p&gt;Cannot have two adjacent commas to represent omitted arguments.&lt;/p&gt;
+
+&lt;p&gt;One goal of this is to replace fragile optional arguments.&lt;/p&gt;
+
+&lt;p&gt;Can specify &amp;#8220;c: :foo&amp;#8221; to represent a default value of symbol :foo.&lt;/p&gt;
+
+&lt;p&gt;Spaces are not allowed before the first &amp;#8216;:&amp;#8217; (i.e., &amp;#8220;c : 1&amp;#8221; is not allowed).&lt;/p&gt;
+
+&lt;h3&gt;Keyword Arguments (3)&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;bar&lt;/span&gt;&lt;span class="punct"&gt;(*&lt;/span&gt;&lt;span class="ident"&gt;rest&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;4&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;0&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;   &lt;span class="punct"&gt;*&lt;/span&gt;&lt;span class="ident"&gt;keys&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;alias&lt;/span&gt; &lt;span class="symbol"&gt;:foo&lt;/span&gt; &lt;span class="symbol"&gt;:bar&lt;/span&gt;
+
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt; &lt;span class="comment"&gt;# rest=[],a=4,b=0,keys={}&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# rest=[1],a=4,b=0,keys={}&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# rest=[{a:1}], a=1,b=0,keys={a:1}&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;  &lt;span class="comment"&gt;# rest = [{a:1,b:2}],a=1,b=2,keys={a:1,b:2}&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# rest=[1,2,{b:2}],a=4,b=2,keys={b:2}&lt;/span&gt;
+ &lt;span class="ident"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;:&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# rest=[{c:2}],a=4,b=0,keys={c:2}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Both *rest and   *keys are optional.  Note that *rest and   *keys name new local variables, so are completely arbitrary.  &lt;/p&gt;
+
+&lt;h3&gt;Keyword Arguments Summary&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Keyword arguments are passed as a Hash at the end of arguments&lt;/li&gt;
+&lt;li&gt;Rest argument (*) contains a keyword hash as well&lt;/li&gt;
+&lt;li&gt;Keyword argument (  *) contains a Hash (without default values)&lt;/li&gt;
+&lt;li&gt;Unspecified keys are allowed if keyword argument is present&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The   *keys hash contributes 1 to arity().&lt;/p&gt;
+
+&lt;p&gt;Chad steps in and stops the madness that ensued.&lt;/p&gt;
+
+&lt;h3&gt;Constants&lt;/h3&gt;
+
+&lt;p&gt;In short, constants will become more like class variables&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;with better appearance&lt;/li&gt;
+&lt;li&gt;with restriction in assignments&lt;/li&gt;
+&lt;li&gt;with warning for direct modification&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Multiple Values&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Too complex to understand&lt;/li&gt;
+&lt;li&gt;Virtually No One on Earth Understands&lt;/li&gt;
+&lt;li&gt;Much simpler rules&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;&amp;#8220;Real&amp;#8221; Multiple Values&lt;/h3&gt;
+
+&lt;p&gt;a la Common Lisp&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Methods can return multiple values&lt;/li&gt;
+&lt;li&gt;Multiple values in ordinary context give the first value&lt;/li&gt;
+&lt;li&gt;Array to Values (RHS *)&lt;/li&gt;
+&lt;li&gt;Values to Array (LHS *)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Multiple Values Example&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt;
+   &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;3&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;a&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt; &lt;span class="comment"&gt;# a=1&lt;/span&gt;
+ &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2    **&lt;/span&gt;
+ &lt;span class="punct"&gt;*&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt; &lt;span class="comment"&gt;# c=[1,2,3]&lt;/span&gt;
+
+ &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2&lt;/span&gt;
+ &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="comment"&gt;# a=[1,2],b=nil    **&lt;/span&gt;
+ &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;*[&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="comment"&gt;# a=1,b=2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;** Are the different behaviors.&lt;/p&gt;
+
+&lt;h3&gt;Multiple Values Example (2)&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt;
+   &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;3&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+ &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;(*&lt;/span&gt;&lt;span class="ident"&gt;args&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+   &lt;span class="ident"&gt;p&lt;/span&gt; &lt;span class="ident"&gt;args&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;())&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; [1]&lt;/span&gt;
+ &lt;span class="ident"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;([&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;])&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; [[1,2]]&lt;/span&gt;
+ &lt;span class="ident"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;(*[&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt;&lt;span class="number"&gt;2&lt;/span&gt;&lt;span class="punct"&gt;])&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; [1,2]&lt;/span&gt;
+ &lt;span class="ident"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;(*&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# error! 1 is not an array&lt;/span&gt;
+ &lt;span class="ident"&gt;output&lt;/span&gt;&lt;span class="punct"&gt;(*&lt;/span&gt;&lt;span class="ident"&gt;multi&lt;/span&gt;&lt;span class="punct"&gt;())&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; ??&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; 
+
+&lt;h3&gt;Eval&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prohibits Optimization&lt;/li&gt;
+&lt;li&gt;Turn it to Keyword&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m not sure if this is a good idea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Lambda&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;An anonymous function&lt;/li&gt;
+&lt;li&gt;Currently arguments are emulated by block parameters&lt;/li&gt;
+&lt;li&gt;But they are different
+&lt;ul&gt;
+&lt;li&gt;number check&lt;/li&gt;
+&lt;li&gt;optional arguments&lt;/li&gt;
+&lt;li&gt;keyword arguments&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[number check == arity check?]&lt;/p&gt;
+
+&lt;h3&gt;Lambda Syntax&lt;/h3&gt;
+
+&lt;p&gt;? args {&amp;#8230;}&lt;/p&gt;
+
+&lt;p&gt;Fill ? as you like most.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;lambda(n=5) {&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;-&gt;(n=5) {&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;^(n=5) {&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;(n=5) {&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;:(n=5){&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;.(n=5){&amp;#8230;}&lt;/li&gt;
+&lt;li&gt;(n=5)-&gt;{&amp;#8230;}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dave Thomas suggests def(n=5) {&amp;#8230;}
+Matz suggests y = def(x=5) end
+Dave suggests lambda(n=5) end be a closure, and def(n=5) end be not.&lt;/p&gt;
+
+&lt;h3&gt;Annotations&lt;/h3&gt;
+
+&lt;p&gt;To declare additional attributes of methods, class, etc.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="comment"&gt;# @require: arg1 &amp;gt;= 10&lt;/span&gt;
+ &lt;span class="comment"&gt;# @overriding: true&lt;/span&gt;
+ &lt;span class="comment"&gt;# @visibility: public&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;arg1&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+   &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Traits&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mix-in can be Complex Sometimes&lt;/li&gt;
+&lt;li&gt;Traits - Mucnh Simpler Solution&lt;/li&gt;
+&lt;li&gt;Make Modules More Like Traits&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Traits (2)&lt;/h3&gt;
+
+&lt;p&gt;Traits are a set of methods&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;can be included to classes&lt;/li&gt;
+&lt;li&gt;can be merged with another trait (+ operator)&lt;/li&gt;
+&lt;li&gt;can exclude methods (- operator)&lt;/li&gt;
+&lt;li&gt;can rename some methods (rename operation)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="constant"&gt;T3&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;T1&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="constant"&gt;T2&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:foo&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:bar&lt;/span&gt;&lt;span class="punct"&gt;])&lt;/span&gt;
+ &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Foo&lt;/span&gt;
+   &lt;span class="ident"&gt;include&lt;/span&gt; &lt;span class="constant"&gt;T3&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;T3 would have all method in t1 except for foo and bar, and would put all of these in the class Foo&lt;/p&gt;
+
+&lt;h3&gt;Traits like Modules&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Merging (+ operator)&lt;/li&gt;
+&lt;li&gt;Excluding (via undef)&lt;/li&gt;
+&lt;li&gt;Renaming (via alias)&lt;/li&gt;
+&lt;li&gt;Duplicate Inclusion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Much Like Traits but Symbolic&lt;/p&gt;
+
+&lt;h3&gt;Symbolic Inclusion&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;Traits&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Foo&lt;/span&gt;
+   &lt;span class="ident"&gt;include&lt;/span&gt; &lt;span class="constant"&gt;Traits&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;Traits&lt;/span&gt;
+   &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;bar&lt;/span&gt;
+   &lt;span class="keyword"&gt;end&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;f&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;Foo&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;
+ &lt;span class="ident"&gt;f&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;bar&lt;/span&gt; &lt;span class="comment"&gt;# should be avaliable&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Namespace&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open class is Too Dangerous
+&lt;ul&gt;
+&lt;li&gt;Global Modification&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Restrict Namespace in a Particular File&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Selector Namespace&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;or something different&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Namespace Example&lt;/h3&gt;
+
+&lt;p&gt;[involves Japanese characters&amp;#8230; the &amp;#8216;require&amp;#8217; is local to the file?]&lt;/p&gt;
+
+&lt;h3&gt;Method Combination&lt;/h3&gt;
+
+&lt;p&gt;a la Common Lisp&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Similar to Aspect Oriented Programming&lt;/li&gt;
+&lt;li&gt;Allow before/after/around hook for each method&lt;/li&gt;
+&lt;li&gt;No concrete syntax is set&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Method Combination Example&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Foo&lt;/span&gt;
+   &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo&lt;/span&gt;
+     &lt;span class="ident"&gt;p&lt;/span&gt; &lt;span class="symbol"&gt;:foo&lt;/span&gt;
+   &lt;span class="keyword"&gt;end&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Bar&lt;/span&gt;&lt;span class="punct"&gt;&amp;lt;&lt;/span&gt;&lt;span class="constant"&gt;Foo&lt;/span&gt;
+   &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo:before&lt;/span&gt;
+     &lt;span class="ident"&gt;p&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:foo&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:before&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+   &lt;span class="keyword"&gt;end&lt;/span&gt;
+   &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;foo:after&lt;/span&gt;
+     &lt;span class="ident"&gt;p&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:foo&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:before&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+   &lt;span class="keyword"&gt;end&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;bar&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;Bar&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;
+ &lt;span class="ident"&gt;bar&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;foo&lt;/span&gt; &lt;span class="comment"&gt;# [:foo, :before], :foo, [:foo, :after]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;(Nestable and stackable)&lt;/p&gt;
+
+&lt;h3&gt;Method Combination Example (2)&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt; &lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;SomeModule&lt;/span&gt;
+   &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;initialize:before&lt;/span&gt;&lt;span class="punct"&gt;(*&lt;/span&gt;&lt;span class="ident"&gt;args&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+     &lt;span class="comment"&gt;# initialize attributes related to SomeModule&lt;/span&gt;
+   &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+   &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;SomeClass&lt;/span&gt;
+   &lt;span class="ident"&gt;include&lt;/span&gt; &lt;span class="constant"&gt;SomeModule&lt;/span&gt;
+   &lt;span class="punct"&gt;...&lt;/span&gt;
+ &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+ &lt;span class="ident"&gt;obj&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;SomeClass&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Multilingualization&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Character Set Independent M17N
+&lt;ul&gt;
+&lt;li&gt;No conversion required&lt;/li&gt;
+&lt;li&gt;Unicode is not forced&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Basic implementation is done&lt;/li&gt;
+&lt;li&gt;But We Still Need Code Conversion API&lt;/li&gt;
+&lt;li&gt;&amp;#8230; and some concerns left
+&lt;ul&gt;
+&lt;li&gt;e.g. string literals in extensions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;M17N Example&lt;/h3&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="constant"&gt;STDIN&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;encoding&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;EUC-JP;UTF-8&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="ident"&gt;likne&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;STDIN&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;gets&lt;/span&gt;
+&lt;span class="ident"&gt;p&lt;/span&gt; &lt;span class="ident"&gt;line&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;encoding&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; &amp;quot;UTF-8&amp;quot;&lt;/span&gt;
+&lt;span class="ident"&gt;print&lt;/span&gt; &lt;span class="ident"&gt;line&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;encode&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Shift_JIS&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Other Wild Ideas&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allow splat (*) in the middle of arguments&lt;/li&gt;
+&lt;li&gt;split Module and Class (no inheritance)&lt;/li&gt;
+&lt;li&gt;$var as thread-local variable&lt;/li&gt;
+&lt;li&gt;BasicObject on top of Object&lt;/li&gt;
+&lt;li&gt;caller_binding&lt;/li&gt;
+&lt;li&gt;instance_exec&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Thank you&lt;/h3&gt;
+
+&lt;p&gt;Slides will be avaliable at http://www.rubyist.net/~matz/slides/rc2005/
+Any questions?&lt;/p&gt;
+
+&lt;p&gt;Q: can you explain instance_exec?&lt;/p&gt;
+
+&lt;p&gt;A: &lt;/p&gt;
+
+&lt;p&gt;instance_exec(1,2,3) { |a,b,c| &amp;#8230; }&lt;/p&gt;
+
+&lt;p&gt;Sometimes we do want to pass a value to an exec block, because sometimes a block is given from outside.  That&amp;#8217;s the reason we need instance_exec.&lt;/p&gt;
+
+&lt;p&gt;Q: Could we use an equivalent to this which doesn&amp;#8217;t change self?&lt;/p&gt;
+
+&lt;p&gt;A: &amp;#8230; You can say self.instance_eval explicitly.&lt;/p&gt;
+
+&lt;p&gt;Q: How do you do instance_exec() today?&lt;/p&gt;
+
+&lt;p&gt;A: In the Ruby list someone has defined a method with a random name, then it&amp;#8217;s called, then the method name is removed.&lt;/p&gt;
+
+&lt;p&gt;Q: When will it be ready?&lt;/p&gt;
+
+&lt;p&gt;A: When its ready.&lt;/p&gt;
+
+&lt;p&gt;Thank you for enduring the long talk.&lt;/p&gt;
+
+&lt;p&gt;Bye now.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 05:12:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:70a5520e9a5c2f0d3faecf708066fe8d</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/16/matzs-keynotes</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/23</trackback:ping>
+    </item>
+    <item>
+      <title>"Matz's keynotes" by someone</title>
+      <description>&lt;p&gt;in &amp;#8220;Keyword Arguments (3)&amp;#8221; everywhere you write &lt;strong&gt;*keys&lt;/strong&gt;, while there should&amp;#8217;ve been written **keys. At least that is what is on the slides referenced in comment 2. (it didn&amp;#8217;t make sense to me the way it is displayed here on your blog so i searched it up).&lt;/p&gt;
+
+
+	&lt;p&gt;but hey, i understand it being displayed wrong. had some problems to writing it with the number of * signs i wanted in this comment. that damned * makes words look bold, making it hard to just use it as text..&lt;/p&gt;</description>
+      <pubDate>Sat, 14 Jan 2006 15:14:33 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:59944f4a-3b6f-4d3d-8516-819654b45950</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/matzs-keynotes#comment-184</link>
+    </item>
+    <item>
+      <title>"Matz's keynotes" by Notruby</title>
+      <description>&lt;p&gt;Original slides now available at 
+&lt;a href="http://www.rubyist.net/"&gt;http://www.rubyist.net/&lt;/a&gt;~matz/slides/rc2005/&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Oct 2005 18:53:21 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9363a0df770f5a17bdaca41e7800a793</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/matzs-keynotes#comment-58</link>
+    </item>
+    <item>
+      <title>"Matz's keynotes" by Jonathan</title>
+      <description>&lt;p&gt;Thanks for writing this down!&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 13:33:09 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e1c6732b64beeebf2e2c65f4f0842728</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/matzs-keynotes#comment-54</link>
+    </item>
+  </channel>
+</rss>

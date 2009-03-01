@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Why Fixtures Suck (And How We Can Fix Them)</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Why Fixtures Suck (And How We Can Fix Them)"
+    dc:identifier="http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them"
+    dc:description="I hate fixtures in Rails. Sometimes I hate them because they slow down my tests. Most often I hate Rails fixtures because they make my tests brittle. Everyone that uses fixtures has had that moment where they add another bit to their fixture file for th"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:15-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/963" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Why Fixtures Suck (And How We Can Fix Them)</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Mon, 07 Aug 2006 18:24:00 GMT">Mon, 07 Aug 2006 18:24:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>I hate fixtures in Rails. Sometimes I hate them because they slow down my tests. Most often I hate Rails fixtures because they make my tests brittle. Everyone that uses fixtures has had that moment where they add another bit to their fixture file for that new test and suddenly things are breaking all over the place. It&#8217;s ugly and arguably a broken system.</p>
+
+<p>I think we can fix it. I&#8217;ve had several long discussions about this and most of what I&#8217;m going to preach here isn&#8217;t original. That being said, I think this might work so pay attention and tell me what you think.</p>
+
+<p>Fixtures suck because it&#8217;s all or nothing. You can either grab all of your user data or not have any of it. It does cut down on duplication because you&#8217;re not redefining data for every set of tests. However, having all the extra stuff in the scope of your test is unnecessary and leads to brittle tests.</p>
+
+<p>One option is to compromise. We could modify the current <code>fixtures</code> method to accept syntax like <code>fixtures :users =&gt; [:alice, :bob], :articles =&gt; :ruby</code>. This would allow you to get only the data you need. At the same time, the old syntax could be backwards compatible and you could grab <em>all</em> of the data if you wanted to. I generally find that when I&#8217;m writing tests it&#8217;s only with one or two pieces of data. With Rails, everything else in the database is just hanging out.</p>
+
+<p>The downside to this new syntax is that the current way of structuring test cases would make this ugly. You don&#8217;t want to define fixtures for every individual test. It&#8217;s much easier defining fixtures by test case. <em>Here&#8217;s where the BDD folks got it right.</em> Test cases should really be broken up by what context they&#8217;re being run in. We shouldn&#8217;t have one test case for the model. We should have several test cases with tests divided by what data we&#8217;re working with. We get smaller and more granular sets of tests this way. It&#8217;s the testing version of DHH&#8217;s &#8220;everything is REST&#8221;. Every test is about context.</p>
+
+<p>Do remember that more test files don&#8217;t mean more work. We&#8217;re already generating empty integration tests. What&#8217;s one or two more generators? Really, it&#8217;ll be easy. You&#8217;ll like it.</p>
+
+<p>The other option is to throw off fixtures completely. I know of people who have already taken this step and they solve the fixture problem by writing helpers to create the data in code and then run them in <code>setup</code>. This seems like a viable option as well and would require no changes to Rails core.</p>
+
+<p>It&#8217;s time to admit that fixtures, as implemented in Rails, are broken and ugly. We&#8217;ve been taught to demand beauty and elegance. Let&#8217;s make something better.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comments">11 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-964"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_964'); }"  onmouseout="Element.hide('admin_comment_964');" >
+  <div id="admin_comment_964" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/964', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-964&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/964" class="admintools">edit</a></div>
+  <a name="comment-964"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.lukeredpath.co.uk">Luke Redpath</a></strong> </cite> said 32 minutes later:<br />
+  <p>Good post. Of course my preference is throwing out fixtures all together and writing my own helper methods with Ruby. I&#8217;ve seen massive speed increases since throwing out fixtures.</p>
+
+
+	<p>For unit tests, they generally aren&#8217;t needed &#8211; simple helper methods suffice for creating related objects (ideally we&#8217;d use mocks but activerecord barfs on mock objects).</p>
+
+
+	<p>For controller unit tests (sorry <strong>functional tests</strong>..whatever ;) ) they are slightly more useful but nothing that can&#8217;t be fixed by promoting the use of mocks &#8211; I highly recommend Stubba:</p>
+
+
+	<p><a>http://mocha.rubyforge.org/</a></p>
+
+
+	<p>For those of you not using rSpec yet (and why not???) then I highly recommend FlexMock, though there is also Mocha (see above) which is like Stubba&#8217;s older cousin.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="964";
+//--></script>
+<!-- mmc mmid:964 mmdate:2006-08-07 14:56:16 mmauthor:Luke Redpath -->
+</li>
+<li id="comment-965"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_965'); }"  onmouseout="Element.hide('admin_comment_965');" >
+  <div id="admin_comment_965" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/965', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-965&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/965" class="admintools">edit</a></div>
+  <a name="comment-965"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>matt lyon</strong> </cite> said about 1 hour later:<br />
+  <p>here&#8217;s an idea:</p>
+
+
+	<pre><code>with_fixtures =&gt; [:posts =&gt; [:today_first, :today_second], :authors =&gt; :all do 
+  def test_todays_posts
+    # this test would have only the above referenced fixtures...
+  end 
+end</code></pre>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="965";
+//--></script>
+<!-- mmc mmid:965 mmdate:2006-08-07 15:36:14 mmauthor:matt lyon -->
+</li>
+<li id="comment-966"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_966'); }"  onmouseout="Element.hide('admin_comment_966');" >
+  <div id="admin_comment_966" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/966', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-966&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/966" class="admintools">edit</a></div>
+  <a name="comment-966"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=a9d024f5032b8de04d7c74528beb77ab&amp;size=60" />
+  <cite><strong><a href="http://nubyonrails.com">topfunky</a></strong> </cite> said about 2 hours later:<br />
+  <p>My problem has been that unloaded fixtures cause problems or pass without testing every line of code that they should.</p>
+
+
+	<p>If you have a template that iterates around an array of objects and that fixture hasn&#8217;t been loaded, then the contents of the loop will never be executed. It&#8217;s sometimes hard to remember what fixtures are used by a specific test.</p>
+
+
+	<p>I&#8217;ve solved this by just loading all fixtures once at the beginning of the test cycle, but it does slow things down.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="966";
+//--></script>
+<!-- mmc mmid:966 mmdate:2006-08-07 16:51:21 mmauthor:topfunky -->
+</li>
+<li id="comment-967"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_967'); }"  onmouseout="Element.hide('admin_comment_967');" >
+  <div id="admin_comment_967" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/967', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-967&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/967" class="admintools">edit</a></div>
+  <a name="comment-967"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=58e87dd3aaaecd0d99a59985e3ca49f3&amp;size=60" />
+  <cite><strong>Lourens</strong> </cite> said about 3 hours later:<br />
+  <p>Or you could just load them @ once with &#8216;rake RAILS_ENV=test db:fixtures:load&#8217; and drop the following rake task in lib/tasks:</p>
+
+
+	<p>module Rake
+ class Task
+   def remove_prerequisite(task_name)
+     name = task_name.to_s
+     @prerequisites.delete(name)
+   end
+ end
+end</p>
+
+
+	<p>Rake::Task[&#8216;test:units&#8217;].remove_prerequisite(&#8216;db:test:prepare&#8217;)
+Rake::Task[&#8216;test:functionals&#8217;].remove_prerequisite(&#8216;db:test:prepare&#8217;)</p>
+
+
+	<p>Relieves headache of fixtures order, which ones to load etc., but we&#8217;re using this for a subdomain_as_account app for which an Account model has 30 odd model dependencies.Still no silver bullet though as fixture changes requires a full reload prior to testing.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="967";
+//--></script>
+<!-- mmc mmid:967 mmdate:2006-08-07 17:01:02 mmauthor:Lourens -->
+</li>
+<li id="comment-968"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_968'); }"  onmouseout="Element.hide('admin_comment_968');" >
+  <div id="admin_comment_968" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/968', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-968&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/968" class="admintools">edit</a></div>
+  <a name="comment-968"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=90ebe8da17aabd36cc30d9f96a530e6f&amp;size=60" />
+  <cite><strong>James H</strong> </cite> said about 3 hours later:<br />
+  <p>I was thinking that perhaps what we really need is a way of setting up mock data based on the validations for our models, and the schema. By basing mock data on the schema and validations, we can create fixtures (or what have you) designed to actually break our apps!  Perhaps it&#8217;d be as simple as running a Rake command to generate said data.  Even then if the skeleton of a fixture entry could be generated by reflecting on the schema, this would save time too.</p>
+
+
+	<p>The thing I hate about fixtures is that sometimes it&#8217;s a bit of a pain assembling the fixture data when one fixture relies on another.  For instance, perhaps a Post model references an author_id and we want to test this association. It&#8217;s a bit of a pain to set them both up.</p>
+
+
+	<p>I personally don&#8217;t care how long my tests take to run.  I just want a mechanism by which I can see if my changes have borked some part of my app along the way.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="968";
+//--></script>
+<!-- mmc mmid:968 mmdate:2006-08-07 17:16:48 mmauthor:James H -->
+</li>
+<li id="comment-970"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_970'); }"  onmouseout="Element.hide('admin_comment_970');" >
+  <div id="admin_comment_970" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/970', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-970&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/970" class="admintools">edit</a></div>
+  <a name="comment-970"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.lukeredpath.co.uk">Luke Redpath</a></strong> </cite> said about 3 hours later:<br />
+  <p>&#8220;I personally don’t care how long my tests take to run.&#8221;</p>
+
+
+	<p>Tests should always run as fast as they possibly can. If your tests dont run as fast as possible then you aren&#8217;t likely to run them all as often because it becomes a chore.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="970";
+//--></script>
+<!-- mmc mmid:970 mmdate:2006-08-07 17:35:59 mmauthor:Luke Redpath -->
+</li>
+<li id="comment-971"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_971'); }"  onmouseout="Element.hide('admin_comment_971');" >
+  <div id="admin_comment_971" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/971', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-971&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/971" class="admintools">edit</a></div>
+  <a name="comment-971"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.possibilist.org">floyd</a></strong> </cite> said 1 day later:<br />
+  <p>Yes, I thought you were going to say fixtures suck because THEY&#8217;RE brittle.  One little change to your model and you have to rebuild all your fixtures for that model and possibly other dependent ones.  The best solution for this is a plugin like Geoff&#8217;s:</p>
+
+
+	<p><a>http://nubyonrails.com/articles/2005/12/27/dump-or-slurp-yaml-reference-data</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="971";
+//--></script>
+<!-- mmc mmid:971 mmdate:2006-08-09 12:44:26 mmauthor:floyd -->
+</li>
+<li id="comment-972"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_972'); }"  onmouseout="Element.hide('admin_comment_972');" >
+  <div id="admin_comment_972" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/972', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-972&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/972" class="admintools">edit</a></div>
+  <a name="comment-972"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.possibilist.org">floyd</a></strong> </cite> said 1 day later:<br />
+  <p>Yes, I thought you were going to say fixtures suck because THEY&#8217;RE brittle.  One little change to your model and you have to rebuild all your fixtures for that model and possibly other dependent ones.  The best solution for this is a plugin like Geoff&#8217;s:</p>
+
+
+	<p><a>http://nubyonrails.com/articles/2005/12/27/dump-or-slurp-yaml-reference-data</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="972";
+//--></script>
+<!-- mmc mmid:972 mmdate:2006-08-09 12:44:56 mmauthor:floyd -->
+</li>
+<li id="comment-974"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_974'); }"  onmouseout="Element.hide('admin_comment_974');" >
+  <div id="admin_comment_974" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/974', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-974&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/974" class="admintools">edit</a></div>
+  <a name="comment-974"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://lianza.org/blog/">Tom</a></strong> </cite> said 2 days later:<br />
+  <p>I&#8217;m not sure I like the proposed solution because it means duplicating a bunch of fixture detail (namely, the rows you&#8217;re interested in) in the tests.</p>
+
+
+	<p>What I&#8217;d really love to see is the relationship between tables and fixtures changed from 1:1 to 1:many.  For example, I think 95% of my fixture issues could be resolved if I was able to create (for example) people_lotsofusers.yml and people_oneuser.yml fixtures, and use one or the other to represent the people table, depending on what test I&#8217;m running.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="974";
+//--></script>
+<!-- mmc mmid:974 mmdate:2006-08-10 00:32:10 mmauthor:Tom -->
+</li>
+<li id="comment-975"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_975'); }"  onmouseout="Element.hide('admin_comment_975');" >
+  <div id="admin_comment_975" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/975', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-975&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/975" class="admintools">edit</a></div>
+  <a name="comment-975"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 4 days later:<br />
+  <p>Tom: It doesn&#8217;t involve <em>any</em> duplication of fixture detail. You do it once in each test case. I&#8217;m suggesting we split of test cases as they&#8217;re supposed to be split, by what fixtures they need.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="975";
+//--></script>
+<!-- mmc mmid:975 mmdate:2006-08-11 14:35:46 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-977"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_977'); }"  onmouseout="Element.hide('admin_comment_977');" >
+  <div id="admin_comment_977" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/977', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-977&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/963/edit/977" class="admintools">edit</a></div>
+  <a name="comment-977"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://lianza.org/blog/">Tom</a></strong> </cite> said 4 days later:<br />
+  <p>Maybe I should illustrate my point in code.</p>
+
+
+	<p>How it works now:
+fixtures :users</p>
+
+
+	<p>What you&#8217;re proposing:
+fixtures :users =&gt; [:alice, :bob]</p>
+
+
+	<p>What I&#8217;m proposing:
+fixtures :users_smallgroup</p>
+
+
+	<p>The duplication I&#8217;m referring to is the fact that in the user.yml file, you&#8217;re going to have a record for alice, one for bob (and a bunch of others).  In your test you list alice and bob again &#8211; that&#8217;s the duplication.</p>
+
+
+	<p>I know above you said that test cases are &#8220;supposed to be&#8221; split up by fixtures, and if we did that &#8211; you&#8217;re right, the duplication would be minimal.</p>
+
+
+	<p>I guess I&#8217;m not completely sold on the fact that test cases should be grouped by fixtures.  I&#8217;d end up testing the same methods in two different places if I wanted to test them with two different data sets.  It sounds like that would make it a pain to find things.  Or, maybe I&#8217;m not understanding what the layout would look like.</p>
+
+
+	<p>So, that&#8217;s why I was thinking along the lines of allowing a few different fixtures per table, and then you could call upon them when needed without having to restructure your tests around the fixtures you need.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="977";
+//--></script>
+<!-- mmc mmid:977 mmdate:2006-08-11 17:06:09 mmauthor:Tom -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/963/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="963";
+//--></script>
+<!-- mmp mmid:963 mmdate:2006-08-07 14:24:00 mmurl:/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them mmtitle:Why Fixtures Suck (And How We Can Fix Them) -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/06/23/live-at-railsconf">Live at RailsConf</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 23 Jun 2006 12:48:00 GMT">Fri, 23 Jun 2006 12:48:00 GMT</span></p>
+<p>Good morning folks. Today I&#8217;m coming to you live from RailsConf in Chicago and I&#8217;ll be blogging a good portion of it. Stay tuned for the first keynote of the conference by Dave Thomas.</p>
+
+<p>If you&#8217;re in the windy city and would like to say hello, I&#8217;m <a href="http://facebook.railsconf.org/users/14">this one</a> and I don&#8217;t bite, so come introduce yourself.</p>
+
+<p>It looks like the hotel is blocking Bonjour making SubEthaEdit a non option, but I&#8217;ll do my best.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/17/railsday-post-mortem-advisr">RailsDay Post Mortem: Advisr</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 18 Jun 2006 03:20:00 GMT">Sun, 18 Jun 2006 03:20:00 GMT</span></p>
+<p>Oh my god, it&#8217;s over.</p>
+
+<p>I had an amazing time working with <a href="http://iamrice.org">Damien Tanner</a> and <a href="http://brainspl.at">Ezra Zygmuntowicz</a>. We wrote what we think is a better approach to ticket tracking and we&#8217;re calling it <a href="http://tickets.thar.be">Advisr</a>.</p>
+
+<p>The idea is that everyone thinks their bug is important, that&#8217;s why they post it. <a href="http://tickets.thar.be">Advisr</a> lets people say how much a defect effects them or if they think they&#8217;d use a feature and gives advice to developers where the most important tickets really are.</p>
+
+<p>Go take a look. I&#8217;m going to sleep. Good night folks, and happy Rails Day!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/17/railsday-post-mortem-advisr#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/13/arts-gets-regex-content-matching">ARTS Gets Regex Content Matching</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 13 Jun 2006 05:01:00 GMT">Tue, 13 Jun 2006 05:01:00 GMT</span></p>
+<p>No guide today (it&#8217;s finals and I&#8217;m exausted), but as of today <a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">ARTS</a> can match regular expressions against content.</p>
+
+<p>This means that instead of this showing up in our tests:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">content = &lt;&lt;RJS_CONTENT
+&lt;div id=&quot;post_#{assigns(:post).id}&quot;&gt;
+  &lt;h2&gt;#{assigns(:post).title}&lt;/h2&gt;
+  &lt;p&gt;#{assigns(:post).body}&lt;/p&gt;
+&lt;/div&gt;
+RJS_CONTENT
+
+assert_rjs :insert_html, :bottom, 'posts', content.chomp</code></pre></div>
+
+<p>We can do this instead:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">assert_rjs :insert_html, :bottom, 'posts', Regexp.new(&quot;&lt;h2&gt;#{assigns(:post).title}&lt;/h2&gt;&quot;)
+assert_rjs :insert_html, :bottom, 'posts', Regexp.new(&quot;&lt;p&gt;#{assigns(:post).body}&lt;/p&gt;&quot;)</code></pre></div>
+
+<p>It&#8217;s working for assertions on <code>:insert_html</code>, <code>:replace_html</code>, and <code>:replace</code>. If you find bugs, send them my way. kevin dot clark at gmail dot com</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/13/arts-gets-regex-content-matching#comments">1 comment</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements">Weigh In: Patches, Plugins and Proposed Enhancements</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 05 Jun 2006 06:43:00 GMT">Mon, 05 Jun 2006 06:43:00 GMT</span></p>
+<p>This week&#8217;s guide is going to be a little different. </p>
+
+<p>On the <a href="http://wrath.rubyonrails.org/pipermail/rails-core/">rails-core mailing list</a>, in what started as a <a href="http://www.ruby-forum.com/topic/67958#new">discussion</a> the issue of the growing number of <a href="http://script.aculo.us">Scriptaculous</a>/<a href="http://prototype.conio.net/">Prototype</a> tickets and especially enhancement requests, <strong>we&#8217;ve <a href="http://www.ruby-forum.com/topic/67958#85925">begun talking about</a> the removal of the &#8220;enhancement&#8221; category on <a href="http://dev.rubyonrails.org/newticket">trac tickets</a></strong>.</p>
+
+<p>The problem is that generally half or more of the tickets that come through the Rails bug tracking system are enhancement requests. With 13 people able to commit and a handful of others actively dealing with tickets being reported, <strong>enhancement requests will in general never be acted on</strong>. This means there are new tickets every day ruining that delicate signal vs noise ratio.</p>
+
+<p>For a while the <a href="http://weblog.techno-weenie.net/2006/4/20/five-reasons-why-your-next-rails-mod-should-be-a-plugin">standard line</a> for enhancements has been &#8220;make it a plugin and see where it goes&#8221;. This may not always be the proper response but when dealing with the deluge it is at the very least the easiest and a plugin is usually the simplest way to see feature X in Rails.</p>
+
+<p>So here&#8217;s the guide part: <strong>we could use an alternate viewpoint</strong>. The rails-core list is significantly biased: people who care to speak up there are comfortable writing patches and plugins. I expect a good portion of you watching my feed and visiting my blog haven&#8217;t written patches for Rails and haven&#8217;t written your own plugin. <strong>Do you think keeping the enhancement category is worthwhile?</strong></p>
+
+<p>The real question here isn&#8217;t whether Rails should accept new features. Patches for new enhancements would be considered but enhancement tickets sans a patch would not.</p>
+
+<p><strong>I&#8217;d like to make this an open dialog. Please, speak your mind.</strong> And careful with that submit button. Apparently my comments are a bit wonky and it tends to result in double posting. I&#8217;ll try to fix it as soon as I can.</p>
+
+<p>Next week we&#8217;ll return to our regularly scheduled practical guides.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements#comments">15 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/01/sd-rb-meets-tonight">sd.rb Meets Tonight</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 01 Jun 2006 15:50:00 GMT">Thu, 01 Jun 2006 15:50:00 GMT</span></p>
+<p>If you&#8217;re in the San Diego area this evening you should stop by the sd.rb meeting.</p>
+
+<p>On the agenda:</p>
+
+<ol>
+<li>Tom Werner, Part 1 of the &#8220;Ruby is Awesome&#8221; Series</li>
+<li>Joe Chesak, Search with Rails</li>
+<li>Kevin Clark, Test Driven RJS with ARTS</li>
+</ol>
+
+<p>You can find more information <a href="http://davie.textdrive.com/pipermail/sdrug/2006-May/000424.html">on the mailing list</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/01/more-guide-ideas">More Guide Ideas</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 01 Jun 2006 04:54:00 GMT">Thu, 01 Jun 2006 04:54:00 GMT</span></p>
+<p>The guides seem to be doing well. My next guide is scheduled for Monday the 5th. If you&#8217;ve got an idea or a question, please send it my way.</p>
+
+<p>kevin dot clark at gmail dot com</p>
+
+<p>Include &#8220;[idea]&#8221; in the subject line.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/guides" rel="tag">guides</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/29/guide-test-driven-rjs-with-arts">Guide: Test Driven RJS with ARTS</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 29 May 2006 17:51:00 GMT">Mon, 29 May 2006 17:51:00 GMT</span></p>
+<p>RJS is really a pain to debug. When things aren&#8217;t working right, they often don&#8217;t show up on the page at all. These truths make testing RJS especially important.</p>
+
+<p>When researching for this article, I looked into the <a href="http://ibrasten.com/pages/rjsassertions">rjs_assertions plugin</a>, but was generally unhappy with the offerings. <code>rjs_assertions</code> isn&#8217;t complete and the syntax felt cryptic.</p>
+
+<p>So, I <a href="http://thar.be/svn/projects/plugins/arts/">rolled my own</a>. I&#8217;m calling the plugin ARTS: Another RJS Testing System, and the number one goal is to make an easily understandable syntax for testing RJS templates.</p>
+
+<p>This guide is going to be broken into two parts: the installation and usage of the plugin, and using the plugin to test drive ajax interactions.</p>
+
+<p>This isn&#8217;t an introduction to RJS. For background reading on the topic, see <a href="http://www.codyfauser.com/articles/2005/11/20/rails-rjs-templates">Rails RJS Templates</a> by Cody Fauser and Rick Olson&#8217;s <a href="http://rails.techno-weenie.net/tip/2005/11/29/ajaxed_forms_with_rjs_templates">post on Rails Weenie</a>.</p>
+
+  <a href="/articles/2006/05/29/guide-test-driven-rjs-with-arts">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/29/guide-test-driven-rjs-with-arts#comments">25 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/28/want-to-test-your-rjs">Want to test your RJS?</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 28 May 2006 21:27:00 GMT">Sun, 28 May 2006 21:27:00 GMT</span></p>
+<p>It&#8217;s coming. Check back tomorrow for the guide and information.</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">    <span class="ident">assert_rjs</span> <span class="symbol">:alert</span><span class="punct">,</span> <span class="punct">'</span><span class="string">Hi!</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:assign</span><span class="punct">,</span> <span class="punct">'</span><span class="string">a</span><span class="punct">',</span> <span class="punct">'</span><span class="string">2</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:call</span><span class="punct">,</span> <span class="punct">'</span><span class="string">foo</span><span class="punct">',</span> <span class="punct">'</span><span class="string">bar</span><span class="punct">',</span> <span class="punct">'</span><span class="string">baz</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:draggable</span><span class="punct">,</span> <span class="punct">'</span><span class="string">draggable_item</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:drop_receiving</span><span class="punct">,</span> <span class="punct">'</span><span class="string">receiving_item</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:hide</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_1</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_2</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_3</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:insert_html</span><span class="punct">,</span> <span class="symbol">:bottom</span><span class="punct">,</span> <span class="punct">'</span><span class="string">posts</span><span class="punct">',</span> <span class="punct">&quot;</span><span class="string">Here's text from insert_html</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:redirect_to</span><span class="punct">,</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">list</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:remove</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_1</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_2</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_3</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:replace</span><span class="punct">,</span> <span class="symbol">:bottom</span><span class="punct">,</span> <span class="punct">'</span><span class="string">This is something to replace</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:replace_html</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">This is something for replace_html</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:show</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_1</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_2</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_3</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:sortable</span><span class="punct">,</span> <span class="punct">'</span><span class="string">sortable_item</span><span class="punct">'</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:toggle</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_1</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_2</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_3</span><span class="punct">&quot;</span>
+    <span class="ident">assert_rjs</span> <span class="symbol">:visual_effect</span><span class="punct">,</span> <span class="symbol">:highlight</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">posts</span><span class="punct">&quot;,</span> <span class="symbol">:duration</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">1.0</span><span class="punct">'</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/27/summer-of-code">Summer of Code</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 27 May 2006 17:06:00 GMT">Sat, 27 May 2006 17:06:00 GMT</span></p>
+<p>If you missed <a href="http://www.ruby-forum.com/topic/66903">the announcement</a> on ruby-talk, I&#8217;ve been accepted as one of the <a href="http://code.google.com/soc/ruby/about.html">10 sponsored projects</a>  for <a href="http://code.google.com/soc/">Google&#8217;s Summer of Code</a>. I&#8217;m really excited :)</p>
+
+<p>Anyway, a bit about my project &#8220;mkmf for Rake&#8221;. mkmf is a script/library/thing that is included with Ruby and is used to generate the Makefiles needed to compile C extensions for Ruby. If you look at it (please don&#8217;t, for your own sake), you can see that it has some issues:</p>
+
+<ol>
+<li>In its current state, it can&#8217;t be tested with Test::Unit easily. This makes it very hard to make changes without breaking things.</li>
+<li>It isn&#8217;t object oriented or modular, and basically can&#8217;t be reused in other projects.</li>
+</ol>
+
+<p>mkmf needs to be rewritten but shouldn&#8217;t be modified. I&#8217;ll be writing an alternative which I hope solves the problems mkmf has, and it will use Rakefiles instead of Makefiles which should allow for things like RDoc generation easily down the road.</p>
+
+<p>So here&#8217;s an opportunity for feedback (of course you can always contact me at kevin dot clark at gmail dot com if you have ideas, or on ruby-talk):</p>
+
+<ol>
+<li>What do you like about mkmf?</li>
+<li>What do you hate?</li>
+<li>What could be improved?</li>
+</ol>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/summer-of-code" rel="tag">summer of code</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/27/summer-of-code#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/25/rails-workshop-in-london">Rails Workshop in London</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 25 May 2006 16:23:00 GMT">Thu, 25 May 2006 16:23:00 GMT</span></p>
+<p>I love teaching through my blog, but you get to see those lightbubs
+turn on when you&#8217;re working hands-on with students. That being said,
+I&#8217;m in talks with the <a href="http://ratio.co.uk/">Ratio Group</a>, the
+publishers of <a href="www.ratio.co.uk/objectiveview.html">Objective View</a>,
+about designing and teaching a 3 day Rails workshop in west London.
+It&#8217;s being planned for early August and we would like to guage
+interest.</p>
+
+<p>If you might be interested, please contact Mark Collins-Cope via
+email: mcc AT ratio.co.uk. If you&#8217;d like to contact me about specifc
+goals you would have for that sort of a course: kevin dot clark at
+gmail dot com.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/25/rails-workshop-in-london#comments">no comments</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/6">6</a> <a href="/articles/page/7">7</a> 8 <a href="/articles/page/9">9</a> <a href="/articles/page/10">10</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

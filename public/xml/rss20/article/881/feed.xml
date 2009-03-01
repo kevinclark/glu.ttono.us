@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Guide: Test Driven RJS with ARTS</title>
+    <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Guide: Test Driven RJS with ARTS</title>
+      <description>&lt;p&gt;RJS is really a pain to debug. When things aren&amp;#8217;t working right, they often don&amp;#8217;t show up on the page at all. These truths make testing RJS especially important.&lt;/p&gt;
+
+&lt;p&gt;When researching for this article, I looked into the &lt;a href="http://ibrasten.com/pages/rjsassertions"&gt;rjs_assertions plugin&lt;/a&gt;, but was generally unhappy with the offerings. &lt;code&gt;rjs_assertions&lt;/code&gt; isn&amp;#8217;t complete and the syntax felt cryptic.&lt;/p&gt;
+
+&lt;p&gt;So, I &lt;a href="http://thar.be/svn/projects/plugins/arts/"&gt;rolled my own&lt;/a&gt;. I&amp;#8217;m calling the plugin ARTS: Another RJS Testing System, and the number one goal is to make an easily understandable syntax for testing RJS templates.&lt;/p&gt;
+
+&lt;p&gt;This guide is going to be broken into two parts: the installation and usage of the plugin, and using the plugin to test drive ajax interactions.&lt;/p&gt;
+
+&lt;p&gt;This isn&amp;#8217;t an introduction to RJS. For background reading on the topic, see &lt;a href="http://www.codyfauser.com/articles/2005/11/20/rails-rjs-templates"&gt;Rails RJS Templates&lt;/a&gt; by Cody Fauser and Rick Olson&amp;#8217;s &lt;a href="http://rails.techno-weenie.net/tip/2005/11/29/ajaxed_forms_with_rjs_templates"&gt;post on Rails Weenie&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Mon, 29 May 2006 13:51:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:06065fe3-818f-4505-b3a0-3ef223bcd9a7</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts</link>
+      <category>Rails</category>
+      <category>testing</category>
+      <category>guides</category>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Chetan</title>
+      <description>Hi Kevin,
+yeah, I was stuck after downloading your plugin on the replace_html issue; so quickly hacked up a fix. A cleaner solution is definitely desirable.
+BTW, found a bug with the regexp when content is specified in my prev diff (I am still new to ruby). Here is the new patch. 
+&lt;pre&gt;
+53,54c53,54
+&amp;amp;lt;         assert_match /(\$\(['"]#{div}['"]\).update\(|Element.update\(.*#{div}.*,)['"].*#{content.source}.*['"]\);/, #'
+&amp;amp;lt;         @response.body, "No match for regexp\n($\(['\"]#{div}['\"]\).update\(|Element.update\(.*#{div}.*,)['\"].*#{content.source}.*['\"]\);\nin response.body\n#{@response.body}" 
+---
+&amp;gt;         assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, #'
+&amp;gt;             @response.body
+56,58c56,58
+&amp;amp;lt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");!)), #" 
+&amp;amp;lt;         "No replace_html call found on div: '#{div}' and content: #{content} matching either\n" + "Element.update(\"#{div}\", #{content});" + "\nor\n" + 
+&amp;amp;lt;                       %Q!$("#{div}").update(#{content});! + "\nin response:\n#{lined_response}\n#{lined_response.class}" 
+---
+&amp;gt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");.*!)), #" 
+&amp;gt;         "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&amp;gt;                       "in response:\n#{lined_response}" 
+&lt;/pre&gt;
+Hope it is useful</description>
+      <pubDate>Wed, 14 Jun 2006 17:09:52 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:04150151-1e91-4803-a92c-cdebf8ce67f6</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-929</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Chetan: Cool stuff, thanks. I&amp;#8217;m really looking for a more general solution so that any method that can work like page[&amp;#8216;some_id&amp;#8217;].hide will be supported, but your stuff may work in the interim.&lt;/p&gt;</description>
+      <pubDate>Wed, 14 Jun 2006 01:08:46 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:300cb0cd-098f-48dd-bbe9-641987914795</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-928</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Chetan</title>
+      <description>&lt;p&gt;Sorry, here is a better formatted version of the earlier post.&lt;/p&gt;
+
+
+	&lt;p&gt;A patch for the replace_html issue mentioned in Comment #5&lt;/p&gt;
+
+
+	&lt;p&gt;vendor/plugins/arts/lib/arts.rb&lt;/p&gt;
+
+
+&lt;pre&gt;
+52,60c52,60
+&amp;amp;lt;       when Regexp
+&amp;amp;lt;         assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, #'
+&amp;amp;lt;             @response.body
+&amp;amp;lt;       when String
+&amp;amp;lt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");.*!)), #" 
+&amp;amp;lt;         "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&amp;amp;lt;                       "in response:\n#{lined_response}" 
+&amp;amp;lt;       else
+&amp;amp;lt;         raise "Invalid content type" 
+---
+&amp;gt;         when Regexp
+&amp;gt;           assert_match Regexp.new("Element.update(.*#{div}.*,.*#{content.source}.*);"),
+&amp;gt;                        @response.body
+&amp;gt;         when String
+&amp;gt;           assert lined_response.include?("Element.update(\"#{div}\", #{content});"), 
+&amp;gt;                  "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&amp;gt;                  "in response:\n#{lined_response}" 
+&amp;gt;         else
+&amp;gt;           raise "Invalid content type" 
+63,64c63
+&amp;amp;lt;       # assert_match Regexp.new("Element.update(.*#{div}.*,.*?);"), @response.body, "Regexp for replace_html didn't match" 
+&amp;amp;lt;       assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, @response.body
+---
+&amp;gt;       assert_match Regexp.new("Element.update(.*#{div}.*,.*?);"), @response.body
+&lt;/pre&gt;
+
+	&lt;p&gt;I have done very light testing, so user beware.&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Jun 2006 23:44:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:1d31cc88-a7d8-45b9-933e-d94593186534</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-927</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Chetan</title>
+      <description>&lt;p&gt;Very very slick and useful. Thx!&lt;/p&gt;
+
+
+	&lt;p&gt;Here is a patch for the replace_html issue mentioned in Comment #5&lt;/p&gt;
+
+
+	&lt;p&gt;vendor/plugins/arts/lib/arts.rb&lt;/p&gt;
+
+
+	&lt;p&gt;52,60c52,60
+&amp;lt;       when Regexp
+&amp;lt;         assert_match /(\$\([&amp;#8217;&amp;#8221;]#{div}[&amp;#8217;&amp;#8221;]\).update\([&amp;#8217;&amp;#8221;]|Element.update\(.&lt;strong&gt;#{div}.&lt;/strong&gt;,[&amp;#8217;&amp;#8221;]).&lt;strong&gt;?\);/, #&amp;#8217;
+&amp;lt;             @response.body
+&amp;lt;       when String
+&amp;lt;         assert (lined_response.include?(&amp;#8220;Element.update(\&amp;#8221;#{div}\&amp;#8221;, #{content});&amp;#8221;) || lined_response.include?(%Q!$(&amp;#8221;#{div}&amp;#8221;).update(&amp;#8221;#{content}&amp;#8221;);.&lt;/strong&gt;!)), #&amp;#8221; 
+&amp;lt;         &amp;#8220;No replace_html call found on div: &amp;#8217;#{div}&amp;#8217; and content: \n#{content}\n&amp;#8221; +
+&amp;lt;                       &amp;#8220;in response:\n#{lined_response}&amp;#8221; 
+&amp;lt;       else
+&amp;lt;         raise &amp;#8220;Invalid content type&amp;#8221; 
+-
+&amp;gt;         when Regexp
+&amp;gt;           assert_match Regexp.new(&amp;#8220;Element.update(.&lt;strong&gt;#{div}.&lt;/strong&gt;,.&lt;strong&gt;#{content.source}.&lt;/strong&gt;);&amp;#8221;),
+&amp;gt;                        @response.body
+&amp;gt;         when String
+&amp;gt;           assert lined_response.include?(&amp;#8220;Element.update(\&amp;#8221;#{div}\&amp;#8221;, #{content});&amp;#8221;), 
+&amp;gt;                  &amp;#8220;No replace_html call found on div: &amp;#8217;#{div}&amp;#8217; and content: \n#{content}\n&amp;#8221; +
+&amp;gt;                  &amp;#8220;in response:\n#{lined_response}&amp;#8221; 
+&amp;gt;         else
+&amp;gt;           raise &amp;#8220;Invalid content type&amp;#8221; 
+63,64c63
+&amp;lt;       # assert_match Regexp.new(&amp;#8220;Element.update(.&lt;strong&gt;#{div}.&lt;/strong&gt;,.&lt;strong&gt;?);&amp;#8221;), @response.body, &amp;#8220;Regexp for replace_html didn&amp;#8217;t match&amp;#8221; 
+&amp;lt;       assert_match /(\$\([&amp;#8217;&amp;#8221;]#{div}[&amp;#8217;&amp;#8221;]\).update\([&amp;#8217;&amp;#8221;]|Element.update\(.&lt;/strong&gt;#{div}.&lt;strong&gt;,[&amp;#8217;&amp;#8221;]).&lt;/strong&gt;?\);/, @response.body
+-
+&amp;gt;       assert_match Regexp.new(&amp;#8220;Element.update(.&lt;strong&gt;#{div}.&lt;/strong&gt;,.*?);&amp;#8221;), @response.body&lt;/p&gt;
+
+
+	&lt;p&gt;I hope the formatting of the diff comes out ok. I have done very light testing, so user beware.&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Jun 2006 23:39:53 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a6101e7b-470b-47a3-aa08-9313090f80a7</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-926</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by vijayramanan</title>
+      <description>&lt;p&gt;I initially started off by using rjsassertions 
+&lt;a&gt;http://ibrasten.com/articles/2006/04/05/rjs-assertions&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Most of my assertions were failing. No offence to anybody.. maybe I was not using it properly. But I noticed that your syntax is so simple and neat and almost translates what I have done on the inline rjs in my controller. I love this thanks a lot for writing this neat plugin. Iam also interested in some addons like proper session assertions (assert_session_has) currently the defualt assertion only checks for key . If you could add on a feature here which could asset the content inside session that will be cool  :) . Since most of the remote calls require session for state maintenance .. just a thought..&lt;/p&gt;</description>
+      <pubDate>Mon, 12 Jun 2006 04:43:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:eefb86c7-b16f-4121-a1e0-c2d8a5cef1b7</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-924</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Zack Chandler</title>
+      <description>&lt;p&gt;Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;I agree.  With regex you can at least check that the content contains a bit of what you expect and that will probably catch as many bugs as an exact match.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ll look forward to it.&lt;/p&gt;
+
+
+	&lt;p&gt;Zack&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Jun 2006 18:10:16 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:399d383a-907b-4d6c-982a-ba1a8fad4284</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-923</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Zack:
+Rendering partials in tests is problematic, so I don&amp;#8217;t have a way to test for this well yet. You can use the content matching to explicitly look for a match, but probably the better solution will be to use regular expression content matching which should exist soonish.&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Jun 2006 13:59:30 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b22ee911-46f3-40fd-9ed3-9a57024bd15c</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-921</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Zack Chandler</title>
+      <description>&lt;p&gt;Got it. One more quick question. Is there a way to test insert_html calls that render partials?  render() is a protected method of ActionController::Base so I&amp;#8217;m not sure how this method could be accessible elsewhere.&lt;/p&gt;
+
+
+	&lt;p&gt;Ex:&lt;/p&gt;
+
+
+rjs
+&lt;pre&gt;&lt;code&gt;  page.insert_html :bottom, 'my_list', render(:partial =&amp;gt; 'my_list_item', :object =&amp;gt; @list_item)&lt;/code&gt;&lt;/pre&gt;
+
+test?
+&lt;pre&gt;&lt;code&gt;  assert_rjs :insert_html, :bottom, 'my_list', render...???&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Thanks, 
+Zack&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Jun 2006 12:12:27 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:08a3efb5-bbbe-4900-9789-8871b9d2be2b</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-920</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Zack:
+At the time it was written I wasn&amp;#8217;t including the module in Test::Unit::TestCase so you did need to include. If you see the plugin&amp;#8217;s README, it now doesn&amp;#8217;t instruct you to add the include.&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Jun 2006 11:38:54 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:317d3fc7-d61a-472e-a3a7-d2707d0d7d83</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-919</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Zack Chandler</title>
+      <description>&lt;p&gt;Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;Using assigns worked like a charm :)&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks a ton &amp;#8211; I&amp;#8217;m really finding this useful.&lt;/p&gt;
+
+
+	&lt;p&gt;P.S. In the article you say:&lt;/p&gt;
+
+
+	&lt;p&gt;To make use of the plugin, include the Arts module in your test class or in your test/test_helper.rb:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;class Test::Unit::TestCase
+  # ...
+
+  # Add more helper methods to be used by all tests here...
+  include Arts
+end&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This isn&amp;#8217;t necessary as you already include it in init.rb&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;  Test::Unit::TestCase.send :include, Arts&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Thanks again,
+Zack&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Jun 2006 10:56:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4f3b104f-1eeb-4ee6-b0a0-fb5a09510c12</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-918</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Zack: To get that working, you&amp;#8217;d need to include the ActionView helper which constructs error_messages, and probably have to override it to use assigns(&amp;#8216;post&amp;#8217;) instead of the instance variable post.&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 11:31:58 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fdc92f5f-9277-400b-963d-0af7c05998c2</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-914</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Oh, those shouldn&amp;#8217;t show up on your pages, just in the console.. are you redirecting stdout to the page?&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 11:04:21 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:02b6ad6d-2436-479f-9cec-69489bd58f42</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-912</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Zack Chandler</title>
+      <description>&lt;p&gt;Nice work.
+One improvement idea is to handle:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;page.replace_html 'post-errors', error_messages_for(:post)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;assert_rjs :replace_html, 'post-errors', error_messages_for(:post)&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I notice that right now this doesn&amp;#8217;t seem to work.&lt;/p&gt;
+
+
+	&lt;p&gt;Again, nice job!&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 11:04:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:db9a3971-702e-4c86-bc4f-18145d6fde76</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-911</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Hi Joe,
+Those mesages show up whenever &amp;#8216;test/unit&amp;#8217; is included, whether you run test cases or not. Since we&amp;#8217;ve chosen to automatically require &amp;#8216;test/unit&amp;#8217; for you on runtime to make it easy to work with you&amp;#8217;ll see those here and there. They won&amp;#8217;t cause problems. I you&amp;#8217;d rather not see them, you can go into plugins/arts/init.rb and remove the line, and then &amp;#8216;include Arts&amp;#8217; in your test_helper.rb inside the Test::Unit::TestCase class.&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 11:03:32 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0031139f-1aa5-4d78-8cc3-2956910820aa</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-910</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by joe goldberg</title>
+      <description>&lt;p&gt;Hi Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;After installing ARTS, I&amp;#8217;m seeing debug statements appear on my pages along with AJAX content.  Eg:&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8220;Loaded suite /usr/local/depot/coffeerobot/trunk/public/dispatch.cgi Started Finished in 0.000269 seconds. 0 tests, 0 assertions, 0 failures, 0 errors&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;Users of the file_column plugin have seen a similar issue:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a&gt;http://www.sitepoint.com/forums/showthread.php?p=2671883&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;But I couldn&amp;#8217;t find anything analogous to the fix described in that thread for ARTS.&lt;/p&gt;
+
+
+	&lt;p&gt;Any clue what&amp;#8217;s going on?&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks,
+Joe Goldberg
+Jobster.com, SDE&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 10:33:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e8fd51bf-31bd-4c45-ba70-be5804fb2e65</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-909</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;seb:
+Currently arts doesn&amp;#8217;t work with the selector syntax (page[&amp;#8216;blah&amp;#8217;].blind_up) because it outputs different code than the normal page.visual_effect :blind_up stuff. It&amp;#8217;s something I&amp;#8217;d like to add in the very near future so keep on the lookout. I&amp;#8217;ll mention it on the blog.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 11:38:02 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:23c5e373-7399-4586-9df9-237e3bc92744</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-894</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by seb</title>
+      <description>&lt;p&gt;thanks for the quick answer:&lt;/p&gt;
+
+
+I tried to test a visual_effect like this
+&lt;pre&gt;
+assert_rjs :visual_effect, :blind_up, "line_#{id}" 
+&lt;/pre&gt;
+
+Here is the controller code:
+&lt;pre&gt;
+page["line_#{params[:id]}"].visual_effect :blind_up
+&lt;/pre&gt;
+But it does not work because the controller generates:
+&lt;pre&gt;
+.$("line_2").visualEffect("blind_up");
+&lt;/pre&gt;
+and the test tries to compare this with:
+&lt;pre&gt;
+new Effect.BlindUp("line_2",{});
+&lt;/pre&gt;
+ Did I misunderstood something ?</description>
+      <pubDate>Fri, 02 Jun 2006 03:44:31 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6e48eb44-2817-43c8-927b-1defea0f9305</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-893</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;seb:
+This is happening because the arts init.rb file automatically includes the module in Test::Unit::TestCase, which on second thought doesn&amp;#8217;t need to happen. I say in the README (and in this guide) to include the module manually in test_helper. The dummy tests should come out in the next revision.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks for the heads up!&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 12:11:54 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0db3af11-2cf7-469b-ba03-65b81b5f55d9</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-892</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by seb</title>
+      <description>&lt;p&gt;Hi&lt;/p&gt;
+
+
+	&lt;p&gt;I have installed your plugin and it works great. 
+Thanks a lot.&lt;/p&gt;
+
+
+	&lt;p&gt;Just a weird thing, now if I run &amp;#8220;rake load_fixtures&amp;#8221; here is the output:&lt;/p&gt;
+
+
+	&lt;p&gt;Loaded suite /opt/local/bin/rake&lt;/p&gt;
+
+
+	&lt;p&gt;Started&lt;/p&gt;
+
+
+	&lt;p&gt;Finished in 0.000392 seconds.&lt;/p&gt;
+
+
+	&lt;p&gt;0 tests, 0 assertions, 0 failures, 0 errors&lt;/p&gt;
+
+
+	&lt;p&gt;It tries to run some dummy tests.
+Have you notice that?&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 10:32:39 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f4a467ea-198c-410e-8fff-6908ed8d7e29</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-890</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Hey Rick,
+Yeah, I hacked this up in a hurry so I could write the article. It needs tests some tweaks. I should have a patch for regexes on content soon.&lt;/p&gt;</description>
+      <pubDate>Wed, 31 May 2006 11:35:01 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9a979213-d5ea-4c02-9997-df8d7708f43e</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-887</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by rick</title>
+      <description>&lt;p&gt;Hey Kevin, this is pretty slick.  Unfortunately, I use a lot of inline element calls that it&amp;#8217;s not catching.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;# $('foo').update('blah')
+# but the plugin looks for
+# Element.update('foo', 'blah')
+page[:foo].replace_html 'blah'&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Also, this could use some sanity tests :)&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ll hack on this a bit tonight and see if I can provide a patch.&lt;/p&gt;</description>
+      <pubDate>Wed, 31 May 2006 09:16:27 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c82dccf0-d413-4a86-a7c9-264ce09b3705</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-886</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Kevin Clark</title>
+      <description>&lt;p&gt;Tom:
+It won&amp;#8217;t catch errors in the DOM. If you know a way of simulating the way different browsers deal with the DOM in Ruby, please tell me and I&amp;#8217;ll take a look :) As far as I know, you&amp;#8217;d need a javascript compiler for that sort of thing.&lt;/p&gt;
+
+
+	&lt;p&gt;This is intended to assert that the expected div is being set to be updated. It&amp;#8217;d be up to you to make sure the div is there. You might be able to use something like Selenium or Watir for the front end testing.&lt;/p&gt;</description>
+      <pubDate>Tue, 30 May 2006 13:03:07 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:386afaff-839f-4be9-bdad-1c5f22287df2</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-885</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Tom</title>
+      <description>&lt;p&gt;Will this test harness catch errors like, for example, a case when someone&amp;#8217;s updating a div that doesn&amp;#8217;t exist?  Perhaps a designer renamed a div, or that div isn&amp;#8217;t present on the page because it was moved to a seperate page in the UI?&lt;/p&gt;
+
+
+	&lt;p&gt;Seems like errors like this would be hard to test without actually loading up the DOM.&lt;/p&gt;</description>
+      <pubDate>Tue, 30 May 2006 12:59:08 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a5f9ef4f-0916-4171-82be-bf1e4634cf13</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-884</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by brasten</title>
+      <description>&lt;p&gt;You&amp;#8217;ve managed to address many of the shortcomings I had with rjs-assertions.  Very well done, and thanks for the useful tool!&lt;/p&gt;</description>
+      <pubDate>Tue, 30 May 2006 10:13:16 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bb1c825e-bec1-4af0-97e4-70061f3927e4</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-883</link>
+    </item>
+    <item>
+      <title>"Guide: Test Driven RJS with ARTS" by Daniel</title>
+      <description>&lt;p&gt;This is a great post.  Thankyou for posting this one and writing a plugin for this aspect of testing.  I look forward to adding this to my project to make it as robust as possible.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanx&lt;/p&gt;</description>
+      <pubDate>Tue, 30 May 2006 10:00:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c3cb69ba-fda8-4f54-90eb-f4e8f3e9b613</guid>
+      <link>http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts#comment-882</link>
+    </item>
+  </channel>
+</rss>

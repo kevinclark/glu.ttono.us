@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous:  WHATWG WebApps 1.0 Spec</title>
+    <link>http://glu.ttono.us/articles/2007/03/01/whatwg-webapps-1-0-spec</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title> WHATWG WebApps 1.0 Spec</title>
+      <description>&lt;p&gt;Specs with spunk make me optimistic.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;1.2.1. How to read this specification&lt;/p&gt;
+    
+    &lt;p&gt;This specification should be read like all other specifications. First, it 
+     should be read cover-to-cover, multiple times. Then, it should be read 
+      backwards at least once. Then it should be read by picking random sections 
+      from the contents list and following all the cross-references.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href="http://www.whatwg.org/specs/web-apps/current-work/#how-to"&gt;Web Applications 1.0 Working Draft&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Mar 2007 21:39:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:59530531-7fc4-45f2-bb34-2489a6291d4f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/01/whatwg-webapps-1-0-spec</link>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>" WHATWG WebApps 1.0 Spec" by Edward O'Connor</title>
+      <description>&lt;p&gt;Damn straight. Hixie rules.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Mar 2007 14:27:07 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:2553aa87-e10e-4560-9d2d-4862f6344554</guid>
+      <link>http://glu.ttono.us/articles/2007/03/01/whatwg-webapps-1-0-spec#comment-1298</link>
+    </item>
+  </channel>
+</rss>

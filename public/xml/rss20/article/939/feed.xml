@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Glen Vanderburg - Testing Migrations</title>
+    <link>http://glu.ttono.us/articles/2006/06/24/glen-vanderburg-testing-migrations</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Glen Vanderburg - Testing Migrations</title>
+      <description>&lt;p&gt;Glen Vanderburg
+glv@vanderburg.org&lt;/p&gt;
+
+&lt;p&gt;About Me&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Independent consultant
+&lt;ul&gt;
+&lt;li&gt;Ruby, Java, Agile, TDD, the usual suspects&lt;/li&gt;
+&lt;li&gt;Frequent conference speaker&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;#8220;Generalizing specialist&amp;#8221;
+&lt;ul&gt;
+&lt;li&gt;Addicted to learning&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rubyist since 2000&lt;/li&gt;
+&lt;li&gt;Rails since mid-2005&lt;/li&gt;
+&lt;li&gt;Previous experience: Java, C++, Perl, C, Tcl, REXX, Awk, sh, Pascal &amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;About this Talk&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Work in progress.&lt;/li&gt;
+&lt;li&gt;Thinking about testing Rails migrations.
+&lt;ul&gt;
+&lt;li&gt;how&lt;/li&gt;
+&lt;li&gt;why&lt;/li&gt;
+&lt;li&gt;whether&lt;/li&gt;
+&lt;li&gt;when&lt;/li&gt;
+&lt;li&gt;how much&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Preliminary code for testing migrations.&lt;/li&gt;
+&lt;li&gt;A challenge to take this farther.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Migrations Rock!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The Problem&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Database schemas &lt;em&gt;always&lt;/em&gt; need to evlove.&lt;/li&gt;
+&lt;li&gt;Most frameworks/platforms/tools ignore this fact.&lt;/li&gt;
+&lt;li&gt;Left to themselves, teams do crazy things&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A Common Result&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;ad hoc&lt;/em&gt; changes&lt;/li&gt;
+&lt;li&gt;Made manually in development or staging&lt;/li&gt;
+&lt;li&gt;Must be rediscovered (somehow) and recreated in test, and then productions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another Common Result&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Resistance to changing the db&lt;/li&gt;
+&lt;li&gt;Application much change instead
+&lt;ul&gt;
+&lt;li&gt;in unpleasent ways&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Meaning of schema is perverted&lt;/li&gt;
+&lt;li&gt;Overloaded fields, severer denormalization, etc&lt;/li&gt;
+&lt;li&gt;Britleness!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Still Another Common Result&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Versioned SQL script for schema
+&lt;ul&gt;
+&lt;li&gt;and one for basic test data&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Not too bad .. schema all in one place&lt;/li&gt;
+&lt;li&gt;Version control systems help manage change&lt;/li&gt;
+&lt;li&gt;Development systems can often rebuild database from scratch&lt;/li&gt;
+&lt;li&gt;Time to deploy? look at differences, manually modify databse.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Best of the Rest&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hand-written SQL migration scripts&lt;/li&gt;
+&lt;li&gt;Use database to dump schema for single-file view&lt;/li&gt;
+&lt;li&gt;Easy to move changes to test, production servers&lt;/li&gt;
+&lt;li&gt;Not too bad, except rollback is rarely considered&amp;#8230;
+&lt;ul&gt;
+&lt;li&gt;and the SQL is usually pretty ugly.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rails Does it Right&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Migrations deal with all of those problems.&lt;/li&gt;
+&lt;li&gt;Nice (mostly) database independent code&lt;/li&gt;
+&lt;li&gt;Incremental migrations&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;up&lt;/code&gt; and &lt;code&gt;down&lt;/code&gt; method provide for rollback&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;* AND YET *&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Migrations suck (at least a little)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No testing support&lt;/li&gt;
+&lt;li&gt;It turns out to be hard to &lt;em&gt;build&lt;/em&gt; testing support
+&lt;ul&gt;
+&lt;li&gt;and only partly for technical reasoning&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Why?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Migrations and version control are an odd match&lt;/li&gt;
+&lt;li&gt;Active Record&amp;#8217;s model abstraction leaks like a sieve&lt;/li&gt;
+&lt;li&gt;Old migrations don&amp;#8217;t need ongoing testing&lt;/li&gt;
+&lt;li&gt;Sometimes testing migrations is overkill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your Application and Version Control&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Each version represents a point in time
+&lt;ul&gt;
+&lt;li&gt;start from scratch, check out, run your app&lt;/li&gt;
+&lt;li&gt;that&amp;#8217;s the whole point!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Old versions are hidden
+&lt;ul&gt;
+&lt;li&gt;You can get to them, but that&amp;#8217;s time travel&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Version Control Wormhole&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Migrations are very different.&lt;/li&gt;
+&lt;li&gt;The whole history of your schema in one directory
+&lt;ul&gt;
+&lt;li&gt;In one &lt;em&gt;version&lt;/em&gt; of your directory.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Move the database back in time while the app stays put.&lt;/li&gt;
+&lt;li&gt;Causes some obvious problems.
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;&lt;strong&gt;Never&lt;/strong&gt; change a migrations after you check it in&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Models or Tables?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Active Record lets the tables show through&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;has_and_belongs_to_many&lt;/code&gt; hides them (especially the join table)&lt;/li&gt;
+&lt;li&gt;Parameters to &lt;code&gt;find&lt;/code&gt; (and other methods) expose them.&lt;/li&gt;
+&lt;li&gt;Unit tests are especially leaky places.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fixtures: Models or Tables?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All information about overridden class/table mapping is in the class.&lt;/li&gt;
+&lt;li&gt;Then in unit test, fixtures are all about tables, so things fail.&lt;/li&gt;
+&lt;li&gt;How does it know about class Person?
+&lt;ul&gt;
+&lt;li&gt;See Rails ticket #1911 (flexible fixtures)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But Migrations are ALL Tables!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Yes they are . (Until you start thinking about testing them)&lt;/li&gt;
+&lt;li&gt;In migrations: &lt;code&gt;add_column :events, :user_id, :integer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In test: &lt;code&gt;assert_has_column :events, :user_id, :integer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Does that really help?&lt;/li&gt;
+&lt;li&gt;Wouldn&amp;#8217;t this be better?
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;assert_supports_has_many :users, :events&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Old Migrations Shouldn&amp;#8217;t Break&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Remember the version control wormhole?&lt;/li&gt;
+&lt;li&gt;Old migrations are &lt;em&gt;history&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;If you&amp;#8217;ve already moved beyond them (especially in production) they should never change, and should never break&lt;/li&gt;
+&lt;li&gt;If testing migrations is slow, don&amp;#8217;t keep testing old migrations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sometimes Migrations Don&amp;#8217;t Need Testing&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Just a few lines&lt;/li&gt;
+&lt;li&gt;Run promptly in development&lt;/li&gt;
+&lt;li&gt;Test-through-use with new application code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What&amp;#8217;s the Point?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Often, the trouble of automated testing is of marginal benefit for migrations&lt;/li&gt;
+&lt;li&gt;There are two big exceptions
+&lt;ul&gt;
+&lt;li&gt;Data conversion&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;down&lt;/code&gt; method&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Those two things usually won&amp;#8217;t be fully exercised until you really need them &amp;#8211; in production&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Migration Testing Setup&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides (but I&amp;#8217;ll summarize as I can)&lt;/li&gt;
+&lt;li&gt;Move from Category habtm Merchants to Category has many Merchants through Order&lt;/li&gt;
+&lt;li&gt;Lots of code examples, I&amp;#8217;ll try to link the slides&lt;/li&gt;
+&lt;li&gt;Mix in &lt;code&gt;MigrationTesting&lt;/code&gt; module (unreleased)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;def migration_number; 2; end&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;def setup; db_setup; end&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Data Conversion&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Can sometimes be done with model instances.&lt;/li&gt;
+&lt;li&gt;But not in general, because you&amp;#8217;re working across two different version of the tables underneath the models&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Why Test Data Conversion?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Real-world data is strange.&lt;/li&gt;
+&lt;li&gt;Your development data probably isn&amp;#8217;t the same.
+&lt;ul&gt;
+&lt;li&gt;(or at least, a much smaller sample size)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;You want to test &lt;em&gt;before&lt;/em&gt; your migration chokes on the production data.
+&lt;ul&gt;
+&lt;li&gt;Unexpected nulls can wreak havoc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Sample code&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Testing Up/Testing Down slides are all code examples&lt;/p&gt;
+
+&lt;p&gt;Why Test Reverse Migrations?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rake rollback&lt;/code&gt; really *is* the best thing since sliced bread.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rake deploy&lt;/code&gt; is merely the best thing since SSH.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;But if your new release includes a migration, you&amp;#8217;re counting on the reverse migrations&lt;/li&gt;
+&lt;li&gt;Have you ever run it?&lt;/li&gt;
+&lt;li&gt;Did you even &lt;em&gt;write it&lt;/em&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Making it Easy to do the Right Thing&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Testing reverse migrations should be trivial. (Free even)&lt;/li&gt;
+&lt;li&gt;The failing test provides incentive to write the reverse migration in the first place.
+&lt;ul&gt;
+&lt;li&gt;Not to mention getting it right&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Testing Down&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;test_down_schema&lt;/code&gt; gets mixed into your test case and runs automatically&lt;/li&gt;
+&lt;li&gt;Detects pure schema errors for (almost) free&lt;/li&gt;
+&lt;li&gt;Test downward data conversion using the same techniques&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What, Me Worry?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maybe migratiosn don&amp;#8217;t need to be as thoroughly tested as other code&lt;/li&gt;
+&lt;li&gt;But some parts do
+&lt;ul&gt;
+&lt;li&gt;Data conversion&lt;/li&gt;
+&lt;li&gt;Rollback code&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Testing rollback code, in particular should be trival
+&lt;ul&gt;
+&lt;li&gt;For one thing, it prompts us to write tests&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further Work&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Smarter &amp;#8220;down&amp;#8221; testing
+&lt;ul&gt;
+&lt;li&gt;Detecting errors is easy&lt;/li&gt;
+&lt;li&gt;Reporting them is clumsy&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Model oriented assertions
+&lt;ul&gt;
+&lt;li&gt;Associations, acts_as, aggregation
+&lt;ul&gt;
+&lt;li&gt;Should exploit ActiveRecord reflection facilities&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Better infrastructure
+&lt;ul&gt;
+&lt;li&gt;Automatically test new migrations, skip old ones&lt;/li&gt;
+&lt;li&gt;Fixture creation and management for migration testing&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Sat, 24 Jun 2006 16:00:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6218d484-1b36-4991-9e24-a33731916b29</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/24/glen-vanderburg-testing-migrations</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Top-to-bottom Testing in Ruby</title>
+    <link>http://glu.ttono.us/articles/2005/10/14/top-to-bottom-testing-in-ruby</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Top-to-bottom Testing in Ruby</title>
+      <description>&lt;p&gt;Presented by Francis Hwang
+&lt;a href="http://fhwang.net/top_to_bottom/"&gt;http://fhwang.net/top_to_bottom/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;First Toy Example &lt;a href="http://fhwang.net/top_to_bottom/01_fibonacci.rb"&gt;fibonacci.rb&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Testing is harder in the real world&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Complexity&lt;/li&gt;
+&lt;li&gt;External components&lt;/li&gt;
+&lt;li&gt;Side-effects
+&lt;ul&gt;
+&lt;li&gt;You don&amp;#8217;t want to send a thousand emails to test&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Speed
+&lt;ul&gt;
+&lt;li&gt;You don&amp;#8217;t want to drop and rebuild your schema for every single test&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Quality Elbow&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You initially get lots of quality for your cost&lt;/li&gt;
+&lt;li&gt;As it goes on, you get lest quality from your code&lt;/li&gt;
+&lt;li&gt;Similarly, testing degrades as code does&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Message&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple mailer.&lt;/li&gt;
+&lt;li&gt;Just sends stuff down the pipe&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For testing we don&amp;#8217;t want to send real emails&lt;/p&gt;
+
+&lt;p&gt;MockMailer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Same methods, but its really really stupid&lt;/li&gt;
+&lt;li&gt;Adds emails to emails sent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can use this to simply check our mailers.&lt;/p&gt;
+
+&lt;p&gt;This is too coupled however, so a message ought to automatically know what mailer to use in tests.&lt;/p&gt;
+
+&lt;p&gt;So we use a &lt;a href="http://fhwang.net/top_to_bottom/03_email.rb"&gt;user&lt;/a&gt;, and pass in the mock mailer to the user. This still isn&amp;#8217;t right, as its not the user&amp;#8217;s job.&lt;/p&gt;
+
+&lt;p&gt;We need to bite the bullet and imitate a global variable. We&amp;#8217;ll use &lt;a href="http://fhwang.net/top_to_bottom/04_email.rb"&gt;contextual service&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If we need to use a mock with several outside services, we can set those up in &lt;a href="http://fhwang.net/top_to_bottom/05_seniors.rb"&gt;setup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The issue with mocking a sql query is that you&amp;#8217;re basically writing a full sql parser.&lt;/p&gt;
+
+&lt;p&gt;Back to slides&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Tradeoffs of Complex Mock classes&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Upsides
+&lt;ul&gt;
+&lt;li&gt;Speed
+&lt;ul&gt;
+&lt;li&gt;Incredible speed increase&lt;/li&gt;
+&lt;li&gt;Not spending 3 hours to run sql tests&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;No side-effects and no cleanup
+&lt;ul&gt;
+&lt;li&gt;No need to touch the db&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Downsides
+&lt;ul&gt;
+&lt;li&gt;Indirection&lt;/li&gt;
+&lt;li&gt;Possible bugs in mock class&lt;/li&gt;
+&lt;li&gt;Time spent to build mock&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You could mock anything!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filesystem - &lt;a href="http://fhwang.net/top_to_bottom/06_mockfs.rb"&gt;MockFS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Command line user entry - &lt;a href="http://fhwang.net/top_to_bottom/07_easyprompt.rb"&gt;EasyPrompt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;email&lt;/li&gt;
+&lt;li&gt;network services&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dynamicity is your friend&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://fhwang.net/top_to_bottom/09_override.rb"&gt;Overriding&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;May not be a good idea&lt;/li&gt;
+&lt;li&gt;Undefines FileUtil, and Dir and File&lt;/li&gt;
+&lt;li&gt;Also require&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further improvement&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Test-centric libraries
+&lt;ul&gt;
+&lt;li&gt;Try to include mocks in your libraries&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Domain-specific test languages&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Questions/Comments&lt;/p&gt;
+
+&lt;p&gt;DHH: Use transactions and still use the db. Saves speed. Run test cases in a transaction, rollback. Basecamp tests using db does 410 tests, runs in 60 seconds.&lt;/p&gt;
+
+&lt;p&gt;Austin: In 3rd code example, ContextualService, isn&amp;#8217;t that just another way of doing dependency injection (needle, etc).&lt;/p&gt;
+
+&lt;p&gt;Response: Yup. I like the fact that the mailer manages its own instance.&lt;/p&gt;
+
+&lt;p&gt;DHH: At 0.10, Rails on Needle? Decided its not an approach, what you really want is dependency injection, without knowing anything about dependency injection. What you&amp;#8217;re really interested in is referencing the class mailer and getting the mock back when you&amp;#8217;re running tests. You can preload the load path so when you&amp;#8217;re using tests it uses the mock directory before the real thing. The mock can then just be called Mailer.&lt;/p&gt;
+
+&lt;p&gt;Azlak: One downside is writing them.. libraries can generate mock objects dynamically.&lt;/p&gt;
+
+&lt;p&gt;Response: YMMV, mocking is a thing mostly on the logick of the thing, so abstracting out doesn&amp;#8217;t work well. Most mock libraries work like message interception, but its like a black box. I personally like just writing them better.&lt;/p&gt;
+
+&lt;p&gt;Azlak: Mixing up mocks and stubbs, whats the difference? Mocks are actually black boxes that pretend to be something else. Rails has stubbs not mocks.&lt;/p&gt;
+
+&lt;p&gt;DHH: You can choose to override or not. Or turn into a whole black box if you like. You can use either mocks or stubbs.&lt;/p&gt;
+
+&lt;p&gt;Azlak: The major difference is that if you don&amp;#8217;t specifically say its a mock, it blows up in your face.&lt;/p&gt;
+
+&lt;p&gt;Blah blah blah..&lt;/p&gt;
+
+&lt;p&gt;AC: If you want a mockfs, why don&amp;#8217;t you just use a specific path as a sandbox.&lt;/p&gt;
+
+&lt;p&gt;Response: I have classes where they know the specific paths, so you have to intercept everywhere and it gets messy.&lt;/p&gt;
+
+&lt;p&gt;AC: If you&amp;#8217;re hitting a real file system you have the potential to bork your tests in the future if things crash.&lt;/p&gt;
+
+&lt;p&gt;Response: You may also want to check if the hd is full.. etc.&lt;/p&gt;
+
+&lt;p&gt;AC: Can run mock tests without actually having the server running (mysql etc).&lt;/p&gt;
+
+&lt;p&gt;Response: Also nice to be able to change your structure without touching a database. Also, in theory, you could use tests to test if you&amp;#8217;re working on code running on different machines&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Dom Tersen: Mock testing are good for tests, but they actually don&amp;#8217;t proove the system works for real. Mock object testing doesn&amp;#8217;t replace real testing.&lt;/p&gt;
+
+&lt;p&gt;Patrick: Who&amp;#8217;s responsibility is it to write the mocks? Should we write them on the side, or should the capability to be mocked be part of every IO library?&lt;/p&gt;
+
+&lt;p&gt;Response: I&amp;#8217;d be happy if library authors were writing mocks for their libraries. Those writing the library are usually in the best place to write Mocks.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll clean this article up more as I have time. &amp;#8211; Kev&lt;/p&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 16:56:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:1526ed40cd03b2eb0dbe91545e92d64a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/14/top-to-bottom-testing-in-ruby</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/13</trackback:ping>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Penny Arcade on Rails</title>
+    <link>http://glu.ttono.us/articles/2005/11/14/penny-arcade-on-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Penny Arcade on Rails</title>
+      <description>&lt;p&gt;Along with &lt;a href="http://www.penny-arcade.com"&gt;Penny Arcade&amp;#8217;s&lt;/a&gt; new design for their 7th birthday they&amp;#8217;ve moved to a rails cms (see &lt;a href="http://www.penny-arcade.com/2005/11/14/#21452"&gt;Gabe&amp;#8217;s post entitled Seven Years&lt;/a&gt;).&lt;/p&gt;
+
+&lt;blockquote&gt;Along with the slick new visuals the guts of the site also got a huge upgrade. Penny Arcade right now represents one of the largest implementations of &amp;#8220;rails&amp;#8221; on the intertron. I went and looked at a website about rails and then I got a headache. From what I gathered it’s either some kind of cutting edge programming language, or a way to liquefy a man’s brain inside his skull. I&amp;#8217;m told that it means the site looks better and loads faster regardless of whatever hippy web browser you decide to use. Fuck M$!&lt;/blockquote&gt;
+
+&lt;p&gt;Welcome guys!&lt;/p&gt;</description>
+      <pubDate>Mon, 14 Nov 2005 16:26:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4bc504d1-bfba-4360-a886-076009d88d77</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/11/14/penny-arcade-on-rails</link>
+      <category>Rails</category>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/90</trackback:ping>
+    </item>
+  </channel>
+</rss>

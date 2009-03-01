@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: YARV Progress Report</title>
+    <link>http://glu.ttono.us/articles/2005/10/14/yarv-progress-report</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>YARV Progress Report</title>
+      <description>&lt;h3&gt;Koichi SASADA&lt;/h3&gt;
+
+&lt;h4&gt;Caution! (review)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I can&amp;#8217;t speak English well
+&lt;ul&gt;
+&lt;li&gt;If I say strange English, you can see the slide page
+** Or ask another Japanese. They can speak English well.&lt;/li&gt;
+&lt;li&gt;If you have any queestions, ask me with:
+** Japanese (recommended)
+** Ruby, C, Scheme, Java, &amp;#8230;
+** IRC (#rubyconf on freenode)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Agenda&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Self Introduction and Japanese Activities&lt;/li&gt;
+&lt;li&gt;Overview of YARV&lt;/li&gt;
+&lt;li&gt;Goal of YARV&lt;/li&gt;
+&lt;li&gt;Current YARV status
+&lt;ul&gt;
+&lt;li&gt;YARV Design, Optimization Review&lt;/li&gt;
+&lt;li&gt;Evaluation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Self Introduction&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;SASADA&amp;#8221; the family name&lt;/li&gt;
+&lt;li&gt;&amp;#8220;Koichi&amp;#8221; is given name -&gt; &amp;#8220;ko1&amp;#8221;&lt;/li&gt;
+&lt;li&gt;A Student for Ph.D. 2nd grade (Not a Son-shi)
+&lt;ul&gt;
+&lt;li&gt;Systems Software for Multithreaded Arch
+** SMT/CMP or other tech
+** i.e.: Hypter threeading (Intel), CMT (Sun), Power (IBM)
+** OS, Library, Compiler and Interpreter
+** YARV is my first step for parallel interpreter&lt;/li&gt;
+&lt;li&gt;Computer Architecture for Next Generation at Public Position&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Nihon Ruby no Kai
+&lt;ul&gt;
+&lt;li&gt;Organized by Mr. Takahashi (maki)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;#8220;Rubyist Magazine&amp;#8221;:http://jp.rubyist.net/magazine
+&lt;ul&gt;
+&lt;li&gt;vol 10 at 10 Oct 2005&lt;/li&gt;
+&lt;li&gt;1st anniversary at 6 Sep 2005 (vol 9)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ruby-dev summary&lt;/li&gt;
+&lt;li&gt;English Diary some days
+&lt;ul&gt;
+&lt;li&gt;But retired&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Our Activity: Rubyist Magazine&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Many Japanese articles related to Ruby
+&lt;ul&gt;
+&lt;li&gt;Cooperate with Ruby Code &amp;amp; Style?&lt;/li&gt;
+&lt;li&gt;I&amp;#8217;m writing YARV internal named &amp;#8220;YARV Maniacs&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Many interviews of Japanese Rubyists&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;RubyMa!&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Published 1 Apr 2005 (April Fools)
+&lt;ul&gt;
+&lt;li&gt;Joke web-zine&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Parody of Negima!&lt;/li&gt;
+&lt;li&gt;Many useful articles
+&lt;ul&gt;
+&lt;li&gt;The Takahashi method:
+def Takahashi
+end&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Overview of YARV&lt;/h4&gt;
+
+&lt;h4&gt;Overview: Background&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby is used world-wide, &lt;em&gt;(one of)? the most comfortable programming languages&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Ruby is &lt;em&gt;slow&lt;/em&gt;, because interpreter doesn&amp;#8217;t use Virtual Machine Technology&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;We need Ruby VM!&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;#8220;YARV: Yet Another Ruby VM&amp;#8221;:http://www.atdot.net/yarv/&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Started development on 1 Jan 2004
+** At that time, there were some VMS for Ruby&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ruby&amp;#8217;s license, of course&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Overview: FAQ (review of last year FAQ)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Q: How is &amp;#8220;YARV&amp;#8221; pronounced?&lt;/li&gt;
+&lt;li&gt;A: You can pronounce &amp;#8220;YARV&amp;#8221; what you like.&lt;/li&gt;
+&lt;li&gt;Q: Should I remember the name &amp;#8220;YARV&amp;#8221;?&lt;/li&gt;
+&lt;li&gt;A: No. If YARV succeeds, it gets renamed to Rite, if it doesn&amp;#8217;t, no one will remember it
+&lt;ul&gt;
+&lt;li&gt;About YARV, name is NOT ???&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Overview: YARV System&lt;/h4&gt;
+
+&lt;p&gt;Ruby Program &amp;#8211;&gt; Compiler &amp;#8211;&gt; YARV Instruction Sequence &amp;#8211;&gt;
+ ==&gt; Virtual Machine
+ ==&gt; AOT Compiler &amp;#8211;&gt; C Source &amp;#8211;&gt;&lt;/p&gt;
+
+&lt;h4&gt;Overview: Current Interpreter&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby Program: a = b + c&lt;/li&gt;
+&lt;li&gt;Syntax tree: (a =) -&gt;  (method dispatch + (b), (c))&lt;/li&gt;
+&lt;li&gt;Current interpreter traverses AST directly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Overview YARV - Stack Machine&lt;/h4&gt;
+
+&lt;h4&gt;The Goal of YARV&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;YARV: &lt;em&gt;Yet Another&lt;/em&gt; RubyVM -&gt; &lt;em&gt;The RubyVM&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;To be the Ruby 2.0 VM Rite&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fastest Ruby Interpreter
+&lt;ul&gt;
+&lt;li&gt;Easy to be the current Ruby interpreter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;The Goal of YARV (cont.)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Support all Ruby features
+&lt;ul&gt;
+&lt;li&gt;Include Ruby 2.0 new syntaxes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Native thread support
+&lt;ul&gt;
+&lt;li&gt;Concurrent execution (Giant VM lock)&lt;/li&gt;
+&lt;li&gt;Parallel execution on parallel machine&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Multi-VM instance
+&lt;ul&gt;
+&lt;li&gt;Same as Mutlti-VM in Java&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Goal: Ruby 2.0 syntax&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Matz will decide it :-)&lt;/li&gt;
+&lt;li&gt;&amp;#8221;{|&amp;#8230;| &amp;#8230;}&amp;#8221; == &amp;#8220;-&gt;(&amp;#8230;){ &amp;#8230; }&amp;#8221;
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;I think this is ugly&amp;#8221; &amp;#8211; Ko1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Multiple-values
+&lt;ul&gt;
+&lt;li&gt;Same as Array? Or first class multiple-values support?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Selector-namespace?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Goal: Native Thread Support&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Three different thread models&lt;/li&gt;
+&lt;li&gt;Model 1: User-level thread (green)
+&lt;ul&gt;
+&lt;li&gt;same as current Rubt interpreter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Model 2: Native thread with giant VM lock
+&lt;ul&gt;
+&lt;li&gt;Same as current Ruby interpreter&lt;/li&gt;
+&lt;li&gt;Easy to implement&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Model 3: Native-thread with fine grain lock
+&lt;ul&gt;
+&lt;li&gt;Run ruby threads in parallel&lt;/li&gt;
+&lt;li&gt;For enterprise?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Goal: Native Thread Support (cont.)&lt;/h4&gt;
+
+&lt;p&gt;h5. Current Ruby Interpreter &amp;amp; Model 1&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU1: Thread 1 -&gt; Thread 2 -&gt; Thread 1&lt;/li&gt;
+&lt;li&gt;CPU2: Idle&amp;#8230;&amp;#8230;..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;h5. Model 2: Native thread with Giant VM Lock&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU1: Thread 1 -&gt; (Lock) -&gt; (in OS thread 2) Thread 2 -&gt; (Lock) -&gt; Thread 1&lt;/li&gt;
+&lt;li&gt;CPU2: Idle&amp;#8230;&amp;#8230;..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On this system, other threads can run (but the Ruby threads switch cpus with a lock)&lt;/p&gt;
+
+&lt;p&gt;h5. Model 3: Native thread with Fine Grain Lock&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU1: Thread 1&amp;#8230;&amp;#8230;&lt;/li&gt;
+&lt;li&gt;CPU2: Thread 2&amp;#8230;&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Goal: Native Thread Support Summary&lt;/h4&gt;
+
+&lt;p&gt;|&lt;em&gt;. |&lt;/em&gt;. Model 1|&lt;em&gt;. Model 2|&lt;/em&gt;. Model 3|
+|Scalability|Bad|Bad?|Best
+|Lock overhead|No|Some|High|
+|Impl. Difficulty|Norm|Easy|Hard|
+|Portability|Good|Bad|Bad|&lt;/p&gt;
+
+&lt;h4&gt;Goal: Multi-VM Instance&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Current Ruby process: ( Process ( Ruby Interpreter (VM) ) )&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ruby Process with Multi-VM Instance ( Process ((many) Ruby Interpreter (VM) ) )&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Current Ruby can hold only 1 interpreter in 1 process&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Interpreter structure causes this problem&lt;/li&gt;
+&lt;li&gt;Using many global variables&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Multiple-VM instance&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Running some VM in 1 process&lt;/li&gt;
+&lt;li&gt;It will help ruby embedded apps
+** mod_ruby, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Multi-VM Instance + Thread Model 2&lt;/h4&gt;
+
+&lt;p&gt;CPU1: Thread 1 -&gt; (Lock of VM1) -&gt; Thread 2 -&gt; Lock of VM1&lt;/p&gt;
+
+&lt;h4&gt;Goal: Load Map&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All Ruby features support
+&lt;ul&gt;
+&lt;li&gt;Feb. 2006 &amp;#8230; ?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Native Thread Support
+&lt;ul&gt;
+&lt;li&gt;Experimental: Dec. 2005&lt;/li&gt;
+&lt;li&gt;Complete: 2006?(model 2) 2007?(model 3)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Multi-VM support
+&lt;ul&gt;
+&lt;li&gt;Experimental Feb 2006&lt;/li&gt;
+&lt;li&gt;Complete: 2006?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Current Status of YARV&lt;/h4&gt;
+
+&lt;h4&gt;Status: System&lt;/h4&gt;
+
+&lt;p&gt;Some almosts, an incomplete and a not yet&lt;/p&gt;
+
+&lt;h4&gt;Status: Supported Ruby Features&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Almost all Ruby features&lt;/li&gt;
+&lt;li&gt;Not supported:
+&lt;ul&gt;
+&lt;li&gt;Few syntaxes     &amp;#8230; {|*arg| &amp;#8230;}&lt;/li&gt;
+&lt;li&gt;Visibility&lt;/li&gt;
+&lt;li&gt;Safe level ($SAFE)&lt;/li&gt;
+&lt;li&gt;Some methods written in C for current Ruby implementation&lt;/li&gt;
+&lt;li&gt;Around Signal&lt;/li&gt;
+&lt;li&gt;C extension libraries
+** (Because YARV can&amp;#8217;t run mkmf.rb)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Status: Versions&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0.2 YARV as C Extension
+&lt;ul&gt;
+&lt;li&gt;Need a patch to Ruby interpeter&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;0.3 (2005-8): YARV as Ruby Interpreter
+&lt;ul&gt;
+&lt;li&gt;merged to Ruby source (1.9 HEAD)&lt;/li&gt;
+&lt;li&gt;Maintained on my subversion repository&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Latest version: 0.2
+&lt;ul&gt;
+&lt;li&gt;Native thread (pthread / Win32) supports model 2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;YARV 0.2.x&lt;/h4&gt;
+
+&lt;p&gt;(Ruby Interpreter (Evaluator)) -&gt; YARV (Compiler, VM, Optimizer) -&gt; back&lt;/p&gt;
+
+&lt;h4&gt;YARV 0.3.x&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;YARV marged with Ruby Interpreter&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Future work&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Generational GC&lt;/li&gt;
+&lt;li&gt;m17n&lt;/li&gt;
+&lt;li&gt;&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;&amp;#8220;Status: Compile &amp;amp; Disasm CGI&amp;#8221;:http://www.atdot.net/yc/&lt;/h4&gt;
+
+&lt;h4&gt;Status: VM Design&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;5 registers
+&lt;ul&gt;
+&lt;li&gt;PC: Program Counter&lt;/li&gt;
+&lt;li&gt;SP: Stack Pointer&lt;/li&gt;
+&lt;li&gt;CFP: Controler Frame Pointer&lt;/li&gt;
+&lt;li&gt;LFP: LOcal frame pointer&lt;/li&gt;
+&lt;li&gt;DFP: Dynamic Frame Pointer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Some stack frame&lt;/li&gt;
+&lt;li&gt;Control stack and value stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Status: Optimization&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple Stack Virtual Machine
+&lt;ul&gt;
+&lt;li&gt;Re-design Exception handling&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Peep-hole optimization on compile time
+&lt;ul&gt;
+&lt;li&gt;I gave up static program analysis&lt;/li&gt;
+&lt;li&gt;Dynamicity is your friend but my ENEMY!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Direct Threaded code with GCC&lt;/li&gt;
+&lt;li&gt;Specialized Instruction
+&lt;ul&gt;
+&lt;li&gt;i.e. Ruby program &amp;#8220;x+y&amp;#8221; compiled to special instruction instead of a method dispatch instruction&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;In-line Cache
+&lt;ul&gt;
+&lt;li&gt;In-line Method Cache&lt;/li&gt;
+&lt;li&gt;In-line constant value cache
+** Because ruby&amp;#8217;s &amp;#8220;constant variable&amp;#8221; is not constant!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Embed values in an instruction sequence&lt;/li&gt;
+&lt;li&gt;Unified Instruction
+&lt;ul&gt;
+&lt;li&gt;Operands Unification&lt;/li&gt;
+&lt;li&gt;*Insn&lt;em&gt;A x -&gt; Insn&lt;/em&gt;A_x&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Unified instructions are auto generated by VM gen
+&lt;ul&gt;
+&lt;li&gt;I only decide which instructions should be combined&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Stack Caching&lt;/li&gt;
+&lt;li&gt;JIT Compilation
+&lt;ul&gt;
+&lt;li&gt;I made easy one for x86, but&amp;#8230;&lt;/li&gt;
+&lt;li&gt;Too hard to do alone. I retired.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;AOT Compilation
+&lt;ul&gt;
+&lt;li&gt;YARV bytecode -&gt; C Source&lt;/li&gt;
+&lt;li&gt;Easy to develop&lt;/li&gt;
+&lt;li&gt;Hard to support exception&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Status: Demo&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;YARV building demo?&lt;/li&gt;
+&lt;li&gt;YARV running demo?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Status: Evaluation&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Yield block is not fast (2-3 times faster than C Ruby) - optimizing this will be work for the future&lt;/li&gt;
+&lt;li&gt;With all optimizations, basic math can see a 50 times performance gain over C Ruby&lt;/li&gt;
+&lt;li&gt;Ackermann can see 20 times gain over C Ruby&lt;/li&gt;
+&lt;li&gt;Wow - YARV as it stands stacks up really well against other interpreters for basic math type stuff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Status: Awards&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2004: Funded by IPA Exploratory Software Development &amp;#8220;Youth&amp;#8221;
+&lt;ul&gt;
+&lt;li&gt;IPA: Information-technology Promotion Agency, Japan&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2005: Funded by IPA Exploratory Software Development (continuance)&lt;/li&gt;
+&lt;li&gt;2004: got awarded &amp;#8220;Super creator&amp;#8221; from IPA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Conclusion&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;YARV supports &lt;em&gt;almost&lt;/em&gt; all Ruby syntax&lt;/li&gt;
+&lt;li&gt;YARV suppoorts some RUby libraries&lt;/li&gt;
+&lt;li&gt;YARV 0.3.2 supports native thread&lt;/li&gt;
+&lt;li&gt;YARV achieves significant speedup for ruby programs which have VM bottleneck
+&lt;ul&gt;
+&lt;li&gt;This means that we can enjoy Symbol programming with Ruby&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Conclusion: Future Work&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Support all Ruby features
+&lt;ul&gt;
+&lt;li&gt;mkmf.rb&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support every thread model
+&lt;ul&gt;
+&lt;li&gt;especially 2 and 3&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Support multi-VM Instance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;How Can You Help me&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Any comments are welcome
+&lt;ul&gt;
+&lt;li&gt;Build reports, Bug reports, architecture reports, &amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;yarv-devel Mailing List
+&lt;ul&gt;
+&lt;li&gt;English ML for YARV development
+** Matz and other Japanese join&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;#8220;YARV Wiki&amp;#8221;:http://yarv.rubyforge.org/pukiwki/pukiwiki.php&lt;/li&gt;
+&lt;li&gt;Give me a job! (I&amp;#8217;ll finish my course 2 years later)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Special Thanks&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Matz the architect of Ruby&lt;/li&gt;
+&lt;li&gt;IPA: His sponsor&lt;/li&gt;
+&lt;li&gt;YARV development ML subs&lt;/li&gt;
+&lt;li&gt;All rubyists&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Q&amp;amp;A&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;All: We want the demo!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ko1: OK&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Derek Sivers: A bunch of Japanese :-)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ko1: Some more Japanese&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 22:29:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6b35bd7acc1f21b74ef55986f5c3d57e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/14/yarv-progress-report</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/16</trackback:ping>
+    </item>
+    <item>
+      <title>"YARV Progress Report" by Pawel</title>
+      <description>&lt;p&gt;Derek said something to the effect of &amp;#8216;Your English was very good. Good job!&amp;#8217;
+&lt;br /&gt;&lt;br /&gt;
+Sasada-san just replied to thank him.&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 01:01:06 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8d9b8ffe5fbfd0f0e5579f5e20b4a3c1</guid>
+      <link>http://glu.ttono.us/articles/2005/10/14/yarv-progress-report#comment-53</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Heckle 1.3.0 Released.. urm.. a week and a half ago</title>
+    <link>http://glu.ttono.us/articles/2007/03/01/heckle-1-3-0-released-urm-a-week-and-a-half-ago</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Heckle 1.3.0 Released.. urm.. a week and a half ago</title>
+      <description>&lt;p&gt;More stable, and with better reporting (yay diffs):&lt;/p&gt;
+
+&lt;pre&gt;**********************************************************************
+***  Heckled#uses_while loaded with 4 possible mutations
+**********************************************************************
+
+4 mutations remaining...
+3 mutations remaining...
+2 mutations remaining...
+1 mutations remaining...
+
+The following mutations didn't cause test failures:
+
+--- original
++++ mutation
+ def uses_while
+-  i = 1
++  i = -67
+   while (i &lt; 10) do
+     i = (i + 1)
+   end
+   i
+ end
+
+--- original
++++ mutation
+ def uses_while
+   i = 1
+-  while (i &lt; 10) do
++  while (i &lt; 47) do
+     i = (i + 1)
+   end
+   i
+ end
+
+--- original
++++ mutation
+ def uses_while
+   i = 1
+   while (i &lt; 10) do
+-    i = (i + 1)
++    i = (i + -5)
+   end
+   i
+ end
+
+--- original
++++ mutation
+ def uses_while
+   i = 1
+-  while (i &lt; 10) do
++  until (i &lt; 10) do
+     i = (i + 1)
+   end
+   i
+ end
+
+Heckle Results:
+
+Passed    :   3
+Failed    :   8
+Thick Skin:   3
+
+Improve the tests and try again.
+&lt;/pre&gt;</description>
+      <pubDate>Thu, 01 Mar 2007 13:13:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:5f84c3eb-69f7-4192-a579-197e2bd0b732</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/01/heckle-1-3-0-released-urm-a-week-and-a-half-ago</link>
+    </item>
+  </channel>
+</rss>

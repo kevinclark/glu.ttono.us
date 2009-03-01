@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Redirection Goodness</title>
+    <link>http://glu.ttono.us/articles/2005/11/28/redirection-goodness</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Redirection Goodness</title>
+      <description>&lt;p&gt;If you&amp;#8217;ve been following &lt;a href="http://dev.rubyonrails.org/timeline"&gt;the Rails timeline&lt;/a&gt; you may have seen the inception of &lt;code&gt;&lt;a href="http://dev.rubyonrails.org/changeset/2848"&gt;redirect_to :back&lt;/a&gt;&lt;/code&gt;. Its a wonderful little addition but can wreak havoc on your tests if you don&amp;#8217;t set &lt;code&gt;@request.env["HTTP_REFERER"]&lt;/code&gt; or if there is no referer on a live request.&lt;/p&gt;
+
+&lt;p&gt;To fix this little problem, I&amp;#8217;ve submitted  &lt;a href="http://dev.rubyonrails.org/ticket/3049"&gt;a patch&lt;/a&gt; which will throw an error with a helpful message. Additionally, the patch adds the ability to do &lt;code&gt;assert_redirected_to :back&lt;/code&gt; in your tests, which makes alot more sense when you&amp;#8217;re staring at your tests than &lt;code&gt;assert_redirected_to SomeURLThatIveSetAsReferer&lt;/code&gt; when you really just mean redirected back.&lt;/p&gt;
+
+&lt;p&gt;All tests pass, so feel free to merge against your trunk. If you find bugs, go ahead and drop me a line here or at kevin [dot] clark [at] gmail [dot] com.&lt;/p&gt;</description>
+      <pubDate>Mon, 28 Nov 2005 14:22:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:7eda619a-aea7-4934-9f4b-31a8e5833483</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/11/28/redirection-goodness</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/99</trackback:ping>
+    </item>
+    <item>
+      <title>"Redirection Goodness" by Kevin Clark</title>
+      <description>&lt;p&gt;mikkel: The new assertion and the exception handling &lt;strong&gt;shouldn&amp;#8217;t&lt;/strong&gt; change your fixture handling (all tests pass on the trunk). If you can isolate the test case, I&amp;#8217;m happy to try a fix.&lt;/p&gt;</description>
+      <pubDate>Fri, 13 Jan 2006 22:18:01 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:32c960da-55e3-4677-93f3-35a506708bad</guid>
+      <link>http://glu.ttono.us/articles/2005/11/28/redirection-goodness#comment-182</link>
+    </item>
+    <item>
+      <title>"Redirection Goodness" by mikkel</title>
+      <description>&lt;p&gt;this is really great&amp;#8230;but I have some problems where I loose my fixtures (running old instantiated fixtures btw)...&lt;/p&gt;
+
+
+	&lt;p&gt;When I run a test using drb it works ok the first time. Next time my fixture is nil&amp;#8230;
+A restart of the TDDMate_server solves, but it kind of breaks the point&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Fri, 13 Jan 2006 15:24:05 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b6b8b09c-0452-451d-8d88-e861abb205cb</guid>
+      <link>http://glu.ttono.us/articles/2005/11/28/redirection-goodness#comment-179</link>
+    </item>
+  </channel>
+</rss>

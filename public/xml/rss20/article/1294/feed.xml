@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Making Net::LDAP Play Nice</title>
+    <link>http://glu.ttono.us/articles/2007/02/26/making-net-ldap-play-nice</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Making Net::LDAP Play Nice</title>
+      <description>&lt;p&gt;I wish I had a tumblog. Until one of the &lt;a href="http://tumblr.com"&gt;canned solutions&lt;/a&gt; gets syntax highlighting, I&amp;#8217;ll have to fake it.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="comment"&gt;# Wraps Net::LDAP#bind_as for our settings&lt;/span&gt;
+&lt;span class="ident"&gt;kevin&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;Powerset&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;LDAP&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;authenticate&lt;/span&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;kevin&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;*****&lt;/span&gt;&lt;span class="punct"&gt;')&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; #&amp;lt;Net::LDAP::Entry:0x32077d8 @myhash={:cn=&amp;gt;[&amp;quot;Kevin Clark&amp;quot;]}&amp;gt;&lt;/span&gt;
+&lt;span class="ident"&gt;kevin&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:cn&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;Kevin Clark&amp;quot;]&lt;/span&gt;
+&lt;span class="ident"&gt;kevin&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:cn&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;first&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;#&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;String&lt;/span&gt;
+
+&lt;span class="comment"&gt;# Looks fine, right?&lt;/span&gt;
+&lt;span class="ident"&gt;Marshal&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="ident"&gt;dump&lt;/span&gt; &lt;span class="ident"&gt;kevin&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="symbol"&gt;:cn&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;first&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; TypeError: singleton can't be dumped&lt;/span&gt;
+
+&lt;span class="comment"&gt;# This breaks Rails sessions, among other things. Until it's fixed:&lt;/span&gt;
+&lt;span class="constant"&gt;Marshal&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="ident"&gt;dump&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;&lt;span class="expr"&gt;#{kevin[:cn].first}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt; &amp;quot;\004\b\&amp;quot;\020Kevin Clark&amp;quot;&lt;/span&gt;
+
+&lt;span class="comment"&gt;# Watch: http://rubyurl.com/njz&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Mon, 26 Feb 2007 21:03:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b3a3e560-839e-454e-8d09-b67d4ef4152f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/02/26/making-net-ldap-play-nice</link>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"Making Net::LDAP Play Nice" by Ben Askins</title>
+      <description>&lt;p&gt;You can implement syntax highlighting on tumblr using Dan Webb&amp;#8217;s &lt;a href="http://projects.danwebb.net/wiki/CodeHighlighter"&gt;CodeHighlighter&lt;/a&gt;.  Take a look at subrosa.teamaskins.net &amp;#8211; this is hosted at tumblr and uses CodeHighlighter for syntax highlighting.&lt;/p&gt;</description>
+      <pubDate>Tue, 27 Feb 2007 14:44:42 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:8fd2fe28-a601-4f7b-bed1-a1c56e516ec0</guid>
+      <link>http://glu.ttono.us/articles/2007/02/26/making-net-ldap-play-nice#comment-1295</link>
+    </item>
+  </channel>
+</rss>

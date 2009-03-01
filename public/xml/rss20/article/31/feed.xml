@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Patch for Migrations on SQLite3</title>
+    <link>http://glu.ttono.us/articles/2005/10/20/patch-for-migrations-on-sqlite3</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Patch for Migrations on SQLite3</title>
+      <description>&lt;p&gt;I&amp;#8217;ve been able to confirm the &lt;a href="http://glu.ttono.us/articles/2005/10/20/problems-with-sqlite3-and-migrations"&gt;ongoings of my last post&lt;/a&gt; and it turns out that the bug only happens when you use symbols as arguments to the rename_column method, and then only when the column previously existed. Of course, I generally use symbols for migrations and I don&amp;#8217;t think it would make much sense to rename a column you had just created.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I was able to fix the bug and have submitted a &lt;a href="http://dev.rubyonrails.com/ticket/2531"&gt;patch&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Thu, 20 Oct 2005 11:57:49 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:202bf412512f8ebeac0e34dc4f3b5156</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/20/patch-for-migrations-on-sqlite3</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/31</trackback:ping>
+    </item>
+  </channel>
+</rss>

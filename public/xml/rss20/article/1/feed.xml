@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Uploading to Flickr on OSX</title>
+    <link>http://glu.ttono.us/articles/2005/08/17/uploading-to-flickr-on-osx</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Uploading to Flickr on OSX</title>
+      <description>&lt;p&gt;Today I helped the girlfriend sign up for a &lt;a href="http://www.flickr.com"&gt;Flickr&lt;/a&gt; account and found that all new accounts &lt;a href="http://blog.flickr.com/flickrblog/2005/08/one_less_passwo.html"&gt;must use a yahoo id&lt;/a&gt;. Thats fine, yahoo bought Flickr, we all knew the yahoo id would become part of the service. Unfortunately, a truly excellent &lt;a href="http://www.speirs.org/flickrexport/"&gt;3rd party flickr uploader for osx&lt;/a&gt; hasn&amp;#8217;t been updated to use the yahoo system yet, so I went on search for an alternate way to upload.&lt;/p&gt;</description>
+      <pubDate>Wed, 17 Aug 2005 06:59:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:833a6743aaca616d052b144cd3af2f82</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/17/uploading-to-flickr-on-osx</link>
+      <category>Reviews</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/1</trackback:ping>
+    </item>
+    <item>
+      <title>"Uploading to Flickr on OSX" by null</title>
+      <description>&lt;p&gt;Also see the Mac OS S desktop flickr client 1001.kung-foo.tv (found at osx.hyperjeff.net/Apps)!&lt;/p&gt;</description>
+      <pubDate>Sat, 20 Aug 2005 09:03:27 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:9ce9ec15-391a-4323-89a6-9dd741b54efa</guid>
+      <link>http://glu.ttono.us/articles/2005/08/17/uploading-to-flickr-on-osx#comment-43</link>
+    </item>
+  </channel>
+</rss>

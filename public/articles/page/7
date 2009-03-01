@@ -1,0 +1,1784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/07/06/summer-of-rails-ship-your-first-app">Summer of Rails - Ship Your First App!</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 06 Jul 2006 23:35:00 GMT">Thu, 06 Jul 2006 23:35:00 GMT</span></p>
+<p>Where do you stand on the Rails spectrum? Are you a Ruby wiz who&#8217;s released plugins, libraries, and patches to core? More likely you&#8217;re closer to the other end of the spectrum: tinkering, interested, but haven&#8217;t shipped an app.</p>
+
+<p>Well, for all the tinkerers out there you&#8217;ve got some new motivation. Patrick Crowley of sd.rb is starting a project he&#8217;s calling <a href="http://summerofrails.org/">Summer of Rails</a>. It&#8217;s sort of a Rails Day meets Summer of Code meets &#8220;get your butt in gear and ship something already&#8221;. It&#8217;s an excuse for everyone who&#8217;s been interested in Rails but just hasn&#8217;t <em>done it</em>.</p>
+
+<p>So, get on it! Write your app, <a href="http://summerofrails.org/badges/">badge it</a> as a Summer of Code project and stop procrastinating. As new projects start coming in they&#8217;ll be getting the spotlight at the Summer of Rails site so others can bask in your new found magnificence.</p>
+
+<p><a href="http://summerofrails.org/">Just do it!</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/07/06/summer-of-rails-ship-your-first-app#comments">1 comment</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/28/mkrf-0-1-0-released">mkrf 0.1.0 Released</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 28 Jun 2006 10:41:00 GMT">Wed, 28 Jun 2006 10:41:00 GMT</span></p>
+<p>I&#8217;m pleased to announce that tonight marks the first release of mkrf, a library which generates Rakefiles to build C extensions to Ruby and is aimed at a replacement for mkmf. This is a <a href="http://code.google.com/soc/ruby/about.html">Ruby Summer of Code project</a>.</p>
+
+<p>Though the gem doesn&#8217;t seem to have propogated yet, it should be availble through rubygems, and until then you can download the gem directly <a href="http://rubyforge.org/frs/download.php/11283/mkrf-0.1.0.gem">here</a>.</p>
+
+<p>The code does have RDoc included which I hope explains things well
+enough. Please do send questions and bug reports my way. I&#8217;ll have a
+project setup at advisr.org where you can submit bug reports as soon
+as I tweak its source to properly scope accounts, but until then email
+is fine.</p>
+
+<p><strong>Please do try mkrf with your extensions. Please do send feedback.</strong></p>
+
+<p>As for syntax, it can be as simple as:</p>
+
+<div class="typocode"><pre><code class="typocode_default "> Mkrf::Generator.new('libtrivial_so.bundle')</code></pre></div>
+
+<p>or more complex:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="constant">Mkrf</span><span class="punct">::</span><span class="constant">Generator</span><span class="punct">.</span><span class="ident">new</span><span class="punct">('</span><span class="string">libxml_so.bundle</span><span class="punct">',</span> <span class="punct">'</span><span class="string">*.c</span><span class="punct">')</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">g</span><span class="punct">|</span>
+   <span class="ident">g</span><span class="punct">.</span><span class="ident">include_library</span><span class="punct">('</span><span class="string">socket</span><span class="punct">','</span><span class="string">socket</span><span class="punct">')</span>
+   <span class="ident">g</span><span class="punct">.</span><span class="ident">include_header</span><span class="punct">('</span><span class="string">libxml/xmlversion.h</span><span class="punct">',</span>
+                    <span class="punct">'</span><span class="string">/opt/include/libxml2</span><span class="punct">',</span>
+                    <span class="punct">'</span><span class="string">/usr/local/include/libxml2</span><span class="punct">',</span>
+                    <span class="punct">'</span><span class="string">/usr/include/libxml2</span><span class="punct">')</span>
+ <span class="keyword">end</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/summer-of-code" rel="tag">summer of code</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/28/mkrf-0-1-0-released#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/24/homesteading-a-thrivers-guide">Homesteading: A Thriver's Guide</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 24 Jun 2006 23:36:00 GMT">Sat, 24 Jun 2006 23:36:00 GMT</span></p>
+<p>Tonight after Mike Clark&#8217;s talk, Nathaniel Talbott gave an excellent follow up to his RubyConf 2005 talk, &#8221;<a href="http://glu.ttono.us/articles/2005/10/16/rails-serving-the-long-tail-in-1883-and-2005">Serving the Long Tail in 1883 and 2005</a>&#8221; to the full conference. Read past the jump for more.</p>
+
+  <a href="/articles/2006/06/24/homesteading-a-thrivers-guide">Read more...</a>
+  <p class="meta"></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/24/mike-clark-testing-rails-apps">Mike Clark - Testing Rails Apps</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 24 Jun 2006 21:30:00 GMT">Sat, 24 Jun 2006 21:30:00 GMT</span></p>
+<p>Mike Clark is a really fantastic speaker and I feel like he sold testing to a lot of people who weren&#8217;t convinced tonight. I can&#8217;t really do him justice, so you should really take any opportunity to see him. If you weren&#8217;t able to catch his talk, my notes follow after the jump.</p>
+
+  <a href="/articles/2006/06/24/mike-clark-testing-rails-apps">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/24/glen-vanderburg-testing-migrations">Glen Vanderburg - Testing Migrations</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 24 Jun 2006 20:00:00 GMT">Sat, 24 Jun 2006 20:00:00 GMT</span></p>
+<p>Glen Vanderburg
+glv@vanderburg.org</p>
+
+<p>About Me</p>
+
+<ul>
+<li>Independent consultant
+<ul>
+<li>Ruby, Java, Agile, TDD, the usual suspects</li>
+<li>Frequent conference speaker</li>
+</ul></li>
+<li>&#8220;Generalizing specialist&#8221;
+<ul>
+<li>Addicted to learning</li>
+</ul></li>
+<li>Rubyist since 2000</li>
+<li>Rails since mid-2005</li>
+<li>Previous experience: Java, C++, Perl, C, Tcl, REXX, Awk, sh, Pascal &#8230;</li>
+</ul>
+
+<p>About this Talk</p>
+
+<ul>
+<li>Work in progress.</li>
+<li>Thinking about testing Rails migrations.
+<ul>
+<li>how</li>
+<li>why</li>
+<li>whether</li>
+<li>when</li>
+<li>how much</li>
+</ul></li>
+<li>Preliminary code for testing migrations.</li>
+<li>A challenge to take this farther.</li>
+</ul>
+
+<p><strong>Migrations Rock!</strong></p>
+
+<p>The Problem</p>
+
+<ul>
+<li>Database schemas <em>always</em> need to evlove.</li>
+<li>Most frameworks/platforms/tools ignore this fact.</li>
+<li>Left to themselves, teams do crazy things&#8230;</li>
+</ul>
+
+<p>A Common Result</p>
+
+<ul>
+<li><em>ad hoc</em> changes</li>
+<li>Made manually in development or staging</li>
+<li>Must be rediscovered (somehow) and recreated in test, and then productions</li>
+</ul>
+
+<p>Another Common Result</p>
+
+<ul>
+<li>Resistance to changing the db</li>
+<li>Application much change instead
+<ul>
+<li>in unpleasent ways</li>
+</ul></li>
+<li>Meaning of schema is perverted</li>
+<li>Overloaded fields, severer denormalization, etc</li>
+<li>Britleness!</li>
+</ul>
+
+<p>Still Another Common Result</p>
+
+<ul>
+<li>Versioned SQL script for schema
+<ul>
+<li>and one for basic test data</li>
+</ul></li>
+<li>Not too bad .. schema all in one place</li>
+<li>Version control systems help manage change</li>
+<li>Development systems can often rebuild database from scratch</li>
+<li>Time to deploy? look at differences, manually modify databse.</li>
+</ul>
+
+<p>The Best of the Rest</p>
+
+<ul>
+<li>Hand-written SQL migration scripts</li>
+<li>Use database to dump schema for single-file view</li>
+<li>Easy to move changes to test, production servers</li>
+<li>Not too bad, except rollback is rarely considered&#8230;
+<ul>
+<li>and the SQL is usually pretty ugly.</li>
+</ul></li>
+</ul>
+
+<p>Rails Does it Right</p>
+
+<ul>
+<li>Migrations deal with all of those problems.</li>
+<li>Nice (mostly) database independent code</li>
+<li>Incremental migrations</li>
+<li><code>up</code> and <code>down</code> method provide for rollback</li>
+</ul>
+
+<p><em>* AND YET *</em></p>
+
+<p>Migrations suck (at least a little)</p>
+
+<ul>
+<li>No testing support</li>
+<li>It turns out to be hard to <em>build</em> testing support
+<ul>
+<li>and only partly for technical reasoning</li>
+</ul></li>
+</ul>
+
+<p>Why?</p>
+
+<ul>
+<li>Migrations and version control are an odd match</li>
+<li>Active Record&#8217;s model abstraction leaks like a sieve</li>
+<li>Old migrations don&#8217;t need ongoing testing</li>
+<li>Sometimes testing migrations is overkill</li>
+</ul>
+
+<p>Your Application and Version Control</p>
+
+<ul>
+<li>Each version represents a point in time
+<ul>
+<li>start from scratch, check out, run your app</li>
+<li>that&#8217;s the whole point!</li>
+</ul></li>
+<li>Old versions are hidden
+<ul>
+<li>You can get to them, but that&#8217;s time travel</li>
+</ul></li>
+</ul>
+
+<p>Version Control Wormhole</p>
+
+<ul>
+<li>Migrations are very different.</li>
+<li>The whole history of your schema in one directory
+<ul>
+<li>In one <em>version</em> of your directory.</li>
+</ul></li>
+<li>Move the database back in time while the app stays put.</li>
+<li>Causes some obvious problems.
+<ul>
+<li>&#8220;<strong>Never</strong> change a migrations after you check it in&#8221;</li>
+</ul></li>
+</ul>
+
+<p>Models or Tables?</p>
+
+<ul>
+<li>Active Record lets the tables show through</li>
+<li><code>has_and_belongs_to_many</code> hides them (especially the join table)</li>
+<li>Parameters to <code>find</code> (and other methods) expose them.</li>
+<li>Unit tests are especially leaky places.</li>
+</ul>
+
+<p>Fixtures: Models or Tables?</p>
+
+<ul>
+<li>All information about overridden class/table mapping is in the class.</li>
+<li>Then in unit test, fixtures are all about tables, so things fail.</li>
+<li>How does it know about class Person?
+<ul>
+<li>See Rails ticket #1911 (flexible fixtures)</li>
+</ul></li>
+</ul>
+
+<p>But Migrations are ALL Tables!</p>
+
+<ul>
+<li>Yes they are . (Until you start thinking about testing them)</li>
+<li>In migrations: <code>add_column :events, :user_id, :integer</code></li>
+<li>In test: <code>assert_has_column :events, :user_id, :integer</code></li>
+<li>Does that really help?</li>
+<li>Wouldn&#8217;t this be better?
+<ul>
+<li><code>assert_supports_has_many :users, :events</code></li>
+</ul></li>
+</ul>
+
+<p>Old Migrations Shouldn&#8217;t Break</p>
+
+<ul>
+<li>Remember the version control wormhole?</li>
+<li>Old migrations are <em>history</em></li>
+<li>If you&#8217;ve already moved beyond them (especially in production) they should never change, and should never break</li>
+<li>If testing migrations is slow, don&#8217;t keep testing old migrations</li>
+</ul>
+
+<p>Sometimes Migrations Don&#8217;t Need Testing</p>
+
+<ul>
+<li>Just a few lines</li>
+<li>Run promptly in development</li>
+<li>Test-through-use with new application code</li>
+</ul>
+
+<p>What&#8217;s the Point?</p>
+
+<ul>
+<li>Often, the trouble of automated testing is of marginal benefit for migrations</li>
+<li>There are two big exceptions
+<ul>
+<li>Data conversion</li>
+<li>The <code>down</code> method</li>
+</ul></li>
+<li>Those two things usually won&#8217;t be fully exercised until you really need them &#8211; in production</li>
+</ul>
+
+<p>Migration Testing Setup</p>
+
+<ul>
+<li>see slides (but I&#8217;ll summarize as I can)</li>
+<li>Move from Category habtm Merchants to Category has many Merchants through Order</li>
+<li>Lots of code examples, I&#8217;ll try to link the slides</li>
+<li>Mix in <code>MigrationTesting</code> module (unreleased)</li>
+<li><code>def migration_number; 2; end</code></li>
+<li><code>def setup; db_setup; end</code></li>
+</ul>
+
+<p>Data Conversion</p>
+
+<ul>
+<li>Can sometimes be done with model instances.</li>
+<li>But not in general, because you&#8217;re working across two different version of the tables underneath the models</li>
+</ul>
+
+<p>Why Test Data Conversion?</p>
+
+<ul>
+<li>Real-world data is strange.</li>
+<li>Your development data probably isn&#8217;t the same.
+<ul>
+<li>(or at least, a much smaller sample size)</li>
+</ul></li>
+<li>You want to test <em>before</em> your migration chokes on the production data.
+<ul>
+<li>Unexpected nulls can wreak havoc</li>
+</ul></li>
+<li>Sample code&#8230;</li>
+</ul>
+
+<p>Testing Up/Testing Down slides are all code examples</p>
+
+<p>Why Test Reverse Migrations?</p>
+
+<ul>
+<li><code>rake rollback</code> really *is* the best thing since sliced bread.
+<ul>
+<li><code>rake deploy</code> is merely the best thing since SSH.</li>
+</ul></li>
+<li>But if your new release includes a migration, you&#8217;re counting on the reverse migrations</li>
+<li>Have you ever run it?</li>
+<li>Did you even <em>write it</em>?</li>
+</ul>
+
+<p>Making it Easy to do the Right Thing</p>
+
+<ul>
+<li>Testing reverse migrations should be trivial. (Free even)</li>
+<li>The failing test provides incentive to write the reverse migration in the first place.
+<ul>
+<li>Not to mention getting it right</li>
+</ul></li>
+</ul>
+
+<p>Testing Down</p>
+
+<ul>
+<li><code>test_down_schema</code> gets mixed into your test case and runs automatically</li>
+<li>Detects pure schema errors for (almost) free</li>
+<li>Test downward data conversion using the same techniques</li>
+</ul>
+
+<p>What, Me Worry?</p>
+
+<ul>
+<li>Maybe migratiosn don&#8217;t need to be as thoroughly tested as other code</li>
+<li>But some parts do
+<ul>
+<li>Data conversion</li>
+<li>Rollback code</li>
+</ul></li>
+<li>Testing rollback code, in particular should be trival
+<ul>
+<li>For one thing, it prompts us to write tests</li>
+</ul></li>
+</ul>
+
+<p>Further Work</p>
+
+<ul>
+<li>Smarter &#8220;down&#8221; testing
+<ul>
+<li>Detecting errors is easy</li>
+<li>Reporting them is clumsy</li>
+</ul></li>
+<li>Model oriented assertions
+<ul>
+<li>Associations, acts_as, aggregation
+<ul>
+<li>Should exploit ActiveRecord reflection facilities</li>
+</ul></li>
+</ul></li>
+<li>Better infrastructure
+<ul>
+<li>Automatically test new migrations, skip old ones</li>
+<li>Fixture creation and management for migration testing</li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/24/ezra-deployment-tales-from-the-front">Ezra - Deployment: Tales from the Front</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 24 Jun 2006 18:32:00 GMT">Sat, 24 Jun 2006 18:32:00 GMT</span></p>
+<p>Ezra Zygmuntowics</p>
+
+<ul>
+<li>zig-mun-tuv-itch</li>
+<li>Just another ruby hacker</li>
+</ul>
+
+<p>Case Study</p>
+
+<ul>
+<li>Yakima Herald-Republic Newspaper Online</li>
+<li>http://yakimaherald.com</li>
+<li>Launched 2005</li>
+<li>Data heavy</li>
+<li>Rails CMS</li>
+<li>Proprietary DB called Baseview (non SQL)</li>
+</ul>
+
+<p>Goals</p>
+
+<ul>
+<li>Content management</li>
+<li>Internet and Intranet</li>
+<li>Automation of Classified and Obituary workflow</li>
+<li>Internal credit card transactional console</li>
+</ul>
+
+<p>Data Aggregation</p>
+
+<ul>
+<li>Mysql for CMS and storage of classified and obituary data</li>
+<li>XML feeds from the AP News Wire</li>
+<li>RSS and Atom feeds from parent newspaper The Seattle Times</li>
+</ul>
+
+<p>Proprietary Database</p>
+
+<ul>
+<li>Problems:
+<ul>
+<li>Non-SQL BaseView Live-IQ db holds 80% of all content</li>
+<li>Only accessible from poorly implemented Live-IQ Script</li>
+</ul></li>
+</ul>
+
+<p>Solution: ruby DSL</p>
+
+<ul>
+<li>Emits LiveIQ Script</li>
+<li>Sends it down a socket to the LiveIQ Script interpreter</li>
+<li>No more LiveIQ Script! Ruby all the way baby.</li>
+</ul>
+
+<p>Deployment Round 1</p>
+
+<ul>
+<li>Apache with FastCGI</li>
+<li>Acceptable performance</li>
+<li>Industry Standard</li>
+<li>But&#8230;</li>
+<li><code>has_many :fastcgi_500_errors</code> :)</li>
+</ul>
+
+<p>Apache/fcgi == Unstable</p>
+
+<ul>
+<li>500 errors for no apparent reason</li>
+<li>zombie processes</li>
+</ul>
+
+<p>Round 2</p>
+
+<ul>
+<li>Lighttpd and mod_fastcgi for teh win!</li>
+<li>Started with 4 static fcgi listeners.</li>
+<li>Very good performance and stability.</li>
+<li>This was when lightty didn&#8217;t run the max procs</li>
+</ul>
+
+<p>Lighttpd</p>
+
+<ul>
+<li>Very fast for static files</li>
+<li>Good FastCGI support</li>
+</ul>
+
+<p>Still needed work</p>
+
+<ul>
+<li>Still doing deploys by hand</li>
+<li>Still having some problems</li>
+</ul>
+
+<p>Work in Progress</p>
+
+<ul>
+<li>Switch from static fcgi procs to seperately spawned setup</li>
+<li>Each fcgi on it&#8217;s own IP:PORT</li>
+<li>Switched to spinner/spawner/reaper</li>
+<li>Started using Capistrano</li>
+</ul>
+
+<p>Stable.. finally</p>
+
+<ul>
+<li>Exernal fcgi&#8217;s much more stable</li>
+</ul>
+
+<p>Tuning and tweaking</p>
+
+<ul>
+<li>Cache as much as you can</li>
+<li>Get as much RAM as you can</li>
+<li>Find hot spots and externalize them</li>
+<li>Don&#8217;t guess, measure.
+<ul>
+<li>Tiny increments, measure performance.</li>
+</ul></li>
+<li><code>httperf</code> not <code>ab</code>
+<ul>
+<li>&#8220;<code>ab</code>&#8217;s a pile&#8221; &#8211; Ezra</li>
+</ul></li>
+<li>http://zedshaw.com/blog/philosophy/it<em>analysis</em>rubric.html</li>
+</ul>
+
+<p>Stats</p>
+
+<ul>
+<li>4 months start to finish</li>
+<li>One developer one designer</li>
+<li>150,000+ page views daily</li>
+<li>40% page cached</li>
+<li>60% dynamic</li>
+<li>Running great for 12 months now</li>
+</ul>
+
+<p>Shared hosting setup</p>
+
+<ul>
+<li><ul>
+<li>Each app gets its own port with an instance of lighty.</li>
+</ul></li>
+<li><ul>
+<li>Users can restart their apps without restarting apache</li>
+</ul></li>
+<li><ul>
+<li>Performance hit from too much indirection (sometimes 10-20%)</li>
+</ul></li>
+<li>Decent trade offs for shared environment</li>
+</ul>
+
+<p>Face it.. Shared hosting + Rails == Suck</p>
+
+<ul>
+<li>Only as reliable as the worst app on the box.</li>
+<li>Not everyone is a good neighbor</li>
+<li>Constraints on resources</li>
+<li>Each man for himself</li>
+<li>If you can avoid it, please do</li>
+</ul>
+
+<p>Get a VPS</p>
+
+<ul>
+<li>Rails really thrives when you have your own guaranteed resources.</li>
+<li>Get a host that uses Xen
+<ul>
+<li>More of a performance hit on Virtuoso Linux etc</li>
+</ul></li>
+<li>Start with a minimum of 128Mb - 192+ RAM</li>
+<li>http://brainspl.at/rails_stack.html</li>
+</ul>
+
+<p>Rails uses a 3 tier architecture</p>
+
+<ul>
+<li>Capistrano roles: Web (lighttpd), App: (fcgi or mongrel), DB (mysql or postgres)</li>
+<li>Web: static images and assets, cached pages</li>
+<li>App: rails application processes</li>
+<li>DB: database daemon</li>
+</ul>
+
+<p>As you scale..</p>
+
+<ul>
+<li>Move db to it&#8217;s own machine</li>
+<li>Use most powerful box for db</li>
+<li>Spawn fcgi procs on db box as needed
+<ul>
+<li>3 or 4 will do alot of traffic</li>
+</ul></li>
+</ul>
+
+<p>Split to 3 roles</p>
+
+<ul>
+<li>Typical Lighttpd Three Tier Cluser
+<ul>
+<li>Web, app and db on own boxes</li>
+</ul></li>
+<li>Proven scalable setup</li>
+</ul>
+
+<p>But things always change&#8230;</p>
+
+<ul>
+<li>The future of rails deployment is mongrel</li>
+</ul>
+
+<p>Mongrel is a good dog</p>
+
+<ul>
+<li>Mongrel is a Ruby/C webserver written by my hero Zedas Shaw</li>
+<li>Simple, fast and reliable.</li>
+<li>Easily extensibly via gem plugins</li>
+</ul>
+
+<p>Advantages</p>
+
+<ul>
+<li>Mongrel speaks plain old HTTP</li>
+<li>Can take advantage of the wealth of tools available for HTTP load-balancing and proxying.</li>
+<li>Opens up many more possibilities for front ends.</li>
+</ul>
+
+<p>Front End</p>
+
+<ul>
+<li>Pound, Pen, Balance, Haproxy or even hardware load balancers</li>
+<li>Lighttpd (although <code>mod_proxy</code> needs to be fixed)</li>
+<li>Apache 2.2 <code>mod_proxy_balancer</code>
+<ul>
+<li>I&#8217;m compiling Apache with only <code>mod_proxy</code>, <code>mod_proxy_balancer</code>, <code>mod_deflate</code> which works great</li>
+<li>Gives real time status report of backends and lets you restart things</li>
+</ul></li>
+</ul>
+
+<p>Apache 2.2</p>
+
+<ul>
+<li>Apache is an industry standard and is working well with mongrel</li>
+</ul>
+
+<p>Mongrel Cluster</p>
+
+<ul>
+<li>Written by Bradley Taylor</li>
+<li>Allows for easy management of clusters of mongrel processes</li>
+<li>Very easy to Script with Capistrano</li>
+</ul>
+
+<p><code>$sudo gem install railsmachine</code></p>
+
+<ul>
+<li>Also by Bradley Taylor</li>
+<li>Capistrano task library</li>
+<li>Creates svn repo and imports your app</li>
+<li>Configures Apache virtual hosts with support for <code>mod_proxy_balancer</code>, ssl, <code>mod_deflate</code></li>
+<li>Confugres <code>mongrel_cluseter</code></li>
+<li>Creates MySQL db</li>
+<li>Creates symlinks for items in <code>/public</code> for use with <code>file_column</code></li>
+</ul>
+
+<p>Clustered Rails Deployment with Engine Yard</p>
+
+<ul>
+<li>My pet project</li>
+<li>Easy push button deployment through a web interface</li>
+<li>Each application runs on two Xen VPSs each on a separate physical box</li>
+<li>Redundant load balanced for fallover</li>
+<li>Add and remove cluster nodes at will</li>
+<li>Configure &#8216;packages&#8217; that consist of an svn revision or tag of your app and frozen, versioned gem dependencies.</li>
+<li>Drag &amp; drop to deploy your packaged app from Stage to QA to Production</li>
+</ul>
+
+<p>BackgrounDRb</p>
+
+<ul>
+<li>Solution for forking, shelling for a binary etc</li>
+<li>Distributed ruby server for managing long running background tasks</li>
+<li>Available as a rails plugin</li>
+<li>MiddleMan object for use in rails to control tasks</li>
+<li>Hooks for ajax progress bars or status updates while task runs</li>
+</ul>
+
+<p>Great code example slides here. Look for slides on http://brainspl.at</p>
+
+<p>One last plug</p>
+
+<ul>
+<li>Rails Deployment Book</li>
+<li>Pragmatic Programmers</li>
+<li>Beta &#8220;Real Soon Now&#8221;</li>
+</ul>
+
+<p>Q/A</p>
+
+<ul>
+<li>Is the ruby interface you created for IQ Script proprietary?
+<ul>
+<li>Unfortunately yes, the newspaper owns it, but they&#8217;re thinking of releasing it. Watch my blog.</li>
+</ul></li>
+<li>Why did you choose the cocoa interface over Rails for the internal interface?
+<ul>
+<li>It made it alot easier to deal with because of file constraints. Cocoa guis are really nice and it&#8217;s easy to glob up a bunch of files. It was fun too :). It could have been a Rails interface. Handling a couple hundred files at once is cumbersome through the web.</li>
+<li><code>mod_fcgid</code>?
+<ul>
+<li>Some people have had better luck with it than regular fcgi. fcgid is a daemon so it&#8217;s better at killing zombies, but it still gets the 500 errors. Not as much, but after wrestling with apache for a long time I moved off it.</li>
+</ul></li>
+<li>How do you look at Xen in comparison to other VMs?
+<ul>
+<li>I like Xen because it&#8217;s in the kernel. VMWare is another beast. It&#8217;s more for quick testing on my workstation. I haven&#8217;t use a professional grade VMWare though, but I really like Xen. One of the great things is that the host can&#8217;t oversell the resources. With Virtuoso you can oversell which gives you burst limits. With Xen there&#8217;s no way for your host to oversell the box.</li>
+</ul></li>
+<li>What kind of hardware do you prefer?
+<ul>
+<li>We&#8217;ve built whitebox boxes with opterons (dual, 4 gig). We were going to go to Rackspace but we got our own cage in California.</li>
+</ul></li>
+<li>Do you have more information on the 500 errors or why they happen?
+<ul>
+<li>There&#8217;s timeouts. I haven&#8217;t dug in the C code, but fcgi&#8217;s management process is flakey. There has been some work on a <code>mod_proxy_fastcgi</code> for the newer apache but nothing is released yet. I look forward to seeing how it works. The general feeling for me is that fcgi isn&#8217;t very stable.</li>
+</ul></li>
+<li>In Engine Yard, how do you deal with migrations and error handling?
+<ul>
+<li>We&#8217;ll have some servers dedicated to staging. An identical environment to yours before you push to production. You&#8217;ll be able to run your rake tasks and such through the db.</li>
+</ul></li>
+<li>Do you have extra suggestions for somebody who starts a new project regularly (we have dozens of apps). Some are small (80%), some are big (20%). We don&#8217;t want apps to destroy each other.
+<ul>
+<li>I&#8217;d think that for small apps it&#8217;d be nice to consolidate into one app (if they&#8217;re all pretty much the same), but mongrel is definitely the way to go. 1 per app probably. One nice solution would be to get a dedicated box and to run one xen instance with Apache with virtual hosts and then other xen instances with each app.</li>
+</ul></li>
+<li>How should you choose hardware or software load balancers?
+<ul>
+<li>The hardware load balancers go between the web servers. The web servers (apache) load balance to app servers (mongrel).</li>
+</ul></li>
+<li>Engine Yard, anything on pricing?
+<ul>
+<li>I can&#8217;t say yet. It&#8217;ll be affordable, but we&#8217;re not looking to compete with shared hosting.</li>
+</ul></li>
+<li>I work on pogo.com which is in the top 250 on Alexa ranking. Is Rails ready for a top 100?
+<ul>
+<li>I don&#8217;t see any reason why not. It&#8217;s typical LAMP share nothing, so the issues is getting your architecture straight, not Rails.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/23/stefen-kaes-optimizing-rails">Stefen Kaes - Optimizing Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 23 Jun 2006 22:08:00 GMT">Fri, 23 Jun 2006 22:08:00 GMT</span></p>
+<p>Stefen went very very fast during his presentation, so I&#8217;ve missed bits and pieces. I&#8217;ll link his slides if I can (though they may not be available except for the $50 video). Sorry about that.</p>
+
+<p>Performance Tuning</p>
+
+<ul>
+<li>Trying to improve performance without measuring is foolish</li>
+<li>In favor of optimization at design time</li>
+</ul>
+
+<p>Performance Parameters</p>
+
+<ul>
+<li>Latency
+<ul>
+<li>How fast can you answer a request?</li>
+</ul></li>
+<li>Throughput
+<ul>
+<li>How many requests can you process per second?</li>
+</ul></li>
+<li>Utilization
+<ul>
+<li>Are your servers idle most of the time?</li>
+</ul></li>
+<li>Cost efficiency
+<ul>
+<li>Performance per unit cost</li>
+</ul></li>
+<li>Compute mean, min, max, standard dev (if applicable). Standard deviation will tell you how reliable your data is.</li>
+</ul>
+
+<p>Benchmarking Tools</p>
+
+<ul>
+<li>Rails log files (debug level >= <code>Logger::DEBUG</code>)</li>
+<li>Rails Analyzer Tools (requires logging to syslog)</li>
+<li>Rails benchmarker script (script/benchmarker)</li>
+<li>Tools provided by DB vendor</li>
+<li>Apache Bench (ab or ab2)</li>
+<li>httperf</li>
+<li>railsbench
+<ul>
+<li>downloadable from http://rubyforge.org/projects/railsbench</li>
+</ul></li>
+</ul>
+
+<p>railsbench</p>
+
+<ul>
+<li>Measures raw performance of Rails request processing configured through:
+<ul>
+<li>benchmark definitions
+<ul>
+<li><code>$RAILS_ROOT/config/benchmarks.yml</code></li>
+<li>defines which urls you want to visit in yaml</li>
+</ul></li>
+<li>benchmark class configuration
+<ul>
+<li><code>$RAILS_ROOT/config/benchmarks.rb</code></li>
+<li>creates a benchmarking instance with an ActiveRecordStore</li>
+<li>Can also define user locking etc.</li>
+</ul></li>
+<li>stores benchmark data in <code>$RAILS_PERF_DATA</code></li>
+<li>indexed by date and benchmark time</li>
+<li>uses additional Rails environment benchmarking</li>
+</ul></li>
+<li>Usage
+<ul>
+<li><code>perf_run 100 "-bm-welcome options" [data file]</code>
+<ul>
+<li>Run 100 iterations of benchnmark with given options, print data</li>
+</ul></li>
+<li><code>perf_diff 100 "-bm=all opts" "opts1" "opts2" [file1] [file2]</code></li>
+</ul></li>
+</ul>
+
+<p>railsbench options</p>
+
+<ul>
+<li><code>-log</code>[=level]
+<ul>
+<li>turn on logging (defaults to no logging). optionally oveerride log level.</li>
+</ul></li>
+<li><code>-nocache</code>
+<ul>
+<li>turn off rails caching</li>
+</ul></li>
+<li><code>-path</code></li>
+<li><code>-svlPV</code>
+<ul>
+<li>run test using Ruby Performance Validator</li>
+</ul></li>
+<li><code>patched_gc</code>
+<ul>
+<li>use patched GC
+Ruby Profiling Tools</li>
+</ul></li>
+<li>Ruby Profiler</li>
+<li>Zen Profiler</li>
+<li>rubyprof</li>
+<li>Rails profiler script</li>
+<li>Ruby Performance Validator (commercial, Windows only)</li>
+<li>All but the last are pretty much useless for Rails performance work.</li>
+<li><code>railsbench</code> has builtin support for RPVL:
+<ul>
+<li><code>run_urls 100 -svlPV -bm=welcome ...</code></li>
+</ul></li>
+<li>will start RPVL and run the named benchmark with given options</li>
+</ul>
+
+<p><strong>Please send an email to the RPV guys if you think it should have UNIX support</strong></p>
+
+<p>Top Rails Performance Problems</p>
+
+<ul>
+<li>Depends on who you ask, but these are my favorites:
+<ul>
+<li>slow helper methods</li>
+<li>complicated routes</li>
+<li>associations</li>
+<li>retrieving too much from DB</li>
+<li>slow session storage</li>
+</ul></li>
+<li>Judging from my experience, DB performance is usually not a bottleneck.</li>
+<li>Instantiation ActiveRecord objects is more expensive</li>
+</ul>
+
+<p>Available Session Containers</p>
+
+<ul>
+<li>In Memory
+<ul>
+<li>Fastest but you lose all sessions on server crash/restart. Restricted to 1 app. Doesn&#8217;t scale.</li>
+</ul></li>
+<li>File System.
+<ul>
+<li>Easy setup, one file for each session. Scales by using NFS or NAS (beware 10k active sessions!). <em>Slower than</em></li>
+</ul></li>
+<li>Database/ActiveRecordStore
+<ul>
+<li>Easy setup (comes with Rails distribution). <em>Much slower than</em></li>
+</ul></li>
+<li>Database/SQLSessionStore
+<ul>
+<li>Uses ARStore</li>
+<li>More info at http://railsexpress.de/blog/articles/2005/12/19/roll-your-own-sql-session-store</li>
+</ul></li>
+<li>memcached
+<ul>
+<li>Slighly faster than SQLSessionStore. Presumably scales best. Very tunable. Automatic session cleaning. Harder to obtain statistics. setup</li>
+</ul></li>
+<li>DrbStore
+<ul>
+<li>Can be used on platforms where memcached is not available.</li>
+</ul></li>
+</ul>
+
+<p>Cachable Elements</p>
+
+<ul>
+<li>Pages
+<ul>
+<li>Fastes. Complete pages are stored on the file system. Web server bypasses app for rendering. Scales through NFS or NAS. Problematic if app requires login.</li>
+</ul></li>
+<li>Actions
+<ul>
+<li>Second fastest. Caches the result of invoking actions on controllers. User login id can be used as part of the storage key.</li>
+</ul></li>
+<li>Fragments
+<ul>
+<li>Very useful for caching small fragments (hence the name) of HTML produced during request processing. Can be made user aware.</li>
+</ul></li>
+<li>Action caching is just a special case of fragment caching.</li>
+<li>Several storage containers are available for fragment caching.</li>
+</ul>
+
+<p>Storage Options for Fragment Caching</p>
+
+<ul>
+<li>In Memory
+<ul>
+<li>Very very fast. If your app is running fast enough with 1 app server process, go for it!</li>
+</ul></li>
+<li>File System
+<ul>
+<li>Reasonably fast.</li>
+</ul></li>
+<li>DrbStore</li>
+<li>memcached</li>
+</ul>
+
+<p>ActionController Issues</p>
+
+<ul>
+<li>Components
+<ul>
+<li>I suggest to avoid components. I haven&#8217;t found any good use for them, yet.</li>
+<li>Each embedded component will be handled using a fresh request cycle.</li>
+<li>Can always be replace by helper methods and partials.</li>
+</ul></li>
+<li>Filters
+<ul>
+<li>If you are using components, make sure you don&#8217;t rerun your filters for every request.</li>
+</ul></li>
+</ul>
+
+<p>ActionView Issues</p>
+
+<ul>
+<li>Instance Variables
+<ul>
+<li>For each request, one controller instance and one view instance will be instantiated.</li>
+<li>Instance vars creatd during controller processing will be transfered to view instance</li>
+<li>So: avoid creating instance vars you don&#8217;t need. (PARAPHRASE, NEED TO FIND SLIDES)</li>
+</ul></li>
+</ul>
+
+<p>Slow Helper Methods</p>
+
+<ul>
+<li><code>pluralize(n, 'post')</code>
+<ul>
+<li>Creates a new inflector instance, and try to derive the correct plural. This is expensive.</li>
+<li>Do <code>pluralize(n, 'post', MISSING_ARG_NEED_TO_FIND_SLIDES)</code> instead</li>
+</ul></li>
+<li><code>link_to</code> and <code>url_for</code>
+<ul>
+<li>Much more efficient to construct your own urls, but you only need to do it on pages with <strong>large</strong> numbers of links.</li>
+</ul></li>
+</ul>
+
+<p>ActiveRecord Issues</p>
+
+<ul>
+<li>You can prefetch associated objects using :include
+<ul>
+<li><code>Article.find(:all, :include =&gt; :author)</code></li>
+</ul></li>
+<li>Use piggy backing for <code>has_one</code> or <code>belongs_to</code> relations.
+<ul>
+<li><code>piggy.back :author_name, :from =&gt; :author, :attributes =&gt; [:name]</code>
+<code>article = Article.find(:all, :piggy =&gt; :author)</code>
+<code>puts article.author.name</code></li>
+</ul></li>
+</ul>
+
+<p>Caching Column Formatting</p>
+
+<ul>
+<li>Computationally expensive transformation on AR fields can be cached (in the DB, using memcached, a DRb process)</li>
+<li>Example: <code>textilize</code>
+<ul>
+<li>I&#8217;ve analyzed an application, where 30% cpu was saved by storing the textilized value
+Ruby&#8217;s Interpreter is Slow</li>
+</ul></li>
+<li>no byte code, no JIT, interprets ASTs directly</li>
+<li>doesn&#8217;t perform any code optimization at compiler time:
+<ul>
+<li>method inlining</li>
+<li>&#8230;</li>
+</ul></li>
+</ul>
+
+<p>Complexity of Ruby Language Elements</p>
+
+<ul>
+<li>Local Var acfcess: O(1)</li>
+<li>Instance Var access: expected O(1)</li>
+<li>Method Call: expected O(1)
+<ul>
+<li>hash access to determine literal value <code>{"f" =&gt; :f}</code></li>
+<li>method search</li>
+<li>&#8230;</li>
+</ul></li>
+<li>Recommendation:
+<ul>
+<li>don&#8217;t add method abstractions needlessly</li>
+<li>use <code>attr_accessor</code>s as external interfaces only</li>
+<li>use local variables to short circuit repeated hash access</li>
+<li>Avoid repeated hash access</li>
+</ul></li>
+</ul>
+
+<p>Caching Data in Instance Variables/Class variables</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Coding Variable Caching Efficiently</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Defining Constants vs. Inlining</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Local Variables are Cheap</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Be Careful With Regards to Logging</p>
+
+<p><code>ObjectSpace.each_object</code></p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Ruby&#8217;s Memory Management</p>
+
+<ul>
+<li>Designed for batch scripts, no long running server apps</li>
+<li>tries to minimize memory usage</li>
+<li>simple mark and sweep algorithm</li>
+<li>uses malloc to manage contiguous blocks of Ruby objects</li>
+<li>complex datastructures
+<ul>
+<li>only references to C structs are stored on Ruby heap</li>
+<li>comprises strings, arrays, hashes, local variables maps, scopes etc</li>
+</ul></li>
+<li>eases writing C extensions</li>
+<li>Current C interface makes it hard to implement generational GC</li>
+</ul>
+
+<p>Why Ruby GC is a problem for Rails</p>
+
+<ul>
+<li>ASTs are stored on the Ruby heap and will be processed on each collection
+<ul>
+<li>usually the biggest part of non garbage for Rails apps</li>
+</ul></li>
+<li>Sweep phase depends on size of heap, not size of non garbage
+<ul>
+<li>can&#8217;t increase the heap size above certain limits</li>
+</ul></li>
+<li>More heap gets added, if
+<ul>
+<li>size of freelist after collection, <code>&lt; FREE_MIN</code> a constant defined in gc.c as 4096</li>
+<li>200,000 heap slots are a <code>good lower bound</code> for live data for typical Rails applications</li>
+</ul></li>
+</ul>
+
+<p>Improving GC Performance</p>
+
+<ul>
+<li>Control GC from the Rails dispatcher:
+<ul>
+<li><code>RailsFCGIHandler.process! nil, 50</code>
+<ul>
+<li>Will disable Ruby GC and call GC.start after 50 requests have been processed</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Patching Ruby&#8217;s Garbage Collector</p>
+
+<ul>
+<li>Download latest <code>railsbench</code> package. Patch Ruby using rile <code>rubygc.patch</code>, recompile and reinstall binaries and docs.</li>
+<li>Tune GC using environment variables</li>
+<li><strong>RUBY_HEAP_MIN_SLOTS</strong></li>
+<li><strong>RUBY_HEAP_FREE_MIN</strong></li>
+<li><strong>RUBY_GC_MALLOC_LIMIT</strong></li>
+<li>Rec values in slides (sorry)</li>
+</ul>
+
+<p>Compile Time Template Optimization</p>
+
+<ul>
+<li>Many helper calls in Erb templates can be evaluated at template compile time.</li>
+<li><code>&lt;%= end_form tag %&gt; ==&gt; &lt;/form&gt;</code></li>
+<li>It&#8217;s a complete waste to do it over and over again on a per request basis.</li>
+<li>For some calls, we know what the output should be like, even if we don&#8217;t have all arguments available.</li>
+<li>see slides</li>
+</ul>
+
+<p>Rails Template Optimizer</p>
+
+<ul>
+<li>Uses Ryan Davis&#8217; ParseTree package and ruby2ruby class</li>
+<li>Retrieves AST of ActionView render method after initial compilation</li>
+<li>Transforms AST to simplify AST</li>
+<li>Optimizes AST into optimized <code>render</code> method</li>
+</ul>
+
+<p>Optimizer Customization and Restrictions</p>
+
+<ul>
+<li>see slides</li>
+</ul>
+
+  
+  <p class="meta"></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/23/capistrano-mike-clark">Capistrano - Mike Clark</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 23 Jun 2006 16:40:00 GMT">Fri, 23 Jun 2006 16:40:00 GMT</span></p>
+<p>A big thanks to Jamis Buck who wrote Capistrano!</p>
+
+<ul>
+<li>Is deploying new releases of your app as effortless as breathing?</li>
+<li>Or is deployment choking the life out of your software?</li>
+<li>Capistrano (formerly Switchtower)
+<ul>
+<li>noun - Software utility and framework that automates the deployment of web applications</li>
+<li>verb - to replace mundane deployment tasks with pure joy:
+&#8220;Stop wasting your time, just cap it already!&#8221;</li>
+<li>Capistrano automates mundane and annoyingly tedious deployment tasks.</li>
+</ul></li>
+<li>It scales!</li>
+<li>Getting your killer app deployed into production on launch day..
+<ul>
+<li>Should be a few minutes of prep</li>
+<li>Fixing your first bug, and redeploying before anyone notices
+<ul>
+<li>A few minutes of panic</li>
+</ul></li>
+<li>Deploying new releases to a cluster of machines, whenever you want, at the push of a button
+<ul>
+<li>Priceless!</li>
+</ul></li>
+</ul></li>
+<li>Before we press on&#8230;
+<ul>
+<li>We&#8217;re assuming you&#8217;ve already made the tough deployment decisions&#8230;</li>
+<li>Demo Assumptions</li>
+</ul></li>
+<li>Lighttpd, OSX, FastCGI, Subversion, One machine, Depot
+<ul>
+<li>How do I install it?</li>
+</ul></li>
+<li><code>gem install capistrano</code></li>
+<li>Capify! <code>cap --apply-to /path/to/my/app MyAppName</code></li>
+<li>Adds rake and recipe files
+<ul>
+<li>Recipe</li>
+</ul></li>
+<li>Application Name
+<ul>
+<li><code>set :application, "depot"</code></li>
+</ul></li>
+<li>Repository
+<ul>
+<li><code>set :repository, "http://svn.yourhost.com/#{application}/trunk"</code></li>
+</ul></li>
+<li>Roles
+<ul>
+<li>Used to define what roles which servers are playing.</li>
+<li><code>rule :app, "app01.example.com", "app02.example.com"</code></li>
+<li><code>rule :web, "www01.example.com", "www02.example.com"</code></li>
+<li><code>rule :db, "db01.example.com", :primary =&gt; true</code></li>
+<li><code>rule :db, "db02.example.com"</code></li>
+<li>web is for the webserver like lightty, :app is for handlers like  fastcgi, db is for sql servers like mysql</li>
+</ul></li>
+<li>Deployment Root
+<ul>
+<li>Where the deployed code goes</li>
+<li><code>set :deploy_to, "/Library/Rails/#{application}"</code></li>
+</ul></li>
+<li>Need a deploy targer? Run once to create the deploy directories
+<ul>
+<li><code>cap setup</code></li>
+<li>Demo</li>
+</ul></li>
+<li>Used <code>cap setup</code> which created a skeleton directory structure.
+<ul>
+<li>Would have worked on a dozen servers identically if specified</li>
+</ul></li>
+<li>Used <code>cap update</code> which checked out a new copy of the app on the server
+<ul>
+<li>Releases directory now has timestamped subdirectory with the release</li>
+<li>current is a symlink to that release directory</li>
+</ul></li>
+<li>Here&#8217;s where it gets fun :)</li>
+<li>We update the code and run <code>cap deploy</code> and it goes off, checks out the new code and reloads the server.</li>
+<li>We regret this. <code>cap rollback</code>, it flips the symlink back to the last version and reloads the server.
+<ul>
+<li>Need some downtime?</li>
+</ul></li>
+<li>Disables web acces: puts up maintenance page
+<ul>
+<li><code>cap disable_web</code>: puts up a maintenance screen and takes down your application</li>
+<li><code>cab enable_web</code> to bring it back up.</li>
+<li>You need this to be truly effortless when there&#8217;s a problem</li>
+</ul></li>
+<li>What&#8217;s the diff? 
+<ul>
+<li>What&#8217;s deployed vs what&#8217;s in repo</li>
+<li><code>cap diff_from_last_deploy</code></li>
+<li>It gets even better&#8230;</li>
+</ul></li>
+<li>Customizing and Extending (you know you want to)</li>
+<li><p>Make a task</p>
+
+<ul>
+<li>Similar to <code>make</code> or <code>rake</code></li>
+<li>Task can define roles to use</li>
+<li>Can use <code>run</code> to run commands on remote server</li>
+<li>Can use variables inside tasks</li>
+<li>Can use multiple roles (app, web, and db)</li>
+<li>Chaining tasks easily:
+<code>task :status do
+ which_ruby
+ current_revision
+ uptime
+end</code></li>
+<li>Channels and Streams
+<ul>
+<li><code>tail</code> the logfile</li>
+<li>Get a channel back which can be watched</li>
+</ul></li>
+<li><p>Code run before or after a task</p>
+
+<ul>
+<li><code>before_deploy</code> &#8230;</li>
+<li><code>after_update_code</code> &#8230;</li>
+</ul></li>
+<li><p>Multiple Configurations</p>
+
+<ul>
+<li>It&#8217;s just ruby!</li>
+<li>Can do all sorts of conditionals</li>
+<li>If we&#8217;re in the production environment&#8230; else setup the dev environment</li>
+</ul></li>
+<li>But wait, there&#8217;s more</li>
+</ul></li>
+<li>Task Libraries
+<ul>
+<li>Can reuse tasks across projects</li>
+<li>capistrano-ext - great example of how to write extension libraries
+<ul>
+<li>Great example of how to write task libraries. Has <code>watch_load</code> task.</li>
+</ul></li>
+<li>But this isn&#8217;t just a Rails or Ruby thing&#8230;</li>
+</ul></li>
+<li>It&#8217;s great at shuttling files along. Great for other systems as well.</li>
+<li>Remote Command and Control</li>
+<li>James Duncan Davidson has used it for numbers of servers in India as well as the US
+<ul>
+<li>Capistrano just assumes&#8230;</li>
+</ul></li>
+<li>Remote servers talk POSIX</li>
+<li>Same deploy directory structure and password on each machine
+<ul>
+<li>Can use public keys (and does by default)</li>
+</ul></li>
+<li>Web app uses FastCGI with Apache or LightTPD
+<ul>
+<li>But can rewrite the restart task if you&#8217;d like for mongrel etc.</li>
+<li>As the number of machines and processes in your environment increases&#8230;</li>
+</ul></li>
+<li>you&#8217;re still typing exactly one command
+<ul>
+<li>Can you deploy and roll back releases this easily and consistently on your project?</li>
+</ul></li>
+</ul>
+
+<h3>Q&amp;A</h3>
+
+<p>Mike took questions from the crowd.</p>
+
+<ul>
+<li>How do you deal with permissions with multiple users?
+<ul>
+<li>We use after hooks to deal with chown etc.</li>
+<li>Configurable option to use <code>sudo</code></li>
+</ul></li>
+<li>In these examples did your app server checkout from subversion?
+<ul>
+<li>It did a checkout on my machine. You can configure it to do an export instead. The servers do need access to version control.</li>
+</ul></li>
+<li>If you&#8217;re always checking out the same code to the different servers.. is there ever a time you&#8217;re just checking out different files to servers with different roles?
+<ul>
+<li>It needs all the code for migrations generally, but you&#8217;d override one of the tasks for a specific role.</li>
+</ul></li>
+<li>Sometimes I like to deploy <em>alot</em> but some are pretty big (30 or 40 megs of media files). Is there some way to <em>not</em> checkout each time?
+<ul>
+<li>I&#8217;ve seen grassroots stuff to checkout once and rsync, but you can override the update task to deal with that.</li>
+<li>We&#8217;ve done that (someone in the crowd) that solves the problem.</li>
+</ul></li>
+<li>Who do I talk to about getting my tasks to capistrano into the mainline?
+<ul>
+<li>You don&#8217;t. Publish task libraries and let the community get in if they&#8217;d like.</li>
+</ul></li>
+<li>Can I make capistrano prompt the user for which tag in subversion they&#8217;d like to use?
+<ul>
+<li>Sure. You can specify the revision number and write ruby to prompt.</li>
+</ul></li>
+<li>How did you feel about Dave Thomas&#8217;s suggestions for changes to capistrano in his keynote?
+<ul>
+<li>This isn&#8217;t the end goal. I think there will be a natural progression and &#8220;Capistrano II will&#8221; come out eventually.</li>
+</ul></li>
+<li>How does capistrano deal with database migrations?
+<ul>
+<li>There is a task called <code>deploy_with_migrations</code> which deals with it. This seems a bit scary, so I&#8217;d probably disable the web first, but the support is certainly there.</li>
+</ul></li>
+<li>If you have a cluser of 10 machines do they go down in sequence?
+<ul>
+<li>It&#8217;s done in parallel talking to each machine as best as possible.</li>
+</ul></li>
+<li>We&#8217;re in a Java shop, how can we use capistrano to tail logs and things like that?
+<ul>
+<li>Capistrano could definitely move files (WAR files often) around for you. If you find yourself doing something manually in that setting, write your own tasks. You can always just write your own specific tasks and don&#8217;t have to use <code>cap deploy</code>.</li>
+</ul></li>
+<li>When will there be a new version of &#8220;Project Automation&#8221;?
+<ul>
+<li>Life gets in the way, so there&#8217;s nothing in the works.</li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/23/arts-and-test-unit-get-a-bit-cosier">ARTS and Test::Unit get a bit cosier</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 23 Jun 2006 14:50:00 GMT">Fri, 23 Jun 2006 14:50:00 GMT</span></p>
+<p>I was able to find <a href="http://blog.talbott.ws/">Nathaniel Talbot</a> to talk about why installing ARTS makes tests run during migrations and other <code>rake</code> tasks and as a consequence we&#8217;ve squashed the bug.</p>
+
+<p>Feel free to update your ARTS plugin. Note that the latest copy does have <a href="http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching">regex matching for content</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/23/dave-thomas-keynote">Dave Thomas Keynote</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 23 Jun 2006 14:37:00 GMT">Fri, 23 Jun 2006 14:37:00 GMT</span></p>
+<h3>What a year</h3>
+
+<ul>
+<li>21 million hits on Google</li>
+<li>Sidebar (how google makes their money) Advertising
+<ul>
+<li>Hosting</li>
+<li>Training</li>
+<li>Consulting</li>
+<li>Custom project work</li>
+<li>65% of the No Fluf speakers are doing Rails work</li>
+<li>Commercial IDEs for Rails</li>
+<li>Most significant, ALTERNATIVES to Ruby on Rails</li>
+</ul></li>
+<li>Rubyforge Downloads
+<ul>
+<li>Rails - 536,835 downloads</li>
+</ul></li>
+<li>Ratings
+<ul>
+<li>Google Trends
+<ul>
+<li>Constantly increasing graph</li>
+<li>In comparison to Websphere which is declining and evening out</li>
+<li>Similar situation with jboss</li>
+<li>We&#8217;ve passed Tapestry</li>
+<li>We passed the &#8220;spring framework&#8221; a long time ago</li>
+<li>We&#8217;ve passed zend</li>
+</ul></li>
+</ul></li>
+<li>Thanks core!</li>
+<li>Thanks Matz!</li>
+<li>Everything is Perfect! BUT
+<ul>
+<li>Some work still needs doing</li>
+<li>Hilbert, a mathmetician, gave a keynote analyzing the 23 most important unsolved problems in mathematics, setting the stage for the next century</li>
+</ul></li>
+</ul>
+
+<p>23 Unsolved Problems Ran for about 7.5 hours, so&#8230;</p>
+
+<h3>3 Problems</h3>
+
+<ul>
+<li>PDI - Please Do Investigate
+<ul>
+<li>A bit rude</li>
+<li>BUT, they&#8217;re right. There&#8217;s only 12 of them.</li>
+<li>We&#8217;re all programmers. Try to implement it. It&#8217;s open.</li>
+<li>The responsibility to make Rails the way we want is up to us.</li>
+</ul></li>
+</ul>
+
+<h3>Data Integration</h3>
+
+<ul>
+<li>Better use of schema - use schema constraints
+<ul>
+<li>Validation based on the schema (staying DRY)</li>
+<li>Work with database foreign keys
+<ul>
+<li>It will help with enterprise integration</li>
+<li>Make it easy to define in migrations</li>
+<li>Add belongs_to if FK detected</li>
+<li>Generally make folks feel we care</li>
+</ul></li>
+</ul></li>
+<li>Primary keys
+<ul>
+<li>Better support for non-integer keys
+<ul>
+<li>Particularly in migrations</li>
+</ul></li>
+</ul></li>
+<li>Add support for composite primary keys</li>
+<li>Support distributed transactions</li>
+<li>Standardized attribute-based finders</li>
+<li>Non-database models (including JMS/MQ)</li>
+</ul>
+
+<h3>Real-world CRUD</h3>
+
+<ul>
+<li>The Irony - Scaffolding brings people to Rails BUT it&#8217;s the worst of Web 1.0</li>
+<li>We need something that really handles the database</li>
+<li>Support for table relationships</li>
+<li>Configurability</li>
+<li>In browser validation</li>
+<li>AJAX!</li>
+<li>Cross application skinning</li>
+<li>What We&#8217;re Doing
+<ul>
+<li>Bring the simplicity of Active Record to Views and Controllers</li>
+</ul></li>
+</ul>
+
+<h3>Deployment</h3>
+
+<ul>
+<li>What do you do on the server?
+<ul>
+<li>Lightty, Mongrel, Apache, handling zombies?</li>
+</ul></li>
+<li>Capistrano
+<ul>
+<li>Best deployment system there is</li>
+<li>Lets make it better</li>
+<li>Push model
+<ul>
+<li>Application contains all of the configuration information</li>
+<li>What, where, how and when of deployment</li>
+<li>Great when you own the entire development</li>
+<li>BUT, in the real world responsibilities are split</li>
+<li>Developers know what to deploy</li>
+<li>Server administrators know where when and how</li>
+</ul></li>
+</ul></li>
+<li>Capistrano II
+<ul>
+<li>Cooperative development</li>
+<li>Decouple application requirements and server environments</li>
+<li>Application Config
+<ul>
+<li>Where to find files</li>
+<li>Where to put files</li>
+<li>Pre and post development hooks</li>
+<li>Library and environment prereqs</li>
+</ul></li>
+<li>Server Config
+<ul>
+<li>Nominate server roles</li>
+<li>Where files go on the server</li>
+<li>User names/permissions/security</li>
+<li>Including database passwords etc</li>
+</ul></li>
+<li>Deployment
+<ul>
+<li>Set up server once</li>
+<li>Set up individual applications as needed</li>
+<li><code>cap --deploy-on cap://server.com</code></li>
+<li>Sends application config to server
+<ul>
+<li>Server checks dependencies, etc</li>
+</ul></li>
+<li>Stages application to server(s)</li>
+<li>Installs (or not)</li>
+<li>Then..</li>
+<li>ISPs set up standard environment</li>
+<li>Developers and users deploy:</li>
+<li><code>svn co http://typosphere.org/typo</code>
+<code>cd typo</code>
+<code>cap --deploy-on cap://my.isp.com/dave</code></li>
+<li>No more cron jobs for dead processes</li>
+<li>Packaging</li>
+<li>One step further&#8230;
+<ul>
+<li>Deploy from GEMS</li>
+<li>Rails equivalent of WAR files</li>
+<li>Deploy from GEM using:</li>
+<li><code>gem deploy name --on cap://my.isp.com</code></li>
+<li><code>gem update name --on cap://my.isp.com</code></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3>Why?</h3>
+
+<ul>
+<li>We feel sorry for them</li>
+<li>I couldn&#8217;t do Java development anymore
+<ul>
+<li>Rails and Ruby have corrupted me</li>
+</ul></li>
+<li>It&#8217;s really hard to go back after Rails</li>
+<li>I&#8217;d like the Rails community to embrace these people
+<ul>
+<li>Meet them halfway</li>
+<li>Support what they need for the transition</li>
+</ul></li>
+<li>All developers deserve to be happy</li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/5">5</a> <a href="/articles/page/6">6</a> 7 <a href="/articles/page/8">8</a> <a href="/articles/page/9">9</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

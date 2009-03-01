@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ARTS and page['some_id'].hide</title>
+    <link>http://glu.ttono.us/articles/2006/09/10/arts-and-page-some_id-hide</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ARTS and page['some_id'].hide</title>
+      <description>&lt;p&gt;Hi guys. One of the reasons &lt;a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts"&gt;ARTS&lt;/a&gt; still doesn&amp;#8217;t have support for the square bracket syntax of RJS is that I haven&amp;#8217;t thought of a form of assertion I&amp;#8217;d like. I think this might work:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;assert_rjs&lt;/span&gt; &lt;span class="symbol"&gt;:page&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;foo_id&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="symbol"&gt;:toggle&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;:page&lt;/code&gt; is used to denote the &lt;code&gt;[]&lt;/code&gt; syntax and &lt;code&gt;foo_id&lt;/code&gt; is the id of the element we&amp;#8217;re working with. All subsequent chained methods follow afterwards as symbols like &lt;code&gt;:toggle&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This example would match &lt;code&gt;page['foo_id'].toggle&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;What do you think? Do you have a better idea? Please do give me your thoughts. This is the one major hole in ARTS and I&amp;#8217;d like to get it patched up.&lt;/p&gt;</description>
+      <pubDate>Sun, 10 Sep 2006 20:55:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0611afec-bf68-4e5a-b931-4a054f92d925</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/10/arts-and-page-some_id-hide</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+    <item>
+      <title>"ARTS and page['some_id'].hide" by Nathan Witmer</title>
+      <description>&lt;code&gt;:[]&lt;/code&gt; is a valid symbol in Ruby, so you could also do something like:
+&lt;pre&gt;&lt;code&gt;
+assert_rjs :[], 'foo_id', :toggle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;code&gt;:page&lt;/code&gt; is less cryptic, but &lt;code&gt;:[]&lt;/code&gt; is tied directly to the way you&amp;#8217;d be doing the RJS. Either way would be just fine.</description>
+      <pubDate>Sun, 10 Sep 2006 23:01:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:05521c54-d6c1-448b-8b9a-99f37a71bd65</guid>
+      <link>http://glu.ttono.us/articles/2006/09/10/arts-and-page-some_id-hide#comment-1182</link>
+    </item>
+  </channel>
+</rss>

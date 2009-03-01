@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The cure for your inflection woes</title>
+    <link>http://glu.ttono.us/articles/2006/05/17/the-cure-for-your-inflection-woes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The cure for your inflection woes</title>
+      <description>&lt;p&gt;Lately (and historically) there have been regular tickets on the &lt;a href="http://dev.rubyonrails.org"&gt;Rails Trac&lt;/a&gt; complaining about faulty pluralization (moose -&gt; moose, not moose -&gt; mooses) and the like.&lt;/p&gt;
+
+&lt;p&gt;My friend &lt;a href="http://blog.hasmanythrough.com/"&gt;Josh Susser&lt;/a&gt; has a &lt;a href="http://blog.hasmanythrough.com/articles/2006/05/17/pluralizations"&gt;quick guide&lt;/a&gt; on how to cure your ills. Please take a look before filing a bug.&lt;/p&gt;</description>
+      <pubDate>Wed, 17 May 2006 13:42:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:3e59064c-c74c-4eb8-84d5-8e5580347bb3</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/17/the-cure-for-your-inflection-woes</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

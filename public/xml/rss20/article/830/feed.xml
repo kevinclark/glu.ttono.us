@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Feed Changes</title>
+    <link>http://glu.ttono.us/articles/2006/05/09/feed-changes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Feed Changes</title>
+      <description>&lt;p&gt;I&amp;#8217;ve finally moved to &lt;a href="http://www.feedburner.com"&gt;FeedBurner&lt;/a&gt; and as such you might see some problems with the feed temporarily. If this is the case, track me down in irc (nick kevinclark on freenode) or email me at kevin dot clark at_symbol gmail dot com.&lt;/p&gt;</description>
+      <pubDate>Tue, 09 May 2006 15:07:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:1f4ee1f8-345e-4f56-84ba-1a023f37230c</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/09/feed-changes</link>
+    </item>
+  </channel>
+</rss>

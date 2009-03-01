@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: More Downtime, working on it</title>
+    <link>http://glu.ttono.us/articles/2005/10/25/more-downtime-working-on-it</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>More Downtime, working on it</title>
+      <description>&lt;p&gt;Hi guys, sorry about the downtime. TextDrive decided to upgrade to rails 0.14.1 without mentioning it to their customers so my typo broke. Stability should be fixed as well.&lt;/p&gt;</description>
+      <pubDate>Tue, 25 Oct 2005 19:14:13 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:3110cd26-ef3c-41a1-8b71-d3d43654367c</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/25/more-downtime-working-on-it</link>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/63</trackback:ping>
+    </item>
+    <item>
+      <title>"More Downtime, working on it" by Kev</title>
+      <description>&lt;p&gt;mardoeen: There was no gems freeze feature until 0.14.1 ;) As for the javascript error, I&amp;#8217;d say file a typo bug report. I&amp;#8217;m running off the trunk.&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Nov 2005 17:09:19 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:fe0d1a97-d956-408d-a921-30ab9a311c55</guid>
+      <link>http://glu.ttono.us/articles/2005/10/25/more-downtime-working-on-it#comment-86</link>
+    </item>
+    <item>
+      <title>"More Downtime, working on it" by mardoen</title>
+      <description>&lt;p&gt;This form throws a Javascript exception on Safari when submitting: &amp;#8220;can&amp;#8217;t find variable mmcomment&amp;#8221;. And then it doesn&amp;#8217;t update the page after submitting.&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Nov 2005 14:17:40 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:13040b26-7d03-4158-95cf-41760cd0f7a9</guid>
+      <link>http://glu.ttono.us/articles/2005/10/25/more-downtime-working-on-it#comment-85</link>
+    </item>
+    <item>
+      <title>"More Downtime, working on it" by mardoen</title>
+      <description>&lt;p&gt;Hint: freeze your gems before deployment ;)&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Nov 2005 14:15:48 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:5287789e-885b-489a-930e-79a84214484f</guid>
+      <link>http://glu.ttono.us/articles/2005/10/25/more-downtime-working-on-it#comment-84</link>
+    </item>
+  </channel>
+</rss>

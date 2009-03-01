@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Johnathan Coultan</title>
+    <link>http://glu.ttono.us/articles/2007/09/19/johnathan-coultan</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Johnathan Coultan</title>
+      <description>&lt;p&gt;Geeky, catchy music. So awesome. If you&amp;#8217;ve heard &amp;#8220;Areas of My Expertise&amp;#8221;, this is Hodgeman&amp;#8217;s buddy. (via &lt;a href="http://errtheblog.com"&gt;Wanstrath&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;object width="425" height="353"&gt;&lt;param name="movie" value="http://www.youtube.com/v/v4Wy7gRGgeA"&gt;&lt;/param&gt;&lt;param name="wmode" value="transparent"&gt;&lt;/param&gt;&lt;embed src="http://www.youtube.com/v/v4Wy7gRGgeA" type="application/x-shockwave-flash" wmode="transparent" width="425" height="353"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;object width="425" height="353"&gt;&lt;param name="movie" value="http://www.youtube.com/v/ES-yKOYaXq0"&gt;&lt;/param&gt;&lt;param name="wmode" value="transparent"&gt;&lt;/param&gt;&lt;embed src="http://www.youtube.com/v/ES-yKOYaXq0" type="application/x-shockwave-flash" wmode="transparent" width="425" height="353"&gt;&lt;/embed&gt;&lt;/object&gt;&lt;/p&gt;</description>
+      <pubDate>Wed, 19 Sep 2007 14:23:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:6a500e9d-7b1d-43c8-ace4-fc948382d2fe</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/09/19/johnathan-coultan</link>
+      <category>Musings</category>
+    </item>
+  </channel>
+</rss>

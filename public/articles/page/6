@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/08/30/mocks-for-speed">Mocks for Speed</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 30 Aug 2006 19:36:00 GMT">Wed, 30 Aug 2006 19:36:00 GMT</span></p>
+<p>I&#8217;m starting to come around on the subject of using mock objects as opposed to just letting the code run. Here&#8217;s why:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">Loaded suite UnitTests
+Started
+.....................................................
+.....................................................
+.....................................................
+.....................................................
+Finished in 0.070892 seconds.
+
+212 tests, 250 assertions, 0 failures, 0 errors
+Loaded suite IntegrationTests
+Started
+...................
+Finished in 0.046002 seconds.
+
+19 tests, 24 assertions, 0 failures, 0 errors
+Loaded suite AcceptanceTests
+Started
+...............
+Finished in 0.007645 seconds.</code></pre></div>
+
+<p>This is from the tests that are bundled with <a href="http://mocha.rubyforge.com">Mocha</a>, a mocking library. </p>
+
+<p>Look at those numbers! Look at just the unit tests. 212 tests, 250 assertions, 0.070892 seconds. Hot damn. Imagine your Rails tests running like that.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails">Guide: Things You Shouldn't Be Doing In Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 30 Aug 2006 05:32:00 GMT">Wed, 30 Aug 2006 05:32:00 GMT</span></p>
+<p>Koz recently checked code into core that kicks and screams all the way home if you&#8217;re using deprecated methods or instance variables. In honor of this I&#8217;ve decided to give you a list of things I still see over and over in Rails code that you really shouldn&#8217;t be doing anymore. Really. Trust me on this.</p>
+
+<p><strong>Update:</strong> There&#8217;s been enough controversy over this article that I&#8217;ve <a href="http://glu.ttono.us/articles/2006/08/30/on-the-days-events">responded</a>.</p>
+
+  <a href="/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comments">89 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/22/colorize-your-tests">Colorize Your Tests</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 22 Aug 2006 17:49:00 GMT">Tue, 22 Aug 2006 17:49:00 GMT</span></p>
+<p>Are your test runs dull and listless? Do you miss the red/green bar of JUnit? Well, now you don&#8217;t have to! Between <a href="http://on-ruby.blogspot.com/">Pat Eyler&#8217;s</a> <a href="http://on-ruby.blogspot.com/2006/06/more-fun-with-redgreen.html">RedGreen</a> and <a href="http://errtheblog.com/">Chris Wanstrath&#8217;s</a> <a href="http://errtheblog.com/post/15">modifications</a> you can have red, green and yellow tests. That doesn&#8217;t sound nearly as cool written, but take a look:</p>
+
+<p><img src="http://thar.be/colored_tests.png" alt="Colored Tests!"/></p>
+
+<p>It makes me happy. Oh, and a 3 line addition to your <code>~/.autotest</code> will make colorized <code>autotest</code> runs (pictured above).</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/17/mkrf-0-1-1-released">mkrf 0.1.1 Released</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 17 Aug 2006 20:23:00 GMT">Thu, 17 Aug 2006 20:23:00 GMT</span></p>
+<p>Today I tagged mkrf&#8217;s 0.1.1 release. It fixes several of the shortcomings of it&#8217;s predecessor. </p>
+
+  <a href="/articles/2006/08/17/mkrf-0-1-1-released">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/summer-of-code" rel="tag">summer of code</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/17/mkrf-0-1-1-released#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/11/server-now-on-railsmachine">Server Now a Rails Machine</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 11 Aug 2006 20:16:00 GMT">Fri, 11 Aug 2006 20:16:00 GMT</span></p>
+<p>Today I finished moving my blog hosting from <a href="http://www.planetargon.com/">Planet Argon</a> to my shiny new <a href="http://railsmachine.com/">Rails Machine</a> and upgraded to Typo 4. If you see problems in the feed or display, please do tell me about it. (Comments are on.)</p>
+
+<p>Planet Argon was great for blog hosting, but shared hosting for Rails applications is a pain. Rails Machine gives me what I need to get several applications running stable and lets me be in control. At the same time the ease of use is amazing. <strong>I&#8217;ve been deploying Rails applications for almost a year and a half now and this is hands down the most simple and effective system I&#8217;ve worked with. Period.</strong> The support has been stellar as well. If you&#8217;re looking to get out of the shared hosting space I can easily give <a href="http://railsmachine.com/">Rails Machine</a> my endorsement.</p>
+
+<p><strong>Update</strong>: It&#8217;s easy to say that a group has great service, but in this case I&#8217;m compelled to give an example or two. After a few weeks of service at RM, Brad pinged me on Freenode to ask how things were workin out. When the recent <a href="http://weblog.rubyonrails.com/2006/8/10/rails-1-1-6-backports-and-full-disclosure">excitement</a> happened with Rails releases I got emails telling me about it and urging me to update. Earlier today I was struggling with getting <a href="http://irssi.org/">irssi</a> installed on my Rails Machine because the CentOS RPM didn&#8217;t like (what I thought was) glibc and the configure script complained too. I just found this in my email:</p>
+
+<blockquote>
+    <p>The problem was GLib not glibc. Ha!</p>
+    
+    <p>Here&#8217;s your fix:
+    yum install ncurses-devel glib-devel</p>
+    
+    <p>:bradley</p>
+</blockquote>
+
+<p>It&#8217;s hard not to rave about this.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/reviews" rel="tag">Reviews</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/11/server-now-on-railsmachine#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/09/many-to-many-fixture-breakage">Many to Many Fixture Breakage</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 09 Aug 2006 18:13:00 GMT">Wed, 09 Aug 2006 18:13:00 GMT</span></p>
+<p>So, I spent about 3 hours tracking down a very strange bug in fixtures last night. It turns out that if you have a class defined that is the constantized version of your fixtures it will try to load columns in that class whether it is an AR::Base class or not.</p>
+
+<p>So, I&#8217;ve got an Assertion model, Helper model, and Assertions controller (I&#8217;m doing the REST thing on this one). Bundled with the Assertions controller is the AsssertionsHelper. I also have a simple (very very simple) many to many relationship between Assertion and Helper. This means that the join table is called <code>assertions_helpers</code> and it&#8217;s constantized form is (that&#8217;s right!) AssertionsHelper. This is where things go bad.</p>
+
+<p>The error looks something like this:</p>
+
+<pre>NoMethodError: undefined method `columns_hash' for AssertionsHelper:Module</pre>
+
+<p>I&#8217;m going to add a patch to trac. In the meantime, don&#8217;t get caught with this very specific bug.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them">Why Fixtures Suck (And How We Can Fix Them)</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 07 Aug 2006 18:24:00 GMT">Mon, 07 Aug 2006 18:24:00 GMT</span></p>
+<p>I hate fixtures in Rails. Sometimes I hate them because they slow down my tests. Most often I hate Rails fixtures because they make my tests brittle. Everyone that uses fixtures has had that moment where they add another bit to their fixture file for that new test and suddenly things are breaking all over the place. It&#8217;s ugly and arguably a broken system.</p>
+
+<p>I think we can fix it. I&#8217;ve had several long discussions about this and most of what I&#8217;m going to preach here isn&#8217;t original. That being said, I think this might work so pay attention and tell me what you think.</p>
+
+<p>Fixtures suck because it&#8217;s all or nothing. You can either grab all of your user data or not have any of it. It does cut down on duplication because you&#8217;re not redefining data for every set of tests. However, having all the extra stuff in the scope of your test is unnecessary and leads to brittle tests.</p>
+
+<p>One option is to compromise. We could modify the current <code>fixtures</code> method to accept syntax like <code>fixtures :users =&gt; [:alice, :bob], :articles =&gt; :ruby</code>. This would allow you to get only the data you need. At the same time, the old syntax could be backwards compatible and you could grab <em>all</em> of the data if you wanted to. I generally find that when I&#8217;m writing tests it&#8217;s only with one or two pieces of data. With Rails, everything else in the database is just hanging out.</p>
+
+<p>The downside to this new syntax is that the current way of structuring test cases would make this ugly. You don&#8217;t want to define fixtures for every individual test. It&#8217;s much easier defining fixtures by test case. <em>Here&#8217;s where the BDD folks got it right.</em> Test cases should really be broken up by what context they&#8217;re being run in. We shouldn&#8217;t have one test case for the model. We should have several test cases with tests divided by what data we&#8217;re working with. We get smaller and more granular sets of tests this way. It&#8217;s the testing version of DHH&#8217;s &#8220;everything is REST&#8221;. Every test is about context.</p>
+
+<p>Do remember that more test files don&#8217;t mean more work. We&#8217;re already generating empty integration tests. What&#8217;s one or two more generators? Really, it&#8217;ll be easy. You&#8217;ll like it.</p>
+
+<p>The other option is to throw off fixtures completely. I know of people who have already taken this step and they solve the fixture problem by writing helpers to create the data in code and then run them in <code>setup</code>. This seems like a viable option as well and would require no changes to Rails core.</p>
+
+<p>It&#8217;s time to admit that fixtures, as implemented in Rails, are broken and ugly. We&#8217;ve been taught to demand beauty and elegance. Let&#8217;s make something better.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comments">11 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/04/the-caboose-pushes-rails-documentation">The Caboose Pushes Rails Documentation</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 04 Aug 2006 20:44:00 GMT">Fri, 04 Aug 2006 20:44:00 GMT</span></p>
+<p>You&#8217;ve probably noticed <a href="http://slash7.com">many</a> <a href="http://robbyonrails.com">of</a> <a href="http://brainspl.at">the</a> <a href="http://www.jroller.com/page/obie">popular</a> <a href="http://www.nimblecode.com/">Rails</a> <a href="http://www.jvoorhis.com/">writers</a> are <a href="http://glu.ttono.us/">working</a> on books. Since we&#8217;re all off working on other sources of documentation we really haven&#8217;t had time to work on the Rails API docs themselves. This is our attempt to push things in the right direction.</p>
+
+<p><a href="http://habtm.com">Courtenay</a> has <a href="http://blog.caboo.se/articles/2006/08/04/the-caboose-rails-documentation-project">started up a paypal account</a> for donations which would go to funding someone to give the API docs some sweet sweet lovin&#8217;. We&#8217;re shooting for 5000 USD. I&#8217;ll be putting in $100 and some adsense revenue. Do your part. Help us get better docs.</p>
+
+<p>Donate via Paypal:</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+</form> 
+
+<p>Watch the <a href="http://blog.caboo.se/pages/documentation_drive">donations</a> roll in.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/documentation" rel="tag">documentation</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/04/the-caboose-pushes-rails-documentation#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/01/sys-con-media-and-open-source-spam">SYS-CON Media and Open Source Spam</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 01 Aug 2006 22:06:00 GMT">Tue, 01 Aug 2006 22:06:00 GMT</span></p>
+<p>I started getting announcements from SYS-CON Media from an email naming itself as &#8220;Enterprise Open Source Buyer&#8217;s Guide&#8221; just after Rails Conf. There&#8217;s a link at the bottom to &#8220;unsubscribe from all SYS-CON Media mailing lists, including special offers and your digital edition and newsletter subscriptions&#8221;. I&#8217;ve gone through this process four times. Now I&#8217;m getting frusterated.</p>
+
+<p>Does anyone know who SYS-CON Media is and how I can get off their list? Are other people who went to RailsConf feeling the pain?</p>
+
+  
+  <p class="meta"><a href="/articles/2006/08/01/sys-con-media-and-open-source-spam#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/07/19/see-me-at-rubyconf-2006">See Me at RubyConf 2006</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 19 Jul 2006 16:13:00 GMT">Wed, 19 Jul 2006 16:13:00 GMT</span></p>
+<p>Yes, I will in fact be speaking at RubyConf this fall. Cool huh? My talk, &#8220;Life After mkmf&#8221; will cover the development and use of my <a href="http://code.google.com/soc/">Summer of Code</a> project, mkrf.</p>
+
+<p>If you&#8217;ve ever been frustrated by the problem of bending mkmf to you will and retaining your wits, you should see my talk.</p>
+
+<p><strong>To those who have noticed my weekly guides have come to a halt:</strong></p>
+
+<p>Sorry about that. They&#8217;ll resume as soon as I can find some time for them. In the meantime, know that there is other writing going on that I&#8217;ll talk more about later.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/guides" rel="tag">guides</a>, <a href="/articles/category/summer-of-code" rel="tag">summer of code</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/07/19/see-me-at-rubyconf-2006#comments">1 comment</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/4">4</a> <a href="/articles/page/5">5</a> 6 <a href="/articles/page/7">7</a> <a href="/articles/page/8">8</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

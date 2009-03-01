@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Configuring Rails Environments: The Cheat Sheet</title>
+    <link>http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Configuring Rails Environments: The Cheat Sheet</title>
+      <description>&lt;p&gt;These are options allowed by &lt;code&gt;Rails::Configuration&lt;/code&gt; in Rails 1.1.2. This list is generally exhaustive (and often taken directly from the documentation), but more detailed documentation can be found in the source code itself where these options are found as class accessor methods (&lt;code&gt;cattr_accessor&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; If you like it, &lt;a href="http://digg.com/programming/Configuring_Rails_Environments:_The_Cheat_Sheet"&gt;digg it&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2:&lt;/strong&gt; Also see my &lt;a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1"&gt;Guide to Environments in Rails 1.1&lt;/a&gt; for information on how specific configurations work.&lt;/p&gt;</description>
+      <pubDate>Mon, 22 May 2006 04:24:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4ac698dd-9f03-423f-a0ad-89793170544b</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet</link>
+      <category>Rails</category>
+      <category>documentation</category>
+      <category>cheat sheets</category>
+    </item>
+  </channel>
+</rss>

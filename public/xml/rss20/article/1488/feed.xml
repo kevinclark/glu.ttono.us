@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: 13 New SD Ruby Podcasts Up</title>
+    <link>http://glu.ttono.us/articles/2007/11/03/13-new-sd-ruby-podcasts-up</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>13 New SD Ruby Podcasts Up</title>
+      <description>&lt;p&gt;&lt;a href="http://podcast.sdruby.com/"&gt;They&amp;#8217;re all up at once&lt;/a&gt;. Wow.&lt;/p&gt;
+
+&lt;p&gt;Mine felt good, but it&amp;#8217;s long. Rather long. 50 minutes fairly non-stop, ~600 megs long. Find some time before watching.&lt;/p&gt;
+
+&lt;pre&gt;Episode 036: The Return of Kevin Clark
+Kevin Clark takes a break from Powerset to give a full-throttle talk
+on using Merb as a JSON-RPC service, god, gem2rpm, and heckle.
+
+Episode 035: ActiveRecord Backup &amp; MimetypeFu
+Matt Aimonetti demonstrates his newest plugins: ActiveRecord Backup
+and MimetypeFu.
+
+Episode 034: Intro to JRuby
+Brian Chapados shows how to install and work with the latest JRuby
+release.
+
+Episode 033: Life on Edge
+If you’re a Rails junkie, you’ll want to develop on Edge Rails. Matt
+Clark explains how to get started and shares some of the challenges
+of working on Edge.
+
+Episode 032: Capistrano
+Rob Kaufman takes on Capistrano 2. What is it? How does it work?
+What’s changed since version 1?
+
+Episode 031: Seaside
+Roger Whitney explores Seaside, the web application framework based
+on Smalltalk.
+
+Episode 030: Tuneshelf
+Dominic Damian talks about his experiences building Tuneshelf, a web
+application that allows music fans to keep track of their favorite
+music albums.
+
+Episode 029: Big Stinking Piles (of data)
+What do you do when third-party data vendors don’t speak REST? Rob
+Kaufman discuss real-world techniques for importing and exporting
+data. (This talk was also given at RailsConf 2007.)
+
+Episode 028: Simple Sidebar Plugin
+Ryan Felton shows how to use Simple Sidebar plugin to DRY up sidebar
+content in applications.
+
+Episode 027: Headliner and Styler
+Patrick Crowley talks about his newest plugins: Headliner and Styler.
+
+Episode 026: ActsAsSolr
+Rob Kaufman shows how easy it is to integrate Solr powered search
+into your Rails application using the ActsAsSolr plugin.
+
+Episode 025: Ajax CSS Star Rating with ActsAsRateable
+Ryan Felton shows off how to build an Ajax-powered, CSS star rater
+using the ActsAsRateable plugin and Komodo Media’s CSS Star Rating
+Redux technique.
+
+Episode 024: Using Ruby + Amazon SQS to build backdoors
+Brian Chapados talks about using Ruby and Amazon’s Simple Que Service
+web service to build backdoors into systems.&lt;/pre&gt;</description>
+      <pubDate>Sat, 03 Nov 2007 10:04:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:67360763-d36c-40ac-97eb-70ca00affdab</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/11/03/13-new-sd-ruby-podcasts-up</link>
+      <category>Ruby</category>
+      <category>sd.rb</category>
+    </item>
+    <item>
+      <title>"13 New SD Ruby Podcasts Up" by Kevin Clark</title>
+      <description>&lt;p&gt;You know, it isn&amp;#8217;t, but I&amp;#8217;ll push it out ASAP. I&amp;#8217;m flying home from the east coast tomorrow, and I&amp;#8217;ll test against latest merb when I&amp;#8217;m back.&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Nov 2007 13:58:04 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:110eb245-4473-477f-9a7d-5ddaa89c9565</guid>
+      <link>http://glu.ttono.us/articles/2007/11/03/13-new-sd-ruby-podcasts-up#comment-1490</link>
+    </item>
+    <item>
+      <title>"13 New SD Ruby Podcasts Up" by Peter Cooper</title>
+      <description>&lt;p&gt;Is that json-rpc mixin / plugin publicly available? I must confess I haven&amp;#8217;t checked the latest Merb itself or looked more than one page back through your blog, so I protest innocence if it&amp;#8217;s obvious ;-) Thanks!&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Nov 2007 10:08:12 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:5d191bbf-ae16-471a-9c08-bee06a5dbc21</guid>
+      <link>http://glu.ttono.us/articles/2007/11/03/13-new-sd-ruby-podcasts-up#comment-1489</link>
+    </item>
+  </channel>
+</rss>

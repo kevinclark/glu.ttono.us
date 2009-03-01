@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: postgresql gem on Leopard stock gem system</title>
+    <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>postgresql gem on Leopard stock gem system</title>
+      <description>&lt;p&gt;This &lt;a href="http://pastie.caboo.se/131771"&gt;fails horribly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The solution is to make sure you&amp;#8217;re only building for &lt;em&gt;your&lt;/em&gt; architecture:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;Odysseus:ext kev$ sudo -s
+bash-3.2# ARCHFLAGS='-arch i386' gem install postgres
+Building native extensions.  This could take a while...
+Successfully installed postgres-0.7.9.2007.12.22
+Installing ri documentation for postgres-0.7.9.2007.12.22...
+Installing RDoc documentation for postgres-0.7.9.2007.12.22...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Sat, 22 Dec 2007 20:24:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d88c3dff-a401-4399-a802-192d7849459a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system</link>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"postgresql gem on Leopard stock gem system" by Paul</title>
+      <description>&lt;p&gt;Dude, zed has gone ape shit.  I think your are cool kev!&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html"&gt;http://www.zedshaw.com/rants/rails_is_a_ghetto.html&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 03 Jan 2008 20:36:48 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b4cfe31d-ca4a-4bb8-b0ab-988947458610</guid>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comment-1523</link>
+    </item>
+    <item>
+      <title>"postgresql gem on Leopard stock gem system" by Ryan Davis</title>
+      <description>&lt;p&gt;FYI, this does NOT work with sudo since sudo strips the env var out. You must &amp;#8216;sudo -s&amp;#8217; or &amp;#8216;sudo su&amp;#8217; and run the command straight up. I don&amp;#8217;t like it, but I couldn&amp;#8217;t find a better way.&lt;/p&gt;</description>
+      <pubDate>Mon, 31 Dec 2007 17:01:15 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:2faec2bc-7bea-4c03-8b7d-cb98580ba19b</guid>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comment-1522</link>
+    </item>
+    <item>
+      <title>"postgresql gem on Leopard stock gem system" by Vaibhav</title>
+      <description>&lt;p&gt;Hi Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;I have just started learning Ruby on Rails and plan to use it in Rolling out our web product in India.&lt;/p&gt;
+
+
+	&lt;p&gt;I was wondering if there could be a way in which we can ask a few questions from you, to be answered whenever you get some time :)&lt;/p&gt;
+
+
+	&lt;p&gt;Regards,
+&amp;#8212;Vaibhav&lt;/p&gt;</description>
+      <pubDate>Mon, 31 Dec 2007 03:15:10 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:8a195491-3adc-47e8-bccc-c1c831594f38</guid>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comment-1521</link>
+    </item>
+    <item>
+      <title>"postgresql gem on Leopard stock gem system" by Gabriel Correa</title>
+      <description>&lt;p&gt;I inadvertently ran into this problem yesterday.  This works perfectly.  Thank you.&lt;/p&gt;</description>
+      <pubDate>Sun, 23 Dec 2007 17:34:02 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:1c96294f-3e15-42e2-8de8-b4bc3a7c25cb</guid>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comment-1520</link>
+    </item>
+    <item>
+      <title>"postgresql gem on Leopard stock gem system" by D</title>
+      <description>&lt;p&gt;Gah&amp;#8230; tell me about it.  Even the macport to postgres was a debacle:
+&lt;a href="http://trac.macports.org/projects/macports/ticket/12994"&gt;http://trac.macports.org/projects/macports/ticket/12994&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Postgres needs love on the adoption / usage front.  Postgres FTW.&lt;/p&gt;</description>
+      <pubDate>Sun, 23 Dec 2007 02:19:21 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:c30fa0b0-111a-426b-a865-f57ebd870222</guid>
+      <link>http://glu.ttono.us/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comment-1519</link>
+    </item>
+  </channel>
+</rss>

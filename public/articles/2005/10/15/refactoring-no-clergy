@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Refactoring No Clergy</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/18"
+    dc:title="Refactoring No Clergy"
+    dc:identifier="http://glu.ttono.us/articles/2005/10/15/refactoring-no-clergy"
+    dc:description="Kevin Baird What is No Clergy? Live, generative music for a small ensemble Influences (Earlier Open-Form Pieces) Karlheinz / Piano Earle Brown: Available Froms I &amp;amp; II / Small Ensemble"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:12-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/18" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Refactoring No Clergy</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sat, 15 Oct 2005 20:54:40 GMT">Sat, 15 Oct 2005 20:54:40 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Kevin Baird</p>
+
+<h3>What is No Clergy?</h3>
+
+<ul>
+<li><p>Live, generative music for a small ensemble</p>
+
+<h3>Influences (Earlier Open-Form Pieces)</h3>
+
+<ul>
+<li>Karlheinz / Piano</li>
+<li>Earle Brown: Available Froms I &amp; II / Small Ensemble</li>
+</ul></li>
+</ul>
+
+<h3>Setup</h3>
+
+<ul>
+<li>Performers read music via web browser</li>
+<li>Equivalent of turning written pages is a web page refresh</li>
+<li>The conductor is a bash script </li>
+</ul>
+
+<p>(Sample of trumpet and violin musical score pages)</p>
+
+<h3>2nd and Later Pages</h3>
+
+<ul>
+<li>The audience has access to web forms in the concert space. The audience is able to modify pitch, direction, volume, etc. for the various characteristics. They can express how strong their conviction is. &#8220;I mean it, damnit!&#8221; or &#8220;Take it with a grain of salt.&#8221;</li>
+<li>Web forms are specific to each instrument
+I should mention that I wanted web forms because i serves a useful aesthetic and functional performance. People are familiar with web browsers, and it is easy for people to bring laptops to the concert space in order to participate.</li>
+</ul>
+
+<p>Markovian transformations are used. A marko chain is a data set that is a derivation of some previous data set. The new data set bears a strong resemblance to the original set, but is a new set. It&#8217;s used for things like modeling a (shakespeare play?) The point of using it here is so that the new page of notation is similar to the original. That makes it not terribly interesting for the second page, but by the third page, it gets interesting.</p>
+
+<p>(Sample pages of trumpet and violin musical scores with audience having asked for fewer notes, or more intensity for each instrument).</p>
+
+<ul>
+<li>By the second page, instruments are already starting to diverge</li>
+</ul>
+
+<h3>Originally written in Python</h3>
+
+<p>The piece was originally written in Python. Scores, measure, and notes are used. A sound or silence event is defined. A struct keeps the state.</p>
+
+<h3>Data formats &amp; output</h3>
+
+<p>The output is stored in MusicXML. It renders notation output via Lilypond, which renders LaTeX to PDF or other output formats.</p>
+
+<h3>Why Ruby?</h3>
+
+<ul>
+<li>Flexibilit of Perl without the kludges and ugliness</li>
+<li>Real access control and scope</li>
+<li>Ruby&#8217;s specific take on blocks and iterators</li>
+<li>Influence of Lisp, although not aware at the time
+<ul>
+<li>Open Classes vs. Paul Graham&#8217;s <i>On List</i></li>
+<li>Also mentioned in Agile Web Development With Rails</li>
+</ul></li>
+<li>Self-education</li>
+</ul>
+
+<h3>Why Refactor?</h3>
+
+<ul>
+<li>Had started informal code. It was a mess and so I said, &#8220;Why not refactor it and do it in Ruby?&#8221;</li>
+</ul>
+
+<h3>The Changes: Ruby vs. Python</h3>
+
+<ul>
+<li>Differences&#8230;
+<ul>
+<li>Culture not just technical features</li>
+<li>Thanks to Hal Fulton for <i>The Ruby Way</i></li>
+<li>Much heavier use of boolean predicates&#8230; e.g. has_something?</li>
+</ul></li>
+<li>Rdoc encouraged much better documentation</li>
+</ul>
+
+<h3>Substitute Algorithm</h3>
+
+<h3>Patterns</h3>
+
+<ul>
+<li>Merge a superclass and a subclass together
+<ul>
+<li>Collapse Hierarchy moves superclasses and subclasses together. this was developed in a very ad hoc process. I tried to visualize how I would generate the initial pages vs. the subsequent pages.* Extract Interface &#8211; Move conceptually similar methods into a separate module
+*The most horrible name in the project is &#8220;tupplable&#8221; which refers to a musical term.</li>
+</ul></li>
+<li>Extract Method &#8211; Break a larger code fragment into  separate methods
+<ul>
+<li>I broke a lot of methods up. In the note class, I had a notation for rendering the output. I broke it up into a public method and several privates representing the notes, pitch, etc.</li>
+</ul></li>
+<li>Extract Superclass / Pull up method &#8211;  Move methods into a superclass</li>
+<li>I made a new parent class called HasSound that represents the &#8230;.</li>
+</ul>
+
+<p>Various instruments have this thing called transposition. I used this as a class variable and many things I had used as an instrance variable became class variables, and occasionally symbolic constants.</p>
+
+<ul>
+<li>Replace Array with Object &#8211; Create Object from Array with dissimilar contents</li>
+<li><p>Replace Magic Numbers with Sumbolic Constants</p>
+
+<ul>
+<li>I also have a hash that also reads the full name from the abbreviation</li>
+</ul></li>
+<li><p>Encapsulate Field / Self Encapsulate Field - Make a public variable private and createa accessors</p></li>
+<li>Separate Query from Modifier &#8211; Isoloate methods that either return a value or change a state</li>
+</ul>
+
+<h3>Conclusions</h3>
+
+<h3>Future Plans</h3>
+
+<ul>
+<li>Continue some refactoring. Dynamics are only meaningful for notation and should be proken out in case I am not producing output for notation.</li>
+<li>Eliminate bash wrapper scripts, convert to pure Ruby.  Thankfully, I followed Matz suggestion to learn some Lisp and SmallTack, it was useful in understanding Ruby.
+<ul>
+<li>Make transformations and XML storage facilities avaliable as general libraries</li>
+<li>Implement transformation unrelated to audience feedback. Blend some styles.</li>
+</ul></li>
+<li>Python good / Ruby better (for me)</li>
+<li><p>I care about encapsulation</p>
+
+<ul>
+<li>Good design in itself</li>
+<li>Practical benefits for headspace issues</li>
+<li>Aided by having Real Access</li>
+</ul></li>
+<li><p>Ruby&#8217;s openness, flexibility and transparency made each Refactoring easier and cleaner</p></li>
+<li>Perl taught me to hate sigils</li>
+<li>Ruby taught me to love them again</li>
+</ul>
+
+<h3>Q &amp; A</h3>
+
+<p>Speaker: I&#8217;d like to ask the audience about Packaging, inclined to package once its ready. </p>
+
+<p>Q: Do you have any recordings of what this sounds like live?
+A:  I don&#8217;t have any with me, the audio quality isn&#8217;t great.
+I found that focusing on output gives me a niche&#8230; and I love that everything you hear isn&#8217;t just blowing out of a wooden tube from a hundred years ago or something like that.</p>
+
+<p>David Black: I&#8217;d say it&#8217;d be good to release as a gem. If it requires lillypond, then it requires lillypond.</p>
+
+<p>Q: I&#8217;m a trumpet player, and I was wondering if there would be an option to say how much they hate a specific musician? Is there a way to make sure that the music is not too physically difficult to play (for the performers)?
+A:  I&#8217;ve talked to my advisior, and is it aesthetically and conceptually correct to limit what gets output to what is physically playable? What if something comes out that is logistically unplayable? Well, do your best. You&#8217;re the elected official. This will be highly dependent on your performers.</p>
+
+<p>Q: Just what you said about the playability and all that&#8230; just the concept of constraints.  I&#8217;ve wondered if you&#8217;ve considered adding the ability to add constraints, something like that?
+A: I&#8217;m somewhat reluctant to do too much on that, because I want to give the audience a lot of freedom in an environment where they haven&#8217;t had it before. When something impossible happens, that&#8217;s when&#8230; alright make the trumpet&#8217;s a little higher and the &#8230; a little lower.</p>
+
+<p>Q: You really seem to be into refactoring; have you noticed a relation between the way how you think about the structure of a software program and how you think about the structure of a piece of music?
+A: That&#8217;s a really interesting question.  I think I&#8217;m more inclined to do it with code&#8230; and obviously people will disagree&#8230; [with code] it&#8217;s closer to saying this is the right way to do it and this is the wrong way to do it&#8230; but with music I find it a lot more subjective.
+Q2: Refactoring is, as far as I know, changing how something happens without changing what the final outcome is, whereas in music the output is different once you&#8217;ve changed something.
+A2: We can argue about this later</p>
+
+<p>Q: Why the name?
+A: It&#8217;s not an anti-religioius&#8230; musical professionals could be seen as a type of clergy.  I had an earlier pice called no cathedral.  This is a logical extension of that&#8230; so how could I make it more anti-clerical than that? Get rid of the clerics.  It&#8217;s a metaphor.</p>
+
+<p>Q: Speaking as someone who&#8217;s performed a bit of contemporary music, I wonder what the reaction has been by the audience?</p>
+
+<p>A: Generally it has been very good, but with that there is a caveat: I could only get other composers to perform this for me.</p>
+
+<p>One thing I should mention about the notation is that the sound of the music is identical, but the beat marks are&#8230;.So that would be an improvement in presentation.  That would help in that regard.
+A: I hear good things about smalltalk.  Actually, last weekend I started learning about smalltalk and lisp.  Actually, I </p>
+
+<p>Q: How many people have used a refactoring browser before? How many people miss it in Ruby?</p>
+
+<p>Even in the lobby last night, I was not changing things because it was painful to change things in more than one place. I was lazy, or I din&#8217;t have a refactoring browser. If anyone is interested, I would love to get this started. [Matt Shelleburty]</p>
+
+<p>Q: This is another question about the packaging&#8230; you presented it earlier as an iether/or&#8230; why is that? (Debian/ruby).
+A: I&#8217;m lazy.
+Q:
+A: That&#8217;s a good point, and that&#8217;s the ideal solution.  Yeah, that&#8217;d be the way to go probably.
+Q: That&#8217;s the way gems work, I&#8217;ve worke din Debian mostly.  You might look in to (&#8230;) [Stephanie]</p>
+
+<p>Q: Mine was in response to the refactoring guy&#8217;s question.  Things to point out is what environment you&#8217;re working in.  Things like RDT which I don&#8217;t use because it brings your machine to a crawl.  I think a bunch of people started, tried to put it in FreeRIDE&#8230; I don&#8217;t know if that would be possible.  If anyone is interested in putting it in Emacs.</p>
+
+<p>Q: Just a clarification on that too&#8230; one thing that furstrates me on that too&#8230; theres&#8217; so many smart people that have spread themselves out. [missed a lot here]  I&#8217;d rather do code than GUI anyway.</p>
+
+<p>Q: I apologize in advance to continuing to steal your thunder on this refactoring thing.  But since the topic came up.  I&#8217;m one  of the founders of the FreeRide IDE project, along with Rich Kilmer.  I&#8217;m very interested in getting refactoring support in FreeRIDe.  []&#8217;s got problems.  Enough problems that we actually removed it from FreeRide.  If there&#8217;s people that are interesteed in working on it and bringin it up to snuff, I&#8217;d be really interested in talking about it.  Thanks.</p>
+
+<p>Q: How big of a role did Unit Testing play in refactoring?  And second, I didn&#8217;t understand why you ditched PYthon.</p>
+
+<p>A: With regard to the changeover, I knew I wanted to do a substantial re-write.  I was learning Ruby at the time, and everything I learned about it I thought &#8216;why did I learn Python&#8217;?  Fortuitous coincidence in time I guess.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/refactoring-no-clergy#comments">1 comment</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/refactoring-no-clergy#trackbacks">no trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-59"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_59'); }"  onmouseout="Element.hide('admin_comment_59');" >
+  <div id="admin_comment_59" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/59', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-59&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/18/edit/59" class="admintools">edit</a></div>
+  <a name="comment-59"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=3e7c00e576b488a55bfb0a134edbde0f&amp;size=60" />
+  <cite><strong>Kevin Baird</strong> </cite> said 2 days later:<br />
+  <p>Great notes. Thank you.</p>
+
+
+	<p>Some minor clarifications:
+Karlheinz&#8217;s last name is Stockhausen</p>
+
+
+	<p>&#8220;tupplable&#8221; is &#8220;Tupletable&#8221;</p>
+
+
+	<p>&#8220;isn&#8217;t just blowing out of a wooden tube&#8221; should be &#8220;is just blowing out of a wooden tube&#8221; &#8211; I appreciate that I&#8217;m doing computer music that depends on old technology for the actual sound.</p>
+
+
+	<p>These are extremely minor points. Thanks very much for taking and posting such excellent notes.</p>
+
+
+	<p>Slides should be up at <a href="http://www.zenspider.com/Languages/Ruby/">http://www.zenspider.com/Languages/Ruby/</a> soon.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="59";
+//--></script>
+<!-- mmc mmid:59 mmdate:2005-10-17 20:05:35 mmauthor:Kevin Baird -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/18</span>
+    </p>
+  
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/18/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/18" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="18";
+//--></script>
+<!-- mmp mmid:18 mmdate:2005-10-15 16:54:40 mmurl:/articles/2005/10/15/refactoring-no-clergy mmtitle:Refactoring No Clergy -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2005/10/15/refactoring-no-clergy" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

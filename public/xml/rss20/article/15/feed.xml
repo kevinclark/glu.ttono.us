@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: JRuby: A Ruby VM in Java</title>
+    <link>http://glu.ttono.us/articles/2005/10/14/jruby-a-ruby-vm-in-java</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>JRuby: A Ruby VM in Java</title>
+      <description>&lt;p&gt;jruby.sourceforge.net&lt;/p&gt;
+
+&lt;p&gt;Charles Oliver Nutter, presenting&lt;/p&gt;
+
+&lt;p&gt;Who Am I?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Charles Oliver Nutter: headius@headius.com&lt;/li&gt;
+&lt;li&gt;Senior Architect/Technologist at Ventura Corp&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Part1: Past and Present&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What is JRuby?&lt;/li&gt;
+&lt;li&gt;Why JRuby?&lt;/li&gt;
+&lt;li&gt;Peer Comparison&lt;/li&gt;
+&lt;li&gt;The Real World&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;What is JRuby?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &amp;#8220;100% Java&amp;#8221; based Ruby interpreter&lt;/li&gt;
+&lt;li&gt;Mostly 1.8 compatable&lt;/li&gt;
+&lt;li&gt;Four years and 15 developers; currently 3-5 active and under heavy development&lt;/li&gt;
+&lt;li&gt;Originally modeled on Ruby 1.6 code&lt;/li&gt;
+&lt;li&gt;Tri-licensed: CPL, GPL, LGPL&lt;/li&gt;
+&lt;li&gt;Sun J2SE 1.4 or higher (FOSS Javas in future)&lt;/li&gt;
+&lt;li&gt;Java/Ruby integration getting better&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Why JRuby?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JVM provides native threading, generational GC, and extensive networking and database support&lt;/li&gt;
+&lt;li&gt;Wealth of libraries and frameworks; large userbase, wide deployment&lt;/li&gt;
+&lt;li&gt;Many Javaists would like to use Ruby more&lt;/li&gt;
+&lt;li&gt;Java is &amp;#8220;just another platform&amp;#8221; for Ruby&lt;/li&gt;
+&lt;li&gt;JRuby could help grow Ruby the language apart from C Ruby&lt;/li&gt;
+&lt;li&gt;Sun, others very interested in dynamic (typed) languages on the JVM&lt;/li&gt;
+&lt;li&gt;Javaists (by choice or by force) can help promote Ruby&lt;/li&gt;
+&lt;li&gt;Java/Ruby integration merges best of both&lt;/li&gt;
+&lt;li&gt;Ruby + J2EE = enterprise ruby that managers can swallow&lt;/li&gt;
+&lt;li&gt;Ruby + J2ME&amp;#8230; someday?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Demo 1: Java integration&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby code mixed into java&lt;/li&gt;
+&lt;li&gt;JDBC used for DB access (PostgreSQL 8.0)&lt;/li&gt;
+&lt;li&gt;Mostly transparent object marshalling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Peers&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Jython - www.jython.org&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pythonists dig it&lt;/li&gt;
+&lt;li&gt;By far the most popular JVM dyn lang&lt;/li&gt;
+&lt;li&gt;Establisehd, stable, feature complete&lt;/li&gt;
+&lt;li&gt;Helpting to formally define/distinguish Python the language from Python the interpreter&lt;/li&gt;
+&lt;li&gt;Interpreted or compiled (runs Python bytecode, or compiles to Java)&lt;/li&gt;
+&lt;li&gt;Widely used&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Groovy - groovy.codehaus.org&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby-like syntax, some features from Nice&lt;/li&gt;
+&lt;li&gt;Seamless Java integration, sometimes with perf hit&lt;/li&gt;
+&lt;li&gt;First dyn language JSR&lt;/li&gt;
+&lt;li&gt;Lots of momentum&lt;/li&gt;
+&lt;li&gt;Interpreted (JIT) or compiled offline to Java code&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SISC - sisc.sourceforge.nt
+&lt;ul&gt;
+&lt;li&gt;JRuby redesign follows similar patterns&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Many others&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;The Real World&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RDT: A Ruby IDE for Eclipse; rubyeclipse.sourceforge.net&lt;/li&gt;
+&lt;li&gt;jEdit: A Multi-Language Code Editor; www.jedit.org&lt;/li&gt;
+&lt;li&gt;DataVision: Java-based Reporting Software; datavision.sourceforge.net&lt;/li&gt;
+&lt;li&gt;Internal projects&lt;/li&gt;
+&lt;li&gt;Need more&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;How &amp;#8220;Ruby&amp;#8221; is it?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Of 1049 Rubicon tests, 80% succeed&lt;/li&gt;
+&lt;li&gt;Temporary incompatibilities
+&lt;ul&gt;
+&lt;li&gt;Ruby thread semantics differ from Java&amp;#8217;s&lt;/li&gt;
+&lt;li&gt;No continuations&lt;/li&gt;
+&lt;li&gt;Twice as slow (half as fast?) as C or worse&lt;/li&gt;
+&lt;li&gt;YAML: no up-to-date, working pure Ruby or Java parsers&lt;/li&gt;
+&lt;li&gt;still missing a few 1.8 methods&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Permanent incompatibilities
+&lt;ul&gt;
+&lt;li&gt;System calls, C-language Ruby extensions, anything to do with C&lt;/li&gt;
+&lt;li&gt;Platform-specifics: file stats, permissions, process launching, signals&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Part Two: The Future&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Continuing to improve compatibility&lt;/li&gt;
+&lt;li&gt;Running mainstream Ruby apps&lt;/li&gt;
+&lt;li&gt;Improving Java integration&lt;/li&gt;
+&lt;li&gt;Speeding up&lt;/li&gt;
+&lt;li&gt;The New JRuby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;What needs to change?&lt;/h4&gt;
+
+&lt;p&gt;h4. What needs to change?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JRuby deficiencies ( as of 0.8.2)
+&lt;ul&gt;
+&lt;li&gt;Stack depth (~ fib(280))&lt;/li&gt;
+&lt;li&gt;Threading and thread semantics&lt;/li&gt;
+&lt;li&gt;Continuations support&lt;/li&gt;
+&lt;li&gt;Speed&lt;/li&gt;
+&lt;li&gt;Consistency, maintainability&lt;/li&gt;
+&lt;li&gt;Compilation&lt;/li&gt;
+&lt;li&gt;Better use of Java&amp;#8217;s strengths&lt;/li&gt;
+&lt;li&gt;Tigher integration between Java and Ruby&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ruby deficienies (as of 1.8):
+&lt;ul&gt;
+&lt;li&gt;Stack depth (~ fib(1325))&lt;/li&gt;
+&lt;li&gt;Native threading&lt;/li&gt;
+&lt;li&gt;Speed&lt;/li&gt;
+&lt;li&gt;Compilation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;The New JRuby&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stackless; Continuation Passing Style (roughly)&lt;/li&gt;
+&lt;li&gt;Iterative interpreter&lt;/li&gt;
+&lt;li&gt;min threading model&lt;/li&gt;
+&lt;li&gt;Compilation to Java bytecodes, offline and JIT&lt;/li&gt;
+&lt;li&gt;Pluggable architecture&lt;/li&gt;
+&lt;li&gt;Seamless, powerful Ruby/Java integration&lt;/li&gt;
+&lt;li&gt;Behave in controlled environments&lt;/li&gt;
+&lt;li&gt;FAST&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Milestones and progress&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stackless, iterative proof of concept (POC) (Sept 15, complete)&lt;/li&gt;
+&lt;li&gt;Redesign, refactoring of POC (Oct)&lt;/li&gt;
+&lt;li&gt;Reimpl of interpreter based on POC (Nov)&lt;/li&gt;
+&lt;li&gt;Reimpl of built-in classes (Nov-Jan)&lt;/li&gt;
+&lt;li&gt;Threading engine (Jan)&lt;/li&gt;
+&lt;li&gt;Tri-call optimizations (Jan)&lt;/li&gt;
+&lt;li&gt;Continuations (Jan)&lt;/li&gt;
+&lt;li&gt;Compilation (Feb - Apr)&lt;/li&gt;
+&lt;li&gt;Complete for JavaONe 2006&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Demo 2: Fibonacci&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recursive fib algorithm (contrived, I know)&lt;/li&gt;
+&lt;li&gt;Jruby 0.8.2: shallow&lt;/li&gt;
+&lt;li&gt;Ruby: deeper&lt;/li&gt;
+&lt;li&gt;JRuby &amp;#8220;stackless&amp;#8221; POC: deepest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(Demo of doing fib 30000 in JRuby! Pretty cool.)
+(Somewhat longer demo of 150000. Also cool.)&lt;/p&gt;
+
+&lt;h4&gt;What Else?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;YARV bytecode execution&lt;/li&gt;
+&lt;li&gt;MetaRuby&amp;#8217;s &amp;#8220;Ruby in Ruby&amp;#8221; useful to JRuby&lt;/li&gt;
+&lt;li&gt;drb proxy to RMI&lt;/li&gt;
+&lt;li&gt;ActiveRecord JDBC connector&lt;/li&gt;
+&lt;li&gt;WEBrick-mimicking servlets&lt;/li&gt;
+&lt;li&gt;Other ideas?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Part Three: What now?&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redesign is in full swing&lt;/li&gt;
+&lt;li&gt;Heavy refactoring of JRuby core&lt;/li&gt;
+&lt;li&gt;A better Ruby than ruby?&lt;/li&gt;
+&lt;li&gt;Help Wanted!
+&lt;ul&gt;
+&lt;li&gt;zlib implementation using Ruby-Java integration&lt;/li&gt;
+&lt;li&gt;FIle locking using Java&amp;#8217;s NIO (New I/O)&lt;/li&gt;
+&lt;li&gt;Feature-complete YAML support&lt;/li&gt;
+&lt;li&gt;Running mainstream Ruby apps, isolating and reporting errors&lt;/li&gt;
+&lt;li&gt;Help with new design and with refactoring effort&lt;/li&gt;
+&lt;li&gt;Tangibles&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Q&amp;amp;A&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;JRuby&amp;#8221;:http://jruby.sourceforge.net
+&lt;ul&gt;
+&lt;li&gt;SF project page&amp;#8221;:http://sourceforge.net/projects/jruby&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JRuby mailing lists on SF&lt;/li&gt;
+&lt;li&gt;Charles Oliver Nutter: headius@headius.com&lt;/li&gt;
+&lt;li&gt;Thanks to:
+&lt;ul&gt;
+&lt;li&gt;Thomas ENebo: JRuby project manager&lt;/li&gt;
+&lt;li&gt;Kelly Nawrocke: Jruby developer&lt;/li&gt;
+&lt;li&gt;David Corbin: JRuby developer, RDT developert&lt;/li&gt;
+&lt;li&gt;Special thanks to Jan Ame Petersen, original JRubyist&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;REAL Q/A&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;???: About YAML - parser written in C, have C to Java translators been tried?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Charles: Might not produce code that would wire in nicely; focusing in pure Ruby implementation.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;David Black: What about things that it would be nice if they were different than they currently exist in C Ruby - for instance, similar behavior often goes through different code paths? Can you change those things? Will it make it less Ruby?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Charles: Mainly taken perspective that we are following what Ruby does and following what Matz and company do. Having this other platform will point out inconsistencies; some things are unfollowable. Having two places where behavior is implemented shows inconsistencies.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;???: Is JRuby going to be reentrant? Will you be able to run multiple JRuby instances in the same process?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Charles: Yes, unable to control where calls are coming from, so needs to be re-entrant. Either that or able to run multiple lightweight interpreters in the same VM and then manage state. Not thread safe at this point but hopefully that will change.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Duane Johnson: In the demo, the each iterator isn&amp;#8217;t acting very Ruby-like.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Charles: The demo is kind of put together to show everything. What would probably be better would be a Ruby-Java layer that does &amp;#8220;rubyfication.&amp;#8221; Code as demo&amp;#8217;d was more javaish but still simpler than real Java. &lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 21:24:36 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:efd7a6f87db69619ba3e94dfe6c78841</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/14/jruby-a-ruby-vm-in-java</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/15</trackback:ping>
+    </item>
+  </channel>
+</rss>

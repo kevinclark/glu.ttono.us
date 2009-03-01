@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/05/17/a-guide-a-week-lets-go-interactive">A Guide a Week: Lets go interactive</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 17 May 2006 21:06:00 GMT">Wed, 17 May 2006 21:06:00 GMT</span></p>
+<p>I&#8217;ve decided I&#8217;d like to pay more attention to my blog. I&#8217;ve really enjoyed writing guides to different facets of Rails and want to continue to do so. I also want to keep the (mostly) silent masses entertained and learning, so lets make this a bit more interactive.</p>
+
+<p>Here, the deal: you write in on what you&#8217;d like to learn for the week. Rails, testing, the core codebase, it&#8217;s all in the air. I&#8217;ll pick the subject that seems best and release (hopefully) an article on Monday. For ideas to be up for consideration they will need to be in by the previous monday.</p>
+
+<p>Submissions should go to kevin dot clark at gmail dot com, and do me a favor and start the subject line with [idea] so I can filter them nicely.</p>
+
+<p>This starts now, so get your submissions in by Monday (5/22) for the first entry on the 29th.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/17/test-your-layouts-in-edge-rails">Test your layouts in Edge Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 17 May 2006 19:06:00 GMT">Wed, 17 May 2006 19:06:00 GMT</span></p>
+<p><a href="http://rubyonrails.org">Ruby on Rails</a> sets what layout was rendered in the response object as of <a href="http://dev.rubyonrails.org/changeset/4346">changeset 4346</a>.</p>
+
+<p>Now you can use this if you render different layouts based on conditions in your action:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">def assert_layout_is(layout)
+  assert_equal layout, File.basename(@response.layout, '.*')
+end</code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/17/the-cure-for-your-inflection-woes">The cure for your inflection woes</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 17 May 2006 17:42:00 GMT">Wed, 17 May 2006 17:42:00 GMT</span></p>
+<p>Lately (and historically) there have been regular tickets on the <a href="http://dev.rubyonrails.org">Rails Trac</a> complaining about faulty pluralization (moose -> moose, not moose -> mooses) and the like.</p>
+
+<p>My friend <a href="http://blog.hasmanythrough.com/">Josh Susser</a> has a <a href="http://blog.hasmanythrough.com/articles/2006/05/17/pluralizations">quick guide</a> on how to cure your ills. Please take a look before filing a bug.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/16/io-builds-on-intel-macs">Io builds on Intel Macs</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 16 May 2006 17:26:00 GMT">Tue, 16 May 2006 17:26:00 GMT</span></p>
+<p><a href="http://iolanguage.com/about/">Io</a>, the sexy little prototyped language I&#8217;ve been gushing over since my language demo with the author, <a href="http://www.dekorte.com/blog/blog.cgi">Steve Dekorte</a>, now builds on Intel Macs. A library and some of the bindings are still broken, but the vm runs like a champ. I&#8217;m excited to be able to play with it on my desktop now.</p>
+
+<p>At RubyConf, <a href="http://iolanguage.com/about/">Io</a> is a language Matz said he was interested in and several in the Ruby community have become involved in its development.</p>
+
+<p>You should really <a href="http://iolanguage.com/downloads/">check it out</a>.</p>
+
+  
+  <p class="meta"></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/10/hire-me">Hire Me!</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 10 May 2006 19:00:00 GMT">Wed, 10 May 2006 19:00:00 GMT</span></p>
+<p>If you&#8217;re sitting behind a feed reader, you may not have noticed my stealthy new addition to the sidebar (or my haphazard attempt at injecting trendy new colors into the css). There is now a &#8220;Hire Me&#8221; section.</p>
+
+<p>I&#8217;ve left <a href="http://mingle.com">Mingle</a> to freelance and am available for contract work, consulting, and training. If you&#8217;re interested, drop me an email at kevin dot clark at gmail dot com.</p>
+
+  
+  <p class="meta"></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/10/documenting-rails">Documenting Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 10 May 2006 18:52:00 GMT">Wed, 10 May 2006 18:52:00 GMT</span></p>
+<p>As many of you know, the documentation for Rails is lacking in several places. Several of us have taken it upon ourselves to clean things up where we can and we&#8217;re trying to make a push for the community to help out.</p>
+
+<h3>Why write documentation?</h3>
+
+<p>There are several reasons why you might like to help with the documentation process even if you&#8217;re not a writer.</p>
+
+<h4>Writing about Rails makes you learn</h4>
+
+<p>Just as they say teaching makes you better at your subject, writing about Rails will force you to learn about what you&#8217;re documenting. Cleaning up documentation for the core codebase means that next time you&#8217;d like to tweak options for associations, or write that web API you&#8217;ve always wanted, or fix that bug that&#8217;s been driving you insane for the last week <strong>you can</strong>.</p>
+
+<h4>It means when you need to look something up, it&#8217;s there</h4>
+
+<p>Writing documentation is good for you! When you forget the options for <code>url_for</code> you&#8217;d like there to be something to refresh your memory (this happens to me too). If everyone chips in a little, we all get a lot out of it. Additionally, when that new Rails developer on your team just doesn&#8217;t remember how ActionMailer works it&#8217;ll be easy to point them to the documentation when you know it exists and is readable.</p>
+
+<h4>It helps the community and just feels good</h4>
+
+<p>If you&#8217;re reading my blog, it probably means you&#8217;ve got some stake in Rails. For me, it&#8217;s my day job. Rails is the reason I really enjoy my work. Writing about it and making it easier for others to have the same experience is really fulfilling for me. It&#8217;s about giving back to the group that helped me when I was starting with Rails.</p>
+
+<h3>Ok, I&#8217;m convinced. How can I help?</h3>
+
+<p>We&#8217;d really love for everyone to help with the documentation, but we need to adhere to some style guidelines first to make sure that the new docs are up to par and won&#8217;t need to be rewritten.</p>
+
+<h4>Write to teach</h4>
+
+<p>Rails documentation is not an academic paper. The point is to describe what a developer needs to know in order to use the section of the API that you&#8217;re writing for. For example, in my rewrite of the ActionMailer documentation (<a href="http://dev.rubyonrails.org/browser/trunk/actionmailer/lib/action_mailer/base.rb?rev=4332">here</a>) I made sure to cover the basic usages of ActionMailer as headings so someone can easily find what they&#8217;re looking for.</p>
+
+<h4>An example is worth 1000 non-example characters</h4>
+
+<p>Examples are key. Do say what the class is used for, but make it easy on people who don&#8217;t want to know about every facet of the <code>render</code> method. Give them an example <em>how</em> to use the method as well and you&#8217;ll have happy coders.</p>
+
+<h4>Don&#8217;t repeat yourself!</h4>
+
+<p>If we&#8217;re working with the <code>ActsAsList</code> module and it has a method that looks like <code>insert_at(position = 1)</code>, you probably don&#8217;t need to say that the method inserts an item in the list at a position, defaulting to 1.</p>
+
+<h3>Writing docs with RDoc</h3>
+
+<p>Rails documentation is generated by RDoc so you&#8217;ll want to become familiar with it. The Pragmatic Programmers have an excellent explanation of how to use RDoc in Programming Ruby 2nd Edition and the <a href="http://rdoc.sourceforge.net/doc/index.html">RDoc Documentation</a> has a section dedicated to an example and markup. The Rails documentation can also be used as a reference on how to write RDoc. Please familiarize yourself with the basics and follow the conventions you see in the Rails source.</p>
+
+<p>The two things I use most often in documentation:</p>
+
+<ul>
+<li><code>&lt;tt&gt;something&lt;tt&gt;</code> or <code>+something+</code> are used to make text typewriter style and should be used for method names</li>
+<li>An indented block will display as code. For example:
+<div class="typocode"><pre><code class="typocode_default "># Examples:
+#
+#  class MyMailer &lt; ActionMailer::Base
+#     # Set up properties
+#     # Properties can also be specified via accessor methods
+#     # (i.e. self.subject = &quot;foo&quot;) and instance variables (@subject = &quot;foo&quot;).
+#     def signup_notification(recipient)
+#       recipients recipient.email<em>address</em>with_name
+#       subject    &quot;New account information&quot;
+#       body       &quot;account&quot; =&gt; recipient
+#       from       &quot;system@example.com&quot;
+#     end
+#  end</code></pre></div></li>
+</ul>
+
+<h4>Generating the RDoc to check your changes</h4>
+
+<p>Generating the RDoc for the project you&#8217;re working in (ActiveRecord,ActionPack,ActionMailer etc) can be done with the command <code>rake rdoc</code> in the project directory. I have added an option to the ActionPack Rakefile so that you can generate RDoc for select files using <code>rake rdoc DOC_FILES=FILE1,FILE2</code> this should probably be added to ActiveRecord, but ActionMailer has so few files as it is that it probably doesn&#8217;t need it.</p>
+
+<p><strong>Please remember to look at the files RDoc will generate before turning in a patch!</strong></p>
+
+<h3>And finally, the quick version of the submission process&#8230;</h3>
+
+<ol>
+<li>Grab the source by following the directions at <a href="http://dev.rubyonrails.org">dev.rubyonrails.org</a>.</li>
+<li>Choose what documentation you want to write or improve.</li>
+<li>Make sure someone else isn&#8217;t already working on it by checking at the <a href="http://dev.rubyonrails.org/report/20">documentation report</a>.</li>
+<li>Create a ticket at the <a href="http://dev.rubyonrails.org">Rails Trac page</a> describing the section that needs cleanup and why. <strong>Make sure to add the &#8216;docs&#8217; keyword to the ticket.</strong></li>
+<li>Make your change and generate the RDoc to proofread</li>
+<li>Create a diff with <code>svn diff &gt; my_diff_file.diff</code></li>
+<li>Attach your diff file to the ticket you created in step 3, and change the ticket title so that [PATCH] is at the front.</li>
+<li>Watch your ticket (if you gave your email, you&#8217;ll be notified upon changes) and make changes if they&#8217;re needed. If things go well then you&#8217;ll have your documentation in the core!</li>
+</ol>
+
+<h3>Go, do it!</h3>
+
+<p>That&#8217;s all I&#8217;ve got. Lets make sure the Rails documentation is getting progressively better. It&#8217;s just The Right Thing.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/10/documenting-rails#comments">11 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/09/feed-changes">Feed Changes</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 09 May 2006 19:07:00 GMT">Tue, 09 May 2006 19:07:00 GMT</span></p>
+<p>I&#8217;ve finally moved to <a href="http://www.feedburner.com">FeedBurner</a> and as such you might see some problems with the feed temporarily. If this is the case, track me down in irc (nick kevinclark on freenode) or email me at kevin dot clark at_symbol gmail dot com.</p>
+
+  
+  <p class="meta"></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/09/rubyisms-in-rails">Rubyisms in Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 09 May 2006 16:27:00 GMT">Tue, 09 May 2006 16:27:00 GMT</span></p>
+<p>My friend <a href="http://www.nimblecode.com/">Jacob Harris</a> has released slides from his presentation called <a href="http://www.nimblecode.com/articles/2006/04/25/rubyisms-in-rails">Rubyisms in Rails</a> which does a great job of showing off the power that Ruby places behind Rails.</p>
+
+<p>If you&#8217;ve ever been curious how something like <code>30.minutes.ago</code> can can actually work, go <a href="http://www.nimblecode.com/articles/2006/04/25/rubyisms-in-rails">take a look</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/08/ajax-spy-make-life-easier">Ajax Spy makes life easier</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 08 May 2006 20:05:00 GMT">Mon, 08 May 2006 20:05:00 GMT</span></p>
+<p>Chris Van Pelt of sd.rb has released <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">Ajax Spy</a> a great debugging tool for RJS templates.</p>
+
+<p>It only requires adding two files to your project and a bit of <code>javascript_include_tag</code> lovin in your layout. Go <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">check it out</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/04/07/sd-rb-gets-off-the-ground">sd.rb gets off the ground</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 08 Apr 2006 02:05:00 GMT">Sat, 08 Apr 2006 02:05:00 GMT</span></p>
+<p>Yesterday the first real sd.rb meeting was held on campus at UCSD. Final count put us a 30 people, so we&#8217;re off to a great start.</p>
+
+<p>If you&#8217;re in the San Diego area, and you&#8217;d like to join in, we&#8217;re having talks on the first Thursday of each month and a hack session on the third Wednesday, so we&#8217;ll meet again on the 19th to code.</p>
+
+<p>Additionaly, Anthony Moralez is gathering Riverside.rb. I&#8217;ll have more information for you Riverside kids (where to make contact) soon.</p>
+
+<p><strong>Update</strong>: via Anthony</p>
+
+<blockquote>I don&#8217;t have a web site up, but the list is at
+https://www.cs.ucr.edu/mailman/listinfo/rug and my brief blog entry
+announcing it is at
+http://anthonysseblog.blogspot.com/2006/04/forming-riversiderb.html</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/04/07/sd-rb-gets-off-the-ground#comments">2 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/04/07/sd-rb-gets-off-the-ground#trackbacks">no trackbacks</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/8">8</a> <a href="/articles/page/9">9</a> 10 <a href="/articles/page/11">11</a> <a href="/articles/page/12">12</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

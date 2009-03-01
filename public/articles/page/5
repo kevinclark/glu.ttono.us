@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/09/07/jruby-team-picked-up-by-sun">JRuby Team Picked Up By Sun</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 07 Sep 2006 18:31:00 GMT">Thu, 07 Sep 2006 18:31:00 GMT</span></p>
+<p><a href="http://headius.blogspot.com/2006/09/jruby-steps-into-sun.html">Wow</a>. Just wow. Congrats guys.</p>
+
+<p><strong>Update</strong>: <a href="http://www.tbray.org/ongoing/">Tim Bray</a> gives us <a href="http://www.tbray.org/ongoing/When/200x/2006/09/07/JRuby-guys">Sun&#8217;s motiviations</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/07/sd-rb-meeting-tonight">SD.rb Meeting Tonight</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 07 Sep 2006 17:13:00 GMT">Thu, 07 Sep 2006 17:13:00 GMT</span></p>
+<p>If you&#8217;re in San Diego (or even Southern California) we&#8217;d love you to drop by the <a href="http://sdruby.com/sdruby/show/HomePage">sd.rb</a> meeting tonight. <a href="http://blog.integralimpressions.com/">Chris Abad</a> and I will be talking about RESTful stuff in Rails and Tom Preston-Werner will be debuting his new natural time parsing library, <a href="http://chronic.rubyforge.org/">Chronic</a>.</p>
+
+<p>We have our meetings at the UCSD CSE buildng (room 1202). If you want to drop me an email at kevin dot clark at gmail dot com I&#8217;ll give you my cell in case you get lost.</p>
+
+<p>I hear OC Ruby may be making a field trip. See their <a href="http://tech.groups.yahoo.com/group/ocruby/message/523">list</a> if you want to get in on that. </p>
+
+<p>Addtionally, several OC Rubyists and SD Rubyists are planning to meet up at Rock Bottom just off campus around 6:15 for dinner. Come hang out.</p>
+
+<p>If you can&#8217;t make it the <a href="http://podcast.sdruby.com/">sd.rb podcast</a> is always an option and I&#8217;m told you should be getting several updates from the last meeting in the next couple days. Keep a look out.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/06/documentation-project-proposals">Documentation Project: Proposals</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 06 Sep 2006 18:47:59 GMT">Wed, 06 Sep 2006 18:47:59 GMT</span></p>
+<p>In case you missed it, I&#8217;ve got information about proposals for the Caboose Documentation Project on the <a href="http://blog.caboo.se/">Caboose Blog</a>.</p>
+
+<p>If you&#8217;re interested in helping out, please go <a href="http://blog.caboo.se/articles/2006/09/06/documentation-project-proposals">take a look</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/documentation" rel="tag">documentation</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough">A Ruby IDE: Why TextMate Is Close Enough</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 06 Sep 2006 10:04:00 GMT">Wed, 06 Sep 2006 10:04:00 GMT</span></p>
+<p>Recently <a href="http://www.tbray.org/ongoing/">Tim Bray</a> posted a <a href="http://www.tbray.org/ongoing/When/200x/2006/09/05/What-Ruby-Needs">list of things he has found that Ruby needs</a>. One of these things is an IDE and he provides a list of useful things one would do for us. I&#8217;m not sure if Tim has tried TextMate, but if you&#8217;re aware of the right features it turns out to <em>almost</em> be exactly what he&#8217;s looking for. The remaining features might be implemented by the right group out in the Lazy Web (do these things and we&#8217;ll all be grateful). Anyway, here&#8217;s interesting things you may have missed about TextMate in the context of Tim&#8217;s wish for an IDE.</p>
+
+  <a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comments">14 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/04/running-tests-on-deploy-with-capistrano">Running Tests on Deploy with Capistrano</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 04 Sep 2006 22:16:00 GMT">Mon, 04 Sep 2006 22:16:00 GMT</span></p>
+<p><a href="http://anarchogeek.com/">Rabble</a> just released an article on his <a href="http://blog.testingrails.com">Testing Rails Blog</a> on how to <a href="http://blog.testingrails.com/2006/9/4/running-tests-on-deploy-with-capistrano">run tests on deploy with Capistrano</a>. It covers basic <a href="http://glu.ttono.us/articles/2006/06/23/capistrano-mike-clark">Capistrano</a> tasks that will work with a single deployment server and then goes into some more advanced tasks for multiple server deployment and concurrent deploys. Go check it out.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/03/assert_select-included-in-core-assert_tag-deprecated">assert_select included in core, assert_tag deprecated</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 03 Sep 2006 21:23:00 GMT">Sun, 03 Sep 2006 21:23:00 GMT</span></p>
+<p>In case you <a href="http://dev.rubyonrails.org/changeset/4929">missed the changeset</a>, <a href="http://blog.labnotes.org">Assaf Arkin</a>&#8217;s <a href="http://blog.labnotes.org/2006/07/03/assert_select-plugin-for-rails/">assert_select</a> has been included in EdgeRails. This officially marks the deprecation of <code>assert_tag</code>.</p>
+
+<p>I think this is a good thing. I always found the syntax of <code>assert_tag</code> ugly. <code>assert_select</code> looks to be a fine replacement.</p>
+
+<p>If you aren&#8217;t running edge, it is <a href="http://blog.labnotes.org/2006/07/03/assert_select-plugin-for-rails/">available as a plugin</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/02/mocking-models">Mocking Models</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 02 Sep 2006 23:30:00 GMT">Sat, 02 Sep 2006 23:30:00 GMT</span></p>
+<p>Today I decided to see how much of the test code in my current side project I could rip fixtures out of. At the same time I could see what kind of speed increase I got from staying away from the database. Model tests seem to be the most straight forward so I started there.</p>
+
+  <a href="/articles/2006/09/02/mocking-models">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/02/mocking-models#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/01/the-flexibility-of-mocha">The Flexibility of Mocha</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 01 Sep 2006 18:18:00 GMT">Fri, 01 Sep 2006 18:18:00 GMT</span></p>
+<p><a href="http://blog.floehopper.org/articles/2006/09/01/injecting-mocks-the-mocha-way">This</a> post just blew me away. Turns out instead of using the <code>delegate_method_to_mock!</code> method I <a href="http://glu.ttono.us/articles/2006/08/30/injecting-mocks-one-way-or-another">posted</a> the other day, I could use <a href="http://mocha.rubyforge.org/">Mocha</a> and just save myself the time. Check this out:</p>
+
+<p>Using Flexmock (and my custom method):</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">  <span class="keyword">def </span><span class="method">test_process_exit</span>
+    <span class="ident">delegate_methods_to_mock!</span><span class="punct">(</span><span class="constant">RailsFCGIHandler</span><span class="punct">,</span> <span class="symbol">:close_connection</span><span class="punct">)</span> <span class="keyword">do</span>
+      <span class="ident">fcgi</span> <span class="punct">=</span> <span class="ident">flexmock</span><span class="punct">()</span>
+      <span class="ident">fcgi</span><span class="punct">.</span><span class="ident">should_receive</span><span class="punct">(</span><span class="symbol">:close_connection</span><span class="punct">)</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">mock</span> <span class="punct">=</span> <span class="ident">fcgi</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:when_ready</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="symbol">:exit</span><span class="punct">)</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">process!</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span></code></pre></div>
+
+<p>It works but it&#8217;s none too pretty. Flexmock people, if there&#8217;s a better way speak up.</p>
+
+<p>Here&#8217;s the equivalent using Mocha:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">  <span class="keyword">def </span><span class="method">test_process_exit</span>
+    <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">expects</span><span class="punct">(</span><span class="symbol">:close_connection</span><span class="punct">)</span>
+    <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:when_ready</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="symbol">:exit</span><span class="punct">)</span>
+    <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">process!</span>
+  <span class="keyword">end</span></code></pre></div>
+
+<p>I can place expectations directly on my object (even though I didn&#8217;t create it as a mock) and it takes care of it for me. That is *so* much clearer and I&#8217;ve saved 3 lines that didn&#8217;t tell me anything new about my test. I think I&#8217;m in love.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/testing" rel="tag">testing</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/01/the-flexibility-of-mocha#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/30/on-the-days-events">On The Day's Events</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 31 Aug 2006 01:25:00 GMT">Thu, 31 Aug 2006 01:25:00 GMT</span></p>
+<p>So, I seem to have inadvertently caused a significant amount of controversy with this morning&#8217;s article on <a href="http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails">what I don&#8217;t think you should be doing in Rails</a>. Some rather harsh words have been exchanged. It&#8217;s time for us all to take a breath, count to ten, and remember we&#8217;re all just coders working together to make Rails (and Ruby) better.</p>
+
+<p>Matz is nice, so we should be nice.</p>
+
+<p>With that as a preface I&#8217;d like to explain some of the things I said which caused a stir. Hopefully this will clarify and you can stop thinking of me as some pre-pubescent FUDdy jerk if indeed that&#8217;s where you stand.</p>
+
+<p>I thought I was giving you a list of things that you should avoid in modern versions of Rails. I didn&#8217;t get anything back differently from my reviewers. You should know that for bigger articles like this I always have a group of people take a look see first and give me feedback. These are people that I respect and may be better at writing and programming than I am (and often are). I wait to get OKs from that group <em>before</em> I post.</p>
+
+<p>I think this group of lines may have been my downfall.</p>
+
+<blockquote>
+    <p>See? A halt! Sufficiently frightened? You should be. 
+    Now, stop using these things. It’s for your own good.</p>
+</blockquote>
+
+<p>I rather regret this. In my head it was tongue-in-cheek. My reviewers didn&#8217;t even mention it though I imagine they knew I was joking since they know me personally. Others apparently didn&#8217;t. <strong>What I meant to say was that I hope the list would coerce you into improving your code.</strong> That message got lost somewhere along the line and I feel like we&#8217;ve played a rather large game of telephone. I&#8217;m sorry for that.</p>
+
+<p>Pagination seems to be the issue we pulled apart today so let&#8217;s talk about that for a few minutes. I said some things about pagination that, after returning to them, seem a bit cryptic. Sorry about that. Let me clarify: the built in <strong>pagination helpers</strong> are a hackish pain. They&#8217;re hard to work with and have some efficiency issues. As a result, working with very large data sets can cause it problems. Don&#8217;t be afraid, just be aware. With large data sets you&#8217;ll want to roll your own. The Paginator object itself isn&#8217;t so bad (though we really should clean it up) and I prefer to use custom pagination with it over the helpers.</p>
+
+<p>That being said, we&#8217;ve talked about pulling out the Rails pagination helpers into a plugin for a while. I imagine they were brought up when I passed the article around was for that reason. It isn&#8217;t deprecated yet, but it probably will be.</p>
+
+<p>Now, if you have other concerns please bring them up here.</p>
+
+<p><strong>Update:</strong> A friend has noted that one of the problems may be that some look at me as a voice of the core. Let me be clear: I&#8217;m not in core. I don&#8217;t speak for core. I speak for myself based on my knowledge and opinions. When I say, &#8220;we&#8217;ve talked about it&#8221; I mean &#8220;I&#8217;ve talked with developers working with the core in and outside the core team and the consensus seems to be that pagination will come out&#8221;. BUT, I&#8217;m still not David and not the core.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/on-the-days-events#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/30/injecting-mocks-one-way-or-another">Injecting Mocks (one way or another)</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 30 Aug 2006 21:15:00 GMT">Wed, 30 Aug 2006 21:15:00 GMT</span></p>
+<p>I&#8217;ve been playing a lot with mocks lately (and I&#8217;m a bit post happy today) so I thought I&#8217;d show off a bit of code that was useful in a <a href="http://dev.rubyonrails.org/ticket/5970">patch</a> in RailTies.</p>
+
+<p>Sometimes methods are hard to mock. They aren&#8217;t calling actions on some object you can replace with a mock or the API was designed so it&#8217;s hard to inject the mock in the first place.</p>
+
+<p>This bit of code lets you intercept a method call and redirect it to a mock object of your choosing:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">  
+  <span class="comment"># The multiple method form</span>
+  <span class="keyword">def </span><span class="method">delegate_methods_to_mock!</span><span class="punct">(</span><span class="ident">klass</span><span class="punct">,</span> <span class="punct">*</span><span class="ident">methods</span><span class="punct">)</span>
+    <span class="ident">methods</span><span class="punct">.</span><span class="ident">each</span> <span class="punct">{|</span><span class="ident">m</span><span class="punct">|</span> <span class="ident">redefine_method_using_mock!</span> <span class="ident">klass</span><span class="punct">,</span> <span class="ident">m</span> <span class="punct">}</span>
+    <span class="keyword">yield</span>
+    <span class="ident">methods</span><span class="punct">.</span><span class="ident">each</span> <span class="punct">{|</span><span class="ident">m</span><span class="punct">|</span> <span class="ident">reset_method_using_mock!</span> <span class="ident">klass</span><span class="punct">,</span> <span class="ident">m</span> <span class="punct">}</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">delegate_method_to_mock!</span><span class="punct">(</span><span class="ident">klass</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">)</span>
+    <span class="ident">redefine_method_using_mock!</span> <span class="ident">klass</span><span class="punct">,</span> <span class="ident">method</span>
+    <span class="keyword">yield</span>
+    <span class="ident">reset_method_using_mock!</span> <span class="ident">klass</span><span class="punct">,</span> <span class="ident">method</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">redefine_method_using_mock!</span><span class="punct">(</span><span class="ident">klass</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">)</span>
+    <span class="ident">klass</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="symbol">:attr_writer</span><span class="punct">,</span> <span class="symbol">:mock</span><span class="punct">)</span> <span class="keyword">unless</span> <span class="ident">klass</span><span class="punct">.</span><span class="ident">respond_to?</span> <span class="symbol">:mock=</span>
+
+    <span class="ident">klass</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="symbol">:alias_method</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">nonmocked_<span class="expr">#{method.to_s}</span></span><span class="punct">&quot;,</span> <span class="ident">method</span><span class="punct">.</span><span class="ident">to_s</span><span class="punct">)</span> <span class="keyword">unless</span> <span class="ident">klass</span><span class="punct">.</span><span class="ident">respond_to?</span> <span class="punct">&quot;</span><span class="string">nonmocked_<span class="expr">#{method.to_s}</span></span><span class="punct">&quot;</span>
+
+    <span class="ident">klass</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="symbol">:define_method</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">,</span> 
+      <span class="constant">Proc</span><span class="punct">.</span><span class="ident">new</span> <span class="punct">{|*</span><span class="ident">args</span><span class="punct">|</span>
+        <span class="attribute">@mock</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="ident">method</span><span class="punct">,</span> <span class="punct">*</span><span class="ident">args</span><span class="punct">)</span>
+      <span class="punct">}</span>
+    <span class="punct">)</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">reset_method_using_mock!</span><span class="punct">(</span><span class="ident">klass</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">)</span>
+    <span class="ident">klass</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="symbol">:remove_method</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">)</span>
+    <span class="ident">klass</span><span class="punct">.</span><span class="ident">send</span><span class="punct">(</span><span class="symbol">:alias_method</span><span class="punct">,</span> <span class="ident">method</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">nonmocked_<span class="expr">#{method.to_s}</span></span><span class="punct">&quot;)</span>
+  <span class="keyword">end</span></code></pre></div>
+
+<p>So then we use it like:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby ">  <span class="keyword">def </span><span class="method">test_process_exit</span>
+    <span class="ident">delegate_methods_to_mock!</span><span class="punct">(</span><span class="constant">RailsFCGIHandler</span><span class="punct">,</span> <span class="symbol">:close_connection</span><span class="punct">)</span> <span class="keyword">do</span>
+      <span class="ident">fcgi</span> <span class="punct">=</span> <span class="ident">flexmock</span><span class="punct">()</span>
+      <span class="ident">fcgi</span><span class="punct">.</span><span class="ident">should_receive</span><span class="punct">(</span><span class="symbol">:close_connection</span><span class="punct">)</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">mock</span> <span class="punct">=</span> <span class="ident">fcgi</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">stubs</span><span class="punct">(</span><span class="symbol">:when_ready</span><span class="punct">).</span><span class="ident">returns</span><span class="punct">(</span><span class="symbol">:exit</span><span class="punct">)</span>
+      <span class="attribute">@handler</span><span class="punct">.</span><span class="ident">process!</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span></code></pre></div>
+
+<p>What happens is that an accessor is placed on the object in question and the method you want the mock to intercept is redirected to call on the mock instead&#8230; so it goes like this:</p>
+
+<p>I call someobject.blah(1,2,3) which would normally call someobject.a(1,2,3) (may be a protected method) but instead we redefine a to call @mock.a(1,2,3) so we can register the call.</p>
+
+<p>I&#8217;m not entirely sure if this is the best way to handle it but it seems to be working for my needs at the moment.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/injecting-mocks-one-way-or-another#comments">3 comments</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/3">3</a> <a href="/articles/page/4">4</a> 5 <a href="/articles/page/6">6</a> <a href="/articles/page/7">7</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

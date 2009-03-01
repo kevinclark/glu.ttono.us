@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: open-uri, Easy-to-Use and Extensible Virtual File System</title>
+    <link>http://glu.ttono.us/articles/2005/10/14/open-uri-easy-to-use-and-extensible-virtual-file-system</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>open-uri, Easy-to-Use and Extensible Virtual File System</title>
+      <description>&lt;p&gt;Presented by Tanaka Akira
+akr at m17n dot org&lt;/p&gt;
+
+&lt;p&gt;This one was really really fast.. here&amp;#8217;s what I got&amp;#8230; &amp;#8211; Kev&lt;/p&gt;
+
+&lt;p&gt;Table of Contents&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Who am I?&lt;/li&gt;
+&lt;li&gt;How to user open-uri&lt;/li&gt;
+&lt;li&gt;Why open-uri?&lt;/li&gt;
+&lt;li&gt;open-uri and net/http&lt;/li&gt;
+&lt;li&gt;How to design easy-to-use api&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Who am I&lt;/h3&gt;
+
+&lt;h4&gt;Who am I (1)&lt;/h4&gt;
+
+&lt;p&gt;The author of open-uri and several standard libraries:&lt;/p&gt;
+
+&lt;p&gt;open-uri.rb, pathname.rb, time.rb, pp.rb, prettyprint.rb, resolv.rv, resolv-replace.rb, tsort.rb&lt;/p&gt;
+
+&lt;h4&gt;Who am I (2)&lt;/h4&gt;
+
+&lt;p&gt;Contribution for various classes and methods&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IO without stdio&lt;/li&gt;
+&lt;li&gt;IO#read and readpartial&lt;/li&gt;
+&lt;li&gt;Time Time.utc, Time@utc_offset&lt;/li&gt;
+&lt;li&gt;allocate marsha1&lt;em&gt;dump marsha1&lt;/em&gt;load&lt;/li&gt;
+&lt;li&gt;Regexp#top_s Regexp.union&lt;/li&gt;
+&lt;li&gt;Process.daemon&lt;/li&gt;
+&lt;li&gt;fork kills all other threads&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Who am I (3)&lt;/h4&gt;
+
+&lt;p&gt;I report many bugs, over 100/year&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;core dump&lt;/li&gt;
+&lt;li&gt;test failure&lt;/li&gt;
+&lt;li&gt;build problem&lt;/li&gt;
+&lt;li&gt;mismatch between doc. and imp.&lt;/li&gt;
+&lt;li&gt;etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Who am I (4)&lt;/h4&gt;
+
+&lt;p&gt;I wrote several non-standard libraries.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;htree&lt;/li&gt;
+&lt;li&gt;webapp&lt;/li&gt;
+&lt;li&gt;amarshal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;How to Use open-uri&lt;/h3&gt;
+
+&lt;h4&gt;Simple Usage&lt;/h4&gt;
+
+&lt;p&gt;require &lt;code&gt;open-uri&lt;/code&gt;
+open(&amp;#8220;http://www.ruby-lang.org&amp;#8221;) {
+ |f|
+ print f.read
+}&lt;/p&gt;
+
+&lt;h4&gt;Similar to open files&lt;/h4&gt;
+
+&lt;h3&gt;Why Open-uri&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Easy to use api&lt;/li&gt;
+&lt;li&gt;VFS: not only http&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;open-uri and net/http&lt;/h4&gt;
+
+&lt;p&gt;net/http has too many ways&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Net::HTTP.get_print&lt;/li&gt;
+&lt;li&gt;Net::HTTP.ge&lt;/li&gt;
+&lt;li&gt;Net::HTTP.start {|h| h.get} etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;confuses users&lt;/p&gt;
+
+&lt;h4&gt;open-uri has Fewer ways&lt;/h4&gt;
+
+&lt;p&gt;open(uri) {|f| }
+uri.open {|f| }
+uri.read&lt;/p&gt;
+
+&lt;p&gt;Save user&amp;#8217;s memory
+reuse users knowledge&lt;/p&gt;
+
+&lt;h4&gt;net/http: get and print&lt;/h4&gt;
+
+&lt;p&gt;Net::HTTP.get_print( URI(&amp;#8220;http://host&amp;#8221;))
+print Net::HTTP.get(URI(&amp;#8220;http://host&amp;#8221;))&lt;/p&gt;
+
+&lt;h4&gt;open-uri: get and print&lt;/h4&gt;
+
+&lt;p&gt;open(&amp;#8220;http://host&amp;#8221;) {|f|
+  print f.read
+}&lt;/p&gt;
+
+&lt;p&gt;print URI(&amp;#8220;http://host&amp;#8221;)&amp;#8230;&lt;/p&gt;
+
+&lt;h4&gt;get and print&lt;/h4&gt;
+
+&lt;p&gt;net/http&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Net::HTTP.get_print print only&lt;/li&gt;
+&lt;li&gt;Net::HTTP.get: good&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;open uri
+&amp;#8230;&lt;/p&gt;
+
+&lt;h4&gt;Why Easy?&lt;/h4&gt;
+
+&lt;p&gt;open(&amp;#8220;http://host)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No new construct &lt;/li&gt;
+&lt;li&gt;Users don&amp;#8217;t need to learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;open-uri respects user knowledge&lt;/p&gt;
+
+&lt;h4&gt;net/http: headers&lt;/h4&gt;
+
+&lt;p&gt;Net::HTTP.start(&amp;#8220;host&amp;#8221;) {|h|
+r = h.get
+&amp;#8230;.
+}&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;No URI anymore&lt;/li&gt;
+&lt;li&gt;No Net::HTTP.get anymore&lt;/li&gt;
+&lt;li&gt;Net::HTTP.start, net.. and body used instead&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;open-uri headers&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still URI&lt;/li&gt;
+&lt;li&gt;still open method&lt;/li&gt;
+&lt;li&gt;Easy to use&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;net/http: SSL&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Different library: net/https&lt;/li&gt;
+&lt;li&gt;Net:HTTP.new nad Net:HTTP.start&lt;/li&gt;
+&lt;li&gt;Different port&lt;/li&gt;
+&lt;li&gt;Server verification&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;open-uri: SSL&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still URI&lt;/li&gt;
+&lt;li&gt;Still open method&lt;/li&gt;
+&lt;li&gt;Server verification by default&lt;/li&gt;
+&lt;li&gt;No new library&lt;/li&gt;
+&lt;li&gt;No new methods, few things to learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;net/http: proxy&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;New method: Net::HTTP::Proxy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;open-uri: proxy&lt;/h4&gt;
+
+&lt;p&gt;% http_proxy = http://blah
+% export http_proxy&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Conventional environemtn variable supported&lt;/li&gt;
+&lt;li&gt;No new methods. An user might know this already&lt;/li&gt;
+&lt;li&gt;Fewer things to learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;net/http: basic auth&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;New class: Net::HTTP::Get&lt;/li&gt;
+&lt;li&gt;New method: Net::HTTP#request&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;open-uri: basic auth&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still URI&lt;/li&gt;
+&lt;li&gt;Still open method&lt;/li&gt;
+&lt;li&gt;New option: :http&lt;em&gt;basic&lt;/em&gt;authentication&lt;/li&gt;
+&lt;li&gt;No new methods, few things to learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;How to design Easy-to-Use API&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Save brain power&lt;/li&gt;
+&lt;li&gt;Evolve gradually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Fewer Things to Learn&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fewer constructs for pragmatic usages&lt;/li&gt;
+&lt;li&gt;Huffman coding&lt;/li&gt;
+&lt;li&gt;DRY&lt;/li&gt;
+&lt;li&gt;No configuration is good ocnfiguration&lt;/li&gt;
+&lt;li&gt;Reuse user knowledge&lt;/li&gt;
+&lt;li&gt;Infrastructure friendly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Fewer Constructs for Pragmatic Usages&lt;/h4&gt;
+
+&lt;p&gt;*Open vs Net::HTTP.get, Net::HTTP#get etc&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This is not minimalism&lt;/li&gt;
+&lt;li&gt;The target of &amp;#8220;fewer&amp;#8221; is not all constructs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pragmatic usages should be supported by small constructs.&lt;/p&gt;
+
+&lt;h4&gt;Fewer Constructs(2)&lt;/h4&gt;
+
+&lt;p&gt;Diagram.. link later hopefully
+Freqently use convenience methods, rarely use many primatives&lt;/p&gt;
+
+&lt;h4&gt;Ex. nethttp and open-uri&lt;/h4&gt;
+
+&lt;p&gt;Methods frequently used:
+net/http: Net::HTTP.start, Net::HTTP#get
+open-uri open&lt;/p&gt;
+
+&lt;p&gt;open-uri&amp;#8217;s fewer constructs supports many more features&lt;/p&gt;
+
+&lt;p&gt;Huffman Coding&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Shorter for freqeuent things&lt;/li&gt;
+&lt;li&gt;Longer for rare things&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Optimize for frequent things.&lt;/h4&gt;
+
+&lt;p&gt;Ex: p&lt;/p&gt;
+
+&lt;p&gt;So longer methods for rarely used things, shorter methods for frequently used things&lt;/p&gt;
+
+&lt;h4&gt;Ex p&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;p obj&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Very frequently used&lt;/li&gt;
+&lt;li&gt;Bad name in common sense&lt;/li&gt;
+&lt;li&gt;Almost no problem because everyone knows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Ex. pp and y&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bad name in common sense&lt;/li&gt;
+&lt;li&gt;Problematic than &lt;code&gt;p&lt;/code&gt; because not everyone knows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Ex. to&lt;em&gt;s and to&lt;/em&gt;str&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;to_s shorter. frequently used.&lt;/li&gt;
+&lt;li&gt;to_str longer, used internally&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Ex. def&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;def shorter, frequently used&lt;/li&gt;
+&lt;li&gt;define_method longer. not encouraged&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Ex time.rb&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Time.parse frequently used&lt;/li&gt;
+&lt;li&gt;Time.strptime generic, needs to learn the format.&lt;/li&gt;
+&lt;li&gt;Time.parse is less flexible but enough for most cases, and easy to learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Candidates for Huffman Coding&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Method name&lt;/li&gt;
+&lt;li&gt;Other name&lt;/li&gt;
+&lt;li&gt;Convenience method&lt;/li&gt;
+&lt;li&gt;Language syntax&lt;/li&gt;
+&lt;li&gt;etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Length of Huffman Coding&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number of characters&lt;/li&gt;
+&lt;li&gt;Number of nodes in AST&lt;/li&gt;
+&lt;li&gt;Editor keystrokes&lt;/li&gt;
+&lt;li&gt;etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Encourage Good Style&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Programmers like short code&lt;/li&gt;
+&lt;li&gt;Short code should be designed as good style&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;DRY &amp;#8211; Don&amp;#8217;t repeat yourself&lt;/h3&gt;
+
+&lt;p&gt;Violations are common&lt;/p&gt;
+
+&lt;h4&gt;No Configuration is Good Configuration&lt;/h4&gt;
+
+&lt;p&gt;Things should work well out of box.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SSL CA certs&lt;/li&gt;
+&lt;li&gt;http_proxy environment variable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Bad Examples&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ext/iconv/config.charset&lt;/li&gt;
+&lt;li&gt;soap&lt;em&gt;use&lt;/em&gt;proxy&lt;/li&gt;
+&lt;li&gt;require &amp;#8220;irb/completion&amp;#8221;&lt;/li&gt;
+&lt;li&gt;RUBYOPT=rubygems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Reuse User Knowledge&lt;/h4&gt;
+
+&lt;p&gt;oepn-uri reuse user knowledge&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open is used to access an external resource&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Reusable Knowledge&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby builtin (popular) metho&lt;/li&gt;
+&lt;li&gt;consistency&lt;/li&gt;
+&lt;li&gt;Unix&lt;/li&gt;
+&lt;li&gt;Standards: POSIX, RFC, etc&lt;/li&gt;
+&lt;li&gt;Metaphor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Consitency&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bang methods&lt;/li&gt;
+&lt;li&gt;each&lt;em&gt;with&lt;/em&gt;index&lt;/li&gt;
+&lt;li&gt;etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Consistency violation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Time#utc is destructive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Metaphor&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTTP is a kind of network file system&lt;/li&gt;
+&lt;li&gt;oepn-uri doesn&amp;#8217;t support beyond file system: POST, etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Infrastructure Friendly&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;emacs, vi&lt;/li&gt;
+&lt;li&gt;line oriented tools&lt;/li&gt;
+&lt;li&gt;shell and file system&lt;/li&gt;
+&lt;li&gt;web browser&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Prefer&lt;/p&gt;
+
+&lt;p&gt;&amp;#8220;It is easy using the legacy tool XXX&amp;#8221; over &amp;#8220;It is easy using the new tool YYY&amp;#8221;&lt;/p&gt;
+
+&lt;h3&gt;Evolve Gradually&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Adaptive Huffman coding&lt;/li&gt;
+&lt;li&gt;How to find bad API&lt;/li&gt;
+&lt;li&gt;How to avoid incompatability&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Adaptive Huffman Coding&lt;/h4&gt;
+
+&lt;p&gt;What methods are used frequently?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Long method name at first&lt;/li&gt;
+&lt;li&gt;Alias to short name later&lt;/li&gt;
+&lt;li&gt;Define convenience methods for idioms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Adaptive Huffman Coding(2)&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short names and operators should be used carefully&lt;/li&gt;
+&lt;li&gt;Use a long name if hesitate&lt;/li&gt;
+&lt;li&gt;Alias is not a bad thing (TMTOWTDI)&lt;/li&gt;
+&lt;li&gt;Primitives should have long names&lt;/li&gt;
+&lt;li&gt;Define new method for idiom&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Operators&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CGI#[] and CGI#params
+&lt;ul&gt;
+&lt;li&gt;CGI was defined unsuitably.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Hash #[]
+&lt;ul&gt;
+&lt;li&gt;primitive: Hash#fetch&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;How to find bad api&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Repeated surprise&lt;/li&gt;
+&lt;li&gt;Often cannot remember&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Repeated Surprise&lt;/h4&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Time#utc is destructive&lt;/li&gt;
+&lt;li&gt;Iconv.iconv returns an array&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Often Cannnot Remember&lt;/h4&gt;
+
+&lt;p&gt;Manual is required again and again for same issue.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RubyUnit&lt;/li&gt;
+&lt;li&gt;optparse&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Idiom&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Repeated code&lt;/li&gt;
+&lt;li&gt;Violate DRY&lt;/li&gt;
+&lt;li&gt;An idiom may be good or bad&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bad idiom example&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Iconv.iconv()[0]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;How to Avoid Incompatibility&lt;/h4&gt;
+
+&lt;p&gt;Extension without Incompatibility:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;New method&lt;/li&gt;
+&lt;li&gt;New keyword argument&lt;/li&gt;
+&lt;li&gt;con contants&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Introducing new names has no compatability problem (in most case)&lt;/p&gt;
+
+&lt;h4&gt;Incompatible Change is a Bad Thing&lt;/h4&gt;
+
+&lt;p&gt;But fixing bad API&amp;#8230;&lt;/p&gt;
+
+&lt;h4&gt;Incompatible Change&lt;/h4&gt;
+
+&lt;p&gt;API Migration Example&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;net/http: API version&lt;/li&gt;
+&lt;li&gt;cgi: special implementation for transition period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;net/http API version&lt;/h4&gt;
+
+&lt;p&gt;Net::HTTP has two APIs&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.6 API version 1.1&lt;/li&gt;
+&lt;li&gt;Ruby 1.8 API version 1.2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;net.http: switch API version&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It tens to forget restore API version&lt;/li&gt;
+&lt;li&gt;Global switch, not thread save&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;cgi: special implementation for a  transition period&lt;/h4&gt;
+
+&lt;p&gt;CGI#[] returns&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.6 an array of params&lt;/li&gt;
+&lt;li&gt;Ruby 1.8: Transition period&lt;/li&gt;
+&lt;li&gt;future? : a first parameter or nil&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;CGI#[] returns something tweaked on 1.8&lt;/h4&gt;
+
+&lt;p&gt;Try to work as both Array and String&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.8.0 subclass of String&lt;/li&gt;
+&lt;li&gt;Ruby 1.8.1 subclass of DelegateClass(String)&lt;/li&gt;
+&lt;li&gt;Ruby 1.8.2 &amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;fork: Warning after change&lt;/h4&gt;
+
+&lt;p&gt;Does fork kill other threads in child process?####&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.6: No&lt;/li&gt;
+&lt;li&gt;Ruby 1.8: Yes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;fork: warning after change&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.6: No warning&lt;/li&gt;
+&lt;li&gt;Ruby 1.8.0: No warning&lt;/li&gt;
+&lt;li&gt;Ruby: 1.8.1: warning: fork terminates thread&lt;/li&gt;
+&lt;li&gt;Ruby: 1.8.2: No warning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;IO#read: warning before change&lt;/h4&gt;
+
+&lt;p&gt;IO#read will block even if O_NONBLOCK is set&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby 1.8: doesn&amp;#8217;t block&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ruby 1.9: does block&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ruby 1.8.2: No warning&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Ruby 1.8.3: Warning&lt;/li&gt;
+&lt;li&gt;Ruby 1.9 : No warning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Easy-to-Use vs Security&lt;/h3&gt;
+
+&lt;h4&gt;Easy to Use vs Sec&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTTP_PROXY&lt;/li&gt;
+&lt;li&gt;http://user:pass@host/&lt;/li&gt;
+&lt;li&gt;redirection and taint&lt;/li&gt;
+&lt;li&gt;File.open(uri)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;VFS: Virtual File System&lt;/h3&gt;
+
+&lt;h4&gt;Why VFS?&lt;/h4&gt;
+
+&lt;p&gt;Typical simple program&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Load na external resource&lt;/li&gt;
+&lt;li&gt;Process the resource&lt;/li&gt;
+&lt;li&gt;Store the result
+VFS ease the first step.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;What is VFS&lt;/h4&gt;
+
+&lt;p&gt;VFS provides&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open a http/ftp resource&lt;/li&gt;
+&lt;li&gt;read a resource
+&amp;#8230;
+&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;VFS and polymorphism&lt;/h4&gt;
+
+&lt;p&gt;The polymorphism can be implemented by&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;usual method dispatch calls
+&amp;#8230;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Polymorphic open&lt;/h4&gt;
+
+&lt;p&gt;If open-uri is in effect
+*open(&amp;#8220;http://&amp;#8230;&amp;#8221;) calls URI(&amp;#8220;http://&amp;#8230;&amp;#8221;).open&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;same for ftp etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Any URI can be opened if the URI has open method&lt;/p&gt;
+
+&lt;h4&gt;Other Resources&lt;/h4&gt;
+
+&lt;p&gt;LDAP&lt;/p&gt;
+
+&lt;h4&gt;Other Operations&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;URI().read&lt;/li&gt;
+&lt;li&gt;Other operations should be defined for polymorphic to Pathname future&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Sec Considerations&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;open(&amp;#8220;|&amp;#8230;&amp;#8221;)&lt;/li&gt;
+&lt;li&gt;File.open is not affected&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Summary&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to design Easy-To_Use API
+&lt;ul&gt;
+&lt;li&gt;Save brain power&lt;/li&gt;
+&lt;li&gt;Evolve gradually&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;VFS by open-uri&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Q/A&lt;/h3&gt;
+
+&lt;p&gt;Some guy writing a book: Should I teach Array.push or Array&amp;lt;&lt;? Experts are going to use a condensed short form, but they'll need to use it. Do you have advice for people writing apis to write code so its easier to read.&lt;/p&gt;
+
+&lt;p&gt;Response: I think the api should lean towards teaching.&lt;/p&gt;
+
+&lt;p&gt;DHH: Are you going to do what you&amp;#8217;re reading for writing?&lt;/p&gt;
+
+&lt;p&gt;Response: POST should be supproted in the future, but write.. eh.. not as useful.&lt;/p&gt;
+
+&lt;p&gt;AC: Warning would be more useful -not- at runtime..
+Response: Inaudible&lt;/p&gt;</description>
+      <pubDate>Fri, 14 Oct 2005 17:55:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:126e1cc8bdb7db314a4300204708eeb1</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/14/open-uri-easy-to-use-and-extensible-virtual-file-system</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/14</trackback:ping>
+    </item>
+  </channel>
+</rss>

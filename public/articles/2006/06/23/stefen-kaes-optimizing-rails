@@ -1,0 +1,670 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Stefen Kaes - Optimizing Rails</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Stefen Kaes - Optimizing Rails"
+    dc:identifier="http://glu.ttono.us/articles/2006/06/23/stefen-kaes-optimizing-rails"
+    dc:description="Stefen went very very fast during his presentation, so I&amp;#8217;ve missed bits and pieces. I&amp;#8217;ll link his slides if I can (though they may not be available except for the $50 video). Sorry about that. Performance Tuning Trying"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/937" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Stefen Kaes - Optimizing Rails</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Fri, 23 Jun 2006 22:08:00 GMT">Fri, 23 Jun 2006 22:08:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Stefen went very very fast during his presentation, so I&#8217;ve missed bits and pieces. I&#8217;ll link his slides if I can (though they may not be available except for the $50 video). Sorry about that.</p>
+
+<p>Performance Tuning</p>
+
+<ul>
+<li>Trying to improve performance without measuring is foolish</li>
+<li>In favor of optimization at design time</li>
+</ul>
+
+<p>Performance Parameters</p>
+
+<ul>
+<li>Latency
+<ul>
+<li>How fast can you answer a request?</li>
+</ul></li>
+<li>Throughput
+<ul>
+<li>How many requests can you process per second?</li>
+</ul></li>
+<li>Utilization
+<ul>
+<li>Are your servers idle most of the time?</li>
+</ul></li>
+<li>Cost efficiency
+<ul>
+<li>Performance per unit cost</li>
+</ul></li>
+<li>Compute mean, min, max, standard dev (if applicable). Standard deviation will tell you how reliable your data is.</li>
+</ul>
+
+<p>Benchmarking Tools</p>
+
+<ul>
+<li>Rails log files (debug level >= <code>Logger::DEBUG</code>)</li>
+<li>Rails Analyzer Tools (requires logging to syslog)</li>
+<li>Rails benchmarker script (script/benchmarker)</li>
+<li>Tools provided by DB vendor</li>
+<li>Apache Bench (ab or ab2)</li>
+<li>httperf</li>
+<li>railsbench
+<ul>
+<li>downloadable from http://rubyforge.org/projects/railsbench</li>
+</ul></li>
+</ul>
+
+<p>railsbench</p>
+
+<ul>
+<li>Measures raw performance of Rails request processing configured through:
+<ul>
+<li>benchmark definitions
+<ul>
+<li><code>$RAILS_ROOT/config/benchmarks.yml</code></li>
+<li>defines which urls you want to visit in yaml</li>
+</ul></li>
+<li>benchmark class configuration
+<ul>
+<li><code>$RAILS_ROOT/config/benchmarks.rb</code></li>
+<li>creates a benchmarking instance with an ActiveRecordStore</li>
+<li>Can also define user locking etc.</li>
+</ul></li>
+<li>stores benchmark data in <code>$RAILS_PERF_DATA</code></li>
+<li>indexed by date and benchmark time</li>
+<li>uses additional Rails environment benchmarking</li>
+</ul></li>
+<li>Usage
+<ul>
+<li><code>perf_run 100 "-bm-welcome options" [data file]</code>
+<ul>
+<li>Run 100 iterations of benchnmark with given options, print data</li>
+</ul></li>
+<li><code>perf_diff 100 "-bm=all opts" "opts1" "opts2" [file1] [file2]</code></li>
+</ul></li>
+</ul>
+
+<p>railsbench options</p>
+
+<ul>
+<li><code>-log</code>[=level]
+<ul>
+<li>turn on logging (defaults to no logging). optionally oveerride log level.</li>
+</ul></li>
+<li><code>-nocache</code>
+<ul>
+<li>turn off rails caching</li>
+</ul></li>
+<li><code>-path</code></li>
+<li><code>-svlPV</code>
+<ul>
+<li>run test using Ruby Performance Validator</li>
+</ul></li>
+<li><code>patched_gc</code>
+<ul>
+<li>use patched GC
+Ruby Profiling Tools</li>
+</ul></li>
+<li>Ruby Profiler</li>
+<li>Zen Profiler</li>
+<li>rubyprof</li>
+<li>Rails profiler script</li>
+<li>Ruby Performance Validator (commercial, Windows only)</li>
+<li>All but the last are pretty much useless for Rails performance work.</li>
+<li><code>railsbench</code> has builtin support for RPVL:
+<ul>
+<li><code>run_urls 100 -svlPV -bm=welcome ...</code></li>
+</ul></li>
+<li>will start RPVL and run the named benchmark with given options</li>
+</ul>
+
+<p><strong>Please send an email to the RPV guys if you think it should have UNIX support</strong></p>
+
+<p>Top Rails Performance Problems</p>
+
+<ul>
+<li>Depends on who you ask, but these are my favorites:
+<ul>
+<li>slow helper methods</li>
+<li>complicated routes</li>
+<li>associations</li>
+<li>retrieving too much from DB</li>
+<li>slow session storage</li>
+</ul></li>
+<li>Judging from my experience, DB performance is usually not a bottleneck.</li>
+<li>Instantiation ActiveRecord objects is more expensive</li>
+</ul>
+
+<p>Available Session Containers</p>
+
+<ul>
+<li>In Memory
+<ul>
+<li>Fastest but you lose all sessions on server crash/restart. Restricted to 1 app. Doesn&#8217;t scale.</li>
+</ul></li>
+<li>File System.
+<ul>
+<li>Easy setup, one file for each session. Scales by using NFS or NAS (beware 10k active sessions!). <em>Slower than</em></li>
+</ul></li>
+<li>Database/ActiveRecordStore
+<ul>
+<li>Easy setup (comes with Rails distribution). <em>Much slower than</em></li>
+</ul></li>
+<li>Database/SQLSessionStore
+<ul>
+<li>Uses ARStore</li>
+<li>More info at http://railsexpress.de/blog/articles/2005/12/19/roll-your-own-sql-session-store</li>
+</ul></li>
+<li>memcached
+<ul>
+<li>Slighly faster than SQLSessionStore. Presumably scales best. Very tunable. Automatic session cleaning. Harder to obtain statistics. setup</li>
+</ul></li>
+<li>DrbStore
+<ul>
+<li>Can be used on platforms where memcached is not available.</li>
+</ul></li>
+</ul>
+
+<p>Cachable Elements</p>
+
+<ul>
+<li>Pages
+<ul>
+<li>Fastes. Complete pages are stored on the file system. Web server bypasses app for rendering. Scales through NFS or NAS. Problematic if app requires login.</li>
+</ul></li>
+<li>Actions
+<ul>
+<li>Second fastest. Caches the result of invoking actions on controllers. User login id can be used as part of the storage key.</li>
+</ul></li>
+<li>Fragments
+<ul>
+<li>Very useful for caching small fragments (hence the name) of HTML produced during request processing. Can be made user aware.</li>
+</ul></li>
+<li>Action caching is just a special case of fragment caching.</li>
+<li>Several storage containers are available for fragment caching.</li>
+</ul>
+
+<p>Storage Options for Fragment Caching</p>
+
+<ul>
+<li>In Memory
+<ul>
+<li>Very very fast. If your app is running fast enough with 1 app server process, go for it!</li>
+</ul></li>
+<li>File System
+<ul>
+<li>Reasonably fast.</li>
+</ul></li>
+<li>DrbStore</li>
+<li>memcached</li>
+</ul>
+
+<p>ActionController Issues</p>
+
+<ul>
+<li>Components
+<ul>
+<li>I suggest to avoid components. I haven&#8217;t found any good use for them, yet.</li>
+<li>Each embedded component will be handled using a fresh request cycle.</li>
+<li>Can always be replace by helper methods and partials.</li>
+</ul></li>
+<li>Filters
+<ul>
+<li>If you are using components, make sure you don&#8217;t rerun your filters for every request.</li>
+</ul></li>
+</ul>
+
+<p>ActionView Issues</p>
+
+<ul>
+<li>Instance Variables
+<ul>
+<li>For each request, one controller instance and one view instance will be instantiated.</li>
+<li>Instance vars creatd during controller processing will be transfered to view instance</li>
+<li>So: avoid creating instance vars you don&#8217;t need. (PARAPHRASE, NEED TO FIND SLIDES)</li>
+</ul></li>
+</ul>
+
+<p>Slow Helper Methods</p>
+
+<ul>
+<li><code>pluralize(n, 'post')</code>
+<ul>
+<li>Creates a new inflector instance, and try to derive the correct plural. This is expensive.</li>
+<li>Do <code>pluralize(n, 'post', MISSING_ARG_NEED_TO_FIND_SLIDES)</code> instead</li>
+</ul></li>
+<li><code>link_to</code> and <code>url_for</code>
+<ul>
+<li>Much more efficient to construct your own urls, but you only need to do it on pages with <strong>large</strong> numbers of links.</li>
+</ul></li>
+</ul>
+
+<p>ActiveRecord Issues</p>
+
+<ul>
+<li>You can prefetch associated objects using :include
+<ul>
+<li><code>Article.find(:all, :include =&gt; :author)</code></li>
+</ul></li>
+<li>Use piggy backing for <code>has_one</code> or <code>belongs_to</code> relations.
+<ul>
+<li><code>piggy.back :author_name, :from =&gt; :author, :attributes =&gt; [:name]</code>
+<code>article = Article.find(:all, :piggy =&gt; :author)</code>
+<code>puts article.author.name</code></li>
+</ul></li>
+</ul>
+
+<p>Caching Column Formatting</p>
+
+<ul>
+<li>Computationally expensive transformation on AR fields can be cached (in the DB, using memcached, a DRb process)</li>
+<li>Example: <code>textilize</code>
+<ul>
+<li>I&#8217;ve analyzed an application, where 30% cpu was saved by storing the textilized value
+Ruby&#8217;s Interpreter is Slow</li>
+</ul></li>
+<li>no byte code, no JIT, interprets ASTs directly</li>
+<li>doesn&#8217;t perform any code optimization at compiler time:
+<ul>
+<li>method inlining</li>
+<li>&#8230;</li>
+</ul></li>
+</ul>
+
+<p>Complexity of Ruby Language Elements</p>
+
+<ul>
+<li>Local Var acfcess: O(1)</li>
+<li>Instance Var access: expected O(1)</li>
+<li>Method Call: expected O(1)
+<ul>
+<li>hash access to determine literal value <code>{"f" =&gt; :f}</code></li>
+<li>method search</li>
+<li>&#8230;</li>
+</ul></li>
+<li>Recommendation:
+<ul>
+<li>don&#8217;t add method abstractions needlessly</li>
+<li>use <code>attr_accessor</code>s as external interfaces only</li>
+<li>use local variables to short circuit repeated hash access</li>
+<li>Avoid repeated hash access</li>
+</ul></li>
+</ul>
+
+<p>Caching Data in Instance Variables/Class variables</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Coding Variable Caching Efficiently</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Defining Constants vs. Inlining</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Local Variables are Cheap</p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Be Careful With Regards to Logging</p>
+
+<p><code>ObjectSpace.each_object</code></p>
+
+<ul>
+<li>see slides for example</li>
+</ul>
+
+<p>Ruby&#8217;s Memory Management</p>
+
+<ul>
+<li>Designed for batch scripts, no long running server apps</li>
+<li>tries to minimize memory usage</li>
+<li>simple mark and sweep algorithm</li>
+<li>uses malloc to manage contiguous blocks of Ruby objects</li>
+<li>complex datastructures
+<ul>
+<li>only references to C structs are stored on Ruby heap</li>
+<li>comprises strings, arrays, hashes, local variables maps, scopes etc</li>
+</ul></li>
+<li>eases writing C extensions</li>
+<li>Current C interface makes it hard to implement generational GC</li>
+</ul>
+
+<p>Why Ruby GC is a problem for Rails</p>
+
+<ul>
+<li>ASTs are stored on the Ruby heap and will be processed on each collection
+<ul>
+<li>usually the biggest part of non garbage for Rails apps</li>
+</ul></li>
+<li>Sweep phase depends on size of heap, not size of non garbage
+<ul>
+<li>can&#8217;t increase the heap size above certain limits</li>
+</ul></li>
+<li>More heap gets added, if
+<ul>
+<li>size of freelist after collection, <code>&lt; FREE_MIN</code> a constant defined in gc.c as 4096</li>
+<li>200,000 heap slots are a <code>good lower bound</code> for live data for typical Rails applications</li>
+</ul></li>
+</ul>
+
+<p>Improving GC Performance</p>
+
+<ul>
+<li>Control GC from the Rails dispatcher:
+<ul>
+<li><code>RailsFCGIHandler.process! nil, 50</code>
+<ul>
+<li>Will disable Ruby GC and call GC.start after 50 requests have been processed</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Patching Ruby&#8217;s Garbage Collector</p>
+
+<ul>
+<li>Download latest <code>railsbench</code> package. Patch Ruby using rile <code>rubygc.patch</code>, recompile and reinstall binaries and docs.</li>
+<li>Tune GC using environment variables</li>
+<li><strong>RUBY_HEAP_MIN_SLOTS</strong></li>
+<li><strong>RUBY_HEAP_FREE_MIN</strong></li>
+<li><strong>RUBY_GC_MALLOC_LIMIT</strong></li>
+<li>Rec values in slides (sorry)</li>
+</ul>
+
+<p>Compile Time Template Optimization</p>
+
+<ul>
+<li>Many helper calls in Erb templates can be evaluated at template compile time.</li>
+<li><code>&lt;%= end_form tag %&gt; ==&gt; &lt;/form&gt;</code></li>
+<li>It&#8217;s a complete waste to do it over and over again on a per request basis.</li>
+<li>For some calls, we know what the output should be like, even if we don&#8217;t have all arguments available.</li>
+<li>see slides</li>
+</ul>
+
+<p>Rails Template Optimizer</p>
+
+<ul>
+<li>Uses Ryan Davis&#8217; ParseTree package and ruby2ruby class</li>
+<li>Retrieves AST of ActionView render method after initial compilation</li>
+<li>Transforms AST to simplify AST</li>
+<li>Optimizes AST into optimized <code>render</code> method</li>
+</ul>
+
+<p>Optimizer Customization and Restrictions</p>
+
+<ul>
+<li>see slides</li>
+</ul>
+</div>
+<p class="meta">
+  
+</p>
+
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/937/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="937";
+//--></script>
+<!-- mmp mmid:937 mmdate:2006-06-23 18:08:00 mmurl:/articles/2006/06/23/stefen-kaes-optimizing-rails mmtitle:Stefen Kaes - Optimizing Rails -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/06/23/stefen-kaes-optimizing-rails" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,924 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Guide: Test Driven RJS with ARTS</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Guide: Test Driven RJS with ARTS"
+    dc:identifier="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts"
+    dc:description="RJS is really a pain to debug. When things aren&amp;#8217;t working right, they often don&amp;#8217;t show up on the page at all. These truths make testing RJS especially important. When researching for this article, I looked into the &lt;a href=&quot;http://ib"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/881" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Guide: Test Driven RJS with ARTS</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Mon, 29 May 2006 17:51:00 GMT">Mon, 29 May 2006 17:51:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>RJS is really a pain to debug. When things aren&#8217;t working right, they often don&#8217;t show up on the page at all. These truths make testing RJS especially important.</p>
+
+<p>When researching for this article, I looked into the <a href="http://ibrasten.com/pages/rjsassertions">rjs_assertions plugin</a>, but was generally unhappy with the offerings. <code>rjs_assertions</code> isn&#8217;t complete and the syntax felt cryptic.</p>
+
+<p>So, I <a href="http://thar.be/svn/projects/plugins/arts/">rolled my own</a>. I&#8217;m calling the plugin ARTS: Another RJS Testing System, and the number one goal is to make an easily understandable syntax for testing RJS templates.</p>
+
+<p>This guide is going to be broken into two parts: the installation and usage of the plugin, and using the plugin to test drive ajax interactions.</p>
+
+<p>This isn&#8217;t an introduction to RJS. For background reading on the topic, see <a href="http://www.codyfauser.com/articles/2005/11/20/rails-rjs-templates">Rails RJS Templates</a> by Cody Fauser and Rick Olson&#8217;s <a href="http://rails.techno-weenie.net/tip/2005/11/29/ajaxed_forms_with_rjs_templates">post on Rails Weenie</a>.</p><h3>Installing ARTS</h3>
+
+<p>ARTS is a plugin, so to install it:</p>
+
+<ol>
+<li>Go to your RAILS_ROOT directory</li>
+<li>Run <code>script/plugin discover</code></li>
+<li>Run <code>script/plugin install arts</code></li>
+</ol>
+
+<p>To make use of the plugin, include the <code>Arts</code> module in your test class or in your <code>test/test_helper.rb</code>:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">class Test::Unit::TestCase
+  # ...
+
+  # Add more helper methods to be used by all tests here...
+  include Arts
+end</code></pre></div>
+
+<h3>Basic Usage</h3>
+
+<p>The ARTS plugin gives access to an <code>assert_rjs</code> method in your tests, which takes the name of a method you would call in an <code>update_page</code> block (like <code>page.show ...</code>) and the arguments you would pass to that method which it then uses to determine if the specified javascript was generated. For example, to assert that the javascript returned hides elements with the ids &#8220;post_1&#8221;, &#8220;post_2&#8221;, and &#8220;post_3&#8221;, the code would look like this:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="ident">assert_rjs</span> <span class="symbol">:hide</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_1</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_2</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">post_3</span><span class="punct">&quot;</span></code></pre></div>
+
+<p>Assertions for all methods described in <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html">here</a> appear to work, but <code>delay</code> is untested until I figure out how the syntax should look.</p>
+
+<h4>Special Cases: <code>insert_html</code>, <code>replace_html</code>, and <code>replace</code></h4>
+
+<p>The <code>render</code> syntax which the <code>page.*</code> methods use in RJS can not generate the content for <code>assert_rjs</code>. Because of this, content is optional, and when specified should be a string.</p>
+
+<p><strong>Update</strong>: These methods <a href="http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching">now support</a> regular expression content matching.</p>
+
+<div class="typocode"><pre><code class="typocode_default "># Checks that html is inserted before 'some_div'
+assert_rjs :insert_html, :before, 'some_div' 
+
+# Assert that &quot;Some information&quot; is inserted after the 'a_list' element.
+assert_rjs :insert_html, :after, 'a_list', &quot;Some information&quot;</code></pre></div>
+
+<h3>Test Driven RJS</h3>
+
+<p>Lets add ajax posting to a simple blog as an example. You can grab the source <a href="http://thar.be/svn/projects/arts_demo">here</a> if you&#8217;d like to look at the completed example closer. I&#8217;m going to assume we already have a <a href="http://thar.be/svn/projects/arts_demo/app/views/layouts/application.rhtml">layout</a> setup which includes the Prototype and Scriptaculous libraries and have a working new/create cycle without ajax.</p>
+
+<p>Our create action only takes in parameters, tries to save the post, and then either re-renders the <code>new</code> action or redirects.</p>
+
+<div class="typocode"><pre><code class="typocode_default ">def create
+  @post = Post.new(params[:post])
+  if @post.save
+    redirect_to :action =&gt; 'show', :id =&gt; @post.id
+  else
+    render :action =&gt; 'new'
+  end
+end</code></pre></div>
+
+<p>We&#8217;d like the create action to actually add the new post to our page when it saves correctly instead of redirecting to the <code>show</code> action. We&#8217;ll start with writing a <a href="http://thar.be/svn/projects/arts_demo/test/functional/blog_controller_test.rb">test</a>. </p>
+
+<p>Specifically, when a post is saved, we want to add the new post to the &#8216;posts&#8217; div (in our layout) and let&#8217;s highlight it for good measure. </p>
+
+<p>In this test, we&#8217;ll use the <code>xhr</code> method which simulates an ajax call. <code>xhr</code> takes a method (get or post) and then the normal <code>get</code> and <code>post</code> options.</p>
+
+<p>We will also use our <code>assert_rjs</code> method from the <code>Arts</code> module to test:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="keyword">def </span><span class="method">test_create_rjs</span>
+  <span class="ident">xhr</span> <span class="symbol">:post</span><span class="punct">,</span> <span class="symbol">:create</span><span class="punct">,</span> <span class="symbol">:post</span> <span class="punct">=&gt;</span> <span class="punct">{</span><span class="symbol">:title</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Yet Another Post</span><span class="punct">&quot;,</span> <span class="symbol">:body</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">This is yet another post</span><span class="punct">&quot;}</span>
+  <span class="ident">assert_rjs</span> <span class="symbol">:insert_html</span><span class="punct">,</span> <span class="symbol">:bottom</span><span class="punct">,</span> <span class="punct">'</span><span class="string">posts</span><span class="punct">'</span>
+  <span class="ident">assert_rjs</span> <span class="symbol">:visual_effect</span><span class="punct">,</span> <span class="symbol">:highlight</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_<span class="expr">#{assigns(:post).id}</span></span><span class="punct">&quot;</span>    
+<span class="keyword">end</span></code></pre></div>
+
+<p>If we take this test line by line, we first see the <code>xhr</code> call we described. It passes in title and body for the post. Next, we see a call to <code>assert_rjs :insert_html</code>. The call says that html is to be inserted at the bottom of the &#8216;posts&#8217; div. Notice that it does not specify content after the &#8216;posts&#8217; parameter, so we&#8217;re simply looking for whether an insertion occurred, not what is being inserted. Finally, there is a call to <code>assert_rjs :visual_effect</code> which checks for a <code>highlight</code> on the div of our newly saved and inserted post. For more about why this becomes the div id, see the <a href="http://thar.be/svn/projects/arts_demo/app/views/blog/_post.rhtml">partial</a>.</p>
+
+<p>So, now we run <code>rake</code> and get a big ugly error:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">test_create_rjs(BlogControllerTest):
+ActionController::MissingTemplate: Missing template /Users/kev/code/projects/arts_demo/config/../app/views/blog/create.rhtml</code></pre></div>
+
+<p>Right, we forgot to create our <code>create.rjs</code> file. Add an empty template and run again to see the next error message:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">test_create_rjs(BlogControllerTest)
+    [/Users/kev/code/projects/arts_demo/config/../vendor/plugins/arts/lib/arts.rb:35:in assert_rjs_insert_html'
+...
+&lt;&quot;&quot;&gt; expected to be =~
+&lt;/new Insertion.Bottom(.*posts.*,.*?);/&gt;.</code></pre></div>
+
+<p>My error messages could be better (and should be improved in the future), but we can see that the <code>assert_rjs :insert_html</code> call has failed. This is because our template is blank. We&#8217;ll remedy that. <code>create.rjs</code> becomes:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="ident">page</span><span class="punct">.</span><span class="ident">insert_html</span> <span class="symbol">:bottom</span><span class="punct">,</span> <span class="punct">'</span><span class="string">posts</span><span class="punct">',</span> <span class="symbol">:partial</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">post</span><span class="punct">',</span> <span class="symbol">:locals</span> <span class="punct">=&gt;</span> <span class="punct">{</span><span class="symbol">:post</span> <span class="punct">=&gt;</span> <span class="attribute">@post</span><span class="punct">}</span></code></pre></div>
+
+<p>This call says that we&#8217;re going to insert html at the bottom of the &#8216;posts&#8217; div, and the content will be the result of running the &#8216;post&#8217; partial passing in our new post.</p>
+
+<p>If we run rake again we find that the <code>assert_rjs :insert_html</code> call passes and we&#8217;re left with the failure of the <code>:visual_effect</code>:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">1) Failure:
+test_create_rjs(BlogControllerTest)
+visual_effect with args [highlight post_3] does not show up in response:
+new Insertion.Bottom(&quot;posts&quot;, &quot;&lt;div id=\&quot;post_3\&quot;&gt;\n  &lt;h2&gt;Yet Another Post&lt;/h2&gt;\n  &lt;p&gt;This is yet another post&lt;/p&gt;\n&lt;/div&gt;&quot;);.</code></pre></div>
+
+<p>We can see from the response that the <code>visual_effect</code> isn&#8217;t being rendered. This is because we haven&#8217;t added it to our template. If we add it, <code>create.rjs</code> looks like this:</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="ident">page</span><span class="punct">.</span><span class="ident">insert_html</span> <span class="symbol">:bottom</span><span class="punct">,</span> <span class="punct">'</span><span class="string">posts</span><span class="punct">',</span> <span class="symbol">:partial</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">post</span><span class="punct">',</span> <span class="symbol">:locals</span> <span class="punct">=&gt;</span> <span class="punct">{</span><span class="symbol">:post</span> <span class="punct">=&gt;</span> <span class="attribute">@post</span><span class="punct">}</span>
+<span class="ident">page</span><span class="punct">.</span><span class="ident">visual_effect</span> <span class="symbol">:highlight</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">post_<span class="expr">#{@post.id}</span></span><span class="punct">&quot;</span></code></pre></div>
+
+<p>So now, we should have the new post being inserted at the bottom of our &#8216;posts&#8217; div and it should be highlighted.</p>
+
+<p>If we run <code>rake</code>, the tests now pass. We know that the action will properly send back javascript. The only thing left is to change our form to use <code>form_remote_tag</code>. See <a href="http://thar.be/svn/projects/arts_demo/app/views/blog/_form.rhtml">the example</a> for details. You may also want to be able to do both ajax and regular post interactions. This can be accomplished with <a href="http://thar.be/svn/projects/arts_demo/app/controllers/blog_controller.rb">respond_to</a> but is outside the scope of this guide.</p>
+
+<p>RJS is tough to debug without a bit of help. I hope that ARTS can fill that need. For further examples, see the tests of the <a href="http://thar.be/svn/projects/arts_demo/test/functional/blog_controller_test.rb">example application</a>. In <code>test_create_rjs</code> I include an example of <code>assert_rjs :insert_html</code> with &#8220;content included&#8221; and in <code>test_bad_create_rjs</code> a test for reporting of error messages. If you have any issues with ARTS, please feel free to contact me at kevin dot clark at gmail dot com.</p>
+
+<p><em>This guide has been part of my weekly guide series which is released each Monday. If you have a conceptual question or an idea for a guide, please contact me at kevin dot clark at gmail dot com and include &#8220;[idea]&#8221; in the subject line.</em></p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/29/guide-test-driven-rjs-with-arts#comments">25 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-882"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_882'); }"  onmouseout="Element.hide('admin_comment_882');" >
+  <div id="admin_comment_882" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/882', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-882&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/882" class="admintools">edit</a></div>
+  <a name="comment-882"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Daniel</strong> </cite> said about 20 hours later:<br />
+  <p>This is a great post.  Thankyou for posting this one and writing a plugin for this aspect of testing.  I look forward to adding this to my project to make it as robust as possible.</p>
+
+
+	<p>Thanx</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="882";
+//--></script>
+<!-- mmc mmid:882 mmdate:2006-05-30 10:00:03 mmauthor:Daniel -->
+</li>
+<li id="comment-883"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_883'); }"  onmouseout="Element.hide('admin_comment_883');" >
+  <div id="admin_comment_883" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/883', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-883&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/883" class="admintools">edit</a></div>
+  <a name="comment-883"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=237e4b098d513d21c1d6b4516b29926e&amp;size=60" />
+  <cite><strong><a href="http://www.ibrasten.com">brasten</a></strong> </cite> said about 20 hours later:<br />
+  <p>You&#8217;ve managed to address many of the shortcomings I had with rjs-assertions.  Very well done, and thanks for the useful tool!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="883";
+//--></script>
+<!-- mmc mmid:883 mmdate:2006-05-30 10:13:16 mmauthor:brasten -->
+</li>
+<li id="comment-884"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_884'); }"  onmouseout="Element.hide('admin_comment_884');" >
+  <div id="admin_comment_884" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/884', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-884&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/884" class="admintools">edit</a></div>
+  <a name="comment-884"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://lianza.org/blog/">Tom</a></strong> </cite> said about 23 hours later:<br />
+  <p>Will this test harness catch errors like, for example, a case when someone&#8217;s updating a div that doesn&#8217;t exist?  Perhaps a designer renamed a div, or that div isn&#8217;t present on the page because it was moved to a seperate page in the UI?</p>
+
+
+	<p>Seems like errors like this would be hard to test without actually loading up the DOM.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="884";
+//--></script>
+<!-- mmc mmid:884 mmdate:2006-05-30 12:59:08 mmauthor:Tom -->
+</li>
+<li id="comment-885" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_885'); }"  onmouseout="Element.hide('admin_comment_885');" >
+  <div id="admin_comment_885" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/885', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-885&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/885" class="admintools">edit</a></div>
+  <a name="comment-885"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 23 hours later:<br />
+  <p>Tom:
+It won&#8217;t catch errors in the DOM. If you know a way of simulating the way different browsers deal with the DOM in Ruby, please tell me and I&#8217;ll take a look :) As far as I know, you&#8217;d need a javascript compiler for that sort of thing.</p>
+
+
+	<p>This is intended to assert that the expected div is being set to be updated. It&#8217;d be up to you to make sure the div is there. You might be able to use something like Selenium or Watir for the front end testing.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="885";
+//--></script>
+<!-- mmc mmid:885 mmdate:2006-05-30 13:03:07 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-886"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_886'); }"  onmouseout="Element.hide('admin_comment_886');" >
+  <div id="admin_comment_886" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/886', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-886&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/886" class="admintools">edit</a></div>
+  <a name="comment-886"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>rick</strong> </cite> said 1 day later:<br />
+  <p>Hey Kevin, this is pretty slick.  Unfortunately, I use a lot of inline element calls that it&#8217;s not catching.</p>
+
+
+<pre><code># $('foo').update('blah')
+# but the plugin looks for
+# Element.update('foo', 'blah')
+page[:foo].replace_html 'blah'</code></pre>
+
+	<p>Also, this could use some sanity tests :)</p>
+
+
+	<p>I&#8217;ll hack on this a bit tonight and see if I can provide a patch.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="886";
+//--></script>
+<!-- mmc mmid:886 mmdate:2006-05-31 09:16:27 mmauthor:rick -->
+</li>
+<li id="comment-887"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_887'); }"  onmouseout="Element.hide('admin_comment_887');" >
+  <div id="admin_comment_887" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/887', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-887&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/887" class="admintools">edit</a></div>
+  <a name="comment-887"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 1 day later:<br />
+  <p>Hey Rick,
+Yeah, I hacked this up in a hurry so I could write the article. It needs tests some tweaks. I should have a patch for regexes on content soon.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="887";
+//--></script>
+<!-- mmc mmid:887 mmdate:2006-05-31 11:35:01 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-890"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_890'); }"  onmouseout="Element.hide('admin_comment_890');" >
+  <div id="admin_comment_890" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/890', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-890&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/890" class="admintools">edit</a></div>
+  <a name="comment-890"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=ceee1f15591d1f61ac5bec1bc70d0062&amp;size=60" />
+  <cite><strong><a href="http://blogus.xilinus.com">seb</a></strong> </cite> said 2 days later:<br />
+  <p>Hi</p>
+
+
+	<p>I have installed your plugin and it works great. 
+Thanks a lot.</p>
+
+
+	<p>Just a weird thing, now if I run &#8220;rake load_fixtures&#8221; here is the output:</p>
+
+
+	<p>Loaded suite /opt/local/bin/rake</p>
+
+
+	<p>Started</p>
+
+
+	<p>Finished in 0.000392 seconds.</p>
+
+
+	<p>0 tests, 0 assertions, 0 failures, 0 errors</p>
+
+
+	<p>It tries to run some dummy tests.
+Have you notice that?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="890";
+//--></script>
+<!-- mmc mmid:890 mmdate:2006-06-01 10:32:39 mmauthor:seb -->
+</li>
+<li id="comment-892" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_892'); }"  onmouseout="Element.hide('admin_comment_892');" >
+  <div id="admin_comment_892" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/892', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-892&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/892" class="admintools">edit</a></div>
+  <a name="comment-892"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 2 days later:<br />
+  <p>seb:
+This is happening because the arts init.rb file automatically includes the module in Test::Unit::TestCase, which on second thought doesn&#8217;t need to happen. I say in the README (and in this guide) to include the module manually in test_helper. The dummy tests should come out in the next revision.</p>
+
+
+	<p>Thanks for the heads up!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="892";
+//--></script>
+<!-- mmc mmid:892 mmdate:2006-06-01 12:11:54 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-893"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_893'); }"  onmouseout="Element.hide('admin_comment_893');" >
+  <div id="admin_comment_893" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/893', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-893&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/893" class="admintools">edit</a></div>
+  <a name="comment-893"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blogus.xilinus.com">seb</a></strong> </cite> said 3 days later:<br />
+  <p>thanks for the quick answer:</p>
+
+
+I tried to test a visual_effect like this
+<pre>
+assert_rjs :visual_effect, :blind_up, "line_#{id}" 
+</pre>
+
+Here is the controller code:
+<pre>
+page["line_#{params[:id]}"].visual_effect :blind_up
+</pre>
+But it does not work because the controller generates:
+<pre>
+.$("line_2").visualEffect("blind_up");
+</pre>
+and the test tries to compare this with:
+<pre>
+new Effect.BlindUp("line_2",{});
+</pre>
+ Did I misunderstood something ?
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="893";
+//--></script>
+<!-- mmc mmid:893 mmdate:2006-06-02 03:44:31 mmauthor:seb -->
+</li>
+<li id="comment-894"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_894'); }"  onmouseout="Element.hide('admin_comment_894');" >
+  <div id="admin_comment_894" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/894', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-894&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/894" class="admintools">edit</a></div>
+  <a name="comment-894"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 3 days later:<br />
+  <p>seb:
+Currently arts doesn&#8217;t work with the selector syntax (page[&#8216;blah&#8217;].blind_up) because it outputs different code than the normal page.visual_effect :blind_up stuff. It&#8217;s something I&#8217;d like to add in the very near future so keep on the lookout. I&#8217;ll mention it on the blog.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="894";
+//--></script>
+<!-- mmc mmid:894 mmdate:2006-06-02 11:38:02 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-909"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_909'); }"  onmouseout="Element.hide('admin_comment_909');" >
+  <div id="admin_comment_909" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/909', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-909&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/909" class="admintools">edit</a></div>
+  <a name="comment-909"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=3d2bf623d2eba5b970d5170b08d888fe&amp;size=60" />
+  <cite><strong>joe goldberg</strong> </cite> said 7 days later:<br />
+  <p>Hi Kevin,</p>
+
+
+	<p>After installing ARTS, I&#8217;m seeing debug statements appear on my pages along with AJAX content.  Eg:</p>
+
+
+	<p>&#8220;Loaded suite /usr/local/depot/coffeerobot/trunk/public/dispatch.cgi Started Finished in 0.000269 seconds. 0 tests, 0 assertions, 0 failures, 0 errors&#8221;</p>
+
+
+	<p>Users of the file_column plugin have seen a similar issue:</p>
+
+
+	<p><a>http://www.sitepoint.com/forums/showthread.php?p=2671883</a></p>
+
+
+	<p>But I couldn&#8217;t find anything analogous to the fix described in that thread for ARTS.</p>
+
+
+	<p>Any clue what&#8217;s going on?</p>
+
+
+	<p>Thanks,
+Joe Goldberg
+Jobster.com, SDE</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="909";
+//--></script>
+<!-- mmc mmid:909 mmdate:2006-06-06 10:33:00 mmauthor:joe goldberg -->
+</li>
+<li id="comment-910" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_910'); }"  onmouseout="Element.hide('admin_comment_910');" >
+  <div id="admin_comment_910" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/910', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-910&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/910" class="admintools">edit</a></div>
+  <a name="comment-910"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 7 days later:<br />
+  <p>Hi Joe,
+Those mesages show up whenever &#8216;test/unit&#8217; is included, whether you run test cases or not. Since we&#8217;ve chosen to automatically require &#8216;test/unit&#8217; for you on runtime to make it easy to work with you&#8217;ll see those here and there. They won&#8217;t cause problems. I you&#8217;d rather not see them, you can go into plugins/arts/init.rb and remove the line, and then &#8216;include Arts&#8217; in your test_helper.rb inside the Test::Unit::TestCase class.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="910";
+//--></script>
+<!-- mmc mmid:910 mmdate:2006-06-06 11:03:32 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-911"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_911'); }"  onmouseout="Element.hide('admin_comment_911');" >
+  <div id="admin_comment_911" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/911', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-911&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/911" class="admintools">edit</a></div>
+  <a name="comment-911"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.depixelate.com">Zack Chandler</a></strong> </cite> said 7 days later:<br />
+  <p>Nice work.
+One improvement idea is to handle:</p>
+
+
+<pre><code>page.replace_html 'post-errors', error_messages_for(:post)</code></pre>
+
+<pre><code>assert_rjs :replace_html, 'post-errors', error_messages_for(:post)</code></pre>
+
+	<p>I notice that right now this doesn&#8217;t seem to work.</p>
+
+
+	<p>Again, nice job!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="911";
+//--></script>
+<!-- mmc mmid:911 mmdate:2006-06-06 11:04:20 mmauthor:Zack Chandler -->
+</li>
+<li id="comment-912" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_912'); }"  onmouseout="Element.hide('admin_comment_912');" >
+  <div id="admin_comment_912" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/912', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-912&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/912" class="admintools">edit</a></div>
+  <a name="comment-912"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 7 days later:<br />
+  <p>Oh, those shouldn&#8217;t show up on your pages, just in the console.. are you redirecting stdout to the page?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="912";
+//--></script>
+<!-- mmc mmid:912 mmdate:2006-06-06 11:04:21 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-914" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_914'); }"  onmouseout="Element.hide('admin_comment_914');" >
+  <div id="admin_comment_914" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/914', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-914&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/914" class="admintools">edit</a></div>
+  <a name="comment-914"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 7 days later:<br />
+  <p>Zack: To get that working, you&#8217;d need to include the ActionView helper which constructs error_messages, and probably have to override it to use assigns(&#8216;post&#8217;) instead of the instance variable post.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="914";
+//--></script>
+<!-- mmc mmid:914 mmdate:2006-06-06 11:31:58 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-918"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_918'); }"  onmouseout="Element.hide('admin_comment_918');" >
+  <div id="admin_comment_918" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/918', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-918&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/918" class="admintools">edit</a></div>
+  <a name="comment-918"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.depixelate.com">Zack Chandler</a></strong> </cite> said 9 days later:<br />
+  <p>Kevin,</p>
+
+
+	<p>Using assigns worked like a charm :)</p>
+
+
+	<p>Thanks a ton &#8211; I&#8217;m really finding this useful.</p>
+
+
+	<p>P.S. In the article you say:</p>
+
+
+	<p>To make use of the plugin, include the Arts module in your test class or in your test/test_helper.rb:</p>
+
+
+<pre><code>class Test::Unit::TestCase
+  # ...
+
+  # Add more helper methods to be used by all tests here...
+  include Arts
+end</code></pre>
+
+	<p>This isn&#8217;t necessary as you already include it in init.rb</p>
+
+
+<pre><code>  Test::Unit::TestCase.send :include, Arts</code></pre>
+
+	<p>Thanks again,
+Zack</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="918";
+//--></script>
+<!-- mmc mmid:918 mmdate:2006-06-08 10:56:03 mmauthor:Zack Chandler -->
+</li>
+<li id="comment-919"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_919'); }"  onmouseout="Element.hide('admin_comment_919');" >
+  <div id="admin_comment_919" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/919', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-919&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/919" class="admintools">edit</a></div>
+  <a name="comment-919"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 9 days later:<br />
+  <p>Zack:
+At the time it was written I wasn&#8217;t including the module in Test::Unit::TestCase so you did need to include. If you see the plugin&#8217;s README, it now doesn&#8217;t instruct you to add the include.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="919";
+//--></script>
+<!-- mmc mmid:919 mmdate:2006-06-08 11:38:54 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-920"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_920'); }"  onmouseout="Element.hide('admin_comment_920');" >
+  <div id="admin_comment_920" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/920', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-920&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/920" class="admintools">edit</a></div>
+  <a name="comment-920"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.depixelate.com">Zack Chandler</a></strong> </cite> said 9 days later:<br />
+  <p>Got it. One more quick question. Is there a way to test insert_html calls that render partials?  render() is a protected method of ActionController::Base so I&#8217;m not sure how this method could be accessible elsewhere.</p>
+
+
+	<p>Ex:</p>
+
+
+rjs
+<pre><code>  page.insert_html :bottom, 'my_list', render(:partial =&gt; 'my_list_item', :object =&gt; @list_item)</code></pre>
+
+test?
+<pre><code>  assert_rjs :insert_html, :bottom, 'my_list', render...???</code></pre>
+
+	<p>Thanks, 
+Zack</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="920";
+//--></script>
+<!-- mmc mmid:920 mmdate:2006-06-08 12:12:27 mmauthor:Zack Chandler -->
+</li>
+<li id="comment-921" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_921'); }"  onmouseout="Element.hide('admin_comment_921');" >
+  <div id="admin_comment_921" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/921', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-921&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/921" class="admintools">edit</a></div>
+  <a name="comment-921"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 10 days later:<br />
+  <p>Zack:
+Rendering partials in tests is problematic, so I don&#8217;t have a way to test for this well yet. You can use the content matching to explicitly look for a match, but probably the better solution will be to use regular expression content matching which should exist soonish.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="921";
+//--></script>
+<!-- mmc mmid:921 mmdate:2006-06-08 13:59:30 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-923"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_923'); }"  onmouseout="Element.hide('admin_comment_923');" >
+  <div id="admin_comment_923" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/923', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-923&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/923" class="admintools">edit</a></div>
+  <a name="comment-923"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.depixelate.com">Zack Chandler</a></strong> </cite> said 10 days later:<br />
+  <p>Kevin,</p>
+
+
+	<p>I agree.  With regex you can at least check that the content contains a bit of what you expect and that will probably catch as many bugs as an exact match.</p>
+
+
+	<p>I&#8217;ll look forward to it.</p>
+
+
+	<p>Zack</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="923";
+//--></script>
+<!-- mmc mmid:923 mmdate:2006-06-08 18:10:16 mmauthor:Zack Chandler -->
+</li>
+<li id="comment-924"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_924'); }"  onmouseout="Element.hide('admin_comment_924');" >
+  <div id="admin_comment_924" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/924', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-924&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/924" class="admintools">edit</a></div>
+  <a name="comment-924"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=e8ced3dff47cf5c0dfb16aaf5a3a289e&amp;size=60" />
+  <cite><strong>vijayramanan</strong> </cite> said 13 days later:<br />
+  <p>I initially started off by using rjsassertions 
+<a>http://ibrasten.com/articles/2006/04/05/rjs-assertions</a></p>
+
+
+	<p>Most of my assertions were failing. No offence to anybody.. maybe I was not using it properly. But I noticed that your syntax is so simple and neat and almost translates what I have done on the inline rjs in my controller. I love this thanks a lot for writing this neat plugin. Iam also interested in some addons like proper session assertions (assert_session_has) currently the defualt assertion only checks for key . If you could add on a feature here which could asset the content inside session that will be cool  :) . Since most of the remote calls require session for state maintenance .. just a thought..</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="924";
+//--></script>
+<!-- mmc mmid:924 mmdate:2006-06-12 04:43:32 mmauthor:vijayramanan -->
+</li>
+<li id="comment-926"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_926'); }"  onmouseout="Element.hide('admin_comment_926');" >
+  <div id="admin_comment_926" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/926', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-926&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/926" class="admintools">edit</a></div>
+  <a name="comment-926"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Chetan</strong> </cite> said 15 days later:<br />
+  <p>Very very slick and useful. Thx!</p>
+
+
+	<p>Here is a patch for the replace_html issue mentioned in Comment #5</p>
+
+
+	<p>vendor/plugins/arts/lib/arts.rb</p>
+
+
+	<p>52,60c52,60
+&lt;       when Regexp
+&lt;         assert_match /(\$\([&#8217;&#8221;]#{div}[&#8217;&#8221;]\).update\([&#8217;&#8221;]|Element.update\(.<strong>#{div}.</strong>,[&#8217;&#8221;]).<strong>?\);/, #&#8217;
+&lt;             @response.body
+&lt;       when String
+&lt;         assert (lined_response.include?(&#8220;Element.update(\&#8221;#{div}\&#8221;, #{content});&#8221;) || lined_response.include?(%Q!$(&#8221;#{div}&#8221;).update(&#8221;#{content}&#8221;);.</strong>!)), #&#8221; 
+&lt;         &#8220;No replace_html call found on div: &#8217;#{div}&#8217; and content: \n#{content}\n&#8221; +
+&lt;                       &#8220;in response:\n#{lined_response}&#8221; 
+&lt;       else
+&lt;         raise &#8220;Invalid content type&#8221; 
+-
+&gt;         when Regexp
+&gt;           assert_match Regexp.new(&#8220;Element.update(.<strong>#{div}.</strong>,.<strong>#{content.source}.</strong>);&#8221;),
+&gt;                        @response.body
+&gt;         when String
+&gt;           assert lined_response.include?(&#8220;Element.update(\&#8221;#{div}\&#8221;, #{content});&#8221;), 
+&gt;                  &#8220;No replace_html call found on div: &#8217;#{div}&#8217; and content: \n#{content}\n&#8221; +
+&gt;                  &#8220;in response:\n#{lined_response}&#8221; 
+&gt;         else
+&gt;           raise &#8220;Invalid content type&#8221; 
+63,64c63
+&lt;       # assert_match Regexp.new(&#8220;Element.update(.<strong>#{div}.</strong>,.<strong>?);&#8221;), @response.body, &#8220;Regexp for replace_html didn&#8217;t match&#8221; 
+&lt;       assert_match /(\$\([&#8217;&#8221;]#{div}[&#8217;&#8221;]\).update\([&#8217;&#8221;]|Element.update\(.</strong>#{div}.<strong>,[&#8217;&#8221;]).</strong>?\);/, @response.body
+-
+&gt;       assert_match Regexp.new(&#8220;Element.update(.<strong>#{div}.</strong>,.*?);&#8221;), @response.body</p>
+
+
+	<p>I hope the formatting of the diff comes out ok. I have done very light testing, so user beware.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="926";
+//--></script>
+<!-- mmc mmid:926 mmdate:2006-06-13 23:39:53 mmauthor:Chetan -->
+</li>
+<li id="comment-927"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_927'); }"  onmouseout="Element.hide('admin_comment_927');" >
+  <div id="admin_comment_927" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/927', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-927&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/927" class="admintools">edit</a></div>
+  <a name="comment-927"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Chetan</strong> </cite> said 15 days later:<br />
+  <p>Sorry, here is a better formatted version of the earlier post.</p>
+
+
+	<p>A patch for the replace_html issue mentioned in Comment #5</p>
+
+
+	<p>vendor/plugins/arts/lib/arts.rb</p>
+
+
+<pre>
+52,60c52,60
+&amp;lt;       when Regexp
+&amp;lt;         assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, #'
+&amp;lt;             @response.body
+&amp;lt;       when String
+&amp;lt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");.*!)), #" 
+&amp;lt;         "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&amp;lt;                       "in response:\n#{lined_response}" 
+&amp;lt;       else
+&amp;lt;         raise "Invalid content type" 
+---
+&gt;         when Regexp
+&gt;           assert_match Regexp.new("Element.update(.*#{div}.*,.*#{content.source}.*);"),
+&gt;                        @response.body
+&gt;         when String
+&gt;           assert lined_response.include?("Element.update(\"#{div}\", #{content});"), 
+&gt;                  "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&gt;                  "in response:\n#{lined_response}" 
+&gt;         else
+&gt;           raise "Invalid content type" 
+63,64c63
+&amp;lt;       # assert_match Regexp.new("Element.update(.*#{div}.*,.*?);"), @response.body, "Regexp for replace_html didn't match" 
+&amp;lt;       assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, @response.body
+---
+&gt;       assert_match Regexp.new("Element.update(.*#{div}.*,.*?);"), @response.body
+</pre>
+
+	<p>I have done very light testing, so user beware.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="927";
+//--></script>
+<!-- mmc mmid:927 mmdate:2006-06-13 23:44:20 mmauthor:Chetan -->
+</li>
+<li id="comment-928" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_928'); }"  onmouseout="Element.hide('admin_comment_928');" >
+  <div id="admin_comment_928" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/928', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-928&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/928" class="admintools">edit</a></div>
+  <a name="comment-928"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 15 days later:<br />
+  <p>Chetan: Cool stuff, thanks. I&#8217;m really looking for a more general solution so that any method that can work like page[&#8216;some_id&#8217;].hide will be supported, but your stuff may work in the interim.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="928";
+//--></script>
+<!-- mmc mmid:928 mmdate:2006-06-14 01:08:46 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-929"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_929'); }"  onmouseout="Element.hide('admin_comment_929');" >
+  <div id="admin_comment_929" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/929', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-929&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/881/edit/929" class="admintools">edit</a></div>
+  <a name="comment-929"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Chetan</strong> </cite> said 16 days later:<br />
+  Hi Kevin,
+yeah, I was stuck after downloading your plugin on the replace_html issue; so quickly hacked up a fix. A cleaner solution is definitely desirable.
+BTW, found a bug with the regexp when content is specified in my prev diff (I am still new to ruby). Here is the new patch. 
+<pre>
+53,54c53,54
+&amp;lt;         assert_match /(\$\(['"]#{div}['"]\).update\(|Element.update\(.*#{div}.*,)['"].*#{content.source}.*['"]\);/, #'
+&amp;lt;         @response.body, "No match for regexp\n($\(['\"]#{div}['\"]\).update\(|Element.update\(.*#{div}.*,)['\"].*#{content.source}.*['\"]\);\nin response.body\n#{@response.body}" 
+---
+&gt;         assert_match /(\$\(['"]#{div}['"]\).update\(['"]|Element.update\(.*#{div}.*,['"]).*?\);/, #'
+&gt;             @response.body
+56,58c56,58
+&amp;lt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");!)), #" 
+&amp;lt;         "No replace_html call found on div: '#{div}' and content: #{content} matching either\n" + "Element.update(\"#{div}\", #{content});" + "\nor\n" + 
+&amp;lt;                       %Q!$("#{div}").update(#{content});! + "\nin response:\n#{lined_response}\n#{lined_response.class}" 
+---
+&gt;         assert (lined_response.include?("Element.update(\"#{div}\", #{content});") || lined_response.include?(%Q!$("#{div}").update("#{content}");.*!)), #" 
+&gt;         "No replace_html call found on div: '#{div}' and content: \n#{content}\n" +
+&gt;                       "in response:\n#{lined_response}" 
+</pre>
+Hope it is useful
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="929";
+//--></script>
+<!-- mmc mmid:929 mmdate:2006-06-14 17:09:52 mmauthor:Chetan -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/881/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="881";
+//--></script>
+<!-- mmp mmid:881 mmdate:2006-05-29 13:51:00 mmurl:/articles/2006/05/29/guide-test-driven-rjs-with-arts mmtitle:Guide: Test Driven RJS with ARTS -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Powerset to Launch Front-end on Ruby</title>
+    <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Powerset to Launch Front-end on Ruby</title>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href="http://digg.com/programming/Powerset_to_Launch_Front_end_on_Ruby"&gt;Spread the word on digg&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://powerset.com" title="Powerset Homepage"&gt;Powerset&lt;/a&gt; is fairly well-known in the Ruby community, but there&amp;#8217;s a certain amount of confusion as to what we use it for. As a consequence, I&amp;#8217;m regularly asked what the front end is going to be written in, and just as regularly have to leave the question unanswered. But today I&amp;#8217;m happy to announce that &lt;strong&gt;we are, in fact, launching our &lt;em&gt;front-end&lt;/em&gt; on Ruby.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Cool, huh? For everyone&amp;#8217;s sanity (and in avoidance of some of the flame wars to ensue), do note that we are going to be using &lt;em&gt;Ruby&lt;/em&gt; (the language) but not necessarily &lt;em&gt;Ruby on Rails&lt;/em&gt; (the web framework).&lt;/p&gt;
+
+&lt;p&gt;In the spirit of Powerset&amp;#8217;s &lt;a href="http://www.blognewcomb.com/blog/2007/06/powerlabs_the_first_screenshot.html" title="Powerlabs' First Screenshot"&gt;new&lt;/a&gt; &lt;a href="http://blog.powerset.com/2007/6/8/politicians-who-died-in-office" title="Politicians Who Died in Office"&gt;found&lt;/a&gt; &lt;a href="http://blog.powerset.com/2007/6/16/what-did-steve-jobs-say-about-the-ipod" title="What did Steve Jobs say about the iPod?"&gt;openness&lt;/a&gt;, I&amp;#8217;d like to take some time to explain why we&amp;#8217;re making this decision where others might not.&lt;/p&gt;
+
+&lt;h2&gt;Why Ruby?&lt;/h2&gt;
+
+&lt;h3&gt;1. We&amp;#8217;ve already got the brains&lt;/h3&gt;
+
+&lt;p&gt;One thing we haven&amp;#8217;t kept secret is that we&amp;#8217;ve hired some of the &lt;a href="http://rubyisawesome.com/" title="Tom Werner"&gt;best&lt;/a&gt; &lt;a href="http://vandev.com/" title="Chris Van Pelt"&gt;Ruby&lt;/a&gt; &lt;a href="http://kirindave.tumblr.com/" title="Dave Fayram"&gt;developers&lt;/a&gt; &lt;a href="http://www.workingwithrails.com/person/851-toby-sterrett" title="Toby Sterrett"&gt;around&lt;/a&gt;. Our total number of day in day out Ruby developers is somewhere around 10, and I&amp;#8217;m constantly humbled to be working with this team. We&amp;#8217;ve got the people and they have the skills, so it makes sense to apply them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://farm2.static.flickr.com/1412/577677982_7f43f5943f.jpg" alt="The part of Powerset Ruby we could round up"/&gt;&lt;/p&gt;
+
+&lt;h3&gt;2. Ruby is already being used throughout the company&lt;/h3&gt;
+
+&lt;p&gt;We&amp;#8217;ve always spoken in general terms about how much Ruby is being used internally, but let&amp;#8217;s get specific: a substantial part of our infrastructure is being written in Ruby or being accessed through Ruby services. Our scientists use Ruby to interact with our core language technology. Our packaging infrastructure is Ruby. A big portion of our system administration work is all done with Ruby. Frankly, we as an organization use Ruby a whole heck of a lot.&lt;/p&gt;
+
+&lt;p&gt;Additionally, all of our product demos and prototypes are also in Ruby. We&amp;#8217;ve got an interesting mix of &lt;a href="http://www.rubyonrails.org/" title="Ruby on Rails"&gt;Rails&lt;/a&gt;, &lt;a href="http://merb.devjavu.com/" title="Merb"&gt;Merb&lt;/a&gt; and &lt;a href="http://redhanded.hobix.com/bits/campingAMicroframework.html" title="Camping"&gt;Camping&lt;/a&gt; apps (depending on the scope of the project) connecting to tiny Ruby services which hook into our various back-end systems. Day to day, the majority of the product team is hacking in Ruby in some capacity.&lt;/p&gt;
+
+&lt;h3&gt;3. We&amp;#8217;re not worried about scaling&lt;/h3&gt;
+
+&lt;p&gt;So, inevitably, whenever we talk about Ruby or Rails scaling these days someone brings up &lt;a href="http://twitter.com"&gt;Twitter&lt;/a&gt; and its &lt;a href="http://www.slideshare.net/Blaine/scaling-twitter" title="Blaine's Scaling Twitter Slides from SVRC"&gt;scaling&lt;/a&gt; &lt;a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/" title="Alex Payne's Interview"&gt;problems&lt;/a&gt; in the past. Twitter is right down the block from our offices and I know several of the devs personally, so before we made a final decision I arranged a sit down with Twitter&amp;#8217;s lead developer, Blaine Cook, to talk about the situation. Blaine was kind enough to let me bring along our Search Architect (and former search architect at Yahoo!) Chad Walters , our Head of Product Scott Prevost, and our COO Steve Newcomb, to poke and prod and get their questions answered. &lt;strong&gt;The simple fact is that Ruby wasn&amp;#8217;t the source of Twitter&amp;#8217;s woes.&lt;/strong&gt; As it often happens with &lt;a href="http://www.alexa.com/data/details/traffic_details?site0=twitter.com&amp;amp;site1=&amp;amp;site2=&amp;amp;site3=&amp;amp;site4=&amp;amp;y=p&amp;amp;z=0&amp;amp;h=300&amp;amp;w=610&amp;amp;range=6m&amp;amp;size=Medium&amp;amp;url=usopen.com" title="Twitter's Growth on Alexa"&gt;rapidly growing sites&lt;/a&gt;, they ran into architectural problems. Some design decisions don&amp;#8217;t hurt until they reach a massive scale and at that point you have to rethink your approach. In an email he writes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;For us, it&amp;#8217;s really about scaling horizontally - to that end, Rails and 
+     Ruby haven&amp;#8217;t been stumbling blocks, compared to any other language or 
+     framework. The performance boosts associated with a &amp;#8220;faster&amp;#8221; language would 
+     give us a 10-20% improvement, but thanks to architectural changes that Ruby 
+     and Rails happily accommodated, Twitter is 10000% faster than it was in 
+     January&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is great news for Twitter, but even better for us because we don&amp;#8217;t have the bottle necks that they&amp;#8217;ve struggled with &amp;#8211; databases, instant messaging servers, and regularly recycling cache systems &amp;#8211; which makes scaling horizontally much much smoother. At that point, our scaling issue doesn&amp;#8217;t concern Ruby. For a search engine, the front-end is largely just a templating system and the real work happens in the back when we process your query.&lt;/p&gt;
+
+&lt;h2&gt;What does this mean for the community?&lt;/h2&gt;
+
+&lt;p&gt;When writing this article, at some point I had to sit down and ask myself why anyone should care we&amp;#8217;re adopting Ruby for the front-end. For me, it comes down to the fact that we&amp;#8217;re good for the community as a whole.&lt;/p&gt;
+
+&lt;p&gt;First off, the fact that Powerset is deploying on Ruby means you&amp;#8217;ve got one more high traffic site (potentially very high traffic) using Ruby in production. It&amp;#8217;s one more case study, and one more example that Ruby as a whole is ready for the big show. &lt;/p&gt;
+
+&lt;p&gt;Personally, I think the more interesting and useful thing to take away from this is that as we do the heavy lifting, building up infrastructure around all the aspects of Ruby development and deployment in the company, we&amp;#8217;re selecting large chunks to be open-sourced. I&amp;#8217;ve got a list of things I&amp;#8217;d love to put out into the wild (which is encouraged, and actually suggested by my manager. Man, I love this place) as soon as I can find the time. Already &lt;a href="http://rubyisawesome.com/" title="Tom Werner"&gt;Tom Werner&lt;/a&gt; and &lt;a href="http://kirindave.tumblr.com/" title="Dave Fayram"&gt;Dave Fayram&lt;/a&gt; have pushed out Ruby to Erlang bindings and a sweet little (in-development) web server called &lt;a href="http://code.google.com/p/fuzed/" title="Fuzed Codebase"&gt;Fuzed&lt;/a&gt;, I&amp;#8217;ve gotten to hack at &lt;a href="http://merb.devjavu.com/" title="Merb"&gt;Merb&lt;/a&gt;, and a fair about of &lt;a href="http://www.rubyonrails.org/" title="Ruby on Rails"&gt;Rails&lt;/a&gt; patches have come directly from work in-house. Hopefully the community will be able to benefit from our code as much as we have.&lt;/p&gt;
+
+&lt;p&gt;Obviously we don&amp;#8217;t have a search product open to the public yet, but we&amp;#8217;ll be launching &lt;a href="http://labs.powerset.com/" title="Powerlabs"&gt;Powerlabs&lt;/a&gt; in September.  In Powerlabs, you&amp;#8217;ll be able to play with our products and give us feedback.  If you want to keep track of what Powerset is doing, &lt;a href="http://powerset.com" title="Powerset Homepage"&gt;sign up&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Thu, 21 Jun 2007 12:41:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:106b3fdf-8a7a-4f42-8da0-08506238d82f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby</link>
+      <category>Ruby</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"Powerset to Launch Front-end on Ruby" by Kevin Clark</title>
+      <description>&lt;p&gt;John: Short answer: yes. Long answer: you&amp;#8217;ll have to talk to Dave and Tom about it. I&amp;#8217;m always excited about it when they explain it to me, and I&amp;#8217;ve always forgotten exactly what was so exciting the next week.&lt;/p&gt;</description>
+      <pubDate>Mon, 25 Jun 2007 23:22:01 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:26ca15aa-2704-4557-970d-46ee0d576bf9</guid>
+      <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comment-1469</link>
+    </item>
+    <item>
+      <title>"Powerset to Launch Front-end on Ruby" by John Benjamin</title>
+      <description>&lt;p&gt;Why create fuzed?  Does it do something mongrel doesn&amp;#8217;t?&lt;/p&gt;</description>
+      <pubDate>Sun, 24 Jun 2007 15:50:08 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7c18539d-397b-47e9-95fa-5882ea6b4f22</guid>
+      <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comment-1468</link>
+    </item>
+    <item>
+      <title>"Powerset to Launch Front-end on Ruby" by Rick DeNatale</title>
+      <description>&lt;p&gt;Absolutely.  I&amp;#8217;ve seen this same story before.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://talklikeaduck.denhaven2.com/articles/2007/06/22/good-news"&gt;http://talklikeaduck.denhaven2.com/articles/2007/06/22/good-news&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Fri, 22 Jun 2007 18:05:22 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c9915362-eb71-4e7a-a839-ce326956ab89</guid>
+      <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comment-1467</link>
+    </item>
+    <item>
+      <title>"Powerset to Launch Front-end on Ruby" by Gabe da Silveira</title>
+      <description>&lt;p&gt;Yeah, the whole scaling debate is getting so tired.  I can see how it was a legitimate question (among many) when Rails first got hot, but these days it keeps popping up as some kind of defense-mechanism from entrenched J2EE guys.&lt;/p&gt;
+
+
+	&lt;p&gt;The bottom line is architectures scale, not languages.&lt;/p&gt;</description>
+      <pubDate>Thu, 21 Jun 2007 13:03:50 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8215ee05-ab76-4097-bc5b-aa3a4a932f5e</guid>
+      <link>http://glu.ttono.us/articles/2007/06/21/powerset-to-launch-front-end-on-ruby#comment-1466</link>
+    </item>
+  </channel>
+</rss>

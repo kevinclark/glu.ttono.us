@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Live at RailsConf</title>
+    <link>http://glu.ttono.us/articles/2006/06/23/live-at-railsconf</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Live at RailsConf</title>
+      <description>&lt;p&gt;Good morning folks. Today I&amp;#8217;m coming to you live from RailsConf in Chicago and I&amp;#8217;ll be blogging a good portion of it. Stay tuned for the first keynote of the conference by Dave Thomas.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re in the windy city and would like to say hello, I&amp;#8217;m &lt;a href="http://facebook.railsconf.org/users/14"&gt;this one&lt;/a&gt; and I don&amp;#8217;t bite, so come introduce yourself.&lt;/p&gt;
+
+&lt;p&gt;It looks like the hotel is blocking Bonjour making SubEthaEdit a non option, but I&amp;#8217;ll do my best.&lt;/p&gt;</description>
+      <pubDate>Fri, 23 Jun 2006 08:48:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ba7b8a38-1615-4eca-82d9-535c2f83948a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/23/live-at-railsconf</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

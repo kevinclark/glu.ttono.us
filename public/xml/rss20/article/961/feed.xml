@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The Caboose Pushes Rails Documentation</title>
+    <link>http://glu.ttono.us/articles/2006/08/04/the-caboose-pushes-rails-documentation</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The Caboose Pushes Rails Documentation</title>
+      <description>&lt;p&gt;You&amp;#8217;ve probably noticed &lt;a href="http://slash7.com"&gt;many&lt;/a&gt; &lt;a href="http://robbyonrails.com"&gt;of&lt;/a&gt; &lt;a href="http://brainspl.at"&gt;the&lt;/a&gt; &lt;a href="http://www.jroller.com/page/obie"&gt;popular&lt;/a&gt; &lt;a href="http://www.nimblecode.com/"&gt;Rails&lt;/a&gt; &lt;a href="http://www.jvoorhis.com/"&gt;writers&lt;/a&gt; are &lt;a href="http://glu.ttono.us/"&gt;working&lt;/a&gt; on books. Since we&amp;#8217;re all off working on other sources of documentation we really haven&amp;#8217;t had time to work on the Rails API docs themselves. This is our attempt to push things in the right direction.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://habtm.com"&gt;Courtenay&lt;/a&gt; has &lt;a href="http://blog.caboo.se/articles/2006/08/04/the-caboose-rails-documentation-project"&gt;started up a paypal account&lt;/a&gt; for donations which would go to funding someone to give the API docs some sweet sweet lovin&amp;#8217;. We&amp;#8217;re shooting for 5000 USD. I&amp;#8217;ll be putting in $100 and some adsense revenue. Do your part. Help us get better docs.&lt;/p&gt;
+
+&lt;p&gt;Donate via Paypal:&lt;/p&gt;
+
+&lt;form action="https://www.paypal.com/cgi-bin/webscr" method="post"&gt;
+&lt;input type="hidden" name="cmd" value="_s-xclick"&gt;
+&lt;input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"&gt;
+&lt;img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"&gt;
+&lt;input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+"&gt;
+&lt;/form&gt; 
+
+&lt;p&gt;Watch the &lt;a href="http://blog.caboo.se/pages/documentation_drive"&gt;donations&lt;/a&gt; roll in.&lt;/p&gt;</description>
+      <pubDate>Fri, 04 Aug 2006 16:44:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7387dba0-930a-4038-ab43-ac6420e99773</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/04/the-caboose-pushes-rails-documentation</link>
+      <category>Rails</category>
+      <category>documentation</category>
+    </item>
+  </channel>
+</rss>

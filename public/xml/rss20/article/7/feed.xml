@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Using Subversion with Rails Code Generation</title>
+    <link>http://glu.ttono.us/articles/2005/08/27/using-subversion-with-rails-code-generation</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Using Subversion with Rails Code Generation</title>
+      <description>&lt;p&gt;Subversion is a wonderful thing. Unfortunately, when using rails code generators it can be annoying adding all the newly generated files by hand. Using &lt;code&gt;script/destroy&lt;/code&gt; can be hazardous because subversion will complain the files are not there, but have not been flagged for removal from the repository.&lt;/p&gt;
+
+&lt;p&gt;So, I wrote a &lt;a href="http://dev.rubyonrails.com/ticket/2064"&gt;patch&lt;/a&gt;. If it is accepted, you should be able to do things like:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;[Dionysus:~/web/testbed] kevincla% script/generate model -c Monkey
+      exists  app/models/
+      exists  test/unit/
+      exists  test/fixtures/
+      create  app/models/monkey.rb
+A         app/models/monkey.rb
+      create  test/unit/monkey_test.rb
+A         test/unit/monkey_test.rb
+      create  test/fixtures/monkeys.yml
+A         test/fixtures/monkeys.yml
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;And all of your happy new code will go into your repository automatically. My patch also accounts for code which has been marked for addition which you would like to delete, so if you just ran the code above and then do &lt;code&gt;script/destroy model -c Monkey&lt;/code&gt; it will revert the files and then delete them without any messy svn warnings.&lt;/p&gt;</description>
+      <pubDate>Sat, 27 Aug 2005 21:51:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:02bdb767ec32ddc86cc01787385cf64d</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/27/using-subversion-with-rails-code-generation</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/7</trackback:ping>
+    </item>
+    <item>
+      <title>"Using Subversion with Rails Code Generation" by Procreate</title>
+      <description>&lt;p&gt;Turnaround time of one day. &amp;#8220;It doesn&amp;#8217;t suck.&amp;#8221; :)&lt;/p&gt;</description>
+      <pubDate>Sun, 28 Aug 2005 22:10:37 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ec721b7c-e988-4e6b-a8de-745819923a7e</guid>
+      <link>http://glu.ttono.us/articles/2005/08/27/using-subversion-with-rails-code-generation#comment-50</link>
+    </item>
+  </channel>
+</rss>

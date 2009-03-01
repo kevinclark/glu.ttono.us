@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Single Table Inheiritence (in Rails) for the impatient</title>
+    <link>http://glu.ttono.us/articles/2005/08/24/single-table-inheiritence-for-the-impatient</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Single Table Inheiritence (in Rails) for the impatient</title>
+      <description>&lt;ul&gt;
+&lt;li&gt;Create a column to hold the object type (automagically works for &amp;#8216;type&amp;#8217;) in the table corresponding to the model you want to inheirit from.&lt;/li&gt;
+&lt;li&gt;Create a model, and set it to inherit like so:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+Class BaseClass &lt; ActiveRecord::Base
+end
+
+Class ChildClass &lt; BaseClass
+end
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Profit!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No, but seriously, you can now use ChildClass.new to create a new ChildClass. It will use the same table as BaseClass. If you want the child class to have more attributes than its parent, add more columns and simply ignore them for the parent. For a full rationale behind why just ignoring them is ok, buy the Agile Rails book. It boils down to convenience and utility. We can easily do this. If you want to impose restrictions on your own to stop base classes or children of a common base class from accessing each others attributes, you&amp;#8217;re welcome to add it to the model code.&lt;/p&gt;
+
+&lt;p&gt;For more information, including how to set the column to be something other than type, see the &lt;a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html"&gt;api documentation&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Wed, 24 Aug 2005 03:10:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:cdfaf5af88d7ff0ad0f7e4bb7f400a03</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/24/single-table-inheiritence-for-the-impatient</link>
+      <category>Ruby</category>
+      <category>Rails</category>
+      <category>Web Dev</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/6</trackback:ping>
+    </item>
+  </channel>
+</rss>

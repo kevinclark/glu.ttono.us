@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Depth First Search</title>
+    <link>http://glu.ttono.us/articles/2007/11/27/depth-first-search</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Depth First Search</title>
+      <description>&lt;p&gt;Because I hadn&amp;#8217;t implemented DFS in Ruby before, and it&amp;#8217;s just so damn easy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Phillip rightly pointed out in the comments that with the yield at the end, it&amp;#8217;s actually post-order traversal, not depth first search per se.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;TreeNode&lt;/span&gt;
+  &lt;span class="ident"&gt;attr_reader&lt;/span&gt; &lt;span class="symbol"&gt;:name&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;initialize&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;name&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="attribute"&gt;@name&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;name&lt;/span&gt;
+    &lt;span class="attribute"&gt;@children&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;[]&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;node&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="attribute"&gt;@children&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="ident"&gt;node&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;each_depth_first&lt;/span&gt;
+    &lt;span class="attribute"&gt;@children&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;child&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;child&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_depth_first&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+        &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="ident"&gt;c&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="keyword"&gt;yield&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="comment"&gt;# root  -  a  -  b&lt;/span&gt;
+&lt;span class="comment"&gt;#   \       \ &lt;/span&gt;
+&lt;span class="comment"&gt;#    e - f   c  -  d&lt;/span&gt;
+&lt;span class="comment"&gt;#     \&lt;/span&gt;
+&lt;span class="comment"&gt;#      g&lt;/span&gt;
+
+&lt;span class="ident"&gt;root&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;root&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)&lt;/span&gt;
+&lt;span class="ident"&gt;root&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt; &lt;span class="ident"&gt;a&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt; &lt;span class="ident"&gt;b&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt; &lt;span class="ident"&gt;c&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;c&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt; &lt;span class="ident"&gt;d&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;d&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;root&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;e&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;e&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;e&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;f&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;f&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+&lt;span class="ident"&gt;e&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;add_node&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;g&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;TreeNode&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;g&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;))&lt;/span&gt;
+
+&lt;span class="ident"&gt;root&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_depth_first&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;child&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+  &lt;span class="ident"&gt;puts&lt;/span&gt; &lt;span class="ident"&gt;child&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;name&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="comment"&gt;# produces:&lt;/span&gt;
+&lt;span class="comment"&gt;# b&lt;/span&gt;
+&lt;span class="comment"&gt;# d&lt;/span&gt;
+&lt;span class="comment"&gt;# c&lt;/span&gt;
+&lt;span class="comment"&gt;# a&lt;/span&gt;
+&lt;span class="comment"&gt;# f&lt;/span&gt;
+&lt;span class="comment"&gt;# g&lt;/span&gt;
+&lt;span class="comment"&gt;# e&lt;/span&gt;
+&lt;span class="comment"&gt;# root&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Tue, 27 Nov 2007 14:24:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:480cc50f-3d8f-4daf-b0e0-54766a79d0b3</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/11/27/depth-first-search</link>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+    <item>
+      <title>"Depth First Search" by Kevin Clark</title>
+      <description>&lt;p&gt;Phillip: Quite right. Long day. Sorry.&lt;/p&gt;
+
+
+	&lt;p&gt;Uzytkownik: Also true.&lt;/p&gt;</description>
+      <pubDate>Wed, 28 Nov 2007 03:39:05 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d64853a5-46cf-4381-ad30-75a4941620eb</guid>
+      <link>http://glu.ttono.us/articles/2007/11/27/depth-first-search#comment-1510</link>
+    </item>
+    <item>
+      <title>"Depth First Search" by Philip</title>
+      <description>&lt;p&gt;Don&amp;#8217;t mean to split hairs, but I think you meant &amp;#8216;postorder&amp;#8217; search (traversal), not depth-first..&lt;/p&gt;
+
+
+	&lt;p&gt;Depth-first would output root, a,b,c,e,f,g  
+ (and would be equally as easy to implement, which was the gist of your post, I think)&lt;/p&gt;</description>
+      <pubDate>Tue, 27 Nov 2007 18:56:13 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:a547dd0f-ce77-44c7-91e0-c0087c87a35f</guid>
+      <link>http://glu.ttono.us/articles/2007/11/27/depth-first-search#comment-1509</link>
+    </item>
+    <item>
+      <title>"Depth First Search" by Uzytkownik</title>
+      <description>&lt;p&gt;&amp;gt; a = TreeNode.new(&amp;#8220;a&amp;#8221;)
+&amp;gt; root.add_node( a = TreeNode.new(&amp;#8220;a&amp;#8221;))&lt;/p&gt;
+
+
+	&lt;p&gt;I don&amp;#8217;t think the first line is needed ;)&lt;/p&gt;</description>
+      <pubDate>Tue, 27 Nov 2007 17:05:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4ce14c37-0b6f-425f-a81b-18ab4163024a</guid>
+      <link>http://glu.ttono.us/articles/2007/11/27/depth-first-search#comment-1508</link>
+    </item>
+  </channel>
+</rss>

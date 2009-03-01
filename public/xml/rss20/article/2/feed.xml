@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: A Quick Slip of the Keyboard..</title>
+    <link>http://glu.ttono.us/articles/2005/08/17/a-quick-slip-of-the-keyboard</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>A Quick Slip of the Keyboard..</title>
+      <description>&lt;p&gt;Has anyone else accidentally typed &amp;#8216;rm .&amp;#8217; instead of &amp;#8217;&lt;a href="http://macromates.com/"&gt;tm&lt;/a&gt; .&amp;#8217;?&lt;/p&gt;</description>
+      <pubDate>Wed, 17 Aug 2005 17:54:47 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:879f18d96ddeb11080559a4b62a6b105</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/17/a-quick-slip-of-the-keyboard</link>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/2</trackback:ping>
+    </item>
+    <item>
+      <title>"A Quick Slip of the Keyboard.." by Charles M. Gerungan</title>
+      <description>&lt;p&gt;Holy cow, no! But, I&amp;#8217;ve renamed the tm command, I&amp;#8217;ll tell you that.&lt;/p&gt;</description>
+      <pubDate>Mon, 22 Aug 2005 07:31:07 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:70051c65-536e-4570-bb83-25ce9cedf17e</guid>
+      <link>http://glu.ttono.us/articles/2005/08/17/a-quick-slip-of-the-keyboard#comment-46</link>
+    </item>
+  </channel>
+</rss>

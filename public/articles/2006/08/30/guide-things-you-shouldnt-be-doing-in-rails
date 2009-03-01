@@ -1,0 +1,1724 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Guide: Things You Shouldn't Be Doing In Rails</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Guide: Things You Shouldn't Be Doing In Rails"
+    dc:identifier="http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails"
+    dc:description="Koz recently checked code into core that kicks and screams all the way home if you&amp;#8217;re using deprecated methods or instance variables. In honor of this I&amp;#8217;ve decided to give you a list of things I still see over and over in Rails code that you"
+    dc:creator="kevin"
+    dc:date="2006-09-03T23:10:39-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/982" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Guide: Things You Shouldn't Be Doing In Rails</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Wed, 30 Aug 2006 05:32:00 GMT">Wed, 30 Aug 2006 05:32:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Koz recently checked code into core that kicks and screams all the way home if you&#8217;re using deprecated methods or instance variables. In honor of this I&#8217;ve decided to give you a list of things I still see over and over in Rails code that you really shouldn&#8217;t be doing anymore. Really. Trust me on this.</p>
+
+<p><strong>Update:</strong> There&#8217;s been enough controversy over this article that I&#8217;ve <a href="http://glu.ttono.us/articles/2006/08/30/on-the-days-events">responded</a>.</p><h3>Accessing Instance Variables You Didn&#8217;t Create</h3>
+
+<p>It&#8217;s time to stop using the instance variables for <code>params</code>, <code>flash</code>, <code>session</code>, <code>request</code>, <code>response</code> and all of their formerly preceded by an <code>@</code> friends. This has been deprecated for a while but it looks like it hasn&#8217;t circulated well. When you use the instance variable directly it makes it hard for the core devs to change the implementation. It also means you&#8217;ll have broken code sooner than later so kindly remove your <code>@</code>s. Yes, I know there&#8217;s still documentation that uses it. Please <a href="http://dev.rubyonrails.org/newticket">file a ticket</a>.</p>
+
+<p>rabble (who you&#8217;ll hear more from later) also suggests that you not intermix usages of <code>flash[:notice]</code> with <code>flash['notice']</code> and the like. I personally prefer the symbol version and I&#8217;d encourage you to use that. You save yourself an entire keystroke <em>and</em> memory usage. What&#8217;s better than that?</p>
+
+<h3>Using Deprecated Finders</h3>
+
+<p><code>find_all</code> and <code>find_first</code> have been deprecated over a year now. Stop using them. While you&#8217;re at it, stop using render_partial. Their better educated cousin <code>find</code> can handle all their needs. Use <code>find(:first)</code>, <code>find(:all)</code> and <code>render :partial</code>.</p>
+
+<h3>Getting Ahead of Yourself</h3>
+
+<p>Stop trying to write &#8220;neato ajax driven thingies&#8221; before you understand how to write it properly without ajax. In fact, write the non-ajax version first. Always. It means that you&#8217;ll have a place to fallback to if the client doesn&#8217;t support javascript. It will also keep you from doing things like writing a separate action for the ajax and non ajax version of a form. We&#8217;ve got respond_to for that. Use it.</p>
+
+<p>Stop asking for things not directly related to your problem. If you&#8217;re seeing an exception you don&#8217;t expect ask about that. Don&#8217;t ask about if anyone has heard of problems in some library. This really should be generalized for asking all questions: <strong>Ask your question directly and with as much information about the problem as possible</strong>. This doesn&#8217;t mean I want to see all of your logs and your codebase. This does mean that I&#8217;d like to hear what the error message is or what isn&#8217;t working. If you&#8217;re not using the latest version of Rails, please specify.</p>
+
+<h3>Fallin&#8217; off the wagon</h3>
+
+<p>Scaffolding isn&#8217;t for production. Overcome your addiction. It shouldn&#8217;t be modified to be more customizable. Developers should instead <em>learn to write Rails code</em>. It takes far less time and should produce less mediocre code. It&#8217;s good for the screencast and not much else. Leave it alone. If you insist on a bootstrap database administration interface take a look at <a href="http://streamlined.relevancellc.com/">Streamlined</a>.</p>
+
+<h3>Using Components</h3>
+
+<p>Components don&#8217;t belong in Rails. Don&#8217;t use them. They weren&#8217;t an extraction. They weren&#8217;t well planned. When you want to use a component it is probably because you misunderstand them or really want a partial. Rethink what you&#8217;re doing. The rest of the Rails world has written off components for a reason and they&#8217;ll probably be deprecated by 2.0. Resist.</p>
+
+<h3>Using Engines (Improperly)</h3>
+
+<p>Yes, I know you&#8217;d like to have an authentication system without doing any work. Yes, I know Rails preaches convention over configuration. This is not a place where it applies. This is, as we say back in the hood, &#8220;too much software&#8221;. It&#8217;s also a nasty hack that breaks every new version of Rails because it hooks into internals that aren&#8217;t publicly supported. These are akin to scaffolding. You&#8217;ll be happier without them.</p>
+
+<p><strong>Update</strong>: This could use some clarification. Engines aren&#8217;t de-facto evil. However, the way most people use them _is_. If you&#8217;d like to have the same functionality across several of your apps you may want to use engines. My problem with them is that they become a slipperly slope for drop-in turn-key applications. Don&#8217;t use them like that. As long as you&#8217;re not using them as a once size fits all solution, you&#8217;re probably ok.</p>
+
+<h3>Not Using Layouts</h3>
+
+<p>Please, take advantage of layouts. I&#8217;m tired of seeing broken views that include 40 lines of container stuff. Using layouts means that you and I both have less to look at to fix your bug. It&#8217;s also much DRYer so you get to make a single change to a layout instead of lots of changes to lots of views. I had to do that for a client once. Two hours spent on a tiny crappy website reworking headers. Don&#8217;t do this to yourself. I&#8217;ve reopened old wounds just thinking about it. </p>
+
+<h3>Using (The Built In) Pagination</h3>
+
+<p>A core member chipped this one in (which I&#8217;d been contemplating). I haven&#8217;t used pagination in my last 15 projects. The pagination code is ugly. Ugly ugly. Many of us would love to see it gone. It&#8217;ll probably be extracted to a plugin though so if you need it you&#8217;ll be ok. Look for this to be deprecated in the next few versions of Rails. </p>
+
+<p>Oh, and if you don&#8217;t believe me, listen to <a href="http://anarchogeek.com/">rabble</a>, former lead dev at <a href="http://odeo.com">Odeo</a> and a <a href="http://caboo.se">Caboose</a>r:</p>
+
+<blockquote>
+    <p>The paginator produces horribly unscalable code which will bring your server to a halt. &#8211; rabble</p>
+</blockquote>
+
+<p>See? A halt! Sufficiently frightened? You should be. <strong>Update: If you&#8217;re one of the apparent many who took offense to these last few statements, you missed the grin I had when I wrote it. Don&#8217;t run screaming. Just be aware that using things that are (or will be) deprecated can cause you problems.</strong></p>
+
+<p>Now, stop using these things. It&#8217;s for your own good. I may do an article on the things I&#8217;m really happy about in Rails in the near future. Let me know what you think.</p>
+
+<p>Oh, and take interest in your fellow coder and let them know about their mistakes by <a href="http://digg.com/programming/Things_You_Shouldn_t_Do_In_Rails">digging this guide.</a></p>
+
+<p><strong>Updates</strong>: The concept of pagination isn&#8217;t a problem. The rails implementation of pagination (and the associated helpers) can be. As for the scaling comment, pagination will work fine for a blog. You&#8217;ll start seeing problems when you&#8217;re working with tables with millions of rows. If you don&#8217;t need to deal with that it may not be a problem. Just be aware.</p>
+
+<p><strong>Update #2</strong>: I&#8217;m adding this just because <a href="http://techno-weenie.net">Rick Olson</a> of the core team says it so much better than I do:</p>
+
+<blockquote>
+    <p>Kevin&#8217;s speaking out against the Rails Pagination classes, not pagination 
+    itself. The Rails Paginator is difficult to use for all but the simplest of 
+    queries. It&#8217;s also inefficient in various ways.</p>
+</blockquote>
+
+<p>Via <a href="http://weblog.rubyonrails.com/2006/8/30/things-you-shouldn-t-do-in-rails">Riding Rails</a>.</p>
+
+<h3>Major Updates</h3>
+
+<p>My friend <a href="http://blog.integralimpressions.com/">Chris Abad</a> (<a href="http://sdruby.com">sd.rb</a>er and all around great guy) pointed this one out&#8230;</p>
+
+<h4>Putting Controllers in Namespaces</h4>
+
+<p>This is really more trouble than it&#8217;s worth. You run into all sorts of crazy errors if you do this and you&#8217;ll be confused and frustrated. You&#8217;ll then ask other people about it and they&#8217;ll either blow you off for using namespaces with controllers or procede to get confused and frustrated as well. Then you&#8217;ll say, &#8220;I with I had listened to Kevin and Chris&#8221;. If you want <code>/admin/some_controller</code> as an URL that&#8217;s fine. Use the routing that&#8217;s built into rails.</p>
+
+<h4>For The PHP Trolls and Frightened Ruby Devs</h4>
+
+<p>I&#8217;m sorry if you took this the wrong way. This article is purely my opinion and some obviously disagree with me. The important thing to note is that <strong>although I consider these things rough spots, I&#8217;m still a die-hard Ruby and Rails coder. The feeling (and speed) I get from working with these tools can&#8217;t be found in any other language or framework. Period.</strong> Don&#8217;t be afraid because there are pitfalls &#8211; that&#8217;s true in any situation. Just be aware of these things. I&#8217;ll post a list of the things I <em>love</em> about Rails (and you may want to use) later in the week.</p>
+
+<p>Book-wise, you&#8217;re still in good hands. Agile Web Dev with Rails is being cleaned up for the second edition. Ruby for Rails is quite good. These guys won&#8217;t lead you down the wrong path. This article is just meant as a wake-up call to those who still haven&#8217;t heard about the updates.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails#comments">89 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-983"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_983'); }"  onmouseout="Element.hide('admin_comment_983');" >
+  <div id="admin_comment_983" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/983', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-983&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/983" class="admintools">edit</a></div>
+  <a name="comment-983"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Rob</strong> </cite> said about 2 hours later:<br />
+  <p>Interesting read. Pretty much all of my limited Rails knowledge comes from the Agile Rails book.</p>
+
+
+	<p>Is there some kind of official list of all the things that were once common practice but are now horribly deprecated as well as their accepted alternatives? I think that would help a lot of my confusion with Rails. Obviously the new code you mentioned will tell me when I&#8217;ve used something deprecated, but it would be nice to avoid the mistakes before I make them.</p>
+
+
+	<p>And as far as pagination goes&#8212;don&#8217;t use it <em>ever, ever</em>? There must be instances where paging is helpful and can be done without too much overhead, right?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="983";
+//--></script>
+<!-- mmc mmid:983 mmdate:2006-08-30 03:04:32 mmauthor:Rob -->
+</li>
+<li id="comment-984" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_984'); }"  onmouseout="Element.hide('admin_comment_984');" >
+  <div id="admin_comment_984" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/984', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-984&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/984" class="admintools">edit</a></div>
+  <a name="comment-984"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 2 hours later:<br />
+  <p>Rob: Pagination is a fine thing. Ours just has some issues. When I use pagination I do custom pagination with the Paginator object. I&#8217;ve heard of other Rails coders I respect doing the same.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="984";
+//--></script>
+<!-- mmc mmid:984 mmdate:2006-08-30 03:36:55 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-985"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_985'); }"  onmouseout="Element.hide('admin_comment_985');" >
+  <div id="admin_comment_985" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/985', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-985&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/985" class="admintools">edit</a></div>
+  <a name="comment-985"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Cesar</strong> </cite> said about 2 hours later:<br />
+  <p>What should we use to paginate a large record set? You mean we should not use the pagination helper and use the Paginator object instead? or make our own pagination implementation.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="985";
+//--></script>
+<!-- mmc mmid:985 mmdate:2006-08-30 03:47:30 mmauthor:Cesar -->
+</li>
+<li id="comment-986"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_986'); }"  onmouseout="Element.hide('admin_comment_986');" >
+  <div id="admin_comment_986" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/986', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-986&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/986" class="admintools">edit</a></div>
+  <a name="comment-986"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=df5e7adb20adae6c120b04e7cafb15a0&amp;size=60" />
+  <cite><strong><a href="http://www.robsanheim.com">Rob Sanheim</a></strong> </cite> said about 2 hours later:<br />
+  <p>These kinds of articles are great, but you know what would be better?</p>
+
+
+	<p><a href="http://deprecated.rubyonrails.org">http://deprecated.rubyonrails.org</a> &#8230;as in when deprecations get logged with a nasty message, they could say</p>
+
+
+	<p>&#8220;xxx is old and busted!!! &#8211; visit <a href="http://deprecated.rubyonrails.org">http://deprecated.rubyonrails.org</a> to find out why and to see what to replace it with&#8221;</p>
+
+
+	<p>It would be nice to have a central resource to point newbies to (<strong>cough</strong>30%_of_rails-talk<strong>cough</strong>)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="986";
+//--></script>
+<!-- mmc mmid:986 mmdate:2006-08-30 03:56:49 mmauthor:Rob Sanheim -->
+</li>
+<li id="comment-987"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_987'); }"  onmouseout="Element.hide('admin_comment_987');" >
+  <div id="admin_comment_987" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/987', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-987&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/987" class="admintools">edit</a></div>
+  <a name="comment-987"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Wanderer</strong> </cite> said about 6 hours later:<br />
+  <p>Could you elaborate on the &#8220;Putting Controllers in Namespaces&#8221; ?</p>
+
+
+	<p>What kind of errors ? Why do they happen ? How exactly should we use routing instead ?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="987";
+//--></script>
+<!-- mmc mmid:987 mmdate:2006-08-30 07:05:51 mmauthor:Wanderer -->
+</li>
+<li id="comment-988"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_988'); }"  onmouseout="Element.hide('admin_comment_988');" >
+  <div id="admin_comment_988" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/988', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-988&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/988" class="admintools">edit</a></div>
+  <a name="comment-988"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=0241837e14b8920dd61bd573cc1f74fe&amp;size=60" />
+  <cite><strong><a href="http://www.davidjrice.co.uk">David Rice</a></strong> </cite> said about 6 hours later:<br />
+  <p>Wanderer, </p>
+
+
+	<pre><code>class Admin::AccountController &lt; AdminController</code></pre>
+
+
+	<p>generally things get a little messy. One fantastic error i got (i can&#8217;t remember the specific message) but if you have an admin model and try and create an admin controller to inherit from.  Check out <a href="http://habtm.com/articles/2006/07/01/if-your-models-arent-namespaced-why-should-your-controllers-be-or-how-i-learned-to-stop-worrying-and-love-the-crud">this post</a> for more information.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="988";
+//--></script>
+<!-- mmc mmid:988 mmdate:2006-08-30 07:20:59 mmauthor:David Rice -->
+</li>
+<li id="comment-989"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_989'); }"  onmouseout="Element.hide('admin_comment_989');" >
+  <div id="admin_comment_989" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/989', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-989&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/989" class="admintools">edit</a></div>
+  <a name="comment-989"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=0241837e14b8920dd61bd573cc1f74fe&amp;size=60" />
+  <cite><strong><a href="http://www.davidjrice.co.uk">David Rice</a></strong> </cite> said about 6 hours later:<br />
+  <p>Kevin,</p>
+
+
+	<p>I would agree with everything you&#8217;ve said;</p>
+
+
+	<pre><code>Pagination however i've yet to come up with enough reasons not to use the helper. Although grinding to a halt seems to be a big enough one... more specifics would be great if you can.</code></pre>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="989";
+//--></script>
+<!-- mmc mmid:989 mmdate:2006-08-30 07:24:43 mmauthor:David Rice -->
+</li>
+<li id="comment-990"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_990'); }"  onmouseout="Element.hide('admin_comment_990');" >
+  <div id="admin_comment_990" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/990', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-990&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/990" class="admintools">edit</a></div>
+  <a name="comment-990"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=f84dec4d81b73ba7fd576a51a82e6691&amp;size=60" />
+  <cite><strong><a href="http://wagaman.org">Benjamin Wagaman</a></strong> </cite> said about 9 hours later:<br />
+  <p>what is a good alternative to using pagination for large or small data sets?  producing XML????</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="990";
+//--></script>
+<!-- mmc mmid:990 mmdate:2006-08-30 10:06:40 mmauthor:Benjamin Wagaman -->
+</li>
+<li id="comment-991"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_991'); }"  onmouseout="Element.hide('admin_comment_991');" >
+  <div id="admin_comment_991" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/991', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-991&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/991" class="admintools">edit</a></div>
+  <a name="comment-991"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>atmos</strong> </cite> said about 9 hours later:<br />
+  <p>What&#8217;s a valid error that you&#8217;ll see with modulized controllers?  I don&#8217;t use them often, but I&#8217;ve never had a problem with them&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="991";
+//--></script>
+<!-- mmc mmid:991 mmdate:2006-08-30 10:39:48 mmauthor:atmos -->
+</li>
+<li id="comment-992"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_992'); }"  onmouseout="Element.hide('admin_comment_992');" >
+  <div id="admin_comment_992" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/992', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-992&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/992" class="admintools">edit</a></div>
+  <a name="comment-992"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=3b687a35025c05dbc7627af428dff0da&amp;size=60" />
+  <cite><strong><a href="http://www.johntopley.com/">John Topley</a></strong> </cite> said about 11 hours later:<br />
+  <p>This is great, but I really think that you need to expand on that pagination point! Can you imagine something like Flickr without pagination. What should we be doing?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="992";
+//--></script>
+<!-- mmc mmid:992 mmdate:2006-08-30 12:37:30 mmauthor:John Topley -->
+</li>
+<li id="comment-993"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_993'); }"  onmouseout="Element.hide('admin_comment_993');" >
+  <div id="admin_comment_993" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/993', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-993&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/993" class="admintools">edit</a></div>
+  <a name="comment-993"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Tom</strong> </cite> said about 11 hours later:<br />
+  <p>&#8220;The rest of the Rails world has written off components for a reason &#8230;&#8221;</p>
+
+
+	<p>I just got the updated Agile Web &#8230; Rails PDF, and, sure enough, it still covers components.  If Dave Thomas and DHH are bothering to put them in The Offical Rails Book, why are others insisting they have been written off?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="993";
+//--></script>
+<!-- mmc mmid:993 mmdate:2006-08-30 12:47:10 mmauthor:Tom -->
+</li>
+<li id="comment-994"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_994'); }"  onmouseout="Element.hide('admin_comment_994');" >
+  <div id="admin_comment_994" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/994', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-994&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/994" class="admintools">edit</a></div>
+  <a name="comment-994"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>jo</strong> </cite> said about 11 hours later:<br />
+  <p>Fortunately I haven&#8217;t much of these in my projects, but still: Why isn&#8217;t this in the official documentation?</p>
+
+
+	<p>Oh, and funnily enough it&#8217;s not only not in the documentation, but that bit about namespacing controllers is advertised in the freaking script/generate Controller help message&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="994";
+//--></script>
+<!-- mmc mmid:994 mmdate:2006-08-30 12:51:08 mmauthor:jo -->
+</li>
+<li id="comment-995"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_995'); }"  onmouseout="Element.hide('admin_comment_995');" >
+  <div id="admin_comment_995" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/995', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-995&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/995" class="admintools">edit</a></div>
+  <a name="comment-995"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Eric Anderson</strong> </cite> said about 11 hours later:<br />
+  <p>Very useful article. Things move so fast in the Rails world it is hard to keep track of the new practices that out date the old practices. Few quick comments:</p>
+
+
+	Pagination
+
+
+	<p>I agree that pagination can be misused. Not just from a performance standpoint. From a UI perspective it is overused. Having &#8220;next&#8221; and &#8220;previous&#8221; links tell you nothing. The user has to simply click page after page to find what they are looking for. Things like alphabars and <a href="http://demo.carrot-search.com/carrot2-webapp/main">categorized results</a> can provide much more info to your users. It requires really thinking about your data to determine the best alternative to pagination. Sometimes simple pagination is the best way but often there is a better alternative.</p>
+
+
+	Components
+
+
+	<p>I personally don&#8217;t agree that components are bad. There are some performance considerations (since an action must be executed which can be expensive) and partials are often a better choice but sometimes a component makes more sense from a software design perspective. Caching can often overcome the performance hit if it becomes an issue although I find limited usage of components do not introduces a significant performance hit.</p>
+
+
+	Engines
+
+
+	<p>I also don&#8217;t see the problem with engines.I just see them as a plugin which can easily contain views, models and controllers. I have found the login extremely useful and other engines such as a wiki engine, message board engine, etc could also be very useful. Sure you might have to override some of the functionality to fit your application but what you do not override is now being co-maintained with other people. This reduces your development time. I don&#8217;t consider generators a viable alternative. The login generator has been enhanced over time. If I had generated my code from an early version I would have to manually upgrade. With engines I can just svn update followed by a quick run of my test.</p>
+
+
+	<p>The fact that the Engines plugin uses undocumented API and can break on upgrades are just an implementation issue. To me this just points to an inadequacy in Rails since it doesn&#8217;t provide a real method for this type of interaction. Even with the inadequacy it is not something that the developer needs to deal with. If Rails breaks the Engines then a developer simply needs to wait for the Engine code to be upgraded. Until the upgrade is made the developer can keep the older version of Rails.</p>
+
+
+	_
+
+
+	<p>Overall your article is great. It&#8217;s helps get depreciation info out to developers which is not well documented in other places. Even for the case of pagination, components and engines I think developers need to understand the drawback of using those technologies and really evaluate if they are right for their environment.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="995";
+//--></script>
+<!-- mmc mmid:995 mmdate:2006-08-30 12:54:17 mmauthor:Eric Anderson -->
+</li>
+<li id="comment-996"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_996'); }"  onmouseout="Element.hide('admin_comment_996');" >
+  <div id="admin_comment_996" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/996', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-996&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/996" class="admintools">edit</a></div>
+  <a name="comment-996"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Morten</strong> </cite> said about 12 hours later:<br />
+  <p>What&#8217;s wrong with namespacing controllers as long as you don&#8217;t name a controller the same as a model?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="996";
+//--></script>
+<!-- mmc mmid:996 mmdate:2006-08-30 13:05:33 mmauthor:Morten -->
+</li>
+<li id="comment-997"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_997'); }"  onmouseout="Element.hide('admin_comment_997');" >
+  <div id="admin_comment_997" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/997', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-997&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/997" class="admintools">edit</a></div>
+  <a name="comment-997"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://streamlinedframework.org">Justin Gehtland</a></strong> </cite> said about 12 hours later:<br />
+  <p>As for namespacing controllers, we&#8217;ve been trying to add support for this for a while in Streamlined, and it wreaks all kinds of havoc if you are trying to do anything at all with require_dependencies or depend_on.  Inscrutable, unspeakable, Cthuhlonic things.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="997";
+//--></script>
+<!-- mmc mmid:997 mmdate:2006-08-30 13:07:05 mmauthor:Justin Gehtland -->
+</li>
+<li id="comment-998"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_998'); }"  onmouseout="Element.hide('admin_comment_998');" >
+  <div id="admin_comment_998" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/998', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-998&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/998" class="admintools">edit</a></div>
+  <a name="comment-998"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>James Adam</strong> </cite> said about 12 hours later:<br />
+  <p>Nice &#8211; I particularly agree with the sentiments about AJAX &#8211; too often we run before we can walk. It&#8217;s good to keep in touch with which aspects of the Core might be being deprecated, but it&#8217;s also important to remember that a lot of what is covered here falls into the realm of opinion.</p>
+
+
+	<p>The particular types of applications that are commonly developed by the core may not use pagination or components, but that doesn&#8217;t mean they&#8217;re evil, it just means they&#8217;re less and less likely to see any love as Rails grows more mature.</p>
+
+
+	<p>If the pagination code currently sucks and doesn&#8217;t scale, then somebody please write something better! It&#8217;s a &#8216;PDI&#8217; moment, not a &#8216;run away as fast as you can&#8217; one. It also seems like <a href="http://rails-engines.org/news/2006/08/30/apparently-engines-are-still-evil/">you may have misunderstood the point of engines</a>, possibly. I&#8217;ve reworking the opening sentiment on the engines site to try and make it really clear what they&#8217;re good for.</p>
+
+
+	<p>Less vilification and more context helps promote better development practice, IMHO.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="998";
+//--></script>
+<!-- mmc mmid:998 mmdate:2006-08-30 13:13:18 mmauthor:James Adam -->
+</li>
+<li id="comment-999"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_999'); }"  onmouseout="Element.hide('admin_comment_999');" >
+  <div id="admin_comment_999" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/999', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-999&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/999" class="admintools">edit</a></div>
+  <a name="comment-999"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Mike</strong> </cite> said about 12 hours later:<br />
+  <p>Sorry, but you&#8217;ll have to pry pagination from my cold, dead fingers&#8230;</p>
+
+
+	<p>Here&#8217;s a spiffy idea: instead of adding feature after feature after feature after feature after feature, then telling us &#8220;Don&#8217;t use ,  is LAST WEEK&#8217;S CODE!&#8221; ... how about we stabilize a little bit?</p>
+
+
+	<p>If the Rails devs continue to introduce and then revoke useful, time-saving features &#8230; then where is the advantage of using Rails? Sure, off the cuff it might be 10x faster than developing in Java&#8230; but that&#8217;s only a savings if I don&#8217;t have to go back later and rewrite it all anyways.</p>
+
+
+	<p>(don&#8217;t get me wrong; I much prefer writing in Rails than in Java &#8230; and I love the Release Early &#38; Release Often approach &#8230; but lately I think it&#8217;s transmogrified into &#8220;Release Early &#38; Revise Often&#8221;)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="999";
+//--></script>
+<!-- mmc mmid:999 mmdate:2006-08-30 13:16:32 mmauthor:Mike -->
+</li>
+<li id="comment-1000"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1000'); }"  onmouseout="Element.hide('admin_comment_1000');" >
+  <div id="admin_comment_1000" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1000', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1000&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1000" class="admintools">edit</a></div>
+  <a name="comment-1000"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=bc7e893b6d4605000478c871b7ce8862&amp;size=60" />
+  <cite><strong><a href="http://darwinweb.net/">Gabe</a></strong> </cite> said about 12 hours later:<br />
+  <p>Should we avoid just packaged components or even just rendering components from the standard structure.  It seems to me that components fit a very legitimate need: that is rendering a partial that needs something fetched from the database.  Are you saying components are bad from a performance perspective?  Are they destined for deprecation?</p>
+
+
+	<p>The alternative to me seems to be before_filters in application.rb to fetch whatever is necessary for the partials in questions (think sidebars).  It seems less DRY.</p>
+
+
+	<p>On the pagination front, I&#8217;d like to see the implementation fixed.  It&#8217;s all fine and good to talk about alternative formats, etc, etc.  But let&#8217;s face it, pagination is used in some form by the majority of database-driven websites, and with good reason, because no matter how fine-grained your search, if your site is successful you&#8217;ll have too many results to fit on one page eventually.  Pagination is a baseline efficiency measure.</p>
+
+
+	<p>What I don&#8217;t understand is why pagination is so ugly, and what difference using a custom Paginator makes?  It&#8217;s not that complicated, you need two queries right?  COUNT and LIMIT X,Y.  I think moving it to a plugin would be a big mistake.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1000";
+//--></script>
+<!-- mmc mmid:1000 mmdate:2006-08-30 13:40:06 mmauthor:Gabe -->
+</li>
+<li id="comment-1001" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1001'); }"  onmouseout="Element.hide('admin_comment_1001');" >
+  <div id="admin_comment_1001" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1001', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1001&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1001" class="admintools">edit</a></div>
+  <a name="comment-1001"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 12 hours later:<br />
+  <p>Hi guys,
+I&#8217;ve added some updates to help clarify some of my comments. Ping back if things are still unclear.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1001";
+//--></script>
+<!-- mmc mmid:1001 mmdate:2006-08-30 13:42:07 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1002"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1002'); }"  onmouseout="Element.hide('admin_comment_1002');" >
+  <div id="admin_comment_1002" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1002', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1002&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1002" class="admintools">edit</a></div>
+  <a name="comment-1002"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Reid Ellis</strong> </cite> said about 12 hours later:<br />
+  <p>Overall, a very well-written piece. But mmake sure to always detail the new way of doing things whne you dis the old way. e.g. pagination.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1002";
+//--></script>
+<!-- mmc mmid:1002 mmdate:2006-08-30 13:45:05 mmauthor:Reid Ellis -->
+</li>
+<li id="comment-1003"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1003'); }"  onmouseout="Element.hide('admin_comment_1003');" >
+  <div id="admin_comment_1003" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1003', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1003&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1003" class="admintools">edit</a></div>
+  <a name="comment-1003"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joshua</strong> </cite> said about 12 hours later:<br />
+  <p>I&#8217;m using namespaced controllers on a fairly large project, and haven&#8217;t had any problems. It&#8217;s much better than mixing all your admin actions in with your public actions, IMHO.</p>
+
+
+	<p>As far as components go, the implementation is poor, for performance reasons, but they can be useful in some situations when you don&#8217;t want your code to turn into linguine.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1003";
+//--></script>
+<!-- mmc mmid:1003 mmdate:2006-08-30 13:47:36 mmauthor:Joshua -->
+</li>
+<li id="comment-1004"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1004'); }"  onmouseout="Element.hide('admin_comment_1004');" >
+  <div id="admin_comment_1004" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1004', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1004&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1004" class="admintools">edit</a></div>
+  <a name="comment-1004"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Greg Donald</strong> </cite> said about 12 hours later:<br />
+  <p>Mighta been a smaller list if you instead just listed the things <em>allowed</em> in rails.  :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1004";
+//--></script>
+<!-- mmc mmid:1004 mmdate:2006-08-30 13:51:24 mmauthor:Greg Donald -->
+</li>
+<li id="comment-1005"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1005'); }"  onmouseout="Element.hide('admin_comment_1005');" >
+  <div id="admin_comment_1005" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1005', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1005&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1005" class="admintools">edit</a></div>
+  <a name="comment-1005"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=16a3f3d724f8f9d38c7d76f9d7cb9a5c&amp;size=60" />
+  <cite><strong>Michael Houghton</strong> </cite> said about 12 hours later:<br />
+  <p>OK, so another person using the &#8216;more trouble than it&#8217;s worth&#8217; attitude about controllers in modules.</p>
+
+
+	<p>I&#8217;m using them; the concept was in the book, it provided structure and cleanliness to my app (not least in the controllers directory), and it sits reasonably well with controller inheritance.</p>
+
+
+	<p>But largely because I ran with it and it worked OK.</p>
+
+
+	<p>I now have a dozen or so admin controllers in a (two level) admin namespace, in a production app. I&#8217;ve seen a couple of small issues, but I&#8217;m not sure why all of a sudden it warrants the &#8216;blow you off for using namespaces&#8217; tone.</p>
+
+
+	<p>It was in the book, for flipssake. OK so the core team didn&#8217;t think it was worth the test cases, but there are people using it, and until the second edition of AWDwR replaces the first, this poorly communicated &#8220;those who are in the know, don&#8217;t, m&#8217;kay?&#8221; attitude is just going to piss^Wfrighten people off.</p>
+
+
+	<p>I think Rob Sanheim&#8217;s suggestion is excellent.  deprecated.rubyonrails.org is a great idea.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1005";
+//--></script>
+<!-- mmc mmid:1005 mmdate:2006-08-30 13:52:28 mmauthor:Michael Houghton -->
+</li>
+<li id="comment-1006"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1006'); }"  onmouseout="Element.hide('admin_comment_1006');" >
+  <div id="admin_comment_1006" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1006', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1006&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1006" class="admintools">edit</a></div>
+  <a name="comment-1006"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joel Hayhurst</strong> </cite> said about 12 hours later:<br />
+  <p>Mostly good, but your recommendation I not use pagination is amongst the more ridiculous I&#8217;ve read.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1006";
+//--></script>
+<!-- mmc mmid:1006 mmdate:2006-08-30 13:56:05 mmauthor:Joel Hayhurst -->
+</li>
+<li id="comment-1007"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1007'); }"  onmouseout="Element.hide('admin_comment_1007');" >
+  <div id="admin_comment_1007" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1007', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1007&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1007" class="admintools">edit</a></div>
+  <a name="comment-1007"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>man</strong> </cite> said about 12 hours later:<br />
+  <p>For people moving from PHP/ASP into the rails framework its hell because not only is ruby a bit different the rails framework is constantly changing and we have no idea whats the new &#8220;proper&#8221; way to implement proven concepts in other languages.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1007";
+//--></script>
+<!-- mmc mmid:1007 mmdate:2006-08-30 13:56:58 mmauthor:man -->
+</li>
+<li id="comment-1008"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1008'); }"  onmouseout="Element.hide('admin_comment_1008');" >
+  <div id="admin_comment_1008" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1008', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1008&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1008" class="admintools">edit</a></div>
+  <a name="comment-1008"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>frobnitz</strong> </cite> said about 12 hours later:<br />
+  <p>The biggest problem with namespaced controllers is that, like so much else in Rails, the only people that know how to use them correctly are the core team because there&#8217;s no frickin documentation (the core team considers the code itself to be the documentation).  The rest of us have to wait a year or so for another overpriced book or conference to find out about something that will be deprecated in favor of something equally mysterious and undocumented before we even finish writing our code.</p>
+
+
+	<p>90% of the namespaced controller problems that get asked about on IRC are from people who want both an Admin controller and an Admin::WhatEver controller.  Obviously routing is going to have a problem with that.</p>
+
+
+	<p>More than half of my controllers are namespaced, with zero problems.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1008";
+//--></script>
+<!-- mmc mmid:1008 mmdate:2006-08-30 13:57:05 mmauthor:frobnitz -->
+</li>
+<li id="comment-1009"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1009'); }"  onmouseout="Element.hide('admin_comment_1009');" >
+  <div id="admin_comment_1009" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1009', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1009&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1009" class="admintools">edit</a></div>
+  <a name="comment-1009"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joel Hayhurst</strong> </cite> said about 13 hours later:<br />
+  <p>&#8220;You’ll start seeing problems when you’re working with tables with millions of rows.&#8221;</p>
+
+
+	<p>Is this problem related to it having to do a count?  Because yeah, that&#8217;s necessary when paginating.</p>
+
+
+	<p>I made a small app for those 36 million AOL search results and the pagination code wasn&#8217;t a problem at all.  The count query was time consuming, but more or less unavoidable if you want to display the total number of pages; you can cache it, or even through it off to a BackgrounDRb process if you want.</p>
+
+
+	<p>I think you&#8217;re way off base here.  Can you go into more detail about the supposed performance issue?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1009";
+//--></script>
+<!-- mmc mmid:1009 mmdate:2006-08-30 14:04:09 mmauthor:Joel Hayhurst -->
+</li>
+<li id="comment-1010"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1010'); }"  onmouseout="Element.hide('admin_comment_1010');" >
+  <div id="admin_comment_1010" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1010', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1010&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1010" class="admintools">edit</a></div>
+  <a name="comment-1010"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Michael Houghton</strong> </cite> said about 13 hours later:<br />
+  <p>What I really liked about namespaced controllers was the convention-over-configuration nature. I&#8217;m just not convinced that the replacement is as simple.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1010";
+//--></script>
+<!-- mmc mmid:1010 mmdate:2006-08-30 14:04:24 mmauthor:Michael Houghton -->
+</li>
+<li id="comment-1011"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1011'); }"  onmouseout="Element.hide('admin_comment_1011');" >
+  <div id="admin_comment_1011" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1011', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1011&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1011" class="admintools">edit</a></div>
+  <a name="comment-1011"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Tonio</strong> </cite> said about 13 hours later:<br />
+  <p>You forgot to mention
+&lt;%= yield %&gt; instead of 
+&lt;%= @content_for_layout %&gt;
+in layouts</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1011";
+//--></script>
+<!-- mmc mmid:1011 mmdate:2006-08-30 14:07:06 mmauthor:Tonio -->
+</li>
+<li id="comment-1012"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1012'); }"  onmouseout="Element.hide('admin_comment_1012');" >
+  <div id="admin_comment_1012" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1012', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1012&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1012" class="admintools">edit</a></div>
+  <a name="comment-1012"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=263b956f8732abf0a129c8b493e2b473&amp;size=60" />
+  <cite><strong><a href="http://mudabone.com/aietc">ben</a></strong> </cite> said about 13 hours later:<br />
+  <p>Great post&#8230; but I&#8217;m confused on the first point &#8220;Accessing Instance Variables You Didn’t Create&#8221; since the Rails book says do it that way&#8230; what&#8217;s the prefered way of accessing @params, @session, etc.?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1012";
+//--></script>
+<!-- mmc mmid:1012 mmdate:2006-08-30 14:16:03 mmauthor:ben -->
+</li>
+<li id="comment-1013"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1013'); }"  onmouseout="Element.hide('admin_comment_1013');" >
+  <div id="admin_comment_1013" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1013', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1013&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1013" class="admintools">edit</a></div>
+  <a name="comment-1013"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>NickMulder</strong> </cite> said about 13 hours later:<br />
+  <p>Great Writeup.  If you namespace both your controllers and models there are little problems until you need to link outside of your controller.  Namespaced controllers can be a real pain with url_for.  No end of problems really.  They can help make a large app, think 20+ models large, a little bit more manageable.  And if you take the time to figure them out you dont need to be in the core to understand whats going on.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1013";
+//--></script>
+<!-- mmc mmid:1013 mmdate:2006-08-30 14:17:25 mmauthor:NickMulder -->
+</li>
+<li id="comment-1014"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1014'); }"  onmouseout="Element.hide('admin_comment_1014');" >
+  <div id="admin_comment_1014" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1014', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1014&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1014" class="admintools">edit</a></div>
+  <a name="comment-1014"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>The Wog</strong> </cite> said about 13 hours later:<br />
+  <p>Hmm&#8230;</p>
+
+
+	<p>Once again, more information that is buried in hundreds of places, but not it the official docs.</p>
+
+
+	<p>Get your shit together and modify the official documentation when things ARE depracated or no longer sanctioned.</p>
+
+
+	<p>Rails rocks, but the lack of documentation is its achiles heal! this is getting to be rediculous.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1014";
+//--></script>
+<!-- mmc mmid:1014 mmdate:2006-08-30 14:21:04 mmauthor:The Wog -->
+</li>
+<li id="comment-1015"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1015'); }"  onmouseout="Element.hide('admin_comment_1015');" >
+  <div id="admin_comment_1015" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1015', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1015&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1015" class="admintools">edit</a></div>
+  <a name="comment-1015"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 13 hours later:<br />
+  <p>Wog,
+If you&#8217;ve got a problem with the docs, do something about it. Honestly, it doesnt&#8217; effect me. I write documentation patches for you guys. I don&#8217;t need them.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1015";
+//--></script>
+<!-- mmc mmid:1015 mmdate:2006-08-30 14:41:31 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1016"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1016'); }"  onmouseout="Element.hide('admin_comment_1016');" >
+  <div id="admin_comment_1016" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1016', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1016&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1016" class="admintools">edit</a></div>
+  <a name="comment-1016"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=9e70cbd90b32606de3486fc4fa462fe2&amp;size=60" />
+  <cite><strong><a href="http://blog.payscroll.com">Alfred Toh</a></strong> </cite> said about 13 hours later:<br />
+  <p>We use pagination for our app.. and we have almost 500,000 records in our db and so far we hv no issues with it. So I&#8217;m sure its a matter of how you use it.</p>
+
+
+	<p>As for Rails Engine, its wonderful. It works right out of the box. I have to agree to the point where if it fits your need, then use Rails Engine. It will not help you much if you need to build your app around it or worst make significant changes/overloading it.</p>
+
+
+	<p>And the Rails Engine people have been on top of it, especially with the 1.5 release that broke engine.. they released a patch almost immediately.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1016";
+//--></script>
+<!-- mmc mmid:1016 mmdate:2006-08-30 14:53:23 mmauthor:Alfred Toh -->
+</li>
+<li id="comment-1017"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1017'); }"  onmouseout="Element.hide('admin_comment_1017');" >
+  <div id="admin_comment_1017" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1017', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1017&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1017" class="admintools">edit</a></div>
+  <a name="comment-1017"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>shy</strong> </cite> said about 13 hours later:<br />
+  <p>mommy, daddy, stop fighting</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1017";
+//--></script>
+<!-- mmc mmid:1017 mmdate:2006-08-30 14:53:57 mmauthor:shy -->
+</li>
+<li id="comment-1018" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1018'); }"  onmouseout="Element.hide('admin_comment_1018');" >
+  <div id="admin_comment_1018" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1018', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1018&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1018" class="admintools">edit</a></div>
+  <a name="comment-1018"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 13 hours later:<br />
+  <p>ben,
+Instance variables used to be the way to access those things so the book showed that. For a while now that&#8217;s changed.</p>
+
+
+	<p>There was a blog on Riding Rails about it a while back:</p>
+
+
+	<p><a href="http://weblog.rubyonrails.org/2006/4/25/use-params-not-params">http://weblog.rubyonrails.org/2006/4/25/use-params-not-params</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1018";
+//--></script>
+<!-- mmc mmid:1018 mmdate:2006-08-30 14:54:14 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1019"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1019'); }"  onmouseout="Element.hide('admin_comment_1019');" >
+  <div id="admin_comment_1019" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1019', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1019&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1019" class="admintools">edit</a></div>
+  <a name="comment-1019"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=81bd00654c964f2b43331ff510f07875&amp;size=60" />
+  <cite><strong><a href="http://www.donttrustthisguy.com">Jim Jeffers</a></strong> </cite> said about 13 hours later:<br />
+  <p>Whoa.. most of this stuff seems like common sense!  I&#8217;m nervous about those people who are still doing these things.  Excellent refresher.  Thanks for posting!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1019";
+//--></script>
+<!-- mmc mmid:1019 mmdate:2006-08-30 14:57:09 mmauthor:Jim Jeffers -->
+</li>
+<li id="comment-1020"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1020'); }"  onmouseout="Element.hide('admin_comment_1020');" >
+  <div id="admin_comment_1020" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1020', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1020&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1020" class="admintools">edit</a></div>
+  <a name="comment-1020"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Nil Missing</strong> </cite> said about 13 hours later:<br />
+  <p>All those core developers who have commited that all that bad code into Rails should have their commit bit taken off.</p>
+
+
+	<p>All those core developers who have written articles, books or blog entries about those bad coding practices and features should have their commit rights taken away.</p>
+
+
+	<p>Who ever had written those @flash and @session variables into Rails code belongs_to :that_group.</p>
+
+
+	<p>People who have written Ajax support into Rails has_many :sin_commits.</p>
+
+
+	<p>All those core developers who need more than one page at their real applications has_one :pagination_sin used.</p>
+
+
+	<p>Seems that validates_instance_of :good_thing returns nil when Rails is concerned. How can such a small core team produce so much bad things? Can we trust that they can even deprecate right things?</p>
+
+
+	<p>I&#8217;m not so not serious not, but could not not resist. Have fun.</p>
+
+
+	<p>Still Nil Missing</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1020";
+//--></script>
+<!-- mmc mmid:1020 mmdate:2006-08-30 15:01:03 mmauthor:Nil Missing -->
+</li>
+<li id="comment-1021"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1021'); }"  onmouseout="Element.hide('admin_comment_1021');" >
+  <div id="admin_comment_1021" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1021', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1021&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1021" class="admintools">edit</a></div>
+  <a name="comment-1021"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Paul</strong> </cite> said about 14 hours later:<br />
+  <p>Nice tips&#8230;thanks for the helpful info. However, I&#8217;m also with Mike a bit here &#8211; seems like half of the info in the various Rails books I have is now deprecated.</p>
+
+
+	<p>From the sounds of it, there&#8217;s no reason to buy any Rails books, as code within said books could be bad practice by the time you&#8217;re through with the book.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1021";
+//--></script>
+<!-- mmc mmid:1021 mmdate:2006-08-30 15:13:50 mmauthor:Paul -->
+</li>
+<li id="comment-1022" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1022'); }"  onmouseout="Element.hide('admin_comment_1022');" >
+  <div id="admin_comment_1022" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1022', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1022&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1022" class="admintools">edit</a></div>
+  <a name="comment-1022"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 14 hours later:<br />
+  <p>Nil,
+Some things don&#8217;t seem bad at first and every software package has problems. Such is life. Rails is still head and shoulders ahead of the competition.</p>
+
+
+	<p>And don&#8217;t get me wrong, this isn&#8217;t about bagging on the core team. They do a great job. Some practices (and documentation) just need to get up to speed with the codebase.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1022";
+//--></script>
+<!-- mmc mmid:1022 mmdate:2006-08-30 15:14:23 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1023"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1023'); }"  onmouseout="Element.hide('admin_comment_1023');" >
+  <div id="admin_comment_1023" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1023', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1023&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1023" class="admintools">edit</a></div>
+  <a name="comment-1023"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>chubbard</strong> </cite> said about 14 hours later:<br />
+  <p>What specifically is wrong with the pagination rails provides.  I&#8217;ve read all the comments and the article twice.  It&#8217;s still unclear as to what specifically in Rails doesn&#8217;t scale.  Is the paginate method on the Controller class the problem?  Or is it Paginator class that doesn&#8217;t scale?</p>
+
+
+	<p>I stopped using paginate because I want to drive all my Model.find calls into methods on my objects and paginate doesn&#8217;t work inside model classes.  Instead I create a Paginator object, but that requires that I query twice once for the count the once for the records.  Is that why you&#8217;re saying it doesn&#8217;t scale?  Maybe you could give us some details as to why it doesn&#8217;t scale.</p>
+
+
+	<p>Just calling something evil and bad only alerts me to a problem, but leaves me with a WTF do I do now look on my face.</p>
+
+
+	<p>~:-0</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1023";
+//--></script>
+<!-- mmc mmid:1023 mmdate:2006-08-30 15:38:21 mmauthor:chubbard -->
+</li>
+<li id="comment-1025"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1025'); }"  onmouseout="Element.hide('admin_comment_1025');" >
+  <div id="admin_comment_1025" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1025', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1025&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1025" class="admintools">edit</a></div>
+  <a name="comment-1025"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Dan DeLeo</strong> </cite> said about 14 hours later:<br />
+  <p>I have add another vote for pagination being a good thing.  In the app I&#8217;m working on right now, I&#8217;ve implemented a fairly precise search capability, but even a highly specific search can return 400+ rows.  Am I supposed to just dump all of them to the browser?  Plus, as a user, sometimes you don&#8217;t know what you&#8217;re looking for until you see it, so you expect to be able use a vague search and scan through the results.</p>
+
+
+	<p>Otherwise, I really liked this article, but maybe that&#8217;s just because I&#8217;ve been lucky enough to follow most of these recommmendations by chance&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1025";
+//--></script>
+<!-- mmc mmid:1025 mmdate:2006-08-30 15:57:52 mmauthor:Dan DeLeo -->
+</li>
+<li id="comment-1026"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1026'); }"  onmouseout="Element.hide('admin_comment_1026');" >
+  <div id="admin_comment_1026" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1026', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1026&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1026" class="admintools">edit</a></div>
+  <a name="comment-1026"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=40823088cec28c3224ff4c46ced1beda&amp;size=60" />
+  <cite><strong><a href="http://sethrasmussen.com">Seth Thomas Rasmussen</a></strong> </cite> said about 14 hours later:<br />
+  <p>Stop blaming the book, people. It was bad to rush out a book with bad style, but that doesn&#8217;t mean you can&#8217;t think for yourself.</p>
+
+
+	<p>Accessing instance variables directly is a generic OOP no-no, nevermind Rails, nevermind Ruby, which doesn&#8217;t enforce the principle either, but that&#8217;s not a mandate for bad style.</p>
+
+
+	<p>To this end, I&#8217;d actually prefer a way to declare instance vars for views that was truer to that concept, as well. For now, it&#8217;s not really a big deal, and it <strong>does</strong> help to pick out the data the view will be using. But still.. this encapsulation thing is a good idear.</p>
+
+
+	<p>Now, to be fair, if you saw @params (for example) everywhere, you might not think to look for params(), but I dunno.. I read these same books, but somehow I managed to figure it out. Well, I and the people that wrote the books, the blogs, the emails, the people on IM, on IRC.. There&#8217;s plenty of good and bad information out there, but always think for yourself.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1026";
+//--></script>
+<!-- mmc mmid:1026 mmdate:2006-08-30 15:59:53 mmauthor:Seth Thomas Rasmussen -->
+</li>
+<li id="comment-1027"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1027'); }"  onmouseout="Element.hide('admin_comment_1027');" >
+  <div id="admin_comment_1027" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1027', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1027&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1027" class="admintools">edit</a></div>
+  <a name="comment-1027"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=56ee28134dd0776825445e3551979b14&amp;size=60" />
+  <cite><strong><a href="http://sporkmonger.com/">Bob Aman</a></strong> </cite> said about 14 hours later:<br />
+  <p>&gt; Accessing Instance Variables You Didn’t Create</p>
+
+
+	<p>That goes for all Ruby code, not just Rails.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1027";
+//--></script>
+<!-- mmc mmid:1027 mmdate:2006-08-30 16:01:24 mmauthor:Bob Aman -->
+</li>
+<li id="comment-1028"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1028'); }"  onmouseout="Element.hide('admin_comment_1028');" >
+  <div id="admin_comment_1028" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1028', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1028&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1028" class="admintools">edit</a></div>
+  <a name="comment-1028"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joe Ruby</strong> </cite> said about 15 hours later:<br />
+  <p>I haven&#8217;t had any problems &#8220;putting controllers in name spaces&#8221; (AKA controller modules). Rails&#8217; generate handles them just fine, even generating functional tests:</p>
+
+
+	<p>./script/generate controller admin::items</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1028";
+//--></script>
+<!-- mmc mmid:1028 mmdate:2006-08-30 16:04:35 mmauthor:Joe Ruby -->
+</li>
+<li id="comment-1029"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1029'); }"  onmouseout="Element.hide('admin_comment_1029');" >
+  <div id="admin_comment_1029" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1029', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1029&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1029" class="admintools">edit</a></div>
+  <a name="comment-1029"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joe Ruby</strong> </cite> said about 15 hours later:<br />
+  Also, I find putting controllers in namespaces much more preferable to having monolithic controllers. Before I separated my controllers into namespaces, I had a lot of code like this in each:
+<pre>
+before_filter is_admin, :except=&gt;[:list, ...]
+before_filter is_member, :except...
+layout :set_layout
+</pre>
+etc. Now I just define them once (yay, DRY!) in the base controller, and subclass those. Namespace controllers are the way to go.
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1029";
+//--></script>
+<!-- mmc mmid:1029 mmdate:2006-08-30 16:11:11 mmauthor:Joe Ruby -->
+</li>
+<li id="comment-1030"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1030'); }"  onmouseout="Element.hide('admin_comment_1030');" >
+  <div id="admin_comment_1030" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1030', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1030&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1030" class="admintools">edit</a></div>
+  <a name="comment-1030"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joe Ruby</strong> </cite> said about 15 hours later:<br />
+  <p><i>We’ve got respond_to for that. Use it.</i></p>
+
+
+	<p>Only if you&#8217;re using edge, correct?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1030";
+//--></script>
+<!-- mmc mmid:1030 mmdate:2006-08-30 16:17:05 mmauthor:Joe Ruby -->
+</li>
+<li id="comment-1031"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1031'); }"  onmouseout="Element.hide('admin_comment_1031');" >
+  <div id="admin_comment_1031" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1031', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1031&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1031" class="admintools">edit</a></div>
+  <a name="comment-1031"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Andrew</strong> </cite> said about 15 hours later:<br />
+  <p>Very helpful, but any of these kinds of best practices or pitfalls really should be part of the docs. It wouldn&#8217;t take much more effort to add some of these warnings into the relevant sections than it did to type this post up in the first place.</p>
+
+
+	<p>And didn&#8217;t we just raise <a href="http://blog.caboo.se/pages/documentation_drive">$16,000+ </a> to hire someone to imrove the docs? Surely some of that money could be spent towards consolidating things like this post and others like it back into the rdoc?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1031";
+//--></script>
+<!-- mmc mmid:1031 mmdate:2006-08-30 16:23:59 mmauthor:Andrew -->
+</li>
+<li id="comment-1032"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1032'); }"  onmouseout="Element.hide('admin_comment_1032');" >
+  <div id="admin_comment_1032" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1032', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1032&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1032" class="admintools">edit</a></div>
+  <a name="comment-1032"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Matt Jones</strong> </cite> said about 15 hours later:<br />
+  <p>So both components AND engines are bad?
+That seems to leave Rails without any
+significant way to incorporate external
+code that is more complex than a plugin.</p>
+
+
+	<p>Yes, there is code generation, but as 
+others have pointed out, that makes a
+big mess for maintenance. Yes, I&#8217;ve seen
+the <a href="http://researchweb.watson.ibm.com/designpatterns/pubs/gg.html">Generation Gap pattern</a>  &#8211; but how should one &#8220;subclass&#8221; a view?</p>
+
+
+	<p>Yes, the implementation of Engines is 
+fairly complicated. But this seems to 
+arise more out of the division from the
+core &#8211; maybe I&#8217;m crazy, but if an 
+Engine-like mechanism existed as part
+of the core Rails system, all the &#8220;hidden implementation details&#8221; would stay hidden.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1032";
+//--></script>
+<!-- mmc mmid:1032 mmdate:2006-08-30 16:32:35 mmauthor:Matt Jones -->
+</li>
+<li id="comment-1033"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1033'); }"  onmouseout="Element.hide('admin_comment_1033');" >
+  <div id="admin_comment_1033" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1033', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1033&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1033" class="admintools">edit</a></div>
+  <a name="comment-1033"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Gurn Blanston</strong> </cite> said about 15 hours later:<br />
+  <p>This post is well-intentioned. It&#8217;s also somewhat pissy, accusatory, and misleading. There are times you have to use Pagination, and implying that it never should have been in Rails is less than helpful. If the Paginator is broken, then someone should work on a fix.</p>
+
+
+	<p>There are times when you should finish writing something and then put it away for a few hours or days before hitting Publish. This was clearly one of them. If being involved with the Rails project makes you this pisstrated, maybe you should think about a different hobby. I hear gardening is nice.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1033";
+//--></script>
+<!-- mmc mmid:1033 mmdate:2006-08-30 16:32:56 mmauthor:Gurn Blanston -->
+</li>
+<li id="comment-1034" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1034'); }"  onmouseout="Element.hide('admin_comment_1034');" >
+  <div id="admin_comment_1034" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1034', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1034&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1034" class="admintools">edit</a></div>
+  <a name="comment-1034"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 15 hours later:<br />
+  <p>Joe Ruby,
+Not everyone has issues with namespaced controllers. I&#8217;ve regularly run into them so I suggest using alternative methods. These days I&#8217;m doing REST stuff so my controllers get split up anyway.</p>
+
+
+	<p>I&#8217;m 90% sure that respond_to went in for 1.1. Anyone else recall?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1034";
+//--></script>
+<!-- mmc mmid:1034 mmdate:2006-08-30 16:35:45 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1035"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1035'); }"  onmouseout="Element.hide('admin_comment_1035');" >
+  <div id="admin_comment_1035" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1035', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1035&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1035" class="admintools">edit</a></div>
+  <a name="comment-1035"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Brian</strong> </cite> said about 15 hours later:<br />
+  <p>Kevin,</p>
+
+
+	<p>You should lose the patronizing tone and offer up solutions to the problems you point out.  Your &#8220;guide&#8221; is much like most of the rails documentation I see out there&#8212;A lot of hot air but not much content.  Luckily the framework itself is good enough to transcend all of the garbage Rails experts write.  Prove that you&#8217;re better than all of that.  Prove that you&#8217;re a Rails mensch and make your next post an actual guide.  Call it &#8220;How To Fix The Things You Shouldn&#8217;t Be Doing In Rails.&#8221;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1035";
+//--></script>
+<!-- mmc mmid:1035 mmdate:2006-08-30 16:35:45 mmauthor:Brian -->
+</li>
+<li id="comment-1036"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1036'); }"  onmouseout="Element.hide('admin_comment_1036');" >
+  <div id="admin_comment_1036" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1036', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1036&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1036" class="admintools">edit</a></div>
+  <a name="comment-1036"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joe Ruby</strong> </cite> said about 15 hours later:<br />
+  <p>Kevin: What issues have you run into with namespaced controllers? Are they solely related to REST stuff?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1036";
+//--></script>
+<!-- mmc mmid:1036 mmdate:2006-08-30 16:43:13 mmauthor:Joe Ruby -->
+</li>
+<li id="comment-1037"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1037'); }"  onmouseout="Element.hide('admin_comment_1037');" >
+  <div id="admin_comment_1037" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1037', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1037&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1037" class="admintools">edit</a></div>
+  <a name="comment-1037"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Jordan</strong> </cite> said about 15 hours later:<br />
+  <p>For someone bitching about web development, your site sure is <strong>UGLY</strong>.</p>
+
+
+	<p>Nice article, btw ;)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1037";
+//--></script>
+<!-- mmc mmid:1037 mmdate:2006-08-30 16:48:04 mmauthor:Jordan -->
+</li>
+<li id="comment-1038" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1038'); }"  onmouseout="Element.hide('admin_comment_1038');" >
+  <div id="admin_comment_1038" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1038', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1038&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1038" class="admintools">edit</a></div>
+  <a name="comment-1038"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 15 hours later:<br />
+  <p>Jordan,
+If you&#8217;d like to redesign my site, be my guest ;) . I&#8217;d rather provide content than spend the time to rewrite the template. Maybe when I move to mephisto.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1038";
+//--></script>
+<!-- mmc mmid:1038 mmdate:2006-08-30 16:59:25 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1039"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1039'); }"  onmouseout="Element.hide('admin_comment_1039');" >
+  <div id="admin_comment_1039" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1039', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1039&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1039" class="admintools">edit</a></div>
+  <a name="comment-1039"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Julik</strong> </cite> said about 16 hours later:<br />
+  <p>Kevin, I think you are.. uhm&#8230; somewhat inhonest.
+Instead of saying &#8220;don&#8217;t use&#8221; say &#8220;fix it&#8221;. Instead of saying &#8220;doesn&#8217;t work&#8221; say &#8220;it&#8217;s broken&#8221;. Namespaced controllers (as well as namespaced models) Should and hopefully Will work (simply because it&#8217;s insane to omit namespaces like Rails does).</p>
+
+
+	<p>Instead of saying &#8220;don&#8217;t use pagination&#8221; say &#8220;pagination code needs fixing&#8221;. Or you think that loading a couple hundred thousand objects into memory of our shared servers for iteration is a good plan?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1039";
+//--></script>
+<!-- mmc mmid:1039 mmdate:2006-08-30 17:04:59 mmauthor:Julik -->
+</li>
+<li id="comment-1041"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1041'); }"  onmouseout="Element.hide('admin_comment_1041');" >
+  <div id="admin_comment_1041" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1041', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1041&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1041" class="admintools">edit</a></div>
+  <a name="comment-1041"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Paul</strong> </cite> said about 16 hours later:<br />
+  <p>@Seth, 
+True, you can&#8217;t put the onus on the book for doing everything, but when it&#8217;s written by DHH and you&#8217;re a beginner to Ruby and Rails, it can be tough to seperate what you should do now and shouldn&#8217;t do later. (In these comments alone, there has been infighting about whether or not pagination should be used. For a beginner it&#8217;s going to be tough to seperate what&#8217;s right and wrong, even when thinking for themselves.)</p>
+
+
+	<p>Although even my grandmother knows not to access variables she didn&#8217;t create.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1041";
+//--></script>
+<!-- mmc mmid:1041 mmdate:2006-08-30 17:28:59 mmauthor:Paul -->
+</li>
+<li id="comment-1042"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1042'); }"  onmouseout="Element.hide('admin_comment_1042');" >
+  <div id="admin_comment_1042" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1042', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1042&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1042" class="admintools">edit</a></div>
+  <a name="comment-1042"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joe Ruby</strong> </cite> said about 16 hours later:<br />
+  <p>Even my grandmother knows it&#8217;s separate, not seperate.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1042";
+//--></script>
+<!-- mmc mmid:1042 mmdate:2006-08-30 17:33:46 mmauthor:Joe Ruby -->
+</li>
+<li id="comment-1043" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1043'); }"  onmouseout="Element.hide('admin_comment_1043');" >
+  <div id="admin_comment_1043" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1043', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1043&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1043" class="admintools">edit</a></div>
+  <a name="comment-1043"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 16 hours later:<br />
+  <p>Julik,
+I&#8217;m sorry if you feel I&#8217;m being less than honest here. I suggest people don&#8217;t use things that are broken. By all means, if you know how to fix the situation do it. But I expect that most rails developers haven&#8217;t hacked at the core and would be better served by avoiding the problem in the first place until someone who can fix it does.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1043";
+//--></script>
+<!-- mmc mmid:1043 mmdate:2006-08-30 17:33:50 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1044"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1044'); }"  onmouseout="Element.hide('admin_comment_1044');" >
+  <div id="admin_comment_1044" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1044', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1044&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1044" class="admintools">edit</a></div>
+  <a name="comment-1044"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Robert Oschler</strong> </cite> said about 16 hours later:<br />
+  <p>I&#8217;m a Ruby newbie (brand new), but a veteran programmer coming from the PHP camp for my previous web development activities.  I have &#8220;Programming Ruby&#8221; and &#8220;Agile Web Development with Rails&#8221;; the latter of which I paid to have shipped to me overnight.  Fortunately I&#8217;m hard headed and I still intend to go ahead with my Rails development, despite the scary tone of this article and the comments that follow it.</p>
+
+
+	<p>This article could easily have been titled &#8220;How To Scare the Crap Out Of A Potential Ruby Developer.&#8221;  Now I&#8217;m wondering if the Agile book I bought was a waste of money and how I can find good docs on writing code without components and engines.</p>
+
+
+	<p>The first thing a manager ever told me was: &#8220;don&#8217;t come to me with a problem until you have at least two solutions&#8221;.</p>
+
+
+	<p>In closing, thank you for the additional information I found in this blog post.  It definitely is useful and I&#8217;ll add this blog to my feed reader.  But I can&#8217;t shake the feeling that a legion of PHP evangelists just popped a champagne bottle.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1044";
+//--></script>
+<!-- mmc mmid:1044 mmdate:2006-08-30 17:42:46 mmauthor:Robert Oschler -->
+</li>
+<li id="comment-1045" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1045'); }"  onmouseout="Element.hide('admin_comment_1045');" >
+  <div id="admin_comment_1045" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1045', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1045&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1045" class="admintools">edit</a></div>
+  <a name="comment-1045"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 16 hours later:<br />
+  <p>Robert,
+I hope the new section under the Major Updates heading addresses your concerns.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1045";
+//--></script>
+<!-- mmc mmid:1045 mmdate:2006-08-30 17:59:45 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1046"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1046'); }"  onmouseout="Element.hide('admin_comment_1046');" >
+  <div id="admin_comment_1046" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1046', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1046&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1046" class="admintools">edit</a></div>
+  <a name="comment-1046"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=280b41a88665fd8c699e83a9a25ef949&amp;size=60" />
+  <cite><strong><a href="http://swaits.com/">Stephen Waits</a></strong> </cite> said about 17 hours later:<br />
+  <p>Engines are in fact de facto evil.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1046";
+//--></script>
+<!-- mmc mmid:1046 mmdate:2006-08-30 18:03:02 mmauthor:Stephen Waits -->
+</li>
+<li id="comment-1047"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1047'); }"  onmouseout="Element.hide('admin_comment_1047');" >
+  <div id="admin_comment_1047" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1047', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1047&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1047" class="admintools">edit</a></div>
+  <a name="comment-1047"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://tooshrewd.com">Jason LaPier</a></strong> </cite> said about 17 hours later:<br />
+  <p>Kevin &#8211; thanks for the article. Some good heads-up things here, whether everyone agrees with them or not. Maybe you should divide your points into &#8220;depreciation warnings&#8221; and &#8220;(my) best practices&#8221;.</p>
+
+
+	<p>I like the idea of depreciated.rubyonrails.org, but I think even better than that, I&#8217;d love it if someone could write a rake task along the lines of test:functionals:depreciated or something like that. I know to use find(:all) now, but I know I&#8217;ve used find_all in the past, and it&#8217;s hiding in code I may not look at much anymore.</p>
+
+
+	<p>I think pagination is more of a style issue &#8211; I agree with some of the comments that mention if you have more than a few pages of records, who is going to sit there hitting &#8220;next&#8221; or &#8220;previous&#8221;? You&#8217;re going to need to write a custom solution for those situations anyway, maybe offering the end-user some sorts and filters, etc. The built-in Pagination is about as useful as scaffolding &#8211; it&#8217;s nice to see how it works, but once you start on a real app you&#8217;ll replace it real quick.</p>
+
+
+	<p>I still use modules with some controllers. It helps me keep my code organized, and I think if you&#8217;re using the right names for modules you can avoid conflicts and you can avoid too much trouble.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1047";
+//--></script>
+<!-- mmc mmid:1047 mmdate:2006-08-30 18:06:30 mmauthor:Jason LaPier -->
+</li>
+<li id="comment-1048"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1048'); }"  onmouseout="Element.hide('admin_comment_1048');" >
+  <div id="admin_comment_1048" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1048', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1048&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1048" class="admintools">edit</a></div>
+  <a name="comment-1048"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Michael Houghton</strong> </cite> said about 17 hours later:<br />
+  <p>For the record, I wasn&#8217;t blaming the book. I <em>LOVE</em> the book. The book stopped me quitting software development. I just think people need to see a single, reasonably authoritative site explaining how things have moved on since the book.</p>
+
+
+	<p>The point is that the book is brilliant, and it sets a standard for accessible documentation that is lacking for these new approaches. You can&#8217;t expect every new user or even every seasoned engineer to want to subscribe to a disparate bunch of fast-turnover RSS feeds and filter various levels of opinion, attitude and I&#8217;m afraid quite frequent smugness in order to get their information.</p>
+
+
+	<p>As an aside, the author is totally right on components, but I&#8217;d love to see concise posts about better approaches to pagination and moving away from controllers in modules. Take pity on the poor guy who had to think about something other than code for just a couple of months, and comes back to find that everything he&#8217;s learned is old, granddad&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1048";
+//--></script>
+<!-- mmc mmid:1048 mmdate:2006-08-30 18:09:03 mmauthor:Michael Houghton -->
+</li>
+<li id="comment-1049" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1049'); }"  onmouseout="Element.hide('admin_comment_1049');" >
+  <div id="admin_comment_1049" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1049', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1049&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1049" class="admintools">edit</a></div>
+  <a name="comment-1049"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 17 hours later:<br />
+  <p>Jason,
+What prompted the article was changes in edge that cause warnings (lots and lots and lots of warnings) which tell you you&#8217;re using something that&#8217;s deprecated and may break soon. A rake task would probably be nifty in the mean time. Poke me if you write one and I&#8217;ll link it.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1049";
+//--></script>
+<!-- mmc mmid:1049 mmdate:2006-08-30 18:19:05 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1050"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1050'); }"  onmouseout="Element.hide('admin_comment_1050');" >
+  <div id="admin_comment_1050" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1050', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1050&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1050" class="admintools">edit</a></div>
+  <a name="comment-1050"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>bread</strong> </cite> said about 17 hours later:<br />
+  <p>Still waiting for a reply.. any reply.. to the oft-repeated question, &#8220;What do you mean by not using pagination?&#8221;</p>
+
+
+	<p>Are you saying, always show everything on one list?  Or custom write pagination?  Or don&#8217;t use the pagination helper?</p>
+
+
+	<p>How is it broken?  Why is it broken?  If people need pagination, what should they do?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1050";
+//--></script>
+<!-- mmc mmid:1050 mmdate:2006-08-30 18:54:49 mmauthor:bread -->
+</li>
+<li id="comment-1051"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1051'); }"  onmouseout="Element.hide('admin_comment_1051');" >
+  <div id="admin_comment_1051" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1051', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1051&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1051" class="admintools">edit</a></div>
+  <a name="comment-1051"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Phillip Kast</strong> </cite> said about 18 hours later:<br />
+  <p>Re: respond_to &#38;&#38; v1.1</p>
+
+
+	<p>Yep, it&#8217;s in there, in 1.1.6 at least.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1051";
+//--></script>
+<!-- mmc mmid:1051 mmdate:2006-08-30 19:40:44 mmauthor:Phillip Kast -->
+</li>
+<li id="comment-1052"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1052'); }"  onmouseout="Element.hide('admin_comment_1052');" >
+  <div id="admin_comment_1052" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1052', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1052&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1052" class="admintools">edit</a></div>
+  <a name="comment-1052"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=55ea0ce5ebfd76bdd828bd46f7ace192&amp;size=60" />
+  <cite><strong><a href="http://jooto.com/blog/">Alex Bunardzic</a></strong> </cite> said about 18 hours later:<br />
+  <p>I feel alarmed:</p>
+
+
+	<p><a href="http://jooto.com/blog/index.php/2006/08/31/trouble-in-paradise/">http://jooto.com/blog/index.php/2006/08/31/trouble-in-paradise/</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1052";
+//--></script>
+<!-- mmc mmid:1052 mmdate:2006-08-30 19:56:30 mmauthor:Alex Bunardzic -->
+</li>
+<li id="comment-1054"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1054'); }"  onmouseout="Element.hide('admin_comment_1054');" >
+  <div id="admin_comment_1054" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1054', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1054&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1054" class="admintools">edit</a></div>
+  <a name="comment-1054"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Joel Hayhurst</strong> </cite> said about 19 hours later:<br />
+  <p>If I were you, I&#8217;d remove your Pagination bit so you don&#8217;t mislead impressionable people into not using perfectly good tools.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1054";
+//--></script>
+<!-- mmc mmid:1054 mmdate:2006-08-30 20:15:42 mmauthor:Joel Hayhurst -->
+</li>
+<li id="comment-1056" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1056'); }"  onmouseout="Element.hide('admin_comment_1056');" >
+  <div id="admin_comment_1056" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1056', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1056&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1056" class="admintools">edit</a></div>
+  <a name="comment-1056"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said about 20 hours later:<br />
+  <p>I&#8217;ve responded to some of your comments here:</p>
+
+
+	<p><a href="http://glu.ttono.us/articles/2006/08/30/on-the-days-events">http://glu.ttono.us/articles/2006/08/30/on-the-days-events</a></p>
+
+
+	<p>Feel free to air your grievances there.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1056";
+//--></script>
+<!-- mmc mmid:1056 mmdate:2006-08-30 21:45:22 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1057"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1057'); }"  onmouseout="Element.hide('admin_comment_1057');" >
+  <div id="admin_comment_1057" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1057', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1057&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1057" class="admintools">edit</a></div>
+  <a name="comment-1057"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=1fefab5c6662c524ba684855002b2ecb&amp;size=60" />
+  <cite><strong><a href="http://i.nfectio.us/">Bob Silva</a></strong> </cite> said about 20 hours later:<br />
+  <p>For everyone saying to update the documentation, it is updated&#8230;in the trunk. If you are using a version before the decision was made to &#8220;change&#8221; best practices or deprecate functionality, then when you download new releases, you will have correct documentation. Work is in progress to improve documentation outside of the source and cover multiple versions, be patient it&#8217;s coming.</p>
+
+
+	<p>Also, put the RubyOnRails Weblog in your feed reader, core is usually pretty good about putting current and upcoming deprecations in there.</p>
+
+
+	<p>Keep in mind that the statements Kevin made were his opinion based on experience (and of his friends) and following changes in core development.</p>
+
+
+	<p>One last point, the AWDR is not the definitive guide to programming in Rails, Rails has changed dramatically since the book was released, ditto with version 2 I&#8217;m sure. It&#8217;s a great book, but just because it showed how to do something at the time it was written, doesn&#8217;t mean thats how to do it today.</p>
+
+
+	<p>assert !core_team.include?(&#8216;Dave Thomas&#8217;)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1057";
+//--></script>
+<!-- mmc mmid:1057 mmdate:2006-08-30 21:48:43 mmauthor:Bob Silva -->
+</li>
+<li id="comment-1060"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1060'); }"  onmouseout="Element.hide('admin_comment_1060');" >
+  <div id="admin_comment_1060" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1060', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1060&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1060" class="admintools">edit</a></div>
+  <a name="comment-1060"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=026e64aebb9ed946c2144621a6348d66&amp;size=60" />
+  <cite><strong>Urbanus</strong> </cite> said about 21 hours later:<br />
+  <p>Components != partials</p>
+
+
+	<p>Partials are view-related: they render information within the context of the current controller.</p>
+
+
+	<p>Components are controllers + views that you can put into a view that belong to some other controller (or controllers).  They are different from partials in that they are designed to gather and present their own data separately from the controller that&#8217;s actually preparing the current page.</p>
+
+
+	<p>Partials don&#8217;t replace components.  Partials are not a &#8220;better&#8221; sort of component.</p>
+
+
+	<p>If components ever get deprecated, the DRY implications for applications that genuinely need them will be disastrous.  All that controller + view code will have to be copied across multiple different controllers.</p>
+
+
+	<p>With respect kev, if you don&#8217;t see the importance of components then you just haven&#8217;t personally found a legitimate use for them yet.  But that doesn&#8217;t mean they&#8217;re not a powerful and important part of Rails.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1060";
+//--></script>
+<!-- mmc mmid:1060 mmdate:2006-08-30 22:41:23 mmauthor:Urbanus -->
+</li>
+<li id="comment-1064"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1064'); }"  onmouseout="Element.hide('admin_comment_1064');" >
+  <div id="admin_comment_1064" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1064', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1064&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1064" class="admintools">edit</a></div>
+  <a name="comment-1064"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=8b72389daf4540ff086ec79c0c42c632&amp;size=60" />
+  <cite><strong><a href="http://justaddwater.dk/">Jesper Rønn-Jensen (justaddwater.d)</a></strong> </cite> said 1 day later:<br />
+  <p>&gt; find_all and find_first have been deprecated over a year now. 
+&gt; Stop using them.
+I find it ironic that &#8220;find_all&#8221; is actually still used in the standard Rails README file generated with every new project.</p>
+
+
+	<p>Your very good article here is putting focus on the right things. I hope it spreads to EVERYWHERE in the Rails source &mdash; not just the fun code part.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1064";
+//--></script>
+<!-- mmc mmid:1064 mmdate:2006-08-31 02:41:13 mmauthor:Jesper Rønn-Jensen (justaddwater.d) -->
+</li>
+<li id="comment-1066"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1066'); }"  onmouseout="Element.hide('admin_comment_1066');" >
+  <div id="admin_comment_1066" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1066', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1066&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1066" class="admintools">edit</a></div>
+  <a name="comment-1066"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=a9d024f5032b8de04d7c74528beb77ab&amp;size=60" />
+  <cite><strong><a href="http://nubyonrails.com/articles/2006/08/31/deprecated-plugin-find-old-rails-code">topfunky</a></strong> </cite> said 1 day later:<br />
+  <p>I&#8217;ve put together a plugin that tries to find these problems in code and warns you about it.</p>
+
+
+	<p>I&#8217;ll update it as other parts of Rails are deprecated in the future.</p>
+
+
+	<p><a href="http://nubyonrails.com/articles/2006/08/31/deprecated-plugin-find-old-rails-code">Deprecated Verification Plugin</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1066";
+//--></script>
+<!-- mmc mmid:1066 mmdate:2006-08-31 04:32:54 mmauthor:topfunky -->
+</li>
+<li id="comment-1070"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1070'); }"  onmouseout="Element.hide('admin_comment_1070');" >
+  <div id="admin_comment_1070" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1070', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1070&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1070" class="admintools">edit</a></div>
+  <a name="comment-1070"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Eric Lacey</strong> </cite> said 1 day later:<br />
+  <p>As a new-to-Ruby and a conscientious developer, I want to avoid doing things in Ruby/Rails that are no longer considered best practice&#8230;  This article mentions that we should stop using the find_all() and find_first() convenience methods.  Does that apply to the find_all_by_XXXX() method as well?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1070";
+//--></script>
+<!-- mmc mmid:1070 mmdate:2006-08-31 09:17:10 mmauthor:Eric Lacey -->
+</li>
+<li id="comment-1071"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1071'); }"  onmouseout="Element.hide('admin_comment_1071');" >
+  <div id="admin_comment_1071" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1071', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1071&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1071" class="admintools">edit</a></div>
+  <a name="comment-1071"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=409b241387e459a367f207d55fb0c9ab&amp;size=60" />
+  <cite><strong>John</strong> </cite> said 1 day later:<br />
+  <p>Re: pagination.
+So where&#8217;s the knee of the curve?  I don&#8217;t have millions, but I do have tables with ~1500 elements.  Is that a performance-killer or not?
+What should we be doing instead of the built-in paginator?  Is there an Edge Rails implementation of pagination that&#8217;s better?
+Thanks for the great summary.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1071";
+//--></script>
+<!-- mmc mmid:1071 mmdate:2006-08-31 09:40:53 mmauthor:John -->
+</li>
+<li id="comment-1073"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1073'); }"  onmouseout="Element.hide('admin_comment_1073');" >
+  <div id="admin_comment_1073" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1073', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1073&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1073" class="admintools">edit</a></div>
+  <a name="comment-1073"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=428167a3ec72235ba971162924492609&amp;size=60" />
+  <cite><strong><a href="http://www.yehudakatz.com">Yehuda Katz</a></strong> </cite> said 1 day later:<br />
+  <p>Good stuff for the most part. Newbie Rails developers definitely need a kick in the pants sometimes to get them on the road to good practice.</p>
+
+
+	<p>And reminding people about deprecated (and perhaps poorly thought out in the first place) features is a good thing.</p>
+
+
+	<p>I posted a response re: Engines based on my personal experience with using engines for my autoDB plugin. If it&#8217;s a bit harsh, I didn&#8217;t intend it as such.</p>
+
+
+	<p>Check it out at <a href="http://www.yehudakatz.com">http://www.yehudakatz.com</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1073";
+//--></script>
+<!-- mmc mmid:1073 mmdate:2006-08-31 10:38:20 mmauthor:Yehuda Katz -->
+</li>
+<li id="comment-1074"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1074'); }"  onmouseout="Element.hide('admin_comment_1074');" >
+  <div id="admin_comment_1074" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1074', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1074&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1074" class="admintools">edit</a></div>
+  <a name="comment-1074"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>TheWordNerd</strong> </cite> said 1 day later:<br />
+  <p>Perhaps this is a &#8220;duh&#8221; question, but it truly does baffle me. With the adoption of REST/standardized resource routing, what exactly is the issue with scaffolding, provided someone looks at the generated code and modifies it to work with their application? I recently used scaffolding for an application I&#8217;m moving to production, and it worked rather nicely. I looked at my generated code, added before_filters to protect the administrative actions, changed list pagination to work more correctly with my application, removed the index method and renamed list&#8230; No, the generated code wasn&#8217;t exactly what I needed, but I felt like I saved time tweaking the various filters to mesh with whatever that particular bit of the application needed than I&#8217;d have spent writing much of the same code again and again.</p>
+
+
+	<p>I think it&#8217;s a crutch if you don&#8217;t understand what is happening, but I think it&#8217;s quicker if you&#8217;re trying to write a CRUDdy, RESTful app and only need to modify small bits of what was generated. I also think that it was a crutch when DRYing up actions was encouraged (I.e. the Rails Recipes section on making one edit action for new/create/edit/update) but if Rails is encouraging resources, then why not modify scaffolding to be more in line with that, and why not use it if you understand it?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1074";
+//--></script>
+<!-- mmc mmid:1074 mmdate:2006-08-31 11:54:07 mmauthor:TheWordNerd -->
+</li>
+<li id="comment-1077" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1077'); }"  onmouseout="Element.hide('admin_comment_1077');" >
+  <div id="admin_comment_1077" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1077', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1077&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1077" class="admintools">edit</a></div>
+  <a name="comment-1077"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 1 day later:<br />
+  <p>Eric,
+The dynamic finders (find_by_xxx) are just fine. Feel free to use them. Only find_all and find_first are deprecated.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1077";
+//--></script>
+<!-- mmc mmid:1077 mmdate:2006-08-31 12:45:13 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1082"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1082'); }"  onmouseout="Element.hide('admin_comment_1082');" >
+  <div id="admin_comment_1082" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1082', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1082&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1082" class="admintools">edit</a></div>
+  <a name="comment-1082"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Deprecated Question</strong> </cite> said 1 day later:<br />
+  <p>Btw Kevin, why does core team deprecate things? If thing are so bad as you say, why not remove them right away? That way things get fixed immediately, instead of lagging and nagging forever. If bad practice is not there, then those without know cannot use it!</p>
+
+
+	<p>Or is there some specific date set when all deprecated things are erased from Rails? If not, you should set one. Otherwise &#8220;deprecating&#8221; things is itself a bad practice (not best practice) and should be deprecated.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1082";
+//--></script>
+<!-- mmc mmid:1082 mmdate:2006-08-31 14:00:03 mmauthor:Deprecated Question -->
+</li>
+<li id="comment-1085"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1085'); }"  onmouseout="Element.hide('admin_comment_1085');" >
+  <div id="admin_comment_1085" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1085', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1085&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1085" class="admintools">edit</a></div>
+  <a name="comment-1085"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=13ecf67deaad3245f1e4b04ef67ad7c5&amp;size=60" />
+  <cite><strong><a href="http://blog.steelpixel.com">Chris</a></strong> </cite> said 1 day later:<br />
+  <p>For Apple users out there, I created a growl notifier plugin whenever a deprecated function gets logged. <a href="http://blog.steelpixel.com/articles/2006/08/31/growl-deprecated-rails-plugin">Check it out.</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1085";
+//--></script>
+<!-- mmc mmid:1085 mmdate:2006-08-31 16:12:11 mmauthor:Chris -->
+</li>
+<li id="comment-1089"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1089'); }"  onmouseout="Element.hide('admin_comment_1089');" >
+  <div id="admin_comment_1089" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1089', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1089&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1089" class="admintools">edit</a></div>
+  <a name="comment-1089"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>murphy</strong> </cite> said 1 day later:<br />
+  <p>Oh thank you for pointing out that namespaces are evil.</p>
+
+
+	<p>I started using them, and suddenly all my url_for and link_to screw up. I eventually had to rewrite all references to controllers with a preceeding &#8221;/&#8221; (like &#8221;/main&#8221;) to fix it.</p>
+
+
+	<p>The idea of just using routing (and naming the controllers &#8220;AdminLogin&#8221; instead of &#8220;Admin::Login&#8221; instead?) is very good. I&#8217;ll try to rewrite my project this way.</p>
+
+
+	<p>Thanks!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1089";
+//--></script>
+<!-- mmc mmid:1089 mmdate:2006-09-01 00:49:46 mmauthor:murphy -->
+</li>
+<li id="comment-1090"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1090'); }"  onmouseout="Element.hide('admin_comment_1090');" >
+  <div id="admin_comment_1090" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1090', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1090&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1090" class="admintools">edit</a></div>
+  <a name="comment-1090"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Ryan Allen</strong> </cite> said 1 day later:<br />
+  <p>I don&#8217;t know why you&#8217;re saying namespacing is bad. I think it&#8217;s a bit of BS.</p>
+
+
+	<p>Yeah it can lead you into hairy situations but if you actually understand how namespacing works (and don&#8217;t mind to apply some common sence when you come into problems) then they&#8217;re fine.</p>
+
+
+	<p>Namespaces is one of the awesome things that people from PHP get to look foreward to :)</p>
+
+
+	<p>Has anyone got some real proper criticism of namespaces besides &#8216;they&#8217;re bad&#8217;?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1090";
+//--></script>
+<!-- mmc mmid:1090 mmdate:2006-09-01 01:04:28 mmauthor:Ryan Allen -->
+</li>
+<li id="comment-1092"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1092'); }"  onmouseout="Element.hide('admin_comment_1092');" >
+  <div id="admin_comment_1092" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1092', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1092&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1092" class="admintools">edit</a></div>
+  <a name="comment-1092"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://gabrito.com">Todd Huss</a></strong> </cite> said 2 days later:<br />
+  <p>Great article, it helps to have it summarized in one place!</p>
+
+
+	<p>However, I agree with the aforementioned comments that components are extremely useful. They make developing portal like functionality where you want an area of dynamic content repeated on different pages very simple and DRY.</p>
+
+
+	<p>I have been unable to find a similar approach to combining business logic and view in a reusable component in an equally DRY manner without using components. It would be helpful if someone could provide an example of how to effectively rewrite a reusable component (such as a web poll) without using components.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1092";
+//--></script>
+<!-- mmc mmid:1092 mmdate:2006-09-01 08:27:28 mmauthor:Todd Huss -->
+</li>
+<li id="comment-1093"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1093'); }"  onmouseout="Element.hide('admin_comment_1093');" >
+  <div id="admin_comment_1093" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1093', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1093&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1093" class="admintools">edit</a></div>
+  <a name="comment-1093"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 2 days later:<br />
+  <p>Ryan,
+I don&#8217;t have a problem with namespaces. If you look at my Ruby projects I use namespaces all the time. I however don&#8217;t use them with my models and controllers in Rails because it tends to cause problems and I find I can keep everything organized anyway.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1093";
+//--></script>
+<!-- mmc mmid:1093 mmdate:2006-09-01 13:30:18 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1094"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1094'); }"  onmouseout="Element.hide('admin_comment_1094');" >
+  <div id="admin_comment_1094" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1094', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1094&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1094" class="admintools">edit</a></div>
+  <a name="comment-1094"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 2 days later:<br />
+  <p>Components people,
+Enjoy them if you&#8217;d like. I still expect them to come out. Most of the core team describes it as a half written solution.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1094";
+//--></script>
+<!-- mmc mmid:1094 mmdate:2006-09-01 13:31:41 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1098"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1098'); }"  onmouseout="Element.hide('admin_comment_1098');" >
+  <div id="admin_comment_1098" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1098', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1098&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1098" class="admintools">edit</a></div>
+  <a name="comment-1098"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>S</strong> </cite> said 2 days later:<br />
+  <p>You&#8217;re smoking crack if you think components or pagination is broken.</p>
+
+
+	<p>This is why you should lock your apps to a specific rails version people&#8230;don&#8217;t risk your app breaking by using whatever is installed on your server.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1098";
+//--></script>
+<!-- mmc mmid:1098 mmdate:2006-09-02 00:38:32 mmauthor:S -->
+</li>
+<li id="comment-1101"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1101'); }"  onmouseout="Element.hide('admin_comment_1101');" >
+  <div id="admin_comment_1101" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1101', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1101&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1101" class="admintools">edit</a></div>
+  <a name="comment-1101"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Olli</strong> </cite> said 3 days later:<br />
+  <p>hey this article is great.
+thx</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1101";
+//--></script>
+<!-- mmc mmid:1101 mmdate:2006-09-02 10:10:11 mmauthor:Olli -->
+</li>
+<li id="comment-1188"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1188'); }"  onmouseout="Element.hide('admin_comment_1188');" >
+  <div id="admin_comment_1188" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1188', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1188&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/982/edit/1188" class="admintools">edit</a></div>
+  <a name="comment-1188"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>robert</strong> </cite> said 12 days later:<br />
+  <p>what&#8217;s the problem with find_all and find_first? this is a nice shortcut. are dynamic finders ex. find_all_by_name/ find_first_by_name deprecated? bin verwirrt&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1188";
+//--></script>
+<!-- mmc mmid:1188 mmdate:2006-09-11 11:31:50 mmauthor:robert -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/982/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="982";
+//--></script>
+<!-- mmp mmid:982 mmdate:2006-08-30 01:46:18 mmurl:/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails mmtitle:Guide: Things You Shouldn't Be Doing In Rails -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

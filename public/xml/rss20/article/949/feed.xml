@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Summer of Rails - Ship Your First App!</title>
+    <link>http://glu.ttono.us/articles/2006/07/06/summer-of-rails-ship-your-first-app</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Summer of Rails - Ship Your First App!</title>
+      <description>&lt;p&gt;Where do you stand on the Rails spectrum? Are you a Ruby wiz who&amp;#8217;s released plugins, libraries, and patches to core? More likely you&amp;#8217;re closer to the other end of the spectrum: tinkering, interested, but haven&amp;#8217;t shipped an app.&lt;/p&gt;
+
+&lt;p&gt;Well, for all the tinkerers out there you&amp;#8217;ve got some new motivation. Patrick Crowley of sd.rb is starting a project he&amp;#8217;s calling &lt;a href="http://summerofrails.org/"&gt;Summer of Rails&lt;/a&gt;. It&amp;#8217;s sort of a Rails Day meets Summer of Code meets &amp;#8220;get your butt in gear and ship something already&amp;#8221;. It&amp;#8217;s an excuse for everyone who&amp;#8217;s been interested in Rails but just hasn&amp;#8217;t &lt;em&gt;done it&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, get on it! Write your app, &lt;a href="http://summerofrails.org/badges/"&gt;badge it&lt;/a&gt; as a Summer of Code project and stop procrastinating. As new projects start coming in they&amp;#8217;ll be getting the spotlight at the Summer of Rails site so others can bask in your new found magnificence.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://summerofrails.org/"&gt;Just do it!&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 06 Jul 2006 19:35:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:30ffa260-3de5-4b3e-906d-e127bae2218a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/07/06/summer-of-rails-ship-your-first-app</link>
+      <category>Rails</category>
+      <category>sd.rb</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"Summer of Rails - Ship Your First App!" by a-nony-mouse</title>
+      <description>&lt;p&gt;when we gonna see some new guides?&lt;/p&gt;</description>
+      <pubDate>Wed, 19 Jul 2006 09:41:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:39733fa6-88ef-41bd-8992-e94155867de5</guid>
+      <link>http://glu.ttono.us/articles/2006/07/06/summer-of-rails-ship-your-first-app#comment-951</link>
+    </item>
+  </channel>
+</rss>

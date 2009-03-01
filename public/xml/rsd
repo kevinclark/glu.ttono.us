@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
+  <service>
+    <engineName>Typo</engineName>
+    <engineLink>http://www.typosphere.org</engineLink>
+    <homePageLink>http://glu.ttono.us/</homePageLink>
+    <apis>
+      <api name="Movable Type" blogID="1" preferred="true" apiLink="http://glu.ttono.us/backend/xmlrpc"/>
+      <api name="MetaWeblog" blogID="1" preferred="false" apiLink="http://glu.ttono.us/backend/xmlrpc"/>
+      <api name="Blogger" blogID="1" preferred="false" apiLink="http://glu.ttono.us/backend/xmlrpc"/>
+    </apis>
+  </service>
+</rsd>

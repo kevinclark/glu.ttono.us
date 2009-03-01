@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Holiday Loot</title>
+    <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Holiday Loot</title>
+      <description>&lt;p&gt;With the new year upon us, I&amp;#8217;m enjoying snuggling up with my wonderous gifts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Firefly the Series (DVD) from the girlfriend &amp;#8211; No one should be without it. Really, if you haven&amp;#8217;t seen it, rent it or buy it or cry in a corner. You don&amp;#8217;t know what you&amp;#8217;re missing.&lt;/li&gt;
+&lt;li&gt;The Pragmatic Programmer, Code Complete and Domain Driven Design from the folks. This year my resolution is to make better more maintainable code.&lt;/li&gt;
+&lt;li&gt;Refactoring  (yes the Fowler book) from myself. I was browsing the book store and couldn&amp;#8217;t help myself. It is truly excellent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hooray for good books, and thanks to &lt;a href="http://lunchroom.lunchboxsoftware.com/"&gt;Scott Baron&lt;/a&gt; for pointing out DDD and &lt;a href="http://www.jvoorhis.com"&gt;Jeremy Voorhis&lt;/a&gt; and &lt;a href="http://www.robbyonrails.com"&gt;Robby Russell&lt;/a&gt; for mentioning Refactoring.&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Jan 2006 13:57:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:e51ee8a7-b50b-41aa-887a-3ea614c33e77</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot</link>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/162</trackback:ping>
+    </item>
+    <item>
+      <title>"Holiday Loot" by Nick Zadrozny</title>
+      <description>&lt;p&gt;You should check out &lt;em&gt;Refactoring to Patterns&lt;/em&gt; next, the sort of sequel to &lt;em&gt;Refactoring&lt;/em&gt; and a good reference if you ever have to work on someone else&amp;#8217;s code. It is serving me particularly well working on someone else&amp;#8217;s bloated two-year-old &amp;#8220;enterprise&amp;#8221; Java web app.&lt;/p&gt;
+
+
+	&lt;p&gt;That Pragmatic Programmer&amp;#8217;s book &amp;#8211; and a few others &amp;#8211; are also on my work to-read list.&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Mar 2006 15:48:25 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:1ab1cb9b-1fb5-4777-aa8c-95000f33f2cc</guid>
+      <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot#comment-253</link>
+    </item>
+    <item>
+      <title>"Holiday Loot" by Kevin Clark</title>
+      <description>&lt;p&gt;Bah, you&amp;#8217;re right. Fixing links now.&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Jan 2006 21:17:06 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:6797cc77-e9af-4252-ab73-1d8c77e323c5</guid>
+      <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot#comment-166</link>
+    </item>
+    <item>
+      <title>"Holiday Loot" by Jeremy Voorhis</title>
+      <description>&lt;p&gt;Excellent purchases indeed! Also, Domain-Driven Design is by far one of my favorite finds. Funny that it is really catching on now, two years after it was published.&lt;/p&gt;
+
+
+	&lt;p&gt;Your links to our blogs are probably slightly borked because you forgot the http:// in &lt;pre&gt;&lt;code&gt;"Jeremy Voorhis":http://www.jvoorhis.com/&lt;/code&gt; &amp;#8211; I wish textile would do that for me.&lt;/pre&gt;&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Jan 2006 18:38:41 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b8fab647-d30d-41e3-a4a8-399d8aedfaf7</guid>
+      <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot#comment-164</link>
+    </item>
+    <item>
+      <title>"Holiday Loot" by Robby Russell</title>
+      <description>&lt;p&gt;2 things&amp;#8230;&lt;/p&gt;
+
+
+	&lt;p&gt;1) your links on this entry are slightly b0rked. ;-)&lt;/p&gt;
+
+
+	&lt;p&gt;2) good purchases!&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Jan 2006 18:34:37 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:484170a2-3dd2-4ff8-91d9-7749bbc3fc2b</guid>
+      <link>http://glu.ttono.us/articles/2006/01/02/holiday-loot#comment-163</link>
+    </item>
+  </channel>
+</rss>

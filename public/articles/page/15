@@ -1,0 +1,2358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2005/10/15/dsls-in-ruby">DSLs in Ruby</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 16 Oct 2005 01:51:00 GMT">Sun, 16 Oct 2005 01:51:00 GMT</span></p>
+<p><a href="http://www.onestepback.org">Jim Weirich</a> is awesome. An excellent speaker, a good coder and a good teacher. <a href="http://onestepback.org/articles/lingo/">His slides</a> are so well done I don&#8217;t even have notes for him.</p>
+
+<p>Edit: Accidentally had Jim&#8217;s page linked wrong. Its .org. This has been fixed.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/dsls-in-ruby#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/dsls-in-ruby#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/15/zenspiders-awesomeness-and-my-downfall">ZenSpider's Awesomeness, and my downfall</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 16 Oct 2005 01:35:05 GMT">Sun, 16 Oct 2005 01:35:05 GMT</span></p>
+<p>So Ryan had really awesome stuff, and my computer crashed as I finshed my notes. I&#8217;ll link to him ASAP.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/zenspiders-awesomeness-and-my-downfall#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/zenspiders-awesomeness-and-my-downfall#trackbacks">3 trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/15/blog-outages-and-named-routes">Blog Outages and Named Routes</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 22:38:16 GMT">Sat, 15 Oct 2005 22:38:16 GMT</span></p>
+<p>Hi guys. You may have noticed that my blog has been down or doing odd things today. This is because I was helping to test a bugfix for a <a href="http://dev.rubyonrails.com/ticket/1554">ticket</a> I turned in a while back. Good news, its fixed and will be part of the Release Candidate later tonight.</p>
+
+<p>What this means: those of us on textdrive or other reverse proxied systems can use named routes without fear of the port number showing up. Huzzah or something similar.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/blog-outages-and-named-routes#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/blog-outages-and-named-routes#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/15/refactoring-no-clergy">Refactoring No Clergy</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 20:54:40 GMT">Sat, 15 Oct 2005 20:54:40 GMT</span></p>
+<p>Kevin Baird</p>
+
+<h3>What is No Clergy?</h3>
+
+<ul>
+<li><p>Live, generative music for a small ensemble</p>
+
+<h3>Influences (Earlier Open-Form Pieces)</h3>
+
+<ul>
+<li>Karlheinz / Piano</li>
+<li>Earle Brown: Available Froms I &amp; II / Small Ensemble</li>
+</ul></li>
+</ul>
+
+<h3>Setup</h3>
+
+<ul>
+<li>Performers read music via web browser</li>
+<li>Equivalent of turning written pages is a web page refresh</li>
+<li>The conductor is a bash script </li>
+</ul>
+
+<p>(Sample of trumpet and violin musical score pages)</p>
+
+<h3>2nd and Later Pages</h3>
+
+<ul>
+<li>The audience has access to web forms in the concert space. The audience is able to modify pitch, direction, volume, etc. for the various characteristics. They can express how strong their conviction is. &#8220;I mean it, damnit!&#8221; or &#8220;Take it with a grain of salt.&#8221;</li>
+<li>Web forms are specific to each instrument
+I should mention that I wanted web forms because i serves a useful aesthetic and functional performance. People are familiar with web browsers, and it is easy for people to bring laptops to the concert space in order to participate.</li>
+</ul>
+
+<p>Markovian transformations are used. A marko chain is a data set that is a derivation of some previous data set. The new data set bears a strong resemblance to the original set, but is a new set. It&#8217;s used for things like modeling a (shakespeare play?) The point of using it here is so that the new page of notation is similar to the original. That makes it not terribly interesting for the second page, but by the third page, it gets interesting.</p>
+
+<p>(Sample pages of trumpet and violin musical scores with audience having asked for fewer notes, or more intensity for each instrument).</p>
+
+<ul>
+<li>By the second page, instruments are already starting to diverge</li>
+</ul>
+
+<h3>Originally written in Python</h3>
+
+<p>The piece was originally written in Python. Scores, measure, and notes are used. A sound or silence event is defined. A struct keeps the state.</p>
+
+<h3>Data formats &amp; output</h3>
+
+<p>The output is stored in MusicXML. It renders notation output via Lilypond, which renders LaTeX to PDF or other output formats.</p>
+
+<h3>Why Ruby?</h3>
+
+<ul>
+<li>Flexibilit of Perl without the kludges and ugliness</li>
+<li>Real access control and scope</li>
+<li>Ruby&#8217;s specific take on blocks and iterators</li>
+<li>Influence of Lisp, although not aware at the time
+<ul>
+<li>Open Classes vs. Paul Graham&#8217;s <i>On List</i></li>
+<li>Also mentioned in Agile Web Development With Rails</li>
+</ul></li>
+<li>Self-education</li>
+</ul>
+
+<h3>Why Refactor?</h3>
+
+<ul>
+<li>Had started informal code. It was a mess and so I said, &#8220;Why not refactor it and do it in Ruby?&#8221;</li>
+</ul>
+
+<h3>The Changes: Ruby vs. Python</h3>
+
+<ul>
+<li>Differences&#8230;
+<ul>
+<li>Culture not just technical features</li>
+<li>Thanks to Hal Fulton for <i>The Ruby Way</i></li>
+<li>Much heavier use of boolean predicates&#8230; e.g. has_something?</li>
+</ul></li>
+<li>Rdoc encouraged much better documentation</li>
+</ul>
+
+<h3>Substitute Algorithm</h3>
+
+<h3>Patterns</h3>
+
+<ul>
+<li>Merge a superclass and a subclass together
+<ul>
+<li>Collapse Hierarchy moves superclasses and subclasses together. this was developed in a very ad hoc process. I tried to visualize how I would generate the initial pages vs. the subsequent pages.* Extract Interface &#8211; Move conceptually similar methods into a separate module
+*The most horrible name in the project is &#8220;tupplable&#8221; which refers to a musical term.</li>
+</ul></li>
+<li>Extract Method &#8211; Break a larger code fragment into  separate methods
+<ul>
+<li>I broke a lot of methods up. In the note class, I had a notation for rendering the output. I broke it up into a public method and several privates representing the notes, pitch, etc.</li>
+</ul></li>
+<li>Extract Superclass / Pull up method &#8211;  Move methods into a superclass</li>
+<li>I made a new parent class called HasSound that represents the &#8230;.</li>
+</ul>
+
+<p>Various instruments have this thing called transposition. I used this as a class variable and many things I had used as an instrance variable became class variables, and occasionally symbolic constants.</p>
+
+<ul>
+<li>Replace Array with Object &#8211; Create Object from Array with dissimilar contents</li>
+<li><p>Replace Magic Numbers with Sumbolic Constants</p>
+
+<ul>
+<li>I also have a hash that also reads the full name from the abbreviation</li>
+</ul></li>
+<li><p>Encapsulate Field / Self Encapsulate Field - Make a public variable private and createa accessors</p></li>
+<li>Separate Query from Modifier &#8211; Isoloate methods that either return a value or change a state</li>
+</ul>
+
+<h3>Conclusions</h3>
+
+<h3>Future Plans</h3>
+
+<ul>
+<li>Continue some refactoring. Dynamics are only meaningful for notation and should be proken out in case I am not producing output for notation.</li>
+<li>Eliminate bash wrapper scripts, convert to pure Ruby.  Thankfully, I followed Matz suggestion to learn some Lisp and SmallTack, it was useful in understanding Ruby.
+<ul>
+<li>Make transformations and XML storage facilities avaliable as general libraries</li>
+<li>Implement transformation unrelated to audience feedback. Blend some styles.</li>
+</ul></li>
+<li>Python good / Ruby better (for me)</li>
+<li><p>I care about encapsulation</p>
+
+<ul>
+<li>Good design in itself</li>
+<li>Practical benefits for headspace issues</li>
+<li>Aided by having Real Access</li>
+</ul></li>
+<li><p>Ruby&#8217;s openness, flexibility and transparency made each Refactoring easier and cleaner</p></li>
+<li>Perl taught me to hate sigils</li>
+<li>Ruby taught me to love them again</li>
+</ul>
+
+<h3>Q &amp; A</h3>
+
+<p>Speaker: I&#8217;d like to ask the audience about Packaging, inclined to package once its ready. </p>
+
+<p>Q: Do you have any recordings of what this sounds like live?
+A:  I don&#8217;t have any with me, the audio quality isn&#8217;t great.
+I found that focusing on output gives me a niche&#8230; and I love that everything you hear isn&#8217;t just blowing out of a wooden tube from a hundred years ago or something like that.</p>
+
+<p>David Black: I&#8217;d say it&#8217;d be good to release as a gem. If it requires lillypond, then it requires lillypond.</p>
+
+<p>Q: I&#8217;m a trumpet player, and I was wondering if there would be an option to say how much they hate a specific musician? Is there a way to make sure that the music is not too physically difficult to play (for the performers)?
+A:  I&#8217;ve talked to my advisior, and is it aesthetically and conceptually correct to limit what gets output to what is physically playable? What if something comes out that is logistically unplayable? Well, do your best. You&#8217;re the elected official. This will be highly dependent on your performers.</p>
+
+<p>Q: Just what you said about the playability and all that&#8230; just the concept of constraints.  I&#8217;ve wondered if you&#8217;ve considered adding the ability to add constraints, something like that?
+A: I&#8217;m somewhat reluctant to do too much on that, because I want to give the audience a lot of freedom in an environment where they haven&#8217;t had it before. When something impossible happens, that&#8217;s when&#8230; alright make the trumpet&#8217;s a little higher and the &#8230; a little lower.</p>
+
+<p>Q: You really seem to be into refactoring; have you noticed a relation between the way how you think about the structure of a software program and how you think about the structure of a piece of music?
+A: That&#8217;s a really interesting question.  I think I&#8217;m more inclined to do it with code&#8230; and obviously people will disagree&#8230; [with code] it&#8217;s closer to saying this is the right way to do it and this is the wrong way to do it&#8230; but with music I find it a lot more subjective.
+Q2: Refactoring is, as far as I know, changing how something happens without changing what the final outcome is, whereas in music the output is different once you&#8217;ve changed something.
+A2: We can argue about this later</p>
+
+<p>Q: Why the name?
+A: It&#8217;s not an anti-religioius&#8230; musical professionals could be seen as a type of clergy.  I had an earlier pice called no cathedral.  This is a logical extension of that&#8230; so how could I make it more anti-clerical than that? Get rid of the clerics.  It&#8217;s a metaphor.</p>
+
+<p>Q: Speaking as someone who&#8217;s performed a bit of contemporary music, I wonder what the reaction has been by the audience?</p>
+
+<p>A: Generally it has been very good, but with that there is a caveat: I could only get other composers to perform this for me.</p>
+
+<p>One thing I should mention about the notation is that the sound of the music is identical, but the beat marks are&#8230;.So that would be an improvement in presentation.  That would help in that regard.
+A: I hear good things about smalltalk.  Actually, last weekend I started learning about smalltalk and lisp.  Actually, I </p>
+
+<p>Q: How many people have used a refactoring browser before? How many people miss it in Ruby?</p>
+
+<p>Even in the lobby last night, I was not changing things because it was painful to change things in more than one place. I was lazy, or I din&#8217;t have a refactoring browser. If anyone is interested, I would love to get this started. [Matt Shelleburty]</p>
+
+<p>Q: This is another question about the packaging&#8230; you presented it earlier as an iether/or&#8230; why is that? (Debian/ruby).
+A: I&#8217;m lazy.
+Q:
+A: That&#8217;s a good point, and that&#8217;s the ideal solution.  Yeah, that&#8217;d be the way to go probably.
+Q: That&#8217;s the way gems work, I&#8217;ve worke din Debian mostly.  You might look in to (&#8230;) [Stephanie]</p>
+
+<p>Q: Mine was in response to the refactoring guy&#8217;s question.  Things to point out is what environment you&#8217;re working in.  Things like RDT which I don&#8217;t use because it brings your machine to a crawl.  I think a bunch of people started, tried to put it in FreeRIDE&#8230; I don&#8217;t know if that would be possible.  If anyone is interested in putting it in Emacs.</p>
+
+<p>Q: Just a clarification on that too&#8230; one thing that furstrates me on that too&#8230; theres&#8217; so many smart people that have spread themselves out. [missed a lot here]  I&#8217;d rather do code than GUI anyway.</p>
+
+<p>Q: I apologize in advance to continuing to steal your thunder on this refactoring thing.  But since the topic came up.  I&#8217;m one  of the founders of the FreeRide IDE project, along with Rich Kilmer.  I&#8217;m very interested in getting refactoring support in FreeRIDe.  []&#8217;s got problems.  Enough problems that we actually removed it from FreeRide.  If there&#8217;s people that are interesteed in working on it and bringin it up to snuff, I&#8217;d be really interested in talking about it.  Thanks.</p>
+
+<p>Q: How big of a role did Unit Testing play in refactoring?  And second, I didn&#8217;t understand why you ditched PYthon.</p>
+
+<p>A: With regard to the changeover, I knew I wanted to do a substantial re-write.  I was learning Ruby at the time, and everything I learned about it I thought &#8216;why did I learn Python&#8217;?  Fortuitous coincidence in time I guess.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/refactoring-no-clergy#comments">1 comment</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/15/refactoring-no-clergy#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/metaruby">MetaRuby</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 02:54:00 GMT">Sat, 15 Oct 2005 02:54:00 GMT</span></p>
+<h3>Eric Hodel</h3>
+
+<h4>Once upon a time&#8230;</h4>
+
+<ul>
+<li>Eric and Ryan were hacking some Ruby related C</li>
+<li>And it sucked</li>
+* 
+</ul>
+
+<h4>MetaRuby</h4>
+
+<ul>
+<li>Will implement Ruby in Ruby
+<ul>
+<li>Core libarireis, parser, interpeter</li>
+</ul></li>
+</ul>
+
+<h4>MetaRuby Architecture</h4>
+
+<ul>
+<li>Parser</li>
+<li>Interpeter</li>
+<li>GC</li>
+<li>&#8230;</li>
+</ul>
+
+<h4>Why?</h4>
+
+<ul>
+<li>Writing Ruby internals in C requries mental context switch every time you change bwetween RUby and C</li>
+</ul>
+
+<p>Example of C code vs Ruby code.</p>
+
+<ul>
+<li>More Familiar</li>
+<li>More approachable</li>
+<li>Less to do
+<ul>
+<li>No NULL termination</li>
+<li>No tainting or freezing</li>
+</ul></li>
+</ul>
+
+<h4>Inspirationsal Projects</h4>
+
+<ul>
+<li>Sqeak Smalltalk</li>
+<li>Self</li>
+<li>Pascal, Modula-2, Oberon by Wirth</li>
+<li>All of these are written in themselves</li>
+</ul>
+
+<h4>Related Projects</h4>
+
+<ul>
+<li>Matju&#8217;s MetaRuby</li>
+<li>YARV</li>
+<li>JRuby</li>
+</ul>
+
+<h4>Matju&#8217;s MetaRuby</h4>
+
+<ul>
+<li>Different goal much more complex</li>
+<li>Abstracted core classes</li>
+</ul>
+
+<h4>YARV</h4>
+
+<ul>
+<li>Ruby interpreter replacement</li>
+</ul>
+
+<h4>Rubidium</h4>
+
+<ul>
+<li>Ruby interpreter replacement</li>
+<li>Rubidium is an optimizing Ruby interpreter</li>
+</ul>
+
+<h4>Rubytests</h4>
+
+<ul>
+<li>Unit tests for Ruby</li>
+<li>Not comprehensive enough for our goals</li>
+<li>Not much work making it more complex</li>
+</ul>
+
+<h4>JRuby</h4>
+
+<ul>
+<li>A 1.8.2 compatible Ruby interpreter</li>
+<li>Most builtin Ruby classes provided</li>
+<li>Support for interfacing and defining Java classes in Ruby</li>
+<li>Uses Rubytests</li>
+</ul>
+
+<h4>Current Work</h4>
+
+<h4>Methodology</h4>
+
+<ul>
+<li>Generate a stubbed class to overlay</li>
+<li>Drive unit tests to failure
+<ul>
+<li>Identify core methods (primitives) that have to exist</li>
+<li>Fix bad tests that pass despite no implementation</li>
+</ul></li>
+<li>Drive all tests to green
+<ul>
+<li>Hack, hack, hack</li>
+</ul></li>
+</ul>
+
+<h4>Passing Tests</h4>
+
+<ul>
+<li>TrueClass, FalseClass and NilClass</li>
+<li>Time</li>
+<li>Range</li>
+<li>NilClass</li>
+<li>Array</li>
+<li>String</li>
+</ul>
+
+<h4>Overlaid Classes</h4>
+
+<p>These classes overlay their core classes using Ruby&#8217;s C allocation and initialization methods replacing as many methods as possible</p>
+
+<ul>
+<li>TrueClass</li>
+<li>NilClass</li>
+<li>Array</li>
+<li>String</li>
+</ul>
+
+<h4>Replaced Classes</h4>
+
+<ul>
+<li>Time</li>
+<li>Range</li>
+<li>Hash</li>
+</ul>
+
+<h4>Rubytests</h4>
+
+<ul>
+<li>Stale
+<ul>
+<li>Mostly tests Ruby 1.6 language features</li>
+</ul></li>
+<li>Low test coverage</li>
+<li>Not fully converted to Test::Unit
+<ul>
+<li>Way too much code from pre-testunit</li>
+</ul></li>
+</ul>
+
+<h4>Test::Unit</h4>
+
+<ul>
+<li>Needs lots of methods to work</li>
+<li>Too complicated to refactor</li>
+<li>Working on core classes is hard</li>
+</ul>
+
+<h4>Future Work</h4>
+
+<h4>Primitives</h4>
+
+<ul>
+<li>Will be automatically translated to C</li>
+<li>What is a primitive?
+<ul>
+<li>Implement as much as possible in Ruby</li>
+<li>Whatever is left becomes a primitive
+** Unless we can break it down</li>
+</ul></li>
+<li>Choosing primitives is a discovery process</li>
+</ul>
+
+<h4>Ruby2c Translation</h4>
+
+<ul>
+<li>Ryan will cover this a lot more</li>
+<li>Only necessary for primitives</li>
+</ul>
+
+<h4>Memory Allocation (Objects)</h4>
+
+<ul>
+<li>Currently Array and String sit on top of C Ruby</li>
+<li>Write object allocation in pure Ruby using current memory system for all objects</li>
+<li>Then we will replace the memory system with a pure Ruby system</li>
+</ul>
+
+<h4>Replace core ruby library</h4>
+
+<ul>
+<li>Works!</li>
+<li>Well.. kind of..</li>
+<li>Compiles</li>
+<li>Links!</li>
+<li>Segfaults!</li>
+<li>Needs alot of ping pong</li>
+</ul>
+
+<h4>Far Future Work</h4>
+
+<p>h5. The Groveling Commences</p>
+
+<h4>Parser</h4>
+
+<ul>
+<li>Ripper is our best target</li>
+<li>Almost entirely Ruby already</li>
+<li>Just one file is in C, which we can rewrite</li>
+</ul>
+
+<h4>Object System &amp; Garbage Collector</h4>
+
+<ul>
+<li>Steal ideas from Sqeuak Smalltalk, Self, current Ruby</li>
+<li>In theory it should be easy to do</li>
+<li>In reality it will be hard to do well</li>
+<li>We&#8217;d love someone to work on this</li>
+</ul>
+
+<h4>Interpreter</h4>
+
+<ul>
+<li>YARV or eval.c (Ruby 1.8)?</li>
+<li>Rubidium?</li>
+<li>Needs to we written in Ruby</li>
+<li>We&#8217;d love someone to work on this</li>
+</ul>
+
+<h4>C Extensions &amp; C Standard Library</h4>
+
+<ul>
+<li>Why are you writing pure C anyways?
+<ul>
+<li>Use RubyInline or DL</li>
+</ul></li>
+<li>Probably need Ruby/C compatability stubs
+<ul>
+<li>Easy to generate</li>
+</ul></li>
+<li>Will need to follow current Ruby/C naming conventions</li>
+</ul>
+
+<h4>Array#fill</h4>
+
+<p>Eight ways to call</p>
+
+<ul>
+<li>array.fill(obj)</li>
+<li>array.fill(obj, start[, length])</li>
+<li>array.fill(obj.range)</li>
+<li>array.fill {|index| block }</li>
+<li>array.fill(start&#8230;</li>
+</ul>
+
+<h4>&#8220;foo&#8221;.sub(/f(o)o/) { $1 }</h4>
+
+<ul>
+<li>$1 is a &#8220;magick&#8221; read only global</li>
+<li>$1 can&#8217;t be set from pure Ruby</li>
+<li>So the interpreter needs to help us out</li>
+<li>Applies to all match variables</li>
+</ul>
+
+<h4>String#split</h4>
+
+<ul>
+<li>Easy</li>
+<li>&#8220;a b&#8221;.split # => [&#8216;a&#8217;, &#8216;b&#8217;]</li>
+<li>&#8220;a|b&#8221;.split # => [</li>
+<li><p>&#8220;a1b&#8221;.split(/*\d)/) # => [&#8216;a&#8217;,&#8217;1&#8217;,&#8217;c&#8217;]</p></li>
+<li><p>Hard</p></li>
+</ul>
+
+<h4>Time.rb Needs Metal</h4>
+
+<ul>
+<li>Easy
+<ul>
+<li>the_time.month</li>
+<li>the<em>time.to</em>f</li>
+<li>etc</li>
+</ul></li>
+<li>Hard
+<ul>
+<li>Time.now requries calling libc&#8217;s gettime method</li>
+<li>Currently we have libcwrap.rb that uses RubyInline to call into C funcitons</li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta"><a href="/articles/2005/10/14/metaruby#comments">2 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/metaruby#trackbacks">2 trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/yarv-progress-report">YARV Progress Report</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 02:29:00 GMT">Sat, 15 Oct 2005 02:29:00 GMT</span></p>
+<h3>Koichi SASADA</h3>
+
+<h4>Caution! (review)</h4>
+
+<ul>
+<li>I can&#8217;t speak English well
+<ul>
+<li>If I say strange English, you can see the slide page
+** Or ask another Japanese. They can speak English well.</li>
+<li>If you have any queestions, ask me with:
+** Japanese (recommended)
+** Ruby, C, Scheme, Java, &#8230;
+** IRC (#rubyconf on freenode)</li>
+</ul></li>
+</ul>
+
+<h4>Agenda</h4>
+
+<ul>
+<li>Self Introduction and Japanese Activities</li>
+<li>Overview of YARV</li>
+<li>Goal of YARV</li>
+<li>Current YARV status
+<ul>
+<li>YARV Design, Optimization Review</li>
+<li>Evaluation</li>
+</ul></li>
+<li>Conclusion</li>
+</ul>
+
+<h4>Self Introduction</h4>
+
+<ul>
+<li>&#8220;SASADA&#8221; the family name</li>
+<li>&#8220;Koichi&#8221; is given name -> &#8220;ko1&#8221;</li>
+<li>A Student for Ph.D. 2nd grade (Not a Son-shi)
+<ul>
+<li>Systems Software for Multithreaded Arch
+** SMT/CMP or other tech
+** i.e.: Hypter threeading (Intel), CMT (Sun), Power (IBM)
+** OS, Library, Compiler and Interpreter
+** YARV is my first step for parallel interpreter</li>
+<li>Computer Architecture for Next Generation at Public Position</li>
+</ul></li>
+<li>Nihon Ruby no Kai
+<ul>
+<li>Organized by Mr. Takahashi (maki)</li>
+</ul></li>
+<li>&#8220;Rubyist Magazine&#8221;:http://jp.rubyist.net/magazine
+<ul>
+<li>vol 10 at 10 Oct 2005</li>
+<li>1st anniversary at 6 Sep 2005 (vol 9)</li>
+</ul></li>
+<li>Ruby-dev summary</li>
+<li>English Diary some days
+<ul>
+<li>But retired</li>
+</ul></li>
+</ul>
+
+<h4>Our Activity: Rubyist Magazine</h4>
+
+<ul>
+<li>Many Japanese articles related to Ruby
+<ul>
+<li>Cooperate with Ruby Code &amp; Style?</li>
+<li>I&#8217;m writing YARV internal named &#8220;YARV Maniacs&#8221;</li>
+</ul></li>
+<li>Many interviews of Japanese Rubyists</li>
+</ul>
+
+<h4>RubyMa!</h4>
+
+<ul>
+<li>Published 1 Apr 2005 (April Fools)
+<ul>
+<li>Joke web-zine</li>
+</ul></li>
+<li>Parody of Negima!</li>
+<li>Many useful articles
+<ul>
+<li>The Takahashi method:
+def Takahashi
+end</li>
+</ul></li>
+</ul>
+
+<h4>Overview of YARV</h4>
+
+<h4>Overview: Background</h4>
+
+<ul>
+<li>Ruby is used world-wide, <em>(one of)? the most comfortable programming languages</em></li>
+<li>Ruby is <em>slow</em>, because interpreter doesn&#8217;t use Virtual Machine Technology</li>
+<li><p><em>We need Ruby VM!</em></p></li>
+<li><p>&#8220;YARV: Yet Another Ruby VM&#8221;:http://www.atdot.net/yarv/</p>
+
+<ul>
+<li>Started development on 1 Jan 2004
+** At that time, there were some VMS for Ruby</li>
+</ul></li>
+<li>Ruby&#8217;s license, of course</li>
+</ul>
+
+<h4>Overview: FAQ (review of last year FAQ)</h4>
+
+<ul>
+<li>Q: How is &#8220;YARV&#8221; pronounced?</li>
+<li>A: You can pronounce &#8220;YARV&#8221; what you like.</li>
+<li>Q: Should I remember the name &#8220;YARV&#8221;?</li>
+<li>A: No. If YARV succeeds, it gets renamed to Rite, if it doesn&#8217;t, no one will remember it
+<ul>
+<li>About YARV, name is NOT ???</li>
+</ul></li>
+</ul>
+
+<h4>Overview: YARV System</h4>
+
+<p>Ruby Program &#8211;> Compiler &#8211;> YARV Instruction Sequence &#8211;>
+ ==> Virtual Machine
+ ==> AOT Compiler &#8211;> C Source &#8211;></p>
+
+<h4>Overview: Current Interpreter</h4>
+
+<ul>
+<li>Ruby Program: a = b + c</li>
+<li>Syntax tree: (a =) ->  (method dispatch + (b), (c))</li>
+<li>Current interpreter traverses AST directly</li>
+</ul>
+
+<h4>Overview YARV - Stack Machine</h4>
+
+<h4>The Goal of YARV</h4>
+
+<ul>
+<li>YARV: <em>Yet Another</em> RubyVM -> <em>The RubyVM</em>
+<ul>
+<li>To be the Ruby 2.0 VM Rite</li>
+</ul></li>
+<li>Fastest Ruby Interpreter
+<ul>
+<li>Easy to be the current Ruby interpreter</li>
+</ul></li>
+</ul>
+
+<h4>The Goal of YARV (cont.)</h4>
+
+<ul>
+<li>Support all Ruby features
+<ul>
+<li>Include Ruby 2.0 new syntaxes</li>
+</ul></li>
+<li>Native thread support
+<ul>
+<li>Concurrent execution (Giant VM lock)</li>
+<li>Parallel execution on parallel machine</li>
+</ul></li>
+<li>Multi-VM instance
+<ul>
+<li>Same as Mutlti-VM in Java</li>
+</ul></li>
+</ul>
+
+<h4>Goal: Ruby 2.0 syntax</h4>
+
+<ul>
+<li>Matz will decide it :-)</li>
+<li>&#8221;{|&#8230;| &#8230;}&#8221; == &#8220;->(&#8230;){ &#8230; }&#8221;
+<ul>
+<li>&#8220;I think this is ugly&#8221; &#8211; Ko1</li>
+</ul></li>
+<li>Multiple-values
+<ul>
+<li>Same as Array? Or first class multiple-values support?</li>
+</ul></li>
+<li>Selector-namespace?</li>
+</ul>
+
+<h4>Goal: Native Thread Support</h4>
+
+<ul>
+<li>Three different thread models</li>
+<li>Model 1: User-level thread (green)
+<ul>
+<li>same as current Rubt interpreter</li>
+</ul></li>
+<li>Model 2: Native thread with giant VM lock
+<ul>
+<li>Same as current Ruby interpreter</li>
+<li>Easy to implement</li>
+</ul></li>
+<li>Model 3: Native-thread with fine grain lock
+<ul>
+<li>Run ruby threads in parallel</li>
+<li>For enterprise?</li>
+</ul></li>
+</ul>
+
+<h4>Goal: Native Thread Support (cont.)</h4>
+
+<p>h5. Current Ruby Interpreter &amp; Model 1</p>
+
+<ul>
+<li>CPU1: Thread 1 -> Thread 2 -> Thread 1</li>
+<li>CPU2: Idle&#8230;&#8230;..</li>
+</ul>
+
+<p>h5. Model 2: Native thread with Giant VM Lock</p>
+
+<ul>
+<li>CPU1: Thread 1 -> (Lock) -> (in OS thread 2) Thread 2 -> (Lock) -> Thread 1</li>
+<li>CPU2: Idle&#8230;&#8230;..</li>
+</ul>
+
+<p>On this system, other threads can run (but the Ruby threads switch cpus with a lock)</p>
+
+<p>h5. Model 3: Native thread with Fine Grain Lock</p>
+
+<ul>
+<li>CPU1: Thread 1&#8230;&#8230;</li>
+<li>CPU2: Thread 2&#8230;&#8230;</li>
+</ul>
+
+<h4>Goal: Native Thread Support Summary</h4>
+
+<p>|<em>. |</em>. Model 1|<em>. Model 2|</em>. Model 3|
+|Scalability|Bad|Bad?|Best
+|Lock overhead|No|Some|High|
+|Impl. Difficulty|Norm|Easy|Hard|
+|Portability|Good|Bad|Bad|</p>
+
+<h4>Goal: Multi-VM Instance</h4>
+
+<ul>
+<li>Current Ruby process: ( Process ( Ruby Interpreter (VM) ) )</li>
+<li><p>Ruby Process with Multi-VM Instance ( Process ((many) Ruby Interpreter (VM) ) )</p></li>
+<li><p>Current Ruby can hold only 1 interpreter in 1 process</p>
+
+<ul>
+<li>Interpreter structure causes this problem</li>
+<li>Using many global variables</li>
+</ul></li>
+<li><p>Multiple-VM instance</p>
+
+<ul>
+<li>Running some VM in 1 process</li>
+<li>It will help ruby embedded apps
+** mod_ruby, etc.</li>
+</ul></li>
+</ul>
+
+<h4>Multi-VM Instance + Thread Model 2</h4>
+
+<p>CPU1: Thread 1 -> (Lock of VM1) -> Thread 2 -> Lock of VM1</p>
+
+<h4>Goal: Load Map</h4>
+
+<ul>
+<li>All Ruby features support
+<ul>
+<li>Feb. 2006 &#8230; ?</li>
+</ul></li>
+<li>Native Thread Support
+<ul>
+<li>Experimental: Dec. 2005</li>
+<li>Complete: 2006?(model 2) 2007?(model 3)</li>
+</ul></li>
+<li>Multi-VM support
+<ul>
+<li>Experimental Feb 2006</li>
+<li>Complete: 2006?</li>
+</ul></li>
+</ul>
+
+<h4>Current Status of YARV</h4>
+
+<h4>Status: System</h4>
+
+<p>Some almosts, an incomplete and a not yet</p>
+
+<h4>Status: Supported Ruby Features</h4>
+
+<ul>
+<li>Almost all Ruby features</li>
+<li>Not supported:
+<ul>
+<li>Few syntaxes     &#8230; {|*arg| &#8230;}</li>
+<li>Visibility</li>
+<li>Safe level ($SAFE)</li>
+<li>Some methods written in C for current Ruby implementation</li>
+<li>Around Signal</li>
+<li>C extension libraries
+** (Because YARV can&#8217;t run mkmf.rb)</li>
+</ul></li>
+</ul>
+
+<h4>Status: Versions</h4>
+
+<ul>
+<li>0.2 YARV as C Extension
+<ul>
+<li>Need a patch to Ruby interpeter</li>
+</ul></li>
+<li>0.3 (2005-8): YARV as Ruby Interpreter
+<ul>
+<li>merged to Ruby source (1.9 HEAD)</li>
+<li>Maintained on my subversion repository</li>
+</ul></li>
+<li>Latest version: 0.2
+<ul>
+<li>Native thread (pthread / Win32) supports model 2</li>
+</ul></li>
+</ul>
+
+<h4>YARV 0.2.x</h4>
+
+<p>(Ruby Interpreter (Evaluator)) -> YARV (Compiler, VM, Optimizer) -> back</p>
+
+<h4>YARV 0.3.x</h4>
+
+<ul>
+<li><p>YARV marged with Ruby Interpreter</p></li>
+<li><p>Future work</p>
+
+<ul>
+<li>Generational GC</li>
+<li>m17n</li>
+<li>&#8230;</li>
+</ul></li>
+</ul>
+
+<h4>&#8220;Status: Compile &amp; Disasm CGI&#8221;:http://www.atdot.net/yc/</h4>
+
+<h4>Status: VM Design</h4>
+
+<ul>
+<li>5 registers
+<ul>
+<li>PC: Program Counter</li>
+<li>SP: Stack Pointer</li>
+<li>CFP: Controler Frame Pointer</li>
+<li>LFP: LOcal frame pointer</li>
+<li>DFP: Dynamic Frame Pointer</li>
+</ul></li>
+<li>Some stack frame</li>
+<li>Control stack and value stack</li>
+</ul>
+
+<h4>Status: Optimization</h4>
+
+<ul>
+<li>Simple Stack Virtual Machine
+<ul>
+<li>Re-design Exception handling</li>
+</ul></li>
+<li>Peep-hole optimization on compile time
+<ul>
+<li>I gave up static program analysis</li>
+<li>Dynamicity is your friend but my ENEMY!</li>
+</ul></li>
+<li>Direct Threaded code with GCC</li>
+<li>Specialized Instruction
+<ul>
+<li>i.e. Ruby program &#8220;x+y&#8221; compiled to special instruction instead of a method dispatch instruction</li>
+</ul></li>
+<li>In-line Cache
+<ul>
+<li>In-line Method Cache</li>
+<li>In-line constant value cache
+** Because ruby&#8217;s &#8220;constant variable&#8221; is not constant!</li>
+</ul></li>
+<li>Embed values in an instruction sequence</li>
+<li>Unified Instruction
+<ul>
+<li>Operands Unification</li>
+<li>*Insn<em>A x -> Insn</em>A_x</li>
+</ul></li>
+<li>Unified instructions are auto generated by VM gen
+<ul>
+<li>I only decide which instructions should be combined</li>
+</ul></li>
+<li>Stack Caching</li>
+<li>JIT Compilation
+<ul>
+<li>I made easy one for x86, but&#8230;</li>
+<li>Too hard to do alone. I retired.</li>
+</ul></li>
+<li>AOT Compilation
+<ul>
+<li>YARV bytecode -> C Source</li>
+<li>Easy to develop</li>
+<li>Hard to support exception</li>
+</ul></li>
+</ul>
+
+<h4>Status: Demo</h4>
+
+<ul>
+<li>YARV building demo?</li>
+<li>YARV running demo?</li>
+</ul>
+
+<h4>Status: Evaluation</h4>
+
+<ul>
+<li>Yield block is not fast (2-3 times faster than C Ruby) - optimizing this will be work for the future</li>
+<li>With all optimizations, basic math can see a 50 times performance gain over C Ruby</li>
+<li>Ackermann can see 20 times gain over C Ruby</li>
+<li>Wow - YARV as it stands stacks up really well against other interpreters for basic math type stuff</li>
+</ul>
+
+<h4>Status: Awards</h4>
+
+<ul>
+<li>2004: Funded by IPA Exploratory Software Development &#8220;Youth&#8221;
+<ul>
+<li>IPA: Information-technology Promotion Agency, Japan</li>
+</ul></li>
+<li>2005: Funded by IPA Exploratory Software Development (continuance)</li>
+<li>2004: got awarded &#8220;Super creator&#8221; from IPA</li>
+</ul>
+
+<h4>Conclusion</h4>
+
+<ul>
+<li>YARV supports <em>almost</em> all Ruby syntax</li>
+<li>YARV suppoorts some RUby libraries</li>
+<li>YARV 0.3.2 supports native thread</li>
+<li>YARV achieves significant speedup for ruby programs which have VM bottleneck
+<ul>
+<li>This means that we can enjoy Symbol programming with Ruby</li>
+</ul></li>
+</ul>
+
+<h4>Conclusion: Future Work</h4>
+
+<ul>
+<li>Support all Ruby features
+<ul>
+<li>mkmf.rb</li>
+</ul></li>
+<li>Support every thread model
+<ul>
+<li>especially 2 and 3</li>
+</ul></li>
+<li>Support multi-VM Instance</li>
+</ul>
+
+<h4>How Can You Help me</h4>
+
+<ul>
+<li>Any comments are welcome
+<ul>
+<li>Build reports, Bug reports, architecture reports, &#8230;</li>
+</ul></li>
+<li>yarv-devel Mailing List
+<ul>
+<li>English ML for YARV development
+** Matz and other Japanese join</li>
+</ul></li>
+<li>&#8220;YARV Wiki&#8221;:http://yarv.rubyforge.org/pukiwki/pukiwiki.php</li>
+<li>Give me a job! (I&#8217;ll finish my course 2 years later)</li>
+</ul>
+
+<h4>Special Thanks</h4>
+
+<ul>
+<li>Matz the architect of Ruby</li>
+<li>IPA: His sponsor</li>
+<li>YARV development ML subs</li>
+<li>All rubyists</li>
+</ul>
+
+<h4>Q&amp;A</h4>
+
+<ul>
+<li><p>All: We want the demo!</p>
+
+<ul>
+<li>ko1: OK</li>
+</ul></li>
+<li><p>Derek Sivers: A bunch of Japanese :-)</p>
+
+<ul>
+<li>ko1: Some more Japanese</li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/yarv-progress-report#comments">1 comment</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/yarv-progress-report#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/jruby-a-ruby-vm-in-java">JRuby: A Ruby VM in Java</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 15 Oct 2005 01:24:36 GMT">Sat, 15 Oct 2005 01:24:36 GMT</span></p>
+<p>jruby.sourceforge.net</p>
+
+<p>Charles Oliver Nutter, presenting</p>
+
+<p>Who Am I?</p>
+
+<ul>
+<li>Charles Oliver Nutter: headius@headius.com</li>
+<li>Senior Architect/Technologist at Ventura Corp</li>
+</ul>
+
+<h3>Part1: Past and Present</h3>
+
+<ul>
+<li>What is JRuby?</li>
+<li>Why JRuby?</li>
+<li>Peer Comparison</li>
+<li>The Real World</li>
+</ul>
+
+<h4>What is JRuby?</h4>
+
+<ul>
+<li>A &#8220;100% Java&#8221; based Ruby interpreter</li>
+<li>Mostly 1.8 compatable</li>
+<li>Four years and 15 developers; currently 3-5 active and under heavy development</li>
+<li>Originally modeled on Ruby 1.6 code</li>
+<li>Tri-licensed: CPL, GPL, LGPL</li>
+<li>Sun J2SE 1.4 or higher (FOSS Javas in future)</li>
+<li>Java/Ruby integration getting better</li>
+</ul>
+
+<h4>Why JRuby?</h4>
+
+<ul>
+<li>JVM provides native threading, generational GC, and extensive networking and database support</li>
+<li>Wealth of libraries and frameworks; large userbase, wide deployment</li>
+<li>Many Javaists would like to use Ruby more</li>
+<li>Java is &#8220;just another platform&#8221; for Ruby</li>
+<li>JRuby could help grow Ruby the language apart from C Ruby</li>
+<li>Sun, others very interested in dynamic (typed) languages on the JVM</li>
+<li>Javaists (by choice or by force) can help promote Ruby</li>
+<li>Java/Ruby integration merges best of both</li>
+<li>Ruby + J2EE = enterprise ruby that managers can swallow</li>
+<li>Ruby + J2ME&#8230; someday?</li>
+</ul>
+
+<h4>Demo 1: Java integration</h4>
+
+<ul>
+<li>Ruby code mixed into java</li>
+<li>JDBC used for DB access (PostgreSQL 8.0)</li>
+<li>Mostly transparent object marshalling</li>
+</ul>
+
+<h4>Peers</h4>
+
+<ul>
+<li><p>Jython - www.jython.org</p>
+
+<ul>
+<li>Pythonists dig it</li>
+<li>By far the most popular JVM dyn lang</li>
+<li>Establisehd, stable, feature complete</li>
+<li>Helpting to formally define/distinguish Python the language from Python the interpreter</li>
+<li>Interpreted or compiled (runs Python bytecode, or compiles to Java)</li>
+<li>Widely used</li>
+</ul></li>
+<li><p>Groovy - groovy.codehaus.org</p>
+
+<ul>
+<li>Ruby-like syntax, some features from Nice</li>
+<li>Seamless Java integration, sometimes with perf hit</li>
+<li>First dyn language JSR</li>
+<li>Lots of momentum</li>
+<li>Interpreted (JIT) or compiled offline to Java code</li>
+</ul></li>
+<li>SISC - sisc.sourceforge.nt
+<ul>
+<li>JRuby redesign follows similar patterns</li>
+</ul></li>
+<li>Many others</li>
+</ul>
+
+<h4>The Real World</h4>
+
+<ul>
+<li>RDT: A Ruby IDE for Eclipse; rubyeclipse.sourceforge.net</li>
+<li>jEdit: A Multi-Language Code Editor; www.jedit.org</li>
+<li>DataVision: Java-based Reporting Software; datavision.sourceforge.net</li>
+<li>Internal projects</li>
+<li>Need more</li>
+</ul>
+
+<h4>How &#8220;Ruby&#8221; is it?</h4>
+
+<ul>
+<li>Of 1049 Rubicon tests, 80% succeed</li>
+<li>Temporary incompatibilities
+<ul>
+<li>Ruby thread semantics differ from Java&#8217;s</li>
+<li>No continuations</li>
+<li>Twice as slow (half as fast?) as C or worse</li>
+<li>YAML: no up-to-date, working pure Ruby or Java parsers</li>
+<li>still missing a few 1.8 methods</li>
+</ul></li>
+<li>Permanent incompatibilities
+<ul>
+<li>System calls, C-language Ruby extensions, anything to do with C</li>
+<li>Platform-specifics: file stats, permissions, process launching, signals</li>
+</ul></li>
+</ul>
+
+<h4>Part Two: The Future</h4>
+
+<ul>
+<li>Continuing to improve compatibility</li>
+<li>Running mainstream Ruby apps</li>
+<li>Improving Java integration</li>
+<li>Speeding up</li>
+<li>The New JRuby</li>
+</ul>
+
+<h4>What needs to change?</h4>
+
+<p>h4. What needs to change?</p>
+
+<ul>
+<li>JRuby deficiencies ( as of 0.8.2)
+<ul>
+<li>Stack depth (~ fib(280))</li>
+<li>Threading and thread semantics</li>
+<li>Continuations support</li>
+<li>Speed</li>
+<li>Consistency, maintainability</li>
+<li>Compilation</li>
+<li>Better use of Java&#8217;s strengths</li>
+<li>Tigher integration between Java and Ruby</li>
+</ul></li>
+<li>Ruby deficienies (as of 1.8):
+<ul>
+<li>Stack depth (~ fib(1325))</li>
+<li>Native threading</li>
+<li>Speed</li>
+<li>Compilation</li>
+</ul></li>
+</ul>
+
+<h4>The New JRuby</h4>
+
+<ul>
+<li>Stackless; Continuation Passing Style (roughly)</li>
+<li>Iterative interpreter</li>
+<li>min threading model</li>
+<li>Compilation to Java bytecodes, offline and JIT</li>
+<li>Pluggable architecture</li>
+<li>Seamless, powerful Ruby/Java integration</li>
+<li>Behave in controlled environments</li>
+<li>FAST</li>
+</ul>
+
+<h4>Milestones and progress</h4>
+
+<ul>
+<li>Stackless, iterative proof of concept (POC) (Sept 15, complete)</li>
+<li>Redesign, refactoring of POC (Oct)</li>
+<li>Reimpl of interpreter based on POC (Nov)</li>
+<li>Reimpl of built-in classes (Nov-Jan)</li>
+<li>Threading engine (Jan)</li>
+<li>Tri-call optimizations (Jan)</li>
+<li>Continuations (Jan)</li>
+<li>Compilation (Feb - Apr)</li>
+<li>Complete for JavaONe 2006</li>
+</ul>
+
+<h4>Demo 2: Fibonacci</h4>
+
+<ul>
+<li>Recursive fib algorithm (contrived, I know)</li>
+<li>Jruby 0.8.2: shallow</li>
+<li>Ruby: deeper</li>
+<li>JRuby &#8220;stackless&#8221; POC: deepest</li>
+</ul>
+
+<p>(Demo of doing fib 30000 in JRuby! Pretty cool.)
+(Somewhat longer demo of 150000. Also cool.)</p>
+
+<h4>What Else?</h4>
+
+<ul>
+<li>YARV bytecode execution</li>
+<li>MetaRuby&#8217;s &#8220;Ruby in Ruby&#8221; useful to JRuby</li>
+<li>drb proxy to RMI</li>
+<li>ActiveRecord JDBC connector</li>
+<li>WEBrick-mimicking servlets</li>
+<li>Other ideas?</li>
+</ul>
+
+<h4>Part Three: What now?</h4>
+
+<ul>
+<li>Redesign is in full swing</li>
+<li>Heavy refactoring of JRuby core</li>
+<li>A better Ruby than ruby?</li>
+<li>Help Wanted!
+<ul>
+<li>zlib implementation using Ruby-Java integration</li>
+<li>FIle locking using Java&#8217;s NIO (New I/O)</li>
+<li>Feature-complete YAML support</li>
+<li>Running mainstream Ruby apps, isolating and reporting errors</li>
+<li>Help with new design and with refactoring effort</li>
+<li>Tangibles</li>
+</ul></li>
+</ul>
+
+<h4>Q&amp;A</h4>
+
+<ul>
+<li>&#8220;JRuby&#8221;:http://jruby.sourceforge.net
+<ul>
+<li>SF project page&#8221;:http://sourceforge.net/projects/jruby</li>
+</ul></li>
+<li>JRuby mailing lists on SF</li>
+<li>Charles Oliver Nutter: headius@headius.com</li>
+<li>Thanks to:
+<ul>
+<li>Thomas ENebo: JRuby project manager</li>
+<li>Kelly Nawrocke: Jruby developer</li>
+<li>David Corbin: JRuby developer, RDT developert</li>
+<li>Special thanks to Jan Ame Petersen, original JRubyist</li>
+</ul></li>
+</ul>
+
+<h4>REAL Q/A</h4>
+
+<ul>
+<li><p>???: About YAML - parser written in C, have C to Java translators been tried?</p>
+
+<ul>
+<li>Charles: Might not produce code that would wire in nicely; focusing in pure Ruby implementation.</li>
+</ul></li>
+<li><p>David Black: What about things that it would be nice if they were different than they currently exist in C Ruby - for instance, similar behavior often goes through different code paths? Can you change those things? Will it make it less Ruby?</p>
+
+<ul>
+<li>Charles: Mainly taken perspective that we are following what Ruby does and following what Matz and company do. Having this other platform will point out inconsistencies; some things are unfollowable. Having two places where behavior is implemented shows inconsistencies.</li>
+</ul></li>
+<li><p>???: Is JRuby going to be reentrant? Will you be able to run multiple JRuby instances in the same process?</p>
+
+<ul>
+<li>Charles: Yes, unable to control where calls are coming from, so needs to be re-entrant. Either that or able to run multiple lightweight interpreters in the same VM and then manage state. Not thread safe at this point but hopefully that will change.</li>
+</ul></li>
+<li><p>Duane Johnson: In the demo, the each iterator isn&#8217;t acting very Ruby-like.</p>
+
+<ul>
+<li>Charles: The demo is kind of put together to show everything. What would probably be better would be a Ruby-Java layer that does &#8220;rubyfication.&#8221; Code as demo&#8217;d was more javaish but still simpler than real Java. </li>
+</ul></li>
+</ul>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/jruby-a-ruby-vm-in-java#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/jruby-a-ruby-vm-in-java#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/open-uri-easy-to-use-and-extensible-virtual-file-system">open-uri, Easy-to-Use and Extensible Virtual File System</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 14 Oct 2005 21:55:00 GMT">Fri, 14 Oct 2005 21:55:00 GMT</span></p>
+<p>Presented by Tanaka Akira
+akr at m17n dot org</p>
+
+<p>This one was really really fast.. here&#8217;s what I got&#8230; &#8211; Kev</p>
+
+<p>Table of Contents</p>
+
+<ul>
+<li>Who am I?</li>
+<li>How to user open-uri</li>
+<li>Why open-uri?</li>
+<li>open-uri and net/http</li>
+<li>How to design easy-to-use api</li>
+</ul>
+
+<h3>Who am I</h3>
+
+<h4>Who am I (1)</h4>
+
+<p>The author of open-uri and several standard libraries:</p>
+
+<p>open-uri.rb, pathname.rb, time.rb, pp.rb, prettyprint.rb, resolv.rv, resolv-replace.rb, tsort.rb</p>
+
+<h4>Who am I (2)</h4>
+
+<p>Contribution for various classes and methods</p>
+
+<ul>
+<li>IO without stdio</li>
+<li>IO#read and readpartial</li>
+<li>Time Time.utc, Time@utc_offset</li>
+<li>allocate marsha1<em>dump marsha1</em>load</li>
+<li>Regexp#top_s Regexp.union</li>
+<li>Process.daemon</li>
+<li>fork kills all other threads</li>
+</ul>
+
+<h4>Who am I (3)</h4>
+
+<p>I report many bugs, over 100/year</p>
+
+<ul>
+<li>core dump</li>
+<li>test failure</li>
+<li>build problem</li>
+<li>mismatch between doc. and imp.</li>
+<li>etc</li>
+</ul>
+
+<h4>Who am I (4)</h4>
+
+<p>I wrote several non-standard libraries.</p>
+
+<ul>
+<li>htree</li>
+<li>webapp</li>
+<li>amarshal</li>
+</ul>
+
+<h3>How to Use open-uri</h3>
+
+<h4>Simple Usage</h4>
+
+<p>require <code>open-uri</code>
+open(&#8220;http://www.ruby-lang.org&#8221;) {
+ |f|
+ print f.read
+}</p>
+
+<h4>Similar to open files</h4>
+
+<h3>Why Open-uri</h3>
+
+<ul>
+<li>Easy to use api</li>
+<li>VFS: not only http</li>
+</ul>
+
+<h4>open-uri and net/http</h4>
+
+<p>net/http has too many ways</p>
+
+<ul>
+<li>Net::HTTP.get_print</li>
+<li>Net::HTTP.ge</li>
+<li>Net::HTTP.start {|h| h.get} etc</li>
+</ul>
+
+<p>confuses users</p>
+
+<h4>open-uri has Fewer ways</h4>
+
+<p>open(uri) {|f| }
+uri.open {|f| }
+uri.read</p>
+
+<p>Save user&#8217;s memory
+reuse users knowledge</p>
+
+<h4>net/http: get and print</h4>
+
+<p>Net::HTTP.get_print( URI(&#8220;http://host&#8221;))
+print Net::HTTP.get(URI(&#8220;http://host&#8221;))</p>
+
+<h4>open-uri: get and print</h4>
+
+<p>open(&#8220;http://host&#8221;) {|f|
+  print f.read
+}</p>
+
+<p>print URI(&#8220;http://host&#8221;)&#8230;</p>
+
+<h4>get and print</h4>
+
+<p>net/http</p>
+
+<ul>
+<li>Net::HTTP.get_print print only</li>
+<li>Net::HTTP.get: good</li>
+</ul>
+
+<p>open uri
+&#8230;</p>
+
+<h4>Why Easy?</h4>
+
+<p>open(&#8220;http://host)</p>
+
+<ul>
+<li>No new construct </li>
+<li>Users don&#8217;t need to learn</li>
+</ul>
+
+<p>open-uri respects user knowledge</p>
+
+<h4>net/http: headers</h4>
+
+<p>Net::HTTP.start(&#8220;host&#8221;) {|h|
+r = h.get
+&#8230;.
+}</p>
+
+<ul>
+<li>No URI anymore</li>
+<li>No Net::HTTP.get anymore</li>
+<li>Net::HTTP.start, net.. and body used instead</li>
+</ul>
+
+<h4>open-uri headers</h4>
+
+<ul>
+<li>Still URI</li>
+<li>still open method</li>
+<li>Easy to use</li>
+</ul>
+
+<h4>net/http: SSL</h4>
+
+<ul>
+<li>Different library: net/https</li>
+<li>Net:HTTP.new nad Net:HTTP.start</li>
+<li>Different port</li>
+<li>Server verification&#8230;</li>
+</ul>
+
+<h4>open-uri: SSL</h4>
+
+<ul>
+<li>Still URI</li>
+<li>Still open method</li>
+<li>Server verification by default</li>
+<li>No new library</li>
+<li>No new methods, few things to learn</li>
+</ul>
+
+<h4>net/http: proxy</h4>
+
+<ul>
+<li>New method: Net::HTTP::Proxy</li>
+</ul>
+
+<h4>open-uri: proxy</h4>
+
+<p>% http_proxy = http://blah
+% export http_proxy</p>
+
+<ul>
+<li>Conventional environemtn variable supported</li>
+<li>No new methods. An user might know this already</li>
+<li>Fewer things to learn</li>
+</ul>
+
+<h4>net/http: basic auth</h4>
+
+<ul>
+<li>New class: Net::HTTP::Get</li>
+<li>New method: Net::HTTP#request</li>
+</ul>
+
+<h4>open-uri: basic auth</h4>
+
+<ul>
+<li>Still URI</li>
+<li>Still open method</li>
+<li>New option: :http<em>basic</em>authentication</li>
+<li>No new methods, few things to learn</li>
+</ul>
+
+<h3>How to design Easy-to-Use API</h3>
+
+<ul>
+<li>Save brain power</li>
+<li>Evolve gradually</li>
+</ul>
+
+<h4>Fewer Things to Learn</h4>
+
+<ul>
+<li>Fewer constructs for pragmatic usages</li>
+<li>Huffman coding</li>
+<li>DRY</li>
+<li>No configuration is good ocnfiguration</li>
+<li>Reuse user knowledge</li>
+<li>Infrastructure friendly</li>
+</ul>
+
+<h4>Fewer Constructs for Pragmatic Usages</h4>
+
+<p>*Open vs Net::HTTP.get, Net::HTTP#get etc</p>
+
+<ul>
+<li>This is not minimalism</li>
+<li>The target of &#8220;fewer&#8221; is not all constructs</li>
+</ul>
+
+<p>Pragmatic usages should be supported by small constructs.</p>
+
+<h4>Fewer Constructs(2)</h4>
+
+<p>Diagram.. link later hopefully
+Freqently use convenience methods, rarely use many primatives</p>
+
+<h4>Ex. nethttp and open-uri</h4>
+
+<p>Methods frequently used:
+net/http: Net::HTTP.start, Net::HTTP#get
+open-uri open</p>
+
+<p>open-uri&#8217;s fewer constructs supports many more features</p>
+
+<p>Huffman Coding</p>
+
+<ul>
+<li>Shorter for freqeuent things</li>
+<li>Longer for rare things</li>
+</ul>
+
+<h4>Optimize for frequent things.</h4>
+
+<p>Ex: p</p>
+
+<p>So longer methods for rarely used things, shorter methods for frequently used things</p>
+
+<h4>Ex p</h4>
+
+<p><code>p obj</code></p>
+
+<ul>
+<li>Very frequently used</li>
+<li>Bad name in common sense</li>
+<li>Almost no problem because everyone knows</li>
+</ul>
+
+<h4>Ex. pp and y</h4>
+
+<ul>
+<li>Bad name in common sense</li>
+<li>Problematic than <code>p</code> because not everyone knows</li>
+</ul>
+
+<h4>Ex. to<em>s and to</em>str</h4>
+
+<ul>
+<li>to_s shorter. frequently used.</li>
+<li>to_str longer, used internally</li>
+</ul>
+
+<h4>Ex. def</h4>
+
+<ul>
+<li>def shorter, frequently used</li>
+<li>define_method longer. not encouraged</li>
+</ul>
+
+<h4>Ex time.rb</h4>
+
+<ul>
+<li>Time.parse frequently used</li>
+<li>Time.strptime generic, needs to learn the format.</li>
+<li>Time.parse is less flexible but enough for most cases, and easy to learn</li>
+</ul>
+
+<h4>Candidates for Huffman Coding</h4>
+
+<ul>
+<li>Method name</li>
+<li>Other name</li>
+<li>Convenience method</li>
+<li>Language syntax</li>
+<li>etc</li>
+</ul>
+
+<h4>Length of Huffman Coding</h4>
+
+<ul>
+<li>Number of characters</li>
+<li>Number of nodes in AST</li>
+<li>Editor keystrokes</li>
+<li>etc</li>
+</ul>
+
+<h4>Encourage Good Style</h4>
+
+<ul>
+<li>Programmers like short code</li>
+<li>Short code should be designed as good style</li>
+</ul>
+
+<h3>DRY &#8211; Don&#8217;t repeat yourself</h3>
+
+<p>Violations are common</p>
+
+<h4>No Configuration is Good Configuration</h4>
+
+<p>Things should work well out of box.</p>
+
+<ul>
+<li>SSL CA certs</li>
+<li>http_proxy environment variable</li>
+</ul>
+
+<h4>Bad Examples</h4>
+
+<ul>
+<li>ext/iconv/config.charset</li>
+<li>soap<em>use</em>proxy</li>
+<li>require &#8220;irb/completion&#8221;</li>
+<li>RUBYOPT=rubygems</li>
+</ul>
+
+<h4>Reuse User Knowledge</h4>
+
+<p>oepn-uri reuse user knowledge</p>
+
+<ul>
+<li>open is used to access an external resource</li>
+</ul>
+
+<h4>Reusable Knowledge</h4>
+
+<ul>
+<li>Ruby builtin (popular) metho</li>
+<li>consistency</li>
+<li>Unix</li>
+<li>Standards: POSIX, RFC, etc</li>
+<li>Metaphor</li>
+</ul>
+
+<h4>Consitency</h4>
+
+<ul>
+<li>bang methods</li>
+<li>each<em>with</em>index</li>
+<li>etc</li>
+</ul>
+
+<p>Consistency violation:</p>
+
+<ul>
+<li>Time#utc is destructive</li>
+</ul>
+
+<h4>Metaphor</h4>
+
+<ul>
+<li>HTTP is a kind of network file system</li>
+<li>oepn-uri doesn&#8217;t support beyond file system: POST, etc</li>
+</ul>
+
+<h4>Infrastructure Friendly</h4>
+
+<ul>
+<li>emacs, vi</li>
+<li>line oriented tools</li>
+<li>shell and file system</li>
+<li>web browser</li>
+</ul>
+
+<p>Prefer</p>
+
+<p>&#8220;It is easy using the legacy tool XXX&#8221; over &#8220;It is easy using the new tool YYY&#8221;</p>
+
+<h3>Evolve Gradually</h3>
+
+<ul>
+<li>Adaptive Huffman coding</li>
+<li>How to find bad API</li>
+<li>How to avoid incompatability</li>
+</ul>
+
+<h4>Adaptive Huffman Coding</h4>
+
+<p>What methods are used frequently?</p>
+
+<ul>
+<li>Long method name at first</li>
+<li>Alias to short name later</li>
+<li>Define convenience methods for idioms</li>
+</ul>
+
+<h4>Adaptive Huffman Coding(2)</h4>
+
+<ul>
+<li>Short names and operators should be used carefully</li>
+<li>Use a long name if hesitate</li>
+<li>Alias is not a bad thing (TMTOWTDI)</li>
+<li>Primitives should have long names</li>
+<li>Define new method for idiom</li>
+</ul>
+
+<h4>Operators</h4>
+
+<ul>
+<li>CGI#[] and CGI#params
+<ul>
+<li>CGI was defined unsuitably.</li>
+</ul></li>
+<li>Hash #[]
+<ul>
+<li>primitive: Hash#fetch</li>
+</ul></li>
+</ul>
+
+<h4>How to find bad api</h4>
+
+<ul>
+<li>Repeated surprise</li>
+<li>Often cannot remember</li>
+</ul>
+
+<h4>Repeated Surprise</h4>
+
+<p>Example</p>
+
+<ul>
+<li>Time#utc is destructive</li>
+<li>Iconv.iconv returns an array</li>
+</ul>
+
+<h4>Often Cannnot Remember</h4>
+
+<p>Manual is required again and again for same issue.</p>
+
+<ul>
+<li>RubyUnit</li>
+<li>optparse</li>
+</ul>
+
+<h4>Idiom</h4>
+
+<ul>
+<li>Repeated code</li>
+<li>Violate DRY</li>
+<li>An idiom may be good or bad</li>
+</ul>
+
+<p>Bad idiom example</p>
+
+<ul>
+<li>Iconv.iconv()[0]</li>
+</ul>
+
+<h4>How to Avoid Incompatibility</h4>
+
+<p>Extension without Incompatibility:</p>
+
+<ul>
+<li>New method</li>
+<li>New keyword argument</li>
+<li>con contants</li>
+</ul>
+
+<p>Introducing new names has no compatability problem (in most case)</p>
+
+<h4>Incompatible Change is a Bad Thing</h4>
+
+<p>But fixing bad API&#8230;</p>
+
+<h4>Incompatible Change</h4>
+
+<p>API Migration Example</p>
+
+<ul>
+<li>net/http: API version</li>
+<li>cgi: special implementation for transition period</li>
+</ul>
+
+<h4>net/http API version</h4>
+
+<p>Net::HTTP has two APIs</p>
+
+<ul>
+<li>Ruby 1.6 API version 1.1</li>
+<li>Ruby 1.8 API version 1.2</li>
+</ul>
+
+<h4>net.http: switch API version</h4>
+
+<ul>
+<li>It tens to forget restore API version</li>
+<li>Global switch, not thread save</li>
+</ul>
+
+<h4>cgi: special implementation for a  transition period</h4>
+
+<p>CGI#[] returns</p>
+
+<ul>
+<li>Ruby 1.6 an array of params</li>
+<li>Ruby 1.8: Transition period</li>
+<li>future? : a first parameter or nil</li>
+</ul>
+
+<h4>CGI#[] returns something tweaked on 1.8</h4>
+
+<p>Try to work as both Array and String</p>
+
+<ul>
+<li>Ruby 1.8.0 subclass of String</li>
+<li>Ruby 1.8.1 subclass of DelegateClass(String)</li>
+<li>Ruby 1.8.2 &#8230;</li>
+</ul>
+
+<h4>fork: Warning after change</h4>
+
+<p>Does fork kill other threads in child process?####</p>
+
+<ul>
+<li>Ruby 1.6: No</li>
+<li>Ruby 1.8: Yes</li>
+</ul>
+
+<h4>fork: warning after change</h4>
+
+<ul>
+<li>Ruby 1.6: No warning</li>
+<li>Ruby 1.8.0: No warning</li>
+<li>Ruby: 1.8.1: warning: fork terminates thread</li>
+<li>Ruby: 1.8.2: No warning</li>
+</ul>
+
+<h4>IO#read: warning before change</h4>
+
+<p>IO#read will block even if O_NONBLOCK is set</p>
+
+<ul>
+<li>Ruby 1.8: doesn&#8217;t block</li>
+<li><p>Ruby 1.9: does block</p></li>
+<li><p>Ruby 1.8.2: No warning</p></li>
+<li>Ruby 1.8.3: Warning</li>
+<li>Ruby 1.9 : No warning</li>
+</ul>
+
+<h3>Easy-to-Use vs Security</h3>
+
+<h4>Easy to Use vs Sec</h4>
+
+<ul>
+<li>HTTP_PROXY</li>
+<li>http://user:pass@host/</li>
+<li>redirection and taint</li>
+<li>File.open(uri)</li>
+</ul>
+
+<h3>VFS: Virtual File System</h3>
+
+<h4>Why VFS?</h4>
+
+<p>Typical simple program</p>
+
+<ul>
+<li>Load na external resource</li>
+<li>Process the resource</li>
+<li>Store the result
+VFS ease the first step.</li>
+</ul>
+
+<h4>What is VFS</h4>
+
+<p>VFS provides</p>
+
+<ul>
+<li>open a http/ftp resource</li>
+<li>read a resource
+&#8230;
+&#8230;</li>
+</ul>
+
+<h4>VFS and polymorphism</h4>
+
+<p>The polymorphism can be implemented by</p>
+
+<ul>
+<li>usual method dispatch calls
+&#8230;.</li>
+</ul>
+
+<h4>Polymorphic open</h4>
+
+<p>If open-uri is in effect
+*open(&#8220;http://&#8230;&#8221;) calls URI(&#8220;http://&#8230;&#8221;).open</p>
+
+<ul>
+<li>same for ftp etc</li>
+</ul>
+
+<p>Any URI can be opened if the URI has open method</p>
+
+<h4>Other Resources</h4>
+
+<p>LDAP</p>
+
+<h4>Other Operations</h4>
+
+<ul>
+<li>URI().read</li>
+<li>Other operations should be defined for polymorphic to Pathname future</li>
+</ul>
+
+<h4>Sec Considerations</h4>
+
+<ul>
+<li>open(&#8220;|&#8230;&#8221;)</li>
+<li>File.open is not affected</li>
+</ul>
+
+<h4>Summary</h4>
+
+<ul>
+<li>How to design Easy-To_Use API
+<ul>
+<li>Save brain power</li>
+<li>Evolve gradually</li>
+</ul></li>
+<li>VFS by open-uri</li>
+</ul>
+
+<h3>Q/A</h3>
+
+<p>Some guy writing a book: Should I teach Array.push or Array&lt;<? Experts are going to use a condensed short form, but they'll need to use it. Do you have advice for people writing apis to write code so its easier to read.</p>
+
+<p>Response: I think the api should lean towards teaching.</p>
+
+<p>DHH: Are you going to do what you&#8217;re reading for writing?</p>
+
+<p>Response: POST should be supproted in the future, but write.. eh.. not as useful.</p>
+
+<p>AC: Warning would be more useful -not- at runtime..
+Response: Inaudible</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/open-uri-easy-to-use-and-extensible-virtual-file-system#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/open-uri-easy-to-use-and-extensible-virtual-file-system#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/top-to-bottom-testing-in-ruby">Top-to-bottom Testing in Ruby</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 14 Oct 2005 20:56:00 GMT">Fri, 14 Oct 2005 20:56:00 GMT</span></p>
+<p>Presented by Francis Hwang
+<a href="http://fhwang.net/top_to_bottom/">http://fhwang.net/top_to_bottom/</a></p>
+
+<p>First Toy Example <a href="http://fhwang.net/top_to_bottom/01_fibonacci.rb">fibonacci.rb</a></p>
+
+<p>Testing is harder in the real world</p>
+
+<ul>
+<li>Complexity</li>
+<li>External components</li>
+<li>Side-effects
+<ul>
+<li>You don&#8217;t want to send a thousand emails to test</li>
+</ul></li>
+<li>Speed
+<ul>
+<li>You don&#8217;t want to drop and rebuild your schema for every single test</li>
+</ul></li>
+</ul>
+
+<p>The Quality Elbow</p>
+
+<ul>
+<li>You initially get lots of quality for your cost</li>
+<li>As it goes on, you get lest quality from your code</li>
+<li>Similarly, testing degrades as code does</li>
+</ul>
+
+<p>Message</p>
+
+<ul>
+<li>Simple mailer.</li>
+<li>Just sends stuff down the pipe</li>
+</ul>
+
+<p>For testing we don&#8217;t want to send real emails</p>
+
+<p>MockMailer</p>
+
+<ul>
+<li>Same methods, but its really really stupid</li>
+<li>Adds emails to emails sent</li>
+</ul>
+
+<p>We can use this to simply check our mailers.</p>
+
+<p>This is too coupled however, so a message ought to automatically know what mailer to use in tests.</p>
+
+<p>So we use a <a href="http://fhwang.net/top_to_bottom/03_email.rb">user</a>, and pass in the mock mailer to the user. This still isn&#8217;t right, as its not the user&#8217;s job.</p>
+
+<p>We need to bite the bullet and imitate a global variable. We&#8217;ll use <a href="http://fhwang.net/top_to_bottom/04_email.rb">contextual service</a>.</p>
+
+<p>If we need to use a mock with several outside services, we can set those up in <a href="http://fhwang.net/top_to_bottom/05_seniors.rb">setup</a>.</p>
+
+<p>The issue with mocking a sql query is that you&#8217;re basically writing a full sql parser.</p>
+
+<p>Back to slides&#8230;</p>
+
+<p>Tradeoffs of Complex Mock classes</p>
+
+<ul>
+<li>Upsides
+<ul>
+<li>Speed
+<ul>
+<li>Incredible speed increase</li>
+<li>Not spending 3 hours to run sql tests</li>
+</ul></li>
+<li>No side-effects and no cleanup
+<ul>
+<li>No need to touch the db</li>
+</ul></li>
+</ul></li>
+<li>Downsides
+<ul>
+<li>Indirection</li>
+<li>Possible bugs in mock class</li>
+<li>Time spent to build mock</li>
+</ul></li>
+</ul>
+
+<p>You could mock anything!</p>
+
+<ul>
+<li>Filesystem - <a href="http://fhwang.net/top_to_bottom/06_mockfs.rb">MockFS</a></li>
+<li>Command line user entry - <a href="http://fhwang.net/top_to_bottom/07_easyprompt.rb">EasyPrompt</a></li>
+<li>email</li>
+<li>network services</li>
+</ul>
+
+<p>Dynamicity is your friend</p>
+
+<p><a href="http://fhwang.net/top_to_bottom/09_override.rb">Overriding</a></p>
+
+<ul>
+<li>May not be a good idea</li>
+<li>Undefines FileUtil, and Dir and File</li>
+<li>Also require</li>
+</ul>
+
+<p>Further improvement</p>
+
+<ul>
+<li>Test-centric libraries
+<ul>
+<li>Try to include mocks in your libraries</li>
+</ul></li>
+<li>Domain-specific test languages</li>
+</ul>
+
+<p>Questions/Comments</p>
+
+<p>DHH: Use transactions and still use the db. Saves speed. Run test cases in a transaction, rollback. Basecamp tests using db does 410 tests, runs in 60 seconds.</p>
+
+<p>Austin: In 3rd code example, ContextualService, isn&#8217;t that just another way of doing dependency injection (needle, etc).</p>
+
+<p>Response: Yup. I like the fact that the mailer manages its own instance.</p>
+
+<p>DHH: At 0.10, Rails on Needle? Decided its not an approach, what you really want is dependency injection, without knowing anything about dependency injection. What you&#8217;re really interested in is referencing the class mailer and getting the mock back when you&#8217;re running tests. You can preload the load path so when you&#8217;re using tests it uses the mock directory before the real thing. The mock can then just be called Mailer.</p>
+
+<p>Azlak: One downside is writing them.. libraries can generate mock objects dynamically.</p>
+
+<p>Response: YMMV, mocking is a thing mostly on the logick of the thing, so abstracting out doesn&#8217;t work well. Most mock libraries work like message interception, but its like a black box. I personally like just writing them better.</p>
+
+<p>Azlak: Mixing up mocks and stubbs, whats the difference? Mocks are actually black boxes that pretend to be something else. Rails has stubbs not mocks.</p>
+
+<p>DHH: You can choose to override or not. Or turn into a whole black box if you like. You can use either mocks or stubbs.</p>
+
+<p>Azlak: The major difference is that if you don&#8217;t specifically say its a mock, it blows up in your face.</p>
+
+<p>Blah blah blah..</p>
+
+<p>AC: If you want a mockfs, why don&#8217;t you just use a specific path as a sandbox.</p>
+
+<p>Response: I have classes where they know the specific paths, so you have to intercept everywhere and it gets messy.</p>
+
+<p>AC: If you&#8217;re hitting a real file system you have the potential to bork your tests in the future if things crash.</p>
+
+<p>Response: You may also want to check if the hd is full.. etc.</p>
+
+<p>AC: Can run mock tests without actually having the server running (mysql etc).</p>
+
+<p>Response: Also nice to be able to change your structure without touching a database. Also, in theory, you could use tests to test if you&#8217;re working on code running on different machines&#8230;</p>
+
+<p>Dom Tersen: Mock testing are good for tests, but they actually don&#8217;t proove the system works for real. Mock object testing doesn&#8217;t replace real testing.</p>
+
+<p>Patrick: Who&#8217;s responsibility is it to write the mocks? Should we write them on the side, or should the capability to be mocked be part of every IO library?</p>
+
+<p>Response: I&#8217;d be happy if library authors were writing mocks for their libraries. Those writing the library are usually in the best place to write Mocks.</p>
+
+<p>I&#8217;ll clean this article up more as I have time. &#8211; Kev</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/top-to-bottom-testing-in-ruby#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/top-to-bottom-testing-in-ruby#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/14/live-from-rubyconf">Live from Rubyconf</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 14 Oct 2005 20:55:58 GMT">Fri, 14 Oct 2005 20:55:58 GMT</span></p>
+<p>Ok, I&#8217;m sitting in the basement of the RubyConf hotel. I&#8217;ll be giving you play by play as I can. Things should start in a few minutes.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/live-from-rubyconf#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/14/live-from-rubyconf#trackbacks">no trackbacks</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/13">13</a> <a href="/articles/page/14">14</a> 15 <a href="/articles/page/16">16</a> <a href="/articles/page/17">17</a> </p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

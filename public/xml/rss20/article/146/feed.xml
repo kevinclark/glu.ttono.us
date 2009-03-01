@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Caboose blogs</title>
+    <link>http://glu.ttono.us/articles/2005/12/16/caboose-blogs</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Caboose blogs</title>
+      <description>&lt;p&gt;Several members of #caboose are now blogging together tricks, tips and demos. Find us &lt;a href="http://blog.caboo.se"&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Fri, 16 Dec 2005 17:18:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:461d0fb3-19c2-43d9-89bb-5008af71cdac</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/12/16/caboose-blogs</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+  </channel>
+</rss>

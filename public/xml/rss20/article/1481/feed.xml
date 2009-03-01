@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: git-quickserver</title>
+    <link>http://glu.ttono.us/articles/2007/09/19/git-quickserver</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>git-quickserver</title>
+      <description>&lt;div class="typocode"&gt;&lt;div class="codetitle"&gt;/usr/bin/git-quickserver&lt;/div&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;#!/bin/sh
+
+git daemon --verbose --reuseaddr --export-all --base-path='.'&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;sisyphus:~/code/god kev$ git quickserver&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;sisyphus:~ kev$ git clone git://localhost/ somethin
+Initialized empty Git repository in /Users/kev/somethin/.git/
+remote: Generating pack...
+remote: Done counting 1469 objects.
+remote: Deltifying 1469 objects...
+ 100% (1469/1remote: 469) done
+Indexing 1469 objects...
+remote: Total 1469 (delta 905), reused 1461 (delta 902)
+ 100% (1469/1469) done
+Resolving 905 deltas...
+ 100% (905/905) done&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;(via &lt;a href="http://kirindave.tumblr.com/"&gt;KirinDave&lt;/a&gt;)&lt;/p&gt;</description>
+      <pubDate>Wed, 19 Sep 2007 03:35:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ff457c7e-3447-4bae-aae0-346b865c318e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/09/19/git-quickserver</link>
+      <category>Hacks</category>
+    </item>
+  </channel>
+</rss>

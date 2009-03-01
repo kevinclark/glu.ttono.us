@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Blog Outages and Named Routes</title>
+    <link>http://glu.ttono.us/articles/2005/10/15/blog-outages-and-named-routes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Blog Outages and Named Routes</title>
+      <description>&lt;p&gt;Hi guys. You may have noticed that my blog has been down or doing odd things today. This is because I was helping to test a bugfix for a &lt;a href="http://dev.rubyonrails.com/ticket/1554"&gt;ticket&lt;/a&gt; I turned in a while back. Good news, its fixed and will be part of the Release Candidate later tonight.&lt;/p&gt;
+
+&lt;p&gt;What this means: those of us on textdrive or other reverse proxied systems can use named routes without fear of the port number showing up. Huzzah or something similar.&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 18:38:16 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b8670a91135602b1c27f9c43d226a642</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/15/blog-outages-and-named-routes</link>
+      <category>Web Dev</category>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/20</trackback:ping>
+    </item>
+  </channel>
+</rss>

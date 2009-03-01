@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: On Mock/Stub Nomenclature</title>
+    <link>http://glu.ttono.us/articles/2006/01/18/on-mock-stub-nomenclature</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>On Mock/Stub Nomenclature</title>
+      <description>&lt;p&gt;In the wake of &lt;a href="http://blog.caboo.se/articles/2006/01/12/mocking-net-http-get"&gt;my own confusion&lt;/a&gt; on the differences between mocks and stubbs, &lt;a href="http://martinfowler.com/"&gt;Martin Fowler&lt;/a&gt; has posted a &lt;a href="http://martinfowler.com/bliki/TestDouble.html"&gt;nice summary&lt;/a&gt; of the differences between various types of objects used in testing.&lt;/p&gt;
+
+&lt;p&gt;via &lt;a href="http://www.robbyonrails.com:8680/articles/2006/01/18/dont-mock-me-said-the-dummy-object"&gt;Robby Russell&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Wed, 18 Jan 2006 16:17:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:f965673b-790d-4009-abd8-7697cb3bbb0e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/01/18/on-mock-stub-nomenclature</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/191</trackback:ping>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Snippet: Shuffle an Array</title>
+    <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Snippet: Shuffle an Array</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Array&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;shuffle&lt;/span&gt;
+    &lt;span class="ident"&gt;sort&lt;/span&gt; &lt;span class="punct"&gt;{&lt;/span&gt; &lt;span class="ident"&gt;rand&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;3&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt; &lt;span class="number"&gt;1&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="ident"&gt;arr&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="number"&gt;10&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_a&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/span&gt;
+&lt;span class="ident"&gt;arr&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;shuffle&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [1, 8, 6, 10, 9, 3, 7, 2, 5, 4]&lt;/span&gt;
+&lt;span class="ident"&gt;arr&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;shuffle&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [3, 7, 10, 4, 5, 8, 2, 6, 9, 1]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 02:47:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:c2411a3b-ae75-4e90-ac98-2f344492e08e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Shane</title>
+      <description>&lt;p&gt;Killer, I love this stuff!&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Apr 2007 22:37:08 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a4689b51-85c2-4fd4-811b-75803c9bd40f</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1388</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Stephen Waits</title>
+      <description>&lt;p&gt;Bah.. formatting broke on that.  You get the idea. &amp;#8212;Steve&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 11:50:57 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:7c3170f4-17ea-48d1-85f9-7fb846efdf98</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1368</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Stephen Waits</title>
+      <description>&lt;p&gt;The crux of it is that your way is pretty slow, by a factor of 4x or 5x when compared to..&lt;/p&gt;
+
+
+	&lt;p&gt;arr.sort_by {rand}&lt;/p&gt;
+
+
+	&lt;p&gt;I managed to beat sort_by{rand} by a hair with:&lt;/p&gt;
+
+
+	&lt;p&gt;def shuffle3 
+  h = Hash.new 
+  self.each { |v| h[rand(1000000000)] = v } 
+  h.keys.sort.collect { |k| h[k] } 
+end&lt;/p&gt;
+
+
+	&lt;p&gt;However, the cleanliness of sort_by{rand} cannot be denied.&lt;/p&gt;
+
+
+	&lt;p&gt;Also, you may add these to Enumerable too.&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8212;Steve&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 11:49:44 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:dfdf355c-f55f-4ce0-aa89-f7f4f7f5c0f7</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1367</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Stephen Waits</title>
+      <description>&lt;p&gt;Hey Kev,&lt;/p&gt;
+
+
+	&lt;p&gt;We had a long discussion about this in Dec &amp;#8216;05:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://groups.google.com/group/comp.lang.ruby/browse_frm/thread/ee661599c4da36ee?tvc=1"&gt;http://groups.google.com/group/comp.lang.ruby/browse_frm/thread/ee661599c4da36ee?tvc=1&lt;/a&gt;&amp;#38;q=steve%40waits.net+ruby+shuffle&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8212;Steve&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 11:35:42 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b2512f06-fafd-4fb4-91bb-62c85bda2144</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1366</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Eric</title>
+      <description>&lt;p&gt;One possible application:&lt;/p&gt;
+
+
+	&lt;p&gt;n=10&lt;br /&gt;
+a=[&amp;#8220;Je t&amp;#8217;aime&amp;#8221;,&amp;#8221;I love you&amp;#8221;,&amp;#8221;Ti amo&amp;#8221;,&amp;#8221;Ich liebe dich&amp;#8221;]*n&lt;br /&gt;
+puts a.shuffle.join(&amp;#8221;-&amp;#8221;)&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 08:57:31 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:c3920603-894f-4593-8eea-a0f244d518a5</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1365</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Patrick Ritchie</title>
+      <description>&lt;p&gt;Cool! I read this before my morning coffee and had to run the following to figure it out:&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;gt;&amp;gt; rand(3) &amp;#8211; 1
+=&amp;gt; 0
+&amp;gt;&amp;gt; rand(3) &amp;#8211; 1
+=&amp;gt; -1
+&amp;gt;&amp;gt; rand(3) &amp;#8211; 1
+=&amp;gt; 1&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 08:05:04 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d36cf27b-7a57-460c-b31d-7aaa20418abe</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1364</link>
+    </item>
+    <item>
+      <title>"Snippet: Shuffle an Array" by Eric</title>
+      <description>&lt;p&gt;Very impressive&amp;#8230;
+Well done!&lt;/p&gt;</description>
+      <pubDate>Tue, 20 Mar 2007 04:07:12 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4f084df5-d52b-4dae-9c9c-9137b86d49dc</guid>
+      <link>http://glu.ttono.us/articles/2007/03/20/snippet-shuffle-an-array#comment-1363</link>
+    </item>
+  </channel>
+</rss>

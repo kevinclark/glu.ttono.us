@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Sorting Versions is Hard</title>
+    <link>http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Sorting Versions is Hard</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Package&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&lt;/span&gt; &lt;span class="constant"&gt;ActiveRecord&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;Base&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;&amp;lt;=&amp;gt;&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="ident"&gt;versions&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;.&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;push&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;
+    &lt;span class="ident"&gt;other_versions&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;.&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;).&lt;/span&gt;&lt;span class="ident"&gt;push&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;
+
+    &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;times&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;=~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;||&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;=~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt;
+        &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+      &lt;span class="keyword"&gt;else&lt;/span&gt;
+        &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+      &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="keyword"&gt;unless&lt;/span&gt; &lt;span class="ident"&gt;comparison&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;zero?&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="number"&gt;0&lt;/span&gt; 
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.8a&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;),&lt;/span&gt; 
+ &lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.8c&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;),&lt;/span&gt; 
+ &lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.8b&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)].&lt;/span&gt;&lt;span class="ident"&gt;sort&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;map&lt;/span&gt;&lt;span class="punct"&gt;(&amp;amp;&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;0.0.8a&amp;quot;, &amp;quot;0.0.8b&amp;quot;, &amp;quot;0.0.8c&amp;quot;] &lt;/span&gt;
+
+&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.8&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;),&lt;/span&gt; 
+ &lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.10&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;),&lt;/span&gt; 
+ &lt;span class="constant"&gt;Package&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt; &lt;span class="punct"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;0.0.9&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;)].&lt;/span&gt;&lt;span class="ident"&gt;sort&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;map&lt;/span&gt;&lt;span class="punct"&gt;(&amp;amp;&lt;/span&gt;&lt;span class="symbol"&gt;:version&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+&lt;span class="comment"&gt;# =&amp;gt; [&amp;quot;0.0.8&amp;quot;, &amp;quot;0.0.9&amp;quot;, &amp;quot;0.0.10&amp;quot;] &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Fri, 16 Mar 2007 12:58:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4e655f52-a37c-41d5-86c2-6ba005152da2</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard</link>
+      <category>Rails</category>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"Sorting Versions is Hard" by Kyle Maxwell</title>
+      <description>&lt;p&gt;Facets to the rescue:
+&lt;a href="http://facets.rubyforge.org/src/doc/rdoc/more/classes/VersionNumber.html"&gt;http://facets.rubyforge.org/src/doc/rdoc/more/classes/VersionNumber.html&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Sat, 31 Mar 2007 20:47:57 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d94ab22d-2e6f-4828-9288-8a82daa2a2bf</guid>
+      <link>http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard#comment-1379</link>
+    </item>
+    <item>
+      <title>"Sorting Versions is Hard" by Scott</title>
+      <description>&lt;p&gt;I wrote a Version library that might help you out: &lt;a href="http://railsaddict.com/past/2007/3/26/sorting_versions_is_easy/"&gt;http://railsaddict.com/past/2007/3/26/sorting_versions_is_easy/&lt;/a&gt;, thanks for the inspiration!&lt;/p&gt;</description>
+      <pubDate>Mon, 26 Mar 2007 00:51:56 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:cf69eca9-23ae-454e-a04c-f0f21f305c2f</guid>
+      <link>http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard#comment-1373</link>
+    </item>
+    <item>
+      <title>"Sorting Versions is Hard" by brendan</title>
+      <description>&lt;p&gt;And if you want to handle all the versioning schemes out there in use, it gets &lt;strong&gt;insane&lt;/strong&gt;.  Take for example just a few described here: 
+&lt;a href="http://peak.telecommunity.com/DevCenter/setuptools#specifying"&gt;http://peak.telecommunity.com/DevCenter/setuptools#specifying&lt;/a&gt;-your-project-s-version&lt;/p&gt;</description>
+      <pubDate>Thu, 22 Mar 2007 22:38:19 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:63c46fd8-d183-448a-8972-90f8ed54df3d</guid>
+      <link>http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard#comment-1372</link>
+    </item>
+  </channel>
+</rss>

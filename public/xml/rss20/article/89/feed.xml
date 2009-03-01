@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: New Hosting</title>
+    <link>http://glu.ttono.us/articles/2005/11/14/new-hosting</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>New Hosting</title>
+      <description>&lt;p&gt;I&amp;#8217;ve moved Gluttonous to the excellent hosting of &lt;a href="http://robbyonrails.com"&gt;Robby Russell&lt;/a&gt; at &lt;a href="http://planetargon.com"&gt;Planet Argon&lt;/a&gt;. Downtime should be minimal from now on.&lt;/p&gt;
+
+&lt;p&gt;Thanks for your patience.&lt;/p&gt;</description>
+      <pubDate>Mon, 14 Nov 2005 02:09:32 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:1b3bddfe-0c21-4116-b11b-0afcdc91f2cc</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/11/14/new-hosting</link>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/89</trackback:ping>
+    </item>
+  </channel>
+</rss>

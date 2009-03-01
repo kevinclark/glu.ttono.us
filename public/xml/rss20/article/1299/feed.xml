@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Summer of Code Looking for Mentors</title>
+    <link>http://glu.ttono.us/articles/2007/03/07/summer-of-code-looking-for-mentors</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Summer of Code Looking for Mentors</title>
+      <description>&lt;p&gt;So it&amp;#8217;s that time of year again. Google&amp;#8217;s Summer of Code is just around the corner, and &lt;a href="http://on-ruby.blogspot.com"&gt;Pat Eyler&lt;/a&gt; is &lt;a href="http://on-ruby.blogspot.com/2007/03/ruby-in-googles-summer-of-code-2007.html"&gt;looking&lt;/a&gt; for mentors in the Ruby community.&lt;/p&gt;
+
+&lt;p&gt;Last year 10 Ruby projects were funded, but there can&amp;#8217;t be projects without students &lt;em&gt;and&lt;/em&gt; mentors.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re interested in mentoring, send Pat an email at pat dot eyler at gmail dot com.&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Mar 2007 21:20:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:7d1736f9-e5f4-4bff-ac1a-f262022c5262</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/07/summer-of-code-looking-for-mentors</link>
+      <category>Ruby</category>
+      <category>summer of code</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Help Me Pick Hardware</title>
+    <link>http://glu.ttono.us/articles/2005/12/04/help-me-pick-hardware</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Help Me Pick Hardware</title>
+      <description>&lt;p&gt;I&amp;#8217;m picking out hardware for a pet project of mine. The project, which incidentally was my first journey in to Ruby and Rails back in May, is a slant on the classic and horribly addictive &lt;a href="http://toothpastefordinner.com/lj/php"&gt;live journal image aggregators&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Anyway, the program downloads and formats (crops/resizes and such) images from the stream, scrapes the blogs for keywords and places info in the database. There&amp;#8217;s also a rails front end to view and tag. Bandwidth isn&amp;#8217;t an issue, this began as a University research project and they&amp;#8217;re going to let us host in the server room. I need to come up with a server.&lt;/p&gt;
+
+&lt;p&gt;The people involved have gathered funds and we&amp;#8217;re looking at a server in the &amp;lt; $1000 range. Hard drive space is a major issue: with the amount of stuff we&amp;#8217;ll be downloading we need atleast 200 gigs and mirrored with RAID would be nice.&lt;/p&gt;
+
+&lt;p&gt;What should I buy and from where? We can make this a general good deals on hardware post if we&amp;#8217;d like, but any suggestions for my project would be especially helpful.&lt;/p&gt;
+
+&lt;p&gt;Go at it.&lt;/p&gt;</description>
+      <pubDate>Sun, 04 Dec 2005 20:53:01 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:6b9e06d4-f735-4d24-a7a0-35a549f29089</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/12/04/help-me-pick-hardware</link>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/113</trackback:ping>
+    </item>
+    <item>
+      <title>"Help Me Pick Hardware" by Alan</title>
+      <description>&lt;p&gt;I hate to say it, but&amp;#8230; Dell.  I got a couple of  1U SC1475s and was very impressed.  Incredibly good value.  Put the 80gig drive to use somwhere else, bump up the memory and away you go.&lt;/p&gt;
+
+
+	&lt;p&gt;Be sure to talk to a salesperson and haggle.  They seem quite flexible :)&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Dec 2005 06:03:20 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:942649bf-0282-46eb-98b2-942c9317e4ed</guid>
+      <link>http://glu.ttono.us/articles/2005/12/04/help-me-pick-hardware#comment-116</link>
+    </item>
+    <item>
+      <title>"Help Me Pick Hardware" by Grant</title>
+      <description>&lt;p&gt;I would look at an offering from SuperMicro. LOTS of folks resell their servers (ASLab, NewEgg, etc). They are fairly reliable and are generally priced well. It generally is just a barebones lacking CPU, memory, or disk space, but that will give you some flexibility in cost structure.&lt;/p&gt;</description>
+      <pubDate>Mon, 05 Dec 2005 16:12:21 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:bb148359-ecc3-4d9d-838d-a0aebf10db75</guid>
+      <link>http://glu.ttono.us/articles/2005/12/04/help-me-pick-hardware#comment-114</link>
+    </item>
+  </channel>
+</rss>

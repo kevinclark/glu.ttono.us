@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Mocking Net::HTTP.get</title>
+    <link>http://glu.ttono.us/articles/2006/01/12/mocking-net-http-get</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Mocking Net::HTTP.get</title>
+      <description>&lt;p&gt;I&amp;#8217;ve written a small article called &lt;a href="http://blog.caboo.se/articles/2006/01/12/mocking-net-http-get"&gt;Mocking Net::HTTP.get&lt;/a&gt; over at the &lt;a href="http://blog.caboo.se"&gt;Caboose Blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go check it out.&lt;/p&gt;</description>
+      <pubDate>Thu, 12 Jan 2006 19:04:15 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:087f0c40-e9cf-4f4e-8f71-37e03c1d83c1</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/01/12/mocking-net-http-get</link>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/176</trackback:ping>
+    </item>
+  </channel>
+</rss>

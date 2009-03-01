@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Steve Jobs Does Hollywood</title>
+    <link>http://glu.ttono.us/articles/2005/12/29/steve-jobs-does-hollywood</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Steve Jobs Does Hollywood</title>
+      <description>&lt;p&gt;&lt;a href="http://www.mikeindustries.com/blog/archive/2005/12/ipod-giveaway-7-steve-jobs#comments"&gt;This site&lt;/a&gt; is doing an ipod give away to the best &amp;#8216;Steve Jobs Movie Poster&amp;#8217;. It&amp;#8217;s good stuff, so take a look.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s my entry:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://thar.be/SteveJobsPoster.jpg" style="border: 1px solid black;" /&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 29 Dec 2005 22:11:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:2c5fbe73-1f47-407c-83b6-ba55b3ffd687</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/12/29/steve-jobs-does-hollywood</link>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/160</trackback:ping>
+    </item>
+    <item>
+      <title>"Steve Jobs Does Hollywood" by Kevin Clark</title>
+      <description>&lt;p&gt;12 Computers, 1 Bill Gates. One dozen.&lt;/p&gt;</description>
+      <pubDate>Tue, 03 Jan 2006 03:15:52 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:19e5b00f-6eb4-4f0d-bb73-5600999caee4</guid>
+      <link>http://glu.ttono.us/articles/2005/12/29/steve-jobs-does-hollywood#comment-168</link>
+    </item>
+    <item>
+      <title>"Steve Jobs Does Hollywood" by Nathan de Vries</title>
+      <description>&lt;p&gt;It should be &amp;#8220;Cheaper by the Baker&amp;#8217;s Dozen&amp;#8221;. There&amp;#8217;s 13.&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Jan 2006 23:45:53 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:062d324d-72da-4458-bb07-15dd32c2fcde</guid>
+      <link>http://glu.ttono.us/articles/2005/12/29/steve-jobs-does-hollywood#comment-167</link>
+    </item>
+  </channel>
+</rss>

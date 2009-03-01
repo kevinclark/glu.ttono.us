@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: SYS-CON Media and Open Source Spam</title>
+    <link>http://glu.ttono.us/articles/2006/08/01/sys-con-media-and-open-source-spam</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>SYS-CON Media and Open Source Spam</title>
+      <description>&lt;p&gt;I started getting announcements from SYS-CON Media from an email naming itself as &amp;#8220;Enterprise Open Source Buyer&amp;#8217;s Guide&amp;#8221; just after Rails Conf. There&amp;#8217;s a link at the bottom to &amp;#8220;unsubscribe from all SYS-CON Media mailing lists, including special offers and your digital edition and newsletter subscriptions&amp;#8221;. I&amp;#8217;ve gone through this process four times. Now I&amp;#8217;m getting frusterated.&lt;/p&gt;
+
+&lt;p&gt;Does anyone know who SYS-CON Media is and how I can get off their list? Are other people who went to RailsConf feeling the pain?&lt;/p&gt;</description>
+      <pubDate>Tue, 01 Aug 2006 18:06:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:395b32b8-af6e-47d7-855d-dd0b83e78b33</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/01/sys-con-media-and-open-source-spam</link>
+    </item>
+    <item>
+      <title>"SYS-CON Media and Open Source Spam" by Matt Baron</title>
+      <description>&lt;p&gt;I didn&amp;#8217;t get anything either.&lt;/p&gt;</description>
+      <pubDate>Wed, 02 Aug 2006 08:25:08 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7fb55b0c-a5f8-4997-b428-58605f0e4aed</guid>
+      <link>http://glu.ttono.us/articles/2006/08/01/sys-con-media-and-open-source-spam#comment-960</link>
+    </item>
+    <item>
+      <title>"SYS-CON Media and Open Source Spam" by choonkeat</title>
+      <description>&lt;p&gt;nope. didn&amp;#8217;t get something like that.&lt;/p&gt;</description>
+      <pubDate>Wed, 02 Aug 2006 02:58:41 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:3cd908a9-34e3-4233-8646-766c25b6cfb2</guid>
+      <link>http://glu.ttono.us/articles/2006/08/01/sys-con-media-and-open-source-spam#comment-959</link>
+    </item>
+    <item>
+      <title>"SYS-CON Media and Open Source Spam" by Steve Longdo</title>
+      <description>&lt;p&gt;SYS-CON is the publisher/distributor of everyone&amp;#8217;s favorite magazine, JDJ, Java Developer&amp;#8217;s Journal.&lt;/p&gt;
+
+
+	&lt;p&gt;I wish you luck in your quest to get the emails stopped. I&amp;#8217;ve been getting that magazine and spam from them for years now.&lt;/p&gt;</description>
+      <pubDate>Tue, 01 Aug 2006 21:45:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:92ae2a4a-fa7e-4e65-8031-f4e3cafe07e6</guid>
+      <link>http://glu.ttono.us/articles/2006/08/01/sys-con-media-and-open-source-spam#comment-958</link>
+    </item>
+  </channel>
+</rss>

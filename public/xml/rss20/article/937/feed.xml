@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Stefen Kaes - Optimizing Rails</title>
+    <link>http://glu.ttono.us/articles/2006/06/23/stefen-kaes-optimizing-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Stefen Kaes - Optimizing Rails</title>
+      <description>&lt;p&gt;Stefen went very very fast during his presentation, so I&amp;#8217;ve missed bits and pieces. I&amp;#8217;ll link his slides if I can (though they may not be available except for the $50 video). Sorry about that.&lt;/p&gt;
+
+&lt;p&gt;Performance Tuning&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Trying to improve performance without measuring is foolish&lt;/li&gt;
+&lt;li&gt;In favor of optimization at design time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Performance Parameters&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Latency
+&lt;ul&gt;
+&lt;li&gt;How fast can you answer a request?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Throughput
+&lt;ul&gt;
+&lt;li&gt;How many requests can you process per second?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Utilization
+&lt;ul&gt;
+&lt;li&gt;Are your servers idle most of the time?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cost efficiency
+&lt;ul&gt;
+&lt;li&gt;Performance per unit cost&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Compute mean, min, max, standard dev (if applicable). Standard deviation will tell you how reliable your data is.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Benchmarking Tools&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rails log files (debug level &gt;= &lt;code&gt;Logger::DEBUG&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Rails Analyzer Tools (requires logging to syslog)&lt;/li&gt;
+&lt;li&gt;Rails benchmarker script (script/benchmarker)&lt;/li&gt;
+&lt;li&gt;Tools provided by DB vendor&lt;/li&gt;
+&lt;li&gt;Apache Bench (ab or ab2)&lt;/li&gt;
+&lt;li&gt;httperf&lt;/li&gt;
+&lt;li&gt;railsbench
+&lt;ul&gt;
+&lt;li&gt;downloadable from http://rubyforge.org/projects/railsbench&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;railsbench&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Measures raw performance of Rails request processing configured through:
+&lt;ul&gt;
+&lt;li&gt;benchmark definitions
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$RAILS_ROOT/config/benchmarks.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;defines which urls you want to visit in yaml&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;benchmark class configuration
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$RAILS_ROOT/config/benchmarks.rb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;creates a benchmarking instance with an ActiveRecordStore&lt;/li&gt;
+&lt;li&gt;Can also define user locking etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;stores benchmark data in &lt;code&gt;$RAILS_PERF_DATA&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;indexed by date and benchmark time&lt;/li&gt;
+&lt;li&gt;uses additional Rails environment benchmarking&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Usage
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;perf_run 100 "-bm-welcome options" [data file]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Run 100 iterations of benchnmark with given options, print data&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;perf_diff 100 "-bm=all opts" "opts1" "opts2" [file1] [file2]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;railsbench options&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-log&lt;/code&gt;[=level]
+&lt;ul&gt;
+&lt;li&gt;turn on logging (defaults to no logging). optionally oveerride log level.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-nocache&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;turn off rails caching&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-path&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-svlPV&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;run test using Ruby Performance Validator&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;patched_gc&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;use patched GC
+Ruby Profiling Tools&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ruby Profiler&lt;/li&gt;
+&lt;li&gt;Zen Profiler&lt;/li&gt;
+&lt;li&gt;rubyprof&lt;/li&gt;
+&lt;li&gt;Rails profiler script&lt;/li&gt;
+&lt;li&gt;Ruby Performance Validator (commercial, Windows only)&lt;/li&gt;
+&lt;li&gt;All but the last are pretty much useless for Rails performance work.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;railsbench&lt;/code&gt; has builtin support for RPVL:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;run_urls 100 -svlPV -bm=welcome ...&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;will start RPVL and run the named benchmark with given options&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Please send an email to the RPV guys if you think it should have UNIX support&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Top Rails Performance Problems&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Depends on who you ask, but these are my favorites:
+&lt;ul&gt;
+&lt;li&gt;slow helper methods&lt;/li&gt;
+&lt;li&gt;complicated routes&lt;/li&gt;
+&lt;li&gt;associations&lt;/li&gt;
+&lt;li&gt;retrieving too much from DB&lt;/li&gt;
+&lt;li&gt;slow session storage&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Judging from my experience, DB performance is usually not a bottleneck.&lt;/li&gt;
+&lt;li&gt;Instantiation ActiveRecord objects is more expensive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Available Session Containers&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Memory
+&lt;ul&gt;
+&lt;li&gt;Fastest but you lose all sessions on server crash/restart. Restricted to 1 app. Doesn&amp;#8217;t scale.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;File System.
+&lt;ul&gt;
+&lt;li&gt;Easy setup, one file for each session. Scales by using NFS or NAS (beware 10k active sessions!). &lt;em&gt;Slower than&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Database/ActiveRecordStore
+&lt;ul&gt;
+&lt;li&gt;Easy setup (comes with Rails distribution). &lt;em&gt;Much slower than&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Database/SQLSessionStore
+&lt;ul&gt;
+&lt;li&gt;Uses ARStore&lt;/li&gt;
+&lt;li&gt;More info at http://railsexpress.de/blog/articles/2005/12/19/roll-your-own-sql-session-store&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;memcached
+&lt;ul&gt;
+&lt;li&gt;Slighly faster than SQLSessionStore. Presumably scales best. Very tunable. Automatic session cleaning. Harder to obtain statistics. setup&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DrbStore
+&lt;ul&gt;
+&lt;li&gt;Can be used on platforms where memcached is not available.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cachable Elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pages
+&lt;ul&gt;
+&lt;li&gt;Fastes. Complete pages are stored on the file system. Web server bypasses app for rendering. Scales through NFS or NAS. Problematic if app requires login.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Actions
+&lt;ul&gt;
+&lt;li&gt;Second fastest. Caches the result of invoking actions on controllers. User login id can be used as part of the storage key.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Fragments
+&lt;ul&gt;
+&lt;li&gt;Very useful for caching small fragments (hence the name) of HTML produced during request processing. Can be made user aware.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Action caching is just a special case of fragment caching.&lt;/li&gt;
+&lt;li&gt;Several storage containers are available for fragment caching.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Storage Options for Fragment Caching&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Memory
+&lt;ul&gt;
+&lt;li&gt;Very very fast. If your app is running fast enough with 1 app server process, go for it!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;File System
+&lt;ul&gt;
+&lt;li&gt;Reasonably fast.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DrbStore&lt;/li&gt;
+&lt;li&gt;memcached&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ActionController Issues&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Components
+&lt;ul&gt;
+&lt;li&gt;I suggest to avoid components. I haven&amp;#8217;t found any good use for them, yet.&lt;/li&gt;
+&lt;li&gt;Each embedded component will be handled using a fresh request cycle.&lt;/li&gt;
+&lt;li&gt;Can always be replace by helper methods and partials.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Filters
+&lt;ul&gt;
+&lt;li&gt;If you are using components, make sure you don&amp;#8217;t rerun your filters for every request.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ActionView Issues&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Instance Variables
+&lt;ul&gt;
+&lt;li&gt;For each request, one controller instance and one view instance will be instantiated.&lt;/li&gt;
+&lt;li&gt;Instance vars creatd during controller processing will be transfered to view instance&lt;/li&gt;
+&lt;li&gt;So: avoid creating instance vars you don&amp;#8217;t need. (PARAPHRASE, NEED TO FIND SLIDES)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Slow Helper Methods&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pluralize(n, 'post')&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Creates a new inflector instance, and try to derive the correct plural. This is expensive.&lt;/li&gt;
+&lt;li&gt;Do &lt;code&gt;pluralize(n, 'post', MISSING_ARG_NEED_TO_FIND_SLIDES)&lt;/code&gt; instead&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;link_to&lt;/code&gt; and &lt;code&gt;url_for&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Much more efficient to construct your own urls, but you only need to do it on pages with &lt;strong&gt;large&lt;/strong&gt; numbers of links.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ActiveRecord Issues&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can prefetch associated objects using :include
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Article.find(:all, :include =&amp;gt; :author)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Use piggy backing for &lt;code&gt;has_one&lt;/code&gt; or &lt;code&gt;belongs_to&lt;/code&gt; relations.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;piggy.back :author_name, :from =&amp;gt; :author, :attributes =&amp;gt; [:name]&lt;/code&gt;
+&lt;code&gt;article = Article.find(:all, :piggy =&amp;gt; :author)&lt;/code&gt;
+&lt;code&gt;puts article.author.name&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Caching Column Formatting&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Computationally expensive transformation on AR fields can be cached (in the DB, using memcached, a DRb process)&lt;/li&gt;
+&lt;li&gt;Example: &lt;code&gt;textilize&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;I&amp;#8217;ve analyzed an application, where 30% cpu was saved by storing the textilized value
+Ruby&amp;#8217;s Interpreter is Slow&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;no byte code, no JIT, interprets ASTs directly&lt;/li&gt;
+&lt;li&gt;doesn&amp;#8217;t perform any code optimization at compiler time:
+&lt;ul&gt;
+&lt;li&gt;method inlining&lt;/li&gt;
+&lt;li&gt;&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Complexity of Ruby Language Elements&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Local Var acfcess: O(1)&lt;/li&gt;
+&lt;li&gt;Instance Var access: expected O(1)&lt;/li&gt;
+&lt;li&gt;Method Call: expected O(1)
+&lt;ul&gt;
+&lt;li&gt;hash access to determine literal value &lt;code&gt;{"f" =&amp;gt; :f}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;method search&lt;/li&gt;
+&lt;li&gt;&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Recommendation:
+&lt;ul&gt;
+&lt;li&gt;don&amp;#8217;t add method abstractions needlessly&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;attr_accessor&lt;/code&gt;s as external interfaces only&lt;/li&gt;
+&lt;li&gt;use local variables to short circuit repeated hash access&lt;/li&gt;
+&lt;li&gt;Avoid repeated hash access&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Caching Data in Instance Variables/Class variables&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides for example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Coding Variable Caching Efficiently&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides for example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Defining Constants vs. Inlining&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides for example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Local Variables are Cheap&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides for example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Be Careful With Regards to Logging&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ObjectSpace.each_object&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides for example&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ruby&amp;#8217;s Memory Management&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Designed for batch scripts, no long running server apps&lt;/li&gt;
+&lt;li&gt;tries to minimize memory usage&lt;/li&gt;
+&lt;li&gt;simple mark and sweep algorithm&lt;/li&gt;
+&lt;li&gt;uses malloc to manage contiguous blocks of Ruby objects&lt;/li&gt;
+&lt;li&gt;complex datastructures
+&lt;ul&gt;
+&lt;li&gt;only references to C structs are stored on Ruby heap&lt;/li&gt;
+&lt;li&gt;comprises strings, arrays, hashes, local variables maps, scopes etc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;eases writing C extensions&lt;/li&gt;
+&lt;li&gt;Current C interface makes it hard to implement generational GC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Why Ruby GC is a problem for Rails&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ASTs are stored on the Ruby heap and will be processed on each collection
+&lt;ul&gt;
+&lt;li&gt;usually the biggest part of non garbage for Rails apps&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Sweep phase depends on size of heap, not size of non garbage
+&lt;ul&gt;
+&lt;li&gt;can&amp;#8217;t increase the heap size above certain limits&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;More heap gets added, if
+&lt;ul&gt;
+&lt;li&gt;size of freelist after collection, &lt;code&gt;&amp;lt; FREE_MIN&lt;/code&gt; a constant defined in gc.c as 4096&lt;/li&gt;
+&lt;li&gt;200,000 heap slots are a &lt;code&gt;good lower bound&lt;/code&gt; for live data for typical Rails applications&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Improving GC Performance&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Control GC from the Rails dispatcher:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;RailsFCGIHandler.process! nil, 50&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Will disable Ruby GC and call GC.start after 50 requests have been processed&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Patching Ruby&amp;#8217;s Garbage Collector&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download latest &lt;code&gt;railsbench&lt;/code&gt; package. Patch Ruby using rile &lt;code&gt;rubygc.patch&lt;/code&gt;, recompile and reinstall binaries and docs.&lt;/li&gt;
+&lt;li&gt;Tune GC using environment variables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RUBY_HEAP_MIN_SLOTS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RUBY_HEAP_FREE_MIN&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RUBY_GC_MALLOC_LIMIT&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Rec values in slides (sorry)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Compile Time Template Optimization&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Many helper calls in Erb templates can be evaluated at template compile time.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;%= end_form tag %&amp;gt; ==&amp;gt; &amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;It&amp;#8217;s a complete waste to do it over and over again on a per request basis.&lt;/li&gt;
+&lt;li&gt;For some calls, we know what the output should be like, even if we don&amp;#8217;t have all arguments available.&lt;/li&gt;
+&lt;li&gt;see slides&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rails Template Optimizer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Uses Ryan Davis&amp;#8217; ParseTree package and ruby2ruby class&lt;/li&gt;
+&lt;li&gt;Retrieves AST of ActionView render method after initial compilation&lt;/li&gt;
+&lt;li&gt;Transforms AST to simplify AST&lt;/li&gt;
+&lt;li&gt;Optimizes AST into optimized &lt;code&gt;render&lt;/code&gt; method&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Optimizer Customization and Restrictions&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;see slides&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Fri, 23 Jun 2006 18:08:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ab68864b-822a-45f5-ba9f-341fe278a678</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/23/stefen-kaes-optimizing-rails</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ARTS and Test::Unit get a bit cosier</title>
+    <link>http://glu.ttono.us/articles/2006/06/23/arts-and-test-unit-get-a-bit-cosier</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ARTS and Test::Unit get a bit cosier</title>
+      <description>&lt;p&gt;I was able to find &lt;a href="http://blog.talbott.ws/"&gt;Nathaniel Talbot&lt;/a&gt; to talk about why installing ARTS makes tests run during migrations and other &lt;code&gt;rake&lt;/code&gt; tasks and as a consequence we&amp;#8217;ve squashed the bug.&lt;/p&gt;
+
+&lt;p&gt;Feel free to update your ARTS plugin. Note that the latest copy does have &lt;a href="http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching"&gt;regex matching for content&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Fri, 23 Jun 2006 10:50:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:ebeee121-5e55-4575-962e-87060bb6c361</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/23/arts-and-test-unit-get-a-bit-cosier</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: SVN Support In Rails Generators (Again)</title>
+    <link>http://glu.ttono.us/articles/2005/09/09/svn-support-in-rails-generators-again</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>SVN Support In Rails Generators (Again)</title>
+      <description>&lt;p&gt;So remember when I told you about my &lt;a href="http://glu.ttono.us/articles/2005/08/27/using-subversion-with-rails-code-generation"&gt;patch&lt;/a&gt; to add svn support to the automatic code generators in rails? Well, as of this morning in &lt;a href="http://dev.rubyonrails.com/changeset/2174"&gt;changeset 2174&lt;/a&gt; its in the trunk. Go forth and use generators with excellent version control!&lt;/p&gt;</description>
+      <pubDate>Fri, 09 Sep 2005 17:37:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a2922262a03b8deb48fa70e815e082a0</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/09/09/svn-support-in-rails-generators-again</link>
+      <category>Web Dev</category>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/11</trackback:ping>
+    </item>
+  </channel>
+</rss>

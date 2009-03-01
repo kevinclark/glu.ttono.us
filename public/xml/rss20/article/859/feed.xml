@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Link: New Graphs for Gruff</title>
+    <link>http://glu.ttono.us/articles/2006/05/23/link-new-graphs-for-gruff</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Link: New Graphs for Gruff</title>
+      <description>&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: Sorry, this isn&amp;#8217;t an update to Gruff, but an update to the CSS Graphs helper. Thanks &lt;a href="http://cwilliams.textdriven.com/articles/2006/05/25/css-graphs-plugin-patch"&gt;Chris&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://nubyonrails.com"&gt;Geoff Grosenbach&lt;/a&gt; of &lt;a href="http://podcast.rubyonrails.com"&gt;Rails Podcast&lt;/a&gt; fame is &lt;a href="http://nubyonrails.com/articles/2006/05/23/css-graphs-update-new-graph-types"&gt;updating Gruff&lt;/a&gt;, the excellent graphing library.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://nubyonrails.com/pages/gruff"&gt;Gruff&lt;/a&gt; is easy to &lt;a href="http://nubyonrails.com/pages/gruff"&gt;use&lt;/a&gt; and &lt;a href="http://glu.ttono.us/articles/2006/03/29/spiders-invade-gruff-graphs"&gt;extend&lt;/a&gt;,
+and makes really beautiful graphs.&lt;/p&gt;
+
+&lt;p&gt;Go check it out.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://thar.be/spider_small.png" alt="Spider Graph"/&gt;&lt;/p&gt;</description>
+      <pubDate>Tue, 23 May 2006 11:53:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:dd818944-295d-41cc-9bb4-8c18cea1e63c</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/23/link-new-graphs-for-gruff</link>
+      <category>Ruby</category>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

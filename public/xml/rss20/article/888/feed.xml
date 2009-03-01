@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: More Guide Ideas</title>
+    <link>http://glu.ttono.us/articles/2006/06/01/more-guide-ideas</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>More Guide Ideas</title>
+      <description>&lt;p&gt;The guides seem to be doing well. My next guide is scheduled for Monday the 5th. If you&amp;#8217;ve got an idea or a question, please send it my way.&lt;/p&gt;
+
+&lt;p&gt;kevin dot clark at gmail dot com&lt;/p&gt;
+
+&lt;p&gt;Include &amp;#8220;[idea]&amp;#8221; in the subject line.&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 00:54:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bf1af8de-3d85-444e-b5ff-44a8dcb551e0</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/01/more-guide-ideas</link>
+      <category>Rails</category>
+      <category>guides</category>
+    </item>
+  </channel>
+</rss>

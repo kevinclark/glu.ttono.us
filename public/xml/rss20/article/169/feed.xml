@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: So, I'm famous</title>
+    <link>http://glu.ttono.us/articles/2006/01/05/so-im-famous</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>So, I'm famous</title>
+      <description>&lt;p&gt;Ok, so thats just a hook. I&amp;#8217;m not really famous. I did however make the front page of Digg, albeit not credited to me directly. I guess I should give some background.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m the managing editor of a satire newspaper at UCSD. These days I don&amp;#8217;t do alot of writing, but I have had some articles I was proud of over the last several years.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.themq.com/index.php?issue=103&amp;amp;articleid=58"&gt;One of them&lt;/a&gt; made &lt;a href="http://digg.com/science/Copulating_deaf_couple_unaware_of_own_volume_"&gt;digg&lt;/a&gt; and, according to the comments, the front page.&lt;/p&gt;
+
+&lt;p&gt;Cool eh?&lt;/p&gt;</description>
+      <pubDate>Thu, 05 Jan 2006 15:23:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:d2b049cb-db03-47ea-9965-a431d90f9328</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/01/05/so-im-famous</link>
+      <category>Musings</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/169</trackback:ping>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ForwardsToEnumerable</title>
+    <link>http://glu.ttono.us/articles/2007/10/29/forwardstoenumerable</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ForwardsToEnumerable</title>
+      <description>&lt;p&gt;I haven&amp;#8217;t yet decided if this is a good idea or not.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll be at RubyConf this weekend. Say hello, if you get the urge.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;test/unit&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;rubygems&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;mocha&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;stubba&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+&lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;ForwardsToEnumerable&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.included&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;extend&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="constant"&gt;ClassMethods&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;ClassMethods&lt;/span&gt;
+    &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;forward_to_enum&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;instance_var&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;*&lt;/span&gt;&lt;span class="ident"&gt;meths&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+      &lt;span class="ident"&gt;meths&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;meth&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+        &lt;span class="ident"&gt;class_eval&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class="constant"&gt;METH&lt;/span&gt;&lt;span class="string"&gt;
+          def &lt;span class="expr"&gt;#{meth}&lt;/span&gt;(*args, &amp;amp;block)
+            &lt;span class="expr"&gt;#{instance_var.to_s}&lt;/span&gt;.each do |i|
+              i.send(:&lt;span class="expr"&gt;#{meth}&lt;/span&gt;, *args, &amp;amp;block)
+            end
+          end
+&lt;/span&gt;&lt;span class="constant"&gt;        METH&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;ForwardsToArray&lt;/span&gt;
+  &lt;span class="ident"&gt;include&lt;/span&gt; &lt;span class="constant"&gt;ForwardsToEnumerable&lt;/span&gt;
+  &lt;span class="ident"&gt;forward_to_enum&lt;/span&gt; &lt;span class="symbol"&gt;:@array&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:foo&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:bar&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:baz&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;initialize&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;array&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="attribute"&gt;@array&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;array&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;TestForwardsToArray&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&lt;/span&gt; &lt;span class="constant"&gt;Test&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;Unit&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;TestCase&lt;/span&gt;
+  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;test_forward_to_enum&lt;/span&gt;
+    &lt;span class="ident"&gt;items&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;mock&lt;/span&gt;&lt;span class="punct"&gt;(),&lt;/span&gt; &lt;span class="ident"&gt;mock&lt;/span&gt;&lt;span class="punct"&gt;(),&lt;/span&gt; &lt;span class="ident"&gt;mock&lt;/span&gt;&lt;span class="punct"&gt;()]&lt;/span&gt;
+    &lt;span class="ident"&gt;items&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="punct"&gt;{|&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;expects&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:foo&lt;/span&gt;&lt;span class="punct"&gt;);&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;expects&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:bar&lt;/span&gt;&lt;span class="punct"&gt;);&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;expects&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:baz&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+    &lt;span class="ident"&gt;f&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;ForwardsToArray&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;items&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="ident"&gt;f&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;foo&lt;/span&gt;
+    &lt;span class="ident"&gt;f&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;bar&lt;/span&gt;
+    &lt;span class="ident"&gt;f&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;baz&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Mon, 29 Oct 2007 20:16:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:95c1afa3-a4ab-4f60-8255-0f9a265b4191</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/10/29/forwardstoenumerable</link>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+  </channel>
+</rss>

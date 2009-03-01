@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: TechCrunch's Twitter Article Translated from Arrington-Speak</title>
+    <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>TechCrunch's Twitter Article Translated from Arrington-Speak</title>
+      <description>&lt;p&gt;With apologies to &lt;a href="http://daringfireball.net/"&gt;Gruber&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Original text from &lt;a href="http://www.techcrunch.com/2008/04/23/amateur-hour-over-at-twitter/"&gt;TechCrunch&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;It doesn’t really matter if Twitter’s Chief Architect Blaine Cook was fired 
+    or resigned. The important thing is that he’s gone now, and this gives 
+    Twitter the opportunity to hire someone (or a team) who may actually be able 
+    to scale the nearly two year old service and keep it live.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I haven&amp;#8217;t done any research or spoken to anyone about it, so don&amp;#8217;t ask, but I have found a scapegoat.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Cook was directly responsible for scaling Twitter, and he very much failed 
+    in his job. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Twitter is down sometimes, and I&amp;#8217;m angry about it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;A year ago he spoke at the Silicon Valley Ruby Conference about scaling 
+    Rails applications. His presentation suggested Twitter’s problems were 
+    behind them, but in fact some of their biggest stumbles hadn’t occurred yet. 
+    Note in particular slide 9 of that presentation, where Cook says about 
+    scaling Rails apps like Twitter: “It’s Easy. Really.” &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I found a posted slide from a public conference during my &amp;#8220;investigative reporting phase. Oh, and Twitter is on Rails, and I can blame Rails. It&amp;#8217;s Easy. Really.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Whether Twitter’s woes were all on Cook’s shoulders or not, he should not 
+    have been boasting about solving the problem last year.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I&amp;#8217;m high as a kite.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Meanwhile, Twitter has made at least three key hires this year on the 
+    technical side. Lee Mighdoll joined as VP Engineering and Operations in 
+    January. And this week they hired two scaling experts - John Kalucki and 
+    Steve Jenson (”known for his work scaling Blogger and Blogspot”).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And they hired someone, yada yada yada, sprinkle random facts in so nobody notices my complete incompetence. Perfect!&lt;/p&gt;</description>
+      <pubDate>Wed, 23 Apr 2008 12:19:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:730aae2e-cbf5-40ec-8f41-c0f39ff47b2d</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak</link>
+      <category>Op-Ed</category>
+    </item>
+    <item>
+      <title>"TechCrunch's Twitter Article Translated from Arrington-Speak" by Kevin Clark</title>
+      <description>&lt;p&gt;@Finanzamt: I&amp;#8217;d say it entirely depends on what kind of app you&amp;#8217;re building, and what the bottlenecks are. Scaling in general can be a hard problem, or can be fairly straightforward. I don&amp;#8217;t think Rails in particular changes that.&lt;/p&gt;</description>
+      <pubDate>Thu, 24 Apr 2008 18:53:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:73bee485-3aa9-4172-8113-37b987f4f784</guid>
+      <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comment-1544</link>
+    </item>
+    <item>
+      <title>"TechCrunch's Twitter Article Translated from Arrington-Speak" by Finanzamt</title>
+      <description>&lt;p&gt;Is scalling in rails apps is really easy? I dont think so.&lt;/p&gt;</description>
+      <pubDate>Thu, 24 Apr 2008 14:35:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:547ee90b-0b82-42f1-840b-2f117abdfd9b</guid>
+      <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comment-1542</link>
+    </item>
+    <item>
+      <title>"TechCrunch's Twitter Article Translated from Arrington-Speak" by Ben</title>
+      <description>&lt;p&gt;Couldn&amp;#8217;t agree with you more.  Nice to see someone taking a shot at the &amp;#8216;great Michael Arrington&amp;#8217; perched so high up on his friggin pedestal.&lt;/p&gt;
+
+
+	&lt;p&gt;As a developer, it irks me to see one person making so much money out of just talking about the hard work that everyone else is doing&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Wed, 23 Apr 2008 17:27:37 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c9d8e22d-e292-44f4-9d89-e9af7a719ada</guid>
+      <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comment-1541</link>
+    </item>
+    <item>
+      <title>"TechCrunch's Twitter Article Translated from Arrington-Speak" by Richard</title>
+      <description>&lt;p&gt;Very well done. Agree a 100%.&lt;/p&gt;
+
+
+	&lt;p&gt;It&amp;#8217;s just bad form to slag someone off in that sort of way, regardless of the (non-existent) research involved.&lt;/p&gt;</description>
+      <pubDate>Wed, 23 Apr 2008 14:02:47 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:029cf933-5b3a-4bf3-888b-775823459566</guid>
+      <link>http://glu.ttono.us/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comment-1540</link>
+    </item>
+  </channel>
+</rss>

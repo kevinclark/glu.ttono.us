@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: REST Talk At SD.rb Is Live</title>
+    <link>http://glu.ttono.us/articles/2006/10/04/rest-talk-at-sd-rb-is-live</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>REST Talk At SD.rb Is Live</title>
+      <description>&lt;p&gt;The talk on REST basics I &lt;a href="http://glu.ttono.us/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts"&gt;mentioned&lt;/a&gt; last month has hit the &lt;a href="http://podcast.sdruby.com"&gt;SD.rb podcast&lt;/a&gt;. I cover REST concepts and basics and &lt;a href="http://blog.integralimpressions.com/"&gt;Chris Abad&lt;/a&gt; has one immediately following on using web services (&lt;em&gt;for free&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;And if you haven&amp;#8217;t seen &lt;a href="http://chronic.rubyforge.org/"&gt;Chronic&lt;/a&gt;, the lean, mean, completely awesome natural language date/time parser from sd.rber Tom Werner, do take a look at &lt;a href="http://podcast.sdruby.com/2006/10/3/episode-008-chronic"&gt;his presentation&lt;/a&gt;. It&amp;#8217;s really a beautiful thing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: You can grab the slides for my presentation &lt;a href="http://thar.be/restful_presentation.pdf"&gt;here&lt;/a&gt;. I should have repeated the questions as they came in for the podcast viewers, but since I didn&amp;#8217;t they were roughly:&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;ol&gt;
+    &lt;li&gt;If browsers don&amp;#8217;t support the other HTTP verbs, how does Rails pass the other methods like DELETE and PUT?&lt;/li&gt;
+    &lt;li&gt;Are there other HTTP verbs besides the CRUDy ones?&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/blockquote&gt;</description>
+      <pubDate>Wed, 04 Oct 2006 19:48:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:896ae46d-bb3b-4a2e-bd5a-219a91a3d62a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/10/04/rest-talk-at-sd-rb-is-live</link>
+      <category>Ruby</category>
+      <category>sd.rb</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"REST Talk At SD.rb Is Live" by Tom</title>
+      <description>&lt;p&gt;thanks for the question list, it helps to put things in context.&lt;/p&gt;
+
+
+	&lt;p&gt;great presentation&lt;/p&gt;</description>
+      <pubDate>Fri, 06 Oct 2006 18:07:52 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7291330e-8fc7-4250-b34b-0091ac73678a</guid>
+      <link>http://glu.ttono.us/articles/2006/10/04/rest-talk-at-sd-rb-is-live#comment-1261</link>
+    </item>
+    <item>
+      <title>"REST Talk At SD.rb Is Live" by Tom</title>
+      <description>&lt;p&gt;I agree great podcast.&lt;/p&gt;
+
+
+	&lt;p&gt;One request, when someone asks a question could you possibly repeat it so the podcast watcher knows what it was.&lt;/p&gt;
+
+
+	&lt;p&gt;It&amp;#8217;s not always hard to tell what generally was asked about, but sometimes it is.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks again for these podcasts.&lt;/p&gt;</description>
+      <pubDate>Fri, 06 Oct 2006 06:25:11 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5e38ac88-dec0-48ad-82da-85af3231cb50</guid>
+      <link>http://glu.ttono.us/articles/2006/10/04/rest-talk-at-sd-rb-is-live#comment-1260</link>
+    </item>
+    <item>
+      <title>"REST Talk At SD.rb Is Live" by kirkR</title>
+      <description>&lt;p&gt;Good Job..I found it really helpfully.&lt;/p&gt;</description>
+      <pubDate>Fri, 06 Oct 2006 02:42:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:00c3b860-515e-409c-a578-2c98f9f86c71</guid>
+      <link>http://glu.ttono.us/articles/2006/10/04/rest-talk-at-sd-rb-is-live#comment-1259</link>
+    </item>
+  </channel>
+</rss>

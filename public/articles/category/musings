@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category musings</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2007/11/08/this-is-too-entertaining-not-to-share">This is too entertaining not to share</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 09 Nov 2007 02:08:00 GMT">Fri, 09 Nov 2007 02:08:00 GMT</span></p>
+<p>I&#8217;ve apparently <a href="http://shelly-rayedeane.blogspot.com/">&#8220;hacked&#8221; someone&#8217;s unborn children</a>. Or something.</p>
+
+<blockquote>And, among the lists of names, includes someone who goes by the name of Kevin Clark. And, if you were to take it even one step further, and INVESTIGATE this person, you would also come to the conclusion that he is a computer hacker who resides (or has resided) in San Francisco before.
+
+Another coincidence, I suppose?</blockquote>
+
+<p><strong>Update:</strong> She says in one of her latest comments that she has a gun now. It&#8217;s amusing, but please do not poke/provoke her. Look, but do not touch.</p>
+
+<p><strong>Update 2:</strong> She&#8217;s still accusing me of multiple felonies, but seems to have leveled off. I don&#8217;t think she&#8217;s going to track me down at this point. Woo personal safety. Oh, and technorati is apparently involved now:</p>
+
+<blockquote>I believe Mr. Clark is somehow routing fake websites through technorati via powerset and is doing something illegal.</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/11/08/this-is-too-entertaining-not-to-share#comments">8 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/09/19/3-rpm-version-comparison"><3 rpm version comparison</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 19 Sep 2007 21:19:00 GMT">Wed, 19 Sep 2007 21:19:00 GMT</span></p>
+<div class="typocode"><pre><code class="typocode_c ">/* take care of the case where the two version segments are */
+/* different types: one numeric and one alpha */
+if (one == str1) return -1; /* arbitrary */
+if (two == str2) return -1;</code></pre></div>
+
+<p>&#8211; rpm/lib/misc.c</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/09/19/3-rpm-version-comparison#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/09/19/johnathan-coultan">Johnathan Coultan</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 19 Sep 2007 18:23:00 GMT">Wed, 19 Sep 2007 18:23:00 GMT</span></p>
+<p>Geeky, catchy music. So awesome. If you&#8217;ve heard &#8220;Areas of My Expertise&#8221;, this is Hodgeman&#8217;s buddy. (via <a href="http://errtheblog.com">Wanstrath</a>)</p>
+
+<p><object width="425" height="353"><param name="movie" value="http://www.youtube.com/v/v4Wy7gRGgeA"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/v4Wy7gRGgeA" type="application/x-shockwave-flash" wmode="transparent" width="425" height="353"></embed></object></p>
+
+<p><object width="425" height="353"><param name="movie" value="http://www.youtube.com/v/ES-yKOYaXq0"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/ES-yKOYaXq0" type="application/x-shockwave-flash" wmode="transparent" width="425" height="353"></embed></object></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/09/19/johnathan-coultan#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/09/13/code-personified">Code Personified</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 13 Sep 2007 20:31:00 GMT">Thu, 13 Sep 2007 20:31:00 GMT</span></p>
+<div class="typocode"><pre><code class="typocode_python ">if self.stillHopeful:
+    # oh, cruel reality cuts deep. no joy for you. This is the
+    # first failure. This flunks the overall BuildSet, so we can
+    # notify success watchers that they aren't going to be happy.
+    self.stillHopeful = False
+    self.status.giveUpHope()
+    self.status.notifySuccessWatchers()</code></pre></div>
+
+<p>&#8211; Buildbot Source</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/09/13/code-personified#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/06/20/ruby-bug-of-the-day-string-ranges">Ruby  Gotcha of the Day: String Ranges</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 20 Jun 2007 19:05:00 GMT">Wed, 20 Jun 2007 19:05:00 GMT</span></p>
+<p>Spot the pattern?</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="punct">('</span><span class="string">1</span><span class="punct">'..'</span><span class="string">10</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, ..... &quot;10&quot;]</span>
+
+<span class="punct">('</span><span class="string">2</span><span class="punct">'..'</span><span class="string">10</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; []</span>
+
+<span class="punct">('</span><span class="string">2</span><span class="punct">'..'</span><span class="string">20</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [&quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, ..... &quot;20&quot;]</span>
+
+<span class="punct">('</span><span class="string">3</span><span class="punct">'..'</span><span class="string">20</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; []</span>
+
+<span class="punct">('</span><span class="string">3</span><span class="punct">'..'</span><span class="string">30</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [&quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, ..... &quot;30&quot;]</span>
+
+<span class="punct">('</span><span class="string">4</span><span class="punct">'..'</span><span class="string">30</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; []</span>
+
+<span class="punct">('</span><span class="string">4</span><span class="punct">'..'</span><span class="string">40</span><span class="punct">').</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [&quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, ..... &quot;40&quot;]</span>
+
+<span class="punct">(</span><span class="number">2</span><span class="punct">..</span><span class="number">10</span><span class="punct">).</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+
+<span class="punct">('</span><span class="string">2</span><span class="punct">'.</span><span class="ident">to_i</span> <span class="punct">..</span> <span class="punct">'</span><span class="string">10</span><span class="punct">'.</span><span class="ident">to_i</span><span class="punct">).</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [2, 3, 4, 5, 6, 7, 8, 9, 10]</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/06/20/ruby-bug-of-the-day-string-ranges#comments">5 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/15/on-twitter-rails-and-community">On Twitter, Rails, and Community</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 15 Apr 2007 20:13:00 GMT">Sun, 15 Apr 2007 20:13:00 GMT</span></p>
+<p>An <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/">interview</a> by a <a href="http://twitter.com/">twitter</a> developer has gotten a good deal of <a href="http://technorati.com/search/twitter+rails">press lately</a>. For many, it has reawakened the giant that is the &#8220;does Rails scale&#8221; debate, and <a href="http://www.loudthinking.com/">others</a> feel compelled to defend the framework.</p>
+
+<p>The problem with Rails isn&#8217;t that Ruby is slow. It&#8217;s also not that Rails is slow, or big, or bloated, or doesn&#8217;t scale. The problem isn&#8217;t that Rails doesn&#8217;t support multiple databases or composite keys out of the box. The problem is that <a href="http://farm1.static.flickr.com/47/127984254_ddd4363d6a.jpg">this</a> is how the vocal minority in the community tends to respond to criticism.</p>
+
+<p>So let&#8217;s all slow down and take a look at how we got here and what we can do to avoid it. That&#8217;s of course assuming we want to. Inflammatory posts certainly get lots of traffic, but I think Rails is in the spotlight enough we can actually talk like reasonable people and still get things done.</p>
+
+<p>More after the jump.</p>
+
+  <a href="/articles/2007/04/15/on-twitter-rails-and-community">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/15/on-twitter-rails-and-community#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/30/on-the-days-events">On The Day's Events</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 31 Aug 2006 01:25:00 GMT">Thu, 31 Aug 2006 01:25:00 GMT</span></p>
+<p>So, I seem to have inadvertently caused a significant amount of controversy with this morning&#8217;s article on <a href="http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails">what I don&#8217;t think you should be doing in Rails</a>. Some rather harsh words have been exchanged. It&#8217;s time for us all to take a breath, count to ten, and remember we&#8217;re all just coders working together to make Rails (and Ruby) better.</p>
+
+<p>Matz is nice, so we should be nice.</p>
+
+<p>With that as a preface I&#8217;d like to explain some of the things I said which caused a stir. Hopefully this will clarify and you can stop thinking of me as some pre-pubescent FUDdy jerk if indeed that&#8217;s where you stand.</p>
+
+<p>I thought I was giving you a list of things that you should avoid in modern versions of Rails. I didn&#8217;t get anything back differently from my reviewers. You should know that for bigger articles like this I always have a group of people take a look see first and give me feedback. These are people that I respect and may be better at writing and programming than I am (and often are). I wait to get OKs from that group <em>before</em> I post.</p>
+
+<p>I think this group of lines may have been my downfall.</p>
+
+<blockquote>
+    <p>See? A halt! Sufficiently frightened? You should be. 
+    Now, stop using these things. It’s for your own good.</p>
+</blockquote>
+
+<p>I rather regret this. In my head it was tongue-in-cheek. My reviewers didn&#8217;t even mention it though I imagine they knew I was joking since they know me personally. Others apparently didn&#8217;t. <strong>What I meant to say was that I hope the list would coerce you into improving your code.</strong> That message got lost somewhere along the line and I feel like we&#8217;ve played a rather large game of telephone. I&#8217;m sorry for that.</p>
+
+<p>Pagination seems to be the issue we pulled apart today so let&#8217;s talk about that for a few minutes. I said some things about pagination that, after returning to them, seem a bit cryptic. Sorry about that. Let me clarify: the built in <strong>pagination helpers</strong> are a hackish pain. They&#8217;re hard to work with and have some efficiency issues. As a result, working with very large data sets can cause it problems. Don&#8217;t be afraid, just be aware. With large data sets you&#8217;ll want to roll your own. The Paginator object itself isn&#8217;t so bad (though we really should clean it up) and I prefer to use custom pagination with it over the helpers.</p>
+
+<p>That being said, we&#8217;ve talked about pulling out the Rails pagination helpers into a plugin for a while. I imagine they were brought up when I passed the article around was for that reason. It isn&#8217;t deprecated yet, but it probably will be.</p>
+
+<p>Now, if you have other concerns please bring them up here.</p>
+
+<p><strong>Update:</strong> A friend has noted that one of the problems may be that some look at me as a voice of the core. Let me be clear: I&#8217;m not in core. I don&#8217;t speak for core. I speak for myself based on my knowledge and opinions. When I say, &#8220;we&#8217;ve talked about it&#8221; I mean &#8220;I&#8217;ve talked with developers working with the core in and outside the core team and the consensus seems to be that pagination will come out&#8221;. BUT, I&#8217;m still not David and not the core.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/on-the-days-events#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/03/23/curing-the-help-vampires">Curing the Help Vampires</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 23 Mar 2006 21:23:00 GMT">Thu, 23 Mar 2006 21:23:00 GMT</span></p>
+<p>Listless? Tired? Unable to give helpful feedback? Perhaps the help vampire has got you down! Learn about how to defeat (and cure) them at Amy Hoy&#8217;s <a href="http://slash7.com/pages/vampires">Slash7</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/23/curing-the-help-vampires#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/23/curing-the-help-vampires#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/25/recent-downtime">Recent Downtime</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 25 Jan 2006 22:07:03 GMT">Wed, 25 Jan 2006 22:07:03 GMT</span></p>
+<p>Sorry about the recent outages folks. Seems apache was having some permissions errors, but the great people at <a href="http://planetargon.com">Planet Argon</a> were quick to get me fixed up.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/25/recent-downtime#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/25/recent-downtime#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/05/so-im-famous">So, I'm famous</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 05 Jan 2006 20:23:00 GMT">Thu, 05 Jan 2006 20:23:00 GMT</span></p>
+<p>Ok, so thats just a hook. I&#8217;m not really famous. I did however make the front page of Digg, albeit not credited to me directly. I guess I should give some background.</p>
+
+<p>I&#8217;m the managing editor of a satire newspaper at UCSD. These days I don&#8217;t do alot of writing, but I have had some articles I was proud of over the last several years.</p>
+
+<p><a href="http://www.themq.com/index.php?issue=103&amp;articleid=58">One of them</a> made <a href="http://digg.com/science/Copulating_deaf_couple_unaware_of_own_volume_">digg</a> and, according to the comments, the front page.</p>
+
+<p>Cool eh?</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/05/so-im-famous#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/05/so-im-famous#trackbacks">1 trackback</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: 1 <a href="/articles/category/musings/page/2">2</a> </p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

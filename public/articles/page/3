@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2007/05/06/growl-based-bonjour-chat-with-channels-in-150-lines">Growl-Based Bonjour Chat with Channels in 150 Lines</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 06 May 2007 10:58:00 GMT">Sun, 06 May 2007 10:58:00 GMT</span></p>
+<p>One of the many awesome things about working at <a href="http://powerset.com">Powerset</a> is the guys I get to hack with. Tonight, my buddies <a href="http://rubyisawesome.com">Tom Preston-Werner</a>, <a href="http://vandev.com">Chris Van Pelt</a>, and I were feeling whimsical. Full source, with quicksilver hook and startup scripts can be found <a href="http://code.google.com/p/jakl/">here</a>, but this is the meat:</p>
+
+<div class="typocode"><div class="codetitle">growl_handler.rb</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">rubygems</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">ruby-growl</span><span class="punct">'</span>
+
+<span class="keyword">module </span><span class="module">Jakl</span>
+  <span class="keyword">class </span><span class="class">GrowlHandler</span>
+    <span class="keyword">def </span><span class="method">initialize</span>
+      <span class="keyword">if</span> `<span class="ident">which</span> <span class="ident">growlnotify`</span> <span class="punct">=~</span> <span class="punct">/</span><span class="regex">^no .+ in</span><span class="punct">/</span>
+        <span class="attribute">@strategy</span> <span class="punct">=</span> <span class="symbol">:ruby</span>
+        <span class="attribute">@growl</span> <span class="punct">=</span> <span class="constant">Growl</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">localhost</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string">jakl</span><span class="punct">&quot;,</span> <span class="punct">[&quot;</span><span class="string">jakl_message</span><span class="punct">&quot;])</span>
+      <span class="keyword">else</span>
+        <span class="attribute">@strategy</span> <span class="punct">=</span> <span class="symbol">:command</span>
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">notify</span><span class="punct">(</span><span class="ident">group</span><span class="punct">,</span> <span class="ident">name</span><span class="punct">,</span> <span class="ident">message</span><span class="punct">)</span>
+      <span class="keyword">case</span> <span class="attribute">@strategy</span>
+        <span class="keyword">when</span> <span class="symbol">:command</span>
+          <span class="ident">img_path</span> <span class="punct">=</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">join</span><span class="punct">(</span><span class="constant">File</span><span class="punct">.</span><span class="ident">dirname</span><span class="punct">(</span><span class="constant">__FILE__</span><span class="punct">),</span> <span class="punct">'</span><span class="string">../../assets/jakl.png</span><span class="punct">')</span>
+          `<span class="ident">growlnotify</span> <span class="punct">-</span><span class="ident">n</span> <span class="ident">jakl</span> <span class="punct">--</span><span class="ident">image</span> <span class="comment">#{img_path} -m '#{message}' '#{name} (#{group})'`</span>
+        <span class="keyword">when</span> <span class="symbol">:ruby</span>
+          <span class="attribute">@growl</span><span class="punct">.</span><span class="ident">notify</span><span class="punct">(&quot;</span><span class="string">jakl_message</span><span class="punct">&quot;,</span> <span class="punct">&quot;</span><span class="string"><span class="expr">#{name}</span> (<span class="expr">#{group}</span>)</span><span class="punct">&quot;,</span> <span class="ident">message</span><span class="punct">)</span>
+        <span class="keyword">else</span>
+          <span class="keyword">raise</span> <span class="constant">StandardError</span><span class="punct">.</span><span class="ident">new</span><span class="punct">('</span><span class="string">Invalid strategy</span><span class="punct">')</span>
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre></div>
+
+<div class="typocode"><div class="codetitle">client.rb</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">rubygems</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">net/dns/mdns-sd</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">base64</span><span class="punct">'</span>
+
+<span class="keyword">module </span><span class="module">Jakl</span>
+  <span class="keyword">class </span><span class="class">Client</span>
+    <span class="constant">DNSSD</span> <span class="punct">=</span> <span class="constant">Net</span><span class="punct">::</span><span class="constant">DNS</span><span class="punct">::</span><span class="constant">MDNSSD</span>
+
+    <span class="attribute">@@debug</span> <span class="punct">=</span> <span class="constant">false</span>
+
+    <span class="keyword">def </span><span class="method">self.debug=</span><span class="punct">(</span><span class="ident">value</span><span class="punct">)</span>
+      <span class="attribute">@@debug</span> <span class="punct">=</span> <span class="ident">value</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">self.debug</span>
+      <span class="attribute">@@debug</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">options</span><span class="punct">={})</span>
+      <span class="ident">default_options</span> <span class="punct">=</span> <span class="punct">{</span>
+        <span class="symbol">:default_recv</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">jakl</span><span class="punct">&quot;,</span> 
+        <span class="symbol">:timeout</span> <span class="punct">=&gt;</span> <span class="number">2</span><span class="punct">,</span> 
+        <span class="symbol">:login</span> <span class="punct">=&gt;</span> <span class="constant">ENV</span><span class="punct">['</span><span class="string">USER</span><span class="punct">']</span>
+      <span class="punct">}</span>
+      <span class="attribute">@options</span> <span class="punct">=</span> <span class="ident">default_options</span><span class="punct">.</span><span class="ident">merge</span><span class="punct">(</span><span class="ident">options</span><span class="punct">)</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">send</span><span class="punct">(</span><span class="ident">message</span><span class="punct">,</span> <span class="ident">recv</span><span class="punct">=</span><span class="constant">nil</span><span class="punct">)</span>
+      <span class="ident">recv</span> <span class="punct">||=</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:default_recv</span><span class="punct">]</span>
+      <span class="ident">recv</span> <span class="punct">=</span> <span class="ident">recv</span><span class="punct">.</span><span class="ident">split</span><span class="punct">('</span><span class="string">,</span><span class="punct">').</span><span class="ident">collect</span> <span class="punct">{|</span><span class="ident">g</span><span class="punct">|</span> <span class="ident">g</span><span class="punct">.</span><span class="ident">strip</span> <span class="punct">}</span>
+      <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Sending: '<span class="expr">#{message}</span>' to '<span class="expr">#{recv.join(',')}</span>'</span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="attribute">@@debug</span>
+
+      <span class="ident">find_recipients</span> <span class="punct">=</span> <span class="constant">DNSSD</span><span class="punct">.</span><span class="ident">resolve</span><span class="punct">('</span><span class="string">jakl</span><span class="punct">',</span> <span class="punct">'</span><span class="string">_jakl._tcp</span><span class="punct">')</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">r</span><span class="punct">|</span>
+        <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Found jakl service at <span class="expr">#{r.target}</span></span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="attribute">@@debug</span>
+        <span class="ident">recvs</span> <span class="punct">=</span> <span class="ident">r</span><span class="punct">.</span><span class="ident">text_record</span><span class="punct">['</span><span class="string">recvs</span><span class="punct">'].</span><span class="ident">split</span><span class="punct">('</span><span class="string">,</span><span class="punct">').</span><span class="ident">collect</span> <span class="punct">{|</span><span class="ident">g</span><span class="punct">|</span> <span class="ident">g</span><span class="punct">.</span><span class="ident">strip</span> <span class="punct">}</span>
+        <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">  responds to: <span class="expr">#{recvs.join(', ')}</span></span><span class="punct">&quot;</span>  <span class="keyword">if</span> <span class="attribute">@@debug</span>
+
+        <span class="keyword">if</span> <span class="punct">(</span><span class="ident">succ_recvs</span> <span class="punct">=</span> <span class="ident">recvs</span> <span class="punct">&amp;</span> <span class="ident">recv</span><span class="punct">).</span><span class="ident">any?</span>
+          <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Sending to: <span class="expr">#{r.target}</span>:<span class="expr">#{r.port}</span></span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="attribute">@@debug</span>
+
+          <span class="comment"># B64 Encoded NAME;GROUP;MESSAGE</span>
+          <span class="ident">data</span> <span class="punct">=</span> <span class="punct">[</span><span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:login</span><span class="punct">],</span> <span class="ident">succ_recvs</span><span class="punct">.</span><span class="ident">first</span><span class="punct">,</span> <span class="ident">message</span><span class="punct">].</span><span class="ident">map</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">s</span><span class="punct">|</span> 
+            <span class="constant">Base64</span><span class="punct">.</span><span class="ident">encode64</span><span class="punct">(</span><span class="ident">s</span><span class="punct">)</span>
+          <span class="keyword">end</span><span class="punct">.</span><span class="ident">join</span><span class="punct">('</span><span class="string">;</span><span class="punct">')</span>
+          <span class="constant">TCPSocket</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="ident">r</span><span class="punct">.</span><span class="ident">target</span><span class="punct">,</span> <span class="ident">r</span><span class="punct">.</span><span class="ident">port</span><span class="punct">).</span><span class="ident">send</span><span class="punct">(</span><span class="ident">data</span><span class="punct">,</span> <span class="number">0</span><span class="punct">)</span>
+        <span class="keyword">end</span>
+      <span class="keyword">end</span>
+
+      <span class="ident">sleep</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:timeout</span><span class="punct">]</span>
+      <span class="ident">find_recipients</span><span class="punct">.</span><span class="ident">stop</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre></div>
+
+<div class="typocode"><div class="codetitle">server.rb</div><pre><code class="typocode_ruby "><span class="ident">require</span> <span class="punct">'</span><span class="string">rubygems</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">eventmachine</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">net/dns/mdns-sd</span><span class="punct">'</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">base64</span><span class="punct">'</span>
+
+<span class="global">$:</span><span class="punct">.</span><span class="ident">unshift</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">dirname</span><span class="punct">(</span><span class="constant">__FILE__</span><span class="punct">)</span>
+<span class="ident">require</span> <span class="punct">'</span><span class="string">growl_handler</span><span class="punct">'</span>
+
+<span class="keyword">module </span><span class="module">JaklEventServer</span>
+  <span class="keyword">def </span><span class="method">receive_data</span><span class="punct">(</span><span class="ident">data</span><span class="punct">)</span>
+    <span class="comment"># B64 Encoded NAME;GROUP;MESSAGE</span>
+    <span class="ident">name</span><span class="punct">,</span> <span class="ident">recv</span><span class="punct">,</span> <span class="ident">message</span> <span class="punct">=</span> <span class="ident">data</span><span class="punct">.</span><span class="ident">split</span><span class="punct">('</span><span class="string">;</span><span class="punct">').</span><span class="ident">map</span> <span class="punct">{|</span><span class="ident">s</span><span class="punct">|</span> <span class="constant">Base64</span><span class="punct">.</span><span class="ident">decode64</span><span class="punct">(</span><span class="ident">s</span><span class="punct">)</span> <span class="punct">}</span>
+    <span class="constant">Jakl</span><span class="punct">::</span><span class="constant">GrowlHandler</span><span class="punct">.</span><span class="ident">new</span><span class="punct">.</span><span class="ident">notify</span><span class="punct">(</span><span class="ident">recv</span><span class="punct">,</span> <span class="ident">name</span><span class="punct">,</span> <span class="ident">message</span><span class="punct">)</span>
+    <span class="global">$stderr</span><span class="punct">.</span><span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Name: <span class="expr">#{name}</span>, Recipient: <span class="expr">#{recv}</span>, Message: <span class="expr">#{message}</span></span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="constant">Jakl</span><span class="punct">::</span><span class="constant">Server</span><span class="punct">.</span><span class="ident">debug</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">module </span><span class="module">Jakl</span>
+  <span class="keyword">class </span><span class="class">Server</span>
+    <span class="constant">DNSSD</span> <span class="punct">=</span> <span class="constant">Net</span><span class="punct">::</span><span class="constant">DNS</span><span class="punct">::</span><span class="constant">MDNSSD</span>
+
+    <span class="attribute">@@debug</span> <span class="punct">=</span> <span class="constant">false</span>
+
+    <span class="keyword">def </span><span class="method">self.debug=</span><span class="punct">(</span><span class="ident">value</span><span class="punct">)</span>
+      <span class="attribute">@@debug</span> <span class="punct">=</span> <span class="ident">value</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">self.debug</span>
+      <span class="attribute">@@debug</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">options</span><span class="punct">={})</span>
+      <span class="ident">default_options</span> <span class="punct">=</span> <span class="punct">{</span>
+        <span class="symbol">:recvs</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">jakl</span><span class="punct">&quot;,</span> 
+        <span class="symbol">:timeout</span> <span class="punct">=&gt;</span> <span class="number">5</span><span class="punct">,</span> 
+        <span class="symbol">:login</span> <span class="punct">=&gt;</span> <span class="constant">ENV</span><span class="punct">['</span><span class="string">USER</span><span class="punct">']</span>
+      <span class="punct">}</span>
+      <span class="attribute">@options</span> <span class="punct">=</span> <span class="ident">default_options</span><span class="punct">.</span><span class="ident">merge</span><span class="punct">(</span><span class="ident">options</span><span class="punct">)</span>
+
+      <span class="ident">validate_login!</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">start</span>
+      <span class="constant">DNSSD</span><span class="punct">.</span><span class="ident">register</span><span class="punct">('</span><span class="string">jakl</span><span class="punct">',</span> <span class="punct">'</span><span class="string">_jakl._tcp</span><span class="punct">',</span> <span class="punct">'</span><span class="string">local</span><span class="punct">',</span> <span class="number">4180</span><span class="punct">,</span> 
+                             <span class="punct">{'</span><span class="string">recvs</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:recvs</span><span class="punct">],</span> <span class="punct">'</span><span class="string">login</span><span class="punct">'</span> <span class="punct">=&gt;</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:login</span><span class="punct">]})</span>
+
+      <span class="constant">EventMachine</span><span class="punct">::</span><span class="ident">run</span> <span class="punct">{</span>
+        <span class="constant">EventMachine</span><span class="punct">::</span><span class="ident">start_server</span> <span class="punct">&quot;</span><span class="string">0.0.0.0</span><span class="punct">&quot;,</span> <span class="number">4180</span><span class="punct">,</span> <span class="constant">JaklEventServer</span>
+        <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Listening for howls on 4180</span><span class="punct">&quot;</span>
+      <span class="punct">}</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">def </span><span class="method">validate_login!</span>
+      <span class="comment"># Yeah, I know there's a race condition here. So it goes.</span>
+      <span class="ident">name_validation</span> <span class="punct">=</span> <span class="constant">DNSSD</span><span class="punct">.</span><span class="ident">resolve</span><span class="punct">('</span><span class="string">jakl</span><span class="punct">',</span> <span class="punct">'</span><span class="string">_jakl._tcp</span><span class="punct">')</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">r</span><span class="punct">|</span>
+        <span class="keyword">if</span> <span class="punct">[</span><span class="ident">r</span><span class="punct">.</span><span class="ident">text_record</span><span class="punct">['</span><span class="string">login</span><span class="punct">'],</span> 
+            <span class="ident">r</span><span class="punct">.</span><span class="ident">text_record</span><span class="punct">['</span><span class="string">recvs</span><span class="punct">'].</span><span class="ident">split</span><span class="punct">('</span><span class="string">,</span><span class="punct">')].</span><span class="ident">flatten</span><span class="punct">.</span><span class="ident">include?</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:login</span><span class="punct">]</span>
+          <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">The name <span class="expr">#{@options[:login]}</span> is already taken. Sorry :<span class="escape">\\</span></span><span class="punct">&quot;</span>
+          <span class="ident">exit</span> <span class="number">1</span>
+        <span class="keyword">end</span>
+      <span class="keyword">end</span>
+
+      <span class="comment"># Add username to recvs</span>
+      <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:recvs</span><span class="punct">]</span> <span class="punct">=</span> <span class="punct">[</span><span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:recvs</span><span class="punct">].</span><span class="ident">split</span><span class="punct">('</span><span class="string">,</span><span class="punct">')</span> <span class="punct">&lt;&lt;</span> <span class="attribute">@options</span><span class="punct">[</span><span class="symbol">:login</span><span class="punct">]].</span><span class="ident">join</span><span class="punct">('</span><span class="string">,</span><span class="punct">')</span>
+
+      <span class="comment"># Wait for resolv thread to come back</span>
+      <span class="ident">sleep</span> <span class="number">3</span>
+      <span class="ident">name_validation</span><span class="punct">.</span><span class="ident">stop</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/05/06/growl-based-bonjour-chat-with-channels-in-150-lines#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/16/snippet-multi-search-and-replace">Snippet: Multi-Search and Replace</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 16 Apr 2007 19:52:00 GMT">Mon, 16 Apr 2007 19:52:00 GMT</span></p>
+<div class="typocode"><pre><code class="typocode_ruby "><span class="ident">template</span> <span class="punct">=</span> <span class="punct">&lt;&lt;-</span><span class="constant">EOT</span><span class="string">
+%HEAD%
+%SUBHEAD%
+
+%BODY%
+
+%FOOT%
+</span><span class="constant">EOT</span>
+
+<span class="ident">replacements</span> <span class="punct">=</span> <span class="punct">{/</span><span class="regex">%HEAD%</span><span class="punct">/</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">A title</span><span class="punct">&quot;,</span> <span class="punct">/</span><span class="regex">%SUBHEAD%</span><span class="punct">/</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">A subhead</span><span class="punct">&quot;,</span>
+                <span class="punct">/</span><span class="regex">%BODY%</span><span class="punct">/</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Something about ruby perhaps</span><span class="punct">&quot;,</span> 
+                <span class="punct">/</span><span class="regex">%FOOT%</span><span class="punct">/</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Creative Commons: BY-NC-SA</span><span class="punct">&quot;}</span>
+
+<span class="ident">replacements</span><span class="punct">.</span><span class="ident">each</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">search</span><span class="punct">,</span> <span class="ident">replace</span><span class="punct">|</span>
+  <span class="ident">template</span><span class="punct">.</span><span class="ident">gsub!</span> <span class="ident">search</span><span class="punct">,</span> <span class="ident">replace</span>
+<span class="keyword">end</span>
+
+<span class="ident">puts</span> <span class="ident">template</span> 
+<span class="comment"># =&gt;</span>
+<span class="comment"># A title</span>
+<span class="comment"># A subhead</span>
+<span class="comment"># </span>
+<span class="comment"># Something about ruby perhaps</span>
+<span class="comment"># </span>
+<span class="comment"># Creative Commons: BY-NC-SA</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/16/snippet-multi-search-and-replace#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/15/on-twitter-rails-and-community">On Twitter, Rails, and Community</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 15 Apr 2007 20:13:00 GMT">Sun, 15 Apr 2007 20:13:00 GMT</span></p>
+<p>An <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/">interview</a> by a <a href="http://twitter.com/">twitter</a> developer has gotten a good deal of <a href="http://technorati.com/search/twitter+rails">press lately</a>. For many, it has reawakened the giant that is the &#8220;does Rails scale&#8221; debate, and <a href="http://www.loudthinking.com/">others</a> feel compelled to defend the framework.</p>
+
+<p>The problem with Rails isn&#8217;t that Ruby is slow. It&#8217;s also not that Rails is slow, or big, or bloated, or doesn&#8217;t scale. The problem isn&#8217;t that Rails doesn&#8217;t support multiple databases or composite keys out of the box. The problem is that <a href="http://farm1.static.flickr.com/47/127984254_ddd4363d6a.jpg">this</a> is how the vocal minority in the community tends to respond to criticism.</p>
+
+<p>So let&#8217;s all slow down and take a look at how we got here and what we can do to avoid it. That&#8217;s of course assuming we want to. Inflammatory posts certainly get lots of traffic, but I think Rails is in the spotlight enough we can actually talk like reasonable people and still get things done.</p>
+
+<p>More after the jump.</p>
+
+  <a href="/articles/2007/04/15/on-twitter-rails-and-community">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/15/on-twitter-rails-and-community#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/06/updates-speaking-writing">Updates, Speaking, Writing</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 06 Apr 2007 18:36:00 GMT">Fri, 06 Apr 2007 18:36:00 GMT</span></p>
+<p>Hi guys. Gluttonous has been quiet lately, so I wanted to update you a bit on life in general.</p>
+
+<p>First off, I haven&#8217;t yet talked about my work at <a href="http://powerset.com">Powerset</a>. We&#8217;ve been quickly growing and I&#8217;m humbled by the type of people who join up on a daily basis. We&#8217;re about to hit 6 Ruby devs and 50 in the company, and for me it really feels like a dream.</p>
+
+<p>That being said, I talk a bit more about what I&#8217;m actually <em>doing</em> at Powerset in an interview given over at the <a href="http://weblog.workingwithrails.com/2007/4/5/hackfest-winner-interview-kevin-clark">Working With Rails Blog</a> in their series on <a href="http://workingwithrails.com/contests/hackfest2007">Hackfest</a> winners.</p>
+
+<p>Additionally, I give an update on one of the reasons this blog has gone dry for a while at the end of the interview. You <a href="http://weblog.workingwithrails.com/2007/4/5/hackfest-winner-interview-kevin-clark">really shouldn&#8217;t miss this</a>.</p>
+
+<p>As far as speaking goes, I&#8217;ll be giving a talk on improving test coverage with <a href="http://glu.ttono.us/articles/2006/12/19/tormenting-your-tests-with-heckle">Heckle</a> at the <a href="http://www.sdforum.org/SDForum/Templates/CalendarEvent.aspx?CID=2135&amp;mo=4&amp;yr=2007">Silicon Valley Ruby Conference</a> in San Jose on April 21-22. The list of speakers is amazing, and I&#8217;m looking forward to the conf. If you&#8217;re there, come say hi.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/06/updates-speaking-writing#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/26/link-kathy-sierra-receives-death-threats">Link: Kathy Sierra Receives Death Threats</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 26 Mar 2007 23:24:00 GMT">Mon, 26 Mar 2007 23:24:00 GMT</span></p>
+<p><a href="http://headrush.typepad.com/creating_passionate_users/2007/03/as_i_type_this_.html">Death threats against bloggers are NOT “protected speech” (why I cancelled my ETech presentations)</a></p>
+
+<blockquote>
+    <blockquote>
+        <p>I have cancelled all speaking engagements.</p>
+        
+        <p>I am afraid to leave my yard.</p>
+        
+        <p>I will never feel the same. I will never be the same.</p>
+        
+        <p>&#8211; Kathy Sierra</p>
+    </blockquote>
+</blockquote>
+
+<p>So entirely not cool.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/26/link-kathy-sierra-receives-death-threats#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/22/sd-west-slides-and-code">SD West Slides and Code</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 22 Mar 2007 06:58:00 GMT">Thu, 22 Mar 2007 06:58:00 GMT</span></p>
+<p>If you attended my talk at SD West today, <a href="http://thar.be/sdwest-07.zip">here&#8217;s a zip</a> with the slides and code we wrote in class. Thanks for coming out!</p>
+
+  
+  <p class="meta"><a href="/articles/2007/03/22/sd-west-slides-and-code#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/20/snippet-shuffle-an-array">Snippet: Shuffle an Array</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 20 Mar 2007 07:47:00 GMT">Tue, 20 Mar 2007 07:47:00 GMT</span></p>
+<div class="typocode"><pre><code class="typocode_ruby "><span class="keyword">class </span><span class="class">Array</span>
+  <span class="keyword">def </span><span class="method">shuffle</span>
+    <span class="ident">sort</span> <span class="punct">{</span> <span class="ident">rand</span><span class="punct">(</span><span class="number">3</span><span class="punct">)</span> <span class="punct">-</span> <span class="number">1</span> <span class="punct">}</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="ident">arr</span> <span class="punct">=</span> <span class="punct">(</span><span class="number">1</span><span class="punct">..</span><span class="number">10</span><span class="punct">).</span><span class="ident">to_a</span>
+<span class="comment"># =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="ident">arr</span><span class="punct">.</span><span class="ident">shuffle</span>
+<span class="comment"># =&gt; [1, 8, 6, 10, 9, 3, 7, 2, 5, 4]</span>
+<span class="ident">arr</span><span class="punct">.</span><span class="ident">shuffle</span>
+<span class="comment"># =&gt; [3, 7, 10, 4, 5, 8, 2, 6, 9, 1]</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/20/snippet-shuffle-an-array#comments">7 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/16/sorting-versions-is-hard">Sorting Versions is Hard</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 16 Mar 2007 17:58:00 GMT">Fri, 16 Mar 2007 17:58:00 GMT</span></p>
+<div class="typocode"><pre><code class="typocode_ruby "><span class="keyword">class </span><span class="class">Package</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
+  <span class="keyword">def </span><span class="method">&lt;=&gt;</span><span class="punct">(</span><span class="ident">other</span><span class="punct">)</span>
+    <span class="ident">versions</span> <span class="punct">=</span> <span class="constant">self</span><span class="punct">.</span><span class="ident">version</span><span class="punct">.</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string">.</span><span class="punct">&quot;).</span><span class="ident">push</span> <span class="constant">self</span><span class="punct">.</span><span class="ident">rel</span>
+    <span class="ident">other_versions</span> <span class="punct">=</span> <span class="ident">other</span><span class="punct">.</span><span class="ident">version</span><span class="punct">.</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string">.</span><span class="punct">&quot;).</span><span class="ident">push</span> <span class="ident">other</span><span class="punct">.</span><span class="ident">rel</span>
+
+    <span class="ident">versions</span><span class="punct">.</span><span class="ident">size</span><span class="punct">.</span><span class="ident">times</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">n</span><span class="punct">|</span>
+      <span class="keyword">if</span> <span class="ident">versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">]</span> <span class="punct">=~</span> <span class="punct">/</span><span class="regex">[^<span class="escape">\d</span>]</span><span class="punct">/</span> <span class="punct">||</span> <span class="ident">other_versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">]</span> <span class="punct">=~</span> <span class="punct">/</span><span class="regex">[^<span class="escape">\d</span>]</span><span class="punct">/</span>
+        <span class="ident">comparison</span> <span class="punct">=</span> <span class="ident">versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">]</span> <span class="punct">&lt;=&gt;</span> <span class="ident">other_versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">]</span>
+      <span class="keyword">else</span>
+        <span class="ident">comparison</span> <span class="punct">=</span> <span class="ident">versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">].</span><span class="ident">to_i</span> <span class="punct">&lt;=&gt;</span> <span class="ident">other_versions</span><span class="punct">[</span><span class="ident">n</span><span class="punct">].</span><span class="ident">to_i</span>
+      <span class="keyword">end</span>
+      <span class="keyword">return</span> <span class="ident">comparison</span> <span class="keyword">unless</span> <span class="ident">comparison</span><span class="punct">.</span><span class="ident">zero?</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">return</span> <span class="number">0</span> 
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="punct">[</span><span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.8a</span><span class="punct">&quot;),</span> 
+ <span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.8c</span><span class="punct">&quot;),</span> 
+ <span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.8b</span><span class="punct">&quot;)].</span><span class="ident">sort</span><span class="punct">.</span><span class="ident">map</span><span class="punct">(&amp;</span><span class="symbol">:version</span><span class="punct">)</span>
+<span class="comment"># =&gt; [&quot;0.0.8a&quot;, &quot;0.0.8b&quot;, &quot;0.0.8c&quot;] </span>
+
+<span class="punct">[</span><span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.8</span><span class="punct">&quot;),</span> 
+ <span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.10</span><span class="punct">&quot;),</span> 
+ <span class="constant">Package</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="symbol">:version</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">0.0.9</span><span class="punct">&quot;)].</span><span class="ident">sort</span><span class="punct">.</span><span class="ident">map</span><span class="punct">(&amp;</span><span class="symbol">:version</span><span class="punct">)</span>
+<span class="comment"># =&gt; [&quot;0.0.8&quot;, &quot;0.0.9&quot;, &quot;0.0.10&quot;] </span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/16/sorting-versions-is-hard#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/08/when-config-files-go-bad">When Config Files Go Bad</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 08 Mar 2007 22:40:00 GMT">Thu, 08 Mar 2007 22:40:00 GMT</span></p>
+<blockquote><pre>It is often necessary to check the content of a `configure.ac' file,
+but parsing it yourself is extremely fragile and error-prone.  It is
+suggested that you rely upon `--trace' to scan `configure.ac'.  For
+instance, to find the list of variables that are substituted, use:
+
+<code>
+     $ autoconf -t AC_SUBST
+     configure.ac:2:AC_SUBST:ECHO_C
+     configure.ac:2:AC_SUBST:ECHO_N
+     configure.ac:2:AC_SUBST:ECHO_T
+     More traces deleted
+</code>
+<pre></blockquote>
+
+<p>-- <code>info autoconf</code></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/08/when-config-files-go-bad#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/03/07/summer-of-code-looking-for-mentors">Summer of Code Looking for Mentors</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 08 Mar 2007 02:20:00 GMT">Thu, 08 Mar 2007 02:20:00 GMT</span></p>
+<p>So it&#8217;s that time of year again. Google&#8217;s Summer of Code is just around the corner, and <a href="http://on-ruby.blogspot.com">Pat Eyler</a> is <a href="http://on-ruby.blogspot.com/2007/03/ruby-in-googles-summer-of-code-2007.html">looking</a> for mentors in the Ruby community.</p>
+
+<p>Last year 10 Ruby projects were funded, but there can&#8217;t be projects without students <em>and</em> mentors.</p>
+
+<p>If you&#8217;re interested in mentoring, send Pat an email at pat dot eyler at gmail dot com.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/summer-of-code" rel="tag">summer of code</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/03/07/summer-of-code-looking-for-mentors#comments">no comments</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> <a href="/articles/page/2">2</a> 3 <a href="/articles/page/4">4</a> <a href="/articles/page/5">5</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

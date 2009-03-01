@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Io builds on Intel Macs</title>
+    <link>http://glu.ttono.us/articles/2006/05/16/io-builds-on-intel-macs</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Io builds on Intel Macs</title>
+      <description>&lt;p&gt;&lt;a href="http://iolanguage.com/about/"&gt;Io&lt;/a&gt;, the sexy little prototyped language I&amp;#8217;ve been gushing over since my language demo with the author, &lt;a href="http://www.dekorte.com/blog/blog.cgi"&gt;Steve Dekorte&lt;/a&gt;, now builds on Intel Macs. A library and some of the bindings are still broken, but the vm runs like a champ. I&amp;#8217;m excited to be able to play with it on my desktop now.&lt;/p&gt;
+
+&lt;p&gt;At RubyConf, &lt;a href="http://iolanguage.com/about/"&gt;Io&lt;/a&gt; is a language Matz said he was interested in and several in the Ruby community have become involved in its development.&lt;/p&gt;
+
+&lt;p&gt;You should really &lt;a href="http://iolanguage.com/downloads/"&gt;check it out&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Tue, 16 May 2006 13:26:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:983dc4c7-c037-4564-b3a3-ba7f976f475e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/16/io-builds-on-intel-macs</link>
+    </item>
+  </channel>
+</rss>

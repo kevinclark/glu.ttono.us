@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2008/07/02/microsoft-to-aquire-powerset">Microsoft to Aquire Powerset</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 02 Jul 2008 06:55:00 GMT">Wed, 02 Jul 2008 06:55:00 GMT</span></p>
+<p>There&#8217;s details <a href="http://www.powerset.com/blog/">here</a>. Sounds like they&#8217;re keeping us intact, and there&#8217;s something to be said about having an additional 10k machines behind you.</p>
+
+<p>We&#8217;ll see what happens.</p>
+
+  
+  <p class="meta"><a href="/articles/2008/07/02/microsoft-to-aquire-powerset#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2008/05/12/holy-god-powerset-launches">Holy God, Powerset Launches</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 12 May 2008 06:21:00 GMT">Mon, 12 May 2008 06:21:00 GMT</span></p>
+<p><a href="http://powerset.com">We&#8217;re out</a>, searching <a href="http://wikipedia.org">Wikipedia</a> and <a href="http://freebase.com">FreeBase</a>. Proud doesn&#8217;t begin to describe my feelings about what&#8217;s been created. I think it speaks for itself, and I&#8217;ve been using it instead of Wikipedia for the last few months.</p>
+
+<p>Some people even seem to <a href="http://searchengineland.com/080512-000100.php">really get it</a>. And that&#8217;s an amazing high.</p>
+
+<p>Huge thanks are not only due to the Powerset team (I love working with these people), but also to all of the open source projects we&#8217;re making use of. <a href="http://hadoop.apache.org/">Hadoop</a>. <a href="http://hadoop.apache.org/hbase/">HBase</a>. <a href="http://developers.facebook.com/thrift/">Thrift</a>. <a href="http://www.ruby-lang.org/en/">Ruby</a>. <a href="http://merbivore.com/">Merb</a>. <a href="http://www.rubyonrails.org/">Rails</a>. <a href="http://god.rubyforge.org">god</a>. <a href="http://mongrel.rubyforge.org/">Mongrel</a>. <a href="http://mootools.net/">Mootools</a>. <a href="http://www.rabbitmq.com/">RabbitMQ</a>. The <a href="http://code.google.com/p/activemessaging/">ActiveMessaging</a> Project. <a href="http://www.danga.com/memcached/">Memcache</a> and <a href="http://memcachedb.org/">MemcacheDB</a>. <a href="http://www.erlang.org/">Erlang</a>. <a href="http://github.com/KirinDave/fuzed/tree/master">Fuzed</a>. <a href="http://yaws.hyber.org/">YAWS</a>. Countless others. All those people who take the time to answer our questions, and respond to our bugs, and consider our patches, and write interesting articles, and make our code better. You guys rock, and we couldn&#8217;t do it without you. So much love is heading in your direction right now. Thank you, thank you, thank you.</p>
+
+<p>I&#8217;m exausted, and going to bed. Good night, and good luck. And try the app. I&#8217;m stoked.</p>
+
+  
+  <p class="meta"><a href="/articles/2008/05/12/holy-god-powerset-launches#comments">5 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak">TechCrunch's Twitter Article Translated from Arrington-Speak</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 23 Apr 2008 16:19:00 GMT">Wed, 23 Apr 2008 16:19:00 GMT</span></p>
+<p>With apologies to <a href="http://daringfireball.net/">Gruber</a>.</p>
+
+<p>Original text from <a href="http://www.techcrunch.com/2008/04/23/amateur-hour-over-at-twitter/">TechCrunch</a>.</p>
+
+<blockquote>
+    <p>It doesn’t really matter if Twitter’s Chief Architect Blaine Cook was fired 
+    or resigned. The important thing is that he’s gone now, and this gives 
+    Twitter the opportunity to hire someone (or a team) who may actually be able 
+    to scale the nearly two year old service and keep it live.</p>
+</blockquote>
+
+<p>I haven&#8217;t done any research or spoken to anyone about it, so don&#8217;t ask, but I have found a scapegoat.</p>
+
+<blockquote>
+    <p>Cook was directly responsible for scaling Twitter, and he very much failed 
+    in his job. </p>
+</blockquote>
+
+<p>Twitter is down sometimes, and I&#8217;m angry about it.</p>
+
+<blockquote>
+    <p>A year ago he spoke at the Silicon Valley Ruby Conference about scaling 
+    Rails applications. His presentation suggested Twitter’s problems were 
+    behind them, but in fact some of their biggest stumbles hadn’t occurred yet. 
+    Note in particular slide 9 of that presentation, where Cook says about 
+    scaling Rails apps like Twitter: “It’s Easy. Really.” </p>
+</blockquote>
+
+<p>I found a posted slide from a public conference during my &#8220;investigative reporting phase. Oh, and Twitter is on Rails, and I can blame Rails. It&#8217;s Easy. Really.</p>
+
+<blockquote>
+    <p>Whether Twitter’s woes were all on Cook’s shoulders or not, he should not 
+    have been boasting about solving the problem last year.</p>
+</blockquote>
+
+<p>I&#8217;m high as a kite.</p>
+
+<blockquote>
+    <p>Meanwhile, Twitter has made at least three key hires this year on the 
+    technical side. Lee Mighdoll joined as VP Engineering and Operations in 
+    January. And this week they hired two scaling experts - John Kalucki and 
+    Steve Jenson (”known for his work scaling Blogger and Blogspot”).</p>
+</blockquote>
+
+<p>And they hired someone, yada yada yada, sprinkle random facts in so nobody notices my complete incompetence. Perfect!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comments">4 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2008/04/05/really-simple-git-deployment-with-vlad">Really Simple Git Deployment with Vlad</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 06 Apr 2008 00:13:00 GMT">Sun, 06 Apr 2008 00:13:00 GMT</span></p>
+<p>Just drop this in your Rakefile. This is slightly modified from something I&#8217;m using in production.</p>
+
+<p>Disect! Enjoy! Explanation (read: spoilers) after the jump.</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="comment">##############################################################################</span>
+<span class="comment"># Deploy</span>
+<span class="comment">##############################################################################</span>
+
+<span class="keyword">begin</span>
+  <span class="ident">require</span> <span class="punct">'</span><span class="string">rake_remote_task</span><span class="punct">'</span>
+
+  <span class="constant">APP_NAME</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">someapp</span><span class="punct">&quot;</span>
+  <span class="constant">DEPLOY_ROOT</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">/usr/local/share/applications/<span class="expr">#{APP_NAME}</span></span><span class="punct">&quot;</span>
+  <span class="constant">ON_DEPLOY_RESTART</span> <span class="punct">=</span> <span class="punct">[&quot;</span><span class="string">someappd</span><span class="punct">&quot;]</span>
+
+  <span class="ident">role</span> <span class="symbol">:app_server</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">myserver.com</span><span class="punct">&quot;</span>
+
+  <span class="keyword">def </span><span class="method">archive</span>
+    <span class="ident">commit</span> <span class="punct">=</span> `<span class="ident">git</span><span class="punct">-</span><span class="ident">rev</span><span class="punct">-</span><span class="ident">list</span> <span class="punct">--</span><span class="ident">max</span><span class="punct">-</span><span class="ident">count</span><span class="punct">=</span><span class="number">1</span> <span class="punct">--</span><span class="ident">abbrev</span><span class="punct">=</span><span class="number">10</span> <span class="punct">--</span><span class="ident">abbrev</span><span class="punct">-</span><span class="ident">commit</span> <span class="constant">HEAD`</span><span class="punct">.</span><span class="ident">chomp</span>
+    <span class="ident">file</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string"><span class="expr">#{APP_NAME}</span>-<span class="expr">#{commit}</span>.tar.gz</span><span class="punct">&quot;</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">restart_daemons</span>
+    <span class="constant">ON_DEPLOY_RESTART</span><span class="punct">.</span><span class="ident">each</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">app</span><span class="punct">|</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo god restart <span class="expr">#{app}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  <span class="ident">namespace</span> <span class="symbol">:deploy</span> <span class="keyword">do</span>
+    <span class="ident">task</span> <span class="symbol">:build</span> <span class="keyword">do</span>
+      <span class="ident">sh</span> <span class="punct">&quot;</span><span class="string">git archive --format=tar HEAD | gzip &gt; <span class="expr">#{archive}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">remote_task</span> <span class="symbol">:push</span> <span class="punct">=&gt;</span> <span class="symbol">:build</span> <span class="keyword">do</span>
+      <span class="ident">rsync</span> <span class="ident">archive</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">/tmp</span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Install a release from the latest commit</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:install</span> <span class="punct">=&gt;</span> <span class="symbol">:push</span> <span class="keyword">do</span>
+      <span class="ident">date_stamp</span> <span class="punct">=</span> <span class="constant">Time</span><span class="punct">.</span><span class="ident">now</span><span class="punct">.</span><span class="ident">strftime</span><span class="punct">(&quot;</span><span class="string">%Y%m%d</span><span class="punct">&quot;)</span>
+      <span class="ident">last_release</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r | head -n 1</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+
+      <span class="keyword">if</span> <span class="ident">last_release</span> <span class="punct">=~</span> <span class="punct">/</span><span class="regex"><span class="expr">#{date_stamp}</span><span class="escape">\-</span>(<span class="escape">\d</span>+)</span><span class="punct">/</span>
+        <span class="ident">serial</span> <span class="punct">=</span> <span class="global">$1</span><span class="punct">.</span><span class="ident">to_i</span> <span class="punct">+</span> <span class="number">1</span>
+      <span class="keyword">else</span>
+        <span class="ident">serial</span> <span class="punct">=</span> <span class="number">0</span> 
+      <span class="keyword">end</span>
+
+      <span class="ident">rel</span> <span class="punct">=</span> <span class="punct">(&quot;</span><span class="string">%d-%02d</span><span class="punct">&quot;</span> <span class="punct">%</span> <span class="punct">[</span><span class="ident">date_stamp</span><span class="punct">,</span> <span class="ident">serial</span><span class="punct">])</span>
+      <span class="ident">rel_dir</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string"><span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{rel}</span></span><span class="punct">&quot;</span>
+
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo mkdir -p <span class="expr">#{rel_dir}</span></span><span class="punct">&quot;</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo tar -xzvf /tmp/<span class="expr">#{archive}</span> -C <span class="expr">#{rel_dir}</span> &amp;&amp; rm -rf /tmp/<span class="expr">#{archive}</span></span><span class="punct">&quot;</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{rel_dir}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Rollback to the previous release</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:rollback</span> <span class="keyword">do</span>
+      <span class="ident">current_link</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls -alF <span class="expr">#{DEPLOY_ROOT}</span> | awk '/current -&gt; .*/ { print $NF }'</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+      <span class="ident">current</span> <span class="punct">=</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">basename</span><span class="punct">(</span><span class="ident">current_link</span><span class="punct">)</span>
+      <span class="ident">releases</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r</span><span class="punct">&quot;).</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string"><span class="escape">\n</span></span><span class="punct">&quot;)</span>
+      <span class="ident">previous</span> <span class="punct">=</span> <span class="ident">releases</span><span class="punct">.</span><span class="ident">find</span> <span class="punct">{|</span><span class="ident">rel</span><span class="punct">|</span> <span class="ident">current</span> <span class="punct">&gt;</span> <span class="ident">rel</span><span class="punct">}</span>
+      <span class="keyword">raise</span> <span class="punct">&quot;</span><span class="string">No previous release</span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="ident">previous</span><span class="punct">.</span><span class="ident">nil?</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{previous}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+      <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Moved to <span class="expr">#{previous}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+
+    <span class="ident">desc</span> <span class="punct">&quot;</span><span class="string">Rollforward to the next release</span><span class="punct">&quot;</span>
+    <span class="ident">remote_task</span> <span class="symbol">:rollforward</span> <span class="keyword">do</span>
+      <span class="ident">current_link</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls -alF <span class="expr">#{DEPLOY_ROOT}</span> | awk '/current -&gt; .*/ { print $NF }'</span><span class="punct">&quot;).</span><span class="ident">chomp</span>
+      <span class="ident">current</span> <span class="punct">=</span> <span class="constant">File</span><span class="punct">.</span><span class="ident">basename</span><span class="punct">(</span><span class="ident">current_link</span><span class="punct">)</span>
+      <span class="ident">releases</span> <span class="punct">=</span> <span class="ident">run</span><span class="punct">(&quot;</span><span class="string">ls <span class="expr">#{DEPLOY_ROOT}</span>/rels | sort -r</span><span class="punct">&quot;).</span><span class="ident">split</span><span class="punct">(&quot;</span><span class="string"><span class="escape">\n</span></span><span class="punct">&quot;)</span>
+      <span class="ident">next_rel</span> <span class="punct">=</span> <span class="ident">releases</span><span class="punct">.</span><span class="ident">find</span> <span class="punct">{|</span><span class="ident">rel</span><span class="punct">|</span> <span class="ident">current</span> <span class="punct">&lt;</span> <span class="ident">rel</span><span class="punct">}</span>
+      <span class="keyword">raise</span> <span class="punct">&quot;</span><span class="string">No next release</span><span class="punct">&quot;</span> <span class="keyword">if</span> <span class="ident">next_rel</span><span class="punct">.</span><span class="ident">nil?</span>
+      <span class="ident">run</span> <span class="punct">&quot;</span><span class="string">sudo ln -s -f -T <span class="expr">#{DEPLOY_ROOT}</span>/rels/<span class="expr">#{next_rel}</span> <span class="expr">#{DEPLOY_ROOT}</span>/current</span><span class="punct">&quot;</span>
+      <span class="ident">restart_daemons</span>
+      <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">Moved to <span class="expr">#{next_rel}</span></span><span class="punct">&quot;</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">rescue</span> <span class="constant">LoadError</span> <span class="punct">=&gt;</span> <span class="ident">e</span>
+  <span class="ident">puts</span> <span class="punct">&quot;</span><span class="string">NOTE: Install vlad to get Kevin's awesome deployment tasks</span><span class="punct">&quot;</span>
+<span class="keyword">end</span></code></pre></div>
+
+  <a href="/articles/2008/04/05/really-simple-git-deployment-with-vlad">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2008/04/05/really-simple-git-deployment-with-vlad#comments">4 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system">postgresql gem on Leopard stock gem system</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 23 Dec 2007 01:24:00 GMT">Sun, 23 Dec 2007 01:24:00 GMT</span></p>
+<p>This <a href="http://pastie.caboo.se/131771">fails horribly</a>.</p>
+
+<p>The solution is to make sure you&#8217;re only building for <em>your</em> architecture:</p>
+
+<div class="typocode"><pre><code class="typocode_default ">Odysseus:ext kev$ sudo -s
+bash-3.2# ARCHFLAGS='-arch i386' gem install postgres
+Building native extensions.  This could take a while...
+Successfully installed postgres-0.7.9.2007.12.22
+Installing ri documentation for postgres-0.7.9.2007.12.22...
+Installing RDoc documentation for postgres-0.7.9.2007.12.22...</code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/12/22/postgresql-gem-on-leopard-stock-gem-system#comments">5 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/12/10/rubinius-runs-mongrel">Rubinius Runs Mongrel</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 10 Dec 2007 09:40:00 GMT">Mon, 10 Dec 2007 09:40:00 GMT</span></p>
+<p>Reposted from my message to rubinius-dev. Congrats to the whole Rubinius team. This was entirely a group effort, and one hell of an achievement.</p>
+
+<blockquote><pre>Here's the first Mongrel handler running on Rubinius:
+
+http://pastie.caboo.se/paste/asset/126441/Picture_4.png
+
+From this code:
+
+$:.unshift "/Users/kev/code/mongrel/mongrel-1.1.1/lib"
+
+puts "Requiring mongrel"
+require 'mongrel'
+
+class HelloHandler < Mongrel::HttpHandler
+ def process(request, response)
+   response.start(200) do |head, out|
+     head["Content-Type"] = "text/html"
+     out.write "Hello World! I'm running on Rubinius!"
+   end
+ end
+end
+
+server = Mongrel::HttpServer.new("0.0.0.0", 3000)
+puts "Started Server"
+server.register("/hello", HelloHandler.new)
+puts "Registered handler"
+t = server.run
+t.join
+
+***THE CATCH (as this may be viewed by many people)***
+
+This isn't completely complete. rb_global_variable was #define'd out
+to do nothing (so no garbage collection on the global vars), and there
+was a slight modification from the trunk to make global aliasing
+ignore the fact that the globals just weren't there. Mongrel's
+http11.c was also _slightly (very very slightly)_ modified to use the
+rb_str_get_char_* methods we've decided to move to from RSTRING()->ptr
+and RSTRING()->len, and I haven't gotten around to defining ALLOC_N
+yet, so it was changed to a simple malloc. That's it though.
+
+And it seems to run. And I feel like I need to run around the block.
+
+It's in 9976301ba.
+
+WOOOOOOOOOOOOOOOOOOOOO!</pre></blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/12/10/rubinius-runs-mongrel#comments">4 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/12/10/secret-incantations">Secret Incantations</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 10 Dec 2007 06:03:00 GMT">Mon, 10 Dec 2007 06:03:00 GMT</span></p>
+<h2>Install the do_postgres gem against postgresql82 on MacPorts:</h2>
+
+<p>Make sure that /opt/local/lib/postgresql82/bin/ is in your path. You need pg_config easily accessible. Then run:</p>
+
+<p><code>sudo gem install do_postgres -- --with-pgsql-include-dir=/opt/local/include/postgresql82/ --with-pgsql-lib=/opt/local/lib/postgresql82/</code></p>
+
+<h2>Autotest with Rspec on Merb with a Leopard install using the supplied Ruby (whew)</h2>
+
+<p>This will break because it can&#8217;t find the &#8220;spec command&#8221;. It searches the configured bin directory, which with the supplied ruby is /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin.</p>
+
+<p><code>ln -s /usr/bin/spec /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/spec</code></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/12/10/secret-incantations#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/11/27/depth-first-search">Depth First Search</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 27 Nov 2007 19:24:00 GMT">Tue, 27 Nov 2007 19:24:00 GMT</span></p>
+<p>Because I hadn&#8217;t implemented DFS in Ruby before, and it&#8217;s just so damn easy.</p>
+
+<p><strong>Update:</strong> Phillip rightly pointed out in the comments that with the yield at the end, it&#8217;s actually post-order traversal, not depth first search per se.</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="keyword">class </span><span class="class">TreeNode</span>
+  <span class="ident">attr_reader</span> <span class="symbol">:name</span>
+
+  <span class="keyword">def </span><span class="method">initialize</span><span class="punct">(</span><span class="ident">name</span><span class="punct">)</span>
+    <span class="attribute">@name</span> <span class="punct">=</span> <span class="ident">name</span>
+    <span class="attribute">@children</span> <span class="punct">=</span> <span class="punct">[]</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">add_node</span><span class="punct">(</span><span class="ident">node</span><span class="punct">)</span>
+    <span class="attribute">@children</span> <span class="punct">&lt;&lt;</span> <span class="ident">node</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">each_depth_first</span>
+    <span class="attribute">@children</span><span class="punct">.</span><span class="ident">each</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">child</span><span class="punct">|</span>
+      <span class="ident">child</span><span class="punct">.</span><span class="ident">each_depth_first</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">c</span><span class="punct">|</span>
+        <span class="keyword">yield</span> <span class="ident">c</span>
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">yield</span> <span class="constant">self</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment"># root  -  a  -  b</span>
+<span class="comment">#   \       \ </span>
+<span class="comment">#    e - f   c  -  d</span>
+<span class="comment">#     \</span>
+<span class="comment">#      g</span>
+
+<span class="ident">root</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">root</span><span class="punct">&quot;)</span>
+<span class="ident">root</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span> <span class="ident">a</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">a</span><span class="punct">&quot;))</span>
+<span class="ident">a</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span> <span class="ident">b</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">b</span><span class="punct">&quot;))</span>
+<span class="ident">a</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span> <span class="ident">c</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">c</span><span class="punct">&quot;))</span>
+<span class="ident">c</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span> <span class="ident">d</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">d</span><span class="punct">&quot;))</span>
+<span class="ident">root</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span><span class="ident">e</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">e</span><span class="punct">&quot;))</span>
+<span class="ident">e</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span><span class="ident">f</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">f</span><span class="punct">&quot;))</span>
+<span class="ident">e</span><span class="punct">.</span><span class="ident">add_node</span><span class="punct">(</span><span class="ident">g</span> <span class="punct">=</span> <span class="constant">TreeNode</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(&quot;</span><span class="string">g</span><span class="punct">&quot;))</span>
+
+<span class="ident">root</span><span class="punct">.</span><span class="ident">each_depth_first</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">child</span><span class="punct">|</span>
+  <span class="ident">puts</span> <span class="ident">child</span><span class="punct">.</span><span class="ident">name</span>
+<span class="keyword">end</span>
+
+<span class="comment"># produces:</span>
+<span class="comment"># b</span>
+<span class="comment"># d</span>
+<span class="comment"># c</span>
+<span class="comment"># a</span>
+<span class="comment"># f</span>
+<span class="comment"># g</span>
+<span class="comment"># e</span>
+<span class="comment"># root</span></code></pre></div>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/11/27/depth-first-search#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/11/08/this-is-too-entertaining-not-to-share">This is too entertaining not to share</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 09 Nov 2007 02:08:00 GMT">Fri, 09 Nov 2007 02:08:00 GMT</span></p>
+<p>I&#8217;ve apparently <a href="http://shelly-rayedeane.blogspot.com/">&#8220;hacked&#8221; someone&#8217;s unborn children</a>. Or something.</p>
+
+<blockquote>And, among the lists of names, includes someone who goes by the name of Kevin Clark. And, if you were to take it even one step further, and INVESTIGATE this person, you would also come to the conclusion that he is a computer hacker who resides (or has resided) in San Francisco before.
+
+Another coincidence, I suppose?</blockquote>
+
+<p><strong>Update:</strong> She says in one of her latest comments that she has a gun now. It&#8217;s amusing, but please do not poke/provoke her. Look, but do not touch.</p>
+
+<p><strong>Update 2:</strong> She&#8217;s still accusing me of multiple felonies, but seems to have leveled off. I don&#8217;t think she&#8217;s going to track me down at this point. Woo personal safety. Oh, and technorati is apparently involved now:</p>
+
+<blockquote>I believe Mr. Clark is somehow routing fake websites through technorati via powerset and is doing something illegal.</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/11/08/this-is-too-entertaining-not-to-share#comments">8 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/11/03/13-new-sd-ruby-podcasts-up">13 New SD Ruby Podcasts Up</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 03 Nov 2007 15:04:00 GMT">Sat, 03 Nov 2007 15:04:00 GMT</span></p>
+<p><a href="http://podcast.sdruby.com/">They&#8217;re all up at once</a>. Wow.</p>
+
+<p>Mine felt good, but it&#8217;s long. Rather long. 50 minutes fairly non-stop, ~600 megs long. Find some time before watching.</p>
+
+<pre>Episode 036: The Return of Kevin Clark
+Kevin Clark takes a break from Powerset to give a full-throttle talk
+on using Merb as a JSON-RPC service, god, gem2rpm, and heckle.
+
+Episode 035: ActiveRecord Backup & MimetypeFu
+Matt Aimonetti demonstrates his newest plugins: ActiveRecord Backup
+and MimetypeFu.
+
+Episode 034: Intro to JRuby
+Brian Chapados shows how to install and work with the latest JRuby
+release.
+
+Episode 033: Life on Edge
+If you’re a Rails junkie, you’ll want to develop on Edge Rails. Matt
+Clark explains how to get started and shares some of the challenges
+of working on Edge.
+
+Episode 032: Capistrano
+Rob Kaufman takes on Capistrano 2. What is it? How does it work?
+What’s changed since version 1?
+
+Episode 031: Seaside
+Roger Whitney explores Seaside, the web application framework based
+on Smalltalk.
+
+Episode 030: Tuneshelf
+Dominic Damian talks about his experiences building Tuneshelf, a web
+application that allows music fans to keep track of their favorite
+music albums.
+
+Episode 029: Big Stinking Piles (of data)
+What do you do when third-party data vendors don’t speak REST? Rob
+Kaufman discuss real-world techniques for importing and exporting
+data. (This talk was also given at RailsConf 2007.)
+
+Episode 028: Simple Sidebar Plugin
+Ryan Felton shows how to use Simple Sidebar plugin to DRY up sidebar
+content in applications.
+
+Episode 027: Headliner and Styler
+Patrick Crowley talks about his newest plugins: Headliner and Styler.
+
+Episode 026: ActsAsSolr
+Rob Kaufman shows how easy it is to integrate Solr powered search
+into your Rails application using the ActsAsSolr plugin.
+
+Episode 025: Ajax CSS Star Rating with ActsAsRateable
+Ryan Felton shows off how to build an Ajax-powered, CSS star rater
+using the ActsAsRateable plugin and Komodo Media’s CSS Star Rating
+Redux technique.
+
+Episode 024: Using Ruby + Amazon SQS to build backdoors
+Brian Chapados talks about using Ruby and Amazon’s Simple Que Service
+web service to build backdoors into systems.</pre>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/11/03/13-new-sd-ruby-podcasts-up#comments">2 comments</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: 1 <a href="/articles/page/2">2</a> <a href="/articles/page/3">3</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Annoying Errors in Rails</title>
+    <link>http://glu.ttono.us/articles/2006/02/24/annoying-errors-in-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Annoying Errors in Rails</title>
+      <description>&lt;p&gt;So, I&amp;#8217;ve been fighting with this all morning..&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;E/usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/errors.rb:94:in `check': cannot rollback - no transaction is active (SQLite3::SQLException)
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:76:in `check'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:68:in `commence'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:61:in `initialize'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/statement.rb:158:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:211:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:186:in `prepare'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:210:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:620:in `rollback'
+         ... 11 levels...
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:200:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:13:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit.rb:285
+        from test/unit/notifications_test.rb:47&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Turns out this happens when you have a fixture named incorrectly either in the file or in the method call. I&amp;#8217;m going to try to write a patch to give a better error when life slows down. I&amp;#8217;ve got a big article coming up at that point too, so keep your eyes open.&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 11:23:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:47ef9a1d-995d-4de2-a47a-bbfc80070445</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/02/24/annoying-errors-in-rails</link>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/241</trackback:ping>
+    </item>
+    <item>
+      <title>"Annoying Errors in Rails" by justin</title>
+      <description>&lt;p&gt;wonderful post over at &lt;a&gt;http://blog.seagul.co.uk/articles/2006/02/08/in-memory-sqlite-database-for-rails-testing&lt;/a&gt;
+helped me to overcome my difficulties.&lt;/p&gt;</description>
+      <pubDate>Sun, 05 Mar 2006 23:15:07 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:451a7eb8-ceff-4f0a-bdd0-54221b296c96</guid>
+      <link>http://glu.ttono.us/articles/2006/02/24/annoying-errors-in-rails#comment-261</link>
+    </item>
+    <item>
+      <title>"Annoying Errors in Rails" by justin</title>
+      <description>&lt;p&gt;i&amp;#8217;m feeling the pain as well.&lt;/p&gt;
+
+
+	&lt;p&gt;aside from the aforementioned upcoming article, could you possibly give a hint as to where one ought to look to track down such errors?  my tests seem to work fine with mysql, so why does sqlite3  not like my fixture naming?&lt;/p&gt;</description>
+      <pubDate>Sun, 05 Mar 2006 10:38:58 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:03af19a9-7216-4265-a812-5a282edbda91</guid>
+      <link>http://glu.ttono.us/articles/2006/02/24/annoying-errors-in-rails#comment-260</link>
+    </item>
+  </channel>
+</rss>

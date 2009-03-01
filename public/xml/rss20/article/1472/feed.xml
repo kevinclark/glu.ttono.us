@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Ruby Syslog README</title>
+    <link>http://glu.ttono.us/articles/2007/07/25/ruby-syslog-readme</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Ruby Syslog README</title>
+      <description>&lt;p&gt;I hate the fact that googling &lt;code&gt;syslog ruby&lt;/code&gt; didn&amp;#8217;t turn up anything useful, and the rdoc doesn&amp;#8217;t seem to be there. So, I&amp;#8217;m posting the README from the extension in Ruby&amp;#8217;s source. This is as much for me as for you. Using PageRank for good is.. well.. good I&amp;#8217;d assume.&lt;/p&gt;</description>
+      <pubDate>Wed, 25 Jul 2007 14:21:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:813e9ea5-dc76-4ffd-9fc0-231e53d38837</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/07/25/ruby-syslog-readme</link>
+      <category>Ruby</category>
+      <category>documentation</category>
+    </item>
+  </channel>
+</rss>

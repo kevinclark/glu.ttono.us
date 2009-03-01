@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Rails: Serving the long tail in 1883 and 2005</title>
+    <link>http://glu.ttono.us/articles/2005/10/16/rails-serving-the-long-tail-in-1883-and-2005</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Rails: Serving the long tail in 1883 and 2005</title>
+      <description>&lt;p&gt;Nathaniel Talbott&lt;/p&gt;
+
+&lt;h3&gt;Wagging the Dog&lt;/h3&gt;
+
+&lt;p&gt;&amp;#8220;Our old release process was like a bowl of gravy with chunks floating in it.&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8220;The new one is more like a box of candy, where everything is wrapped up and packaged and you sort of take the whole box.&amp;#8221;  (?)&lt;/p&gt;
+
+&lt;p&gt;The long tail by Chris Anderson: Sales volume vs. Variety. Most of the money is made in the hits, the long tail is the large set of non hits. The long tail of non-hits can, cumulatively, make more of a difference than the small number of hits.
+One of the big marketplace changers has been Amazon recommendations.&lt;/p&gt;
+
+&lt;h3&gt;Wide, Inaccessible Places&lt;/h3&gt;
+
+&lt;p&gt;In the 1800s, the east and west were seperated by terrain. After booms out west, the government funded the transcontinental railroad. It did more than allow easier trade, it enabled people to move to the middle of the country, to the long tail of the midwest.&lt;/p&gt;
+
+&lt;h3&gt;The (mis)Fortune 5,000,000&lt;/h3&gt;
+
+&lt;p&gt;People are poorly served by the features in technology.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How many of us know 5% of the features in word, or our finance programs?&lt;/li&gt;
+&lt;li&gt;The software causes problems for people.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Video of guy beating the crap out of his computer.&lt;/p&gt;
+
+&lt;p&gt;Anecdote about excell being bad for food-coop finance tool.&lt;/p&gt;
+
+&lt;h3&gt;What happens when t approaches 0?&lt;/h3&gt;
+
+&lt;p&gt;What happens when it gets cheaper to make an application?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;With ruby I thought about making software to solve problems&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;With rails, I have no excuse not to&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Developers are using more time making little, specifically targeted applications&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Developers are spending more time solving problems for users and less time fighting with their chosen technology&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;From IRC:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+&lt;KirinDave&gt; Maybe programming will become like martial arts in chinese novels.
+&lt;technomancy&gt; DHH is like Wong Fei Ho.
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;h3&gt;From Disenfranchised to Passionate with Pocket Change&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The coop users (from anecdote) are being disenfranchised but rails has the potential to make it better for everyone.&lt;/li&gt;
+&lt;li&gt;Tickets to the interior is suddenly cheap enough for everyone.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Gold Rushers and Homesteaders&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gold rushers interested in making it big quickily
+&lt;ul&gt;
+&lt;li&gt;How do you know them? They may use alot of &lt;code&gt;!&lt;/code&gt;. The .coms&lt;/li&gt;
+&lt;li&gt;They&amp;#8217;ll be gone or a hit themselves in a year&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Homesteaders
+&lt;ul&gt;
+&lt;li&gt;These people aren&amp;#8217;t interested in going public, they want to create something big but not necessarily get big. They want to feed their passion. They serve the long tail.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Ruby is to Raw Energy as Rails is to the Transcontinental&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you&amp;#8217;re here, you know Ruby empowers Rails.&lt;/li&gt;
+&lt;li&gt;You can&amp;#8217;t think that simple in Java, but duplicating may be possible.&lt;/li&gt;
+&lt;li&gt;Whatabout the nonweb? The desktop? The handheld?&lt;/li&gt;
+&lt;li&gt;Don&amp;#8217;t get boxed in: with ruby at your fingers, you can go far beyond the web.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Build software, there&amp;#8217;s little to lose and everything to be gained.&lt;/p&gt;
+
+&lt;p&gt;Q/A&lt;/p&gt;
+
+&lt;p&gt;Q: Can you talk a little more about users owning their data? How do we maintain applications when we have hundreds of them?&lt;/p&gt;
+
+&lt;p&gt;A: What I mean by users owning their data is that users want to be able to controll and export it. If you build 120 web apps then there&amp;#8217;s management that will be needed, but you would host and maintain users. The data is theirs, not yours. Users care about being able to take their data and do whatever they want to it (use it in another app).&lt;/p&gt;
+
+&lt;p&gt;Q: How many people consider themselves making a living on the long tail?&lt;/p&gt;
+
+&lt;p&gt;Several hands go up.&lt;/p&gt;
+
+&lt;p&gt;Q: You were talking about desktop applications like Word and Excel. 4 Months ago I paid for work documents and it turns out they were already in Word. There&amp;#8217;s two types of complexity: one app with many features and small tail applications dealing with a dozen or more smaller applications. Some time, we&amp;#8217;ll need to make bigger applications out of the smaller. There&amp;#8217;s some complexity we can&amp;#8217;t get rid of. We&amp;#8217;re getting more productive though we feel things are more complex. There are limits to compression.&lt;/p&gt;
+
+&lt;p&gt;A: There is more than one type of long tail app. There&amp;#8217;s a space for aggregators, filters, the things that will allow us to access these longtail things. I&amp;#8217;m not saying hits are bad. I&amp;#8217;m glad google is a hit because it makes my experience better. I&amp;#8217;m just saying there are huge opportunities for the long tail and we don&amp;#8217;t need that many hits. Build something small.&lt;/p&gt;
+
+&lt;p&gt;Derek Sivers from CD Baby. You can make a business in the long tail. We only work with indy musicians. If you put a whole bunch of bands that only sell 5 or 10 cds in place, then its very worth it. I think its interesting that by serving the people who aren&amp;#8217;t getting served, by putting them all in place, you make a business.&lt;/p&gt;
+
+&lt;p&gt;A: Its ok to make money, but the goal should be by actually serving needs.&lt;/p&gt;
+
+&lt;p&gt;Curt Hibbs: Another aspect of the long tail is that there&amp;#8217;s an auxilary problem. When there&amp;#8217;s thousands of things out there, how do you find them? Somebody needs to become an aggregator for long tail solutions out there.&lt;/p&gt;
+
+&lt;p&gt;A: There is a need for aggregators to fill that niche.&lt;/p&gt;
+
+&lt;p&gt;Q: I&amp;#8217;m constantly amazed by the small shops that say, &amp;#8220;I need an app to do this&amp;#8221;, and its nice to be able to say, &amp;#8220;you can have that for a few hundred dollars&amp;#8221;. By picking up the small companies you can make a business.&lt;/p&gt;
+
+&lt;p&gt;A: Yes, and when you&amp;#8217;re talking to the print shop (small company), find out who they know and go talk to who they know (connector) and get that person to talk about your software.&lt;/p&gt;
+
+&lt;p&gt;Q: Do you have any ideas on what a framework on Rails would look like on a desktop?&lt;/p&gt;
+
+&lt;p&gt;A: I have some ideas, but it&amp;#8217;d be nice if someone else could do it. It really needs to be extracted.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 17:56:25 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:baf6a344baa03e854b7756aeabf88869</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/16/rails-serving-the-long-tail-in-1883-and-2005</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/26</trackback:ping>
+    </item>
+  </channel>
+</rss>

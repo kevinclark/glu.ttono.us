@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: SD West Slides and Code</title>
+    <link>http://glu.ttono.us/articles/2007/03/22/sd-west-slides-and-code</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>SD West Slides and Code</title>
+      <description>&lt;p&gt;If you attended my talk at SD West today, &lt;a href="http://thar.be/sdwest-07.zip"&gt;here&amp;#8217;s a zip&lt;/a&gt; with the slides and code we wrote in class. Thanks for coming out!&lt;/p&gt;</description>
+      <pubDate>Thu, 22 Mar 2007 01:58:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:eb907b51-d607-49b0-96de-64b8810576f3</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/22/sd-west-slides-and-code</link>
+    </item>
+    <item>
+      <title>"SD West Slides and Code" by Kevin Clark</title>
+      <description>&lt;p&gt;&lt;a href="http://www.sdexpo.com/"&gt;http://www.sdexpo.com/&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Tue, 03 Apr 2007 14:31:52 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:e24fae4e-5551-4c7c-a074-042f2cc087e1</guid>
+      <link>http://glu.ttono.us/articles/2007/03/22/sd-west-slides-and-code#comment-1389</link>
+    </item>
+    <item>
+      <title>"SD West Slides and Code" by Dad</title>
+      <description>&lt;p&gt;Where did you give this presentation?&lt;/p&gt;</description>
+      <pubDate>Mon, 02 Apr 2007 15:14:04 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:32e7f5a8-5766-4f39-a6db-8b7c0095e7a0</guid>
+      <link>http://glu.ttono.us/articles/2007/03/22/sd-west-slides-and-code#comment-1387</link>
+    </item>
+  </channel>
+</rss>

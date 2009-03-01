@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: T=-6 minutes to State of Rails</title>
+    <link>http://glu.ttono.us/articles/2005/10/16/t-6-minutes-to-state-of-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>T=-6 minutes to State of Rails</title>
+      <description>&lt;p&gt;I&amp;#8217;m sitting here waiting for DHH to take the podium. I&amp;#8217;ll have notes for you as soon as its completed.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 15:57:57 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:53bca961fb85c3f947f7865f7c8c10de</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/16/t-6-minutes-to-state-of-rails</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/24</trackback:ping>
+    </item>
+  </channel>
+</rss>

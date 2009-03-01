@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Refactoring No Clergy</title>
+    <link>http://glu.ttono.us/articles/2005/10/15/refactoring-no-clergy</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Refactoring No Clergy</title>
+      <description>&lt;p&gt;Kevin Baird&lt;/p&gt;
+
+&lt;h3&gt;What is No Clergy?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Live, generative music for a small ensemble&lt;/p&gt;
+
+&lt;h3&gt;Influences (Earlier Open-Form Pieces)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Karlheinz / Piano&lt;/li&gt;
+&lt;li&gt;Earle Brown: Available Froms I &amp;amp; II / Small Ensemble&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Setup&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Performers read music via web browser&lt;/li&gt;
+&lt;li&gt;Equivalent of turning written pages is a web page refresh&lt;/li&gt;
+&lt;li&gt;The conductor is a bash script &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(Sample of trumpet and violin musical score pages)&lt;/p&gt;
+
+&lt;h3&gt;2nd and Later Pages&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The audience has access to web forms in the concert space. The audience is able to modify pitch, direction, volume, etc. for the various characteristics. They can express how strong their conviction is. &amp;#8220;I mean it, damnit!&amp;#8221; or &amp;#8220;Take it with a grain of salt.&amp;#8221;&lt;/li&gt;
+&lt;li&gt;Web forms are specific to each instrument
+I should mention that I wanted web forms because i serves a useful aesthetic and functional performance. People are familiar with web browsers, and it is easy for people to bring laptops to the concert space in order to participate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Markovian transformations are used. A marko chain is a data set that is a derivation of some previous data set. The new data set bears a strong resemblance to the original set, but is a new set. It&amp;#8217;s used for things like modeling a (shakespeare play?) The point of using it here is so that the new page of notation is similar to the original. That makes it not terribly interesting for the second page, but by the third page, it gets interesting.&lt;/p&gt;
+
+&lt;p&gt;(Sample pages of trumpet and violin musical scores with audience having asked for fewer notes, or more intensity for each instrument).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;By the second page, instruments are already starting to diverge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Originally written in Python&lt;/h3&gt;
+
+&lt;p&gt;The piece was originally written in Python. Scores, measure, and notes are used. A sound or silence event is defined. A struct keeps the state.&lt;/p&gt;
+
+&lt;h3&gt;Data formats &amp;amp; output&lt;/h3&gt;
+
+&lt;p&gt;The output is stored in MusicXML. It renders notation output via Lilypond, which renders LaTeX to PDF or other output formats.&lt;/p&gt;
+
+&lt;h3&gt;Why Ruby?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Flexibilit of Perl without the kludges and ugliness&lt;/li&gt;
+&lt;li&gt;Real access control and scope&lt;/li&gt;
+&lt;li&gt;Ruby&amp;#8217;s specific take on blocks and iterators&lt;/li&gt;
+&lt;li&gt;Influence of Lisp, although not aware at the time
+&lt;ul&gt;
+&lt;li&gt;Open Classes vs. Paul Graham&amp;#8217;s &lt;i&gt;On List&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;Also mentioned in Agile Web Development With Rails&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Self-education&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Why Refactor?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Had started informal code. It was a mess and so I said, &amp;#8220;Why not refactor it and do it in Ruby?&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;The Changes: Ruby vs. Python&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Differences&amp;#8230;
+&lt;ul&gt;
+&lt;li&gt;Culture not just technical features&lt;/li&gt;
+&lt;li&gt;Thanks to Hal Fulton for &lt;i&gt;The Ruby Way&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;Much heavier use of boolean predicates&amp;#8230; e.g. has_something?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rdoc encouraged much better documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Substitute Algorithm&lt;/h3&gt;
+
+&lt;h3&gt;Patterns&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Merge a superclass and a subclass together
+&lt;ul&gt;
+&lt;li&gt;Collapse Hierarchy moves superclasses and subclasses together. this was developed in a very ad hoc process. I tried to visualize how I would generate the initial pages vs. the subsequent pages.* Extract Interface &amp;#8211; Move conceptually similar methods into a separate module
+*The most horrible name in the project is &amp;#8220;tupplable&amp;#8221; which refers to a musical term.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Extract Method &amp;#8211; Break a larger code fragment into  separate methods
+&lt;ul&gt;
+&lt;li&gt;I broke a lot of methods up. In the note class, I had a notation for rendering the output. I broke it up into a public method and several privates representing the notes, pitch, etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Extract Superclass / Pull up method &amp;#8211;  Move methods into a superclass&lt;/li&gt;
+&lt;li&gt;I made a new parent class called HasSound that represents the &amp;#8230;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Various instruments have this thing called transposition. I used this as a class variable and many things I had used as an instrance variable became class variables, and occasionally symbolic constants.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Replace Array with Object &amp;#8211; Create Object from Array with dissimilar contents&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Replace Magic Numbers with Sumbolic Constants&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I also have a hash that also reads the full name from the abbreviation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Encapsulate Field / Self Encapsulate Field - Make a public variable private and createa accessors&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Separate Query from Modifier &amp;#8211; Isoloate methods that either return a value or change a state&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Conclusions&lt;/h3&gt;
+
+&lt;h3&gt;Future Plans&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Continue some refactoring. Dynamics are only meaningful for notation and should be proken out in case I am not producing output for notation.&lt;/li&gt;
+&lt;li&gt;Eliminate bash wrapper scripts, convert to pure Ruby.  Thankfully, I followed Matz suggestion to learn some Lisp and SmallTack, it was useful in understanding Ruby.
+&lt;ul&gt;
+&lt;li&gt;Make transformations and XML storage facilities avaliable as general libraries&lt;/li&gt;
+&lt;li&gt;Implement transformation unrelated to audience feedback. Blend some styles.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Python good / Ruby better (for me)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I care about encapsulation&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Good design in itself&lt;/li&gt;
+&lt;li&gt;Practical benefits for headspace issues&lt;/li&gt;
+&lt;li&gt;Aided by having Real Access&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ruby&amp;#8217;s openness, flexibility and transparency made each Refactoring easier and cleaner&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Perl taught me to hate sigils&lt;/li&gt;
+&lt;li&gt;Ruby taught me to love them again&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Q &amp;amp; A&lt;/h3&gt;
+
+&lt;p&gt;Speaker: I&amp;#8217;d like to ask the audience about Packaging, inclined to package once its ready. &lt;/p&gt;
+
+&lt;p&gt;Q: Do you have any recordings of what this sounds like live?
+A:  I don&amp;#8217;t have any with me, the audio quality isn&amp;#8217;t great.
+I found that focusing on output gives me a niche&amp;#8230; and I love that everything you hear isn&amp;#8217;t just blowing out of a wooden tube from a hundred years ago or something like that.&lt;/p&gt;
+
+&lt;p&gt;David Black: I&amp;#8217;d say it&amp;#8217;d be good to release as a gem. If it requires lillypond, then it requires lillypond.&lt;/p&gt;
+
+&lt;p&gt;Q: I&amp;#8217;m a trumpet player, and I was wondering if there would be an option to say how much they hate a specific musician? Is there a way to make sure that the music is not too physically difficult to play (for the performers)?
+A:  I&amp;#8217;ve talked to my advisior, and is it aesthetically and conceptually correct to limit what gets output to what is physically playable? What if something comes out that is logistically unplayable? Well, do your best. You&amp;#8217;re the elected official. This will be highly dependent on your performers.&lt;/p&gt;
+
+&lt;p&gt;Q: Just what you said about the playability and all that&amp;#8230; just the concept of constraints.  I&amp;#8217;ve wondered if you&amp;#8217;ve considered adding the ability to add constraints, something like that?
+A: I&amp;#8217;m somewhat reluctant to do too much on that, because I want to give the audience a lot of freedom in an environment where they haven&amp;#8217;t had it before. When something impossible happens, that&amp;#8217;s when&amp;#8230; alright make the trumpet&amp;#8217;s a little higher and the &amp;#8230; a little lower.&lt;/p&gt;
+
+&lt;p&gt;Q: You really seem to be into refactoring; have you noticed a relation between the way how you think about the structure of a software program and how you think about the structure of a piece of music?
+A: That&amp;#8217;s a really interesting question.  I think I&amp;#8217;m more inclined to do it with code&amp;#8230; and obviously people will disagree&amp;#8230; [with code] it&amp;#8217;s closer to saying this is the right way to do it and this is the wrong way to do it&amp;#8230; but with music I find it a lot more subjective.
+Q2: Refactoring is, as far as I know, changing how something happens without changing what the final outcome is, whereas in music the output is different once you&amp;#8217;ve changed something.
+A2: We can argue about this later&lt;/p&gt;
+
+&lt;p&gt;Q: Why the name?
+A: It&amp;#8217;s not an anti-religioius&amp;#8230; musical professionals could be seen as a type of clergy.  I had an earlier pice called no cathedral.  This is a logical extension of that&amp;#8230; so how could I make it more anti-clerical than that? Get rid of the clerics.  It&amp;#8217;s a metaphor.&lt;/p&gt;
+
+&lt;p&gt;Q: Speaking as someone who&amp;#8217;s performed a bit of contemporary music, I wonder what the reaction has been by the audience?&lt;/p&gt;
+
+&lt;p&gt;A: Generally it has been very good, but with that there is a caveat: I could only get other composers to perform this for me.&lt;/p&gt;
+
+&lt;p&gt;One thing I should mention about the notation is that the sound of the music is identical, but the beat marks are&amp;#8230;.So that would be an improvement in presentation.  That would help in that regard.
+A: I hear good things about smalltalk.  Actually, last weekend I started learning about smalltalk and lisp.  Actually, I &lt;/p&gt;
+
+&lt;p&gt;Q: How many people have used a refactoring browser before? How many people miss it in Ruby?&lt;/p&gt;
+
+&lt;p&gt;Even in the lobby last night, I was not changing things because it was painful to change things in more than one place. I was lazy, or I din&amp;#8217;t have a refactoring browser. If anyone is interested, I would love to get this started. [Matt Shelleburty]&lt;/p&gt;
+
+&lt;p&gt;Q: This is another question about the packaging&amp;#8230; you presented it earlier as an iether/or&amp;#8230; why is that? (Debian/ruby).
+A: I&amp;#8217;m lazy.
+Q:
+A: That&amp;#8217;s a good point, and that&amp;#8217;s the ideal solution.  Yeah, that&amp;#8217;d be the way to go probably.
+Q: That&amp;#8217;s the way gems work, I&amp;#8217;ve worke din Debian mostly.  You might look in to (&amp;#8230;) [Stephanie]&lt;/p&gt;
+
+&lt;p&gt;Q: Mine was in response to the refactoring guy&amp;#8217;s question.  Things to point out is what environment you&amp;#8217;re working in.  Things like RDT which I don&amp;#8217;t use because it brings your machine to a crawl.  I think a bunch of people started, tried to put it in FreeRIDE&amp;#8230; I don&amp;#8217;t know if that would be possible.  If anyone is interested in putting it in Emacs.&lt;/p&gt;
+
+&lt;p&gt;Q: Just a clarification on that too&amp;#8230; one thing that furstrates me on that too&amp;#8230; theres&amp;#8217; so many smart people that have spread themselves out. [missed a lot here]  I&amp;#8217;d rather do code than GUI anyway.&lt;/p&gt;
+
+&lt;p&gt;Q: I apologize in advance to continuing to steal your thunder on this refactoring thing.  But since the topic came up.  I&amp;#8217;m one  of the founders of the FreeRide IDE project, along with Rich Kilmer.  I&amp;#8217;m very interested in getting refactoring support in FreeRIDe.  []&amp;#8217;s got problems.  Enough problems that we actually removed it from FreeRide.  If there&amp;#8217;s people that are interesteed in working on it and bringin it up to snuff, I&amp;#8217;d be really interested in talking about it.  Thanks.&lt;/p&gt;
+
+&lt;p&gt;Q: How big of a role did Unit Testing play in refactoring?  And second, I didn&amp;#8217;t understand why you ditched PYthon.&lt;/p&gt;
+
+&lt;p&gt;A: With regard to the changeover, I knew I wanted to do a substantial re-write.  I was learning Ruby at the time, and everything I learned about it I thought &amp;#8216;why did I learn Python&amp;#8217;?  Fortuitous coincidence in time I guess.&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 16:54:40 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4f898f4f1f1cb07356dcbd5c80078fc8</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/15/refactoring-no-clergy</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/18</trackback:ping>
+    </item>
+    <item>
+      <title>"Refactoring No Clergy" by Kevin Baird</title>
+      <description>&lt;p&gt;Great notes. Thank you.&lt;/p&gt;
+
+
+	&lt;p&gt;Some minor clarifications:
+Karlheinz&amp;#8217;s last name is Stockhausen&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8220;tupplable&amp;#8221; is &amp;#8220;Tupletable&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;#8220;isn&amp;#8217;t just blowing out of a wooden tube&amp;#8221; should be &amp;#8220;is just blowing out of a wooden tube&amp;#8221; &amp;#8211; I appreciate that I&amp;#8217;m doing computer music that depends on old technology for the actual sound.&lt;/p&gt;
+
+
+	&lt;p&gt;These are extremely minor points. Thanks very much for taking and posting such excellent notes.&lt;/p&gt;
+
+
+	&lt;p&gt;Slides should be up at &lt;a href="http://www.zenspider.com/Languages/Ruby/"&gt;http://www.zenspider.com/Languages/Ruby/&lt;/a&gt; soon.&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Oct 2005 20:05:35 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a2e906fb38029aa3e0ef47fbe7445714</guid>
+      <link>http://glu.ttono.us/articles/2005/10/15/refactoring-no-clergy#comment-59</link>
+    </item>
+  </channel>
+</rss>

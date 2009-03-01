@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2006/05/23/corporatizing-startups">Corporatizing Startups</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 24 May 2006 01:30:00 GMT">Wed, 24 May 2006 01:30:00 GMT</span></p>
+<p>I&#8217;ve been in the <a href="http://measuremap.com">Measure Map</a> alpha since November and I&#8217;m a big fan of the application, but one of the things that really helped me get enthusiastic about the operation was the small shop feel.</p>
+
+<p>I first really encountered the personality that I began to associate with the Measure Map team when I asked about blogging my experiences. I recieved a quick and personal reply:</p>
+
+<blockquote>
+    <p>Hi Kevin,</p>
+    
+    <p>We&#8217;re glad you&#8217;re enjoying Measure Map so far.
+    Absolutely, feel free to write about it, post
+    screenshots, etc. &#8211; but we do just ask you to 
+    keep in mind that the product is in early alpha
+    and that we&#8217;ll be adding a ton of
+    improvements/features soon.</p>
+    
+    <p>Would you send us a link to your review?<br/>
+    We&#8217;d love to read it.  And thanks for helping
+    us out by trying Measure Map during this alpha
+    stage!</p>
+    
+    <p>Greg</p>
+</blockquote>
+
+<p>Contrast that with the reply I got yesterday about some problems with page loads:</p>
+
+<blockquote>
+    <p>Hello Kevin,</p>
+    
+    <p>Thank you for your email and the heads-up 
+    concerning the pages failing to
+    load. This is a known bug we are working on 
+    getting resolved. We hope to
+    roll-out fixes for a few known problems in the 
+    near future.  Thank you
+    again for helping us continue to test our alpha 
+    product.  Please do
+    continue to send feedback.</p>
+    
+    <p>Sincerely,</p>
+    
+    <p>Measure Map Support</p>
+    
+    <hr/>
+    
+    <p>To share your knowledge or learn from other
+    Measure Map users, please
+    visit the Measure Map Forum at:
+    http://groups.google.com/group/measuremap-forums?lnk=li</p>
+    
+    <hr/>
+</blockquote>
+
+<p>Notice the change in tone? No name, only &#8220;Measure Map Support&#8221;.</p>
+
+<p>I understand that when projects are part of a big company, the company face is the one that is shown to the world, but when a small project is aquired should its personality be sacrificed?</p>
+
+<p>If you have any, I&#8217;d like to hear stories about companies or projects that survived being aquired or post mortems if you have them.</p>
+
+<p><strong>Comments are open.</strong></p>
+
+<p><strong>Update</strong>
+It&#8217;s important to note that I <em>did</em> receive an instant message from Nick Seckar of the team about my email. This post, however, is really about the &#8220;official&#8221; face of Measure Map and how it is shown through support.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/23/corporatizing-startups#comments">no comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/23/link-new-graphs-for-gruff">Link: New Graphs for Gruff</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 23 May 2006 15:53:00 GMT">Tue, 23 May 2006 15:53:00 GMT</span></p>
+<p><strong>Update</strong>: Sorry, this isn&#8217;t an update to Gruff, but an update to the CSS Graphs helper. Thanks <a href="http://cwilliams.textdriven.com/articles/2006/05/25/css-graphs-plugin-patch">Chris</a>.</p>
+
+<p><a href="http://nubyonrails.com">Geoff Grosenbach</a> of <a href="http://podcast.rubyonrails.com">Rails Podcast</a> fame is <a href="http://nubyonrails.com/articles/2006/05/23/css-graphs-update-new-graph-types">updating Gruff</a>, the excellent graphing library.</p>
+
+<p><a href="http://nubyonrails.com/pages/gruff">Gruff</a> is easy to <a href="http://nubyonrails.com/pages/gruff">use</a> and <a href="http://glu.ttono.us/articles/2006/03/29/spiders-invade-gruff-graphs">extend</a>,
+and makes really beautiful graphs.</p>
+
+<p>Go check it out.</p>
+
+<p><img src="http://thar.be/spider_small.png" alt="Spider Graph"/></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/23/poll-the-audience-accounting-and-freelance">Poll the Audience: Accounting and Freelance</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 23 May 2006 15:06:00 GMT">Tue, 23 May 2006 15:06:00 GMT</span></p>
+<p>Since I&#8217;ve started doing freelance <a href="http://rubyonrails.com">Rails</a> consulting as my day job, I&#8217;ve found the need to track my income and expenses.</p>
+
+<p>I&#8217;ve looked at a few accounting packages, Quickbooks, Quicken, and <a href="http://www.prettygoodsoftware.org/iratchet/index.html">iRatchet</a> namely, but I&#8217;m still sitting on the fence.</p>
+
+<p>For you freelancers out there, do you feel you need an accounting package, and if so, which one? My goal here has always been to help educate people about their choices with Rails or web development in general. What choices are out there that I&#8217;m not considering and how do you feel about them?</p>
+
+<p><strong>Comments are on.</strong></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/business" rel="tag">business</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/23/poll-the-audience-accounting-and-freelance#comments">7 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/22/guide-environments-in-rails-1-1">Guide: Environments in Rails 1.1</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 22 May 2006 08:29:00 GMT">Mon, 22 May 2006 08:29:00 GMT</span></p>
+<p>It&#8217;s <a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">been a while</a> since I&#8217;ve written about environments in Rails, so when one of you wrote in asking for a guide to environments I decided it was time to practice what I preach and update my own documentation. So, here we go. Environments in Ruby on Rails 1.1 coming right up.</p>
+
+<p>As an aside before we get started, I am doing <a href="http://glu.ttono.us/articles/2006/05/17/a-guide-a-week-lets-go-interactive">weekly guides</a> now, so if you have a question or an idea for a guide, please send me an email at kevin dot clark at gmail dot com with [idea] in the subject.</p>
+
+<p>Lets get started.</p>
+
+<p><strong>Update:</strong> I&#8217;ve gotten a good response so far (and is&#8217;s only 9:30 in the morning), so if you like it, <a href="http://digg.com/programming/Guide:_Environments_in_Rails_1.1">digg it</a>.</p>
+
+  <a href="/articles/2006/05/22/guide-environments-in-rails-1-1">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/22/guide-environments-in-rails-1-1#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments: The Cheat Sheet</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 22 May 2006 08:24:00 GMT">Mon, 22 May 2006 08:24:00 GMT</span></p>
+<p>These are options allowed by <code>Rails::Configuration</code> in Rails 1.1.2. This list is generally exhaustive (and often taken directly from the documentation), but more detailed documentation can be found in the source code itself where these options are found as class accessor methods (<code>cattr_accessor</code>).</p>
+
+<p><strong>Update:</strong> If you like it, <a href="http://digg.com/programming/Configuring_Rails_Environments:_The_Cheat_Sheet">digg it</a>.</p>
+
+<p><strong>Update 2:</strong> Also see my <a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Guide to Environments in Rails 1.1</a> for information on how specific configurations work.</p>
+
+  <a href="/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/documentation" rel="tag">documentation</a>, <a href="/articles/category/cheat-sheets" rel="tag">cheat sheets</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/20/rails-day-2006">Rails Day 2006</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 20 May 2006 20:25:00 GMT">Sat, 20 May 2006 20:25:00 GMT</span></p>
+<p>It <a href="http://www.railsday2006.com/">lives</a> again!</p>
+
+<p>Mark your calendar for June 17th.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/20/link-distributed-ruby-guide">Link: Distributed Ruby Guide</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 20 May 2006 17:55:00 GMT">Sat, 20 May 2006 17:55:00 GMT</span></p>
+<p>With <a href="http://whytheluckystiff.net/">_why</a>&#8217;s recent <a href="http://redhanded.hobix.com/cult/drbRenaissance.html">announcement</a> of the Drb Renaissance, I figured it was time to finally get my feet wet and learn about using <a href="http://www.ruby-doc.org/stdlib/libdoc/drb/rdoc/index.html">Distributed Ruby</a>.</p>
+
+<p>Fortunately, <a href="http://www.chadfowler.com/">Chad Fowler</a> author of the fantastic <a href="http://pragmaticprogrammer.com/titles/fr_rr/index.html">Rails Recipes</a>,  has done my work for me.</p>
+
+<p>Go check out his <a href="http://www.chadfowler.com/ruby/drb.html">guide</a> for an excellent quick read on the essentials of Drb.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/documentation" rel="tag">documentation</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>, <a href="/articles/category/guides" rel="tag">guides</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/19/weekly-guides-update">Weekly Guides Update</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 20 May 2006 00:24:00 GMT">Sat, 20 May 2006 00:24:00 GMT</span></p>
+<p>I&#8217;ve gotten a few good suggestions for guides so far. If you take a look at my <a href="http://glu.ttono.us/articles/2006/05/17/a-guide-a-week-lets-go-interactive">original post</a>, I actually said that the first guide would be out a week from Monday but so many people have asked for one sooner that I&#8217;ll do my best to hack one up for you this weekend.</p>
+
+<p>On that note, <strong>if you&#8217;ve got questions big or small, please send them in</strong>. Overall I haven&#8217;t had many suggestions. If you&#8217;d like to get a question answered or to learn more about a part of Rails, please do write in.</p>
+
+<p>kevin dot clark at gmail dot com </p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/guides" rel="tag">guides</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/19/inviting-the-devil-parallels-and-winxp">Inviting the Devil Inside: Parallels and WinXP</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 20 May 2006 00:04:00 GMT">Sat, 20 May 2006 00:04:00 GMT</span></p>
+<p>Today I installed <a href="http://www.parallels.com">Parallels</a>, a virtual machine with which you can run a guest operating system inside OS X. Now WinXP is on my Mac Mini for the first time and I feel a bit dirty. Inside my wonderously pristine unix operating system sits a window with a grassy field and a blue sky and it just feels wrong.</p>
+
+<p>Besides the fact that I have to deal with Windows again, Parallels runs magnificently. It&#8217;s been fast, all of my hardware works fine and it was a snap to get running. If you have to be able to test out your sites on IE, I think this is going to be the way to go.</p>
+
+<p>My only complication was getting networking to work. My Mini sits on a wireless network using DHCP. If you&#8217;re using your wifi, in the VM config you need to make sure that under networking your wireless connection is selected instead of your wired. Additionally, I had to set my address statically because DHCP wouldn&#8217;t work.</p>
+
+<p>At the end of the month trial, I expect I&#8217;ll throw down the $40 to not have to install XP on a partition on my Mac or get a PC.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/reviews" rel="tag">Reviews</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/18/rannotate-the-rails">Rannotate the Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 19 May 2006 01:20:00 GMT">Fri, 19 May 2006 01:20:00 GMT</span></p>
+<p><a href="http://www.conorhunt.com/techblog/">Connor Hunt</a> has just released <a href="http://rannotate.rubyforge.org/">Rannotate</a>, a rails application and rdoc generator that work together to allow users to add notes to documentation.</p>
+
+<p>You can find the Rannotated Rails documentation <a href="http://rails.outertrack.com/">here</a>.</p>
+
+<p>As always, if there are <em>problems</em> with the documentation, please <a href="http://dev.rubyonrails.org/newticket">file a ticket</a> with the keyword &#8216;docs&#8217; so it can be remedied.</p>
+
+<p><strong>Update:</strong> Ok, <a href="http://rails.outertrack.com/history/RaClass/ActionController%3A%3ABase">this</a> is really way cool.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/documentation" rel="tag">documentation</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/7">7</a> <a href="/articles/page/8">8</a> 9 <a href="/articles/page/10">10</a> <a href="/articles/page/11">11</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

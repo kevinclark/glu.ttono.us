@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: DamageControl: Developers, you're doing a heck of a job</title>
+    <link>http://glu.ttono.us/articles/2005/10/16/damagecontrol-developers-youre-doing-a-heck-of-a-job</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>DamageControl: Developers, you're doing a heck of a job</title>
+      <description>&lt;p&gt;Aslak Hellesoy - ThoughtWorks&lt;/p&gt;
+
+&lt;h3&gt;About Me&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I work for ThoughtWorks&lt;/li&gt;
+&lt;li&gt;I have a former Java life
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;I also have a former life in the Java Community.&amp;#8221;&lt;/li&gt;
+&lt;li&gt;PicoContainer&lt;/li&gt;
+&lt;li&gt;XDoclet&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ruby OSS
+&lt;ul&gt;
+&lt;li&gt;RSCM&lt;/li&gt;
+&lt;li&gt;MetaProject&lt;/li&gt;
+&lt;li&gt;RSpec&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Agenda&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Background&lt;/li&gt;
+&lt;li&gt;Continuous Integration
+&lt;ul&gt;
+&lt;li&gt;Show of hands for people who have used it: about 1/4 of audience&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Architecture&lt;/li&gt;
+&lt;li&gt;Plans for the future&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Continuous Integration&lt;/h3&gt;
+
+&lt;p&gt;You can think of continuous integration as another member of your team.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Will detect when there&amp;#8217;s updated source code in your repository.&lt;/li&gt;
+&lt;li&gt;Will check out the changes, rebuild.&lt;/li&gt;
+&lt;li&gt;Will report to team whether or not the build was successful (including results of tests).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;RSCM&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;OK&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Subversion&lt;/li&gt;
+&lt;li&gt;CVS&lt;/li&gt;
+&lt;li&gt;ClearCase&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;KO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Perforce&lt;/li&gt;
+&lt;li&gt;Monotone&lt;/li&gt;
+&lt;li&gt;StarTeam&lt;/li&gt;
+&lt;li&gt;Darcs&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Issue Tracking&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;OK&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RubyForge&lt;/li&gt;
+&lt;li&gt;JIRA&lt;/li&gt;
+&lt;li&gt;SourceForge&lt;/li&gt;
+&lt;li&gt;Trac&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;KO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Collaboa&lt;/li&gt;
+&lt;li&gt;Scarab&lt;/li&gt;
+&lt;li&gt;Bugzilla&lt;/li&gt;
+&lt;li&gt;FogBugz&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Distribution (No Gem)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby
+&lt;ul&gt;
+&lt;li&gt;exe&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Rails
+&lt;ul&gt;
+&lt;li&gt;exe, zip/tgz, svn&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SQLite binaries
+&lt;ul&gt;
+&lt;li&gt;exe,zip/tgz,svn&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SQLite db
+&lt;ul&gt;
+&lt;li&gt;exe, zip/tgz&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DamageControl
+&lt;ul&gt;
+&lt;li&gt;exe,zip/tgz,svn&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Architecture&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Users connect to SCM. &lt;/li&gt;
+&lt;li&gt;SCM passes to Builder which connects to DB and slave. &lt;/li&gt;
+&lt;li&gt;DB connects to Webapp.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Database Schema&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;projeccts, revisions, revsion&lt;em&gt;files, build&lt;/em&gt;executions, builds, artifacts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Short Term Future&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Move from Codehaus to TextDrive&lt;/li&gt;
+&lt;li&gt;Use Collaboa&lt;/li&gt;
+&lt;li&gt;Visual identity (website and UI)&lt;/li&gt;
+&lt;li&gt;Fix the worst bugs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Longer term future&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;More SCMs(RSCM)&lt;/li&gt;
+&lt;li&gt;Distributed builds&lt;/li&gt;
+&lt;li&gt;More SCMs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Source&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;http://hieraki.lavalamp.ca/&lt;/li&gt;
+&lt;li&gt;http://jira.codehaus.org/browse/DC
+&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Gotchas&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SQLite - Database Busy&lt;/li&gt;
+&lt;li&gt;Missing dll on windows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Q: Say you have CruiseControl running, whats the switching time?&lt;/p&gt;
+
+&lt;p&gt;A: Hopefully very little.&lt;/p&gt;
+
+&lt;p&gt;Q: Do you support multiple build configurations? Like building against different versions of ruby. Do you support multiple branches?&lt;/p&gt;
+
+&lt;p&gt;A: No, we don&amp;#8217;t support multiple build configs. You can work around with multiple projects. We don&amp;#8217;t support multiple branches in cvs but do in svn.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 19:03:17 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fa18b74121687af72799a656bde769ac</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/16/damagecontrol-developers-youre-doing-a-heck-of-a-job</link>
+      <category>Web Dev</category>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/27</trackback:ping>
+    </item>
+  </channel>
+</rss>

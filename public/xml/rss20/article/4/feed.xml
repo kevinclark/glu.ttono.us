@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Apache and IIS, the marriage forged in the flames of Hades</title>
+    <link>http://glu.ttono.us/articles/2005/08/23/apache-and-iis-the-marriage-forged-in-the-flames-of-hades</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Apache and IIS, the marriage forged in the flames of Hades</title>
+      <description>&lt;p&gt;For my latest work, I was required to deploy my rails application on a server running Windows 2003 and MS SQL Server. &lt;em&gt;Normally&lt;/em&gt;, I would install Apache on the machine and be happily on my way. Unfortunately, the same machine is host to several websites running on the bastion of Microsoft Webserving, IIS 6.0. This article chronicles my trek through the wilderness to (hopefully) see this project to deployment.&lt;/p&gt;</description>
+      <pubDate>Tue, 23 Aug 2005 00:13:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f87c73e34cdcfbe364167a1dc5a05acf</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/23/apache-and-iis-the-marriage-forged-in-the-flames-of-hades</link>
+      <category>Hacks</category>
+      <category>Rails</category>
+      <category>Web Dev</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/4</trackback:ping>
+    </item>
+    <item>
+      <title>"Apache and IIS, the marriage forged in the flames of Hades" by Erwin</title>
+      <description>&lt;p&gt;Hi Kevin,&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks for posting this one&amp;#8230; Could you post your working environment please. I&amp;#8217;m still having problems making ror work in iis. btw here&amp;#8217;s mine.&lt;/p&gt;
+
+
+	&lt;p&gt;Ruby version 1.8.4 (i386-mswin32)
+RubyGems version 0.8.11
+Rails version 1.0.0
+Active Record version 1.13.2
+Action Pack version 1.11.2
+Action Web Service version 1.0.0
+Action Mailer version 1.1.5
+Active Support version 1.2.5
+Application root D:/mailer
+Environment production
+Database adapter postgresql&lt;/p&gt;
+
+
+	&lt;p&gt;Windows XP sp2
+IIS 5.1&lt;/p&gt;
+
+
+	&lt;p&gt;thanks,&lt;/p&gt;
+
+
+	&lt;p&gt;Erwin&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Mar 2006 02:28:42 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:5389ebf6-71f4-427e-b552-6025502c2a0e</guid>
+      <link>http://glu.ttono.us/articles/2005/08/23/apache-and-iis-the-marriage-forged-in-the-flames-of-hades#comment-252</link>
+    </item>
+    <item>
+      <title>"Apache and IIS, the marriage forged in the flames of Hades" by Ole Eichhorn</title>
+      <description>&lt;p&gt;I see this was posted a long time ago, so my response may be way too late to help, but&amp;#8230;&lt;/p&gt;
+
+
+	&lt;p&gt;The problem with IIS taking every IP for port 80 is because of something Windows does called &amp;#8220;socket pooling&amp;#8221;.&lt;/p&gt;
+
+
+	&lt;p&gt;This article (&lt;a href="http://support.microsoft.com/kb/q238131/"&gt;http://support.microsoft.com/kb/q238131/&lt;/a&gt;) explains how to disable socket pooling.  once you&amp;#8217;ve done that, you can have IIS listening on port 80 on one IP, and Apache or something else listening on port 80 on a different IP.  This might help&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Thu, 29 Dec 2005 01:43:24 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:8cc60cb4-f8c7-4b96-a625-1d18afe80d28</guid>
+      <link>http://glu.ttono.us/articles/2005/08/23/apache-and-iis-the-marriage-forged-in-the-flames-of-hades#comment-159</link>
+    </item>
+    <item>
+      <title>"Apache and IIS, the marriage forged in the flames of Hades" by Thomas Aylott</title>
+      <description>&lt;p&gt;Oh lovely.&lt;/p&gt;
+
+
+	&lt;p&gt;After that, I&amp;#8217;m just loving the thought of deploying on IIS over here. Hopefully they&amp;#8217;ll just buy me a Linux server ;)&lt;/p&gt;</description>
+      <pubDate>Wed, 28 Dec 2005 07:49:24 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:f734dabc-8e07-4486-bf5a-8d777da96e73</guid>
+      <link>http://glu.ttono.us/articles/2005/08/23/apache-and-iis-the-marriage-forged-in-the-flames-of-hades#comment-158</link>
+    </item>
+  </channel>
+</rss>

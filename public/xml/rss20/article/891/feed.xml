@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: sd.rb Meets Tonight</title>
+    <link>http://glu.ttono.us/articles/2006/06/01/sd-rb-meets-tonight</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>sd.rb Meets Tonight</title>
+      <description>&lt;p&gt;If you&amp;#8217;re in the San Diego area this evening you should stop by the sd.rb meeting.&lt;/p&gt;
+
+&lt;p&gt;On the agenda:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Tom Werner, Part 1 of the &amp;#8220;Ruby is Awesome&amp;#8221; Series&lt;/li&gt;
+&lt;li&gt;Joe Chesak, Search with Rails&lt;/li&gt;
+&lt;li&gt;Kevin Clark, Test Driven RJS with ARTS&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can find more information &lt;a href="http://davie.textdrive.com/pipermail/sdrug/2006-May/000424.html"&gt;on the mailing list&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 11:50:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a15ec68f-eda1-4f18-b2ed-76a8da9e9718</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/01/sd-rb-meets-tonight</link>
+      <category>Ruby</category>
+      <category>sd.rb</category>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Using Growl for SVN Notices</title>
+    <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Using Growl for SVN Notices</title>
+      <description>&lt;p&gt;We&amp;#8217;re an all Mac office at  &lt;a href="http://mingle.com"&gt;Mingle&lt;/a&gt;, so I thought it might be nice to recieve updates to svn (commit messages and such) via &lt;a href="http://growl.info/"&gt;Growl&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve hacked together a little script to do just that. Right now I think there&amp;#8217;s a bug in &lt;a href="http://dnsds.rubyforge.com"&gt;DNS-SD&lt;/a&gt; which keeps me from searching for people running growl, but searching for peole on iChat (on Bonjour) is fine. I&amp;#8217;m going to test it at work tomorrow, clean up the code a bit, and you should have a screencast and code sometime this weekend if I can fix the bug with &lt;a href="http://dnssd.rubyforge.com"&gt;DNS-SD&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 00:50:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:64e5b3d7-a3aa-4014-b7ce-079d32f3a494</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <category>Hacks</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/218</trackback:ping>
+    </item>
+    <item>
+      <title>"Using Growl for SVN Notices" by Kevin Clark</title>
+      <description>&lt;p&gt;Phil: No, my code says DNSSD (YES!) correctly. Growl&amp;#8217;s textfield appears to be sending invalid data, or DNSDDSNSD just can&amp;#8217;t handle it.&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 10:43:58 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ab9a9c3d-55d3-46a1-8264-2b974c79a376</guid>
+      <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices#comment-222</link>
+    </item>
+    <item>
+      <title>"Using Growl for SVN Notices" by Phil</title>
+      <description>&lt;p&gt;Is that why you haven&amp;#8217;t been able to get it working yet?&lt;/p&gt;
+
+
+	&lt;p&gt;I hope you can get it working. I don&amp;#8217;t use growl, but it would be cool to modify the code to just send jabber messages instead.&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 10:19:27 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:e933e39a-0754-4663-b362-2b769848d2cf</guid>
+      <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices#comment-221</link>
+    </item>
+    <item>
+      <title>"Using Growl for SVN Notices" by Kevin Clark</title>
+      <description>&lt;p&gt;Dick,
+You know, I do.. I&amp;#8217;ve been typing that all night on accident.&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 10:15:58 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ef80e3d5-bcda-4dc6-8bb2-d2e3d9dd2eb6</guid>
+      <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices#comment-220</link>
+    </item>
+    <item>
+      <title>"Using Growl for SVN Notices" by Dick Davies</title>
+      <description>&lt;p&gt;You mean DNS-SD, right? :)&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a&gt;http://dnssd.rubyforge.org/&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 04:25:45 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:e2d5be63-8e5c-476b-8202-2639c0d0f322</guid>
+      <link>http://glu.ttono.us/articles/2006/02/10/using-growl-for-svn-notices#comment-219</link>
+    </item>
+  </channel>
+</rss>

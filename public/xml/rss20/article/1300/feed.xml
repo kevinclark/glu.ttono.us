@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: When Config Files Go Bad</title>
+    <link>http://glu.ttono.us/articles/2007/03/08/when-config-files-go-bad</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>When Config Files Go Bad</title>
+      <description>&lt;blockquote&gt;&lt;pre&gt;It is often necessary to check the content of a `configure.ac' file,
+but parsing it yourself is extremely fragile and error-prone.  It is
+suggested that you rely upon `--trace' to scan `configure.ac'.  For
+instance, to find the list of variables that are substituted, use:
+
+&lt;code&gt;
+     $ autoconf -t AC_SUBST
+     configure.ac:2:AC_SUBST:ECHO_C
+     configure.ac:2:AC_SUBST:ECHO_N
+     configure.ac:2:AC_SUBST:ECHO_T
+     More traces deleted
+&lt;/code&gt;
+&lt;pre&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;-- &lt;code&gt;info autoconf&lt;/code&gt;&lt;/p&gt;</description>
+      <pubDate>Thu, 08 Mar 2007 17:40:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:dee81a28-58f2-4c59-a0ea-a1734e2639c5</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/03/08/when-config-files-go-bad</link>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

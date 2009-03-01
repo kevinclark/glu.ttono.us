@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: JRuby Team Picked Up By Sun</title>
+    <link>http://glu.ttono.us/articles/2006/09/07/jruby-team-picked-up-by-sun</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>JRuby Team Picked Up By Sun</title>
+      <description>&lt;p&gt;&lt;a href="http://headius.blogspot.com/2006/09/jruby-steps-into-sun.html"&gt;Wow&lt;/a&gt;. Just wow. Congrats guys.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="http://www.tbray.org/ongoing/"&gt;Tim Bray&lt;/a&gt; gives us &lt;a href="http://www.tbray.org/ongoing/When/200x/2006/09/07/JRuby-guys"&gt;Sun&amp;#8217;s motiviations&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Thu, 07 Sep 2006 14:31:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5b449670-5685-422d-a41c-7fd4f5a876c0</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/07/jruby-team-picked-up-by-sun</link>
+      <category>Ruby</category>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

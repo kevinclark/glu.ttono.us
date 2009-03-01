@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Secret Incantations</title>
+    <link>http://glu.ttono.us/articles/2007/12/10/secret-incantations</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Secret Incantations</title>
+      <description>&lt;h2&gt;Install the do_postgres gem against postgresql82 on MacPorts:&lt;/h2&gt;
+
+&lt;p&gt;Make sure that /opt/local/lib/postgresql82/bin/ is in your path. You need pg_config easily accessible. Then run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo gem install do_postgres -- --with-pgsql-include-dir=/opt/local/include/postgresql82/ --with-pgsql-lib=/opt/local/lib/postgresql82/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Autotest with Rspec on Merb with a Leopard install using the supplied Ruby (whew)&lt;/h2&gt;
+
+&lt;p&gt;This will break because it can&amp;#8217;t find the &amp;#8220;spec command&amp;#8221;. It searches the configured bin directory, which with the supplied ruby is /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ln -s /usr/bin/spec /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/spec&lt;/code&gt;&lt;/p&gt;</description>
+      <pubDate>Mon, 10 Dec 2007 01:03:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:6c7d8045-de18-4973-9a83-5d4272e2f96a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/12/10/secret-incantations</link>
+      <category>Ruby</category>
+    </item>
+  </channel>
+</rss>

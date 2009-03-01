@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Mike Clark - Testing Rails Apps</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Mike Clark - Testing Rails Apps"
+    dc:identifier="http://glu.ttono.us/articles/2006/06/24/mike-clark-testing-rails-apps"
+    dc:description="Mike Clark is a really fantastic speaker and I feel like he sold testing to a lot of people who weren&amp;#8217;t convinced tonight. I can&amp;#8217;t really do him justice, so you should really take any opportunity to see him. If you weren&amp;#8217;t able to catc"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/940" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Mike Clark - Testing Rails Apps</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sat, 24 Jun 2006 21:30:00 GMT">Sat, 24 Jun 2006 21:30:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Mike Clark is a really fantastic speaker and I feel like he sold testing to a lot of people who weren&#8217;t convinced tonight. I can&#8217;t really do him justice, so you should really take any opportunity to see him. If you weren&#8217;t able to catch his talk, my notes follow after the jump.</p><p>One of the things that brought me to rails was the testing support</p>
+
+<ul>
+<li>The testing is very powerful</li>
+</ul>
+
+<p>Testing? What&#8217;s in it for me?</p>
+
+<ul>
+<li>It&#8217;s probably a good thing to do
+<ul>
+<li>But that doesn&#8217;t really work for me as a motivational tool</li>
+<li>And testing won&#8217;t be as fun as working on the app&#8230;</li>
+</ul></li>
+<li>But tests are, in part, the insurance for the app staying fun
+<ul>
+<li>When the cost of change is high, it stops being fun</li>
+<li>With tests, I can change things worry free</li>
+<li>Without tests, there&#8217;s this pressure not to touch things</li>
+</ul></li>
+</ul>
+
+<p>Law of Unintended Consequences</p>
+
+<ul>
+<li>Almost all human actions have at least one unintended consequence</li>
+<li>Little changes can break things across an application, and it happens all the time</li>
+<li>As programs get larger, it&#8217;s harder to keep things in line - this is Whack A Mole!</li>
+</ul>
+
+<p>The reload button just doesn&#8217;t scale</p>
+
+<p>If your app is small&#8230;</p>
+
+<ul>
+<li>Does it really matter?</li>
+<li>It won&#8217;t be small for long, whether you want them to be or not.</li>
+</ul>
+
+<p>Confidence</p>
+
+<ul>
+<li>There&#8217;s an early detection system for the What A Moles.</li>
+<li>I don&#8217;t need to worry about changing things because I can see the effects.</li>
+</ul>
+
+<p>Some database backed web frameworks make testing painful</p>
+
+<ul>
+<li>Adding JAR files to do testing is a pain, so no one does it</li>
+<li>I&#8217;d rather be on Rails</li>
+</ul>
+
+<p>Rails itself has lots of tests</p>
+
+<ul>
+<li>AcitveRecord has 898, ActionPack 820, ActiveSupport 370</li>
+<li>They have substance as well.</li>
+<li><strong>And</strong> they all pass.</li>
+<li>Patches are much more likely to get accepted with a test case</li>
+</ul>
+
+<p>Rails makes it easy to do the right thing!</p>
+
+<ul>
+<li>Because it&#8217;s easy, it encourages you to do it.</li>
+</ul>
+
+<p>It also makes you feel guilty when you don&#8217;t write tests</p>
+
+<ul>
+<li>There&#8217;s a test database (hint hint hint)</li>
+</ul>
+
+<p>before we press on&#8230; Some Unit Testing Basics</p>
+
+<ul>
+<li><p>Tests are methods with the name starting as test</p>
+
+<p>def test_add
+assert_equal 4, 2+2
+end</p></li>
+</ul>
+
+<p>Rails takes Unit Testing a bit further</p>
+
+<ul>
+<li>It adds goodies to it for Rails testing</li>
+<li>You can do really powerful things about this</li>
+<li>You&#8217;re letting the computer remember how things should work for you</li>
+</ul>
+
+<p>Core ASsertions</p>
+
+<ul>
+<li>Messages optional</li>
+<li><code>assert_equal(expected, actual, message])</code></li>
+<li><code>assert(boolean, message)</code></li>
+<li><code>assert_nil(object, message)</code></li>
+<li><code>assert_raise(ExceptionType) {...}</code></li>
+<li><code>flunk</code></li>
+</ul>
+
+<p>The directory structure</p>
+
+<ul>
+<li><code>unit/</code> is for testing one model</li>
+<li><code>fixtures/</code> test data, one per model</li>
+</ul>
+
+<p>What do we test (going from example with validation)?</p>
+
+<ul>
+<li>Title and Price Present? (code example, see slides)</li>
+<li>Assert that if you create a new <code>Product</code> without a price the test fails</li>
+</ul>
+
+<p>Price Positive?</p>
+
+<ul>
+<li>Set the price to a negative, zero, positive number. Look for results.</li>
+<li>Look for basic boundary conditions.</li>
+</ul>
+
+<p>To test uniqueness, we need a record in the database&#8230;</p>
+
+<p>Test Fixtures</p>
+
+<ul>
+<li>YAML by default, one per model</li>
+<li>Evaluated by ruby, so you could do <code>price: &lt;%= ([0,1,2,3].map &amp;1.method(:+)).join %&gt;</code> (if you really wanted to)</li>
+<li><p>Great for making lots of records for performance testing</p>
+
+<p>ruby_book:
+id:     1
+title:  Programming Ruby
+price:  1234</p></li>
+</ul>
+
+<p>Title Unique?</p>
+
+<ul>
+<li>Need to put a fixture in the db
+<ul>
+<li><code>fixtures :products</code></li>
+</ul></li>
+<li>Make a <code>Product</code> with the same name as our fixture: <code>products(:rails_book).title</code></li>
+<li>Assert the product doesn&#8217;t save</li>
+<li>Assert that the error message is correct against <code>ActievRecord::Errors.default_error_messages</code></li>
+</ul>
+
+<p>Test Lifecycle</p>
+
+<ul>
+<li>Loads up fixtures (clears table, loads data)</li>
+<li>For every test method, if you go access the data, it grabs the item from the db</li>
+<li>Tests are in a transaction so it rolls your data back.</li>
+<li>You pay the cost of a fixture once</li>
+</ul>
+
+<p>Functional Tests</p>
+
+<ul>
+<li>Intended to test one controller at a time</li>
+</ul>
+
+<p>Code sample with controller that requires authorization to view index</p>
+
+<p>What to Test?</p>
+
+<ul>
+<li>Index action prompts login</li>
+<li>Good login moves on</li>
+<li>Bad login goes back to login</li>
+</ul>
+
+<p>It does alot of stubbing for you</p>
+
+<ul>
+<li>It requires the test helper, it requires the controller and sets up the test method</li>
+<li>It also creates test Response and Request objects for you, so no web server</li>
+<li><code>get :index</code> imitates a get http method</li>
+<li><code>assert_redirected_to :action =&gt; 'login'</code> if we haven&#8217;t given a login</li>
+<li><code>assert_equal 'Please log in', flash[:notice]</code></li>
+</ul>
+
+<p>Good login moves on?</p>
+
+<ul>
+<li>Add the user fixtures</li>
+<li><code>post :login, :name =&gt; dave.name, :password =&gt; 'secret'</code>
+<ul>
+<li>Post to the login action, pass our parameters (as a hash)</li>
+</ul></li>
+<li>assert we get to the login action</li>
+</ul>
+
+<p>Sending Test Requests</p>
+
+<ul>
+<li><code>get :index</code></li>
+<li><code>post :save_order, :order =&gt; {}</code></li>
+<li><code>xhr :post, :add_to_cart, {options}</code></li>
+</ul>
+
+<p>Custmo Assertions
+    * <code>assert_response(type, message)</code>
+      * <code>assert_response :success</code>
+    * <code>assert_redirected_to(options, message)</code>
+    * <code>assert_template(expected, message)</code>
+    * <code>assert_tag(conditions)</code></p>
+
+<p>Accessors</p>
+
+<ul>
+<li><code>session</code>
+<ul>
+<li><code>assert_equal 2, session[:cart].size</code></li>
+</ul></li>
+<li><code>flash</code></li>
+<li><code>cookies</code></li>
+<li><code>assigns</code></li>
+</ul>
+
+<p>Mocks</p>
+
+<ul>
+<li>When difficulties with dependencies become an excuse for not testing&#8230;
+<ul>
+<li>&#8220;It&#8217;ll be hard to test because the library goes over the net in 45 seconds&#8221;</li>
+</ul></li>
+</ul>
+
+<p>Mocking the Gateway</p>
+
+<ul>
+<li>For a payment gateway, we leave the validation in tact</li>
+<li>But we open the <code>online_capture</code> method and have it return a fake response</li>
+</ul>
+
+<p>Lets Tell Some Stories (Integration Tests)</p>
+
+<ul>
+<li>A user <strong>goes to the store</strong> index page. The <strong>add a product to their cart</strong>. They then <strong>checkout</strong>, filling in their details on the checkout form. When they submit, an <strong>order is created</strong> in the database container their information, along with a <strong>single line item</strong> corresponding to the product they added to their cart.</li>
+<li>Can we represent it as a test?</li>
+<li>Integration tests test across many controllers (stories through the entire stack)</li>
+</ul>
+
+<p>A Testing Mini-Language</p>
+
+<ul>
+<li>see code example</li>
+<li><code>fred = regular_user</code></li>
+<li><code>fred.goes_to_store</code></li>
+<li><code>fred.is_viewing 'index'</code></li>
+</ul>
+
+<p>Singleton Methods</p>
+
+<ul>
+<li><p>Let us add methods to a single object</p>
+
+<p>open session do |user|
+def user.goes_to_store
+  get &#8220;/store/index&#8221;
+  assert_response :success
+end</p>
+
+<p>def user.is_viewing(page)
+  assert_response :success
+  assert_template &#8216;page&#8217;
+end
+end</p></li>
+</ul>
+
+<p>I&#8217;m very excited about integration testing</p>
+
+<p>It&#8217;s about expressiveness!</p>
+
+<p>How am I going to test this?</p>
+
+<ul>
+<li>A great question to ask yourself.</li>
+<li>It&#8217;s where I find the best design insights</li>
+<li>It&#8217;s a design decision</li>
+<li>If it&#8217;s difficult to test, it will be difficult to use</li>
+<li>When you answer that question, you design better code</li>
+</ul>
+
+<p>It&#8217;s a <strong>design decision</strong></p>
+
+<p>For tests to be useful, <strong>you have to run them!</strong></p>
+
+<p>Running Tests</p>
+
+<ul>
+<li><code>rake</code> - Runs all of your tests</li>
+<li><code>rake test:unit</code></li>
+<li><code>rake stats</code> - shows code to test ratio</li>
+<li><code>ruby path/to/name_test.rb</code></li>
+<li><code>ruby path/to/name_test.rb -n /pattern/</code></li>
+<li><code>ruby path/to/name_test.rb -n test_method_name</code></li>
+</ul>
+
+<p>Am I testing Enough?</p>
+
+<ul>
+<li>rcov, insurance &#8211; coverage tools</li>
+</ul>
+
+<p>Tips</p>
+
+<ul>
+<li>Work with unsaved records when you can</li>
+<li>Access records by fixture name, not id</li>
+<li>Write custom assertions</li>
+<li>Use named routes</li>
+</ul>
+
+<p>Testing helps you write better code&#8230; faster!</p>
+
+<p>When Do I Start?</p>
+
+<ul>
+<li>Today!</li>
+<li>When a bug is reported</li>
+<li>Tomorrow!</li>
+<li>When adding new features
+<ul>
+<li>Test driven development</li>
+</ul></li>
+<li>Yesterday!</li>
+</ul>
+
+<p>This is just the beginning&#8230;</p>
+
+<ul>
+<li>It takes practice</li>
+<li>It can feel like eating your broccoli, but make it fun!</li>
+<li>People are interested in making new things for testing
+<ul>
+<li><code>arts</code></li>
+</ul></li>
+</ul>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/testing" rel="tag">testing</a>
+</p>
+
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/940/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="940";
+//--></script>
+<!-- mmp mmid:940 mmdate:2006-06-24 17:30:00 mmurl:/articles/2006/06/24/mike-clark-testing-rails-apps mmtitle:Mike Clark - Testing Rails Apps -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/06/24/mike-clark-testing-rails-apps" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

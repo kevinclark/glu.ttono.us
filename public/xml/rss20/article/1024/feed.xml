@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Mocks for Speed</title>
+    <link>http://glu.ttono.us/articles/2006/08/30/mocks-for-speed</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Mocks for Speed</title>
+      <description>&lt;p&gt;I&amp;#8217;m starting to come around on the subject of using mock objects as opposed to just letting the code run. Here&amp;#8217;s why:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;Loaded suite UnitTests
+Started
+.....................................................
+.....................................................
+.....................................................
+.....................................................
+Finished in 0.070892 seconds.
+
+212 tests, 250 assertions, 0 failures, 0 errors
+Loaded suite IntegrationTests
+Started
+...................
+Finished in 0.046002 seconds.
+
+19 tests, 24 assertions, 0 failures, 0 errors
+Loaded suite AcceptanceTests
+Started
+...............
+Finished in 0.007645 seconds.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is from the tests that are bundled with &lt;a href="http://mocha.rubyforge.com"&gt;Mocha&lt;/a&gt;, a mocking library. &lt;/p&gt;
+
+&lt;p&gt;Look at those numbers! Look at just the unit tests. 212 tests, 250 assertions, 0.070892 seconds. Hot damn. Imagine your Rails tests running like that.&lt;/p&gt;</description>
+      <pubDate>Wed, 30 Aug 2006 15:36:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c060d880-7688-40bf-9722-57c20ba82dd9</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/30/mocks-for-speed</link>
+      <category>Ruby</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category op-ed</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak">TechCrunch's Twitter Article Translated from Arrington-Speak</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 23 Apr 2008 16:19:00 GMT">Wed, 23 Apr 2008 16:19:00 GMT</span></p>
+<p>With apologies to <a href="http://daringfireball.net/">Gruber</a>.</p>
+
+<p>Original text from <a href="http://www.techcrunch.com/2008/04/23/amateur-hour-over-at-twitter/">TechCrunch</a>.</p>
+
+<blockquote>
+    <p>It doesn’t really matter if Twitter’s Chief Architect Blaine Cook was fired 
+    or resigned. The important thing is that he’s gone now, and this gives 
+    Twitter the opportunity to hire someone (or a team) who may actually be able 
+    to scale the nearly two year old service and keep it live.</p>
+</blockquote>
+
+<p>I haven&#8217;t done any research or spoken to anyone about it, so don&#8217;t ask, but I have found a scapegoat.</p>
+
+<blockquote>
+    <p>Cook was directly responsible for scaling Twitter, and he very much failed 
+    in his job. </p>
+</blockquote>
+
+<p>Twitter is down sometimes, and I&#8217;m angry about it.</p>
+
+<blockquote>
+    <p>A year ago he spoke at the Silicon Valley Ruby Conference about scaling 
+    Rails applications. His presentation suggested Twitter’s problems were 
+    behind them, but in fact some of their biggest stumbles hadn’t occurred yet. 
+    Note in particular slide 9 of that presentation, where Cook says about 
+    scaling Rails apps like Twitter: “It’s Easy. Really.” </p>
+</blockquote>
+
+<p>I found a posted slide from a public conference during my &#8220;investigative reporting phase. Oh, and Twitter is on Rails, and I can blame Rails. It&#8217;s Easy. Really.</p>
+
+<blockquote>
+    <p>Whether Twitter’s woes were all on Cook’s shoulders or not, he should not 
+    have been boasting about solving the problem last year.</p>
+</blockquote>
+
+<p>I&#8217;m high as a kite.</p>
+
+<blockquote>
+    <p>Meanwhile, Twitter has made at least three key hires this year on the 
+    technical side. Lee Mighdoll joined as VP Engineering and Operations in 
+    January. And this week they hired two scaling experts - John Kalucki and 
+    Steve Jenson (”known for his work scaling Blogger and Blogspot”).</p>
+</blockquote>
+
+<p>And they hired someone, yada yada yada, sprinkle random facts in so nobody notices my complete incompetence. Perfect!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2008/04/23/techcrunchs-twitter-article-translated-from-gossip-speak#comments">4 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2007/04/15/on-twitter-rails-and-community">On Twitter, Rails, and Community</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 15 Apr 2007 20:13:00 GMT">Sun, 15 Apr 2007 20:13:00 GMT</span></p>
+<p>An <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/">interview</a> by a <a href="http://twitter.com/">twitter</a> developer has gotten a good deal of <a href="http://technorati.com/search/twitter+rails">press lately</a>. For many, it has reawakened the giant that is the &#8220;does Rails scale&#8221; debate, and <a href="http://www.loudthinking.com/">others</a> feel compelled to defend the framework.</p>
+
+<p>The problem with Rails isn&#8217;t that Ruby is slow. It&#8217;s also not that Rails is slow, or big, or bloated, or doesn&#8217;t scale. The problem isn&#8217;t that Rails doesn&#8217;t support multiple databases or composite keys out of the box. The problem is that <a href="http://farm1.static.flickr.com/47/127984254_ddd4363d6a.jpg">this</a> is how the vocal minority in the community tends to respond to criticism.</p>
+
+<p>So let&#8217;s all slow down and take a look at how we got here and what we can do to avoid it. That&#8217;s of course assuming we want to. Inflammatory posts certainly get lots of traffic, but I think Rails is in the spotlight enough we can actually talk like reasonable people and still get things done.</p>
+
+<p>More after the jump.</p>
+
+  <a href="/articles/2007/04/15/on-twitter-rails-and-community">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/15/on-twitter-rails-and-community#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough">A Ruby IDE: Why TextMate Is Close Enough</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 06 Sep 2006 10:04:00 GMT">Wed, 06 Sep 2006 10:04:00 GMT</span></p>
+<p>Recently <a href="http://www.tbray.org/ongoing/">Tim Bray</a> posted a <a href="http://www.tbray.org/ongoing/When/200x/2006/09/05/What-Ruby-Needs">list of things he has found that Ruby needs</a>. One of these things is an IDE and he provides a list of useful things one would do for us. I&#8217;m not sure if Tim has tried TextMate, but if you&#8217;re aware of the right features it turns out to <em>almost</em> be exactly what he&#8217;s looking for. The remaining features might be implemented by the right group out in the Lazy Web (do these things and we&#8217;ll all be grateful). Anyway, here&#8217;s interesting things you may have missed about TextMate in the context of Tim&#8217;s wish for an IDE.</p>
+
+  <a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/06/a-ruby-ide-why-textmate-is-close-enough#comments">14 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/30/on-the-days-events">On The Day's Events</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 31 Aug 2006 01:25:00 GMT">Thu, 31 Aug 2006 01:25:00 GMT</span></p>
+<p>So, I seem to have inadvertently caused a significant amount of controversy with this morning&#8217;s article on <a href="http://glu.ttono.us/articles/2006/08/30/guide-things-you-shouldnt-be-doing-in-rails">what I don&#8217;t think you should be doing in Rails</a>. Some rather harsh words have been exchanged. It&#8217;s time for us all to take a breath, count to ten, and remember we&#8217;re all just coders working together to make Rails (and Ruby) better.</p>
+
+<p>Matz is nice, so we should be nice.</p>
+
+<p>With that as a preface I&#8217;d like to explain some of the things I said which caused a stir. Hopefully this will clarify and you can stop thinking of me as some pre-pubescent FUDdy jerk if indeed that&#8217;s where you stand.</p>
+
+<p>I thought I was giving you a list of things that you should avoid in modern versions of Rails. I didn&#8217;t get anything back differently from my reviewers. You should know that for bigger articles like this I always have a group of people take a look see first and give me feedback. These are people that I respect and may be better at writing and programming than I am (and often are). I wait to get OKs from that group <em>before</em> I post.</p>
+
+<p>I think this group of lines may have been my downfall.</p>
+
+<blockquote>
+    <p>See? A halt! Sufficiently frightened? You should be. 
+    Now, stop using these things. It’s for your own good.</p>
+</blockquote>
+
+<p>I rather regret this. In my head it was tongue-in-cheek. My reviewers didn&#8217;t even mention it though I imagine they knew I was joking since they know me personally. Others apparently didn&#8217;t. <strong>What I meant to say was that I hope the list would coerce you into improving your code.</strong> That message got lost somewhere along the line and I feel like we&#8217;ve played a rather large game of telephone. I&#8217;m sorry for that.</p>
+
+<p>Pagination seems to be the issue we pulled apart today so let&#8217;s talk about that for a few minutes. I said some things about pagination that, after returning to them, seem a bit cryptic. Sorry about that. Let me clarify: the built in <strong>pagination helpers</strong> are a hackish pain. They&#8217;re hard to work with and have some efficiency issues. As a result, working with very large data sets can cause it problems. Don&#8217;t be afraid, just be aware. With large data sets you&#8217;ll want to roll your own. The Paginator object itself isn&#8217;t so bad (though we really should clean it up) and I prefer to use custom pagination with it over the helpers.</p>
+
+<p>That being said, we&#8217;ve talked about pulling out the Rails pagination helpers into a plugin for a while. I imagine they were brought up when I passed the article around was for that reason. It isn&#8217;t deprecated yet, but it probably will be.</p>
+
+<p>Now, if you have other concerns please bring them up here.</p>
+
+<p><strong>Update:</strong> A friend has noted that one of the problems may be that some look at me as a voice of the core. Let me be clear: I&#8217;m not in core. I don&#8217;t speak for core. I speak for myself based on my knowledge and opinions. When I say, &#8220;we&#8217;ve talked about it&#8221; I mean &#8220;I&#8217;ve talked with developers working with the core in and outside the core team and the consensus seems to be that pagination will come out&#8221;. BUT, I&#8217;m still not David and not the core.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/30/on-the-days-events#comments">29 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them">Why Fixtures Suck (And How We Can Fix Them)</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 07 Aug 2006 18:24:00 GMT">Mon, 07 Aug 2006 18:24:00 GMT</span></p>
+<p>I hate fixtures in Rails. Sometimes I hate them because they slow down my tests. Most often I hate Rails fixtures because they make my tests brittle. Everyone that uses fixtures has had that moment where they add another bit to their fixture file for that new test and suddenly things are breaking all over the place. It&#8217;s ugly and arguably a broken system.</p>
+
+<p>I think we can fix it. I&#8217;ve had several long discussions about this and most of what I&#8217;m going to preach here isn&#8217;t original. That being said, I think this might work so pay attention and tell me what you think.</p>
+
+<p>Fixtures suck because it&#8217;s all or nothing. You can either grab all of your user data or not have any of it. It does cut down on duplication because you&#8217;re not redefining data for every set of tests. However, having all the extra stuff in the scope of your test is unnecessary and leads to brittle tests.</p>
+
+<p>One option is to compromise. We could modify the current <code>fixtures</code> method to accept syntax like <code>fixtures :users =&gt; [:alice, :bob], :articles =&gt; :ruby</code>. This would allow you to get only the data you need. At the same time, the old syntax could be backwards compatible and you could grab <em>all</em> of the data if you wanted to. I generally find that when I&#8217;m writing tests it&#8217;s only with one or two pieces of data. With Rails, everything else in the database is just hanging out.</p>
+
+<p>The downside to this new syntax is that the current way of structuring test cases would make this ugly. You don&#8217;t want to define fixtures for every individual test. It&#8217;s much easier defining fixtures by test case. <em>Here&#8217;s where the BDD folks got it right.</em> Test cases should really be broken up by what context they&#8217;re being run in. We shouldn&#8217;t have one test case for the model. We should have several test cases with tests divided by what data we&#8217;re working with. We get smaller and more granular sets of tests this way. It&#8217;s the testing version of DHH&#8217;s &#8220;everything is REST&#8221;. Every test is about context.</p>
+
+<p>Do remember that more test files don&#8217;t mean more work. We&#8217;re already generating empty integration tests. What&#8217;s one or two more generators? Really, it&#8217;ll be easy. You&#8217;ll like it.</p>
+
+<p>The other option is to throw off fixtures completely. I know of people who have already taken this step and they solve the fixture problem by writing helpers to create the data in code and then run them in <code>setup</code>. This seems like a viable option as well and would require no changes to Rails core.</p>
+
+<p>It&#8217;s time to admit that fixtures, as implemented in Rails, are broken and ugly. We&#8217;ve been taught to demand beauty and elegance. Let&#8217;s make something better.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/testing" rel="tag">testing</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/08/07/why-fixtures-suck-and-how-we-can-fix-them#comments">11 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements">Weigh In: Patches, Plugins and Proposed Enhancements</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 05 Jun 2006 06:43:00 GMT">Mon, 05 Jun 2006 06:43:00 GMT</span></p>
+<p>This week&#8217;s guide is going to be a little different. </p>
+
+<p>On the <a href="http://wrath.rubyonrails.org/pipermail/rails-core/">rails-core mailing list</a>, in what started as a <a href="http://www.ruby-forum.com/topic/67958#new">discussion</a> the issue of the growing number of <a href="http://script.aculo.us">Scriptaculous</a>/<a href="http://prototype.conio.net/">Prototype</a> tickets and especially enhancement requests, <strong>we&#8217;ve <a href="http://www.ruby-forum.com/topic/67958#85925">begun talking about</a> the removal of the &#8220;enhancement&#8221; category on <a href="http://dev.rubyonrails.org/newticket">trac tickets</a></strong>.</p>
+
+<p>The problem is that generally half or more of the tickets that come through the Rails bug tracking system are enhancement requests. With 13 people able to commit and a handful of others actively dealing with tickets being reported, <strong>enhancement requests will in general never be acted on</strong>. This means there are new tickets every day ruining that delicate signal vs noise ratio.</p>
+
+<p>For a while the <a href="http://weblog.techno-weenie.net/2006/4/20/five-reasons-why-your-next-rails-mod-should-be-a-plugin">standard line</a> for enhancements has been &#8220;make it a plugin and see where it goes&#8221;. This may not always be the proper response but when dealing with the deluge it is at the very least the easiest and a plugin is usually the simplest way to see feature X in Rails.</p>
+
+<p>So here&#8217;s the guide part: <strong>we could use an alternate viewpoint</strong>. The rails-core list is significantly biased: people who care to speak up there are comfortable writing patches and plugins. I expect a good portion of you watching my feed and visiting my blog haven&#8217;t written patches for Rails and haven&#8217;t written your own plugin. <strong>Do you think keeping the enhancement category is worthwhile?</strong></p>
+
+<p>The real question here isn&#8217;t whether Rails should accept new features. Patches for new enhancements would be considered but enhancement tickets sans a patch would not.</p>
+
+<p><strong>I&#8217;d like to make this an open dialog. Please, speak your mind.</strong> And careful with that submit button. Apparently my comments are a bit wonky and it tends to result in double posting. I&#8217;ll try to fix it as soon as I can.</p>
+
+<p>Next week we&#8217;ll return to our regularly scheduled practical guides.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements#comments">15 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/23/corporatizing-startups">Corporatizing Startups</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 24 May 2006 01:30:00 GMT">Wed, 24 May 2006 01:30:00 GMT</span></p>
+<p>I&#8217;ve been in the <a href="http://measuremap.com">Measure Map</a> alpha since November and I&#8217;m a big fan of the application, but one of the things that really helped me get enthusiastic about the operation was the small shop feel.</p>
+
+<p>I first really encountered the personality that I began to associate with the Measure Map team when I asked about blogging my experiences. I recieved a quick and personal reply:</p>
+
+<blockquote>
+    <p>Hi Kevin,</p>
+    
+    <p>We&#8217;re glad you&#8217;re enjoying Measure Map so far.
+    Absolutely, feel free to write about it, post
+    screenshots, etc. &#8211; but we do just ask you to 
+    keep in mind that the product is in early alpha
+    and that we&#8217;ll be adding a ton of
+    improvements/features soon.</p>
+    
+    <p>Would you send us a link to your review?<br/>
+    We&#8217;d love to read it.  And thanks for helping
+    us out by trying Measure Map during this alpha
+    stage!</p>
+    
+    <p>Greg</p>
+</blockquote>
+
+<p>Contrast that with the reply I got yesterday about some problems with page loads:</p>
+
+<blockquote>
+    <p>Hello Kevin,</p>
+    
+    <p>Thank you for your email and the heads-up 
+    concerning the pages failing to
+    load. This is a known bug we are working on 
+    getting resolved. We hope to
+    roll-out fixes for a few known problems in the 
+    near future.  Thank you
+    again for helping us continue to test our alpha 
+    product.  Please do
+    continue to send feedback.</p>
+    
+    <p>Sincerely,</p>
+    
+    <p>Measure Map Support</p>
+    
+    <hr/>
+    
+    <p>To share your knowledge or learn from other
+    Measure Map users, please
+    visit the Measure Map Forum at:
+    http://groups.google.com/group/measuremap-forums?lnk=li</p>
+    
+    <hr/>
+</blockquote>
+
+<p>Notice the change in tone? No name, only &#8220;Measure Map Support&#8221;.</p>
+
+<p>I understand that when projects are part of a big company, the company face is the one that is shown to the world, but when a small project is aquired should its personality be sacrificed?</p>
+
+<p>If you have any, I&#8217;d like to hear stories about companies or projects that survived being aquired or post mortems if you have them.</p>
+
+<p><strong>Comments are open.</strong></p>
+
+<p><strong>Update</strong>
+It&#8217;s important to note that I <em>did</em> receive an instant message from Nick Seckar of the team about my email. This post, however, is really about the &#8220;official&#8221; face of Measure Map and how it is shown through support.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/05/23/corporatizing-startups#comments">no comments</a></p>
+  </div>
+
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

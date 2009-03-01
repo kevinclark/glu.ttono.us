@@ -1,0 +1,746 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : On Twitter, Rails, and Community</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="On Twitter, Rails, and Community"
+    dc:identifier="http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community"
+    dc:description="An interview by a twitter developer has gotten a good deal of pre"
+    dc:creator="kevin"
+    dc:date="2007-04-15T17:20:03-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/1396" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>On Twitter, Rails, and Community</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sun, 15 Apr 2007 20:13:00 GMT">Sun, 15 Apr 2007 20:13:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>An <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/">interview</a> by a <a href="http://twitter.com/">twitter</a> developer has gotten a good deal of <a href="http://technorati.com/search/twitter+rails">press lately</a>. For many, it has reawakened the giant that is the &#8220;does Rails scale&#8221; debate, and <a href="http://www.loudthinking.com/">others</a> feel compelled to defend the framework.</p>
+
+<p>The problem with Rails isn&#8217;t that Ruby is slow. It&#8217;s also not that Rails is slow, or big, or bloated, or doesn&#8217;t scale. The problem isn&#8217;t that Rails doesn&#8217;t support multiple databases or composite keys out of the box. The problem is that <a href="http://farm1.static.flickr.com/47/127984254_ddd4363d6a.jpg">this</a> is how the vocal minority in the community tends to respond to criticism.</p>
+
+<p>So let&#8217;s all slow down and take a look at how we got here and what we can do to avoid it. That&#8217;s of course assuming we want to. Inflammatory posts certainly get lots of traffic, but I think Rails is in the spotlight enough we can actually talk like reasonable people and still get things done.</p>
+
+<p>More after the jump.</p><p>Alex Payne inadvertently opened the flood gates when he gave a <a href="http://www.radicalbehavior.com/5-question-interview-with-twitter-developer-alex-payne/">5 question interview</a> about working on Twitter, the highest traffic Rails app in deployment. When commenting on how Rails was scaling, he said:</p>
+
+<blockquote>
+    <p>The common wisdom in the Rails community at this time is that scaling
+    Rails is a matter of cost: just throw more CPUs at it. The problem
+    is that more instances of Rails (running as part of a Mongrel
+    cluster, in our case) means more requests to your database. At this
+    point in time there’s no facility in Rails to talk to more than one
+    database at a time. The solutions to this are caching the hell out
+    of everything and setting up multiple read-only slave databases,
+    neither of which are quick fixes to implement. So it’s not just
+    cost, it’s time, and time is that much more precious when people can[’t]
+    reach your site.</p>
+</blockquote>
+
+<p>Just so we&#8217;re all on the right track here, keep in mind that he didn&#8217;t say &#8220;Rails just doesn&#8217;t scale, there&#8217;s nothing you can do about it, abandon hope all ye who enter here&#8221;. Alex says that scaling Rails is more than a matter of money, it&#8217;s a matter of time as well.</p>
+
+<p>Those who skimmed the article and didn&#8217;t actually listen to what Alex had to say began to use the interview as tinder for Anti-Rails posts and flamewars, and soon <a href="http://www.loudthinking.com/arc/000608.html">DHH responded</a>. Here&#8217;s where the real problems begin. David turns Alex&#8217;s explanation for Twitter&#8217;s scaling problems into a discussion on blame (emph added):</p>
+
+<blockquote>
+    <p>Rails makes the act of developing such a 
+    pleasant experience that when you need to follow the same scaling path as every other 
+    shared-nothing stack, the contrast can feel stark. <strong>And perhaps it&#8217;s a natural reaction to 
+    feel a need to blame</strong> something for that contrast, however natural it is.</p>
+    
+    <p>[&#8230;]</p>
+    
+    <p>Second, when you work with open source and you discover new requirements not met by the 
+    software, it&#8217;s your shining opportunity to give something back. <strong>Rather than just sit around 
+    idle waiting for some vendor to fix your problems, you get the unique chance of being a 
+    steward of your own destiny.</strong></p>
+    
+    <p>[&#8230;]</p>
+    
+    <p>Once the stress of having to deal with that in the moment subsides, <strong>I&#8217;m convinced that the 
+    team will grow beyond the blame game</strong>, get their hands dirty as full participants in an open 
+    source community, and contribute back their advances to the framework.</p>
+</blockquote>
+
+<p>The conversation shifts from where bottlenecks come from when scaling Rails to &#8220;you&#8217;re saying it&#8217;s Rails&#8217; fault, but it&#8217;s not&#8221;. This is where we start to slide down the slippery slope. It&#8217;s easy to argue about blame. David pulls out his &#8220;I&#8217;m not a vendor, I don&#8217;t owe you shit&#8221; speech, and says that because of the beauty of open source, Twitter is in charge of their own destiny.</p>
+
+<p>He&#8217;s absolutely right. He&#8217;s also a big jerk about being right. David seems to imply that Twitter has been sitting on their hands, doing nothing, refusing to solve their own problems, and not contributing back to the community. This is false. It&#8217;s also completely beside the point.</p>
+
+<p>Early in the discussion we started to imagine blame where it didn&#8217;t exist. Alex never says that Rails <em>should</em> support doing 11k requests a second. He simply said it doesn&#8217;t, which is something no one will dispute.</p>
+
+<p>So, we&#8217;ve moved into rough territory, but someone goes and does something nice (Woo hoo!). <a href="http://drnicwilliams.com/">Dr Nic</a> writes a plugin to <a href="http://drnicwilliams.com/2007/04/12/magic-multi-connections-a-facility-in-rails-to-talk-to-more-than-one-database-at-a-time/">use multiple databases with Rails</a>. Way cool. Really way cool. Awesome job Nic. This is the part of open source that I love, when people help each other just because it&#8217;s an interesting problem and they&#8217;re a nice person. Hugs and kittens all around.</p>
+
+<p>DHH tosses down an &#8221;<a href="http://www.loudthinking.com/arc/000610.html">I told you so</a>&#8221;. David, what are you doing man? Yes, Dr Nic is awesome, and yes, Ruby is wondrously hackable, and yes, Rails allows plugins easily, BUT why do you keep beating this dead horse? No one said anything about a critical flaw. No one said Rails is inherently flawed and can never be adapted for high traffic sites. Just the opposite is true! Alex and the other guys at Twitter are those who are pushing Rails further than it&#8217;s ever gone. These are the pioneers. They&#8217;ve gotten to the hard part, and they&#8217;re still going, despite the difficulty. Really, does anyone think that sites at that load are running out of the box copies of Rails? It&#8217;s just not the case. That&#8217;s ok. The fact that Rails <em>can</em> be modified is one of its strengths. There&#8217;s no need to be defensive here. That&#8217;s the big problem we all need to face.</p>
+
+<p><strong>Before we post (or hit the enter button in IRC, or send off that email, or &#8230;) we all need to take a deep breath and figure out if there&#8217;s really any attack taking place.</strong> </p>
+
+<p>I&#8217;m as guilty of violating this as anyone, and I&#8217;m sorry for it, but this needs to be what happens in the majority of cases, or we&#8217;re all going to turn into assholes.</p>
+
+<p>There are some things we&#8217;re just going to need to get used to hearing.</p>
+
+<p>Ruby and Rails are not as fast as some alternatives. But in most cases, it probably doesn&#8217;t matter. In some cases it does.</p>
+
+<p>With Rails there is no vendor and no obligation to fix things. But just because Rails doesn&#8217;t do something out of the box doesn&#8217;t mean it&#8217;s broken. In fact, many things probably shouldn&#8217;t be &#8220;fixed&#8221; in Rails itself. We&#8217;ve got a wonderful plugin architecture just to fit that need.</p>
+
+<p>Just because someone doesn&#8217;t contribute to a specific problem doesn&#8217;t mean they haven&#8217;t contributed to the community. Blaine Cook, one of the Twitter developers, recently released the awesome Jabber::Simple library, is a regular contributor at SF Ruby, and is going to be giving a talk at <a href="http://www.sdforum.org/SDForum/Templates/CalendarEvent.aspx?CID=2135&amp;mo=4&amp;yr=2007">SVRC</a> on making Twitter push the traffic it does. He even notes <a href="http://romeda.org/blog/">on his blog</a> that Twitter is planning to release some of the tools they&#8217;ve developed to solve their particular problems.</p>
+
+<p>There will always be growing pains. It&#8217;s natural. We&#8217;ll get through it. Let&#8217;s not tear ourselves apart in the process. Rails is what it is because of the community. This will continue to be a great ride with an interesting community doing exciting new things&#8230; as long as we don&#8217;t kill each other in the process.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/04/15/on-twitter-rails-and-community#comments">29 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-1397"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1397'); }"  onmouseout="Element.hide('admin_comment_1397');" >
+  <div id="admin_comment_1397" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1397', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1397&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1397" class="admintools">edit</a></div>
+  <a name="comment-1397"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d7504721f8a4c7f42c5a61be72e52758&amp;size=60" />
+  <cite><strong><a href="http://www.updrift.com">Wade Winningham</a></strong> </cite> said about 4 hours later:<br />
+  <p>I agree with what your post completely.  It&#8217;s great to see Dr. Nic&#8217;s reaction.  I think you&#8217;d find more people willing to help out like he did if you simply asked the community to make it a challenge rather than a defensive measure.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1397";
+//--></script>
+<!-- mmc mmid:1397 mmdate:2007-04-15 19:43:21 mmauthor:Wade Winningham -->
+</li>
+<li id="comment-1398"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1398'); }"  onmouseout="Element.hide('admin_comment_1398');" >
+  <div id="admin_comment_1398" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1398', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1398&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1398" class="admintools">edit</a></div>
+  <a name="comment-1398"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=97a7959f0d9e6c90ddae200520e93067&amp;size=60" />
+  <cite><strong><a href="http://damonclinkscales.com/">Damon Clinkscales</a></strong> </cite> said about 7 hours later:<br />
+  <p>Amen.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1398";
+//--></script>
+<!-- mmc mmid:1398 mmdate:2007-04-15 23:07:30 mmauthor:Damon Clinkscales -->
+</li>
+<li id="comment-1399"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1399'); }"  onmouseout="Element.hide('admin_comment_1399');" >
+  <div id="admin_comment_1399" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1399', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1399&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1399" class="admintools">edit</a></div>
+  <a name="comment-1399"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://lianza.org/blog">Tom</a></strong> </cite> said about 11 hours later:<br />
+  <p>I hope your post gets as much publicity as the others, because in my view this one is the most important.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1399";
+//--></script>
+<!-- mmc mmid:1399 mmdate:2007-04-16 02:45:29 mmauthor:Tom -->
+</li>
+<li id="comment-1400"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1400'); }"  onmouseout="Element.hide('admin_comment_1400');" >
+  <div id="admin_comment_1400" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1400', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1400&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1400" class="admintools">edit</a></div>
+  <a name="comment-1400"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://stevetooke.karmatrading.co.uk">Steve Tooke</a></strong> </cite> said about 13 hours later:<br />
+  <p>Really well said.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1400";
+//--></script>
+<!-- mmc mmid:1400 mmdate:2007-04-16 05:09:17 mmauthor:Steve Tooke -->
+</li>
+<li id="comment-1401"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1401'); }"  onmouseout="Element.hide('admin_comment_1401');" >
+  <div id="admin_comment_1401" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1401', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1401&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1401" class="admintools">edit</a></div>
+  <a name="comment-1401"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Pius</strong> </cite> said about 18 hours later:<br />
+  <p>Kudos.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1401";
+//--></script>
+<!-- mmc mmid:1401 mmdate:2007-04-16 10:06:47 mmauthor:Pius -->
+</li>
+<li id="comment-1402"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1402'); }"  onmouseout="Element.hide('admin_comment_1402');" >
+  <div id="admin_comment_1402" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1402', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1402&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1402" class="admintools">edit</a></div>
+  <a name="comment-1402"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>ThatAnonymousGuy</strong> </cite> said about 18 hours later:<br />
+  <p>I wish I could write like you! well said.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1402";
+//--></script>
+<!-- mmc mmid:1402 mmdate:2007-04-16 10:14:09 mmauthor:ThatAnonymousGuy -->
+</li>
+<li id="comment-1403"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1403'); }"  onmouseout="Element.hide('admin_comment_1403');" >
+  <div id="admin_comment_1403" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1403', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1403&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1403" class="admintools">edit</a></div>
+  <a name="comment-1403"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.nata2.org">harper</a></strong> </cite> said about 20 hours later:<br />
+  <p>I agree 100%. I hope that people see your post and see that rails people are not all like DHH and his mass of fanbois.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1403";
+//--></script>
+<!-- mmc mmid:1403 mmdate:2007-04-16 12:41:52 mmauthor:harper -->
+</li>
+<li id="comment-1404"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1404'); }"  onmouseout="Element.hide('admin_comment_1404');" >
+  <div id="admin_comment_1404" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1404', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1404&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1404" class="admintools">edit</a></div>
+  <a name="comment-1404"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://nullcreations.net">Jerrett</a></strong> </cite> said about 21 hours later:<br />
+  <p>Great post, thanks for saying what needs to be said</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1404";
+//--></script>
+<!-- mmc mmid:1404 mmdate:2007-04-16 13:12:56 mmauthor:Jerrett -->
+</li>
+<li id="comment-1405"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1405'); }"  onmouseout="Element.hide('admin_comment_1405');" >
+  <div id="admin_comment_1405" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1405', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1405&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1405" class="admintools">edit</a></div>
+  <a name="comment-1405"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.hasmanythrough.com">josh</a></strong> </cite> said about 21 hours later:<br />
+  <p>Thanks for being the voice of reason. We don&#8217;t need anymore gasoline thrown on fires for a while.</p>
+
+
+	<p>For me, the bottom line is this: if you don&#8217;t treat people with respect, they&#8217;ll stop listening to you. Acting like an asshole is the second fastest way to marginalize yourself. (Lying is the first.)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1405";
+//--></script>
+<!-- mmc mmid:1405 mmdate:2007-04-16 13:15:56 mmauthor:josh -->
+</li>
+<li id="comment-1406"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1406'); }"  onmouseout="Element.hide('admin_comment_1406');" >
+  <div id="admin_comment_1406" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1406', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1406&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1406" class="admintools">edit</a></div>
+  <a name="comment-1406"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>nil</strong> </cite> said about 21 hours later:<br />
+  <p>well put.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1406";
+//--></script>
+<!-- mmc mmid:1406 mmdate:2007-04-16 13:19:12 mmauthor:nil -->
+</li>
+<li id="comment-1407"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1407'); }"  onmouseout="Element.hide('admin_comment_1407');" >
+  <div id="admin_comment_1407" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1407', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1407&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1407" class="admintools">edit</a></div>
+  <a name="comment-1407"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.joegrossberg.com">Joe Grossberg</a></strong> </cite> said about 21 hours later:<br />
+  <p>Bravo. People need to stop being so damn defensive.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1407";
+//--></script>
+<!-- mmc mmid:1407 mmdate:2007-04-16 13:21:44 mmauthor:Joe Grossberg -->
+</li>
+<li id="comment-1409"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1409'); }"  onmouseout="Element.hide('admin_comment_1409');" >
+  <div id="admin_comment_1409" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1409', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1409&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1409" class="admintools">edit</a></div>
+  <a name="comment-1409"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>carlos</strong> </cite> said about 24 hours later:<br />
+  <p>DHH often says stupid things.  Are you guys really suprised?  DHH even thinks he invented ruby mixins: <a href="http://weblog.jamisbuck.org/2007/1/17/concerns-in-activerecord">http://weblog.jamisbuck.org/2007/1/17/concerns-in-activerecord</a> comment #28.  Just ignore him, end of story.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1409";
+//--></script>
+<!-- mmc mmid:1409 mmdate:2007-04-16 15:58:00 mmauthor:carlos -->
+</li>
+<li id="comment-1410" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1410'); }"  onmouseout="Element.hide('admin_comment_1410');" >
+  <div id="admin_comment_1410" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1410', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1410&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1410" class="admintools">edit</a></div>
+  <a name="comment-1410"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Kevin Clark</strong> </cite> said 1 day later:<br />
+  <p>carlos: No one says they&#8217;re surprised, but it does need to stop happening. I&#8217;m happy to have people involved in the discussion, but let&#8217;s work on productive discourse instead of bashing. I&#8217;m annoyed at him too, but I think things can change.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1410";
+//--></script>
+<!-- mmc mmid:1410 mmdate:2007-04-16 16:52:41 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-1411"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1411'); }"  onmouseout="Element.hide('admin_comment_1411');" >
+  <div id="admin_comment_1411" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1411', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1411&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1411" class="admintools">edit</a></div>
+  <a name="comment-1411"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=56ee28134dd0776825445e3551979b14&amp;size=60" />
+  <cite><strong><a href="http://sporkmonger.com/">Bob Aman</a></strong> </cite> said 1 day later:<br />
+  <p>I really couldn&#8217;t have said it better myself.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1411";
+//--></script>
+<!-- mmc mmid:1411 mmdate:2007-04-16 17:17:56 mmauthor:Bob Aman -->
+</li>
+<li id="comment-1412"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1412'); }"  onmouseout="Element.hide('admin_comment_1412');" >
+  <div id="admin_comment_1412" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1412', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1412&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1412" class="admintools">edit</a></div>
+  <a name="comment-1412"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=efa76b164a7de4a5730e4fa397cc4425&amp;size=60" />
+  <cite><strong><a href="http://www.koziarski.net/">Koz</a></strong> </cite> said 1 day later:<br />
+  <p>Nice piece kevin.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1412";
+//--></script>
+<!-- mmc mmid:1412 mmdate:2007-04-16 18:29:09 mmauthor:Koz -->
+</li>
+<li id="comment-1413"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1413'); }"  onmouseout="Element.hide('admin_comment_1413');" >
+  <div id="admin_comment_1413" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1413', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1413&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1413" class="admintools">edit</a></div>
+  <a name="comment-1413"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>AEM</strong> </cite> said 1 day later:<br />
+  <p>Man, thanks for putting in words what I was feeling. Like many others I was following links today and could not believe DHH reaction. Sad, really. But it is great that there is people that actually read the full article and keep an open mind.</p>
+
+
+	<p>Thanks again,</p>
+
+
+	<p>AEM</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1413";
+//--></script>
+<!-- mmc mmid:1413 mmdate:2007-04-16 21:58:17 mmauthor:AEM -->
+</li>
+<li id="comment-1414"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1414'); }"  onmouseout="Element.hide('admin_comment_1414');" >
+  <div id="admin_comment_1414" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1414', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1414&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1414" class="admintools">edit</a></div>
+  <a name="comment-1414"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Aaron</strong> </cite> said 1 day later:<br />
+  <p>Good post.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1414";
+//--></script>
+<!-- mmc mmid:1414 mmdate:2007-04-17 00:28:32 mmauthor:Aaron -->
+</li>
+<li id="comment-1415"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1415'); }"  onmouseout="Element.hide('admin_comment_1415');" >
+  <div id="admin_comment_1415" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1415', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1415&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1415" class="admintools">edit</a></div>
+  <a name="comment-1415"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>izidor</strong> </cite> said 1 day later:<br />
+  <p>First, we are here because DHH created Rails. A bit of perspective and humility would be in order before dispensing advices left and right.</p>
+
+
+	<p>Second, the lesson is: be positive or be quiet.</p>
+
+
+	<p>You whining people already cost me a project which will be done in Java because of &#8220;Ruby can&#8217;t scale&#8221; (app for 10 users :-)</p>
+
+
+	<p>Remember that decision makers are just skimming and the interview message is &#8220;Twitter says Rails can&#8217;t scale and Ruby is slow&#8221;, so &#8220;Rails bad, Java good&#8221;. Don&#8217;t put out such stuff until even stupid people accept Ruby (and Rails) as alternative which is worthy of evaluation. Whenever we reach evaluation stage, we win on technical merits, but we need to get there! See exquisite article on O&#8217;Reilly by <a href="http://www.oreillynet.com/ruby/blog/2006/01/a_little_antiantihype.html">Steve Yegge</a>.</p>
+
+
+	<p>Any whining is completely unnecessary (and brings only bad results), because this is open-source and you can do anything you want. It&#8217;s not as DHH is holding you back or something. The only result is bad publicity &#8211; is that what you want? There are mailing lists for technical discussions, no need to shout on the web about &#8220;Ruby is slow&#8221;.</p>
+
+
+	<p>And how sad that the irony is lost on you people &#8211; the guy who single-handedly created the stuff is proclaimed to be &#8220;vocal minority&#8221;. Just get rid of this vocal minority and all will be right in Rails community, I guess&#8230;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1415";
+//--></script>
+<!-- mmc mmid:1415 mmdate:2007-04-17 04:33:27 mmauthor:izidor -->
+</li>
+<li id="comment-1416"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1416'); }"  onmouseout="Element.hide('admin_comment_1416');" >
+  <div id="admin_comment_1416" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1416', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1416&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1416" class="admintools">edit</a></div>
+  <a name="comment-1416"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>izidor</strong> </cite> said 1 day later:<br />
+  <p>Oh, and since there is no direct link to <a href="http://www.oreillynet.com/ruby/blog/2006/01/bambi_meets_godzilla.html">Steve Yegge&#8217;s fabulous addendum</a>, which you need to read also, I had to add another comment entry.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1416";
+//--></script>
+<!-- mmc mmid:1416 mmdate:2007-04-17 04:39:49 mmauthor:izidor -->
+</li>
+<li id="comment-1418"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1418'); }"  onmouseout="Element.hide('admin_comment_1418');" >
+  <div id="admin_comment_1418" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1418', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1418&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1418" class="admintools">edit</a></div>
+  <a name="comment-1418"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>itchy</strong> </cite> said 1 day later:<br />
+  <p>At this point, DHH has become like Alan Greenspan. Everything he says gets amplified.</p>
+
+
+	<p>Since all credit and blame for every aspect of what Rails does and should do gets funneled to him, I&#8217;m betting this was the 10th &#8220;Rails can&#8217;t do X&#8221; he had heard that day.</p>
+
+
+	<p>I cut him a lot of slack. Yes, he&#8217;s &#8216;opinionated,&#8217; as he&#8217;s often said himself. I&#8217;ve never met him, but he seems pleasant enough in general. Nevertheless, I&#8217;m sure he has bad days.</p>
+
+
+	<p>When someone says &#8220;Rails can&#8217;t do X,&#8221; no, they&#8217;re not necessarily blaming Rails, but sometimes they are. &#8220;Rails can&#8217;t do X&#8221; is frequently an abbreviation of: &#8220;Rails can&#8217;t do X, so Rails is useless.&#8221;</p>
+
+
+	<p>So I can see where DHH got defensive: Here&#8217;s a company doing bleeding-edge stuff, choosing to use a framework for it, then saying the framework doesn&#8217;t have the stuff out-of-the-box to handle the requests.</p>
+
+
+	<p>I agree, it looks like the Twitter guys didn&#8217;t mean it as a criticism, but I can see easily where DHH would see it as such.</p>
+
+
+	<p>Maybe he should be more measured with his responses, but, hey, so should many people.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1418";
+//--></script>
+<!-- mmc mmid:1418 mmdate:2007-04-17 09:45:41 mmauthor:itchy -->
+</li>
+<li id="comment-1419"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1419'); }"  onmouseout="Element.hide('admin_comment_1419');" >
+  <div id="admin_comment_1419" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1419', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1419&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1419" class="admintools">edit</a></div>
+  <a name="comment-1419"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=f3729d9dc86df0fc4f1ab7b20aa8e531&amp;size=60" />
+  <cite><strong><a href="http://redsquirrel.com/cgi-bin/dave">Dave Hoover</a></strong> </cite> said 1 day later:<br />
+  <p>Well said Kevin.  Keep up the great work.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1419";
+//--></script>
+<!-- mmc mmid:1419 mmdate:2007-04-17 10:58:01 mmauthor:Dave Hoover -->
+</li>
+<li id="comment-1420"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1420'); }"  onmouseout="Element.hide('admin_comment_1420');" >
+  <div id="admin_comment_1420" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1420', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1420&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1420" class="admintools">edit</a></div>
+  <a name="comment-1420"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.slash7.com">Amy</a></strong> </cite> said 1 day later:<br />
+  <p>Well put.</p>
+
+
+	<p>I&#8217;d like to further add that this seems like a classic case of text communication problems.</p>
+
+
+	<p>We all have to remember to read carefully and try not to add coloring and undertones that aren&#8217;t really there. When you don&#8217;t know a person, it&#8217;s especially easy to do.</p>
+
+
+	<p>I&#8217;ve met both of the major parties here and watched them interact with others<a href="#fn1">1</a> and I&#8217;m pretty positive that they could have had a friendly, productive discussion about this face-to-face.</p>
+
+
+	<p>But through the power of the Internet, everything has been blown out of proportion. :)</p>
+
+
+	<p>I say, when in doubt, write things friendlier than you have to. Things that sound perfectly reasonable in your head can easily be misinterpreted in the absence of body language, intonation, smiles, etc. Frankness and friendliness don&#8217;t have to be at odds when it comes to writing.</p>
+
+
+	<p>[1] I am not a creepy stalker.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1420";
+//--></script>
+<!-- mmc mmid:1420 mmdate:2007-04-17 11:54:41 mmauthor:Amy -->
+</li>
+<li id="comment-1421"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1421'); }"  onmouseout="Element.hide('admin_comment_1421');" >
+  <div id="admin_comment_1421" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1421', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1421&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1421" class="admintools">edit</a></div>
+  <a name="comment-1421"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>chuck</strong> </cite> said 1 day later:<br />
+  <p>I think maybe DHH, and a lot of the Rails community, are just stuck in defensive mode from trying to fend off all the flames from Java-land.  But those are staring to die down.  So relax.  Don&#8217;t treat everything like an attack.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1421";
+//--></script>
+<!-- mmc mmid:1421 mmdate:2007-04-17 12:20:03 mmauthor:chuck -->
+</li>
+<li id="comment-1423"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1423'); }"  onmouseout="Element.hide('admin_comment_1423');" >
+  <div id="admin_comment_1423" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1423', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1423&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1423" class="admintools">edit</a></div>
+  <a name="comment-1423"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.zenspider.com/">Ryan Davis</a></strong> </cite> said 1 day later:<br />
+  <p>itchy: the difference is, DHH hit the send/submit button on that blog post of his.</p>
+
+
+	<p>Bad day: maybe.
+Bad action/decision: definitely.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1423";
+//--></script>
+<!-- mmc mmid:1423 mmdate:2007-04-17 14:38:12 mmauthor:Ryan Davis -->
+</li>
+<li id="comment-1424"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1424'); }"  onmouseout="Element.hide('admin_comment_1424');" >
+  <div id="admin_comment_1424" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1424', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1424&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1424" class="admintools">edit</a></div>
+  <a name="comment-1424"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=317aad7f9f0b69a440faca74bbe22b20&amp;size=60" />
+  <cite><strong><a href="http://mentalized.net">Jakob S</a></strong> </cite> said 2 days later:<br />
+  <p>Right on, the first sensible blog post I&#8217;ve seen about this debacle.</p>
+
+
+	<p>If there&#8217;s something technical to take away from this, I&#8217;d say it&#8217;s the fact that Rails indeed is able to scale and handle the 11.000+ requests per second Twitter is serving. Cheers to Twitter for getting up there and proving this.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1424";
+//--></script>
+<!-- mmc mmid:1424 mmdate:2007-04-18 04:35:57 mmauthor:Jakob S -->
+</li>
+<li id="comment-1427"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1427'); }"  onmouseout="Element.hide('admin_comment_1427');" >
+  <div id="admin_comment_1427" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1427', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1427&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1427" class="admintools">edit</a></div>
+  <a name="comment-1427"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=3fcb27e39d2ff47357a803e91347fee4&amp;size=60" />
+  <cite><strong><a href="http://al3x.net">Alex Payne</a></strong> </cite> said 3 days later:<br />
+  <p>Thanks much for contributing some sanity :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1427";
+//--></script>
+<!-- mmc mmid:1427 mmdate:2007-04-18 19:12:26 mmauthor:Alex Payne -->
+</li>
+<li id="comment-1430"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1430'); }"  onmouseout="Element.hide('admin_comment_1430');" >
+  <div id="admin_comment_1430" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1430', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1430&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1430" class="admintools">edit</a></div>
+  <a name="comment-1430"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=98c2fb4c31fae25fe0b618f1c994c1f3&amp;size=60" />
+  <cite><strong><a href="http://www.akitaonrails.com">AkitaOnRails</a></strong> </cite> said 6 days later:<br />
+  <p>Just to give you an example: this discussion landed even down here in Brazil. I&#8217;ve been following the flow of events and I am as overwhelmed as the next guy. I did understand the whole point since the first statement from Alex, and the minute I read the DHH post I was blown away: &#8220;What is he doing!?&#8221;</p>
+
+
+	<p>Fortunately it didn&#8217;t go as far as it could. I will not judge DHH on this because I made similar mistakes in the past as well. It&#8217;s an inherent human quality to defend itself. Sometimes the instincts go over our rationale.</p>
+
+
+	<p>As far as a community is made of human being, mistakes like this are prone to happen. The only thing we can do is learn from them and avoid future repetitions.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1430";
+//--></script>
+<!-- mmc mmid:1430 mmdate:2007-04-22 14:21:28 mmauthor:AkitaOnRails -->
+</li>
+<li id="comment-1434"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1434'); }"  onmouseout="Element.hide('admin_comment_1434');" >
+  <div id="admin_comment_1434" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1434', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1434&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1434" class="admintools">edit</a></div>
+  <a name="comment-1434"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=0c3bb86553171f0f6b829cc45da443df&amp;size=60" />
+  <cite><strong><a href="http://jimonwebgames.com">Jim Greer</a></strong> </cite> said 12 days later:<br />
+  <p>Needed saying, and well said.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1434";
+//--></script>
+<!-- mmc mmid:1434 mmdate:2007-04-28 13:17:33 mmauthor:Jim Greer -->
+</li>
+<li id="comment-1442"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_1442'); }"  onmouseout="Element.hide('admin_comment_1442');" >
+  <div id="admin_comment_1442" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/1442', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-1442&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/1396/edit/1442" class="admintools">edit</a></div>
+  <a name="comment-1442"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=bc7e893b6d4605000478c871b7ce8862&amp;size=60" />
+  <cite><strong><a href="http://darwinweb.net/">Gabe da Silveira</a></strong> </cite> said 19 days later:<br />
+  <p>First of all, great post.  This is exactly what I&#8217;ve been thinking about the whole matter.</p>
+
+
+	<p>@izidor &#8211; when people talk about fanboyism this is it.  Don&#8217;t try bury legitimate criticism.  If your clients/boss don&#8217;t trust you then you need to find better people or work on your credibility.</p>
+
+
+	<p>@itchy &#8211; I totally agree.  DHH is human and flawed just like everyone else.  He has every right to post whatever he wants.  However he could stand for a little introspection about his defensiveness.  I mean he&#8217;s one of the most influential programmers of the decade and he&#8217;s not even 30 yet.  Rails is a smashing success and used by thousands and thousands of very smart people.  I can see how the interview rubbed him the wrong way, but it&#8217;s not as if there were any actual lies in there that needed rectifying.  For his own sake I wish he could let this stuff roll off his back.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="1442";
+//--></script>
+<!-- mmc mmid:1442 mmdate:2007-05-04 18:43:38 mmauthor:Gabe da Silveira -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/1396/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="1396";
+//--></script>
+<!-- mmp mmid:1396 mmdate:2007-04-15 16:24:33 mmurl:/articles/2007/04/15/on-twitter-rails-and-community mmtitle:On Twitter, Rails, and Community -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2007/04/15/on-twitter-rails-and-community" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

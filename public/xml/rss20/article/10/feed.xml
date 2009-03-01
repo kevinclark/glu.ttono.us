@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Environments in Rails 0.13.1</title>
+    <link>http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Environments in Rails 0.13.1</title>
+      <description>&lt;p&gt;Development, test and production: we all know and love the default rails environments that let us seperate our databases and tests. What do they do, how do they work, and how can we further  customize our rails environment?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please note&lt;/strong&gt;: As of &lt;a href="http://dev.rubyonrails.com/changeset/2115"&gt;changeset 2115&lt;/a&gt; the rails environment does not work like this article describes. This article will cover environments in 0.13.1 and earlier. I will release another article this week explaining the new environment system.&lt;/p&gt;</description>
+      <pubDate>Mon, 05 Sep 2005 20:30:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:34808052c3adca3162d34fd2d9b4ad3f</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/10</trackback:ping>
+    </item>
+  </channel>
+</rss>

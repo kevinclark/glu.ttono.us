@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Ezra - Deployment: Tales from the Front</title>
+    <link>http://glu.ttono.us/articles/2006/06/24/ezra-deployment-tales-from-the-front</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Ezra - Deployment: Tales from the Front</title>
+      <description>&lt;p&gt;Ezra Zygmuntowics&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;zig-mun-tuv-itch&lt;/li&gt;
+&lt;li&gt;Just another ruby hacker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Case Study&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Yakima Herald-Republic Newspaper Online&lt;/li&gt;
+&lt;li&gt;http://yakimaherald.com&lt;/li&gt;
+&lt;li&gt;Launched 2005&lt;/li&gt;
+&lt;li&gt;Data heavy&lt;/li&gt;
+&lt;li&gt;Rails CMS&lt;/li&gt;
+&lt;li&gt;Proprietary DB called Baseview (non SQL)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Goals&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Content management&lt;/li&gt;
+&lt;li&gt;Internet and Intranet&lt;/li&gt;
+&lt;li&gt;Automation of Classified and Obituary workflow&lt;/li&gt;
+&lt;li&gt;Internal credit card transactional console&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Data Aggregation&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mysql for CMS and storage of classified and obituary data&lt;/li&gt;
+&lt;li&gt;XML feeds from the AP News Wire&lt;/li&gt;
+&lt;li&gt;RSS and Atom feeds from parent newspaper The Seattle Times&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Proprietary Database&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Problems:
+&lt;ul&gt;
+&lt;li&gt;Non-SQL BaseView Live-IQ db holds 80% of all content&lt;/li&gt;
+&lt;li&gt;Only accessible from poorly implemented Live-IQ Script&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Solution: ruby DSL&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Emits LiveIQ Script&lt;/li&gt;
+&lt;li&gt;Sends it down a socket to the LiveIQ Script interpreter&lt;/li&gt;
+&lt;li&gt;No more LiveIQ Script! Ruby all the way baby.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Deployment Round 1&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Apache with FastCGI&lt;/li&gt;
+&lt;li&gt;Acceptable performance&lt;/li&gt;
+&lt;li&gt;Industry Standard&lt;/li&gt;
+&lt;li&gt;But&amp;#8230;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;has_many :fastcgi_500_errors&lt;/code&gt; :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apache/fcgi == Unstable&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;500 errors for no apparent reason&lt;/li&gt;
+&lt;li&gt;zombie processes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Round 2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lighttpd and mod_fastcgi for teh win!&lt;/li&gt;
+&lt;li&gt;Started with 4 static fcgi listeners.&lt;/li&gt;
+&lt;li&gt;Very good performance and stability.&lt;/li&gt;
+&lt;li&gt;This was when lightty didn&amp;#8217;t run the max procs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lighttpd&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Very fast for static files&lt;/li&gt;
+&lt;li&gt;Good FastCGI support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Still needed work&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still doing deploys by hand&lt;/li&gt;
+&lt;li&gt;Still having some problems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Work in Progress&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Switch from static fcgi procs to seperately spawned setup&lt;/li&gt;
+&lt;li&gt;Each fcgi on it&amp;#8217;s own IP:PORT&lt;/li&gt;
+&lt;li&gt;Switched to spinner/spawner/reaper&lt;/li&gt;
+&lt;li&gt;Started using Capistrano&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Stable.. finally&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Exernal fcgi&amp;#8217;s much more stable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tuning and tweaking&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cache as much as you can&lt;/li&gt;
+&lt;li&gt;Get as much RAM as you can&lt;/li&gt;
+&lt;li&gt;Find hot spots and externalize them&lt;/li&gt;
+&lt;li&gt;Don&amp;#8217;t guess, measure.
+&lt;ul&gt;
+&lt;li&gt;Tiny increments, measure performance.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;httperf&lt;/code&gt; not &lt;code&gt;ab&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;#8220;&lt;code&gt;ab&lt;/code&gt;&amp;#8217;s a pile&amp;#8221; &amp;#8211; Ezra&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;http://zedshaw.com/blog/philosophy/it&lt;em&gt;analysis&lt;/em&gt;rubric.html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Stats&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;4 months start to finish&lt;/li&gt;
+&lt;li&gt;One developer one designer&lt;/li&gt;
+&lt;li&gt;150,000+ page views daily&lt;/li&gt;
+&lt;li&gt;40% page cached&lt;/li&gt;
+&lt;li&gt;60% dynamic&lt;/li&gt;
+&lt;li&gt;Running great for 12 months now&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Shared hosting setup&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;Each app gets its own port with an instance of lighty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;Users can restart their apps without restarting apache&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;Performance hit from too much indirection (sometimes 10-20%)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Decent trade offs for shared environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Face it.. Shared hosting + Rails == Suck&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Only as reliable as the worst app on the box.&lt;/li&gt;
+&lt;li&gt;Not everyone is a good neighbor&lt;/li&gt;
+&lt;li&gt;Constraints on resources&lt;/li&gt;
+&lt;li&gt;Each man for himself&lt;/li&gt;
+&lt;li&gt;If you can avoid it, please do&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Get a VPS&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rails really thrives when you have your own guaranteed resources.&lt;/li&gt;
+&lt;li&gt;Get a host that uses Xen
+&lt;ul&gt;
+&lt;li&gt;More of a performance hit on Virtuoso Linux etc&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Start with a minimum of 128Mb - 192+ RAM&lt;/li&gt;
+&lt;li&gt;http://brainspl.at/rails_stack.html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rails uses a 3 tier architecture&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Capistrano roles: Web (lighttpd), App: (fcgi or mongrel), DB (mysql or postgres)&lt;/li&gt;
+&lt;li&gt;Web: static images and assets, cached pages&lt;/li&gt;
+&lt;li&gt;App: rails application processes&lt;/li&gt;
+&lt;li&gt;DB: database daemon&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you scale..&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Move db to it&amp;#8217;s own machine&lt;/li&gt;
+&lt;li&gt;Use most powerful box for db&lt;/li&gt;
+&lt;li&gt;Spawn fcgi procs on db box as needed
+&lt;ul&gt;
+&lt;li&gt;3 or 4 will do alot of traffic&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Split to 3 roles&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Typical Lighttpd Three Tier Cluser
+&lt;ul&gt;
+&lt;li&gt;Web, app and db on own boxes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Proven scalable setup&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But things always change&amp;#8230;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The future of rails deployment is mongrel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mongrel is a good dog&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mongrel is a Ruby/C webserver written by my hero Zedas Shaw&lt;/li&gt;
+&lt;li&gt;Simple, fast and reliable.&lt;/li&gt;
+&lt;li&gt;Easily extensibly via gem plugins&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Advantages&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mongrel speaks plain old HTTP&lt;/li&gt;
+&lt;li&gt;Can take advantage of the wealth of tools available for HTTP load-balancing and proxying.&lt;/li&gt;
+&lt;li&gt;Opens up many more possibilities for front ends.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Front End&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pound, Pen, Balance, Haproxy or even hardware load balancers&lt;/li&gt;
+&lt;li&gt;Lighttpd (although &lt;code&gt;mod_proxy&lt;/code&gt; needs to be fixed)&lt;/li&gt;
+&lt;li&gt;Apache 2.2 &lt;code&gt;mod_proxy_balancer&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;I&amp;#8217;m compiling Apache with only &lt;code&gt;mod_proxy&lt;/code&gt;, &lt;code&gt;mod_proxy_balancer&lt;/code&gt;, &lt;code&gt;mod_deflate&lt;/code&gt; which works great&lt;/li&gt;
+&lt;li&gt;Gives real time status report of backends and lets you restart things&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apache 2.2&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Apache is an industry standard and is working well with mongrel&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mongrel Cluster&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Written by Bradley Taylor&lt;/li&gt;
+&lt;li&gt;Allows for easy management of clusters of mongrel processes&lt;/li&gt;
+&lt;li&gt;Very easy to Script with Capistrano&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;$sudo gem install railsmachine&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Also by Bradley Taylor&lt;/li&gt;
+&lt;li&gt;Capistrano task library&lt;/li&gt;
+&lt;li&gt;Creates svn repo and imports your app&lt;/li&gt;
+&lt;li&gt;Configures Apache virtual hosts with support for &lt;code&gt;mod_proxy_balancer&lt;/code&gt;, ssl, &lt;code&gt;mod_deflate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Confugres &lt;code&gt;mongrel_cluseter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Creates MySQL db&lt;/li&gt;
+&lt;li&gt;Creates symlinks for items in &lt;code&gt;/public&lt;/code&gt; for use with &lt;code&gt;file_column&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Clustered Rails Deployment with Engine Yard&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;My pet project&lt;/li&gt;
+&lt;li&gt;Easy push button deployment through a web interface&lt;/li&gt;
+&lt;li&gt;Each application runs on two Xen VPSs each on a separate physical box&lt;/li&gt;
+&lt;li&gt;Redundant load balanced for fallover&lt;/li&gt;
+&lt;li&gt;Add and remove cluster nodes at will&lt;/li&gt;
+&lt;li&gt;Configure &amp;#8216;packages&amp;#8217; that consist of an svn revision or tag of your app and frozen, versioned gem dependencies.&lt;/li&gt;
+&lt;li&gt;Drag &amp;amp; drop to deploy your packaged app from Stage to QA to Production&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;BackgrounDRb&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Solution for forking, shelling for a binary etc&lt;/li&gt;
+&lt;li&gt;Distributed ruby server for managing long running background tasks&lt;/li&gt;
+&lt;li&gt;Available as a rails plugin&lt;/li&gt;
+&lt;li&gt;MiddleMan object for use in rails to control tasks&lt;/li&gt;
+&lt;li&gt;Hooks for ajax progress bars or status updates while task runs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Great code example slides here. Look for slides on http://brainspl.at&lt;/p&gt;
+
+&lt;p&gt;One last plug&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rails Deployment Book&lt;/li&gt;
+&lt;li&gt;Pragmatic Programmers&lt;/li&gt;
+&lt;li&gt;Beta &amp;#8220;Real Soon Now&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Q/A&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Is the ruby interface you created for IQ Script proprietary?
+&lt;ul&gt;
+&lt;li&gt;Unfortunately yes, the newspaper owns it, but they&amp;#8217;re thinking of releasing it. Watch my blog.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Why did you choose the cocoa interface over Rails for the internal interface?
+&lt;ul&gt;
+&lt;li&gt;It made it alot easier to deal with because of file constraints. Cocoa guis are really nice and it&amp;#8217;s easy to glob up a bunch of files. It was fun too :). It could have been a Rails interface. Handling a couple hundred files at once is cumbersome through the web.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mod_fcgid&lt;/code&gt;?
+&lt;ul&gt;
+&lt;li&gt;Some people have had better luck with it than regular fcgi. fcgid is a daemon so it&amp;#8217;s better at killing zombies, but it still gets the 500 errors. Not as much, but after wrestling with apache for a long time I moved off it.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;How do you look at Xen in comparison to other VMs?
+&lt;ul&gt;
+&lt;li&gt;I like Xen because it&amp;#8217;s in the kernel. VMWare is another beast. It&amp;#8217;s more for quick testing on my workstation. I haven&amp;#8217;t use a professional grade VMWare though, but I really like Xen. One of the great things is that the host can&amp;#8217;t oversell the resources. With Virtuoso you can oversell which gives you burst limits. With Xen there&amp;#8217;s no way for your host to oversell the box.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;What kind of hardware do you prefer?
+&lt;ul&gt;
+&lt;li&gt;We&amp;#8217;ve built whitebox boxes with opterons (dual, 4 gig). We were going to go to Rackspace but we got our own cage in California.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Do you have more information on the 500 errors or why they happen?
+&lt;ul&gt;
+&lt;li&gt;There&amp;#8217;s timeouts. I haven&amp;#8217;t dug in the C code, but fcgi&amp;#8217;s management process is flakey. There has been some work on a &lt;code&gt;mod_proxy_fastcgi&lt;/code&gt; for the newer apache but nothing is released yet. I look forward to seeing how it works. The general feeling for me is that fcgi isn&amp;#8217;t very stable.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;In Engine Yard, how do you deal with migrations and error handling?
+&lt;ul&gt;
+&lt;li&gt;We&amp;#8217;ll have some servers dedicated to staging. An identical environment to yours before you push to production. You&amp;#8217;ll be able to run your rake tasks and such through the db.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Do you have extra suggestions for somebody who starts a new project regularly (we have dozens of apps). Some are small (80%), some are big (20%). We don&amp;#8217;t want apps to destroy each other.
+&lt;ul&gt;
+&lt;li&gt;I&amp;#8217;d think that for small apps it&amp;#8217;d be nice to consolidate into one app (if they&amp;#8217;re all pretty much the same), but mongrel is definitely the way to go. 1 per app probably. One nice solution would be to get a dedicated box and to run one xen instance with Apache with virtual hosts and then other xen instances with each app.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;How should you choose hardware or software load balancers?
+&lt;ul&gt;
+&lt;li&gt;The hardware load balancers go between the web servers. The web servers (apache) load balance to app servers (mongrel).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Engine Yard, anything on pricing?
+&lt;ul&gt;
+&lt;li&gt;I can&amp;#8217;t say yet. It&amp;#8217;ll be affordable, but we&amp;#8217;re not looking to compete with shared hosting.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;I work on pogo.com which is in the top 250 on Alexa ranking. Is Rails ready for a top 100?
+&lt;ul&gt;
+&lt;li&gt;I don&amp;#8217;t see any reason why not. It&amp;#8217;s typical LAMP share nothing, so the issues is getting your architecture straight, not Rails.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Sat, 24 Jun 2006 14:32:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:bf25b956-03d3-49ca-b5de-dcd10f28cbda</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/24/ezra-deployment-tales-from-the-front</link>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: DSLs in Ruby</title>
+    <link>http://glu.ttono.us/articles/2005/10/15/dsls-in-ruby</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>DSLs in Ruby</title>
+      <description>&lt;p&gt;&lt;a href="http://www.onestepback.org"&gt;Jim Weirich&lt;/a&gt; is awesome. An excellent speaker, a good coder and a good teacher. &lt;a href="http://onestepback.org/articles/lingo/"&gt;His slides&lt;/a&gt; are so well done I don&amp;#8217;t even have notes for him.&lt;/p&gt;
+
+&lt;p&gt;Edit: Accidentally had Jim&amp;#8217;s page linked wrong. Its .org. This has been fixed.&lt;/p&gt;</description>
+      <pubDate>Sat, 15 Oct 2005 21:51:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:b1f1c8e26fbb457ffce776d3b825b9b5</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/15/dsls-in-ruby</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/22</trackback:ping>
+    </item>
+  </channel>
+</rss>

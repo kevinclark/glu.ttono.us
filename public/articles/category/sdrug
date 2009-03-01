@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Gluttonous - category sdrug</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2007/11/03/13-new-sd-ruby-podcasts-up">13 New SD Ruby Podcasts Up</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 03 Nov 2007 15:04:00 GMT">Sat, 03 Nov 2007 15:04:00 GMT</span></p>
+<p><a href="http://podcast.sdruby.com/">They&#8217;re all up at once</a>. Wow.</p>
+
+<p>Mine felt good, but it&#8217;s long. Rather long. 50 minutes fairly non-stop, ~600 megs long. Find some time before watching.</p>
+
+<pre>Episode 036: The Return of Kevin Clark
+Kevin Clark takes a break from Powerset to give a full-throttle talk
+on using Merb as a JSON-RPC service, god, gem2rpm, and heckle.
+
+Episode 035: ActiveRecord Backup & MimetypeFu
+Matt Aimonetti demonstrates his newest plugins: ActiveRecord Backup
+and MimetypeFu.
+
+Episode 034: Intro to JRuby
+Brian Chapados shows how to install and work with the latest JRuby
+release.
+
+Episode 033: Life on Edge
+If you’re a Rails junkie, you’ll want to develop on Edge Rails. Matt
+Clark explains how to get started and shares some of the challenges
+of working on Edge.
+
+Episode 032: Capistrano
+Rob Kaufman takes on Capistrano 2. What is it? How does it work?
+What’s changed since version 1?
+
+Episode 031: Seaside
+Roger Whitney explores Seaside, the web application framework based
+on Smalltalk.
+
+Episode 030: Tuneshelf
+Dominic Damian talks about his experiences building Tuneshelf, a web
+application that allows music fans to keep track of their favorite
+music albums.
+
+Episode 029: Big Stinking Piles (of data)
+What do you do when third-party data vendors don’t speak REST? Rob
+Kaufman discuss real-world techniques for importing and exporting
+data. (This talk was also given at RailsConf 2007.)
+
+Episode 028: Simple Sidebar Plugin
+Ryan Felton shows how to use Simple Sidebar plugin to DRY up sidebar
+content in applications.
+
+Episode 027: Headliner and Styler
+Patrick Crowley talks about his newest plugins: Headliner and Styler.
+
+Episode 026: ActsAsSolr
+Rob Kaufman shows how easy it is to integrate Solr powered search
+into your Rails application using the ActsAsSolr plugin.
+
+Episode 025: Ajax CSS Star Rating with ActsAsRateable
+Ryan Felton shows off how to build an Ajax-powered, CSS star rater
+using the ActsAsRateable plugin and Komodo Media’s CSS Star Rating
+Redux technique.
+
+Episode 024: Using Ruby + Amazon SQS to build backdoors
+Brian Chapados talks about using Ruby and Amazon’s Simple Que Service
+web service to build backdoors into systems.</pre>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2007/11/03/13-new-sd-ruby-podcasts-up#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/10/04/rest-talk-at-sd-rb-is-live">REST Talk At SD.rb Is Live</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 04 Oct 2006 23:48:00 GMT">Wed, 04 Oct 2006 23:48:00 GMT</span></p>
+<p>The talk on REST basics I <a href="http://glu.ttono.us/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts">mentioned</a> last month has hit the <a href="http://podcast.sdruby.com">SD.rb podcast</a>. I cover REST concepts and basics and <a href="http://blog.integralimpressions.com/">Chris Abad</a> has one immediately following on using web services (<em>for free</em>).</p>
+
+<p>And if you haven&#8217;t seen <a href="http://chronic.rubyforge.org/">Chronic</a>, the lean, mean, completely awesome natural language date/time parser from sd.rber Tom Werner, do take a look at <a href="http://podcast.sdruby.com/2006/10/3/episode-008-chronic">his presentation</a>. It&#8217;s really a beautiful thing.</p>
+
+<p><strong>Update</strong>: You can grab the slides for my presentation <a href="http://thar.be/restful_presentation.pdf">here</a>. I should have repeated the questions as they came in for the podcast viewers, but since I didn&#8217;t they were roughly:</p>
+
+<blockquote>
+    <ol>
+    <li>If browsers don&#8217;t support the other HTTP verbs, how does Rails pass the other methods like DELETE and PUT?</li>
+    <li>Are there other HTTP verbs besides the CRUDy ones?</li>
+    </ol>
+</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/10/04/rest-talk-at-sd-rb-is-live#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/08/the-rubyconf-express">The RubyConf Express</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 08 Sep 2006 20:20:00 GMT">Fri, 08 Sep 2006 20:20:00 GMT</span></p>
+<p>A few of the <a href="http://sdruby.com">sd.rb</a>ers are planning to take the train to Denver next month. The trip will take about a day and a half. I&#8217;m planning to go. The view should be great and it&#8217;ll give me some time to work on my presentation if needed.</p>
+
+<p>The train <em>does</em> go through LA, so if you&#8217;re in the Southern California area this may be right up your alley.</p>
+
+<p>More information can be found at Patrick Crowley&#8217;s blog. So go check out <a href="http://mokolabs.com/2006/09/08/the-rubyconf-express/">the RubyConf Express!</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/08/the-rubyconf-express#comments">2 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts">SD.rb Adds 4 New (Video) Podcasts</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Fri, 08 Sep 2006 19:52:00 GMT">Fri, 08 Sep 2006 19:52:00 GMT</span></p>
+<p>Today <a href="http://blog.integralimpressions.com/">Chris Abad</a> of the <a href="http://sdruby.com">sd.rb</a> <a href="http://podcast.sdruby.com">podcast</a> uploaded four new episodes:</p>
+
+<p>In <a href="http://podcast.sdruby.com/podcasts/004_numbers.m4v">Episode 004: Numbers</a> Tom Preston-Werner (of [Gravatar], <a href="http://chronic.rubyforge.com">Chronic</a>) gives the first part of a series I hope he&#8217;ll continue called &#8220;Ruby is Awesome&#8221;. This talk focuses on interesting things about how Ruby handled numbers. Though this sounds really basic, he showed things that I had never come across and kept my attention. If you&#8217;re newish to Ruby this is definitely worth your attention. Go <a href="http://podcast.sdruby.com/podcasts/004_numbers.m4v">take a look</a>.</p>
+
+<p><a href="http://podcast.sdruby.com/podcasts/005_arts.m4v">Episode 005: ARTS Plugin</a> is my presentation on using ARTS to build test driven RJS. This is from the second meeting of sd.rb so the first part is full of Rails basics. If you&#8217;re interested in seeing ARTS in action (used to build an ajaxified blog) you probably want to skip to about 1/3 of the way in.</p>
+
+<p><a href="http://podcast.sdruby.com/podcasts/006_dynamic_domains.m4v">Episode 006: Dynamic Domains</a> features <a href="http://blog.integralimpressions.com/">Chris Abad</a> talking about his new application [Outlandish] and how they implemented dynamic domains.</p>
+
+<p>Finally, in <a href="http://podcast.sdruby.com/podcasts/007_authentication.m4v">Episode 007: Rails Authentication</a> I talk very briefly about how to use the <code>acts_as_authenticated</code> and <code>restful_authentication</code> plugins. At some point I begin rambling about how REST works, but that part is best left for when the podcast of last night&#8217;s REST presentations go up. I&#8217;ll point you there when it happens.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/09/08/sd-rb-adds-4-new-video-podcasts#comments">3 comments</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/09/07/sd-rb-meeting-tonight">SD.rb Meeting Tonight</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 07 Sep 2006 17:13:00 GMT">Thu, 07 Sep 2006 17:13:00 GMT</span></p>
+<p>If you&#8217;re in San Diego (or even Southern California) we&#8217;d love you to drop by the <a href="http://sdruby.com/sdruby/show/HomePage">sd.rb</a> meeting tonight. <a href="http://blog.integralimpressions.com/">Chris Abad</a> and I will be talking about RESTful stuff in Rails and Tom Preston-Werner will be debuting his new natural time parsing library, <a href="http://chronic.rubyforge.org/">Chronic</a>.</p>
+
+<p>We have our meetings at the UCSD CSE buildng (room 1202). If you want to drop me an email at kevin dot clark at gmail dot com I&#8217;ll give you my cell in case you get lost.</p>
+
+<p>I hear OC Ruby may be making a field trip. See their <a href="http://tech.groups.yahoo.com/group/ocruby/message/523">list</a> if you want to get in on that. </p>
+
+<p>Addtionally, several OC Rubyists and SD Rubyists are planning to meet up at Rock Bottom just off campus around 6:15 for dinner. Come hang out.</p>
+
+<p>If you can&#8217;t make it the <a href="http://podcast.sdruby.com/">sd.rb podcast</a> is always an option and I&#8217;m told you should be getting several updates from the last meeting in the next couple days. Keep a look out.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/07/06/summer-of-rails-ship-your-first-app">Summer of Rails - Ship Your First App!</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 06 Jul 2006 23:35:00 GMT">Thu, 06 Jul 2006 23:35:00 GMT</span></p>
+<p>Where do you stand on the Rails spectrum? Are you a Ruby wiz who&#8217;s released plugins, libraries, and patches to core? More likely you&#8217;re closer to the other end of the spectrum: tinkering, interested, but haven&#8217;t shipped an app.</p>
+
+<p>Well, for all the tinkerers out there you&#8217;ve got some new motivation. Patrick Crowley of sd.rb is starting a project he&#8217;s calling <a href="http://summerofrails.org/">Summer of Rails</a>. It&#8217;s sort of a Rails Day meets Summer of Code meets &#8220;get your butt in gear and ship something already&#8221;. It&#8217;s an excuse for everyone who&#8217;s been interested in Rails but just hasn&#8217;t <em>done it</em>.</p>
+
+<p>So, get on it! Write your app, <a href="http://summerofrails.org/badges/">badge it</a> as a Summer of Code project and stop procrastinating. As new projects start coming in they&#8217;ll be getting the spotlight at the Summer of Rails site so others can bask in your new found magnificence.</p>
+
+<p><a href="http://summerofrails.org/">Just do it!</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/07/06/summer-of-rails-ship-your-first-app#comments">1 comment</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/06/01/sd-rb-meets-tonight">sd.rb Meets Tonight</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 01 Jun 2006 15:50:00 GMT">Thu, 01 Jun 2006 15:50:00 GMT</span></p>
+<p>If you&#8217;re in the San Diego area this evening you should stop by the sd.rb meeting.</p>
+
+<p>On the agenda:</p>
+
+<ol>
+<li>Tom Werner, Part 1 of the &#8220;Ruby is Awesome&#8221; Series</li>
+<li>Joe Chesak, Search with Rails</li>
+<li>Kevin Clark, Test Driven RJS with ARTS</li>
+</ol>
+
+<p>You can find more information <a href="http://davie.textdrive.com/pipermail/sdrug/2006-May/000424.html">on the mailing list</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>, <a href="/articles/category/sightings" rel="tag">sightings</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/05/08/ajax-spy-make-life-easier">Ajax Spy makes life easier</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 08 May 2006 20:05:00 GMT">Mon, 08 May 2006 20:05:00 GMT</span></p>
+<p>Chris Van Pelt of sd.rb has released <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">Ajax Spy</a> a great debugging tool for RJS templates.</p>
+
+<p>It only requires adding two files to your project and a bit of <code>javascript_include_tag</code> lovin in your layout. Go <a href="http://blog.vandev.com/articles/2006/05/04/my-first-tool-for-you">check it out</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/04/07/sd-rb-gets-off-the-ground">sd.rb gets off the ground</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sat, 08 Apr 2006 02:05:00 GMT">Sat, 08 Apr 2006 02:05:00 GMT</span></p>
+<p>Yesterday the first real sd.rb meeting was held on campus at UCSD. Final count put us a 30 people, so we&#8217;re off to a great start.</p>
+
+<p>If you&#8217;re in the San Diego area, and you&#8217;d like to join in, we&#8217;re having talks on the first Thursday of each month and a hack session on the third Wednesday, so we&#8217;ll meet again on the 19th to code.</p>
+
+<p>Additionaly, Anthony Moralez is gathering Riverside.rb. I&#8217;ll have more information for you Riverside kids (where to make contact) soon.</p>
+
+<p><strong>Update</strong>: via Anthony</p>
+
+<blockquote>I don&#8217;t have a web site up, but the list is at
+https://www.cs.ucr.edu/mailman/listinfo/rug and my brief blog entry
+announcing it is at
+http://anthonysseblog.blogspot.com/2006/04/forming-riversiderb.html</blockquote>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/04/07/sd-rb-gets-off-the-ground#comments">2 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/04/07/sd-rb-gets-off-the-ground#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/03/25/san-diego-ruby-users-group-revival">San Diego Ruby Users Group Revival</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 26 Mar 2006 02:17:00 GMT">Sun, 26 Mar 2006 02:17:00 GMT</span></p>
+<p>Following my <a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a> article, I&#8217;ve gotten several people in the San Diego area who would like to start the San Diego Ruby (and Rails!) Users Group back up. <a href="http://mingle.com">Mingle</a> has graciously agreed to host, and we&#8217;re working out times right now. I&#8217;ll be getting access to the old mailing list soon. If you&#8217;re interested in getting information about the group, please send me an email at kevin dot clark at gmail dot com and I&#8217;ll keep you informed.</p>
+
+<p><strong>Update</strong>: I&#8217;ve got a <a href="http://lists.sandiegorug.org/mailman/listinfo/sdrug">mailing list</a> up.</p>
+
+<p><strong>Update #2</strong>: If you want to get caught up, check out the archives <a href="http://davie.textdrive.com/pipermail/sdrug/2006-March/thread.html">here</a>.</p>
+
+<p><strong>One more</strong>: If you want to weigh in on when the meeting should be (Wednesday or Thursday nights), mosey on over the the <a href="http://sdrug.thar.be/">SDRUG Availability Poll</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>, <a href="/articles/category/sdrug" rel="tag">sd.rb</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/25/san-diego-ruby-users-group-revival#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/25/san-diego-ruby-users-group-revival#trackbacks">1 trackback</a></p>
+  </div>
+
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

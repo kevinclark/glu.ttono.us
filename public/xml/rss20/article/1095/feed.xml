@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The Flexibility of Mocha</title>
+    <link>http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The Flexibility of Mocha</title>
+      <description>&lt;p&gt;&lt;a href="http://blog.floehopper.org/articles/2006/09/01/injecting-mocks-the-mocha-way"&gt;This&lt;/a&gt; post just blew me away. Turns out instead of using the &lt;code&gt;delegate_method_to_mock!&lt;/code&gt; method I &lt;a href="http://glu.ttono.us/articles/2006/08/30/injecting-mocks-one-way-or-another"&gt;posted&lt;/a&gt; the other day, I could use &lt;a href="http://mocha.rubyforge.org/"&gt;Mocha&lt;/a&gt; and just save myself the time. Check this out:&lt;/p&gt;
+
+&lt;p&gt;Using Flexmock (and my custom method):&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;test_process_exit&lt;/span&gt;
+    &lt;span class="ident"&gt;delegate_methods_to_mock!&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="constant"&gt;RailsFCGIHandler&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="symbol"&gt;:close_connection&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+      &lt;span class="ident"&gt;fcgi&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;flexmock&lt;/span&gt;&lt;span class="punct"&gt;()&lt;/span&gt;
+      &lt;span class="ident"&gt;fcgi&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;should_receive&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:close_connection&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+      &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;mock&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;fcgi&lt;/span&gt;
+      &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;stubs&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:when_ready&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;returns&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:exit&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+      &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;process!&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It works but it&amp;#8217;s none too pretty. Flexmock people, if there&amp;#8217;s a better way speak up.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s the equivalent using Mocha:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;  &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;test_process_exit&lt;/span&gt;
+    &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;expects&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:close_connection&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;stubs&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:when_ready&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;returns&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="symbol"&gt;:exit&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="attribute"&gt;@handler&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;process!&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I can place expectations directly on my object (even though I didn&amp;#8217;t create it as a mock) and it takes care of it for me. That is *so* much clearer and I&amp;#8217;ve saved 3 lines that didn&amp;#8217;t tell me anything new about my test. I think I&amp;#8217;m in love.&lt;/p&gt;</description>
+      <pubDate>Fri, 01 Sep 2006 14:18:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:0683787e-3de1-43f5-8fa8-edccf7d8925c</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha</link>
+      <category>Ruby</category>
+      <category>testing</category>
+      <category>sightings</category>
+    </item>
+    <item>
+      <title>"The Flexibility of Mocha" by James Mead</title>
+      <description>&lt;p&gt;Thorsten: I recently overhauled the &lt;a href="http://mocha.rubyforge.org"&gt;Mocha&lt;/a&gt; documentation and there are some helpful pointers in &lt;a href="http://blog.floehopper.org/articles/2006/09/03/new-mocha-docs"&gt;this article&lt;/a&gt;. Let me know if you need some specific help.&lt;/p&gt;</description>
+      <pubDate>Sun, 10 Sep 2006 14:01:17 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:dbbede91-16b9-453b-8fb7-e37d4d20bd2c</guid>
+      <link>http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha#comment-1177</link>
+    </item>
+    <item>
+      <title>"The Flexibility of Mocha" by Jim Weirich</title>
+      <description>&lt;p&gt;Flexmock now allows the stubbing of arbitrary objects as well.  Unless I misunderstand your example, you can now write:&lt;/p&gt;
+
+
+	&lt;pre&gt;&lt;code&gt;def test_process_exit
+  flexstub(@handler)should_receive(:close_connection)
+  flexstub(@handler).should_receive(:when_ready).once.and_return(:exit)
+  @handler.process!
+end&lt;/code&gt;&lt;/pre&gt;
+
+
+	&lt;p&gt;A bit more verbose than the Stubba syntax, but I agree that its a nice capability to have.&lt;/p&gt;</description>
+      <pubDate>Mon, 04 Sep 2006 22:46:45 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:18c5b7d8-779a-4147-b120-9a2f9e268cee</guid>
+      <link>http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha#comment-1116</link>
+    </item>
+    <item>
+      <title>"The Flexibility of Mocha" by Thorsten</title>
+      <description>&lt;p&gt;Mocha looks very cool, but I need some more help. Do you have reference for a tutorial on how to test using mocks and stubs instead of fixtures? Mocha comes with virtually zero documentation, it seems&amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Sat, 02 Sep 2006 03:01:24 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8a642dcf-6353-4b91-b291-f89fb78e7791</guid>
+      <link>http://glu.ttono.us/articles/2006/09/01/the-flexibility-of-mocha#comment-1099</link>
+    </item>
+  </channel>
+</rss>

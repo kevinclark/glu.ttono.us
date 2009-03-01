@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: SD.rb Meeting Tonight</title>
+    <link>http://glu.ttono.us/articles/2006/09/07/sd-rb-meeting-tonight</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>SD.rb Meeting Tonight</title>
+      <description>&lt;p&gt;If you&amp;#8217;re in San Diego (or even Southern California) we&amp;#8217;d love you to drop by the &lt;a href="http://sdruby.com/sdruby/show/HomePage"&gt;sd.rb&lt;/a&gt; meeting tonight. &lt;a href="http://blog.integralimpressions.com/"&gt;Chris Abad&lt;/a&gt; and I will be talking about RESTful stuff in Rails and Tom Preston-Werner will be debuting his new natural time parsing library, &lt;a href="http://chronic.rubyforge.org/"&gt;Chronic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We have our meetings at the UCSD CSE buildng (room 1202). If you want to drop me an email at kevin dot clark at gmail dot com I&amp;#8217;ll give you my cell in case you get lost.&lt;/p&gt;
+
+&lt;p&gt;I hear OC Ruby may be making a field trip. See their &lt;a href="http://tech.groups.yahoo.com/group/ocruby/message/523"&gt;list&lt;/a&gt; if you want to get in on that. &lt;/p&gt;
+
+&lt;p&gt;Addtionally, several OC Rubyists and SD Rubyists are planning to meet up at Rock Bottom just off campus around 6:15 for dinner. Come hang out.&lt;/p&gt;
+
+&lt;p&gt;If you can&amp;#8217;t make it the &lt;a href="http://podcast.sdruby.com/"&gt;sd.rb podcast&lt;/a&gt; is always an option and I&amp;#8217;m told you should be getting several updates from the last meeting in the next couple days. Keep a look out.&lt;/p&gt;</description>
+      <pubDate>Thu, 07 Sep 2006 13:13:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:f533b796-5de9-4fd2-bdfe-9f5e5b2d9fb4</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/07/sd-rb-meeting-tonight</link>
+      <category>sd.rb</category>
+      <category>sightings</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: assert_select included in core, assert_tag deprecated</title>
+    <link>http://glu.ttono.us/articles/2006/09/03/assert_select-included-in-core-assert_tag-deprecated</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>assert_select included in core, assert_tag deprecated</title>
+      <description>&lt;p&gt;In case you &lt;a href="http://dev.rubyonrails.org/changeset/4929"&gt;missed the changeset&lt;/a&gt;, &lt;a href="http://blog.labnotes.org"&gt;Assaf Arkin&lt;/a&gt;&amp;#8217;s &lt;a href="http://blog.labnotes.org/2006/07/03/assert_select-plugin-for-rails/"&gt;assert_select&lt;/a&gt; has been included in EdgeRails. This officially marks the deprecation of &lt;code&gt;assert_tag&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I think this is a good thing. I always found the syntax of &lt;code&gt;assert_tag&lt;/code&gt; ugly. &lt;code&gt;assert_select&lt;/code&gt; looks to be a fine replacement.&lt;/p&gt;
+
+&lt;p&gt;If you aren&amp;#8217;t running edge, it is &lt;a href="http://blog.labnotes.org/2006/07/03/assert_select-plugin-for-rails/"&gt;available as a plugin&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Sun, 03 Sep 2006 17:23:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:29825f58-87c1-48b2-8fa3-834b9094fa7e</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/09/03/assert_select-included-in-core-assert_tag-deprecated</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

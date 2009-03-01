@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Rails Best Practices, Tips and Tricks</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/207"
+    dc:title="Rails Best Practices, Tips and Tricks"
+    dc:identifier="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks"
+    dc:description="Last week I accepted a job with Mingle.com. The work is exciting (all Rails) and the team is excellent. Because Rails is a young framework, I thought it would be helpful to write up what I consider best practices"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:13-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/207" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Rails Best Practices, Tips and Tricks</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Tue, 07 Feb 2006 01:32:00 GMT">Tue, 07 Feb 2006 01:32:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Last week I accepted a job with <a href="http://mingle.com">Mingle.com</a>. The work is exciting (all Rails) and the team is excellent. </p>
+
+<p>Because Rails is a young framework, I thought it would be helpful to write up what I consider best practices when coding with it both for my new coworkers and the web at large. Here&#8217;s my current draft. Feel free to critique and comment. I&#8217;m very open to suggestions.</p><h3>Testing</h3>
+
+<p>This is <strong>absolutely essential</strong>. Rails makes writing unit and functional tests incredibly easy and testing should be employed at all times. Positive and negative testing should be employed: the first to verify that the application does what it is supposed to when the proper variables are passed to the correct action and then second to verify that when incorrect variables are passed the prefered behavior occurs.</p>
+
+<h4>Unit Testing</h4>
+
+<p>As a general rule, unit testing should test any validation in models as well as any added methods in those models. </p>
+
+<p>For example, if I have a <code>User</code> model which <code>validates_presence_of</code> first_name and last_name fields as well as a method <code>fullname</code> which combines the two, I might have test cases <code>test_validates_names</code> and <code>test_fullname</code> which would test that the model worked as it was intended to.</p>
+
+<h4>Functional Testing</h4>
+
+<p>Functional testing is used to test controllers. As a rule, there should be atleast one testcase for each action and positive and negative testing should be employed. This means that if I have an action <code>create</code> in my <code>PostsController</code> then there should be  <code>test_create</code> and <code>test_bad_create</code> methods defined in my functional tests which do positive and negative testing. This does not mean there should be only two tests for each action. If there are exceptional cases beyond a simple good and bad, proper testing should cover those cases.</p>
+
+<h4>Helpful Reading</h4>
+
+<ul>
+<li><p><a href="http://manuals.rubyonrails.com/read/book/5">A Guide To Testing The Rails</a></p></li>
+<li><p>Agile Web Development With Rails Chapter 12</p></li>
+</ul>
+
+<h3>Migrations</h3>
+
+<p>Migrations mean never having to say you&#8217;re sorry because you nuked the database. They allow for database agnostic schemas which means you can develop locally on SQLite and deploy on MySQL without a problem. They&#8217;re cleaner (and easier) than writing your own schemas custom and should be used whenever possible.</p>
+
+<p><strong>NEVER EVER EVER modify schema.rb. It is a reflection of the database. Migrations should be used to move this forward. If you don&#8217;t use migrations and instead modify schema.rb, things will break and people will be unhappy.</strong></p>
+
+<p><em>Note</em>: You should always run svn update before generating a migration so you don&#8217;t have prefix collisions (two number 4s for example).</p>
+
+<h4>Helpful Reading</h4>
+
+<ul>
+<li><p><a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a></p></li>
+<li><p><a href="http://jamis.jamisbuck.org/articles/2005/09/27/getting-started-with-activerecord-migrations">Getting Started With ActiveRecord Migrations</a></p></li>
+</ul>
+
+<h3>SQLite</h3>
+
+<p>SQLite is an SQL engine which runs in a single file rather than a server. It is (in general) as fast or faster than MySQL and is excellent for development and testing. In fact, it is possible to run a database completely out of memory which speeds up tests significantly. With the advent of migrations, it makes sense to use SQLite for testing as there is no extra work to deploy on MySQL.</p>
+
+<h3>DRY: Don&#8217;t Repeat Yourself</h3>
+
+<p>The main idea of DRY is that if code which is repeated is extracted to a helper or function, you only have one place to look for (and edit) your code if and when something goes wrong. If you find that similar code is used in several places, you may want to look into extracting that code to a helper function or partial.</p>
+
+<h4>Helpful Reading</h4>
+
+<ul>
+<li><p><a href="http://api.rubyonrails.org/classes/ActionController/Base.html#M000178">Rendering partials in the Rails API</a></p></li>
+<li><p>Refactoring by Martin Fowler</p></li>
+</ul>
+
+<h3>Naming Conventions</h3>
+
+<p>Don&#8217;t use abbreviations, especially in database column names. It should be immediately obvious what the column is for (or atleast what the name means) when looking at the name. These are not the days of C, we don&#8217;t need to conserve space with our variable names. Additionally, Rails error handling automatically knows how to &#8220;humanize&#8221; column names, so when you use a well described name you get to work less on outputting errors.</p>
+
+<p>If names are too long, try to think of another word or phrase that means the same thing, but is immediately obvious.</p>
+
+<h3>Source Control (Subversion)</h3>
+
+<p>Some sort of source control should be used at all times. This allows for easy roll back if something goes wrong as well as the ability to refer back to old code if needed. Rails has certain files which should not be included in a source control repository, so please refer to the <a href="http://wiki.rubyonrails.org/rails/pages/HowtoUseRailsWithSubversion">wiki page</a> when preparing the initial import.</p>
+
+<h4>Helpful Reading</h4>
+
+<ul>
+<li><a href="http://wiki.rubyonrails.org/rails/pages/HowtoUseRailsWithSubversion">How To Use Rails With Subversion</a></li>
+</ul>
+
+<h3>Authentication Systems</h3>
+
+<p>Several authentication modules have been written for Rails, but some are better at some things and some are better than others.</p>
+
+<h4>acts_as_authenticated</h4>
+
+<p>This should be the prefered authentication plugin. It is easily installed via <code>script/plugin</code>, is easily extendible and can handle all issues of the other authentication modules. Additionally, the testing code is excellent which makes it easy to modify.</p>
+
+<h4>login_generator</h4>
+
+<p><code>login_generator</code> is the original login generator gem written by Tobias Luetke. The downside is that there is a bug which scrambles the password if you save an already existing user. It should not be used for this reason. It is replaced and superceded by acts_as_authenticated.</p>
+
+<h4>SaltedHashLoginGenerator</h4>
+
+<p>This was a first attempt at created a salted login generator which could reset passwords and do activation. It has since been extracted into login_engine. It is in general bloated and hard to modify. It should be avoided.</p>
+
+<h4>login_engine</h4>
+
+<p>login_engine is the extraction of SaltedHashLoginGenerator, and as such, has the disadvantages that SaltedHash has. Additionally, it uses the Rails Engines system which is designed for drop in use. In general, applications need customization. If you need more than simple modification of an authentication system, this should be avoided.</p>
+
+<h3>On Scaffolding</h3>
+
+<p>Scaffolding can be a time saver or a crutch. When using scaffolding, make sure to understand exactly what the code is doing and why. Once that happens you can generally write the code faster without using scaffolding as there are almost always changes to each section that scaffolding provides.</p>
+
+<h3>Suggested Reading (in General)</h3>
+
+<ul>
+<li><p>The Pragmatic Programmer by Dave Thomas and Andy Hunt</p></li>
+<li><p>Refactoring by Martin Fowler</p></li>
+<li><p>Agile Web Development with Rails by Dave Thomas and David Heinemeier Hannson</p></li>
+<li><p>Programming Ruby by Dave Thomas, with Chad Fowler and Andy Hunt</p></li>
+</ul>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks#comments">17 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/06/rails-best-practices-tips-and-tricks#trackbacks">3 trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-208"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_208'); }"  onmouseout="Element.hide('admin_comment_208');" >
+  <div id="admin_comment_208" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/208', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-208&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/208" class="admintools">edit</a></div>
+  <a name="comment-208"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://technomancy.us">Phil</a></strong> </cite> said about 4 hours later:<br />
+  <p>I am always surprised that I don&#8217;t see more people suggesting use of SQLite in development environments&#8212;it just seems like a no-brainer to me.</p>
+
+
+	<p>One thing that would help is to explain exactly which gems are necessary, since the first time it can be a little confusing to choose between sqlite, sqlite3, sqlite3-ruby and sqlite-ruby. (I think you&#8217;re supposed to choose the latest version of sqlite3-ruby, but I&#8217;m not 100% sure.)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="208";
+//--></script>
+<!-- mmc mmid:208 mmdate:2006-02-07 00:07:35 mmauthor:Phil -->
+</li>
+<li id="comment-209"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_209'); }"  onmouseout="Element.hide('admin_comment_209');" >
+  <div id="admin_comment_209" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/209', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-209&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/209" class="admintools">edit</a></div>
+  <a name="comment-209"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Luke Redpath</strong> </cite> said about 10 hours later:<br />
+  <p>One of the mistakes I think Rails makes is its reference to &#8220;functional&#8221; tests when they are in reality, nothing more than unit tests for controllers/actions.</p>
+
+
+	<p>A better choice for real acceptance tests that test the application, not the code, is Selenium.</p>
+
+
+	<p>Now there is this:
+<a>http://andthennothing.net/archives/2006/02/05/selenium-on-rails</a></p>
+
+
+	<p>Using Selenium is easy.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="209";
+//--></script>
+<!-- mmc mmid:209 mmdate:2006-02-07 07:00:34 mmauthor:Luke Redpath -->
+</li>
+<li id="comment-210"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_210'); }"  onmouseout="Element.hide('admin_comment_210');" >
+  <div id="admin_comment_210" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/210', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-210&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/210" class="admintools">edit</a></div>
+  <a name="comment-210"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Luke Redpath</strong> </cite> said about 11 hours later:<br />
+  <p>Another hint worth mentioning is refactor those tests as well as the production code.</p>
+
+
+	<p>You mention having at least one testcase per controller action, but I think a better way of looking at things is to have one testcase per fixture, with individual test methods for testing specific things.</p>
+
+
+	<p>For instance, to use an example by Dave Astels, you are writing a piece of software that is essentially a movie library. You have a movie container class called MovieList.</p>
+
+
+	<p>The first testcase would be an empty movie list. So your first testcase would probably be something like:</p>
+
+
+	<p>class EmptyMovieList &lt; Test::Unit::TestCase
+  def setup
+    @list = MovieList.new
+  end
+end</p>
+
+
+	<pre><code>def test_is_empty
+  assert @list.empty?
+end</code></pre>
+
+
+	<ol>
+	<li>other test methods</li>
+	</ol>
+
+
+	<p>You would then have another testcase, OneMovieList, then ManyMovieList (this is probably a suitable amount of testcases at this point). Another cool thing about this form is that your test cases and test methods can read like specifications&#8230;&#8221;EmptyMovieList&#8230;is empty&#8221;. Which leads me on to my next point&#8230;look into BDD instead of TDD, and rSpec:</p>
+
+
+	<p><a>http://rspec.rubyforge.org/</a>
+<a>http://blog.daveastels.com/</a>?p=53</p>
+
+
+	<p>So how do I translate the above into the Rails context? Lets say we have a blog controller with a post action. Two testcases immediately spring to mind. ValidPostTest and InvalidPostTest. I can&#8217;t see any need to be more specific than that&#8230;the controller should only care whether the post is valid or invalid and handle with an appropriate response. The specifics of why a post may or may not be invalid is down to the model and such finely grained tests (say, post without a title, post without a body etc.) form your model unit tests.</p>
+
+
+	<p>Hope this helps!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="210";
+//--></script>
+<!-- mmc mmid:210 mmdate:2006-02-07 07:11:10 mmauthor:Luke Redpath -->
+</li>
+<li id="comment-211"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_211'); }"  onmouseout="Element.hide('admin_comment_211');" >
+  <div id="admin_comment_211" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/211', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-211&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/211" class="admintools">edit</a></div>
+  <a name="comment-211"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Luke Redpath</strong> </cite> said about 11 hours later:<br />
+  <p>Um, that code again&#8230;;)</p>
+
+
+	<p><a>http://pastebin.com/543128</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="211";
+//--></script>
+<!-- mmc mmid:211 mmdate:2006-02-07 07:14:23 mmauthor:Luke Redpath -->
+</li>
+<li id="comment-212"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_212'); }"  onmouseout="Element.hide('admin_comment_212');" >
+  <div id="admin_comment_212" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/212', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-212&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/212" class="admintools">edit</a></div>
+  <a name="comment-212"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Mike Pence</strong> </cite> said about 13 hours later:<br />
+  <p>Dude! Congratulations on the new gig! Sweet!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="212";
+//--></script>
+<!-- mmc mmid:212 mmdate:2006-02-07 09:56:57 mmauthor:Mike Pence -->
+</li>
+<li id="comment-214" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_214'); }"  onmouseout="Element.hide('admin_comment_214');" >
+  <div id="admin_comment_214" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/214', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-214&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/214" class="admintools">edit</a></div>
+  <a name="comment-214"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 16 hours later:<br />
+  <p>Luke: Great comments. Selenium looks really exciting and I&#8217;m looking to play with it in the near future.</p>
+
+
+	<p>Keep it up guys, lets hear some more of what you consider best practices. What am I missing?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="214";
+//--></script>
+<!-- mmc mmid:214 mmdate:2006-02-07 12:44:47 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-215"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_215'); }"  onmouseout="Element.hide('admin_comment_215');" >
+  <div id="admin_comment_215" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/215', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-215&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/215" class="admintools">edit</a></div>
+  <a name="comment-215"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Dave Welton</strong> </cite> said about 20 hours later:<br />
+  <p>One of the things that is driving rails uptake is that it just encapsulates a lot of good ways of doing things.</p>
+
+
+	<p>It would be nice if there were one good way of doing authentication/logins &#8211; if there are several, new users like myself (who are, of coures, the least well placed to actually judge) are left wondering &#8220;which is best?&#8221;.  Hopefully the Rails guys will pick one, make sure it really is the best by investing some time in it, and include it.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="215";
+//--></script>
+<!-- mmc mmid:215 mmdate:2006-02-07 16:21:24 mmauthor:Dave Welton -->
+</li>
+<li id="comment-225"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_225'); }"  onmouseout="Element.hide('admin_comment_225');" >
+  <div id="admin_comment_225" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/225', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-225&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/225" class="admintools">edit</a></div>
+  <a name="comment-225"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Alex</strong> </cite> said 6 days later:<br />
+  <p>In reference to Dave Welton&#8217;s comments:</p>
+
+
+	<p>I think the problem is that &#8220;which is best&#8221; is very dependent on the specific requirements of the application.</p>
+
+
+	<p>For example, some applications will simply require that a user be logged in before they can use the application, others will have different levels of access and others may require fine grain control over permissions to perform tasks and access specific records.</p>
+
+
+	<p>The onyl way to fit every eventuality in to a &#8220;which is best&#8221; scenario is to have a solution that can handle every eventuality and yet be rediculously simple to implement for the more basic examples.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="225";
+//--></script>
+<!-- mmc mmid:225 mmdate:2006-02-13 10:30:07 mmauthor:Alex -->
+</li>
+<li id="comment-226"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_226'); }"  onmouseout="Element.hide('admin_comment_226');" >
+  <div id="admin_comment_226" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/226', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-226&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/226" class="admintools">edit</a></div>
+  <a name="comment-226"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 6 days later:<br />
+  <p>Dave:
+I agree, it would be nice to have a &#8220;best&#8221; authentication plugin, but it still wouldn&#8217;t belong in trunk ;) It&#8217;s too specific.</p>
+
+
+	<p>Alex:
+As for finding the which is best, I agree, it is entirely application and need specific. I suggest acts_as_authenticated because, in my experience, it is the easiest to modify to fill my needs.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="226";
+//--></script>
+<!-- mmc mmid:226 mmdate:2006-02-13 12:43:30 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-228"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_228'); }"  onmouseout="Element.hide('admin_comment_228');" >
+  <div id="admin_comment_228" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/228', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-228&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/228" class="admintools">edit</a></div>
+  <a name="comment-228"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>matt</strong> </cite> said 7 days later:<br />
+  <p>I see people come to Rails from all sorts of other languages, all of them with their own format conventions.  Ruby goes to great length to be readable, and as a result makes it easy to be non-uniform.  Do you put () around every set of method attributes?</p>
+
+
+	<p>Is there a good Ruby document around that tries to establish coding guidelines?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="228";
+//--></script>
+<!-- mmc mmid:228 mmdate:2006-02-14 13:51:04 mmauthor:matt -->
+</li>
+<li id="comment-233" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_233'); }"  onmouseout="Element.hide('admin_comment_233');" >
+  <div id="admin_comment_233" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/233', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-233&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/233" class="admintools">edit</a></div>
+  <a name="comment-233"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 7 days later:<br />
+  <p>Matt: The question of parenthesis really goes coder to coder. () aren&#8217;t needed, but the general rule is that if there can be confusing, use parenthesis.</p>
+
+
+eg.
+<pre><code>
+puts "Hi" # Doesn't really need parenthesis
+
+# vs
+
+render :text =&gt; h("unsafe string")
+# probably get a parse error without parenthesis.. 
+# what should h be interpreted as without them?
+</code></pre>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="233";
+//--></script>
+<!-- mmc mmid:233 mmdate:2006-02-14 18:09:11 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-256"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_256'); }"  onmouseout="Element.hide('admin_comment_256');" >
+  <div id="admin_comment_256" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/256', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-256&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/256" class="admintools">edit</a></div>
+  <a name="comment-256"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Rich</strong> </cite> said 25 days later:<br />
+  <p>Has anyone else tried using the latest release of ModelSecurity?</p>
+
+
+	<p>If so, have you tried using it together with acts_as_authenticated?</p>
+
+
+	<p>The design and usage of ModelSecurity looks like it deserves mention as a best practice for Rails.</p>
+
+
+	<p>Home</p>
+
+
+	<p><a>http://perens.com/FreeSoftware/ModelSecurity/</a></p>
+
+
+	<p>Tutorial</p>
+
+
+	<p><a>http://perens.com/FreeSoftware/ModelSecurity/Tutorial.html</a></p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="256";
+//--></script>
+<!-- mmc mmid:256 mmdate:2006-03-04 17:44:56 mmauthor:Rich -->
+</li>
+<li id="comment-264"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_264'); }"  onmouseout="Element.hide('admin_comment_264');" >
+  <div id="admin_comment_264" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/264', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-264&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/264" class="admintools">edit</a></div>
+  <a name="comment-264"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Carter</strong> </cite> said 31 days later:<br />
+  <p>re: authentication</p>
+
+
+	<p>The argument that there are too many different needs for pluggin X for pluggin X to be included in the trunk could really apply to just about any pluggin.</p>
+
+
+	<p>I don&#8217;t think it would be at all unreasonable to have a standard login / session authentication engine.</p>
+
+
+	<p>By default it could be a standard hashed password database.  It could have a lot more options under the hood (that is, if you need more than a &#8220;standard&#8221; authenticator, you should be working at more than a beginner level anyway) and this would do nothing to prevent other authentication engines from being used for even more specialized uses.</p>
+
+
+	<p>Authentication is a big problem, and people are right to be wary of cookie-cutter solutions.  But there should be an included and standard way of doing simple low-priority-security authentication for things like setting up a simple email-validated account for a public messageboard and other such &#8220;shake n&#8217; bake&#8221; applications.</p>
+
+
+	<p>The whole point of Rails seems to be to make simple applications easy to write well, and make big applications easy to structure well.  A standard authenticator seems to me to be totally in line with this goal.</p>
+
+
+	<p>Personally I&#8217;ve been using OpenID for my applications.  I&#8217;m tired of having to register and reregister for every web application I use, so I&#8217;m hoping to see this standard catch on, also, an openID consumer is trivially easy to implement, and it takes a lot of hassle and responsibility out of my hands.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="264";
+//--></script>
+<!-- mmc mmid:264 mmdate:2006-03-10 17:03:33 mmauthor:Carter -->
+</li>
+<li id="comment-265" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_265'); }"  onmouseout="Element.hide('admin_comment_265');" >
+  <div id="admin_comment_265" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/265', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-265&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/265" class="admintools">edit</a></div>
+  <a name="comment-265"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 32 days later:<br />
+  <p>Carter:</p>
+
+
+	<p>&#8220;The argument that there are too many different needs for pluggin X for pluggin X to be included in the trunk could really apply to just about any pluggin.&#8221;</p>
+
+
+	<p>I agree. This is why plugins aren&#8217;t generally included in the trunk. They are plugins.</p>
+
+
+	<p>I don&#8217;t think it&#8217;s unreasonable to have a standard login engine. I specifically say in this document which one I think should be standard. This, however, doesn&#8217;t mean I think it should be included in the trunk. It has the same problems as pagination does in that it is too specific for use out of the box as you&#8217;ll need to modify models and pages and that gets into configuration&#8212;something that Rails avoids like the plague. Look at scaffolding. It is there, but you never go live with scaffolding, it is too specific. The whole point of plugins is so you can pick the one that works best for you and modify if you need. Login engines don&#8217;t belong in core. Period.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="265";
+//--></script>
+<!-- mmc mmid:265 mmdate:2006-03-10 20:53:36 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-275"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_275'); }"  onmouseout="Element.hide('admin_comment_275');" >
+  <div id="admin_comment_275" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/275', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-275&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/275" class="admintools">edit</a></div>
+  <a name="comment-275"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Jordi Pradel</strong> </cite> said 35 days later:<br />
+  <p>Great article!<br>
+I would add Robert C. Martin&#8217;s &#8220;Agile Software Development&#8221; as a suggested reading. It has a great chapter on DRY.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="275";
+//--></script>
+<!-- mmc mmid:275 mmdate:2006-03-14 11:56:21 mmauthor:Jordi Pradel -->
+</li>
+<li id="comment-465"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_465'); }"  onmouseout="Element.hide('admin_comment_465');" >
+  <div id="admin_comment_465" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/465', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-465&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/465" class="admintools">edit</a></div>
+  <a name="comment-465"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=0fa8746ae7a5a4b6bafa06386d4d20cc&amp;size=60" />
+  <cite><strong>Joe</strong> </cite> said 64 days later:<br />
+  <p>I just tried signing up an existing user with LoginGenerator and got a &#8220;Login has already been taken&#8221; validation error. Is that what you mean by &#8220;save an already existing user&#8221; scrambles the password?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="465";
+//--></script>
+<!-- mmc mmid:465 mmdate:2006-04-11 21:37:30 mmauthor:Joe -->
+</li>
+<li id="comment-486"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_486'); }"  onmouseout="Element.hide('admin_comment_486');" >
+  <div id="admin_comment_486" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/486', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-486&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/207/edit/486" class="admintools">edit</a></div>
+  <a name="comment-486"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Josh</strong> </cite> said 65 days later:<br />
+  <p>I&#8217;d be curious to hear your take on ActiveRBAC as an authentication system.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="486";
+//--></script>
+<!-- mmc mmid:486 mmdate:2006-04-13 11:29:30 mmauthor:Josh -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/207</span>
+    </p>
+  <ol class="trackback-list" id="trackbackList"><li id="trackback-284" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_284'); }"  onmouseout="Element.hide('admin_trackback_284');" >
+  <div id="admin_trackback_284" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/284', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-284&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/207/edit/284" class="admintools">edit</a></div>
+  <a name="trackback-284"></a>
+  From <strong>nano RAILS: development, testing and hosting tidbits</strong><br />
+  <a href="http://blog.nanorails.com/articles/2006/03/14/best-practices" rel="nofollow">Best practices</a><br/>
+  glu.ttono.us has posted an excellent summary of his take on Rails best practices. And I think I need to do some reading, that the second time in as many days that someone mentions Refactoring by Martin Fowler, and this has me intrigued. My top fav...
+</li>
+<li id="trackback-394" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_394'); }"  onmouseout="Element.hide('admin_trackback_394');" >
+  <div id="admin_trackback_394" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/394', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-394&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/207/edit/394" class="admintools">edit</a></div>
+  <a name="trackback-394"></a>
+  From <strong>menearailes.com</strong><br />
+  <a href="http://www.shinkitune.com/menearailes/story.php?id=27" rel="nofollow">Buenas prácticas con Rails.</a><br/>
+  Buen artículo con algunos consejos para programar con Rails. En inglés.
+</li>
+<li id="trackback-501" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_501'); }"  onmouseout="Element.hide('admin_trackback_501');" >
+  <div id="admin_trackback_501" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/501', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-501&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/207/edit/501" class="admintools">edit</a></div>
+  <a name="trackback-501"></a>
+  From <strong>Rails Tips</strong><br />
+  <a href="http://railstips.org/tip/44" rel="nofollow">Rails best practices</a><br/>
+  Kevin Clark shares with us [some of the important things he&#8217;s learned while developing in Rails](http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks). > Because Rails is a young framework, I thought it would be helpf...
+</li>
+</ol>
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/207/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/207" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="207";
+//--></script>
+<!-- mmp mmid:207 mmdate:2006-02-06 20:32:00 mmurl:/articles/2006/02/06/rails-best-practices-tips-and-tricks mmtitle:Rails Best Practices, Tips and Tricks -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

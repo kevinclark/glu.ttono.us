@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: RPM Version Comparison Revisited</title>
+    <link>http://glu.ttono.us/articles/2007/09/21/rpm-version-comparison-revisited</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>RPM Version Comparison Revisited</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="comment"&gt;# Equivalent to rpmvercmp in librpm, eccentricities and all&lt;/span&gt;
+&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;&amp;lt;=&amp;gt;&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="number"&gt;0&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt; &lt;span class="punct"&gt;==&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt; &lt;span class="keyword"&gt;and&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt; &lt;span class="punct"&gt;==&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;
+
+  &lt;span class="ident"&gt;versions&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(/&lt;/span&gt;&lt;span class="regex"&gt;[^[:alnum:]]&lt;/span&gt;&lt;span class="punct"&gt;/).&lt;/span&gt;&lt;span class="ident"&gt;push&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;
+  &lt;span class="ident"&gt;other_versions&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;version&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;split&lt;/span&gt;&lt;span class="punct"&gt;(/&lt;/span&gt;&lt;span class="regex"&gt;[^[:alnum:]]&lt;/span&gt;&lt;span class="punct"&gt;/).&lt;/span&gt;&lt;span class="ident"&gt;push&lt;/span&gt; &lt;span class="ident"&gt;other&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;rel&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;return&lt;/span&gt;  &lt;span class="number"&gt;1&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt; &lt;span class="punct"&gt;&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt;
+  &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt; &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt;
+
+  &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;size&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;times&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+    &lt;span class="keyword"&gt;if&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;=~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;=~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt;
+      &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;])&lt;/span&gt;
+    &lt;span class="keyword"&gt;elsif&lt;/span&gt; &lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;!~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt; &lt;span class="punct"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt; &lt;span class="punct"&gt;!~&lt;/span&gt; &lt;span class="punct"&gt;/&lt;/span&gt;&lt;span class="regex"&gt;[^&lt;span class="escape"&gt;\d&lt;/span&gt;]&lt;/span&gt;&lt;span class="punct"&gt;/&lt;/span&gt;
+      &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="ident"&gt;other_versions&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;n&lt;/span&gt;&lt;span class="punct"&gt;].&lt;/span&gt;&lt;span class="ident"&gt;to_i&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="keyword"&gt;else&lt;/span&gt;
+      &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+    &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="ident"&gt;comparison&lt;/span&gt; &lt;span class="keyword"&gt;unless&lt;/span&gt; &lt;span class="ident"&gt;comparison&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;zero?&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+  &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="number"&gt;0&lt;/span&gt; 
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Original version sort was &lt;a href="http://glu.ttono.us/articles/2007/03/16/sorting-versions-is-hard"&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Fri, 21 Sep 2007 16:21:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:43a17462-5ca5-474a-91bf-346166a4be88</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/09/21/rpm-version-comparison-revisited</link>
+      <category>Ruby</category>
+      <category>Hacks</category>
+    </item>
+  </channel>
+</rss>

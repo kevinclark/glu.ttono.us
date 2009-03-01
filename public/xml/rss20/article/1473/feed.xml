@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Snippet: SVN Info Parsing with YAML</title>
+    <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Snippet: SVN Info Parsing with YAML</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;yaml&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;pp&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;pp&lt;/span&gt; &lt;span class="constant"&gt;YAML&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;load&lt;/span&gt;&lt;span class="punct"&gt;(`&lt;/span&gt;&lt;span class="ident"&gt;svn&lt;/span&gt; &lt;span class="ident"&gt;info`&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="comment"&gt;# =&amp;gt;&lt;/span&gt;
+&lt;span class="comment"&gt;# {&amp;quot;Node Kind&amp;quot;=&amp;gt;&amp;quot;directory&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Last Changed Author&amp;quot;=&amp;gt;&amp;quot;nzkoz&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;URL&amp;quot;=&amp;gt;&amp;quot;http://dev.rubyonrails.org/svn/rails/trunk&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Schedule&amp;quot;=&amp;gt;&amp;quot;normal&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Last Changed Rev&amp;quot;=&amp;gt;7332,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Repository UUID&amp;quot;=&amp;gt;&amp;quot;5ecf4fe2-1ee6-0310-87b1-e25e094e27de&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Repository Root&amp;quot;=&amp;gt;&amp;quot;http://dev.rubyonrails.org/svn/rails&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Last Changed Date&amp;quot;=&amp;gt;&amp;quot;2007-08-16 18:11:11 -0700 (Thu, 16 Aug 2007)&amp;quot;,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Revision&amp;quot;=&amp;gt;7340,&lt;/span&gt;
+&lt;span class="comment"&gt;#  &amp;quot;Path&amp;quot;=&amp;gt;&amp;quot;.&amp;quot;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <pubDate>Fri, 17 Aug 2007 19:44:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:446d03ad-5b42-4996-9308-ddfccb87bef6</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml</link>
+      <category>Ruby</category>
+    </item>
+    <item>
+      <title>"Snippet: SVN Info Parsing with YAML" by Evgeny</title>
+      <description>&lt;pre&gt;
+&lt;code&gt;
+require 'pp'
+pp Marshal.load(`p4 -R info`) # =&amp;gt;
+
+# {"userName"=&amp;gt;"evgeny",
+#  "serverLicense"=&amp;gt;"BigCorp 371 users (support ends 2010/07/24) ",
+# "clientHost"=&amp;gt;"mysuperpc",
+# "clientAddress"=&amp;gt;"10.0.0.3:23456",
+# "code"=&amp;gt;"stat",
+# "monitor"=&amp;gt;"enabled",
+# "clientName"=&amp;gt;"evgeny-depot",
+# "serverRoot"=&amp;gt;"/perforce/p4d_server",
+# "password"=&amp;gt;"enabled",
+# "serverVersion"=&amp;gt;"P4D/SOLARIS10SPARC/2007.2/123611 (2007/05/31)",
+# "serverDate"=&amp;gt;"2007/09/02 20:01:21 +0300 IDT",
+# "serverAddress"=&amp;gt;"perforce.bigcorp.com:1667"}
+&lt;/code&gt;
+&lt;/pre&gt;</description>
+      <pubDate>Sun, 02 Sep 2007 13:07:28 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:c4365721-8516-493e-aace-3679660605f7</guid>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml#comment-1479</link>
+    </item>
+    <item>
+      <title>"Snippet: SVN Info Parsing with YAML" by gui</title>
+      <description>&lt;p&gt;hpricot version:&lt;/p&gt;
+
+
+	&lt;p&gt;Hpricot::XML&lt;/p&gt;
+
+
+	&lt;p&gt;regards&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Aug 2007 12:12:36 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:30657610-405f-4bc8-85aa-65552e757d8a</guid>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml#comment-1478</link>
+    </item>
+    <item>
+      <title>"Snippet: SVN Info Parsing with YAML" by javier ramírez</title>
+      <description>&lt;p&gt;That&amp;#8217;s a nice one. But svn info output depends on the machine&amp;#8217;s locale, so you could run into potential errors when trying to use the parsed info.&lt;/p&gt;
+
+
+	&lt;p&gt;I prefer to take advantage of the&amp;#8212;xml option you can pass to every svn command use XmlSimple.&lt;/p&gt;
+
+
+	&lt;p&gt;The XML nodes keep the name in English no matter what your locale is.&lt;/p&gt;
+
+
+&lt;pre&gt;
+&amp;gt;&amp;gt; pp XmlSimple.xml_in(`svn info --xml`)
+{"entry"=&amp;gt;
+  [{"commit"=&amp;gt;
+     [{"date"=&amp;gt;["2007-06-25T13:06:18.342675Z"],
+       "author"=&amp;gt;["jramirez"],
+       "revision"=&amp;gt;"278"}],
+    "kind"=&amp;gt;"dir",
+    "repository"=&amp;gt;
+     [{"uuid"=&amp;gt;["ef259510-392e-0410-90f3-ae674396ba6e"],
+       "root"=&amp;gt;["http://svn_aspgems/jramirez"]}],
+    "wc-info"=&amp;gt;[{"schedule"=&amp;gt;["normal"]}],
+    "url"=&amp;gt;["http://svn_aspgems/jramirez/trunk"],
+    "revision"=&amp;gt;"278",
+    "path"=&amp;gt;"."}]}
+&lt;/pre&gt;
+
+	&lt;p&gt;regards,&lt;/p&gt;
+
+
+	&lt;p&gt;j&lt;/p&gt;</description>
+      <pubDate>Sat, 18 Aug 2007 08:20:44 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:33949177-9020-4879-8248-bf7118c3fcca</guid>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml#comment-1477</link>
+    </item>
+    <item>
+      <title>"Snippet: SVN Info Parsing with YAML" by mikkel</title>
+      <description>&lt;p&gt;is nice
+- Borat&lt;/p&gt;</description>
+      <pubDate>Sat, 18 Aug 2007 02:50:50 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:56ab944e-7c85-4930-9e2d-e8d6603006de</guid>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml#comment-1476</link>
+    </item>
+    <item>
+      <title>"Snippet: SVN Info Parsing with YAML" by mike</title>
+      <description>&lt;p&gt;Nice catch!&lt;/p&gt;</description>
+      <pubDate>Fri, 17 Aug 2007 22:48:31 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:008c4abf-514e-42db-a8f0-c20076173930</guid>
+      <link>http://glu.ttono.us/articles/2007/08/17/snippet-svn-info-parsing-with-yaml#comment-1475</link>
+    </item>
+  </channel>
+</rss>

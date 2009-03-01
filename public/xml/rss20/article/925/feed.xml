@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: ARTS Gets Regex Content Matching</title>
+    <link>http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>ARTS Gets Regex Content Matching</title>
+      <description>&lt;p&gt;No guide today (it&amp;#8217;s finals and I&amp;#8217;m exausted), but as of today &lt;a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts"&gt;ARTS&lt;/a&gt; can match regular expressions against content.&lt;/p&gt;
+
+&lt;p&gt;This means that instead of this showing up in our tests:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;content = &amp;lt;&amp;lt;RJS_CONTENT
+&amp;lt;div id=&amp;quot;post_#{assigns(:post).id}&amp;quot;&amp;gt;
+  &amp;lt;h2&amp;gt;#{assigns(:post).title}&amp;lt;/h2&amp;gt;
+  &amp;lt;p&amp;gt;#{assigns(:post).body}&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+RJS_CONTENT
+
+assert_rjs :insert_html, :bottom, 'posts', content.chomp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can do this instead:&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_default "&gt;assert_rjs :insert_html, :bottom, 'posts', Regexp.new(&amp;quot;&amp;lt;h2&amp;gt;#{assigns(:post).title}&amp;lt;/h2&amp;gt;&amp;quot;)
+assert_rjs :insert_html, :bottom, 'posts', Regexp.new(&amp;quot;&amp;lt;p&amp;gt;#{assigns(:post).body}&amp;lt;/p&amp;gt;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It&amp;#8217;s working for assertions on &lt;code&gt;:insert_html&lt;/code&gt;, &lt;code&gt;:replace_html&lt;/code&gt;, and &lt;code&gt;:replace&lt;/code&gt;. If you find bugs, send them my way. kevin dot clark at gmail dot com&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Jun 2006 01:01:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7f2ed8b0-07d7-4101-a05c-5edbf17eaeee</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+    <item>
+      <title>"ARTS Gets Regex Content Matching" by atmos</title>
+      <description>&lt;p&gt;I&amp;#8217;ve found it to have issues w/ multiple page.replace_html calls.  I tend to call them from render :update, and splitting on newlines won&amp;#8217;t cut it for those.  Unless I&amp;#8217;m doing something really wrong.  Other than that I&amp;#8217;m digging the approach.&lt;/p&gt;</description>
+      <pubDate>Fri, 16 Jun 2006 10:56:18 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fe3e7529-6253-4a83-8eaa-0883903dac65</guid>
+      <link>http://glu.ttono.us/articles/2006/06/13/arts-gets-regex-content-matching#comment-930</link>
+    </item>
+  </channel>
+</rss>

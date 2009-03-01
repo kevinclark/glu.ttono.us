@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Server Now a Rails Machine</title>
+    <link>http://glu.ttono.us/articles/2006/08/11/server-now-on-railsmachine</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Server Now a Rails Machine</title>
+      <description>&lt;p&gt;Today I finished moving my blog hosting from &lt;a href="http://www.planetargon.com/"&gt;Planet Argon&lt;/a&gt; to my shiny new &lt;a href="http://railsmachine.com/"&gt;Rails Machine&lt;/a&gt; and upgraded to Typo 4. If you see problems in the feed or display, please do tell me about it. (Comments are on.)&lt;/p&gt;
+
+&lt;p&gt;Planet Argon was great for blog hosting, but shared hosting for Rails applications is a pain. Rails Machine gives me what I need to get several applications running stable and lets me be in control. At the same time the ease of use is amazing. &lt;strong&gt;I&amp;#8217;ve been deploying Rails applications for almost a year and a half now and this is hands down the most simple and effective system I&amp;#8217;ve worked with. Period.&lt;/strong&gt; The support has been stellar as well. If you&amp;#8217;re looking to get out of the shared hosting space I can easily give &lt;a href="http://railsmachine.com/"&gt;Rails Machine&lt;/a&gt; my endorsement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: It&amp;#8217;s easy to say that a group has great service, but in this case I&amp;#8217;m compelled to give an example or two. After a few weeks of service at RM, Brad pinged me on Freenode to ask how things were workin out. When the recent &lt;a href="http://weblog.rubyonrails.com/2006/8/10/rails-1-1-6-backports-and-full-disclosure"&gt;excitement&lt;/a&gt; happened with Rails releases I got emails telling me about it and urging me to update. Earlier today I was struggling with getting &lt;a href="http://irssi.org/"&gt;irssi&lt;/a&gt; installed on my Rails Machine because the CentOS RPM didn&amp;#8217;t like (what I thought was) glibc and the configure script complained too. I just found this in my email:&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;The problem was GLib not glibc. Ha!&lt;/p&gt;
+    
+    &lt;p&gt;Here&amp;#8217;s your fix:
+    yum install ncurses-devel glib-devel&lt;/p&gt;
+    
+    &lt;p&gt;:bradley&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;#8217;s hard not to rave about this.&lt;/p&gt;</description>
+      <pubDate>Fri, 11 Aug 2006 16:16:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7e345b02-d19d-4647-87df-3df30c7d0ce8</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/08/11/server-now-on-railsmachine</link>
+      <category>Rails</category>
+      <category>Reviews</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: GrowlSvnNotifier in the flesh</title>
+    <link>http://glu.ttono.us/articles/2006/02/13/growlsvnnotifier-in-the-flesh</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>GrowlSvnNotifier in the flesh</title>
+      <description>&lt;p&gt;So, I haven&amp;#8217;t had time to figure out the bugs interacting with &lt;a href="http://dnssd.rubyforge.org/wiki/wiki.pl"&gt;DNS-SD&lt;/a&gt; and &lt;a href="http://growl.info/"&gt;Growl&lt;/a&gt;, but I&amp;#8217;ve tested this on a few systems now and it seems to do the job. I&amp;#8217;ve changed the code to look for Bonjour enabled Skype (start it up from the Window-&gt;Bounjour menu on Mac) since we all use it at the office.&lt;/p&gt;
+
+&lt;p&gt;It requires DNS-SD from cvs (it compiles cleanly on everything I&amp;#8217;ve tried it on) and &lt;a href="http://segment7.net/projects/ruby/growl/"&gt;ruby-growl&lt;/a&gt; which is avaliable as a gem. &lt;/p&gt;
+
+&lt;p&gt;Just shove the script in as post-commit in your svn repository and make sure your svn instance has permission to run it. On the client side (Growl) end, enable &amp;#8220;Listen for incomming notifications&amp;#8221; and &amp;#8220;Allow remote application registration&amp;#8221; under Network. Feel free to set a password both in Growl and using the UDP_PASSWORD constant in the script.&lt;/p&gt;
+
+&lt;p&gt;MIT license, no warranty or fault on this end yada yada.&lt;/p&gt;
+
+&lt;p&gt;Feel free to report bugs, problems, and ESPECIALLY success stories here.&lt;/p&gt;
+
+&lt;div class="typocode"&gt;&lt;div class="codetitle"&gt;post-commit&lt;/div&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="comment"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;dnssd&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;rubygems&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;ruby-growl&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+&lt;span class="ident"&gt;require&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;timeout&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+&lt;span class="keyword"&gt;module &lt;/span&gt;&lt;span class="module"&gt;GrowlSvnNotifier&lt;/span&gt;
+  &lt;span class="constant"&gt;BROWSE_TIME&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="number"&gt;5&lt;/span&gt; &lt;span class="comment"&gt;# seconds&lt;/span&gt;
+  &lt;span class="comment"&gt;# Set this to the password configured on growl if you've got one&lt;/span&gt;
+  &lt;span class="constant"&gt;UDP_PASSWORD&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;nil&lt;/span&gt; 
+
+  &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="class"&gt;Notifier&lt;/span&gt;
+    &lt;span class="keyword"&gt;class &lt;/span&gt;&lt;span class="punct"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="constant"&gt;self&lt;/span&gt;
+
+      &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;run&lt;/span&gt;
+        &lt;span class="ident"&gt;commit_message&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; `&lt;span class="ident"&gt;svnlook&lt;/span&gt; &lt;span class="ident"&gt;log&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;r&lt;/span&gt;&lt;span class="comment"&gt;#{ARGV[1]} #{ARGV[0]}`&lt;/span&gt;
+        &lt;span class="ident"&gt;author&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; `&lt;span class="ident"&gt;svnlook&lt;/span&gt; &lt;span class="ident"&gt;author&lt;/span&gt; &lt;span class="punct"&gt;-&lt;/span&gt;&lt;span class="ident"&gt;r&lt;/span&gt;&lt;span class="comment"&gt;#{ARGV[1]} #{ARGV[0]}`&lt;/span&gt;
+        &lt;span class="ident"&gt;find_growl_clients&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;host&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+          &lt;span class="ident"&gt;g&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;Growl&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt; &lt;span class="ident"&gt;host&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;SVN Notifier&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;[&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;SVN Notification&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;],&lt;/span&gt; 
+                              &lt;span class="constant"&gt;nil&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="constant"&gt;UDP_PASSWORD&lt;/span&gt;
+          &lt;span class="ident"&gt;g&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;notify&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;SVN Notification&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Revision #&lt;span class="expr"&gt;#{ARGV[1]}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;,&lt;/span&gt; 
+                    &lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;Commited by &lt;span class="expr"&gt;#{author}&lt;/span&gt;:&lt;span class="escape"&gt;\n&lt;/span&gt;&lt;span class="expr"&gt;#{commit_message}&lt;/span&gt;&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt;
+        &lt;span class="keyword"&gt;end&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+      &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;find_growl_clients&lt;/span&gt;
+        &lt;span class="ident"&gt;hosts&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;[]&lt;/span&gt;
+        &lt;span class="ident"&gt;timeout&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="constant"&gt;BROWSE_TIME&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+          &lt;span class="constant"&gt;DNSSD&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;browse!&lt;/span&gt;&lt;span class="punct"&gt;('&lt;/span&gt;&lt;span class="string"&gt;_skype._tcp&lt;/span&gt;&lt;span class="punct"&gt;')&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+            &lt;span class="ident"&gt;hosts&lt;/span&gt; &lt;span class="punct"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="ident"&gt;resolve_ip&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;name&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;type&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;b&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;domain&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+          &lt;span class="keyword"&gt;end&lt;/span&gt;
+        &lt;span class="keyword"&gt;end&lt;/span&gt;
+      &lt;span class="keyword"&gt;rescue&lt;/span&gt; &lt;span class="constant"&gt;TimeoutError&lt;/span&gt;
+        &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="ident"&gt;hosts&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+      &lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;resolve_ip&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;name&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;type&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;domain&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+        &lt;span class="constant"&gt;DNSSD&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;resolve!&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;name&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;type&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;domain&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;r&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+          &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="ident"&gt;r&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;target&lt;/span&gt;
+        &lt;span class="keyword"&gt;end&lt;/span&gt;
+      &lt;span class="keyword"&gt;end&lt;/span&gt;
+
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;  
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="constant"&gt;GrowlSvnNotifier&lt;/span&gt;&lt;span class="punct"&gt;::&lt;/span&gt;&lt;span class="constant"&gt;Notifier&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;run&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Update&lt;/h3&gt;
+
+&lt;p&gt;Damien Tanner has &lt;a href="http://mongoo.se/articles/2006/02/14/growl-notification-of-svn-commits"&gt;modified the GrowlSvnNotifier for remote use&lt;/a&gt; (and is using it on DreamHost) by rewriting &lt;code&gt;find_growl_clients&lt;/code&gt; to return an array of ip addresses instead of running through and detecting bonjour instances. This is great for static ips as well as remote use. Good stuff.&lt;/p&gt;</description>
+      <pubDate>Mon, 13 Feb 2006 17:06:00 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:4427918e-9fa1-4d4b-8586-1547fd489e88</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/02/13/growlsvnnotifier-in-the-flesh</link>
+      <category>Ruby</category>
+      <category>Hacks</category>
+      <enclosure length="1131" url="http://glu.ttono.us/files/notifier1.rb" type="application/octet-stream"/>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/227</trackback:ping>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Mike Clark - Testing Rails Apps</title>
+    <link>http://glu.ttono.us/articles/2006/06/24/mike-clark-testing-rails-apps</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Mike Clark - Testing Rails Apps</title>
+      <description>&lt;p&gt;Mike Clark is a really fantastic speaker and I feel like he sold testing to a lot of people who weren&amp;#8217;t convinced tonight. I can&amp;#8217;t really do him justice, so you should really take any opportunity to see him. If you weren&amp;#8217;t able to catch his talk, my notes follow after the jump.&lt;/p&gt;</description>
+      <pubDate>Sat, 24 Jun 2006 17:30:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:54e2cc1c-e08b-4053-8197-502f4e949418</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/24/mike-clark-testing-rails-apps</link>
+      <category>Rails</category>
+      <category>testing</category>
+    </item>
+  </channel>
+</rss>

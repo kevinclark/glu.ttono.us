@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Understanding Ruby Symbols</title>
+    <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Understanding Ruby Symbols</title>
+      <description>&lt;p&gt;Update 8/25: This post has been translated into &lt;a href="http://wiki.rubykr.org/show/KoreanDoc_UnderstandingRubySymbols"&gt;korean&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Update 12/12: I found a &lt;a href="http://www.4coders.com/index.php?modulo=contenido&amp;amp;op=detalle&amp;amp;tipo=a&amp;amp;id=37"&gt;spanish translation&lt;/a&gt; today.&lt;/p&gt;
+
+&lt;p&gt;Symbols in ruby are an enigma. We use them, but many don&amp;#8217;t really understand them.&lt;/p&gt;
+
+&lt;h2&gt;So really, what is a symbol?&lt;/h2&gt;
+
+&lt;p&gt;Simply, a symbol is something that you use to represent names and strings. What this boils down to is a way to efficiently have descriptive names while saving the space one would use to generate a string for each naming instance.&lt;/p&gt;
+
+&lt;h2&gt;The Case of Dr. Jones&lt;/h2&gt;
+
+&lt;p&gt;Dr. Jones is a Psycologist. He regularly uses word association tests to diagnose patients and uses ruby to keep track of everything. His first patient, Why, steps up to the plate:&lt;/p&gt;
+
+&lt;pre&gt;
+Dr J: Red
+Why : Ruby
+Dr J: Transportation
+Why : Rails
+Dr J: Chunky
+Why : Bacon
+&lt;/pre&gt;
+
+&lt;p&gt;Dr Jones creates a hash to store his data:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+    why = {"red" =&gt; "ruby", "transportation" =&gt; "rails", "chunky" =&gt; "bacon"}
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Dr. Jones&amp;#8217;s second patient, Bob, turns in his survey results:&lt;/p&gt;
+
+&lt;p&gt;
+&lt;code&gt;
+    bob = {"red" =&gt; "paint", "transportation" =&gt; "car", "chunky" =&gt; "fat"}
+&lt;/code&gt;
+&lt;/p&gt;
+
+&lt;h3&gt;The Problem&lt;/h3&gt;
+
+&lt;p&gt;After running several hundred word association tests, Dr. Jones begins to realize that he&amp;#8217;s running out of memory! On a hunch, Jones runs tests in irb:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+&gt; patient1 = { "ruby" =&gt; "red" }
+&gt; patient2 = { "ruby" =&gt; "programming" }
+&gt; patient1.each_key {|key| puts key.object_id.to_s}
+211006
+&gt; patient2.each_key {|key| puts key.object_id.to_s}
+203536
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Well look at that, each time he creates a hash to store his information, ruby creates a new string object in a different memory location for each key. Fortunately, there&amp;#8217;s an alternative.&lt;/p&gt;
+
+&lt;h3&gt;Symbols to the Rescue&lt;/h3&gt;
+
+&lt;p&gt;Unlike strings, symbols of the same name are initialized and exist in memory only once during a session of ruby. Symbols are most obviously useful when you&amp;#8217;re going to be reusing strings representing something else. Reproducing Dr. Jones&amp;#8217;s tests, we are able to see this directly:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+&gt; patient1 = { :ruby =&gt; "red" }
+&gt; patient2 = { :ruby =&gt; "programming" }
+&gt; patient1.each_key {|key| puts key.object_id.to_s}
+3918094
+&gt; patient2.each_key {|key| puts key.object_id.to_s}
+3918094
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Using symbols, we&amp;#8217;ve used a single memory address to represent the word ruby in our word association tests. Over time, this can save alot of space.&lt;/p&gt;
+
+&lt;h2&gt;So I&amp;#8217;m no shrink, when else will I want to use symbols?&lt;/h2&gt;
+
+&lt;p&gt;Symbols are useful whenever you&amp;#8217;re going to be reusing a word over and over to represent something else, whether its a key in a hash or the method you&amp;#8217;re using in an http query. An example from the latest and greatest web framework &lt;a href=""http://www.rubyonrails.com""&gt;Ruby on Rails&lt;/a&gt; is its use of symbols in routes and links. Rails defines actions within controllers to do things within the framework before rendering a web page, so a link in Rails may look like:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+    link_to("View Article", :controller =&gt; "articles", :action =&gt; "show", :id =&gt; 1)
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;When an application may have hundreds of links, or atleast hundreds of references to different actions and controllers, it is significantly more efficient to use symbols than strings.&lt;/p&gt;
+
+&lt;p&gt;Finally, its important to note that the usefulness of symbols is not restricted to keys in hashes. For example, if one was writing a http client or server they might use get and post several times within their application, and it might be appropriate to use:&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+    do_this if query == :get&lt;br /&gt;
+    ...
+    send_message_to_server(:post,filename)
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Any time a string could be used over and over, a symbol may be a good candidate for replacement.&lt;/p&gt;
+
+&lt;h3&gt;Updates&lt;/h3&gt;
+
+&lt;p&gt;In #ruby-lang on Freenode (irc.freenode.net) Aria and nome presented helpful additions to this article.&lt;/p&gt;
+
+&lt;pre&gt;
+11:58 &lt; Aria&gt; Also, the entirely realistic reasoning for using symbols: If you 
+              are going to refer to a method name, use a symbol. Because /by 
+              defining the method/, the symbol exists anyway.
+
+12:03 &lt; nome&gt; kevinclark: the intention of symbols are for identification of 
+              (user-level, primarily) constructs: a slot in a hash, a method, 
+              an option, etc.
+&lt;/pre&gt;
+
+&lt;p&gt;Also note Aria&amp;#8217;s response to Geoff&amp;#8217;s question in the comments:&lt;/p&gt;
+
+&lt;pre&gt;
+Geoff -
+I'd be interested in knowing exactly how
+much memory 1,000 strings ("red") uses over :red.
+
+And remember, outside of Rails, "red" != :red
+
+Aria - 
+How much memory? 20 bytes per object, plus storage for the data, 3 bytes,
+plus the length storage (4 byes)—so 27,000 bytes or so.
+
+Versus one copy of the entry in the symbol table, which is likely to be just 
+a few bytes (I could check, but I know for certain it’s in the tens, not tens 
+of thousands of bytes range.)
+&lt;/pre&gt;
+
+&lt;p&gt;Jim Weirich notes:&lt;/p&gt;
+
+&lt;pre&gt;
+I (generally) use the following rule on string vs symbols:
+
+(1) If the contents (i.e. the sequence of characters) of the object is important, use a String.
+
+(2) If the identity of the object is important, use a Symbol.
+&lt;/pre&gt;
+
+&lt;p&gt;Reports of errors and omissions are welcome and should be sent to kevin [dot] clark [at] gmail [dot] com &lt;/p&gt;</description>
+      <pubDate>Fri, 19 Aug 2005 18:11:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:5b9c389ff82c5a53a685aec4b7131962</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols</link>
+      <category>Coding</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/3</trackback:ping>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Clint Checketts</title>
+      <description>&lt;p&gt;I&amp;#8217;m a bit late to this post, but I think I&amp;#8217;m finally understanding symbols.&lt;/p&gt;
+
+
+	&lt;p&gt;I would compare a symbol to a Java 1.5 enumerations on steroids. Like a very versatile constant (if that helps anyone)&lt;/p&gt;</description>
+      <pubDate>Thu, 06 Apr 2006 00:52:03 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:57e27deb-3719-4f63-95b8-c080657a1b33</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-432</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Hardy</title>
+      <description>&lt;p&gt;Wow, this was an excellent find.  I finally get it (between the original posting and some of the comments).&lt;/p&gt;
+
+
+	&lt;p&gt;This should be reproduced in the pickaxe : b&lt;/p&gt;</description>
+      <pubDate>Wed, 29 Mar 2006 02:48:23 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ff875d33-9bff-496c-9c06-ba97daa122e2</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-377</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Roman</title>
+      <description>&lt;p&gt;Thanks Thomas Aylott. I now get it too!&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Mar 2006 02:02:58 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:ce44ab71-6c49-4874-ae9b-4aae8d003316</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-375</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Markus Sandy</title>
+      <description>&lt;p&gt;I agree with Howdy.  His examples are not the same as constants in C (use &amp;#8220;const&amp;#8221; for that).  Those are &amp;#8220;macros&amp;#8221; which are mearly symbols that are expanded upon before compilation.  Nice post.&lt;/p&gt;</description>
+      <pubDate>Sun, 26 Mar 2006 10:32:37 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:66175ce1-dcb8-425a-8590-f5987fbd035d</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-367</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by vhg119</title>
+      <description>&lt;p&gt;To Ahmad Alhashemi 
+AND Thomas Aylott&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks to your comments, I NOW GET IT!&lt;/p&gt;</description>
+      <pubDate>Sat, 04 Mar 2006 19:44:29 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:64265dd4-99af-48d5-80a6-db9fec662dca</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-259</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by hsitz</title>
+      <description>&lt;p&gt;Seems to me like howdy&amp;#8217;s example is not so far off, at least in pointing out similarity in use between C constants and Ruby symbols.&lt;/p&gt;
+
+
+	&lt;p&gt;The similarity lies in the fact that Ruby symbols do link up to integers &amp;#8220;under the covers&amp;#8221;.  It&amp;#8217;s just that we don&amp;#8217;t care what value is linked to the symbol; all we care about is uniqueness, that every use of the symbol link up to same integer.&lt;/p&gt;
+
+
+	&lt;p&gt;The difference is that in howdy&amp;#8217;s C constant example, the symbols link up to an integer &amp;#8220;under the covers&amp;#8221;, but also (as constants) refer to the constant integer value they are assigned within the program.&lt;/p&gt;
+
+
+	&lt;p&gt;To see how Ruby symbols link up to integers in the internal workings of the interpreter you can use the object_id and/or to_int methods:&lt;/p&gt;
+
+
+	&lt;p&gt;e.g., assume
+f1 = :fred
+f2 = :fred&lt;/p&gt;
+
+
+	&lt;p&gt;then f1, f2, and fred will all have same internal representation:&lt;/p&gt;
+
+
+	&lt;p&gt;in example I just did on my computer, 
+f1.object_id is 4073742
+f2.object_id is 4073742, and
+:fred.object_id is 4073742&lt;/p&gt;
+
+
+	&lt;p&gt;And the to_int method provides another unique integer representation: 
+f1.to_int is 15913
+f2.to_int is 15913
+:fred.to_int is 15913&lt;/p&gt;
+
+
+	&lt;p&gt;Perhaps someone can clarify why the to_int method is needed.  Is object_id not already guaranteed to be an integer?&lt;/p&gt;
+
+
+	&lt;p&gt;Also, someone said in a previous post that it was impossible to reference the string value of a symbol name from the symbol.  This can in fact be done:&lt;/p&gt;
+
+
+	&lt;p&gt;in my above example,&lt;/p&gt;
+
+
+	&lt;p&gt;:fred.to_s is &amp;#8220;fred&amp;#8221; 
+:f1.to_s is &amp;#8220;fred&amp;#8221; 
+:f2.to_s is &amp;#8220;fred&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;and id2name is synonomous with to_s, so, e.g.,&lt;/p&gt;
+
+
+	&lt;p&gt;:fred.id2name is &amp;#8220;fred&amp;#8221;&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 09:42:23 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:8ad68016-6406-4663-b6e3-e632016bc4a3</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-240</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Kevin Clark</title>
+      <description>&lt;p&gt;howdy: Not quite. Ruby does have constants, which is what happens when you &lt;code&gt;#define&lt;/code&gt; in C. Symbols are similar, but have no value themselves. They&amp;#8217;re really just a label that has meaning to the coder as they aren&amp;#8217;t variables.&lt;/p&gt;</description>
+      <pubDate>Sat, 28 Jan 2006 01:28:23 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:5a15d9ed-865f-4f79-8afc-d5742ffa33b1</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-198</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by howdy</title>
+      <description>&lt;p&gt;If you had this in C:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;#define ID_NAME     0
+#define ID_ADDRESS  1&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;That&amp;#8217;s basically what you achieve with symbols like :name and :address in ruby, right?  Except you don&amp;#8217;t have to associate them with numbers yourself, the interpreter does that for you.&lt;/p&gt;</description>
+      <pubDate>Sat, 28 Jan 2006 00:04:07 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:c91a118d-65a4-4c4b-8c5c-5378d7469a98</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-195</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by twifkak</title>
+      <description>&lt;p&gt;To make it starkly clear, symbols are (I&amp;#8217;m told) &lt;strong&gt;never garbage collected&lt;/strong&gt;. So you should be very wary about doing things like &lt;code&gt;:"thing_#{value}"&lt;/code&gt;.&lt;/p&gt;</description>
+      <pubDate>Mon, 19 Dec 2005 20:07:26 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:be591f28-c171-409c-82ac-51fc71d05e2a</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-153</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Douglas</title>
+      <description>&lt;p&gt;&amp;gt; link_to(&amp;#8220;View Article&amp;#8221;, :controller =&amp;gt; :articles, :action =&amp;gt; :show, :id =&amp;gt; 1)&lt;/p&gt;
+
+
+	&lt;p&gt;&amp;gt; Why give “articles�? and “show�? as 
+&amp;gt; strings? Especially “show�? as you’re 
+&amp;gt; refering to a method.&lt;/p&gt;
+
+
+	&lt;p&gt;With the keys (:controller and action and id), the uniqueness of the key is the most important feature. (We happen to use symbols because they are unique and hint at meening.) With the values (&amp;#8220;articles&amp;#8221;, &amp;#8220;show&amp;#8221;) the content is the most important thing, we use strings instead.&lt;/p&gt;
+
+
+	&lt;p&gt;Just a convention :)&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Dec 2005 16:08:25 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:78cd488e-ab08-457a-a735-d9f1a885b8e2</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-125</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Thomas Aylott</title>
+      <description>&lt;p&gt;Wow.. I think I &lt;em&gt;&amp;#8216;get it&amp;#8217;&lt;/em&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Symbols are like constants whose name &lt;strong&gt;is&lt;/strong&gt; their value.
+Just like the number &lt;code&gt;5&lt;/code&gt; has both the name &lt;code&gt;5&lt;/code&gt; and the value &lt;code&gt;5&lt;/code&gt; so the symbol &lt;code&gt;:howdy&lt;/code&gt; is the word &lt;code&gt;howdy&lt;/code&gt;. It&amp;#8217;s just like &lt;em&gt;&amp;#8220;howdy&amp;#8221;&lt;/em&gt; but &lt;strong&gt;Better™&lt;/strong&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;that&amp;#8217;s pretty neat.&lt;/p&gt;</description>
+      <pubDate>Sun, 11 Dec 2005 17:07:18 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:b9c2669c-3e98-47e9-bedd-ae6d45683c9d</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-124</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Michael Bevilacqua-Linn</title>
+      <description>&lt;p&gt;Thanks so much for writing this.  Much like you say, I&amp;#8217;ve been using symbols without understanding what exactly they are.  Now I do.&lt;/p&gt;</description>
+      <pubDate>Mon, 05 Dec 2005 17:24:18 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:891ab10d-27e6-4cef-9a9b-8336fba757f1</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-115</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by azreal</title>
+      <description>&lt;p&gt;cool article.
+Now I understant the concept!
+thank you!&lt;/p&gt;</description>
+      <pubDate>Sat, 03 Dec 2005 16:28:44 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:f1d053dc-02e3-45aa-8f26-9e160999f5bd</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-110</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by prim8</title>
+      <description>&lt;p&gt;&amp;#8216;What I don’t get is why nobody does this in Rails:&lt;/p&gt;
+
+
+	&lt;p&gt;link_to(&amp;#8220;View Article&amp;#8221;, :controller =&amp;gt; :articles, :action =&amp;gt; :show, :id =&amp;gt; 1)&amp;#8217;&lt;/p&gt;
+
+
+The action symbols do work fine like this, but I have been having problems when I refer to the controller by symbol.  It did work at one time, but at some point stopped working.
+&lt;pre&gt;
+class AlbumController &amp;lt; ApplicationController
+  layout :photo
+end
+&lt;/pre&gt;
+This gives: NoMethodError: undefined method `photo&amp;#8217; for #&amp;lt;AlbumController:0&amp;#215;5a16f48&amp;gt;
+
+Not sure why it thinks photo is a method, it works fine when I refer to the controller with: 
+&lt;pre&gt;
+layout 'photo'
+&lt;/pre&gt;</description>
+      <pubDate>Mon, 28 Nov 2005 14:25:40 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:7316ce9a-c748-45b6-aeb2-47c872b91dab</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-98</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by somebody</title>
+      <description>&lt;p&gt;What I don&amp;#8217;t get is why nobody does this in Rails:&lt;/p&gt;
+
+
+&lt;p&gt;&lt;code&gt;link_to("View Article", :controller =&amp;gt; :articles, :action =&amp;gt; :show, :id =&amp;gt; 1)&lt;/code&gt;&lt;/p&gt;
+
+	&lt;p&gt;Why give &amp;#8220;articles&amp;#8221; and &amp;#8220;show&amp;#8221; as strings? Especially &amp;#8220;show&amp;#8221; as you&amp;#8217;re refering to a method.&lt;/p&gt;</description>
+      <pubDate>Tue, 22 Nov 2005 19:19:23 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:fa218186-3490-4cb6-9f8b-b9962577140f</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-94</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by yoav</title>
+      <description>&lt;p&gt;considering what was said here about HashWithIndifferentAccess in ror, is it possible to disable this and &amp;#8220;force&amp;#8221; rails to use only symbols?&lt;/p&gt;</description>
+      <pubDate>Tue, 15 Nov 2005 14:10:50 -0500</pubDate>
+      <guid isPermaLink="false">urn:uuid:591ab2e5-31c8-486f-beb8-f45e677f6cd7</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-92</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Alex S.</title>
+      <description>&lt;p&gt;as a newbie to Ruby this Blog entry helped al lot to understand Symbols. thanks&lt;/p&gt;</description>
+      <pubDate>Sat, 29 Oct 2005 22:34:14 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a893e7e1-9d2f-400b-8f01-3f86d7bce1f4</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-78</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by anon</title>
+      <description>&lt;p&gt;Rails uses HashWithIndifferentAccess like mentioned in a previous comment.. and what that does is converts any key to a string.&lt;/p&gt;
+
+
+	&lt;p&gt;hash[:symbol] turns into hash[&amp;#8220;symbol&amp;#8221;], both when setting and accessing.&lt;/p&gt;
+
+
+	&lt;p&gt;doesn&amp;#8217;t that mean the benifit of using symbols is lost?&lt;/p&gt;</description>
+      <pubDate>Thu, 27 Oct 2005 18:23:04 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a00603aa-438a-49b5-b223-7722531364ea</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-66</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Metin Amiroff</title>
+      <description>&lt;p&gt;Very helpfull article and great comments. Much appreciated.&lt;/p&gt;
+
+
+	&lt;p&gt;I am a ruby newbie and these symbols were like a black hole for me. Now, everything&amp;#8217;s much much clear. Thanks again!&lt;/p&gt;</description>
+      <pubDate>Tue, 23 Aug 2005 17:42:10 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:aa14aa38-3e30-4f8e-a9c0-ca90961a9034</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-49</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Kevin Clark</title>
+      <description>&lt;p&gt;Clarifications and additions are more than welcome.&lt;/p&gt;</description>
+      <pubDate>Mon, 22 Aug 2005 20:24:05 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:af539a7d-8025-4d42-9004-7848cd9387f3</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-48</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Ahmad Alhashemi</title>
+      <description>&lt;p&gt;I used to confuse symbols with variable names. I read everything I could find about them, including in Learning Ruby 2.&lt;/p&gt;
+
+
+	&lt;p&gt;I only &amp;#8220;got it&amp;#8221; when I understood this fact: symbols are literal values. Just like that!&lt;/p&gt;
+
+
+	&lt;p&gt;They are literal values, just like the number 3 and the string &amp;#8220;red&amp;#8221;.&lt;/p&gt;
+
+
+	&lt;p&gt;I believe that I&amp;#8217;m not the only one confusing symbols with variable names. I read somewhere trying to explain symbols that variable and method names change in what they are referring to in different places, while symbols always mean the same thing.&lt;/p&gt;
+
+
+	&lt;p&gt;This is even more confusing, because it is makes you think that symbols are special kind of variables. But when you know that they are literal values, you will think: of course they will not change their meaning! Just like the literal 3, it always means the same thing!&lt;/p&gt;
+
+
+	&lt;p&gt;That is also why you can say:
+v = :s&lt;/p&gt;
+
+
+	&lt;p&gt;But you can&amp;#8217;t say:
+:s = v&lt;/p&gt;
+
+
+	&lt;p&gt;This will give you a syntax error.&lt;/p&gt;
+
+
+	&lt;p&gt;I hope this added to your already excellent explanation.&lt;/p&gt;</description>
+      <pubDate>Mon, 22 Aug 2005 19:47:20 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:78b9c6e9-dd32-499b-ad1d-6512df46c1b4</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-47</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Gavri Fernandez</title>
+      <description>&lt;p&gt;Geoff: &amp;#8220;red&amp;#8221; != :red even in Rails. It&amp;#8217;s just that Rails uses HashWithIndifferentAccess instead of Hash everywhere.&lt;/p&gt;</description>
+      <pubDate>Sun, 21 Aug 2005 11:50:34 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:7a10c438-e150-4a7c-bbca-7d91538e4e25</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-45</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by anon</title>
+      <description>&lt;p&gt;Kevin: if I understand you correctly, I was wrong when I asked if it was some kind of “reference�? to an instance of a class. It has nothing to do with it. For some reason I thought of symbols of &amp;#8220;stuff somewhat like C/C++ pointers&amp;#8221; but it&amp;#8217;s not, or maybe only pointing against strings.
+Anyway I think I got it now.&lt;/p&gt;</description>
+      <pubDate>Sat, 20 Aug 2005 09:01:39 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:a1b742ab-a720-42cd-8b24-a8879df63f23</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-42</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Porges</title>
+      <description>&lt;p&gt;I like to think of like this: If you need to print the contents of a string at any time, use a string. Otherwise use a smybol :)&lt;/p&gt;</description>
+      <pubDate>Sat, 20 Aug 2005 04:47:42 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:eb361455-e4aa-4d90-b9e7-cc4bdf372766</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-41</link>
+    </item>
+    <item>
+      <title>"Understanding Ruby Symbols" by Florian Groß</title>
+      <description>&lt;p&gt;And to be even more detailed: The content of Symbols &lt;strong&gt;is&lt;/strong&gt; restricted over that of Strings. Symbols can never contain \0 and Ruby tries to keep you from using empty symbols. (Though the latter is still possible.)&lt;/p&gt;</description>
+      <pubDate>Sat, 20 Aug 2005 02:16:15 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:18ea798a-c2d2-4d38-80b7-45e0a292f2c9</guid>
+      <link>http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols#comment-40</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Hire Me!</title>
+    <link>http://glu.ttono.us/articles/2006/05/10/hire-me</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Hire Me!</title>
+      <description>&lt;p&gt;If you&amp;#8217;re sitting behind a feed reader, you may not have noticed my stealthy new addition to the sidebar (or my haphazard attempt at injecting trendy new colors into the css). There is now a &amp;#8220;Hire Me&amp;#8221; section.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve left &lt;a href="http://mingle.com"&gt;Mingle&lt;/a&gt; to freelance and am available for contract work, consulting, and training. If you&amp;#8217;re interested, drop me an email at kevin dot clark at gmail dot com.&lt;/p&gt;</description>
+      <pubDate>Wed, 10 May 2006 15:00:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:8a39d8bd-44c6-4fdd-96c6-f2794eeca733</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/05/10/hire-me</link>
+    </item>
+  </channel>
+</rss>

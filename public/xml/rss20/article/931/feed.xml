@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: RailsDay Post Mortem: Advisr</title>
+    <link>http://glu.ttono.us/articles/2006/06/17/railsday-post-mortem-advisr</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>RailsDay Post Mortem: Advisr</title>
+      <description>&lt;p&gt;Oh my god, it&amp;#8217;s over.&lt;/p&gt;
+
+&lt;p&gt;I had an amazing time working with &lt;a href="http://iamrice.org"&gt;Damien Tanner&lt;/a&gt; and &lt;a href="http://brainspl.at"&gt;Ezra Zygmuntowicz&lt;/a&gt;. We wrote what we think is a better approach to ticket tracking and we&amp;#8217;re calling it &lt;a href="http://tickets.thar.be"&gt;Advisr&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The idea is that everyone thinks their bug is important, that&amp;#8217;s why they post it. &lt;a href="http://tickets.thar.be"&gt;Advisr&lt;/a&gt; lets people say how much a defect effects them or if they think they&amp;#8217;d use a feature and gives advice to developers where the most important tickets really are.&lt;/p&gt;
+
+&lt;p&gt;Go take a look. I&amp;#8217;m going to sleep. Good night folks, and happy Rails Day!&lt;/p&gt;</description>
+      <pubDate>Sat, 17 Jun 2006 23:20:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:05e48cdd-6070-42e0-9674-2c56faae0cb5</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2006/06/17/railsday-post-mortem-advisr</link>
+      <category>Coding</category>
+      <category>Rails</category>
+    </item>
+  </channel>
+</rss>

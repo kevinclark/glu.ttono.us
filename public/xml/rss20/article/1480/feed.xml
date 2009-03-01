@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: Code Personified</title>
+    <link>http://glu.ttono.us/articles/2007/09/13/code-personified</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>Code Personified</title>
+      <description>&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_python "&gt;if self.stillHopeful:
+    # oh, cruel reality cuts deep. no joy for you. This is the
+    # first failure. This flunks the overall BuildSet, so we can
+    # notify success watchers that they aren't going to be happy.
+    self.stillHopeful = False
+    self.status.giveUpHope()
+    self.status.notifySuccessWatchers()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&amp;#8211; Buildbot Source&lt;/p&gt;</description>
+      <pubDate>Thu, 13 Sep 2007 16:31:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:4813a85b-6b2b-48c0-99c0-ae4b1866b50a</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2007/09/13/code-personified</link>
+      <category>Musings</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,543 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Weigh In: Patches, Plugins and Proposed Enhancements</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    dc:title="Weigh In: Patches, Plugins and Proposed Enhancements"
+    dc:identifier="http://glu.ttono.us/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements"
+    dc:description="This week&amp;#8217;s guide is going to be a little different. On the rails-core mailing list, in what started as a discussion"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:14-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/895" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Weigh In: Patches, Plugins and Proposed Enhancements</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Mon, 05 Jun 2006 06:43:00 GMT">Mon, 05 Jun 2006 06:43:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>This week&#8217;s guide is going to be a little different. </p>
+
+<p>On the <a href="http://wrath.rubyonrails.org/pipermail/rails-core/">rails-core mailing list</a>, in what started as a <a href="http://www.ruby-forum.com/topic/67958#new">discussion</a> the issue of the growing number of <a href="http://script.aculo.us">Scriptaculous</a>/<a href="http://prototype.conio.net/">Prototype</a> tickets and especially enhancement requests, <strong>we&#8217;ve <a href="http://www.ruby-forum.com/topic/67958#85925">begun talking about</a> the removal of the &#8220;enhancement&#8221; category on <a href="http://dev.rubyonrails.org/newticket">trac tickets</a></strong>.</p>
+
+<p>The problem is that generally half or more of the tickets that come through the Rails bug tracking system are enhancement requests. With 13 people able to commit and a handful of others actively dealing with tickets being reported, <strong>enhancement requests will in general never be acted on</strong>. This means there are new tickets every day ruining that delicate signal vs noise ratio.</p>
+
+<p>For a while the <a href="http://weblog.techno-weenie.net/2006/4/20/five-reasons-why-your-next-rails-mod-should-be-a-plugin">standard line</a> for enhancements has been &#8220;make it a plugin and see where it goes&#8221;. This may not always be the proper response but when dealing with the deluge it is at the very least the easiest and a plugin is usually the simplest way to see feature X in Rails.</p>
+
+<p>So here&#8217;s the guide part: <strong>we could use an alternate viewpoint</strong>. The rails-core list is significantly biased: people who care to speak up there are comfortable writing patches and plugins. I expect a good portion of you watching my feed and visiting my blog haven&#8217;t written patches for Rails and haven&#8217;t written your own plugin. <strong>Do you think keeping the enhancement category is worthwhile?</strong></p>
+
+<p>The real question here isn&#8217;t whether Rails should accept new features. Patches for new enhancements would be considered but enhancement tickets sans a patch would not.</p>
+
+<p><strong>I&#8217;d like to make this an open dialog. Please, speak your mind.</strong> And careful with that submit button. Apparently my comments are a bit wonky and it tends to result in double posting. I&#8217;ll try to fix it as soon as I can.</p>
+
+<p>Next week we&#8217;ll return to our regularly scheduled practical guides.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/op-ed" rel="tag">Op-Ed</a>, <a href="/articles/category/guides" rel="tag">guides</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements#comments">15 comments</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-896"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_896'); }"  onmouseout="Element.hide('admin_comment_896');" >
+  <div id="admin_comment_896" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/896', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-896&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/896" class="admintools">edit</a></div>
+  <a name="comment-896"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.flpr.org">Pat</a></strong> </cite> said about 3 hours later:<br />
+  <p>I occasionally check out the ticket list, and it&#8217;s always gigantic.  It is a pretty amazing feat for the committers to achieve what they do in the first place.</p>
+
+
+	<p>There are plenty of things that are wrong with Rails and need fixing.  Just as a couple examples, there are some weird PostgreSQL issues at times.  I&#8217;ve never even been able to successfully run the AR unit tests against Postgres, so I don&#8217;t feel confident in fixing those things myself.  Transactions also aren&#8217;t supported in fixtures, which is a surprise (and I generally like the principle of least surprise).</p>
+
+
+	<p>Those are just a couple things in Rails that should work but don&#8217;t.  These should definitely be taken care of before enhancements are made.  Enhancements to a broken system are bad &#8211; check out the Broken Windows chapter of PragProg.  If the committers don&#8217;t have time to get to these enhancements anyway, they shouldn&#8217;t be included at all.  As you said, it just ruins the SvN.</p>
+
+
+	<p>I do think it might be worthwhile to have one or two committers dedicated to enhancements, while the rest fix up bugs.  You might want to search the community for developers who have a track record of releasing good enhancement-style plugins.</p>
+
+
+	<p>Finally, if the Trac doesn&#8217;t even accept enhancement requests, more people will write plugins instead of hoping they make it into the core, which will only be good for the community as a whole.  Many of the requests don&#8217;t even belong in the core so would get rejected anyway &#8211; might as well get those people writing plugins from the getgo.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="896";
+//--></script>
+<!-- mmc mmid:896 mmdate:2006-06-05 05:39:56 mmauthor:Pat -->
+</li>
+<li id="comment-897"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_897'); }"  onmouseout="Element.hide('admin_comment_897');" >
+  <div id="admin_comment_897" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/897', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-897&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/897" class="admintools">edit</a></div>
+  <a name="comment-897"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.opensoul.org/">Brandon keepers</a></strong> </cite> said about 5 hours later:<br />
+  <p>What makes rails wonderful, especially to newbies, is that out of the box it does (almost) everything you can think of, and it does it simply.  It is a complete stack that is integrated from top to bottom.  When I start a rails project, I don&#8217;t have to choose from the smorgasbord for each layer and hope that everything works well together.</p>
+
+
+	<p>But if rails continues down the path that it is going, it will be no different than any other platform.  When I start a new project, I currently have about 10 plugins that I install, almost half of which are just enhancements (like 12_hour_time, annotate_models, etc).  None of these are absolute requirements, but at what point will rails no longer be suitable for most people out-of-the-box? (Java programmers come to know this as JAR-hell.)</p>
+
+
+	<p>Besides lack of features in the core, the other problem with not accepting enhancements is that code is less likely to be scrutinized by the community when it&#8217;s delivered as a plugin.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="897";
+//--></script>
+<!-- mmc mmid:897 mmdate:2006-06-05 08:05:15 mmauthor:Brandon keepers -->
+</li>
+<li id="comment-898"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_898'); }"  onmouseout="Element.hide('admin_comment_898');" >
+  <div id="admin_comment_898" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/898', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-898&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/898" class="admintools">edit</a></div>
+  <a name="comment-898"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://fiatdevelopmentum.com">Phillip Toland</a></strong> </cite> said about 6 hours later:<br />
+  <p>I think that removing the enhancement category from Trac would be a mistake. Even if the core team cannot work on those enhancements, at least there is an &#8220;official&#8221; wish list for others who are looking to contribute. In order to lower the signal-to-noise ratio maybe the enhancements could be tracked separately?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="898";
+//--></script>
+<!-- mmc mmid:898 mmdate:2006-06-05 08:30:10 mmauthor:Phillip Toland -->
+</li>
+<li id="comment-899"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_899'); }"  onmouseout="Element.hide('admin_comment_899');" >
+  <div id="admin_comment_899" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/899', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-899&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/899" class="admintools">edit</a></div>
+  <a name="comment-899"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.snailbyte.com/blog">Geir</a></strong> </cite> said about 6 hours later:<br />
+  <p>I&#8217;m a Rails developer but don&#8217;t feel that I have the knowledge or time to write patches (yet). I haven&#8217;t created a single ticket on the Trac system.</p>
+
+
+	<p>I gave up on monitoring the &#8216;ticket changes&#8217; part of the Trac timeline RSS because of the enhancement noise.</p>
+
+
+	<p>I support removing the &#8220;magic lantern&#8221; enhancement tickets from the Trac system.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="899";
+//--></script>
+<!-- mmc mmid:899 mmdate:2006-06-05 08:39:04 mmauthor:Geir -->
+</li>
+<li id="comment-900"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_900'); }"  onmouseout="Element.hide('admin_comment_900');" >
+  <div id="admin_comment_900" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/900', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-900&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/900" class="admintools">edit</a></div>
+  <a name="comment-900"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=8b3a5fa50d63275c5c6e304f1a081bfb&amp;size=60" />
+  <cite><strong><a href="http://www.toolmantim.com">Tim Lucas</a></strong> </cite> said about 6 hours later:<br />
+  <p>I say let blogs (and mailing lists) be the new form of  enhancement discussion. Anything genuinely decent will spark interest and makes it way back if it&#8217;s deserving. Anything that&#8217;s not of interest will quickly fade away.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="900";
+//--></script>
+<!-- mmc mmid:900 mmdate:2006-06-05 08:49:22 mmauthor:Tim Lucas -->
+</li>
+<li id="comment-901"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_901'); }"  onmouseout="Element.hide('admin_comment_901');" >
+  <div id="admin_comment_901" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/901', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-901&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/901" class="admintools">edit</a></div>
+  <a name="comment-901"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6d3c187a8b3ef53b08e3e7e8572c4fea&amp;size=60" />
+  <cite><strong><a href="http://www.mrneighborly.com">Jeremy McAnally</a></strong> </cite> said about 6 hours later:<br />
+  <p>I actually like having the enhancements there; it&#8217;s a nice, central place to have a wishlist.  I&#8217;m not familiar enough with the Rails codebase to be making any core changes, but I do like to flip through the enhancements (which are usually smaller more manageable tasks) and do what I can.  If you guys decide to remove it, tell me and I&#8217;ll put a trac over on my site for people to put enhancements on so at least the plugin writers will know where to look. :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="901";
+//--></script>
+<!-- mmc mmid:901 mmdate:2006-06-05 09:09:43 mmauthor:Jeremy McAnally -->
+</li>
+<li id="comment-902"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_902'); }"  onmouseout="Element.hide('admin_comment_902');" >
+  <div id="admin_comment_902" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/902', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-902&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/902" class="admintools">edit</a></div>
+  <a name="comment-902"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Aaron Blohowiak</strong> </cite> said about 7 hours later:<br />
+  <p>How about a bounty system for enhancements? Let people put their money where their want is.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="902";
+//--></script>
+<!-- mmc mmid:902 mmdate:2006-06-05 09:28:51 mmauthor:Aaron Blohowiak -->
+</li>
+<li id="comment-903"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_903'); }"  onmouseout="Element.hide('admin_comment_903');" >
+  <div id="admin_comment_903" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/903', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-903&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/903" class="admintools">edit</a></div>
+  <a name="comment-903"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>David Goodlad</strong> </cite> said about 7 hours later:<br />
+  <p>Enhancement <em>requests</em>, in contrast to patches, don&#8217;t really help much.  They are, as others have said, a wishlist.  The Rails core Trac doesn&#8217;t really seem like an appropriate place, and they just add more work for those trying to keep the list of open tickets down.</p>
+
+
+	<p>A separate way to track the desires of developers who are unable to implement their own needs would be good.  I like the idea that blogs will become a good venue for discussion, but it may not be good enough for some people.  Many developers will not have enough traffic hitting their blogs to generate very much interest, so will feel &#8216;left out&#8217;.  However, I truly feel that if it&#8217;s something that a developer <em>needs</em>, they are software developers and they should at least make some effort to try to implement it.  Rails is open source for a reason :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="903";
+//--></script>
+<!-- mmc mmid:903 mmdate:2006-06-05 09:55:57 mmauthor:David Goodlad -->
+</li>
+<li id="comment-904"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_904'); }"  onmouseout="Element.hide('admin_comment_904');" >
+  <div id="admin_comment_904" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/904', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-904&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/904" class="admintools">edit</a></div>
+  <a name="comment-904"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.flpr.org">Pat</a></strong> </cite> said about 8 hours later:<br />
+  <p>Phillip has a good idea.  We should just have a wishlist page on the wiki, and then if someone implements one of the items, delete the entry and make an announcement on the plugins page (or whichever is appropriate).</p>
+
+
+	<p>It is good to have that wishlist so that other developers can work on it if they want to.</p>
+
+
+	<p>Re: Brandon&#8217;s &#8220;plugin hell&#8221; &#8211; I agree that it may get to be a pain like that.  Really though, merging all this stuff into Rails core will be even worse.  Any time the code base gets larger it becomes harder to maintain.  Right now the plugin authors are able to fix things up as quickly as you need.  If they make it into core, fixes will be a lot slower.</p>
+
+
+	<p>If some things should be in core, they&#8217;l make it in.  Also if we do eventually have plugin hell, someone will no doubt come up with a creative way of managing it better.  It&#8217;s not really a problem yet though, and I doubt it ever will be.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="904";
+//--></script>
+<!-- mmc mmid:904 mmdate:2006-06-05 10:39:34 mmauthor:Pat -->
+</li>
+<li id="comment-905"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_905'); }"  onmouseout="Element.hide('admin_comment_905');" >
+  <div id="admin_comment_905" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/905', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-905&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/905" class="admintools">edit</a></div>
+  <a name="comment-905"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Julik</strong> </cite> said about 8 hours later:<br />
+  <p>I think it&#8217;s a good idea &#8211; enhancement has to be filed as such when it has a patch pinned to it.</p>
+
+
+	<p>It would be nice to have a &#8220;request a feature&#8221; system in addition to Trac though.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="905";
+//--></script>
+<!-- mmc mmid:905 mmdate:2006-06-05 10:48:37 mmauthor:Julik -->
+</li>
+<li id="comment-906"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_906'); }"  onmouseout="Element.hide('admin_comment_906');" >
+  <div id="admin_comment_906" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/906', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-906&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/906" class="admintools">edit</a></div>
+  <a name="comment-906"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://gabrito.com">Todd Huss</a></strong> </cite> said about 8 hours later:<br />
+  <p>We were suffering from the same problem at work and it was making our issue tracking system unusable and here&#8217;s roughly how we solved the problem:</p>
+
+
+	<p>Folks on the outside can only enter bugs into trac and have another forum (wiki/email list/forums) to propose and discuss new features.</p>
+
+
+	<p>Folks on the inside (core) are the only ones who can create enhancement tickets (either from a patch they receive or for a feature they deem worthy to implement).</p>
+
+
+	<p>I think 37signals addresses this well in Getting Real when they say read feature requests and then delete them because you&#8217;ll hear about it over and over again  if it&#8217;s important. Because of that I don&#8217;t think issue/bug tracking systems are really ideal to handle feature requests once a project gets popular enough.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="906";
+//--></script>
+<!-- mmc mmid:906 mmdate:2006-06-05 11:07:48 mmauthor:Todd Huss -->
+</li>
+<li id="comment-907"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_907'); }"  onmouseout="Element.hide('admin_comment_907');" >
+  <div id="admin_comment_907" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/907', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-907&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/907" class="admintools">edit</a></div>
+  <a name="comment-907"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=237e4b098d513d21c1d6b4516b29926e&amp;size=60" />
+  <cite><strong><a href="http://www.ibrasten.com">brasten</a></strong> </cite> said about 9 hours later:<br />
+  <p>What about flagging the tickets as &#8216;Patch/Plugin Wanted&#8217;.  Some sort of designation that the enhancement request is understandable and would probably be accepted but is not going to be addressed by core developers.</p>
+
+
+	<p>It might also encourage people who want to contribute to Rails to actually do so.  If someone&#8217;s able to browse through tickets that the core deems important enough to keep open (even if they&#8217;re too busy to implement it), they might find that motivating.</p>
+
+
+	<p>(Yes, it would be basically the same as &#8216;wontfix&#8217;, but it&#8217;s all in how you present it to those who may help.)</p>
+
+
+	<p>On a somewhat related note, has anyone considered backing out some of Rails&#8217; Scriptaculous/Prototype functionality?  Rails seems to give the impression that, eventually, the goal is to replace JavaScript with Ruby, or at least severely minimize the amount of JavaScript you&#8217;ll have to use.  Whether or not that&#8217;s ACTUALLY the goal, if you give people a little they&#8217;ll want more.  (Why can&#8217;t you make a change_cursor helper?  or a sortable_rearrangeable_multiselect_data_grid helper??)</p>
+
+
+	<p>It seems to me that Ajax-based helpers (remote forms, remote functions, anything else with &#8220;remote&#8221;) belong as a part of the Rails core, since their job it to facilitate interaction with the Rails app (and have to be somewhat aware of their environment.. urls and such).  But visual_effect?  alert?  sortable_element?  Do we really want these?  Do these types of helpers expose us to an &#8216;object-model tax&#8217;?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="907";
+//--></script>
+<!-- mmc mmid:907 mmdate:2006-06-05 12:01:53 mmauthor:brasten -->
+</li>
+<li id="comment-908"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_908'); }"  onmouseout="Element.hide('admin_comment_908');" >
+  <div id="admin_comment_908" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/908', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-908&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/908" class="admintools">edit</a></div>
+  <a name="comment-908"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://lianza.org/blog/">Tom</a></strong> </cite> said about 11 hours later:<br />
+  <p>From what I&#8217;ve read:</p>
+
+
+	<p>1) &#8220;Enhancement&#8221; tickets in Trac don&#8217;t get acted on.
+2) People still want a way of tracking enhancements.</p>
+
+
+	<p>So, if the people who work on tickets don&#8217;t have time to worry about (code-less) enhancements, then break it out into a separate system&#8230; it&#8217;s not doing anyone any good where it is.</p>
+
+
+	<p>Maybe, if no one ever has time to look at it, that separate system becomes a bucket of things that goes nowhere, until one day someone has the initiative to start making headway on that repository.  Or, maybe it becomes a place where the masses who can write plugins/patches take those suggestions and make plugins for them&#8230; or make patches and submit them as enhancement tickets with code attached.</p>
+
+
+	<p>Although it&#8217;s not clear what the new system would become, it seems logical to break it out.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="908";
+//--></script>
+<!-- mmc mmid:908 mmdate:2006-06-05 13:54:27 mmauthor:Tom -->
+</li>
+<li id="comment-915"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_915'); }"  onmouseout="Element.hide('admin_comment_915');" >
+  <div id="admin_comment_915" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/915', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-915&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/915" class="admintools">edit</a></div>
+  <a name="comment-915"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Andre in LA</strong> </cite> said 1 day later:<br />
+  <p>I vote for moving the enhancements from Trac to the Wiki or another centralized repository. I want Rails to progress towards its core principles. Also, having the extra features as plugins will allow authors to make frequent enhancements and updates.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="915";
+//--></script>
+<!-- mmc mmid:915 mmdate:2006-06-06 17:19:09 mmauthor:Andre in LA -->
+</li>
+<li id="comment-917"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_917'); }"  onmouseout="Element.hide('admin_comment_917');" >
+  <div id="admin_comment_917" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/917', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-917&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/895/edit/917" class="admintools">edit</a></div>
+  <a name="comment-917"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Colin</strong> </cite> said 3 days later:<br />
+  <p>First: Get a, codewise, stable version of rails. As rails 1.1 killed more than a few 1.0 plugins, and many 3rd party plugins are not that actively maintained frequent changes to the codebase spells out trouble..</p>
+
+
+	<p>Actually the lack of a clear vision for rails 2.0 and beyond makes it hard to choose for rails, as it might well be that stuff that works now won&#8217;t work in the next version. &#8220;Freeze rails&#8221; is the response you get when you point this out, but it is not a very good solution, i guess people will want/need the newer version eventually for a variety of reason (stabilty, features, whatever)</p>
+
+
+	<p>Removing &#8220;enhancements&#8221; might well kill rails. The rails approach to webaplications is a truly unique one, however, it is already starting to be copied. Rails must take care not to alienate from its (potential) userbase. And preventing feature requests is a step in the wrong direction. Besides, as said before, another  strong argument in favour of rails is the richness of the features it offers.</p>
+
+
+	<p>Maybe trac is not the right place for enhancement request. Maybe a separate page (not a wiki, too open ended) where users can make requests/implement those request together with an incredible tutorial on how to patch rails (in a non-intrusive way) might work better. You could even choose to combine it with a reward system. However, in that case maintenance should be rewarded too, which will be the hard part to award). But no matter how to implement it, these enhancements need to be centralised and closely associated with rails-core.
+I think generating more user input, both suggestions and actual code, is what rails need not to be surpassed by another &#8220;rails vision&#8221; framework.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="917";
+//--></script>
+<!-- mmc mmid:917 mmdate:2006-06-08 05:21:49 mmauthor:Colin -->
+</li>
+
+  
+  </ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/895/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="895";
+//--></script>
+<!-- mmp mmid:895 mmdate:2006-06-05 02:43:00 mmurl:/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements mmtitle:Weigh In: Patches, Plugins and Proposed Enhancements -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2006/06/05/weigh-in-patches-plugins-and-proposed-enhancements" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Matz's keynotes</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/23"
+    dc:title="Matz's keynotes"
+    dc:identifier="http://glu.ttono.us/articles/2005/10/16/matzs-keynotes"
+    dc:description="Keynote Address - Why Arrows are Bad Visions for the future Yukihiro &amp;#8220;Matz&amp;#8221; Matsumoto Thank you, people, for attending here. I&amp;#8217;d like to talk about the vision for t"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:12-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/23" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Matz's keynotes</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Sun, 16 Oct 2005 09:12:00 GMT">Sun, 16 Oct 2005 09:12:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <h2>Keynote Address - <span style="text-decoration: line-through">Why Arrows are Bad</span> Visions for the future</h2>
+
+<h2>Yukihiro &#8220;Matz&#8221; Matsumoto</h2>
+
+<p>Thank you, people, for attending here. I&#8217;d like to talk about the vision for the future. Two years ago, I gave the same kind of title(?).</p>
+
+<h3>Programming Languages are Now Commodities</h3>
+
+<p>Like Cars; They are All Good Enough</p>
+
+<ul>
+<li>Basically Same Structure</li>
+<li>Difference in Design</li>
+<li>and Small Functionality</li>
+</ul>
+
+<p>We choose our own brand of language, based on the small differences that we like, personally.</p>
+
+<h3>Japanese are Good at Making Commodities</h3>
+
+<ul>
+<li>Toyota</li>
+<li>Honda</li>
+<li>Sony</li>
+<li>Panasonic</li>
+<li>&#8230; and Ruby</li>
+</ul>
+
+<h3>Developing Commodities</h3>
+
+<ul>
+<li>Need to be Cheap</li>
+<li>Design Matter</li>
+<li>Small Things Matter</li>
+<li>Need to Keep Moving</li>
+<li>&#8230;with wild and crazy ideas</li>
+</ul>
+
+<p>The key to developing commodities - they need to be cheap. Ruby is cheap, because it&#8217;s free.</p>
+
+<p>Toyota develops a new car every six months or so.</p>
+
+<h3>Since Ruby is Good Enough</h3>
+
+<ul>
+<li>Its OK to try Crazy Ideas</li>
+<li>If they don&#8217;t work out, just try another</li>
+<li>Just not to stop moving
+<ul>
+<li>activate community</li>
+<li>to have FUN!</li>
+</ul></li>
+</ul>
+
+<p>The real theme of tonight&#8217;s address is&#8230;</p>
+
+<h2>Wild and Weird Ideas</h2>
+
+<h3>The New Path</h3>
+
+<ul>
+<li>Yet Another Ruby VM (YARV)</li>
+<li>1.9 New Feature Testbed</li>
+</ul>
+
+<h3>YARV</h3>
+
+<ul>
+<li>Faster</li>
+<li>Simpler</li>
+<li>Native Thread Aware</li>
+</ul>
+
+<p>Ask ko1 There</p>
+
+<p>I&#8217;ll focus on the crazy ideas.</p>
+
+<h3>1.9 Possible New Features</h3>
+
+<ul>
+<li>keyword arguments</li>
+<li>constants</li>
+<li>multiple assignment</li>
+<li>eval</li>
+<li>lambda</li>
+<li>annotations</li>
+<li>traits</li>
+<li>namespace</li>
+<li>method combination</li>
+<li>multilingualization</li>
+</ul>
+
+<h3>Keyword Arguments</h3>
+
+<ul>
+<li>Make method calls more descriptive</li>
+<li>Order Free Arguments
+<ul>
+<li>Help you save Brain Power</li>
+</ul></li>
+</ul>
+
+<h3>Keyword Arguments</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">def </span><span class="method">foo</span><span class="punct">(</span><span class="ident">a</span><span class="punct">,</span><span class="ident">b</span><span class="punct">=</span><span class="number">0</span><span class="punct">,</span><span class="ident">c</span><span class="punct">:</span><span class="number">4</span><span class="punct">)</span>
+   <span class="punct">...</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># a=1,b=0,c=4</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># a=1,b=2,c=4</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">,</span><span class="ident">c</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># a=1,b=0,c=2</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">,</span><span class="ident">c</span><span class="punct">:</span><span class="number">3</span><span class="punct">)</span> <span class="comment"># a=1,b=2,c=3</span></code></pre></div>
+
+<h3>Keyword Arguments (2)</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">def </span><span class="method">bar</span><span class="punct">(</span><span class="ident">a</span><span class="punct">:,</span><span class="ident">b</span><span class="punct">:</span><span class="number">0</span><span class="punct">)</span>
+   <span class="punct">...</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">alias</span> <span class="symbol">:foo</span> <span class="symbol">:bar</span>
+
+ <span class="ident">foo</span><span class="punct">()</span> <span class="comment"># error! is a mandatory</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># error! no positional argument</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">a</span><span class="punct">:</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># a=1, b=0</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">a</span><span class="punct">:</span><span class="number">1</span><span class="punct">,</span><span class="ident">b</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># a=1,b=2</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">b</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># error! a is mandatory</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">c</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># error! c is not defined</span></code></pre></div>
+
+<p>All positional arguments go before any named arguments.</p>
+
+<p>Can have optional default values for positional arguments.</p>
+
+<p>Cannot have two adjacent commas to represent omitted arguments.</p>
+
+<p>One goal of this is to replace fragile optional arguments.</p>
+
+<p>Can specify &#8220;c: :foo&#8221; to represent a default value of symbol :foo.</p>
+
+<p>Spaces are not allowed before the first &#8216;:&#8217; (i.e., &#8220;c : 1&#8221; is not allowed).</p>
+
+<h3>Keyword Arguments (3)</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">def </span><span class="method">bar</span><span class="punct">(*</span><span class="ident">rest</span><span class="punct">,</span> <span class="ident">a</span><span class="punct">:</span><span class="number">4</span><span class="punct">,</span> <span class="ident">b</span><span class="punct">:</span><span class="number">0</span><span class="punct">,</span>   <span class="punct">*</span><span class="ident">keys</span><span class="punct">)</span>
+  <span class="punct">...</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">alias</span> <span class="symbol">:foo</span> <span class="symbol">:bar</span>
+
+ <span class="ident">foo</span><span class="punct">()</span> <span class="comment"># rest=[],a=4,b=0,keys={}</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># rest=[1],a=4,b=0,keys={}</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">a</span><span class="punct">:</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># rest=[{a:1}], a=1,b=0,keys={a:1}</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">a</span><span class="punct">:</span><span class="number">1</span><span class="punct">,</span><span class="ident">b</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span>  <span class="comment"># rest = [{a:1,b:2}],a=1,b=2,keys={a:1,b:2}</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">,</span><span class="ident">b</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># rest=[1,2,{b:2}],a=4,b=2,keys={b:2}</span>
+ <span class="ident">foo</span><span class="punct">(</span><span class="ident">c</span><span class="punct">:</span><span class="number">2</span><span class="punct">)</span> <span class="comment"># rest=[{c:2}],a=4,b=0,keys={c:2}</span></code></pre></div>
+
+<p>Both *rest and   *keys are optional.  Note that *rest and   *keys name new local variables, so are completely arbitrary.  </p>
+
+<h3>Keyword Arguments Summary</h3>
+
+<ul>
+<li>Keyword arguments are passed as a Hash at the end of arguments</li>
+<li>Rest argument (*) contains a keyword hash as well</li>
+<li>Keyword argument (  *) contains a Hash (without default values)</li>
+<li>Unspecified keys are allowed if keyword argument is present</li>
+</ul>
+
+<p>The   *keys hash contributes 1 to arity().</p>
+
+<p>Chad steps in and stops the madness that ensued.</p>
+
+<h3>Constants</h3>
+
+<p>In short, constants will become more like class variables</p>
+
+<ul>
+<li>with better appearance</li>
+<li>with restriction in assignments</li>
+<li>with warning for direct modification</li>
+</ul>
+
+<h3>Multiple Values</h3>
+
+<ul>
+<li>Too complex to understand</li>
+<li>Virtually No One on Earth Understands</li>
+<li>Much simpler rules</li>
+</ul>
+
+<h3>&#8220;Real&#8221; Multiple Values</h3>
+
+<p>a la Common Lisp</p>
+
+<ul>
+<li>Methods can return multiple values</li>
+<li>Multiple values in ordinary context give the first value</li>
+<li>Array to Values (RHS *)</li>
+<li>Values to Array (LHS *)</li>
+</ul>
+
+<h3>Multiple Values Example</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">def </span><span class="method">multi</span><span class="punct">()</span>
+   <span class="keyword">return</span> <span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">,</span><span class="number">3</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">a</span> <span class="punct">=</span> <span class="ident">multi</span><span class="punct">()</span> <span class="comment"># a=1</span>
+ <span class="ident">a</span><span class="punct">,</span><span class="ident">b</span> <span class="punct">=</span> <span class="ident">multi</span><span class="punct">()</span> <span class="comment"># a=1,b=2    **</span>
+ <span class="punct">*</span><span class="ident">c</span> <span class="punct">=</span> <span class="ident">multi</span><span class="punct">()</span> <span class="comment"># c=[1,2,3]</span>
+
+ <span class="ident">a</span><span class="punct">,</span><span class="ident">b</span> <span class="punct">=</span> <span class="number">1</span><span class="punct">,</span><span class="number">2</span> <span class="comment"># a=1,b=2</span>
+ <span class="ident">a</span><span class="punct">,</span><span class="ident">b</span> <span class="punct">=</span> <span class="punct">[</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">]</span> <span class="comment"># a=[1,2],b=nil    **</span>
+ <span class="ident">a</span><span class="punct">,</span><span class="ident">b</span> <span class="punct">=</span> <span class="punct">*[</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">]</span> <span class="comment"># a=1,b=2</span></code></pre></div>
+
+<p>** Are the different behaviors.</p>
+
+<h3>Multiple Values Example (2)</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">def </span><span class="method">multi</span><span class="punct">()</span>
+   <span class="keyword">return</span> <span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">,</span><span class="number">3</span>
+ <span class="keyword">end</span>
+ <span class="keyword">def </span><span class="method">output</span><span class="punct">(*</span><span class="ident">args</span><span class="punct">)</span>
+   <span class="ident">p</span> <span class="ident">args</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">output</span><span class="punct">(</span><span class="ident">multi</span><span class="punct">())</span> <span class="comment"># =&gt; [1]</span>
+ <span class="ident">output</span><span class="punct">([</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">])</span> <span class="comment"># =&gt; [[1,2]]</span>
+ <span class="ident">output</span><span class="punct">(*[</span><span class="number">1</span><span class="punct">,</span><span class="number">2</span><span class="punct">])</span> <span class="comment"># =&gt; [1,2]</span>
+ <span class="ident">output</span><span class="punct">(*</span><span class="number">1</span><span class="punct">)</span> <span class="comment"># error! 1 is not an array</span>
+ <span class="ident">output</span><span class="punct">(*</span><span class="ident">multi</span><span class="punct">())</span> <span class="comment"># =&gt; ??</span></code></pre></div> 
+
+<h3>Eval</h3>
+
+<ul>
+<li>Prohibits Optimization</li>
+<li>Turn it to Keyword</li>
+<li>I&#8217;m not sure if this is a good idea</li>
+</ul>
+
+<h3>Lambda</h3>
+
+<ul>
+<li>An anonymous function</li>
+<li>Currently arguments are emulated by block parameters</li>
+<li>But they are different
+<ul>
+<li>number check</li>
+<li>optional arguments</li>
+<li>keyword arguments</li>
+</ul></li>
+</ul>
+
+<p>[number check == arity check?]</p>
+
+<h3>Lambda Syntax</h3>
+
+<p>? args {&#8230;}</p>
+
+<p>Fill ? as you like most.</p>
+
+<ul>
+<li>lambda(n=5) {&#8230;}</li>
+<li>->(n=5) {&#8230;}</li>
+<li>^(n=5) {&#8230;}</li>
+<li>(n=5) {&#8230;}</li>
+<li>:(n=5){&#8230;}</li>
+<li>.(n=5){&#8230;}</li>
+<li>(n=5)->{&#8230;}</li>
+</ul>
+
+<p>Dave Thomas suggests def(n=5) {&#8230;}
+Matz suggests y = def(x=5) end
+Dave suggests lambda(n=5) end be a closure, and def(n=5) end be not.</p>
+
+<h3>Annotations</h3>
+
+<p>To declare additional attributes of methods, class, etc.</p>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="comment"># @require: arg1 &gt;= 10</span>
+ <span class="comment"># @overriding: true</span>
+ <span class="comment"># @visibility: public</span>
+
+ <span class="keyword">def </span><span class="method">foo</span><span class="punct">(</span><span class="ident">arg1</span><span class="punct">)</span>
+   <span class="punct">...</span>
+ <span class="keyword">end</span></code></pre></div>
+
+<h3>Traits</h3>
+
+<ul>
+<li>Mix-in can be Complex Sometimes</li>
+<li>Traits - Mucnh Simpler Solution</li>
+<li>Make Modules More Like Traits</li>
+</ul>
+
+<h3>Traits (2)</h3>
+
+<p>Traits are a set of methods</p>
+
+<ul>
+<li>can be included to classes</li>
+<li>can be merged with another trait (+ operator)</li>
+<li>can exclude methods (- operator)</li>
+<li>can rename some methods (rename operation)</li>
+</ul>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="constant">T3</span> <span class="punct">=</span> <span class="constant">T1</span> <span class="punct">+</span> <span class="punct">(</span><span class="constant">T2</span> <span class="punct">-</span> <span class="punct">[</span><span class="symbol">:foo</span><span class="punct">,</span> <span class="symbol">:bar</span><span class="punct">])</span>
+ <span class="keyword">class </span><span class="class">Foo</span>
+   <span class="ident">include</span> <span class="constant">T3</span>
+ <span class="keyword">end</span></code></pre></div>
+
+<p>T3 would have all method in t1 except for foo and bar, and would put all of these in the class Foo</p>
+
+<h3>Traits like Modules</h3>
+
+<ul>
+<li>Merging (+ operator)</li>
+<li>Excluding (via undef)</li>
+<li>Renaming (via alias)</li>
+<li>Duplicate Inclusion</li>
+</ul>
+
+<p>Much Like Traits but Symbolic</p>
+
+<h3>Symbolic Inclusion</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">module </span><span class="module">Traits</span>
+  <span class="keyword">def </span><span class="method">foo</span>
+  <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">class </span><span class="class">Foo</span>
+   <span class="ident">include</span> <span class="constant">Traits</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">module </span><span class="module">Traits</span>
+   <span class="keyword">def </span><span class="method">bar</span>
+   <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">f</span> <span class="punct">=</span> <span class="constant">Foo</span><span class="punct">.</span><span class="ident">new</span>
+ <span class="ident">f</span><span class="punct">.</span><span class="ident">bar</span> <span class="comment"># should be avaliable</span></code></pre></div>
+
+<h3>Namespace</h3>
+
+<ul>
+<li>Open class is Too Dangerous
+<ul>
+<li>Global Modification</li>
+</ul></li>
+<li><p>Restrict Namespace in a Particular File</p></li>
+<li><p>Selector Namespace</p>
+
+<ul>
+<li>or something different</li>
+</ul></li>
+</ul>
+
+<h3>Namespace Example</h3>
+
+<p>[involves Japanese characters&#8230; the &#8216;require&#8217; is local to the file?]</p>
+
+<h3>Method Combination</h3>
+
+<p>a la Common Lisp</p>
+
+<ul>
+<li>Similar to Aspect Oriented Programming</li>
+<li>Allow before/after/around hook for each method</li>
+<li>No concrete syntax is set</li>
+</ul>
+
+<h3>Method Combination Example</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">class </span><span class="class">Foo</span>
+   <span class="keyword">def </span><span class="method">foo</span>
+     <span class="ident">p</span> <span class="symbol">:foo</span>
+   <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">class </span><span class="class">Bar</span><span class="punct">&lt;</span><span class="constant">Foo</span>
+   <span class="keyword">def </span><span class="method">foo:before</span>
+     <span class="ident">p</span> <span class="punct">[</span><span class="symbol">:foo</span><span class="punct">,</span> <span class="symbol">:before</span><span class="punct">]</span>
+   <span class="keyword">end</span>
+   <span class="keyword">def </span><span class="method">foo:after</span>
+     <span class="ident">p</span> <span class="punct">[</span><span class="symbol">:foo</span><span class="punct">,</span> <span class="symbol">:before</span><span class="punct">]</span>
+   <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">bar</span> <span class="punct">=</span> <span class="constant">Bar</span><span class="punct">.</span><span class="ident">new</span>
+ <span class="ident">bar</span><span class="punct">.</span><span class="ident">foo</span> <span class="comment"># [:foo, :before], :foo, [:foo, :after]</span></code></pre></div>
+
+<p>(Nestable and stackable)</p>
+
+<h3>Method Combination Example (2)</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "> <span class="keyword">module </span><span class="module">SomeModule</span>
+   <span class="keyword">def </span><span class="method">initialize:before</span><span class="punct">(*</span><span class="ident">args</span><span class="punct">)</span>
+     <span class="comment"># initialize attributes related to SomeModule</span>
+   <span class="keyword">end</span>
+
+   <span class="punct">...</span>
+ <span class="keyword">end</span>
+
+ <span class="keyword">class </span><span class="class">SomeClass</span>
+   <span class="ident">include</span> <span class="constant">SomeModule</span>
+   <span class="punct">...</span>
+ <span class="keyword">end</span>
+
+ <span class="ident">obj</span> <span class="punct">=</span> <span class="constant">SomeClass</span><span class="punct">.</span><span class="ident">new</span></code></pre></div>
+
+<h3>Multilingualization</h3>
+
+<ul>
+<li>Character Set Independent M17N
+<ul>
+<li>No conversion required</li>
+<li>Unicode is not forced</li>
+</ul></li>
+<li>Basic implementation is done</li>
+<li>But We Still Need Code Conversion API</li>
+<li>&#8230; and some concerns left
+<ul>
+<li>e.g. string literals in extensions</li>
+</ul></li>
+</ul>
+
+<h3>M17N Example</h3>
+
+<div class="typocode"><pre><code class="typocode_ruby "><span class="constant">STDIN</span><span class="punct">.</span><span class="ident">encoding</span> <span class="punct">=</span> <span class="punct">&quot;</span><span class="string">EUC-JP;UTF-8</span><span class="punct">&quot;</span>
+<span class="ident">likne</span> <span class="punct">=</span> <span class="constant">STDIN</span><span class="punct">.</span><span class="ident">gets</span>
+<span class="ident">p</span> <span class="ident">line</span><span class="punct">.</span><span class="ident">encoding</span> <span class="comment"># =&gt; &quot;UTF-8&quot;</span>
+<span class="ident">print</span> <span class="ident">line</span><span class="punct">.</span><span class="ident">encode</span><span class="punct">(&quot;</span><span class="string">Shift_JIS</span><span class="punct">&quot;)</span></code></pre></div>
+
+<h3>Other Wild Ideas</h3>
+
+<ul>
+<li>allow splat (*) in the middle of arguments</li>
+<li>split Module and Class (no inheritance)</li>
+<li>$var as thread-local variable</li>
+<li>BasicObject on top of Object</li>
+<li>caller_binding</li>
+<li>instance_exec</li>
+</ul>
+
+<h3>Thank you</h3>
+
+<p>Slides will be avaliable at http://www.rubyist.net/~matz/slides/rc2005/
+Any questions?</p>
+
+<p>Q: can you explain instance_exec?</p>
+
+<p>A: </p>
+
+<p>instance_exec(1,2,3) { |a,b,c| &#8230; }</p>
+
+<p>Sometimes we do want to pass a value to an exec block, because sometimes a block is given from outside.  That&#8217;s the reason we need instance_exec.</p>
+
+<p>Q: Could we use an equivalent to this which doesn&#8217;t change self?</p>
+
+<p>A: &#8230; You can say self.instance_eval explicitly.</p>
+
+<p>Q: How do you do instance_exec() today?</p>
+
+<p>A: In the Ruby list someone has defined a method with a random name, then it&#8217;s called, then the method name is removed.</p>
+
+<p>Q: When will it be ready?</p>
+
+<p>A: When its ready.</p>
+
+<p>Thank you for enduring the long talk.</p>
+
+<p>Bye now.</p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/16/matzs-keynotes#comments">3 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/16/matzs-keynotes#trackbacks">no trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-54"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_54'); }"  onmouseout="Element.hide('admin_comment_54');" >
+  <div id="admin_comment_54" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/54', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-54&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/23/edit/54" class="admintools">edit</a></div>
+  <a name="comment-54"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://blog.innerewut.de">Jonathan</a></strong> </cite> said about 8 hours later:<br />
+  <p>Thanks for writing this down!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="54";
+//--></script>
+<!-- mmc mmid:54 mmdate:2005-10-16 13:33:09 mmauthor:Jonathan -->
+</li>
+<li id="comment-58"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_58'); }"  onmouseout="Element.hide('admin_comment_58');" >
+  <div id="admin_comment_58" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/58', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-58&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/23/edit/58" class="admintools">edit</a></div>
+  <a name="comment-58"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Notruby</strong> </cite> said 1 day later:<br />
+  <p>Original slides now available at 
+<a href="http://www.rubyist.net/">http://www.rubyist.net/</a>~matz/slides/rc2005/</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="58";
+//--></script>
+<!-- mmc mmid:58 mmdate:2005-10-17 18:53:21 mmauthor:Notruby -->
+</li>
+<li id="comment-184"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_184'); }"  onmouseout="Element.hide('admin_comment_184');" >
+  <div id="admin_comment_184" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/184', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-184&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/23/edit/184" class="admintools">edit</a></div>
+  <a name="comment-184"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>someone</strong> </cite> said 90 days later:<br />
+  <p>in &#8220;Keyword Arguments (3)&#8221; everywhere you write <strong>*keys</strong>, while there should&#8217;ve been written **keys. At least that is what is on the slides referenced in comment 2. (it didn&#8217;t make sense to me the way it is displayed here on your blog so i searched it up).</p>
+
+
+	<p>but hey, i understand it being displayed wrong. had some problems to writing it with the number of * signs i wanted in this comment. that damned * makes words look bold, making it hard to just use it as text..</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="184";
+//--></script>
+<!-- mmc mmid:184 mmdate:2006-01-14 15:14:33 mmauthor:someone -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/23</span>
+    </p>
+  
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/23/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/23" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="23";
+//--></script>
+<!-- mmp mmid:23 mmdate:2005-10-16 05:12:00 mmurl:/articles/2005/10/16/matzs-keynotes mmtitle:Matz's keynotes -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2005/10/16/matzs-keynotes" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/stylesheets/rss.css" type="text/css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Gluttonous: The State of Ruby on Rails</title>
+    <link>http://glu.ttono.us/articles/2005/10/16/the-state-of-ruby-on-rails</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description></description>
+    <item>
+      <title>The State of Ruby on Rails</title>
+      <description>&lt;p&gt;David Heinemeier Hansson&lt;/p&gt;
+
+&lt;h3&gt;What an amazing year&lt;/h3&gt;
+
+&lt;p&gt;Rails last year was a part of the ruby circle. Over the past year, we&amp;#8217;ve seen an explosive growth in Ruby and Rails. ( A significant number of the crowd are being paid to do Rails. )&lt;/p&gt;
+
+&lt;p&gt;Showed a quote from a J2EE programmer who was unhappy doing J2EE and would rather be doing rails. &amp;#8220;I face quite the quandary, J2EE pays quite well&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;People who would otherwise not be interested in Ruby are taking notice because of what is happening now. People who have something to lose are still considering working with Ruby.&lt;/p&gt;
+
+&lt;p&gt;Even after building a career, mostly around Java Development, people are looking for an alternative; Ruby and RoR is consistently providing that alternative.&lt;/p&gt;
+
+&lt;h3&gt;It didn&amp;#8217;t start out like that&lt;/h3&gt;
+
+&lt;p&gt;We went through four phases:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First they &lt;em&gt;ignore&lt;/em&gt; you
+&lt;ul&gt;
+&lt;li&gt;Why do we need this new language? Isn&amp;#8217;t there PERL and Python?&lt;/li&gt;
+&lt;li&gt;The first barrier is to get awareness out&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Then they &lt;em&gt;laugh&lt;/em&gt; at you
+&lt;ul&gt;
+&lt;li&gt;Once awareness is out, people make fun: &amp;#8220;Its a toy language, and a framework on top of it.&amp;#8221;&lt;/li&gt;
+&lt;li&gt;People care enough to make jokes out of you&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Then they &lt;em&gt;fight&lt;/em&gt; you
+&lt;ul&gt;
+&lt;li&gt;This was a repercussion from pushing out the barriers in step one.&lt;/li&gt;
+&lt;li&gt;Java developers struck back to discredit Ruby and Rails&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Showed a quote from a Java developer, &amp;#8220;About tadalist, that application is so stupid that I&amp;#8217;m wondering how the hell it could have taken him 600 lines to write it.&amp;#8221; &amp;#8211; Geert Bevin&lt;/p&gt;
+
+&lt;p&gt;Geert Bevin writes, &amp;#8220;Move over Ruby on Rails, Java can be concise too!&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;Enter screen shots comparing lines of code.&lt;/p&gt;
+
+&lt;h3&gt;Last step: Then you WIN&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Since rails was released, 150,000 downloads from rubyforge. Gems celebrated 1 million downloads, half a million were rails.&lt;/li&gt;
+&lt;li&gt;Slashdottings all over the place, a credit each time someone tries to build a &amp;#8220;Rails Killer&amp;#8221;&lt;/li&gt;
+&lt;li&gt;At least 9 ruby on rails slashdottings&lt;/li&gt;
+&lt;li&gt;9,738 posts found via technorati&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Key component of adoption: word of mouth from people like Martin Fowler.&lt;/p&gt;
+
+&lt;h3&gt;The Next Big Step: The book&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;As ruby was written in 2001 with PickAxe, Agile Web Development is Rails&amp;#8217;s PickAxe&lt;/li&gt;
+&lt;li&gt;Yesterday it was #2 on Amazon&amp;#8217;s computer book list, sold over 20,000 copies&lt;/li&gt;
+&lt;li&gt;In last 7 days 2,475 copies of the book shipped from distributor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are indicators its taking off and people care&lt;/p&gt;
+
+&lt;p&gt;Huge list of people from many different countries being paid to work in Rails on the Rails Wiki. 400+ professionals from 55 countries.&lt;/p&gt;
+
+&lt;h3&gt;Poster Children&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;37 Signals&lt;/li&gt;
+&lt;li&gt;43 Things/places/people doing over 1 million page views a day&lt;/li&gt;
+&lt;li&gt;Odeo&lt;/li&gt;
+&lt;li&gt;Strongspace from TextDrive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Envy&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Been cloned in many languages
+&lt;ul&gt;
+&lt;li&gt;Sails/trails in java&lt;/li&gt;
+&lt;li&gt;Monorail for .NET&lt;/li&gt;
+&lt;li&gt;Biscuit: PHP on Rails&lt;/li&gt;
+&lt;li&gt;Grails for Groovy&lt;/li&gt;
+&lt;li&gt;Cake PHP&lt;/li&gt;
+&lt;li&gt;Catalyst for PERL&lt;/li&gt;
+&lt;li&gt;Subway and Turbo Gears for Python&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;But why?&lt;/h3&gt;
+
+&lt;p&gt;*I think one of the explanations is absolute competition is not an absolute good.
+  *A large number of web frameworks isn&amp;#8217;t necesarily good. 
+  *We don&amp;#8217;t have 10 implementations of each library in ruby, or CPAN.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby on Rails tried to include &amp;#8220;just enough to make it worth it, not enough to discourage&amp;#8221;
+&lt;ul&gt;
+&lt;li&gt;Its the same processes, but done in a language which &amp;#8220;doesn&amp;#8217;t hurt&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;We tell people stories that people were ready to hear
+&lt;ul&gt;
+&lt;li&gt;J2EE was too complex, and there&amp;#8217;s room for something else&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Now what?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The most important big next step: 1.0&lt;/li&gt;
+&lt;li&gt;Hoping to press out the release candidate for 1.0 later this afternoon.&lt;/li&gt;
+&lt;li&gt;Next: The &amp;#8216;platform&amp;#8217;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Tools in the chain&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Want to make more apps supporting Rails
+&lt;ul&gt;
+&lt;li&gt;SwitchTower - Deployment application&lt;/li&gt;
+&lt;li&gt;Shipping alongside 1.0&lt;/li&gt;
+&lt;li&gt;About moving Rails up (to multi-machine deployments)&lt;/li&gt;
+&lt;li&gt;Gauge - Monitoring a clustered Rails application&lt;/li&gt;
+&lt;li&gt;The next app: real time distributed monitoring&lt;/li&gt;
+&lt;li&gt;Conductor - Should make development &amp;#8220;nicer&amp;#8221;&lt;/li&gt;
+&lt;li&gt;About moving Rails down&lt;/li&gt;
+&lt;li&gt;CocoaMySql-like interface for Rails, so you don&amp;#8217;t have to create tables by hand&lt;/li&gt;
+&lt;li&gt;Scaffolding - making it more suitable for permanent use&lt;/li&gt;
+&lt;li&gt;Naked Objects: A gui with which you can control the domain model&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Creating an industry&lt;/h3&gt;
+
+&lt;p&gt;Vendors who provide services for Rails developers.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TextDrive&lt;/li&gt;
+&lt;li&gt;Making it simpler for getting more than a simple Rails app going&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Getting organized&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Until earlier this year, David had the only commit keys to the repository
+&lt;ul&gt;
+&lt;li&gt;This was needed for some time&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Now 12 on the core team with commit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Web team, sysadmin&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A nice face helps&lt;/li&gt;
+&lt;li&gt;We need to work on it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;RailsConf?&lt;/h3&gt;
+
+&lt;p&gt;&amp;#8220;A swell idea&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;Questions?
+Q: You&amp;#8217;re a good marketer, where do you get it?&lt;/p&gt;
+
+&lt;p&gt;A: Just doing it. Don&amp;#8217;t be afraid to step over the boundary. Investigate where the line in the sand is. Be passionate about something. Be interested in getting others to join your passion. &amp;#8220;The Innovator&amp;#8217;s Solution&amp;#8221; and the &amp;#8220;Innovator&amp;#8217;s Dilemma&amp;#8221; are both great. Kathy Sierra from Creating Passionate Users (blog) is also excellent and will have a book up.&lt;/p&gt;
+
+&lt;p&gt;Q: Why bother In 10 words or less?&lt;/p&gt;
+
+&lt;p&gt;A: I was on the plane to the US a year and a half ago. I was sitting next to a young mormon and coming back from his 2 years in Norway. What he said to me really resonated. I asked, &amp;#8220;Why would you want to do this?&amp;#8221;. He said, &amp;#8220;Well, I think it would be selfish if I knew the truth or a better way and I wasn&amp;#8217;t sharing it&amp;#8221;. Thats some of it, also, &amp;#8220;Its fun&amp;#8221;.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 17:01:00 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:72977c9828eebce115ce5df9900077be</guid>
+      <author>kev</author>
+      <link>http://glu.ttono.us/articles/2005/10/16/the-state-of-ruby-on-rails</link>
+      <category>Coding</category>
+      <category>Rails</category>
+      <category>Ruby</category>
+      <trackback:ping>http://glu.ttono.us/articles/trackback/25</trackback:ping>
+    </item>
+    <item>
+      <title>"The State of Ruby on Rails" by Kev</title>
+      <description>&lt;p&gt;Ulysses is Nicholas Seckar. Sam is Sam Stephenson. Madrobby is Thomas Fuchs. Xal is Tobias Luetke.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 18:59:51 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:d16f4da1d4b73245789ab3fd7f762241</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/the-state-of-ruby-on-rails#comment-57</link>
+    </item>
+    <item>
+      <title>"The State of Ruby on Rails" by Devin Mullins</title>
+      <description>&lt;p&gt;meh.&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 18:46:21 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:cdd2d5b2d680d9080675d7da85a67ec1</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/the-state-of-ruby-on-rails#comment-56</link>
+    </item>
+    <item>
+      <title>"The State of Ruby on Rails" by Devin Mullins</title>
+      <description>&lt;p&gt;The list of committers:&lt;/p&gt;
+
+
+	&lt;p&gt;nextangle &amp;#8211; DHH
+csshsh &amp;#8211; Florian Weber
+minam &amp;#8211; Jamis Buck
+bitsweat &amp;#8211; Jeremy Kemper
+bitserf &amp;#8211; Leon Breedt
+noradio &amp;#8211; Marcel Molina Jr.
+nzkoz
+ulysses
+sam-
+htonl &amp;#8211; Scott Barron
+madrobby
+xal&lt;/p&gt;
+
+
+	&lt;p&gt;Didn&amp;#8217;t get all the full names, though. (Is the full list available somewhere on the web?)&lt;/p&gt;</description>
+      <pubDate>Sun, 16 Oct 2005 18:46:11 -0400</pubDate>
+      <guid isPermaLink="false">urn:uuid:fa878d27e7829956bdf3336d25877dea</guid>
+      <link>http://glu.ttono.us/articles/2005/10/16/the-state-of-ruby-on-rails#comment-55</link>
+    </item>
+  </channel>
+</rss>

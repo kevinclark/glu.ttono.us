@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+           <div class="post">
+  <h2><a href="/articles/2005/11/30/mega-man-rock-opera-update">Mega Man Rock Opera Update</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 30 Nov 2005 16:59:00 GMT">Wed, 30 Nov 2005 16:59:00 GMT</span></p>
+<p>I recieved a reply from the Protomen this morning:</p>
+
+<pre>
+Sorry for the delay, things have been overwhelming.  As for your
+question....
+
+Merchandise
+shirt - $8
+CD - $10 (on backorder until 12/10)
+shipping - $3 add to total
+
+PAYPAL
+If you are NOT using a credit card, send to
+"deathcomestomatteson@yahoo.com".  If you are using a credit card, send to
+"pumpkinhd1@aol.com".
+
+NOT PAYPAL
+Send a check or money order (checks may take an extra week to clear) to:
+Joseph Ash
+P.O. Box 66
+Eagleville, TN  37060
+
+do not hesitate with questions via e-mail.
+
+thanks to you.
+
+-P-
+</pre>
+
+<p>I&#8217;m ordering my copy of the album tonight. These guys deserve support for what they&#8217;ve done so I strongly encourage everyone to buy an album if they&#8217;ve enjoyed the samples. Consider it a donation to the artists.</p>
+
+<h3>Update to the update</h3>
+
+<p>Welcome Metafilterians. No, this isn&#8217;t a scam, atleast not on my end. If you&#8217;d like to get in touch with the artists yourself to confirm, send an email to theprotomen at hotmail dot com.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/30/mega-man-rock-opera-update#comments">5 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/30/mega-man-rock-opera-update#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/28/mega-man-rock-opera">Mega Man Rock Opera</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 28 Nov 2005 22:30:42 GMT">Mon, 28 Nov 2005 22:30:42 GMT</span></p>
+<p>No, I&#8217;m not kidding, and it&#8217;s amazing. <a href="http://radiofreeinternet.imjasonh.com/index.php/archives/2005/11/08/89/">Check out the writeup</a> and the <a href="http://radiofreeinternet.imjasonh.com/wp-content/protomenposter.jpg">propaganda</a> . I&#8217;ve emailed the group to see if an album is going to be avaliable soon, so I&#8217;ll post updates here.</p>
+
+<p>via <a href="http://waxy.org/links">waxy links</a></p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/mega-man-rock-opera#comments">1 comment</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/mega-man-rock-opera#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/28/redirection-goodness">Redirection Goodness</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 28 Nov 2005 19:22:00 GMT">Mon, 28 Nov 2005 19:22:00 GMT</span></p>
+<p>If you&#8217;ve been following <a href="http://dev.rubyonrails.org/timeline">the Rails timeline</a> you may have seen the inception of <code><a href="http://dev.rubyonrails.org/changeset/2848">redirect_to :back</a></code>. Its a wonderful little addition but can wreak havoc on your tests if you don&#8217;t set <code>@request.env["HTTP_REFERER"]</code> or if there is no referer on a live request.</p>
+
+<p>To fix this little problem, I&#8217;ve submitted  <a href="http://dev.rubyonrails.org/ticket/3049">a patch</a> which will throw an error with a helpful message. Additionally, the patch adds the ability to do <code>assert_redirected_to :back</code> in your tests, which makes alot more sense when you&#8217;re staring at your tests than <code>assert_redirected_to SomeURLThatIveSetAsReferer</code> when you really just mean redirected back.</p>
+
+<p>All tests pass, so feel free to merge against your trunk. If you find bugs, go ahead and drop me a line here or at kevin [dot] clark [at] gmail [dot] com.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/hacks" rel="tag">Hacks</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/redirection-goodness#comments">2 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/redirection-goodness#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/28/railsconf-announced">RailsConf Announced</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 28 Nov 2005 18:36:59 GMT">Mon, 28 Nov 2005 18:36:59 GMT</span></p>
+<p>It&#8217;s official, <a href="http://railsconf.org/">RailsConf</a> will happen and it will take place in Chicago. DHH and Dave Thomas of the Pragmatic Programmers are already lined up to keynote. At ~$400, the price is a little steep, but I&#8217;ll see you there!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>, <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/railsconf-announced#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/railsconf-announced#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/15/help-amy-help-you">Help Amy Help You</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Tue, 15 Nov 2005 16:49:03 GMT">Tue, 15 Nov 2005 16:49:03 GMT</span></p>
+<p><a href="http://www.slash7.com">Amy Hoy</a> over at <a href="http://www.slash7.com">Slash 7</a> is writing a book about Rails and asks for questions that people will want answered. Go <a href="http://slash7.com/articles/2005/11/15/newbies-help-me-help-you">help her out</a>.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/15/help-amy-help-you#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/15/help-amy-help-you#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/14/penny-arcade-on-rails">Penny Arcade on Rails</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 14 Nov 2005 21:26:00 GMT">Mon, 14 Nov 2005 21:26:00 GMT</span></p>
+<p>Along with <a href="http://www.penny-arcade.com">Penny Arcade&#8217;s</a> new design for their 7th birthday they&#8217;ve moved to a rails cms (see <a href="http://www.penny-arcade.com/2005/11/14/#21452">Gabe&#8217;s post entitled Seven Years</a>).</p>
+
+<blockquote>Along with the slick new visuals the guts of the site also got a huge upgrade. Penny Arcade right now represents one of the largest implementations of &#8220;rails&#8221; on the intertron. I went and looked at a website about rails and then I got a headache. From what I gathered it’s either some kind of cutting edge programming language, or a way to liquefy a man’s brain inside his skull. I&#8217;m told that it means the site looks better and loads faster regardless of whatever hippy web browser you decide to use. Fuck M$!</blockquote>
+
+<p>Welcome guys!</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/musings" rel="tag">Musings</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/14/penny-arcade-on-rails#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/14/penny-arcade-on-rails#trackbacks">no trackbacks</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/14/new-hosting">New Hosting</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Mon, 14 Nov 2005 07:09:32 GMT">Mon, 14 Nov 2005 07:09:32 GMT</span></p>
+<p>I&#8217;ve moved Gluttonous to the excellent hosting of <a href="http://robbyonrails.com">Robby Russell</a> at <a href="http://planetargon.com">Planet Argon</a>. Downtime should be minimal from now on.</p>
+
+<p>Thanks for your patience.</p>
+
+  
+  <p class="meta"><a href="/articles/2005/11/14/new-hosting#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/14/new-hosting#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/08/measuremap-and-typo">MeasureMap and Typo</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Wed, 09 Nov 2005 01:41:00 GMT">Wed, 09 Nov 2005 01:41:00 GMT</span></p>
+<p>So, if you&#8217;re one of the lucky few who have gotten into the <a href="http://measuremap.com/">MeasureMap</a> private alpha here&#8217;s how you can easily add support into typo. MeasureMap is really way cool. I&#8217;ve only had it a few hours, so I&#8217;ll be posting some impressions as soon as I have gathered my thoughts.</p>
+
+  <a href="/articles/2005/11/08/measuremap-and-typo">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/08/measuremap-and-typo#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/02/moo-fx-a-new-effects-library">moo.fx, a new effects library</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Thu, 03 Nov 2005 03:27:00 GMT">Thu, 03 Nov 2005 03:27:00 GMT</span></p>
+<p>From <a href="http://moofx.mad4milk.net/">the site</a>:</p>
+
+<blockquote>moo.fx is a superlightweight, ultratiny, megasmall javascript effects library, written with prototype.js.</blockquote>
+
+<blockquote>moo.fx is not a replacement for script.aculo.us or other effects libraries. It&#8217;s just a little alternative for people (like me) that do not need more than just simple, basic effects (and want to keep their filesize small).</blockquote>
+
+<p>This thing weighs in at only 3kb. May be worth a look.</p>
+
+  
+  <p class="meta">Posted in <a href="/articles/category/web-dev" rel="tag">Web Dev</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/02/moo-fx-a-new-effects-library#comments">no comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/02/moo-fx-a-new-effects-library#trackbacks">1 trackback</a></p>
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Why and How: Ruby (and Rails) Unit Testing</a></h2>
+<p class="auth">Posted by kev
+<span class="typo_date" title="Sun, 30 Oct 2005 06:10:00 GMT">Sun, 30 Oct 2005 06:10:00 GMT</span></p>
+<p>One thing I love about Ruby is the built in unit tests. As someone who is working to use better developing methodologies, having unit testing avaliable with no effort makes it that much easier to try out things like Test Driven Development. Unit testing also has an important place in <a href="http://www.rubyonrails.com">Rails</a> development. I enjoyed the format of my article on <a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">migrations</a>, so we&#8217;ll try that again. The why and how of unit testing, coming right up.</p>
+
+  <a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Read more...</a>
+  <p class="meta">Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/rails" rel="tag">Rails</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing#comments">7 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing#trackbacks">no trackbacks</a></p>
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/11">11</a> <a href="/articles/page/12">12</a> 13 <a href="/articles/page/14">14</a> <a href="/articles/page/15">15</a>  ... <a href="/articles/page/17">17</a></p>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+
