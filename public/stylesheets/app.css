@@ -1,0 +1,49 @@
+body { 
+    background: #222; 
+    color: #888;
+    font-size: 0.8em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", 
+                 "Lucida Sans", Lucida, sans-serif;
+}
+
+#viewport { width: 800px; margin: 0 auto;}
+
+h1 { font-size: 2.4em; margin-bottom: 0px;}
+
+h2 { 
+    background: #522;
+    font-size: 1.5em;
+    padding-left: 1em;
+}
+
+h3 { padding-left: 1em; text-decoration: underline; }
+
+p  { 
+    margin: 0 1em 1em 1em;
+    font-family: sans-serif;
+    line-height: 1.8em;
+}
+
+pre {
+    border: 2px solid;
+    line-height: 20px;
+    padding: 10px;
+}
+
+a {
+  color: #888;
+}
+
+.box { 
+    width: 50%;
+    float: left;
+}
+
+.spacer { clear: both; }
+
+.full_bar {
+    width: 100%;
+}
+
+#click dl { list-style-type: none; padding: 0 0 0 1em; }
+#click dl dd { margin-left: 0; padding-bottom: 1em; line-height: 1.8em;}

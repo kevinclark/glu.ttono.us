@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Gluttonous</title>
+    
+    <link rel="stylesheet" href="/stylesheets/app.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" media="screen" charset="utf-8" />
+    
+    <script src="/javascripts/moo.js" 
+                type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/app.js" 
+                type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="viewport">
+        <h1>Gluttonous</h1>
+
+        <div class="box full_bar">
+            <h2>Code</h2>
+            <%= @code.last %>
+            <p><a href="/code/<%= @code.first %>">Download <%= @code.first%></a></p>
+        </div>
+
+        <div id="read" class="box full_bar">
+            <h2>Read</h2>
+            <%= @read %>
+        </div>
+
+
+        <div class="box">
+            <h2>Read More</h2>
+            <ul>
+            <% $links.each do |link| %>
+                <li><a href="/articles/<%= link %>#read"><%= link %></a></li>
+            <% end %>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2>Listen</h2>
+            <p>Still need to script this</p>
+            <object type="application/x-shockwave-flash" data="http://flash-mp3-player.net/medias/player_mp3.swf" width="200" height="20">
+                <param name="movie" value="player_mp3.swf" />
+                <param name="bgcolor" value="#222222" />
+                <param name="FlashVars" value="mp3=http://glu.ttono.us/listen/04-Palindrome.mp3&amp;bgcolor1=222222&amp;bgcolor2=222222&amp;loadingcolor=552222&amp;buttoncolor=888888&amp;buttonovercolor=885555&amp;slidercolor1=888888&amp;sliderovercolor=885555&amp;textcolor=" />
+            </object>
+        </div>
+
+        <div class="spacer" />
+
+        <div id="click" class="box">
+            <h2>Click</h2>
+        </div>
+        <div class="box">
+            <h2>Projects</h2>
+        </div>
+    </div>
+</body>
